@@ -2,7 +2,6 @@ import React from 'react';
 import { Search, Sparkles, Menu, X, BookOpen, PenTool, MessageSquare, Sliders, MapPin } from 'lucide-react';
 import type { FigureInfo } from '../common/FigureModal';
 import { ThemeToggle } from './ThemeToggle';
-import { LanguageToggle } from './LanguageToggle';
 import type { ViewType } from '../../types';
 
 interface Props {
@@ -102,8 +101,7 @@ export const Header: React.FC<Props> = ({
             </kbd>
           </button>
 
-          <ThemeToggle className="hidden sm:flex" />
-          <LanguageToggle />
+          <ThemeToggle />
         </div>
       </div>
 
