@@ -1,0 +1,338 @@
+[
+  {
+    "id": "EX-C01-1",
+    "contextId": "C01",
+    "channel": "Social Carousel Opener",
+    "worked": {
+      "copy": "Ketika energi rasanya habis tapi kerjaan belum selesai, biasanya ada siklus kelelahan yang belum sempat kita sadari. Ini yang sebenarnya terjadi di tubuh saat beban kerja menumpuk berhari-hari."
+    },
+    "weak": {
+      "copy": "Apakah kamu sedang mengalami depresi berat atau burnout parah? Kenali 7 tanda kesehatan mentalmu sedang hancur sekarang juga."
+    },
+    "rationale": "Opens on an observable bodily cycle rather than labeling distress. Preserves reader standing with zero premature diagnostic pressure."
+  },
+  {
+    "id": "EX-C01-2",
+    "contextId": "C01",
+    "channel": "Micro-Guide Closing Note",
+    "worked": {
+      "copy": "Istirahat sejenak 10 menit bukan tanda kamu malas. Tubuh kita memang butuh jeda berkala untuk menurunkan kadar hormon stres setelah bekerja intensif."
+    },
+    "weak": {
+      "copy": "Kamu wajib memprioritaskan self-care sekarang! Jangan mengabaikan sinyal depresi ini sebelum terlambat."
+    },
+    "rationale": "Supplies an accurate physiological mechanism after describing everyday behavior, removing moral guilt without commanding behavior."
+  },
+  {
+    "id": "EX-C02-1",
+    "contextId": "C02",
+    "channel": "Feed Observation Post",
+    "worked": {
+      "copy": "Masih datang kerja tepat waktu. Masih membalas pesan kantor dengan rapi. Cuma saat sampai di rumah, kamu duduk di tepi kasur dan melamun sampai lampu kamar lupa dinyalakan selama satu jam. Tidak ada yang salah. Banyak yang ritmenya sedang serupa."
+    },
+    "weak": {
+      "copy": "Buat kamu cowok-cowok yang pura-pura kuat padahal rapuh: stop playing the victim! Curhat sekarang di DM kami, jangan dipendam sendiri bro!"
+    },
+    "rationale": "Names concrete behavioral friction with zero call-to-action and zero emotional labels, allowing recognition without loss of status."
+  },
+  {
+    "id": "EX-C02-2",
+    "contextId": "C02",
+    "channel": "Short Reflection Fragment",
+    "worked": {
+      "copy": "Tidur masih jam yang sama. Jam sebelas malam sudah mematikan layar ponsel. Bedanya, sekarang matanya masih menatap langit-langit kamar sampai jam tiga subuh."
+    },
+    "weak": {
+      "copy": "Insomnia adalah tanda jiwa yang terluka dan butuh pertolongan segera. Buka hatimu untuk sembuh!"
+    },
+    "rationale": "Ends purely on the description without offering an unearned solution or monetizing the moment of identification."
+  },
+  {
+    "id": "EX-C03-1",
+    "contextId": "C03",
+    "channel": "First-Person Personal Essay",
+    "worked": {
+      "copy": "Bulan ketiga setelah toko tutup, saya masih bangun jam lima pagi. Duduk di teras, menyeduh kopi sambil melihat orang-orang berangkat kerja. Rasa khawatirnya tidak berteriak-teriak, cuma perlahan mengisi sudut rumah."
+    },
+    "weak": {
+      "copy": "Aku ingin jujur mengakui kerapuhanku di depan kalian semua. Pria sejati harus berani menangis dan meruntuhkan egonya di hadapan dunia."
+    },
+    "rationale": "Anchor emotion in chronological objects and physical places. The teller retains full personal standing rather than performing emotional vulnerability as a spectacle."
+  },
+  {
+    "id": "EX-C03-2",
+    "contextId": "C03",
+    "channel": "Short Video Voiceover",
+    "worked": {
+      "copy": "Hari itu tidak ada obrolan besar. Kami cuma membongkar karburator motor tua sampai sore di garasi. Kadang yang kita butuhkan cuma berada di dekat seseorang tanpa harus menjelaskan apa yang sedang berat."
+    },
+    "weak": {
+      "copy": "Duka ini begitu menyayat hati dan menghancurkan mentalku berkeping-keping hingga aku tak sanggup lagi bernapas."
+    },
+    "rationale": "Focuses on shared activity where emotion is held safely by an external task, avoiding melodramatic confession framing."
+  },
+  {
+    "id": "EX-C04-1",
+    "contextId": "C04",
+    "channel": "Community Gathering Invitation",
+    "worked": {
+      "copy": "Sabtu ini kami kumpul santai di Taman Suropati jam 07.30 WIB. Jalan kaki santai 30 menit, lanjut ngopi bareng. Mau cerita silakan, mau cuma duduk mendengarkan juga tidak apa-apa. Gratis dan tanpa agenda formal."
+    },
+    "weak": {
+      "copy": "Bergabunglah dengan brotherhood pria sejati! Tempat sakral untuk saling membuka luka jiwa dan menyembuhkan batin bersama!"
+    },
+    "rationale": "Makes entry cost transparent and explicitly licenses silence ('boleh cuma duduk mendengarkan') to dismantle anticipation anxiety."
+  },
+  {
+    "id": "EX-C04-2",
+    "contextId": "C04",
+    "channel": "Online Circle Onboarding",
+    "worked": {
+      "copy": "Ruang obrolan ini dibuka untuk bertukar pikiran santai seputar rutinitas dan beban kerja harian. Kamu bebas membaca obrolan tanpa wajib mengetik apa pun."
+    },
+    "weak": {
+      "copy": "Wajib perkenalkan dirimu dan ceritakan trauma terbesarmu saat pertama kali bergabung di grup ini!"
+    },
+    "rationale": "Removes upfront identity commitment, framing participation as opt-in without demanding personal disclosure."
+  },
+  {
+    "id": "EX-C05-1",
+    "contextId": "C05",
+    "channel": "Support Session Brief",
+    "worked": {
+      "copy": "Sesi tatap muka: Kamis, 19.00–20.30 WIB di Tebet. Maksimal 8 orang per kelompok, didampingi 1 fasilitator terlatih. Tidak ada dokumentasi foto, kamu boleh memakai nama samaran, dan tidak ada kewajiban untuk berbicara."
+    },
+    "weak": {
+      "copy": "Apakah kamu butuh pelukan hangat dari sesama saudara? Jangan biarkan kesepian membunuhmu, mari saling menyembuhkan!"
+    },
+    "rationale": "Treats logistics as the primary content (who, where, duration, capacity, camera policy, privacy) to minimize response cost."
+  },
+  {
+    "id": "EX-C05-2",
+    "contextId": "C05",
+    "channel": "Attendance Clarification Email",
+    "worked": {
+      "copy": "Jika kamu sudah mendaftar dan merasa belum siap hadir saat hari pelaksanaan, cukup beri tahu kami lewat satu pesan singkat. Tidak ada penjelasan yang perlu kamu berikan."
+    },
+    "weak": {
+      "copy": "Jangan ingkari komitmenmu! Datanglah demi kesehatan mentalmu sendiri dan jangan kecewakan teman-teman yang menunggu."
+    },
+    "rationale": "Sets the exit and hesitation cost to zero, preventing reactance caused by manufactured guilt or binding pressure."
+  },
+  {
+    "id": "EX-C06-1",
+    "contextId": "C06",
+    "channel": "Clinic Navigation Guide",
+    "worked": {
+      "copy": "Bila rasa lelah mulai mengganggu fokus kerjamu selama dua minggu berturut-turut, kamu bisa berkonsultasi dengan psikolog di puskesmas kecamatan. Biayanya 15 ribu dengan KTP domisili atau ditanggung BPJS Kesehatan."
+    },
+    "weak": {
+      "copy": "Segera cari bantuan profesional sekarang juga! Jangan biarkan gengsi laki-laki menghancurkan masa depan dan keluargamu!"
+    },
+    "rationale": "Offers one realistic, bounded, and financially legible next step without character-shaming or high-pressure imperatives."
+  },
+  {
+    "id": "EX-C06-2",
+    "contextId": "C06",
+    "channel": "Informal Help Step",
+    "worked": {
+      "copy": "Langkah pertama tidak harus langsung ke ruang konsultasi. Membicarakan pembagian beban kerja minggu ini dengan rekan satu tim yang kamu percaya sering kali sudah cukup untuk mengurai tekanan."
+    },
+    "weak": {
+      "copy": "Bongkar egomu! Jangan pendam semuanya sendirian seperti pengecut!"
+    },
+    "rationale": "Normalizes low-threshold informal conversations as valid coping steps before high-friction clinical interventions."
+  },
+  {
+    "id": "EX-C07-1",
+    "contextId": "C07",
+    "channel": "Crisis Intervention Protocol",
+    "worked": {
+      "copy": "Jika kamu atau seseorang yang kamu kenal sedang memikirkan untuk mengakhiri hidup, bantuan segera tersedia. Hubungi Hotline Kesehatan Jiwa Kementerian Kesehatan di 119 ekstensi 8, atau hubungi IGD rumah sakit terdekat sekarang."
+    },
+    "weak": {
+      "copy": "Badai pasti berlalu kawan! Hidup ini indah, tersenyumlah dan buktikan kamu cowok tangguh yang tidak mudah putus asa!"
+    },
+    "rationale": "Uses unhedged clinical language with zero metaphors, toxic positivity, or humorous framing, following safe-messaging standards."
+  },
+  {
+    "id": "EX-C07-2",
+    "contextId": "C07",
+    "channel": "Immediate Safety Notice",
+    "worked": {
+      "copy": "Bila pikiran untuk menyakiti diri sendiri terasa semakin mendesak malam ini, jangan sendirian. Tetaplah bersama orang yang kamu percaya atau langsung menuju ruang gawat darurat."
+    },
+    "weak": {
+      "copy": "Ingat orang tuamu yang sudah membesarkanmu dengan susah payah, jangan buat mereka menangis!"
+    },
+    "rationale": "Provides actionable physical de-escalation instructions while strictly eliminating moral guilt-tripping and emotional manipulation."
+  },
+  {
+    "id": "EX-C08-1",
+    "contextId": "C08",
+    "channel": "Myth Clarification Card",
+    "worked": {
+      "copy": "Menahan keluhan di tempat kerja sering kali dipandang sebagai tanda ketangguhan profesional. Namun secara biologis, menahan tekanan kerja intens tanpa pemulihan justru menurunkan ketajaman kognitif dan konsentrasi dalam jangka panjang."
+    },
+    "weak": {
+      "copy": "Masih percaya mitos basi kalau pria sejati tidak boleh mengeluh? Itu bukti pola pikir patriarki yang terbelakang!"
+    },
+    "rationale": "Concedes the social utility of the original premise before introducing physiological counter-evidence, never ridiculing the believer."
+  },
+  {
+    "id": "EX-C08-2",
+    "contextId": "C08",
+    "channel": "Cultural Belief Reframing",
+    "worked": {
+      "copy": "Kemampuan menyelesaikan masalah secara mandiri adalah keterampilan berharga. Namun memeriksa sudut pandang bersama orang lain tidak mengurangi kemandirianmu; itu langkah praktis untuk menguji keakuratan rencana."
+    },
+    "weak": {
+      "copy": "Kemandirian pria itu ilusi palsu! Mengakulah kalau kamu tidak mampu hidup sendiri!"
+    },
+    "rationale": "Affirms the value of self-reliance while calmly repositioning consultation as strategic planning rather than personal weakness."
+  },
+  {
+    "id": "EX-C09-1",
+    "contextId": "C09",
+    "channel": "Structural Analysis Article",
+    "worked": {
+      "copy": "Tuntutan peran sebagai penopang ekonomi keluarga di tengah kenaikan biaya hidup sering kali menciptakan tekanan senyap yang jarang memiliki ruang dialog terbuka di meja makan."
+    },
+    "weak": {
+      "copy": "Laki-laki Indonesia harus introspeksi diri dan sadar bahwa ego patriarki merekalah yang merusak keharmonisan rumah tangga."
+    },
+    "rationale": "Frames difficulties around structural realities (living costs, societal expectations) instead of indicting the audience collectively."
+  },
+  {
+    "id": "EX-C09-2",
+    "contextId": "C09",
+    "channel": "Workplace Culture Commentary",
+    "worked": {
+      "copy": "Budaya lembur tanpa kompensasi yang dinormalisasi di berbagai industri kerap kali menyamarkan kelelahan kronis sebagai tanda dedikasi pekerja."
+    },
+    "weak": {
+      "copy": "Pria masa kini terlalu penakut untuk menuntut haknya kepada atasan!"
+    },
+    "rationale": "Focuses scrutiny on the operational mechanism and organizational culture rather than attacking individual character."
+  },
+  {
+    "id": "EX-C10-1",
+    "contextId": "C10",
+    "channel": "Policy Advocacy Release",
+    "worked": {
+      "copy": "Layanan kesehatan mental semestinya menjadi hak dasar, bukan hak istimewa segelintir orang. Tahun ini, Menungsa mengalokasikan 35% jam kerja tim klinis untuk pendampingan komunitas pekerja lepas tanpa biaya."
+    },
+    "weak": {
+      "copy": "Siapapun yang berdiam diri melihat ketidakadilan ini sama saja memvalidasi penderitaan rakyat! Tuntut perubahan sekarang!"
+    },
+    "rationale": "Pairs a single measured moral principle with a concrete, costly institutional action that the organization itself is delivering."
+  },
+  {
+    "id": "EX-C10-2",
+    "contextId": "C10",
+    "channel": "Campaign Action Statement",
+    "worked": {
+      "copy": "Alokasi anggaran kesehatan jiwa daerah masih berada di bawah 2% dari total belanja kesehatan. Kami mendukung dorongan transparansi anggaran psikolog puskesmas melalui audit publik bersama mitra legislatif."
+    },
+    "weak": {
+      "copy": "Para pejabat tidak punya hati nurani karena membiarkan rakyatnya depresi tanpa fasilitas layak!"
+    },
+    "rationale": "Grounds the appeal in verifiable budgetary figures and specific legislative motions rather than inflammatory outrage."
+  },
+  {
+    "id": "EX-C11-1",
+    "contextId": "C11",
+    "channel": "Behind-The-Scenes Social Snippet",
+    "worked": {
+      "copy": "Tim riset Menungsa tadi pagi menghabiskan waktu dua jam membahas metodologi ritme tidur cepat. Hasilnya: tadi malam kami semua tetap begadang sampai jam 2 pagi menonton video ulasan sepeda motor."
+    },
+    "weak": {
+      "copy": "Haha cowok kalau lagi kena mental lucu banget ya, kayak anak kecil mau nangis! Jangan lebay bro!"
+    },
+    "rationale": "Uses self-effacing observational humor from the account team without mocking audience vulnerability or sensitive issues."
+  },
+  {
+    "id": "EX-C11-2",
+    "contextId": "C11",
+    "channel": "Casual Everyday Anecdote",
+    "worked": {
+      "copy": "Menyuruh teman istirahat saat sakit: 'Sudah, izin kantor saja hari ini.' Saat diri sendiri meriang: 'Tanggung, tinggal 4 spreadsheet lagi beres.'"
+    },
+    "weak": {
+      "copy": "Dasar cowok keras kepala munafik, kalau disuruh jaga kesehatan banyak alasan melulu!"
+    },
+    "rationale": "Captures a shared, harmless cognitive dissonance with warm situational levity rather than condescending reproach."
+  },
+  {
+    "id": "EX-C12-1",
+    "contextId": "C12",
+    "channel": "Recovery Case Feature",
+    "worked": {
+      "copy": "Setelah enam bulan mengikuti konseling, bukan berarti masalah hidup Dimas mendadak lenyap. Tapi sekarang, saat serangan panik kembali muncul, ia sudah tahu teknik mengatur napas dan tidak lagi menyalahkan dirinya sendiri."
+    },
+    "weak": {
+      "copy": "Dahulu putus asa di ambang jurang, kini sukses bangkit menjadi pria sejati tak terkalahkan! Kalau Dimas bisa, tidak ada alasan kamu gagal!"
+    },
+    "rationale": "Showcases modest, sustainable progress where relapses remain normalized, avoiding guru-like hyperbolic transformation arcs."
+  },
+  {
+    "id": "EX-C12-2",
+    "contextId": "C12",
+    "channel": "Habit Rehabilitation Vignette",
+    "worked": {
+      "copy": "Yang membantu Faisal bukan slogan motivasi besar, melainkan hal sederhana: menjadwalkan jalan kaki 15 menit setiap sore bersama adiknya tanpa membawa ponsel."
+    },
+    "weak": {
+      "copy": "Tinggalkan semua kebiasaan malasmu sekarang juga jika ingin mentalmu sekuat baja!"
+    },
+    "rationale": "Identifies one modest, reproducible behavioural mechanism rather than prescribing heroic moral determination."
+  },
+  {
+    "id": "EX-C13-1",
+    "contextId": "C13",
+    "channel": "Grief & Hardship Reflection",
+    "worked": {
+      "copy": "Ketika usaha yang kamu bangun berbulan-bulan harus terhenti bulan ini, wajar jika rasanya sangat mengecewakan. Kamu tidak harus langsung memetik hikmah atau memaksakan senyum malam ini. Beri jeda pada dirimu sendiri."
+    },
+    "weak": {
+      "copy": "Jangan sedih berlarut-larut bro! Selalu ada pelangi setelah badai. Jadikan kegagalan ini batu loncatan kesuksesanmu! Semangat pantang menyerah!"
+    },
+    "rationale": "Offers legitimate linguistic space for defeat without rushing to silver linings, toxic positivity, or unsolicited coping lessons."
+  },
+  {
+    "id": "EX-C13-2",
+    "contextId": "C13",
+    "channel": "Bereavement Support Message",
+    "worked": {
+      "copy": "Duka atas kepergian orang terdekat tidak memiliki batas waktu yang rapi. Bila hari ini rasanya sunyi dan hampa, tidak ada kata-kata bijak yang perlu kamu dengar. Kami hadir menemani dalam hening."
+    },
+    "weak": {
+      "copy": "Ikhlaskan saja, semua sudah rencana terbaik dari atas. Tangisanmu tidak akan mengubah apa pun!"
+    },
+    "rationale": "Provides calm, unhurried companionship while strictly barring clichés that invalidate genuine sorrow."
+  },
+  {
+    "id": "EX-C14-1",
+    "contextId": "C14",
+    "channel": "Physical Activity Debrief",
+    "worked": {
+      "copy": "Lari 5 kilometer pagi ini bukan tentang siapa yang tercepat melewati garis akhir. Tapi tentang merasakan ritme langkah bersama di udara segar setelah satu minggu penuh di depan monitor kerja."
+    },
+    "weak": {
+      "copy": "Pria sejati bertarung sampai titik darah penghabisan! Taklukkan rasa lelahmu, hancurkan kelemahan mentalmu di gym hari ini!"
+    },
+    "rationale": "Attaches emotion to an external shared activity and somatic rhythm rather than to hyper-masculine domination or military metaphors."
+  },
+  {
+    "id": "EX-C14-2",
+    "contextId": "C14",
+    "channel": "Sports Community Note",
+    "worked": {
+      "copy": "Main bola mingguan ini tujuannya sederhana: keluar keringat, tertawa lepas saat salah umpan, lalu makan soto bersama. Kadang itu cara paling sehat bagi kepala kita untuk beristirahat."
+    },
+    "weak": {
+      "copy": "Kalah itu haram hukumnya! Buktikan siapa jantan terkuat di lapangan ini!"
+    },
+    "rationale": "Uses recreational sports as a low-exposure social container where camaraderie flourishes without performance anxiety."
+  }
+]

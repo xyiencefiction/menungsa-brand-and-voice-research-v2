@@ -1,0 +1,317 @@
+[
+  {
+    "id": "E01",
+    "conclusion": "Restrictive masculine norms (especially self-reliance) are associated with poorer help-seeking attitudes and higher self-stigma",
+    "confidence_tier": "STRONG",
+    "evidence_category": "B",
+    "principal_limitation": "correlational; meta-analytic; not causal; not about wording",
+    "male_specificity_class": "SOCIAL-CONTEXT",
+    "source_domains": "D1;D2;D5;D7"
+  },
+  {
+    "id": "E02",
+    "conclusion": "Freedom-threatening/controlling language increases anger, counterarguing and reactance and reduces persuasion",
+    "confidence_tier": "STRONG",
+    "evidence_category": "A",
+    "principal_limitation": "meta-analytic experimental; general human, NOT male-specific",
+    "male_specificity_class": "GENERAL",
+    "source_domains": "D5;D6"
+  },
+  {
+    "id": "E03",
+    "conclusion": "Engagement metrics are not valid proxies for trust, persuasion or behaviour",
+    "confidence_tier": "STRONG",
+    "evidence_category": "A/B",
+    "principal_limitation": "meta-analysis found no reliable engagement association; petition study shows direct dissociation",
+    "male_specificity_class": "GENERAL",
+    "source_domains": "D6"
+  },
+  {
+    "id": "E04",
+    "conclusion": "Average sex differences in communication style are small and context-dependent",
+    "confidence_tier": "STRONG",
+    "evidence_category": "B",
+    "principal_limitation": "meta-analytic; refutes 'male brain' style claims",
+    "male_specificity_class": "GENERAL",
+    "source_domains": "D1"
+  },
+  {
+    "id": "E05",
+    "conclusion": "Genuine threats to masculine adequacy produce measurable affective responses",
+    "confidence_tier": "STRONG",
+    "evidence_category": "A",
+    "principal_limitation": "d~.45; but publication-selection caveats and weak behavioural tier",
+    "male_specificity_class": "MALE-DIFFERENTIATED",
+    "source_domains": "D5;D3"
+  },
+  {
+    "id": "E06",
+    "conclusion": "Men avoid feminine-coded options when publicly visible but not privately",
+    "confidence_tier": "STRONG",
+    "evidence_category": "A",
+    "principal_limitation": "replicated; asymmetric (women do not mirror it)",
+    "male_specificity_class": "MALE-DIFFERENTIATED",
+    "source_domains": "D5"
+  },
+  {
+    "id": "E07",
+    "conclusion": "Masculine cues help where a category is already feminine-coded, not where it is neutral",
+    "confidence_tier": "STRONG",
+    "evidence_category": "A",
+    "principal_limitation": "seven-study programme plus null in neutral/other categories",
+    "male_specificity_class": "MALE-DIFFERENTIATED",
+    "source_domains": "D5"
+  },
+  {
+    "id": "E08",
+    "conclusion": "An explicit 'Real Men' label added nothing over a neutral brochure; autonomy-supportive male-sensitive framing did reduce self-stigma",
+    "confidence_tier": "RELATIVELY STRONG",
+    "evidence_category": "A",
+    "principal_limitation": "rare true wording manipulation; US; ~2006-2010; small literature",
+    "male_specificity_class": "SOCIAL-CONTEXT",
+    "source_domains": "D5"
+  },
+  {
+    "id": "E09",
+    "conclusion": "Community and socio-economic status are the dominant social determinants of men's health-seeking across 154 studies and all six Indonesian studies",
+    "confidence_tier": "RELATIVELY STRONG",
+    "evidence_category": "C/F",
+    "principal_limitation": "interpretive synthesis; coding is the author's; not a prevalence claim",
+    "male_specificity_class": "INDONESIA-CONFIGURED",
+    "source_domains": "D7"
+  },
+  {
+    "id": "E10",
+    "conclusion": "Religion is a determinant of men's health-seeking in the Global South and Indonesia, and is near-absent from Global North frameworks",
+    "confidence_tier": "RELATIVELY STRONG",
+    "evidence_category": "B/C",
+    "principal_limitation": "34% vs 5% coding gap; Indonesian evidence Muslim/Javanese-weighted",
+    "male_specificity_class": "INDONESIA-CONFIGURED",
+    "source_domains": "D7"
+  },
+  {
+    "id": "E11",
+    "conclusion": "Male-specific settings and peer messengers can improve engagement",
+    "confidence_tier": "MODERATE",
+    "evidence_category": "A/B/C",
+    "principal_limitation": "FFIT RCT plus realist review plus workplace reviews; setting confounded with wording",
+    "male_specificity_class": "SOCIAL-CONTEXT",
+    "source_domains": "D1;D5"
+  },
+  {
+    "id": "E12",
+    "conclusion": "Agency, collective-identity and prosocial language predict costly action better than outrage does",
+    "confidence_tier": "MODERATE",
+    "evidence_category": "B",
+    "principal_limitation": "one very large ecological dataset; observational",
+    "male_specificity_class": "GENERAL",
+    "source_domains": "D6"
+  },
+  {
+    "id": "E13",
+    "conclusion": "Moral density has a non-linear relationship with engagement",
+    "confidence_tier": "MODERATE",
+    "evidence_category": "B",
+    "principal_limitation": "single research programme; political/fringe text platforms; no numeric transfer",
+    "male_specificity_class": "GENERAL",
+    "source_domains": "D6"
+  },
+  {
+    "id": "E14",
+    "conclusion": "Concrete internal action and consistency increase perceived authenticity more than abstract moral positioning",
+    "confidence_tier": "MODERATE",
+    "evidence_category": "A/B",
+    "principal_limitation": "experiments plus meta-analytic moderators; commercial contexts",
+    "male_specificity_class": "GENERAL",
+    "source_domains": "D6"
+  },
+  {
+    "id": "E15",
+    "conclusion": "Shaming and ridicule of men can backfire, in at least one case increasing violent fantasies",
+    "confidence_tier": "MODERATE",
+    "evidence_category": "A",
+    "principal_limitation": "four-study programme; specific population; not widely replicated",
+    "male_specificity_class": "SOCIAL-CONTEXT",
+    "source_domains": "D3"
+  },
+  {
+    "id": "E16",
+    "conclusion": "Provider identity is a central and institutionally codified organiser of Indonesian masculine self-worth",
+    "confidence_tier": "MODERATE",
+    "evidence_category": "B/C/D",
+    "principal_limitation": "legal and religious codification is documented; psychological effect is inferred",
+    "male_specificity_class": "INDONESIA-CONFIGURED",
+    "source_domains": "D2;D4;D7"
+  },
+  {
+    "id": "E17",
+    "conclusion": "Indonesian male homosociality supports companionship far more readily than confiding",
+    "confidence_tier": "MODERATE",
+    "evidence_category": "C",
+    "principal_limitation": "qualitative; Java-weighted; small samples",
+    "male_specificity_class": "INDONESIA-CONFIGURED",
+    "source_domains": "D7;D2"
+  },
+  {
+    "id": "E18",
+    "conclusion": "Indonesian community operates simultaneously as care and as surveillance",
+    "confidence_tier": "MODERATE",
+    "evidence_category": "C/F",
+    "principal_limitation": "interpretive; grounded in six studies plus anthropological literature",
+    "male_specificity_class": "INDONESIA-CONFIGURED",
+    "source_domains": "D7"
+  },
+  {
+    "id": "E19",
+    "conclusion": "Male-tailored interventions improve proximal outcomes (literacy, attitudes, intentions) more reliably than behaviour",
+    "confidence_tier": "MODERATE",
+    "evidence_category": "A/B",
+    "principal_limitation": "athlete review shows an explicit null on behaviour; workplace reviews converge",
+    "male_specificity_class": "SOCIAL-CONTEXT",
+    "source_domains": "D1;D2;D5"
+  },
+  {
+    "id": "E20",
+    "conclusion": "Manosphere audiences are heterogeneous and often socioeconomically advantaged; misogyny is usually not the entry hook",
+    "confidence_tier": "MODERATE",
+    "evidence_category": "B/C",
+    "principal_limitation": "cross-sectional plus qualitative; selection unresolved; advocacy-org data",
+    "male_specificity_class": "SOCIAL-CONTEXT",
+    "source_domains": "D3;D4"
+  },
+  {
+    "id": "E21",
+    "conclusion": "Action/growth framing and coded everyday emotional language are preferred by some men",
+    "confidence_tier": "PROMISING/TENTATIVE",
+    "evidence_category": "C",
+    "principal_limitation": "preference only; single qualitative study; no behavioural comparison",
+    "male_specificity_class": "SOCIAL-CONTEXT",
+    "source_domains": "D1"
+  },
+  {
+    "id": "E22",
+    "conclusion": "Lowering the social cost of responding matters more than raising emotional intensity",
+    "confidence_tier": "PROMISING/TENTATIVE",
+    "evidence_category": "G",
+    "principal_limitation": "recurs across six of seven domains; never directly tested as a construct",
+    "male_specificity_class": "SOCIAL-CONTEXT",
+    "source_domains": "ALL"
+  },
+  {
+    "id": "E23",
+    "conclusion": "Bounded numeric check-ins reduce the vocabulary barrier to disclosure",
+    "confidence_tier": "PROMISING/TENTATIVE",
+    "evidence_category": "E",
+    "principal_limitation": "industry practice with strong face validity; no controlled comparison",
+    "male_specificity_class": "GENERAL",
+    "source_domains": "D1"
+  },
+  {
+    "id": "E24",
+    "conclusion": "Emotionally indirect plus behaviourally explicit is a viable and probably preferable configuration for entry content",
+    "confidence_tier": "PROMISING/TENTATIVE",
+    "evidence_category": "G",
+    "principal_limitation": "cross-report inference from preference data and practice convergence",
+    "male_specificity_class": "SOCIAL-CONTEXT",
+    "source_domains": "D1;D2;D7"
+  },
+  {
+    "id": "E25",
+    "conclusion": "Humour improves receptivity in male audiences",
+    "confidence_tier": "MIXED",
+    "evidence_category": "A/C/E",
+    "principal_limitation": "high usage, strong entry evidence, null clinical outcome evidence",
+    "male_specificity_class": "SOCIAL-CONTEXT",
+    "source_domains": "D1;D2;D3"
+  },
+  {
+    "id": "E26",
+    "conclusion": "Masculinity framing improves men's responses",
+    "confidence_tier": "MIXED",
+    "evidence_category": "A",
+    "principal_limitation": "helps in gender-incongruent public contexts; null or harmful otherwise",
+    "male_specificity_class": "MALE-DIFFERENTIATED",
+    "source_domains": "D5"
+  },
+  {
+    "id": "E27",
+    "conclusion": "Strength-based reframing of help-seeking is net beneficial",
+    "confidence_tier": "MIXED",
+    "evidence_category": "B/C",
+    "principal_limitation": "short-term engagement vs long-term norm reinforcement never measured together",
+    "male_specificity_class": "SOCIAL-CONTEXT",
+    "source_domains": "D1;D5"
+  },
+  {
+    "id": "E28",
+    "conclusion": "'Bro', 'brotherhood', 'gue/lo' or any specific Indonesian register increases trust among Indonesian men",
+    "confidence_tier": "WEAK",
+    "evidence_category": "D/E",
+    "principal_limitation": "no Indonesian randomised wording experiment was located in ANY source report",
+    "male_specificity_class": "INDONESIA-CONFIGURED",
+    "source_domains": "D2;D4"
+  },
+  {
+    "id": "E29",
+    "conclusion": "'Pria sejati' or similar Indonesian masculinity-policing wording causes reactance",
+    "confidence_tier": "WEAK",
+    "evidence_category": "G",
+    "principal_limitation": "mechanistically plausible; no Indonesian experimental test exists",
+    "male_specificity_class": "UNKNOWN",
+    "source_domains": "D2;D5"
+  },
+  {
+    "id": "E30",
+    "conclusion": "A universal male tone of voice exists",
+    "confidence_tier": "WEAK / UNSUPPORTED",
+    "evidence_category": "n/a",
+    "principal_limitation": "explicitly rejected by the two highest-rigour reports in the corpus",
+    "male_specificity_class": "n/a",
+    "source_domains": "D1;D2"
+  },
+  {
+    "id": "E31",
+    "conclusion": "A uniquely male loneliness epidemic explains manosphere appeal",
+    "confidence_tier": "CONTESTED",
+    "evidence_category": "B",
+    "principal_limitation": "systematic review and representative polling dispute the epidemic framing",
+    "male_specificity_class": "GENERAL",
+    "source_domains": "D3"
+  },
+  {
+    "id": "E32",
+    "conclusion": "Neuroscience explains any communication effect in this corpus",
+    "confidence_tier": "UNSUPPORTED",
+    "evidence_category": "G",
+    "principal_limitation": "no source report located robust neural evidence bearing on wording",
+    "male_specificity_class": "GENERAL",
+    "source_domains": "D1;D2;D5"
+  },
+  {
+    "id": "E33",
+    "conclusion": "Evolutionary psychology adds explanatory value beyond social and cultural mechanisms here",
+    "confidence_tier": "WEAK / SPECULATIVE",
+    "evidence_category": "D/F",
+    "principal_limitation": "used heavily as rhetoric; cross-national variation in manhood beliefs contradicts strong universality",
+    "male_specificity_class": "GENERAL",
+    "source_domains": "D3;D4;D5"
+  },
+  {
+    "id": "E34",
+    "conclusion": "A 30% moral-density target is applicable to organisational or Indonesian communication",
+    "confidence_tier": "UNSUPPORTED",
+    "evidence_category": "B",
+    "principal_limitation": "corpus-specific fitted optimum from political/fringe text platforms; never transferred",
+    "male_specificity_class": "GENERAL",
+    "source_domains": "D6"
+  },
+  {
+    "id": "E35",
+    "conclusion": "Indonesian men aged 18-35 respond to any specific wording in any specific way",
+    "confidence_tier": "UNKNOWN / UNTESTED",
+    "evidence_category": "n/a",
+    "principal_limitation": "the corpus contains ZERO Indonesian randomised wording experiments on this population",
+    "male_specificity_class": "INDONESIA-CONFIGURED",
+    "source_domains": "ALL"
+  }
+]

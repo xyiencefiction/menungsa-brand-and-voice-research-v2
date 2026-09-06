@@ -1,0 +1,165 @@
+[
+  {
+    "id": "V1",
+    "value": "Equal footing, not judgement",
+    "voiceTrait": "No evaluative adjective in front of the reader",
+    "principleRef": "Voice principle 5 — dignity is not conditional",
+    "mechanismIds": ["M08", "M07", "M06"],
+    "contextIds": ["C02", "C06", "C13"],
+    "researchBasis": "Status framing is aspirational for a man who can still climb and annihilating for one who has already fallen, so any construction that makes worth conditional re-tests exactly what is already failing. Prescriptive and policing framing produced measurable reactance in the framing literature, and gender marking is held at 1-2 across all fourteen contexts for the same reason.",
+    "brandBasis": "The brand snapshot positions Menungsa as a kawan bagi laki-laki and states explicitly that men are not positioned as the party who must be changed.",
+    "confidence": "MODERATE-STRONG (risk of the harmful version) / MODERATE (benefit of the safe version)",
+    "spectrum": {
+      "dimension": "How the reader is positioned",
+      "leftPole": "Judged",
+      "rightPole": "Addressed",
+      "position": 5,
+      "positionNote": "The one value held at the pole with no exception. It is also the first thing that would be traded away for short-term engagement, which is why it is written down."
+    },
+    "boundaryCondition": "Clinical risk assessment still requires naming severity accurately. Describing a situation as dangerous is not an evaluative adjective about the person.",
+    "dos": [
+      { "example": "Ini tempat buat ngomong. Nggak harus cerita apa-apa kalau belum mau.", "why": "Addresses him and describes the room without attaching any adjective to him." },
+      { "example": "Minggu lalu yang datang tujuh orang. Empat di antaranya cuma dengerin.", "why": "Describes what happened rather than what kind of man attends." }
+    ],
+    "donts": [
+      { "example": "Laki-laki kuat berani cerita.", "why": "Makes worth conditional on the exact behaviour being requested." },
+      { "example": "Kamu hebat udah mau terbuka.", "why": "Praising him for coming reintroduces the test he is already failing." },
+      { "example": "Pria sejati nggak takut ngaku luka.", "why": "A forbidden construction: it defines manhood and then rents it back to him." }
+    ]
+  },
+  {
+    "id": "V2",
+    "value": "Easy to begin",
+    "voiceTrait": "Say what happens before asking anyone to attend",
+    "principleRef": "Voice principle 2 — low cost to answer",
+    "mechanismIds": ["M01", "M14", "M12"],
+    "contextIds": ["C05", "C04", "C06"],
+    "researchBasis": "Response cost recurs in six of seven domains and is the single strongest cross-domain pattern in the corpus, yet it has zero direct tests, which is why it is filed as promising rather than established. The corresponding tone setting is C05, where behavioural explicitness and certainty both sit at 5 and logistics are treated as content rather than as a footnote.",
+    "brandBasis": "The where they are at approach and the safe space commitment both describe removing the cost of arriving rather than raising the reward for arriving.",
+    "confidence": "PROMISING / TENTATIVE (high convergence, no direct test)",
+    "spectrum": {
+      "dimension": "Cost of responding",
+      "leftPole": "Expensive",
+      "rightPole": "Cheap",
+      "position": 5,
+      "positionNote": "Held at the pole. The mechanism is under-tested, but every failure mode documented in the corpus runs in the direction of asking for too much too early."
+    },
+    "boundaryCondition": "Acute suicide risk inverts this: an unambiguous instruction is correct there, and low-pressure hedging is the failure mode.",
+    "dos": [
+      { "example": "Selasa, 19.00, di ruang belakang. Dua jam. Gratis. Boleh datang tanpa ngomong apa-apa, boleh pulang kapan saja.", "why": "Time, place, duration, cost, and the exit are all stated before any invitation is made." },
+      { "example": "Nggak ada absen, nggak ada perkenalan wajib.", "why": "Names the exposure cost and sets it at zero, which is the specific fear the mechanism describes." }
+    ],
+    "donts": [
+      { "example": "Yuk tumpahin semua yang kamu rasain!", "why": "Sets emotional disclosure as the entry price, which is the documented reason men do not arrive." },
+      { "example": "Ceritakan masalahmu sekarang.", "why": "An imperative aimed at a state rather than at information." }
+    ]
+  },
+  {
+    "id": "V3",
+    "value": "One real step",
+    "voiceTrait": "One step, genuinely available, reversible, with its friction named",
+    "principleRef": "Voice principle 4 — one usable thing",
+    "mechanismIds": ["M02", "M14", "M19"],
+    "contextIds": ["C06", "C05", "C01"],
+    "researchBasis": "Agency language predicted petition signatures in the Change.org corpus where outrage rhetoric did not, and agency recurs across six of seven domains. The Indonesian side supplies the constraint: material and institutional friction is a documented mechanism, so a step that ignores queues, cost or referral gatekeeping is not a usable step.",
+    "brandBasis": "The Scientific mission commits Menungsa to being a reference point through content, advocacy and research, and the Empathy mission commits it to peer support and onward services. Both describe usefulness rather than encouragement.",
+    "confidence": "MODERATE",
+    "spectrum": {
+      "dimension": "What is asked of the reader",
+      "leftPole": "Vague encouragement",
+      "rightPole": "One named step",
+      "position": 4,
+      "positionNote": "Not at the pole, because recognition content (C02) is documented as working best with no call to action at all. Ending on the description is a legitimate setting, not a failure to include a step."
+    },
+    "boundaryCondition": "If the step is not actually available, this value becomes victim-blaming. Verify the pathway exists before naming it.",
+    "dos": [
+      { "example": "Langkah pertama biasanya ke puskesmas, bukan langsung ke psikiater. Bilang aja: 'Saya mau konsultasi kesehatan jiwa.' Antrean bisa lama, bawa sesuatu buat dibaca.", "why": "One step, the exact sentence to say, and the friction stated honestly instead of hidden." },
+      { "example": "Kalau nggak dirujuk padahal kamu merasa perlu, kamu boleh minta lagi.", "why": "Accounts for the documented finding that referrals are sometimes withheld, so a failed attempt does not read as his failure." }
+    ],
+    "donts": [
+      { "example": "Jangan ragu untuk mencari bantuan profesional.", "why": "Supplies no pathway, so it fails the usable-thing test and the access test at the same time." },
+      { "example": "Yuk mulai perjalanan self-improvement kamu hari ini!", "why": "Unbounded and unfinishable, which is the optimisation loop the manosphere analysis warns about." }
+    ]
+  },
+  {
+    "id": "V4",
+    "value": "Start from what is visible",
+    "voiceTrait": "Concrete detail he supplies the emotion to",
+    "principleRef": "Voice principle 3 — specific before emotional",
+    "mechanismIds": ["M20", "M05", "M01"],
+    "contextIds": ["C02", "C03", "C12"],
+    "researchBasis": "Emotional-exposure calibration appears in five of seven domains: the same men preferred coded, indirect emotional language and blunt behavioural language simultaneously, which resolves as emotionally indirect plus behaviourally explicit rather than as a contradiction. The resonance playbook states the sequencing rule directly: emotion after entry, never as the entry price.",
+    "brandBasis": "The brand mission is to help men recognise and express their feelings. This value states the order that makes that possible: expression is the outcome, not the door.",
+    "confidence": "MODERATE (mechanism) / PROMISING (specific wording)",
+    "spectrum": {
+      "dimension": "Where a message enters",
+      "leftPole": "Named feeling",
+      "rightPole": "Observable situation",
+      "position": 4,
+      "positionNote": "Not at the pole. Crisis content (C07) and grief content (C13) both sit at emotional explicitness 4, where naming the feeling plainly is correct and circling it is not."
+    },
+    "boundaryCondition": "Specificity that is too narrow excludes. A detail should be recognisable to many men, not to one demographic slice.",
+    "dos": [
+      { "example": "Jam tiga pagi, masih ngecek saldo.", "why": "A situation he can recognise without conceding that anything is wrong with him." },
+      { "example": "Hal-hal yang biasanya berubah duluan, sebelum yang lain kelihatan.", "why": "Sequencing: he can read the whole thing before deciding whether it is about him." }
+    ],
+    "donts": [
+      { "example": "5 Tanda Kamu Mengalami Depresi", "why": "Diagnoses the reader at the highest-exposure position in the funnel, on the first slide." },
+      { "example": "Kamu pasti ngerasa hampa dan sendirian, kan?", "why": "Assigns a feeling and then asks him to confirm it, which is an exposure cost disguised as empathy." }
+    ]
+  },
+  {
+    "id": "V5",
+    "value": "Clear about the limits",
+    "voiceTrait": "Calibrate certainty on claims; never hedge logistics",
+    "principleRef": "Confidence map and the Indonesian linguistic decision system",
+    "mechanismIds": ["M03", "M09", "M19"],
+    "contextIds": ["C08", "C01", "C07"],
+    "researchBasis": "The corpus contains zero randomised wording experiments on Indonesian men, so every wording recommendation is a deductive hypothesis rather than a tested result. The manosphere analysis identifies totalising rules and hidden-truth framing as the harmful way to satisfy the need for certainty, and honest structure with calibrated uncertainty as the ethical equivalent.",
+    "brandBasis": "The brand snapshot names scientific knowledge as one of the two foundations of the organisation's work and commits to being an evidence-based reference.",
+    "confidence": "STRONG (the limitation itself is documented) / MODERATE (the communicative response)",
+    "spectrum": {
+      "dimension": "How certainty is expressed",
+      "leftPole": "Absolute claims",
+      "rightPole": "Calibrated",
+      "position": 4,
+      "positionNote": "Not at the pole, and deliberately so. Hedging belongs on claims about how the mind works. Logistics, crisis instructions and access information are stated flatly, because uncertainty there is a cost the reader pays."
+    },
+    "boundaryCondition": "Calibration is not the same as vagueness. If everything is hedged, the message stops being usable and the honesty stops being legible.",
+    "dos": [
+      { "example": "Sebagian laki-laki merasa lebih enteng setelah cerita. Sebagian nggak. Buat Indonesia, datanya belum ada.", "why": "Calibrated on a psychological claim, and names the specific gap rather than gesturing at complexity." },
+      { "example": "119 ext. 8. Gratis, 24 jam. Kalau kamu nggak sanggup nelpon, minta orang terdekat yang nelpon.", "why": "Zero hedging on logistics, and the third clause accounts for someone unable to act alone." }
+    ],
+    "donts": [
+      { "example": "Metode ini terbukti ampuh buat laki-laki Indonesia.", "why": "No Indonesian wording experiment exists in the corpus, so this claim cannot be made by anyone yet." },
+      { "example": "Mungkin kamu bisa coba hubungi 119, siapa tahu membantu.", "why": "Hedges an instruction at the highest-risk moment, which is the exact inversion of the rule." }
+    ]
+  },
+  {
+    "id": "V6",
+    "value": "Action, not demands",
+    "voiceTrait": "Structural subject, not personal subject; a moral position once, with a cost attached",
+    "principleRef": "Voice principle 6 — say what we did, not what men should do",
+    "mechanismIds": ["M10", "M18", "M06"],
+    "contextIds": ["C10", "C09", "C08"],
+    "researchBasis": "Moral outrage rhetoric maximised sharing while depressing actual petition signatures, and moral density above a saturation point reduces engagement even as absolute moral loading raises it. Assertive, autonomy-restricting wording reduces the effectiveness of moral appeals, and audiences who disagree with an organisational moral stance punish it more than aligned audiences reward it.",
+    "brandBasis": "Advocacy is named in the Scientific mission, and the long-term aim is a safer and more equal environment. This value is how a real moral position is held without positioning the audience as the problem.",
+    "confidence": "MODERATE-STRONG",
+    "spectrum": {
+      "dimension": "Who the moral sentence is about",
+      "leftPole": "The reader",
+      "rightPole": "Structures, and us",
+      "position": 4,
+      "positionNote": "Not at the pole. Advocacy content (C10) is permitted to raise moral loading to 4, but only when a costly commitment is attached in the same message. Never set a numeric moral-density target."
+    },
+    "boundaryCondition": "This is not a licence to avoid moral positions. Saying nothing is a different failure. The rule is that the sentence takes a structure as its subject and carries a cost we pay.",
+    "dos": [
+      { "example": "Antrean psikiater di puskesmas rata-rata dua minggu. Kami lagi mendata mana yang lebih cepat, dan hasilnya kami buka.", "why": "Structural subject, and a commitment that costs the organisation something to keep." },
+      { "example": "Kami nolak iklan suplemen di kanal ini. Artinya kami kehilangan pemasukan.", "why": "One moral position, stated once, with the price of holding it made visible." }
+    ],
+    "donts": [
+      { "example": "Laki-laki Indonesia harus berhenti gengsi.", "why": "Personal subject and a collective indictment, which is the documented reactance trigger." },
+      { "example": "Sudah saatnya kita semua peduli kesehatan mental!", "why": "Moral scolding with no cost attached, and kita with no real shared referent." }
+    ]
+  }
+]

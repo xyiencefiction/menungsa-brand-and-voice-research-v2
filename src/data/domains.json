@@ -1,0 +1,9 @@
+[
+  { "id": "D1", "name": "Global Adult-Male Verbal Comms", "studies": 28, "reliability": "High", "focus": "Linguistic patterns, talkativeness, assertiveness, health interventions" },
+  { "id": "D2", "name": "Indonesian Adult-Male Verbal Comms", "studies": 14, "reliability": "High", "focus": "Brand corpus, sociolinguistics, street vernacular vs formal register" },
+  { "id": "D3", "name": "Global Manosphere Subcultures", "studies": 32, "reliability": "High", "focus": "Audience demographics, Red Pill epistemology, value propositions" },
+  { "id": "D4", "name": "Indonesian & SEA Manosphere", "studies": 8, "reliability": "Low–Medium", "focus": "Micro-influencers, provider masculinity, religious kodrat framing" },
+  { "id": "D5", "name": "Masculinity Framing & Reactance", "studies": 22, "reliability": "Highest", "focus": "Labels, identity threat, public visibility, Real Men brochure tests" },
+  { "id": "D6", "name": "Moralized Organizational Comms", "studies": 36, "reliability": "High", "focus": "Moral loading vs density, outrage virality vs petition conversion" },
+  { "id": "D7", "name": "Indonesian Masculinity & Health", "studies": 6, "reliability": "High (CIS)", "focus": "Relational care, household division of labour, community surveillance" }
+]

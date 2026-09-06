@@ -1,0 +1,469 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════
+   Theming strategy
+
+   Tailwind v4 compiles every colour utility to `var(--color-<hue>-<step>)`,
+   including alpha variants (`bg-rose-950/20` becomes a `color-mix` over the
+   same variable). Redefining those variables per theme therefore flips the
+   entire interface without touching a single className.
+
+   The app's own convention makes this work cleanly: dark steps are always
+   surfaces, light steps are always ink. Inverting each ramp's lightness turns
+   "dark surface, light ink" into "light surface, dark ink" everywhere at once.
+
+   Dark is the committed direction, so it lives on bare :root. Light is applied
+   when the OS asks for it (unless the reader has explicitly chosen dark) and
+   when the reader picks it from the header toggle.
+   ═══════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* Referenced once in the sidebar; Tailwind has no 850 step by default, so the
+     class was silently doing nothing until it was declared here. */
+  --color-stone-850: oklch(21.6% .005 49.25);
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+
+    /* Tailwind's own stone-500 lands at 3.65:1 on the card surface, under the 4.5:1
+       floor it is used for (placeholders, muted micro-labels). Lifted one step. */
+    --color-stone-500: #8f8a85;
+
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    /* ── Type scale ────────────────────────────────────────────
+       Ratio ~1.25. The previous scale did most of its work between
+       9px and 12px (steps of 1.09x), so hierarchy had to be carried
+       by colour and uppercase labels instead of size. */
+    --t-micro: 0.6875rem;  /* 11px — ids, axis ticks, table meta   */
+    --t-small: 0.8125rem;  /* 13px — secondary prose, captions     */
+    --t-body:  0.9375rem;  /* 15px — reading size, claim text      */
+    --t-lead:  1.125rem;   /* 18px — section leads                 */
+    --t-h3:    1.375rem;   /* 22px                                  */
+    --t-h2:    1.75rem;    /* 28px                                  */
+    --t-h1:    2.1875rem;  /* 35px                                  */
+
+    /* ── Colour contract ───────────────────────────────────────
+       Four roles, and nothing crosses between them.
+
+       ORDINAL   one hue, for every graded scale: confidence tier,
+                 matrix support, tone level 1-5, funnel stage. The
+                 ramp always runs from "barely there" to "heaviest
+                 against this surface", which means it points the
+                 opposite way in each theme: brighter as it climbs
+                 on dark, darker as it climbs on light.
+       CATEGORY  up to four hues, nominal facts only. Adjacent forms
+                 only: on all-pairs forms such as scatter, cap at
+                 three and encode the rest with marker shape.
+       STATUS    reserved for failure mode and DO / DON'T. Never a
+                 series colour.
+       ACCENT    one hue for interaction: focus, selection, links.
+
+       Every value below is validated against its own theme surface
+       for step separation, contrast, and colour-vision distance. */
+
+    --ord-1: #6b4a12;
+    --ord-2: #875c16;
+    --ord-3: #a36f1a;
+    --ord-4: #c1861f;
+    --ord-5: #dda12b;
+    --ord-6: #f7c256;
+
+    /* Ink that stays legible on the low and high ends of the ramp. Which end is
+       light flips with the theme, so both are redefined below. */
+    --ord-ink-lo: #f5efe6;
+    --ord-ink-hi: #1c1917;
+    /* The middle of a six-step ramp is too dark for the light ink and too light for
+       the dark one. Only a near-black clears 4.5:1 there, and it does so in both themes. */
+    --ord-ink-mid: #0b0908;
+
+    --cat-1: #3987e5;
+    --cat-2: #d95926;
+    --cat-3: #199e70;
+    --cat-4: #c98500;
+
+    --status-critical: #f0879f;
+    --status-positive: #6ec08a;
+
+    --accent: #fbbf24;
+    --accent-ink: #0c0a09;
+
+    /* Chart chrome. Grid and axes stay one shade off the surface. */
+    --chart-surface: #0c0a09;
+    --chart-grid: #292524;
+    --chart-axis: #6b665f;
+    --chart-label: #a8a29e;
+    --chart-label-strong: #d6d3d1;
+    --chart-muted: #44403c;
+
+    --scrollbar-track: rgba(28, 25, 23, 0.6);
+    --scrollbar-thumb: rgba(120, 113, 108, 0.45);
+    --scrollbar-thumb-hover: rgba(168, 162, 158, 0.65);
+  }
+
+  /* ── Light theme ─────────────────────────────────────────────
+     Declared twice on purpose: once for readers whose system asks for light
+     and who have not overridden it, once for an explicit choice. Plain CSS has
+     no way to share a token block between two selectors. */
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      color-scheme: light;
+
+      --color-stone-950: #fbfbfa;
+      --color-stone-900: #f4f4f2;
+      --color-stone-850: #efefec;
+      --color-stone-800: #e3e2df;
+      --color-stone-700: #cecdc8;
+      --color-stone-600: #a5a29c;
+      --color-stone-500: #6d6a64;
+      --color-stone-400: #5f5c56;
+      --color-stone-300: #47443f;
+      --color-stone-200: #34312d;
+      --color-stone-100: #1f1d1a;
+
+      --color-amber-950: #fdf4e3;
+      --color-amber-900: #f6e3b6;
+      --color-amber-800: #e0bd77;
+      --color-amber-700: #c69235;
+      --color-amber-500: #a5540c;
+      --color-amber-400: #96490b;
+      --color-amber-300: #8a4409;
+      --color-amber-200: #6b3406;
+
+      --color-emerald-950: #eaf7ef;
+      --color-emerald-900: #cfeeda;
+      --color-emerald-800: #93d3ad;
+      --color-emerald-700: #3f9c69;
+      --color-emerald-500: #0f7a4a;
+      --color-emerald-400: #0d6b41;
+      --color-emerald-300: #0a5c38;
+      --color-emerald-200: #084a2d;
+      --color-emerald-100: #063822;
+
+      --color-rose-950: #fdeef2;
+      --color-rose-900: #fbd7e0;
+      --color-rose-800: #f0a3b6;
+      --color-rose-700: #d95f80;
+      --color-rose-500: #b81d45;
+      --color-rose-400: #a81a3f;
+      --color-rose-300: #961738;
+      --color-rose-200: #7c122e;
+      --color-rose-100: #620e24;
+
+      --color-sky-950: #ecf5fd;
+      --color-sky-800: #a6cef2;
+      --color-sky-700: #4b93d4;
+      --color-sky-500: #1668b0;
+      --color-sky-400: #135c9e;
+      --color-sky-300: #11518b;
+      --color-sky-200: #0d3f6d;
+      --color-sky-100: #0a3054;
+
+      --color-teal-950: #e9f6f4;
+      --color-teal-800: #93d2c9;
+      --color-teal-500: #0d7a6c;
+      --color-teal-400: #0b6b5f;
+      --color-teal-300: #0a5c52;
+      --color-teal-100: #063a33;
+
+      --color-purple-950: #f3eefc;
+      --color-purple-800: #c0a8ee;
+      --color-purple-500: #6b3fc0;
+      --color-purple-400: #5f37ab;
+      --color-purple-300: #542f97;
+
+      --color-blue-950: #eaf2fd;
+      --color-blue-800: #a3c8f2;
+      --color-blue-400: #1a5fae;
+      --color-blue-300: #17538f;
+
+      --ord-1: #d2a04a;
+      --ord-2: #bf8a2e;
+      --ord-3: #a6711b;
+      --ord-4: #8b5a13;
+      --ord-5: #70470f;
+      --ord-6: #54340b;
+
+      --ord-ink-lo: #1f1608;
+      --ord-ink-hi: #fdf8ef;
+      --ord-ink-mid: #0b0908;
+
+      --cat-1: #2a78d6;
+      --cat-2: #c74a1c;
+      --cat-3: #12805a;
+      --cat-4: #5b3fb0;
+
+      --status-critical: #b81d45;
+      --status-positive: #0f7a4a;
+
+      --accent: #a5540c;
+      --accent-ink: #fbfbfa;
+
+      --chart-surface: #fbfbfa;
+      --chart-grid: #e6e5e2;
+      --chart-axis: #918d87;
+      --chart-label: #6d6a64;
+      --chart-label-strong: #3d3a35;
+      --chart-muted: #dcdad6;
+
+      --scrollbar-track: rgba(120, 113, 108, 0.08);
+      --scrollbar-thumb: rgba(87, 83, 78, 0.32);
+      --scrollbar-thumb-hover: rgba(41, 37, 36, 0.5);
+    }
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
+
+    --color-stone-950: #fbfbfa;
+    --color-stone-900: #f4f4f2;
+    --color-stone-850: #efefec;
+    --color-stone-800: #e3e2df;
+    --color-stone-700: #cecdc8;
+    --color-stone-600: #a5a29c;
+    --color-stone-500: #6d6a64;
+    --color-stone-400: #5f5c56;
+    --color-stone-300: #47443f;
+    --color-stone-200: #34312d;
+    --color-stone-100: #1f1d1a;
+
+    --color-amber-950: #fdf4e3;
+    --color-amber-900: #f6e3b6;
+    --color-amber-800: #e0bd77;
+    --color-amber-700: #c69235;
+    --color-amber-500: #a5540c;
+    --color-amber-400: #96490b;
+    --color-amber-300: #8a4409;
+    --color-amber-200: #6b3406;
+
+    --color-emerald-950: #eaf7ef;
+    --color-emerald-900: #cfeeda;
+    --color-emerald-800: #93d3ad;
+    --color-emerald-700: #3f9c69;
+    --color-emerald-500: #0f7a4a;
+    --color-emerald-400: #0d6b41;
+    --color-emerald-300: #0a5c38;
+    --color-emerald-200: #084a2d;
+    --color-emerald-100: #063822;
+
+    --color-rose-950: #fdeef2;
+    --color-rose-900: #fbd7e0;
+    --color-rose-800: #f0a3b6;
+    --color-rose-700: #d95f80;
+    --color-rose-500: #b81d45;
+    --color-rose-400: #a81a3f;
+    --color-rose-300: #961738;
+    --color-rose-200: #7c122e;
+    --color-rose-100: #620e24;
+
+    --color-sky-950: #ecf5fd;
+    --color-sky-800: #a6cef2;
+    --color-sky-700: #4b93d4;
+    --color-sky-500: #1668b0;
+    --color-sky-400: #135c9e;
+    --color-sky-300: #11518b;
+    --color-sky-200: #0d3f6d;
+    --color-sky-100: #0a3054;
+
+    --color-teal-950: #e9f6f4;
+    --color-teal-800: #93d2c9;
+    --color-teal-500: #0d7a6c;
+    --color-teal-400: #0b6b5f;
+    --color-teal-300: #0a5c52;
+    --color-teal-100: #063a33;
+
+    --color-purple-950: #f3eefc;
+    --color-purple-800: #c0a8ee;
+    --color-purple-500: #6b3fc0;
+    --color-purple-400: #5f37ab;
+    --color-purple-300: #542f97;
+
+    --color-blue-950: #eaf2fd;
+    --color-blue-800: #a3c8f2;
+    --color-blue-400: #1a5fae;
+    --color-blue-300: #17538f;
+
+    --ord-1: #d2a04a;
+    --ord-2: #bf8a2e;
+    --ord-3: #a6711b;
+    --ord-4: #8b5a13;
+    --ord-5: #70470f;
+    --ord-6: #54340b;
+
+    --ord-ink-lo: #1f1608;
+    --ord-ink-hi: #fdf8ef;
+    --ord-ink-mid: #0b0908;
+
+    --cat-1: #2a78d6;
+    --cat-2: #c74a1c;
+    --cat-3: #12805a;
+    --cat-4: #5b3fb0;
+
+    --status-critical: #b81d45;
+    --status-positive: #0f7a4a;
+
+    --accent: #a5540c;
+    --accent-ink: #fbfbfa;
+
+    --chart-surface: #fbfbfa;
+    --chart-grid: #e6e5e2;
+    --chart-axis: #918d87;
+    --chart-label: #6d6a64;
+    --chart-label-strong: #3d3a35;
+    --chart-muted: #dcdad6;
+
+    --scrollbar-track: rgba(120, 113, 108, 0.08);
+    --scrollbar-thumb: rgba(87, 83, 78, 0.32);
+    --scrollbar-thumb-hover: rgba(41, 37, 36, 0.5);
+  }
+
+  body {
+    @apply bg-stone-950 text-stone-100 font-sans antialiased selection:bg-amber-500/25 selection:text-amber-200;
+    min-height: 100vh;
+    font-size: var(--t-body);
+    line-height: 1.6;
+  }
+
+  /* Long-form prose is capped near a comfortable measure; tables and charts opt
+     out by living in their own containers. */
+  p {
+    text-wrap: pretty;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+}
+
+/* ── Modal scrims ────────────────────────────────────────────
+   The dark theme dims a dark page, so a heavy scrim reads as depth. On a light
+   page the same 70-85% black reads as a blackout, so the light theme keeps the
+   same elements but lands nearer the 40-50% the platform guidelines expect. */
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .bg-black\/70 { background-color: color-mix(in oklab, #1c1917 38%, transparent); }
+  :root:not([data-theme="dark"]) .bg-black\/80 { background-color: color-mix(in oklab, #1c1917 44%, transparent); }
+  :root:not([data-theme="dark"]) .bg-black\/85 { background-color: color-mix(in oklab, #1c1917 50%, transparent); }
+}
+:root[data-theme="light"] .bg-black\/70 { background-color: color-mix(in oklab, #1c1917 38%, transparent); }
+:root[data-theme="light"] .bg-black\/80 { background-color: color-mix(in oklab, #1c1917 44%, transparent); }
+:root[data-theme="light"] .bg-black\/85 { background-color: color-mix(in oklab, #1c1917 50%, transparent); }
+
+/* ── Interaction baseline ────────────────────────────────────
+   Applied globally so every existing control gains it without a markup
+   change. Hover is pointer-only, so a press must be acknowledged too. */
+
+:where(button, [role="button"], a, select, input, summary):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+:where(button, [role="button"]):not(:disabled):active {
+  opacity: 0.82;
+}
+
+:where(button, [role="button"], a, select, label):not(:disabled) {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* ── Prose diagrams ──────────────────────────────────────────
+   Three columns joined by connectors read as a diagram only when the columns sit
+   side by side. Below the breakpoint they stack, and the connectors go away with
+   them: a two-pixel rule between two stacked blocks says nothing. */
+.swap-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 0.5rem;
+}
+@media (min-width: 768px) {
+  .swap-row {
+    grid-template-columns: var(--swap-cols);
+    column-gap: 0.75rem;
+    row-gap: 0.5rem;
+  }
+}
+
+/* ── Chart primitives ────────────────────────────────────────
+   Shared by every chart so marks, grid and labels stay identical
+   across views rather than being restyled per component. */
+
+.chart-grid line {
+  stroke: var(--chart-grid);
+  stroke-width: 1;
+}
+.chart-axis-label {
+  fill: var(--chart-label);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+}
+.chart-tick {
+  fill: var(--chart-label);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.chart-mark-label {
+  fill: var(--chart-label-strong);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+}
+/* A 2px surface ring separates overlapping marks without drawing a border. */
+.chart-mark {
+  stroke: var(--chart-surface);
+  stroke-width: 2;
+}
+.chart-mark-interactive {
+  cursor: pointer;
+  transition: opacity 120ms ease-out;
+}
+.chart-mark-interactive:hover {
+  opacity: 0.82;
+}
+.chart-focusable:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+input[type="range"] {
+  accent-color: var(--accent);
+}
+input[type="range"]:disabled {
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "primaryConstraint": "There is ZERO Indonesian randomised wording experiments on adult men in the entire corpus of 14 documents.",
+  "tier1": [
+    {
+      "title": "Zero Indonesian Randomized Wording Experiments",
+      "impact": "Blocks confident copywriting: all wording recommendations remain deductive hypotheses.",
+      "solution": "Run 2x2 factorial online message tests manipulating pronoun and gender framing."
+    },
+    {
+      "title": "Absence of Behavioral Outcomes for Men",
+      "impact": "Campaigns celebrate literacy/attitude shifts that completely fail to translate into actual help-seeking.",
+      "solution": "Track verifiable behavioral conversions (clicks to book, attendance, hotline calls)."
+    },
+    {
+      "title": "Response-Cost Mechanism is Unoperationalized",
+      "impact": "Most consistent cross-domain finding (6 of 7 domains) lacks a formal psychometric scale.",
+      "solution": "Develop and validate a formal Social Exposure & Response Cost inventory for men."
+    },
+    {
+      "title": "Severe Geographic and Demographic Sampling Skew",
+      "impact": "Findings are heavily Javanese, Muslim, urban, and student-skewed.",
+      "solution": "Targeted research in eastern Indonesia, Sumatra, and working-class informal labor sectors."
+    }
+  ],
+  "tier2": [
+    {
+      "title": "Intervention Component Bundling",
+      "impact": "Cannot tell if setting, imagery, facilitator, or wording caused success in RCTs like FFIT or Man Therapy."
+    },
+    {
+      "title": "Lack of Male vs Female Comparative Controls",
+      "impact": "Persuasion effects working on men are assumed to be male-specific without female testing."
+    },
+    {
+      "title": "Accommodation vs Expansion Untested Long-Term",
+      "impact": "Unresolved tension: does framing help-seeking as 'strength' reinforce the toxic norm that caused stigma?"
+    }
+  ],
+  "factorialExperiments": [
+    {
+      "name": "Gender Marking Factorial",
+      "conditions": [
+        "Jaga kesehatan mentalmu (Neutral)",
+        "Pria perlu menjaga mentalnya (Demographic)",
+        "Pria sejati menjaga mentalnya (Policing)",
+        "Buktikan kamu tangguh (Challenge)"
+      ],
+      "measures": [
+        "Perceived relevance",
+        "Reactance / anger",
+        "Willingness to click"
+      ]
+    },
+    {
+      "name": "Institutional Pronoun Licensing",
+      "conditions": [
+        "Kamu (Empathetic Neutral)",
+        "Lo (Vernacular Peer)",
+        "Anda (Formal Distance)"
+      ],
+      "measures": [
+        "Perceived sincerity",
+        "Perceived cringe / pandering",
+        "Trust in organization"
+      ]
+    },
+    {
+      "name": "Collective Presumption Test",
+      "conditions": [
+        "Kita harus bangkit (Presumptive inclusive)",
+        "Kami ada untuk mendampingi (Supportive exclusive)"
+      ],
+      "measures": [
+        "Belonging vs resentment",
+        "Boundary respect"
+      ]
+    },
+    {
+      "name": "Entry Softness vs Directness",
+      "conditions": [
+        "Boleh cerita kapan saja (Permission)",
+        "Ceritakan masalahmu sekarang (Command)",
+        "Layanan konsultasi tersedia (Descriptive)"
+      ],
+      "measures": [
+        "Immediate bounce rate",
+        "Sign-up initiation"
+      ]
+    }
+  ]
+}

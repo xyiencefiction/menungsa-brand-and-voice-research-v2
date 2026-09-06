@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
+    <title>Menungsa Writing & Voice Guide — Panduan Praktis Penulis (v2)</title>
+    <meta name="description" content="Panduan praktis gaya, nada, dan pilihan kata Menungsa untuk penulis, copywriter, dan kreator konten. Dilengkapi pustaka contoh naskah, panduan kata ganti, dan uji teks interaktif." />
+    <script>
+      // Applies the stored theme before first paint. Without this the page renders in
+      // the stylesheet default for one frame and flashes when React mounts.
+      (function () {
+        try {
+          var t = localStorage.getItem('menungsa-theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+          }
+        } catch (e) {
+          /* blocked site data: fall through to the system preference */
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

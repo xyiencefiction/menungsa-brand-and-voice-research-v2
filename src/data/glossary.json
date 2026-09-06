@@ -1,0 +1,20 @@
+[
+  { "id": "G01", "term": "Corpus", "plain": "The 14 research documents this site was built from, read as one body." },
+  { "id": "G02", "term": "Claim ledger", "plain": "The list of 100 individual findings pulled out of those documents, each recorded with what it says and how well it is supported." },
+  { "id": "G03", "term": "Deduplication", "plain": "Counting a study once even when several reports cite it, so shared literature is not mistaken for independent agreement." },
+  { "id": "G04", "term": "Reactance", "plain": "Pushing back against a message because it feels like an order. Measured as a small but consistent effect across many studies." },
+  { "id": "G05", "term": "Appraisal", "plain": "The quick judgement a reader makes about what a message means for him, before he decides how to feel about it." },
+  { "id": "G06", "term": "Mechanism", "plain": "The reason a message works, stated as a step: which need it meets or which cost it removes. Not a guarantee that it works." },
+  { "id": "G07", "term": "Meta-analysis", "plain": "A study that pools the results of many earlier studies to estimate an overall effect. Usually stronger evidence than any single study." },
+  { "id": "G08", "term": "Randomised experiment", "plain": "A test where people are randomly given one version or another, which is the only design that can show one wording caused a difference." },
+  { "id": "G09", "term": "Effect size", "plain": "How big a difference something makes, separate from whether the difference is real. A real effect can still be small." },
+  { "id": "G10", "term": "Factorial test", "plain": "A test that varies two or more things at once so their separate and combined effects can be told apart." },
+  { "id": "G11", "term": "Gender marking", "plain": "How explicitly a message says it is about men, from not at all, through simply naming the audience, to defining what a man should be." },
+  { "id": "G12", "term": "Boundary condition", "plain": "The circumstances under which a finding stops holding. Naming one is how two apparently opposed findings turn out to be compatible." },
+  { "id": "G13", "term": "Ordinal scale", "plain": "A ranking from 1 to 5 where the order is meaningful but the gaps are not measured. A move from 1 to 2 is not necessarily the same size as 4 to 5." },
+  { "id": "G14", "term": "Outcome measured", "plain": "What a study actually counted. Attitudes, intentions and behaviour are different outcomes, and a message can move one without moving the others." },
+  { "id": "G15", "term": "Male specificity", "plain": "Whether a finding is about men in particular or about people in general who happen to have been studied as men." },
+  { "id": "G16", "term": "Critical interpretive synthesis", "plain": "A structured way of combining qualitative studies to build an explanation rather than to count results. Abbreviated CIS." },
+  { "id": "G17", "term": "Moral density", "plain": "The proportion of a message made up of moral words, as opposed to how much moral weight it carries in total. The two behave differently." },
+  { "id": "G18", "term": "Confidence tier", "plain": "How well supported a claim is, on this site's own scale from strong down to weak, plus two off-scale labels for observed practice and cross-report inference." }
+]

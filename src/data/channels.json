@@ -1,0 +1,129 @@
+[
+  {
+    "id": "CH1",
+    "channel": "Social caption (feed and carousel)",
+    "whoSpeaks": "A named person, in first person",
+    "exposureLevel": 3,
+    "exposureNote": "Reading is invisible, but liking, commenting or saving is visible to his own followers. The cost sits on the response, not on the content.",
+    "ctaCeiling": "Invitation",
+    "lengthBudget": "First line does the work; the rest is read only by people who already decided to keep reading",
+    "replyExpected": "No. A comment is a public act and should never be the only route onward.",
+    "contextIds": ["C01", "C02", "C03", "C08", "C12"],
+    "avoidHere": [
+      { "contextId": "C07", "why": "Crisis instructions should not depend on an algorithm deciding who sees them. Link to a page that always carries them." }
+    ],
+    "valueIds": ["V4", "V1"],
+    "evidenceTier": "OBSERVED PRACTICE ONLY",
+    "evidenceNote": "The sequencing affordance of carousels is described in the platform section of the voice strategy, not measured. Indonesian platform behaviour in this corpus is assertion rather than data.",
+    "channelRule": "Slide one is a situation, not a claim and not a question. The caption is where a named person may speak; the grid is not."
+  },
+  {
+    "id": "CH2",
+    "channel": "Email",
+    "whoSpeaks": "The organisation, as kami",
+    "exposureLevel": 1,
+    "exposureNote": "Nobody sees him open it, read it or ignore it. This is the lowest-exposure channel Menungsa has.",
+    "ctaCeiling": "Instruction",
+    "lengthBudget": "Long enough to document a full pathway; the reader chose to be here",
+    "replyExpected": "Optional, and private if it happens",
+    "contextIds": ["C05", "C06", "C08", "C01"],
+    "avoidHere": [
+      { "contextId": "C02", "why": "Recognition content works by asking for nothing, and an email in an inbox reads as a request by default." }
+    ],
+    "valueIds": ["V3", "V5"],
+    "evidenceTier": "CROSS-REPORT INFERENCE",
+    "evidenceNote": "Email appears nowhere in the corpus. Its settings are inherited from the long-form findings on the grounds that both are chosen, private and permit a documented pathway. Treat as a starting hypothesis.",
+    "channelRule": "Because exposure is near zero, this is where the full pathway belongs: cost, location, JKN coverage, what to say at the desk, what to do if no referral comes."
+  },
+  {
+    "id": "CH3",
+    "channel": "WhatsApp announcement (group or broadcast)",
+    "whoSpeaks": "The organisation, as kami",
+    "exposureLevel": 4,
+    "exposureNote": "The highest-exposure channel in ordinary use. Replying in a group is visible to everyone in it, and read receipts make even silence legible. Membership itself may disclose something he has not chosen to disclose.",
+    "ctaCeiling": "Availability",
+    "lengthBudget": "Short enough to read without expanding the message",
+    "replyExpected": "No, and the message should say so",
+    "contextIds": ["C05", "C14", "C04"],
+    "avoidHere": [
+      { "contextId": "C02", "why": "Recognition content invites a reaction, and here every reaction is public to the group." },
+      { "contextId": "C06", "why": "Encouraging help-seeking in a group makes his interest in it visible to everyone he knows, which is the exact cost the mechanism describes." }
+    ],
+    "valueIds": ["V2", "V1"],
+    "evidenceTier": "CROSS-REPORT INFERENCE",
+    "evidenceNote": "WhatsApp is absent from the corpus entirely. The exposure reasoning is derived from the response-cost mechanism rather than from any platform study, and the mechanism itself has no direct test.",
+    "channelRule": "Logistics only, with an explicit line that no reply is needed. Give a private route out of the group for anyone who wants one."
+  },
+  {
+    "id": "CH4",
+    "channel": "Direct message",
+    "whoSpeaks": "A named human, never an unattributed account",
+    "exposureLevel": 1,
+    "exposureNote": "Invisible to everyone else. This is why it carries the contexts that cannot survive an audience.",
+    "ctaCeiling": "Instruction",
+    "lengthBudget": "Short turns; this is a conversation, not a broadcast",
+    "replyExpected": "Yes, and the absence of one must carry no penalty",
+    "contextIds": ["C06", "C07", "C13", "C05"],
+    "avoidHere": [
+      { "contextId": "C10", "why": "A moral position delivered into a private inbox reads as being addressed at him personally, which is the reactance configuration." }
+    ],
+    "valueIds": ["V5", "V2"],
+    "evidenceTier": "CROSS-REPORT INFERENCE",
+    "evidenceNote": "No direct-message evidence exists in the corpus. The highest-risk cell in the whole matrix is crisis content here, and the corpus is explicit that gender-tailored male suicide-prevention interventions have not demonstrated clear effects in randomised evidence.",
+    "channelRule": "Follow safe-messaging convention rather than claiming efficacy. Plain, unhedged, no metaphor. Name what happens next and who will see it."
+  },
+  {
+    "id": "CH5",
+    "channel": "Website and long-form",
+    "whoSpeaks": "The organisation, with named authors where a person is speaking",
+    "exposureLevel": 1,
+    "exposureNote": "Reading is private and leaves no trace anyone else can see.",
+    "ctaCeiling": "Instruction",
+    "lengthBudget": "Complete. This is the channel that carries the whole pathway.",
+    "replyExpected": "No",
+    "contextIds": ["C01", "C05", "C06", "C07", "C08"],
+    "avoidHere": [],
+    "valueIds": ["V3", "V5"],
+    "evidenceTier": "OBSERVED PRACTICE ONLY",
+    "evidenceNote": "The role of long-form as the home of authority and documented access is stated in the voice strategy as a design decision, not as a measured result.",
+    "channelRule": "Formal register is acceptable here and Anda is permitted. Crisis information must be reachable in one step from any page, unhedged."
+  },
+  {
+    "id": "CH6",
+    "channel": "Short spoken video",
+    "whoSpeaks": "A named individual, in whatever register that person actually speaks",
+    "exposureLevel": 3,
+    "exposureNote": "Watching is invisible; following, commenting or sharing is not.",
+    "ctaCeiling": "Invitation",
+    "lengthBudget": "The first three seconds decide everything else",
+    "replyExpected": "No",
+    "contextIds": ["C03", "C11", "C12", "C02"],
+    "avoidHere": [
+      { "contextId": "C07", "why": "Crisis content should not be delivered through a format optimised for retention and interruption." }
+    ],
+    "valueIds": ["V4", "V1"],
+    "evidenceTier": "OBSERVED PRACTICE ONLY",
+    "evidenceNote": "Licensing is maximally visible in spoken video, which follows from the messenger-credibility mechanism, but no study in the corpus tests video format directly.",
+    "channelRule": "The first three seconds are a situation, not a hook question. A question the viewer must answer to keep watching is itself an exposure cost."
+  },
+  {
+    "id": "CH7",
+    "channel": "Public thread platform",
+    "whoSpeaks": "The organisation, for information and correction only",
+    "exposureLevel": 5,
+    "exposureNote": "Engagement is public, permanent, searchable and quotable by strangers. Context collapse is fastest here and visible virality has been shown to increase outrage causally.",
+    "ctaCeiling": "Information",
+    "lengthBudget": "Short, and written to survive being quoted out of context",
+    "replyExpected": "No",
+    "contextIds": ["C08", "C09"],
+    "avoidHere": [
+      { "contextId": "C02", "why": "Recognition works precisely because it supplies no culprit, and quote-posting is a machine for supplying one." },
+      { "contextId": "C03", "why": "Emotional storytelling here exposes the teller to an audience that did not opt in." },
+      { "contextId": "C13", "why": "Grief content cannot be protected from strangers on this surface." }
+    ],
+    "valueIds": ["V6", "V5"],
+    "evidenceTier": "MODERATE",
+    "evidenceNote": "The strongest platform evidence in the corpus comes from here: the moral-communication findings on outrage, diffusion and conversion were computed on this platform's data. The finding is a warning about the platform, not a licence to use it well.",
+    "channelRule": "Do not optimise for reach on this surface. Use it for information, correction and availability, and measure conversion rather than engagement."
+  }
+]

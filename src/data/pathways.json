@@ -1,0 +1,86 @@
+[
+  {
+    "id": "P1",
+    "state": "Confused about what is happening to him",
+    "objective": "Reduce uncertainty and supply an accurate, usable model — not 'use masculine language'",
+    "appraisal": "This is intelligible and someone has a map.",
+    "mechanismId": "M03",
+    "mechanismName": "Uncertainty Reduction / Structure",
+    "emotion": "Curiosity, calm, quiet relief from disorientation",
+    "arousal": "LOW",
+    "linguistic": "Everyday description first, clinical term second and optional; one mechanism per piece; short declaratives.",
+    "failureMode": "Diagnosing the reader; stacking clinical jargon; false certainty."
+  },
+  {
+    "id": "P2",
+    "state": "Knows something is wrong; responding would expose him",
+    "objective": "Lower the social and exposure cost of the first move",
+    "appraisal": "Nobody has to know, and I can stop anytime.",
+    "mechanismId": "M01",
+    "mechanismName": "Response Cost / Exposure Cost",
+    "emotion": "Relief, safety, reduction of defensiveness",
+    "arousal": "LOW",
+    "linguistic": "Explicit privacy statements; explicit permission to say nothing; reversible low-threshold action.",
+    "failureMode": "Vagueness disguised as low pressure; a privacy promise the service cannot keep."
+  },
+  {
+    "id": "P3",
+    "state": "Believes it is entirely his fault and he has failed",
+    "objective": "Describe the situation accurately without supplying a culprit",
+    "appraisal": "That is my exact situation, and they didn't need an enemy to say it.",
+    "mechanismId": "M05",
+    "mechanismName": "Recognition / Validation",
+    "emotion": "Feeling deeply seen; grief surfacing safely without shame",
+    "arousal": "MODERATE",
+    "linguistic": "Concrete situational detail over emotion words; second person or unattributed third person; no CTA.",
+    "failureMode": "Grievance amplification; blaming women, feminism, or 'society' as the scapegoat."
+  },
+  {
+    "id": "P4",
+    "state": "Wants to act, but doesn't know how",
+    "objective": "Provide one available, performable, reversible step",
+    "appraisal": "That is small enough to do right now.",
+    "mechanismId": "M02",
+    "mechanismName": "Agency / Actionability",
+    "emotion": "Motivation, calm self-efficacy, relief from paralysis",
+    "arousal": "LOW",
+    "linguistic": "One step only; verifiable; cost, time, and friction stated honestly.",
+    "failureMode": "Recommending a step that is not actually available (e.g. 6-hour Puskesmas queues)."
+  },
+  {
+    "id": "P5",
+    "state": "Surrounded by peers, but confides in none",
+    "objective": "Make the room and community legible before asking anyone to walk in",
+    "appraisal": "I know exactly what happens if I walk in there.",
+    "mechanismId": "M04",
+    "mechanismName": "Belonging / Social Identity",
+    "emotion": "Warmth, recognition, feeling expected without spotlight",
+    "arousal": "LOW",
+    "linguistic": "Describe the physical room and logistics, not the feeling; state that sitting quietly is allowed.",
+    "failureMode": "Asserting fake 'brotherhood'; using 'kita' before a real relationship exists."
+  },
+  {
+    "id": "P6",
+    "state": "Social standing already under severe strain",
+    "objective": "Preserve adult dignity; do not re-anchor worth to provision",
+    "appraisal": "Engaging here does not cost me my manhood or standing.",
+    "mechanismId": "M08",
+    "mechanismName": "Status / Dignity / Respect",
+    "emotion": "Dignity, calm, absence of shame",
+    "arousal": "LOW",
+    "linguistic": "Assume competence; avoid achievement framing; avoid 'real men' or provider pressure.",
+    "failureMode": "Provider framing — annihilating for the men most at risk."
+  },
+  {
+    "id": "P7",
+    "state": "At acute risk / crisis",
+    "objective": "Instruct unambiguously; eliminate ambiguity",
+    "appraisal": "I know exactly what to do right now.",
+    "mechanismId": "M03",
+    "mechanismName": "Certainty / Gate 2 Action",
+    "emotion": "Contained, calm, oriented",
+    "arousal": "MODERATE",
+    "linguistic": "Plain, unhedged, no metaphor, no humor, explicit numbers and crisis steps.",
+    "failureMode": "Autonomy-preserving hedging; euphemism; anything requiring interpretive effort."
+  }
+]

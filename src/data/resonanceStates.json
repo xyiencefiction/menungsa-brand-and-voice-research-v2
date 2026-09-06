@@ -1,0 +1,101 @@
+[
+  {
+    "id": "RS01",
+    "state": "Feeling understood",
+    "mechanismId": "M05",
+    "workThrough": "Recognition with no culprit supplied",
+    "arousal": "LOW",
+    "backfireRisk": "Sliding into grievance, which converts recognition into an enemy",
+    "confidence": "MODERATE"
+  },
+  {
+    "id": "RS02",
+    "state": "Relief",
+    "mechanismId": "M01",
+    "workThrough": "Explicit permission and a stated privacy boundary",
+    "arousal": "LOW",
+    "backfireRisk": "Promising privacy the service cannot actually deliver",
+    "confidence": "PROMISING / TENTATIVE"
+  },
+  {
+    "id": "RS03",
+    "state": "Dignity",
+    "mechanismId": "M08",
+    "workThrough": "No evaluative adjective attached to the reader",
+    "arousal": "LOW",
+    "backfireRisk": "Praising him for coming, which reintroduces the test he is failing",
+    "confidence": "MODERATE-STRONG"
+  },
+  {
+    "id": "RS04",
+    "state": "Agency",
+    "mechanismId": "M02",
+    "workThrough": "One available, reversible step with its friction named",
+    "arousal": "MODERATE",
+    "backfireRisk": "Victim-blaming when the step is not actually reachable",
+    "confidence": "MODERATE"
+  },
+  {
+    "id": "RS05",
+    "state": "Belonging",
+    "mechanismId": "M04",
+    "workThrough": "A real referent for kita, and the room described rather than asserted",
+    "arousal": "MODERATE",
+    "backfireRisk": "Asserted brotherhood and conditional membership",
+    "confidence": "MODERATE-STRONG"
+  },
+  {
+    "id": "RS06",
+    "state": "Trust",
+    "mechanismId": "M09",
+    "workThrough": "Concrete commitments and calibrated certainty",
+    "arousal": "LOW",
+    "backfireRisk": "Over-claiming, and moral positions with no cost attached",
+    "confidence": "MODERATE-STRONG"
+  },
+  {
+    "id": "RS07",
+    "state": "Hope",
+    "mechanismId": "M19",
+    "workThrough": "Explanations that leave room to act",
+    "arousal": "MODERATE",
+    "backfireRisk": "False hope, and erasing the structural barrier to produce it",
+    "confidence": "MODERATE"
+  },
+  {
+    "id": "RS08",
+    "state": "Curiosity",
+    "mechanismId": "M03",
+    "workThrough": "Honest structure rather than totalising rules",
+    "arousal": "MODERATE",
+    "backfireRisk": "False certainty, which is the manosphere's version of the same offer",
+    "confidence": "PROMISING / TENTATIVE"
+  },
+  {
+    "id": "RS09",
+    "state": "Safe vulnerability",
+    "mechanismId": "M20",
+    "workThrough": "Emotion after entry, never as the entry price",
+    "arousal": "LOW",
+    "backfireRisk": "Coercive vulnerability disguised as an invitation",
+    "confidence": "MODERATE"
+  },
+  {
+    "id": "RS10",
+    "state": "Self-recognition",
+    "mechanismId": "M20",
+    "workThrough": "Concrete detail he supplies the emotion to",
+    "arousal": "LOW",
+    "backfireRisk": "Specificity so narrow that it excludes rather than includes",
+    "confidence": "MODERATE"
+  },
+  {
+    "id": "RS11",
+    "state": "Motivation",
+    "mechanismId": "M02",
+    "workThrough": "Effort framed as ordinary rather than heroic",
+    "arousal": "MODERATE",
+    "backfireRisk": "Re-anchoring his worth to performance",
+    "confidence": "MODERATE"
+  }
+]

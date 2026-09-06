@@ -1,0 +1,250 @@
+[
+  {
+    "id": "saya",
+    "term": "saya",
+    "type": "1st_person_singular",
+    "label": "Saya (1st Singular)",
+    "authorityLevel": 4,
+    "intimacyLevel": 1,
+    "socialRelationship": "Formal, institutional distance, objective reporting, clinical dignity",
+    "regionalClassCoding": "Standard Indonesian, nationwide, educated / official discourse",
+    "appropriateContexts": [
+      "Institutional announcements",
+      "Clinical / psychological authority",
+      "Official publications",
+      "Formal interviews"
+    ],
+    "inappropriateContexts": [
+      "Peer homosocial storytelling",
+      "Casual community chat",
+      "Tongkrongan / street empathy"
+    ],
+    "authenticityRisks": "Creates bureaucratic chill or medical detachment if used in personal empathy posts",
+    "evidenceBasis": "Sociolinguistic deictic norms (S03, S04). Standard in premium banking & formal healthcare."
+  },
+  {
+    "id": "aku",
+    "term": "aku",
+    "type": "1st_person_singular",
+    "label": "Aku (1st Singular)",
+    "authorityLevel": 2,
+    "intimacyLevel": 4,
+    "socialRelationship": "Intimate, introspective, personal vulnerability, confessional warmth",
+    "regionalClassCoding": "General Indonesian, literature/poetry, Javanese ngoko peer familiarity",
+    "appropriateContexts": [
+      "Personal reflection / contemplation",
+      "First-person recovery narratives",
+      "Kahf-style reflective monologue ('Life is a Journey')"
+    ],
+    "inappropriateContexts": [
+      "Jakarta street talk between adult men (often avoided as romantic/feminine unless Javanese)",
+      "Institutional press statements"
+    ],
+    "authenticityRisks": "Can sound overly poetic, sentimental, or effeminate in urban male peer settings if uncalibrated",
+    "evidenceBasis": "Corpus analysis of brand messaging (Kahf) & Javanese cultural sociolinguistics (S03, S04)."
+  },
+  {
+    "id": "gue",
+    "term": "gue / gua",
+    "type": "1st_person_singular",
+    "label": "Gue / Gua (1st Singular)",
+    "authorityLevel": 1,
+    "intimacyLevel": 5,
+    "socialRelationship": "Horizontal peerhood, street egalite, conversational solidarity",
+    "regionalClassCoding": "Colloquial Jakartan Indonesian, urban youth, digital cosmopolitan vernacular",
+    "appropriateContexts": [
+      "Named individual personal creator content",
+      "Peer video testimony",
+      "Casual TikTok / Reels commentary from authentic speaker"
+    ],
+    "inappropriateContexts": [
+      "Institutional brand voice speaking as a faceless org",
+      "Crisis hotlines",
+      "Elderly or conservative regional audiences"
+    ],
+    "authenticityRisks": "Cringe catastrophe if deployed by an institution without a licensed human face ('impersonation')",
+    "evidenceBasis": "S04, S06 Section 29: Relatability is relationally licensed. Unearned slang backfires immediately."
+  },
+  {
+    "id": "Anda",
+    "term": "Anda",
+    "type": "2nd_person_singular",
+    "label": "Anda (2nd Singular)",
+    "authorityLevel": 5,
+    "intimacyLevel": 1,
+    "socialRelationship": "Maximum social distance, respect for personal boundary, transactional",
+    "regionalClassCoding": "Formal standard Indonesian, corporate, professional services",
+    "appropriateContexts": [
+      "High-end automotive / financial advisories",
+      "Terms of service, privacy policies",
+      "Formal clinical assessment invitations"
+    ],
+    "inappropriateContexts": [
+      "Community mental-health support",
+      "Emotional vulnerability",
+      "Peer invitation"
+    ],
+    "authenticityRisks": "Feels cold, corporate, and bureaucratic; prevents any sense of shared human warmth",
+    "evidenceBasis": "Indonesian deictic literature. Fails completely in male community mental health."
+  },
+  {
+    "id": "kamu",
+    "term": "kamu",
+    "type": "2nd_person_singular",
+    "label": "Kamu (2nd Singular)",
+    "authorityLevel": 3,
+    "intimacyLevel": 3,
+    "socialRelationship": "Direct yet respectful address, supportive mentor, empathetic peer",
+    "regionalClassCoding": "Standard conversational Indonesian, nationwide, neutral across classes",
+    "appropriateContexts": [
+      "Default second-person for Menungsa educational content",
+      "Supportive healthcare campaigns",
+      "One-on-one reflective invitations"
+    ],
+    "inappropriateContexts": [
+      "Aggressive challenge copy",
+      "Hyper-local street slang banter"
+    ],
+    "authenticityRisks": "Can sound mildly patronizing or overly maternal ('guru BP') if delivered with preachiness",
+    "evidenceBasis": "Modal recommended second-person pronoun in Phase B voice strategy (§29)."
+  },
+  {
+    "id": "lo",
+    "term": "lo / lu",
+    "type": "2nd_person_singular",
+    "label": "Lo / Lu (2nd Singular)",
+    "authorityLevel": 1,
+    "intimacyLevel": 5,
+    "socialRelationship": "High intimacy, peer-to-peer, demand for straightforward reciprocity",
+    "regionalClassCoding": "Jakarta vernacular, urban youth, digital casual",
+    "appropriateContexts": [
+      "Casual conversational video by a named peer",
+      "MS Glow For Men style self-deprecating banter",
+      "Grooming tutorials ('nggak ribet')"
+    ],
+    "inappropriateContexts": [
+      "Official organisation captions",
+      "Crisis intervention",
+      "Older men (45+) and rural communities"
+    ],
+    "authenticityRisks": "Perceived as arrogant, disrespectful, or corporate cringe if not relationally licensed",
+    "evidenceBasis": "Corpus analysis of Garnier Men / MS Glow vs institutional mental health."
+  },
+  {
+    "id": "kami",
+    "term": "kami (exclusive)",
+    "type": "1st_person_plural",
+    "label": "Kami (1st Plural Exclusive)",
+    "authorityLevel": 4,
+    "intimacyLevel": 2,
+    "socialRelationship": "Speaks on behalf of the organisation, delineating team boundary",
+    "regionalClassCoding": "Standard grammatical Indonesian",
+    "appropriateContexts": [
+      "Announcing services, research methodology, organizational commitments",
+      "Safety & logistics policies"
+    ],
+    "inappropriateContexts": [
+      "Pretending to invite the audience into mutual feeling"
+    ],
+    "authenticityRisks": "Creates clear boundary between 'us' (the org) and 'you' (the audience)",
+    "evidenceBasis": "Sociolinguistic distinction: kami preserves institutional honesty; doesn't presume unearned solidarity."
+  },
+  {
+    "id": "kita",
+    "term": "kita (inclusive)",
+    "type": "1st_person_plural",
+    "label": "Kita (1st Plural Inclusive)",
+    "authorityLevel": 2,
+    "intimacyLevel": 4,
+    "socialRelationship": "Collective shared identity, mutual fate, joint struggle, horizontal unity",
+    "regionalClassCoding": "Universal Indonesian; deeply embedded in sports and gotong royong",
+    "appropriateContexts": [
+      "Once real community exists",
+      "Sports-adjacent solidarity ('Timnas kita')",
+      "Describing shared human conditions ('kita semua pernah bingung')"
+    ],
+    "inappropriateContexts": [
+      "Cold audience entry",
+      "Pretending the institution shares the same personal trauma as an individual"
+    ],
+    "authenticityRisks": "Presumptuous manipulation ('kita-kitaan') if used before mutual rapport is established",
+    "evidenceBasis": "M04 Belonging; PBSI & football corpus analysis; M09 Messenger credibility."
+  },
+  {
+    "id": "pria",
+    "term": "pria",
+    "type": "gender_term",
+    "label": "Pria (Male Reference)",
+    "authorityLevel": 4,
+    "intimacyLevel": 2,
+    "socialRelationship": "Dignified, mature, premium, aspirational, composed (halus)",
+    "regionalClassCoding": "Formal / media Indonesian, urban middle-to-upper class",
+    "appropriateContexts": [
+      "Editorial articles, psychoeducation, mature self-improvement",
+      "Kahf / premium grooming, professional health"
+    ],
+    "inappropriateContexts": [
+      "Raw street banter, teen gaming memes"
+    ],
+    "authenticityRisks": "Can feel slightly stiff or aspirational if used in grassroots settings",
+    "evidenceBasis": "Brand corpus: used by Kahf, NIVEA MEN, automotive brands."
+  },
+  {
+    "id": "laki-laki",
+    "term": "laki-laki / laki",
+    "type": "gender_term",
+    "label": "Laki-laki / Laki (Male Reference)",
+    "authorityLevel": 3,
+    "intimacyLevel": 3,
+    "socialRelationship": "Biological / sociological category; or raw performance focus ('Laki!')",
+    "regionalClassCoding": "Official demographic Indonesian; monolexemic 'Laki' has working-class challenge coding",
+    "appropriateContexts": [
+      "Academic / demographic research",
+      "Gender discussions",
+      "Grassroots challenge (Extra Joss)"
+    ],
+    "inappropriateContexts": [
+      "Gentle reflective counseling"
+    ],
+    "authenticityRisks": "'Laki' can sound aggressively macho or hyper-masculine; 'laki-laki' is clinically neutral",
+    "evidenceBasis": "Extra Joss corpus vs Academic Gender literature."
+  },
+  {
+    "id": "cowok",
+    "term": "cowok",
+    "type": "gender_term",
+    "label": "Cowok (Male Reference)",
+    "authorityLevel": 1,
+    "intimacyLevel": 4,
+    "socialRelationship": "Casual, youthful, relatable, low-barrier, unpretentious",
+    "regionalClassCoding": "Colloquial Indonesian, youth, social media",
+    "appropriateContexts": [
+      "Youth mental health, dating / social skills, informal peer posts",
+      "MS Glow For Men"
+    ],
+    "inappropriateContexts": [
+      "Clinical crisis protocols, institutional statements, mature adult fatherhood"
+    ],
+    "authenticityRisks": "Can sound trivial or juvenile for serious adult dilemmas",
+    "evidenceBasis": "Brand and youth digital culture corpus."
+  },
+  {
+    "id": "bro",
+    "term": "bro / bang / mas / pak",
+    "type": "vocative",
+    "label": "Vocatives (Bro, Bang, Mas, Pak)",
+    "authorityLevel": 2,
+    "intimacyLevel": 4,
+    "socialRelationship": "Calibrated kinship & status levelers: Bro (modern peer), Bang/Mas (respectful peer), Pak (authority/elder)",
+    "regionalClassCoding": "Bro (cosmopolitan), Bang (Betawi/Sumatra/Jakarta), Mas (Java/nationwide), Pak (formal/paternal)",
+    "appropriateContexts": [
+      "Individual peer facilitators, comments replies, face-to-face community sessions"
+    ],
+    "inappropriateContexts": [
+      "Automated corporate bot saying 'Halo Bro!'",
+      "Crisis intervention"
+    ],
+    "authenticityRisks": "Manufactured 'bro' from an institution triggers acute embarrassment and mockery",
+    "evidenceBasis": "Scott Kiesling's stance indexing & Indonesian vocative politeness literature."
+  }
+]

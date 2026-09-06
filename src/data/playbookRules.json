@@ -1,0 +1,312 @@
+[
+  {
+    "id": "R01",
+    "category": "Voice & Tone",
+    "action": "DO: Keep the first move small, private, and reversible",
+    "avoid": "DON'T: Demand emotional disclosure as the entry price ('Yuk tumpahkan semuanya')",
+    "rationale": "Lowering response cost (M01) matters far more than raising emotional intensity. Men avoid exposure, not help.",
+    "mechanism": "M01 Response Cost",
+    "confidence": "PROMISING / TENTATIVE (Convergent Practice)",
+    "boundaryCondition": "Acute suicide crisis requires unambiguous instruction, not low-pressure hedging.",
+    "doExamples": [
+      {
+        "example": "Sesi berikutnya Selasa, 19.00. Boleh datang, boleh cuma lihat-lihat dulu.",
+        "why": "Two options offered at once, so arriving is not a commitment to anything."
+      },
+      {
+        "example": "Nggak perlu daftar. Datang aja, dan boleh pulang kapan saja.",
+        "why": "Removes both the entry step and the exit cost in one line."
+      },
+      {
+        "example": "Balas dengan satu kata kalau mau infonya. Kalau nggak, pesan ini nggak perlu dibalas.",
+        "why": "Makes not responding an explicitly acceptable outcome rather than a silence he has to justify."
+      },
+      {
+        "example": "Minggu lalu yang datang tujuh orang. Dua di antaranya nggak ngomong sama sekali.",
+        "why": "Describes the room with a verifiable detail, which does the work that a promise of safety cannot."
+      }
+    ],
+    "dontExamples": [
+      {
+        "example": "Yuk tumpahin semua unek-unekmu di sini!",
+        "why": "Disclosure as the stated purpose of arriving is the entry price this rule exists to remove."
+      },
+      {
+        "example": "Ceritakan pengalaman tersulitmu di kolom komentar.",
+        "why": "Asks for the highest-exposure act available on a public surface."
+      },
+      {
+        "example": "Isi form ini dulu ya, biar kami tahu kondisi kamu.",
+        "why": "Puts an assessment in front of the door, so the cost is paid before anything is received."
+      },
+      {
+        "example": "Konfirmasi kehadiran dengan komen ‘HADIR’.",
+        "why": "Turns attendance into a public declaration in front of everyone who can see the thread."
+      }
+    ]
+  },
+  {
+    "id": "R02",
+    "category": "Linguistics & Syntax",
+    "action": "DO: Use concrete situations to let emotion arrive naturally ('Jam tiga pagi, masih ngecek saldo')",
+    "avoid": "DON'T: Lead with diagnostic labels or clinical jargon ('Kamu mungkin depresi')",
+    "rationale": "Men prefer coded emotional language and direct behavioral language simultaneously (Sharp et al.). Everyday detail earns the feeling.",
+    "mechanism": "M20 Emotional-Exposure Calibration & M05 Recognition",
+    "confidence": "MODERATE",
+    "boundaryCondition": "High-risk safety protocols require clinical precision and direct terminology.",
+    "doExamples": [
+      {
+        "example": "Jam tiga pagi, masih ngecek saldo.",
+        "why": "One observable situation, no feeling named, nothing for him to concede."
+      },
+      {
+        "example": "Motor udah dipanasin, tapi belum berangkat-berangkat juga.",
+        "why": "A physical detail that carries the state without diagnosing it."
+      },
+      {
+        "example": "Chat dari bos kebaca jam sebelas malam. Dibalas jam sebelas lewat dua.",
+        "why": "Two timestamps do the work an adjective would have done badly."
+      },
+      {
+        "example": "Makan siang tetap jalan. Cuma sekarang sambil buka aplikasi lowongan.",
+        "why": "Functioning and not being fine shown in the same sentence, which is the recognition this rule is for."
+      }
+    ],
+    "dontExamples": [
+      {
+        "example": "Kamu mungkin depresi.",
+        "why": "A diagnostic label aimed at the reader before he has agreed to be a reader."
+      },
+      {
+        "example": "Ini gejala anxiety disorder yang harus kamu waspadai.",
+        "why": "Clinical terminology arriving before any everyday description, which reverses the sequencing rule."
+      },
+      {
+        "example": "Apakah kamu merasa hampa dan kehilangan makna hidup?",
+        "why": "An open introspective question that costs him something to answer."
+      },
+      {
+        "example": "5 Tanda Kamu Butuh Bantuan Profesional.",
+        "why": "Puts the conclusion in the headline, at the point of highest exposure."
+      }
+    ]
+  },
+  {
+    "id": "R03",
+    "category": "Indonesian Register",
+    "action": "DO: Use 'kamu' as default institutional address; reserve 'gue/lo' strictly for named peer creators",
+    "avoid": "DON'T: Use corporate 'gue/lo' or forced 'bro' from an anonymous institutional account",
+    "rationale": "Relatability is relationally licensed (M09). Institutional slang is universally diagnosed as cringe impersonation.",
+    "mechanism": "M09 Messenger Credibility / Licensed Intimacy",
+    "confidence": "MODERATE-STRONG (Sociolinguistics)",
+    "boundaryCondition": "Individual staff writing personal reflections may authentically use their natural dialect.",
+    "doExamples": [
+      {
+        "example": "Kamu boleh cerita, boleh juga cuma dengerin.",
+        "why": "Kamu as the institutional default: direct without claiming intimacy."
+      },
+      {
+        "example": "Kami di Menungsa nyediain ruangnya. Kami nggak nanya kalau kamu belum mau cerita.",
+        "why": "Kami keeps the organisation honest about being an organisation rather than a friend."
+      },
+      {
+        "example": "Gue Rio, tim konten Menungsa. Gue yang nulis ini.",
+        "why": "Gue is licensed here because a named person is speaking as himself."
+      },
+      {
+        "example": "Nomor ini dipegang Dimas. Kalau dia lagi nggak online, balasannya besok pagi.",
+        "why": "Attribution plus an honest limit on availability, which is what makes the informal register credible."
+      }
+    ],
+    "dontExamples": [
+      {
+        "example": "Bro, lo nggak sendirian kok!",
+        "why": "Vernacular from an unattributed account is a credibility event, not a stylistic choice."
+      },
+      {
+        "example": "Gaes, yuk jaga mental health kalian!",
+        "why": "Borrowed peer register plus borrowed English, from a speaker with no licence for either."
+      },
+      {
+        "example": "Kita semua pasti pernah down, kan?",
+        "why": "Kita asserted before there is a we, which reads as presumption rather than solidarity."
+      },
+      {
+        "example": "Halo Sobat Menungsa!",
+        "why": "A manufactured in-group name assigns him a membership he never agreed to."
+      }
+    ]
+  },
+  {
+    "id": "R04",
+    "category": "Masculinity Framing",
+    "action": "DO: Use gender cues only when an action is already culturally feminine-coded and publicly observed",
+    "avoid": "DON'T: Brand neutral actions as 'for real men' or 'pria sejati'",
+    "rationale": "Where no gender conflict exists, adding gender manufactures an identity threat and triggers reactance.",
+    "mechanism": "M07 Identity Congruence & M06 Reactance",
+    "confidence": "STRONG (Meta-analytic & Experimental)",
+    "boundaryCondition": "Skincare or vulnerability in public view can benefit from masculine identity reassurance.",
+    "doExamples": [
+      {
+        "example": "Panduan menjaga kesehatan mental sehari-hari.",
+        "why": "Gender-unmarked default, which is where the evidence sits for most content."
+      },
+      {
+        "example": "Layanan konseling khusus laki-laki dewasa.",
+        "why": "Descriptive demographic marking: it says who the service is for without claiming what a man is."
+      },
+      {
+        "example": "Ruang ini isinya laki-laki semua. Itu aja bedanya.",
+        "why": "States the fact and then closes the subject, refusing the invitation to define masculinity."
+      }
+    ],
+    "dontExamples": [
+      {
+        "example": "Pria sejati nggak takut cerita.",
+        "why": "Defines manhood conditionally and then makes the reader buy it back."
+      },
+      {
+        "example": "Buktikan kamu cukup kuat buat hadapi ini.",
+        "why": "A challenge frame, which is the configuration with the clearest documented backfire."
+      },
+      {
+        "example": "Sebagai laki-laki, kamu harus mau lebih terbuka.",
+        "why": "Prescriptive gender injunction: the construction that produced measurable reactance."
+      },
+      {
+        "example": "Cowok banget nggak sih kalau nangis?",
+        "why": "Puts his masculinity on trial in the middle of the sentence that was meant to help."
+      }
+    ]
+  },
+  {
+    "id": "R05",
+    "category": "Indonesian Culture",
+    "action": "DO: Design around household and relational care channels (e.g. supporting wives, friends, peers)",
+    "avoid": "DON'T: Assume the solo, autonomous, self-advocating individual help-seeker model from Western frameworks",
+    "rationale": "Indonesian care is relational; households organize care through division of labor; community supplies both care and surveillance.",
+    "mechanism": "M11 Relational Care & M12 Community Surveillance",
+    "confidence": "RELATIVELY STRONG (Dissertation CIS)",
+    "boundaryCondition": "Unmarried or alienated urban youth without family support require alternative peer networks.",
+    "doExamples": [
+      {
+        "example": "Kalau kamu istri, ibu, atau teman dekat yang lagi khawatir: ini yang bisa kamu lakukan duluan.",
+        "why": "Addresses the person who actually arranges care in the Indonesian household."
+      },
+      {
+        "example": "Boleh datang berdua. Banyak yang gitu.",
+        "why": "Permits the relational route and normalises it in four words."
+      },
+      {
+        "example": "Kalau kamu nggak sanggup nelpon sendiri, minta orang terdekat yang nelpon.",
+        "why": "Accounts for someone unable to act alone, which is the relational finding at its most consequential."
+      },
+      {
+        "example": "Biaya ditanggung JKN. Kartunya bisa dipakai satu keluarga.",
+        "why": "Treats the household as the unit that pays, because it usually is."
+      }
+    ],
+    "dontExamples": [
+      {
+        "example": "Kesehatan mentalmu tanggung jawabmu sendiri.",
+        "why": "Imports the autonomous help-seeker model that the Indonesian evidence does not support."
+      },
+      {
+        "example": "Cuma kamu yang bisa nolong diri kamu.",
+        "why": "Closes off the route that most Indonesian men actually use."
+      },
+      {
+        "example": "Jangan bergantung sama orang lain, mulai dari diri sendiri.",
+        "why": "Reframes ordinary relational care as a personal weakness."
+      },
+      {
+        "example": "Ambil kendali penuh atas hidupmu.",
+        "why": "Assigns full control to someone whose main barriers are institutional and material."
+      }
+    ]
+  },
+  {
+    "id": "R06",
+    "category": "Moral Communication",
+    "action": "DO: Keep moral concentration low and back claims with concrete, costly institutional commitments",
+    "avoid": "DON'T: Preach, scold, or position the reader/men collectively as culprits",
+    "rationale": "Moral density above saturation triggers reactance and cynical virtue-discounting (M10, M18).",
+    "mechanism": "M10 Motive Attribution & M18 Moral Saturation",
+    "confidence": "MODERATE-STRONG",
+    "boundaryCondition": "Legitimate institutional advocacy can state clear ethical boundaries without berating the audience.",
+    "doExamples": [
+      {
+        "example": "Antrean psikiater di puskesmas rata-rata dua minggu. Kami lagi mendata mana yang lebih cepat, dan datanya kami buka.",
+        "why": "Structural subject, plus a commitment that costs something to keep."
+      },
+      {
+        "example": "Kami nolak iklan suplemen di kanal ini. Artinya kami kehilangan pemasukan.",
+        "why": "One moral position, stated once, with its price made visible."
+      },
+      {
+        "example": "Jam layanan puskesmas selesai jam satu siang. Buat yang kerja shift, itu masalah nyata.",
+        "why": "Names the barrier without naming a culprit, which is the distinction this rule protects."
+      },
+      {
+        "example": "Konten itu salah kami. Sudah kami turunkan, dan ini alasannya.",
+        "why": "Moral seriousness aimed at the organisation's own conduct rather than at the audience."
+      }
+    ],
+    "dontExamples": [
+      {
+        "example": "Laki-laki Indonesia harus berhenti gengsi.",
+        "why": "Personal subject and a collective indictment in one sentence."
+      },
+      {
+        "example": "Sudah saatnya kita semua peduli kesehatan mental!",
+        "why": "Moral scolding with no cost attached and kita with no real referent."
+      },
+      {
+        "example": "Stop normalisasi budaya toxic masculinity sekarang juga!",
+        "why": "Maximises moral density, which is the region where persuasion collapses even as sharing rises."
+      },
+      {
+        "example": "Kalau kamu masih diam, kamu bagian dari masalahnya.",
+        "why": "Converts the reader into the culprit, which is the reactance configuration in its purest form."
+      }
+    ]
+  },
+  {
+    "id": "R07",
+    "category": "Measurement & Analytics",
+    "action": "DO: Evaluate programs by actual conversion, help-seeking behavior, and comment valence",
+    "avoid": "DON'T: Use likes, shares, or viral reach as proxies for trust or persuasion",
+    "rationale": "Engagement conflates approval with outrage and algorithmic feedback. Outrage spreads fast but depresses real action.",
+    "mechanism": "M17 Algorithmic Amplification & E03",
+    "confidence": "STRONG (Meta-analysis & Large Corpora)",
+    "boundaryCondition": "Top-of-funnel brand awareness can track reach if isolated from conversion goals.",
+    "doExamples": [
+      {
+        "example": "Bulan ini: 34 orang buka halaman puskesmas, 9 klik nomor, 4 datang.",
+        "why": "Counts the costly acts, in the order they have to happen."
+      },
+      {
+        "example": "Komentar yang nanya lokasi: 12. Yang isinya marah: 2.",
+        "why": "Separates comment valence rather than reporting comments as one number."
+      },
+      {
+        "example": "Dari lima sesi, rata-rata tujuh orang datang. Dua orang datang lebih dari sekali.",
+        "why": "Return attendance is the closest available proxy for the thing the programme is for."
+      }
+    ],
+    "dontExamples": [
+      {
+        "example": "Jangkauan bulan ini 240.000, naik 300%.",
+        "why": "Reach is the metric the outrage findings warn about most directly."
+      },
+      {
+        "example": "Konten ini viral, artinya pesannya nyampe.",
+        "why": "Treats diffusion as evidence of conversion, which the petition data contradicts."
+      },
+      {
+        "example": "Engagement rate kita tertinggi se-kategori.",
+        "why": "Optimises the number that rises fastest when a message is doing the wrong thing."
+      }
+    ]
+  }
+]

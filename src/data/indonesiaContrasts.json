@@ -1,0 +1,127 @@
+[
+  {
+    "id": "KT01",
+    "dimension": "Community as a health determinant",
+    "north": 77,
+    "south": 82,
+    "status": "CONVERGES",
+    "note": "Community weight is high on both sides of the divide, so this part of the global literature does transfer.",
+    "evidenceStatus": "EMPIRICALLY SUPPORTED",
+    "mechanismIds": [
+      "M04",
+      "M12"
+    ]
+  },
+  {
+    "id": "KT02",
+    "dimension": "Socioeconomic conditions",
+    "north": 67,
+    "south": 76,
+    "status": "CONVERGES",
+    "note": "Material conditions dominate everywhere, and in the Indonesian evidence they are better supported than masculinity as a barrier.",
+    "evidenceStatus": "EMPIRICALLY SUPPORTED",
+    "mechanismIds": [
+      "M14",
+      "M08"
+    ]
+  },
+  {
+    "id": "KT03",
+    "dimension": "Toughness norm",
+    "north": 25,
+    "south": 24,
+    "status": "CONVERGES",
+    "note": "The one masculinity norm that is near-identical across the divide. The demand to be tough and the fear of appearing weak travel.",
+    "evidenceStatus": "EMPIRICALLY SUPPORTED",
+    "mechanismIds": [
+      "M08",
+      "M01"
+    ]
+  },
+  {
+    "id": "KT04",
+    "dimension": "Religion as a determinant",
+    "north": 5,
+    "south": 34,
+    "status": "DIVERGES",
+    "note": "The single largest divergence in the corpus, and it runs both ways: takdir framing delays care, while ngelakoni makes adherence a religious duty.",
+    "evidenceStatus": "EMPIRICALLY SUPPORTED",
+    "mechanismIds": [
+      "M13"
+    ]
+  },
+  {
+    "id": "KT05",
+    "dimension": "The autonomous help-seeker",
+    "status": "DIVERGES",
+    "note": "Read individually, a man who leaves his health to his wife looks like avoidance. Read relationally, the same arrangement is a household securing care through its ordinary division of labour.",
+    "evidenceStatus": "EMPIRICALLY SUPPORTED",
+    "mechanismIds": [
+      "M11",
+      "M12"
+    ]
+  },
+  {
+    "id": "KT06",
+    "dimension": "Provider duty",
+    "status": "DIVERGES",
+    "note": "Codified rather than merely cultural: Marriage Law No. 1/1974, Islamic nafaqah, and adat requiring public financial demonstration.",
+    "evidenceStatus": "EMPIRICALLY SUPPORTED",
+    "mechanismIds": [
+      "M08"
+    ]
+  },
+  {
+    "id": "KT07",
+    "dimension": "Community as an active agent",
+    "status": "DIVERGES",
+    "note": "Gotong royong obliges assistance and rukun subordinates the individual to the collective. The same reach carries care and judgement.",
+    "evidenceStatus": "PLAUSIBLE LOCAL MECHANISM",
+    "mechanismIds": [
+      "M12",
+      "M04"
+    ]
+  },
+  {
+    "id": "KT08",
+    "dimension": "Where care is sought first",
+    "status": "DIVERGES",
+    "note": "Jamu, prayer and traditional healers sit alongside Puskesmas, and the formal system is often the last resort rather than the first.",
+    "evidenceStatus": "EMPIRICALLY SUPPORTED",
+    "mechanismIds": [
+      "M13",
+      "M14"
+    ]
+  },
+  {
+    "id": "KT09",
+    "dimension": "Companionship versus confiding",
+    "status": "DIVERGES",
+    "note": "Indonesian peer research separates teman nongkrong from teman curhat and finds company abundant while confiding is rare. Adding more men to the room does not produce disclosure.",
+    "evidenceStatus": "EMPIRICALLY SUPPORTED",
+    "mechanismIds": [
+      "M04",
+      "M12",
+      "M01"
+    ]
+  },
+  {
+    "id": "KT10",
+    "dimension": "Masculinity as the primary barrier",
+    "status": "GAP",
+    "note": "Masculinity ideology explained 11.4% of variance in help-seeking attitudes among 115 young men, but showed no significant correlation with primary-care use among 134 Surabaya men. Not established as the main Indonesian barrier.",
+    "evidenceStatus": "EMPIRICALLY SUPPORTED",
+    "mechanismIds": [
+      "M07",
+      "M14"
+    ]
+  },
+  {
+    "id": "KT11",
+    "dimension": "Whether any specific Indonesian wording works",
+    "status": "GAP",
+    "note": "Zero randomised wording experiments on Indonesian men exist in the entire corpus. Every wording recommendation on this site is a hypothesis.",
+    "evidenceStatus": "SPECULATIVE / UNTESTED",
+    "mechanismIds": []
+  }
+]
