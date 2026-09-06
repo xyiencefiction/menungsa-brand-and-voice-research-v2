@@ -4,8 +4,14 @@ import {
   Eye, 
   ShieldCheck, 
   Scale, 
-  AlertCircle
+  CheckCircle2,
+  XCircle
 } from 'lucide-react';
+
+interface ExamplePair {
+  example: string;
+  why: string;
+}
 
 interface ContrastItem {
   id: string;
@@ -16,6 +22,8 @@ interface ContrastItem {
   south: number;
   note: string;
   writerImplication: string;
+  dos: ExamplePair;
+  donts: ExamplePair;
 }
 
 const INDONESIAN_CONTRASTS: ContrastItem[] = [
@@ -27,7 +35,15 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     north: 77,
     south: 82,
     note: 'Bobot peran komunitas sangat tinggi baik dalam riset global maupun di Indonesia. Pendekatan berbasis kawan sebaya dan ruang persaudaraan terbukti efektif di lapangan.',
-    writerImplication: 'Gunakan bingkai kebersamaan dan wadah saling dukung, bukan menyuruh pria berjuang sendirian secara terisolasi.'
+    writerImplication: 'Gunakan bingkai kebersamaan dan wadah saling dukung, bukan menyuruh pria berjuang sendirian secara terisolasi.',
+    dos: {
+      example: 'Minggu pagi kita sepedaan santai keliling kanal, mampir sarapan bubur ayam di tikungan. Boleh gabung, boleh cuma ikut ngopi.',
+      why: 'Mengajak berkumpul melalui aktivitas bersama tanpa beban tuntutan psikologis.'
+    },
+    donts: {
+      example: 'Kamu yang merasa kesepian dan terisolasi, datanglah ke sesi konseling kelompok terbuka ini untuk mencurahkan isi hatimu.',
+      why: 'Melabeli pria sebagai sosok kesepian yang menyedihkan dan menuntut keterbukaan di depan orang asing.'
+    }
   },
   {
     id: 'KT02',
@@ -37,7 +53,15 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     north: 67,
     south: 76,
     note: 'Kondisi material ekonomi mendominasi di mana-mana. Dalam data empiris Indonesia, tekanan finansial dan kebutuhan menafkahi keluarga terbukti menjadi beban yang jauh lebih berat dibanding krisis maskulinitas abstrak.',
-    writerImplication: 'Kaitkan kesehatan mental dengan kestabilan nafkah dan kelancaran kerja harian, bukan sekadar perbincangan batin abstrak.'
+    writerImplication: 'Kaitkan kesehatan mental dengan kestabilan nafkah dan kelancaran kerja harian, bukan sekadar perbincangan batin abstrak.',
+    dos: {
+      example: 'Mencukupi belanja dapur dan cicilan setiap akhir bulan memang menguras banyak tenaga dan pikiran. Wajar kalau badanmu butuh istirahat sejenak malam ini.',
+      why: 'Menghormati perjuangan nafkah konkret tanpa mereduksinya menjadi istilah batin yang abstrak.'
+    },
+    donts: {
+      example: 'Singkirkan dulu urusan uangmu, fokuslah pada self-love dan ketenangan batinmu terlebih dahulu.',
+      why: 'Meremehkan kenyataan hidup dan terdengar elitis bagi pria yang menanggung beban ekonomi keluarga.'
+    }
   },
   {
     id: 'KT03',
@@ -47,7 +71,15 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     north: 25,
     south: 24,
     note: 'Satu-satunya norma maskulinitas yang persentasenya hampir identik antara Barat dan Indonesia. Tuntutan untuk terlihat kuat dan ketakutan terlihat lemah di hadapan sesama pria berlaku sama kuatnya di sini.',
-    writerImplication: 'Pantang mencela rasa takut mereka; tawarkan pemulihan sebagai bagian dari ketahanan fisik untuk kembali bekerja.'
+    writerImplication: 'Pantang mencela rasa takut mereka; tawarkan pemulihan sebagai bagian dari ketahanan fisik untuk kembali bekerja.',
+    dos: {
+      example: 'Mesin diesel paling tangguh pun perlu ganti oli dan didinginkan agar tidak mogok di jalan. Istirahat malam ini adalah persiapan agar besok kamu bisa kembali bekerja dengan prima.',
+      why: 'Membingkai istirahat sebagai perawatan ketahanan fungsional, bukan pertanda kerapuhan atau menyerah.'
+    },
+    donts: {
+      example: 'Laki-laki kok takut mengeluh? Jangan sok kuat deh, ayo buang gengsimu dan menangislah sekarang!',
+      why: 'Menggurui, mencela harga diri pria, dan menuntut kerapuhan secara agresif.'
+    }
   },
   {
     id: 'KT04',
@@ -57,7 +89,15 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     north: 5,
     south: 34,
     note: 'Perbedaan terbesar antara literatur global dan Indonesia. Konsep pasrah takdir terkadang menunda pencarian bantuan medis, namun konsep ikhtiar dan laku spiritual justru menjadikan usaha berobat sebagai bentuk ibadah nyata.',
-    writerImplication: 'Hormati nilai religiusitas; bingkai upaya mencari bantuan sebagai bentuk ikhtiar yang mulia, bukan pertanda kurang iman.'
+    writerImplication: 'Hormati nilai religiusitas; bingkai upaya mencari bantuan sebagai bentuk ikhtiar yang mulia, bukan pertanda kurang iman.',
+    dos: {
+      example: 'Berdoa dan berserah diri itu menguatkan batin, dan memeriksakan diri ke dokter atau tenaga profesional adalah ikhtiar nyata yang menyempurnakannya.',
+      why: 'Menyelaraskan doa spiritual dengan tindakan medis sebagai dua bentuk ikhtiar yang saling melengkapi.'
+    },
+    donts: {
+      example: 'Masalah jiwamu itu bukan urusan medis, itu bukti kamu kurang beribadah dan jauh dari Tuhan.',
+      why: 'Menghakimi keimanan seseorang dan memicu rasa bersalah religius yang melumpuhkan.'
+    }
   },
   {
     id: 'KT05',
@@ -67,7 +107,15 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     north: 45,
     south: 68,
     note: 'Di Barat, pria yang urusan kesehatannya diatur oleh istri kerap dicap tidak mandiri. Namun dalam keluarga Indonesia, hal tersebut merupakan pembagian peran rumah tangga yang sehat dan terbukti efektif menyelamatkan pria.',
-    writerImplication: 'Sediakan naskah yang juga dapat dipahami dan dibagikan oleh pasangan, istri, atau anggota keluarga pria.'
+    writerImplication: 'Sediakan naskah yang juga dapat dipahami dan dibagikan oleh pasangan, istri, atau anggota keluarga pria.',
+    dos: {
+      example: 'Bagi para istri atau kawan terdekat: jika melihat pasanganmu mulai sulit tidur dan pundaknya tegang karena beban kerja, sediakan segelas teh hangat tanpa perlu langsung mendesaknya bercerita.',
+      why: 'Memberi panduan praktis dan suportif bagi orang terdekat tanpa melanggar privasi pria.'
+    },
+    donts: {
+      example: 'Laki-laki dewasa kok apa-apa harus diatur istrinya? Urus sendiri kesehatan mentalmu secara mandiri!',
+      why: 'Mengabaikan kultur gotong royong keluarga Indonesia dan menghakimi kemitraan rumah tangga yang sehat.'
+    }
   },
   {
     id: 'KT06',
@@ -77,7 +125,15 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     north: 30,
     south: 72,
     note: 'Tanggung jawab nafkah di Indonesia bukan sekadar norma budaya lisan, melainkan dikodifikasi dalam Undang-Undang Perkawinan, ajaran agama (nafkah), dan adat istiadat. Menyerang peran nafkah pria memicu penolakan keras.',
-    writerImplication: 'Akui dan hargai kerja keras pria dalam mencari nafkah; jangan pernah meremehkan pengorbanan ekonominya.'
+    writerImplication: 'Akui dan hargai kerja keras pria dalam mencari nafkah; jangan pernah meremehkan pengorbanan ekonominya.',
+    dos: {
+      example: 'Keringat yang kamu keluarkan setiap hari untuk anak dan istri adalah bentuk pengabdian yang bernilai. Menjaga fisikmu tetap sehat adalah bagian dari ikhtiar merawat mereka.',
+      why: 'Memvalidasi kehormatan peran nafkah sebagai landasan untuk menjaga kesehatan diri.'
+    },
+    donts: {
+      example: 'Tinggalkan konsep usang kepala keluarga pencari nafkah, itu cuma jebakan patriarki yang merusakmu!',
+      why: 'Menyerang peran etis dan hukum yang dipegang teguh pria Indonesia, memicu penolakan ideologis seketika.'
+    }
   },
   {
     id: 'KT07',
@@ -87,7 +143,15 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     north: 20,
     south: 65,
     note: 'Gotong royong mewajibkan saling membantu, namun norma rukun dan tepa salira juga menuntut individu untuk tidak merepotkan tetangga. Kepedulian sosial hadir berdampingan dengan risiko penghakiman warga.',
-    writerImplication: 'Jaga kerahasiaan identitas dan tawarkan jalur konsultasi yang diskret agar pembaca bebas dari rasa malu sosial (isin).'
+    writerImplication: 'Jaga kerahasiaan identitas dan tawarkan jalur konsultasi yang diskret agar pembaca bebas dari rasa malu sosial (isin).',
+    dos: {
+      example: 'Seluruh data konsultasi dan obrolan tersimpan secara rahasia. Tanpa kamera, nama disamarkan, dan privasimu dari lingkungan sekitar terjamin sepenuhnya.',
+      why: 'Menghilangkan rasa takut akan gosip tetangga atau pengawasan sosial lingkungan (isin).'
+    },
+    donts: {
+      example: 'Ayo berani bersuara di depan warga komplek! Jangan takut dicap aneh oleh tetangga sebelah!',
+      why: 'Memaksa pria menantang sanksi sosial lingkungan tempat tinggalnya secara gegabah.'
+    }
   },
   {
     id: 'KT08',
@@ -97,7 +161,15 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     north: 60,
     south: 22,
     note: 'Jamu tradisional, doa bersama, dan obrolan warung kopi sering kali menjadi tempat pertama yang dituju sebelum fasilitas medis formal. Puskesmas atau dokter spesialis kerap menjadi pilihan terakhir saat keluhan sudah parah.',
-    writerImplication: 'Posisikan layanan profesional sebagai pendamping alami dari kebiasaan sehat sehari-hari, bukan konfrontasi terhadap kebiasaan lokal.'
+    writerImplication: 'Posisikan layanan profesional sebagai pendamping alami dari kebiasaan sehat sehari-hari, bukan konfrontasi terhadap kebiasaan lokal.',
+    dos: {
+      example: 'Kalau badanmu pegal dan tidur tidak nyenyak, mulailah dengan minum wedang jahe hangat dan jalan santai. Jika lelah tak kunjung reda setelah dua minggu, ada layanan dokter di puskesmas terdekat yang siap membantu.',
+      why: 'Menjembatani kebiasaan herbal/lokal menuju faskes formal secara alami tanpa meremehkan kearifan lokal.'
+    },
+    donts: {
+      example: 'Jamu dan obat tradisional itu tidak ilmiah dan tak berguna. Langsung pergi ke psikiater spesialis sekarang!',
+      why: 'Arogan, meremehkan kebiasaan turun-temurun, dan membuat biaya pencarian bantuan terasa sangat mahal.'
+    }
   },
   {
     id: 'KT09',
@@ -107,7 +179,15 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     north: 35,
     south: 58,
     note: 'Pria Indonesia memiliki banyak kawan nongkrong untuk bercanda, tetapi sangat sedikit teman curhat untuk berbagi kerapuhan batin. Menambah jumlah pria dalam satu ruangan tidak otomatis membuat mereka mau bercerita.',
-    writerImplication: 'Gunakan aktivitas fisik bersama (olahraga, ngopi, kerja bakti) sebagai jembatan pembuka sebelum mengharapkan keterbukaan emosi.'
+    writerImplication: 'Gunakan aktivitas fisik bersama (olahraga, ngopi, kerja bakti) sebagai jembatan pembuka sebelum mengharapkan keterbukaan emosi.',
+    dos: {
+      example: 'Malam ini kita nobar bola bareng di pos ronda sambil ngopi. Kalau lagi penat kerjaan, cukup duduk santai bareng kawan-kawan tanpa harus ada sesi curhat formal.',
+      why: 'Memanfaatkan kebersamaan sebaya (side-by-side) yang nyaman tanpa paksaan membuka aib.'
+    },
+    donts: {
+      example: 'Mumpung lagi kumpul nongkrong, yuk saling buka luka masa lalu dan ceritakan trauma terbesarmu satu per satu!',
+      why: 'Merusak suasana nongkrong yang rileks dan menciptakan kecanggungan sosial yang fatal.'
+    }
   },
   {
     id: 'KT10',
@@ -117,7 +197,15 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     north: 42,
     south: 40,
     note: 'Data empiris di Indonesia menunjukkan bahwa gengsi maskulinitas bukan satu-satunya penghalang; hambatan birokrasi, antrean faskes, dan ketiadaan waktu luang memiliki dampak yang sama besarnya.',
-    writerImplication: 'Sediakan solusi logistik yang praktis (lokasi faskes, jam buka, biaya transparan) alih-alih terus menceramahi pola pikir mereka.'
+    writerImplication: 'Sediakan solusi logistik yang praktis (lokasi faskes, jam buka, biaya transparan) alih-alih terus menceramahi pola pikir mereka.',
+    dos: {
+      example: 'Layanan konsultasi di puskesmas buka setiap hari kerja pukul 08.00–14.00, gratis dengan BPJS. Cukup bawa KTP dan daftar di loket umum.',
+      why: 'Menyediakan informasi logistik praktis, kepastian jam, dan kemudahan biaya yang langsung menyelesaikan hambatan nyata.'
+    },
+    donts: {
+      example: 'Satu-satunya yang menghalangimu berobat adalah egomu sendiri. Buang gengsimu sekarang juga!',
+      why: 'Mengabaikan kenyataan antrean panjang, jam kerja kantor yang ketat, dan kesulitan birokrasi faskes.'
+    }
   },
   {
     id: 'KT11',
@@ -127,7 +215,15 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     north: 55,
     south: 10,
     note: 'Belum ada uji klinis acak (RCT) kalimat berskala besar khusus untuk pria Indonesia. Seluruh panduan di situs ini adalah hasil sintesis bukti ilmiah terkalibrasi yang harus terus diverifikasi secara santun di lapangan.',
-    writerImplication: 'Tulis naskah dengan kerendahhatian dan ketelitian; dengarkan umpan balik langsung dari komunitas pembaca.'
+    writerImplication: 'Tulis naskah dengan kerendahhatian dan ketelitian; dengarkan umpan balik langsung dari komunitas pembaca.',
+    dos: {
+      example: 'Sebagian orang merasa lebih lega setelah bertukar pikiran dengan kawan terpercaya, sebagian lainnya butuh waktu sendiri. Temukan tempo yang paling cocok untuk dirimu.',
+      why: 'Terkalibrasi secara ilmiah, jujur pada variasi respons manusia, dan menghormati ritme individu.'
+    },
+    donts: {
+      example: 'Tips ampuh ini dijamin 100% melipatgandakan kepercayaan diri dan menghapus depresi seluruh pria Indonesia!',
+      why: 'Klaim mutlak tanpa dasar bukti empiris yang merusak integritas dan kredibilitas brand.'
+    }
   }
 ];
 
@@ -206,7 +302,7 @@ export const IndonesianNuancesView: React.FC = () => {
               Apa yang Bisa Diterapkan di Indonesia, dan Apa yang Berbeda
             </h2>
             <p className="text-xs md:text-sm text-stone-400 mt-1">
-              Perbandingan antara temuan literatur global dengan kenyataan psikologis di Indonesia.
+              Perbandingan antara temuan literatur global dengan kenyataan psikologis di Indonesia, lengkap dengan contoh penerapan kalimat nyata.
             </p>
           </div>
 
@@ -248,42 +344,79 @@ export const IndonesianNuancesView: React.FC = () => {
           {filteredContrasts.map((item) => (
             <div
               key={item.id}
-              className="rounded-xl border border-stone-800 bg-stone-900/40 p-5 md:p-6 space-y-4 hover:border-stone-700 transition"
+              className="rounded-xl border border-stone-800 bg-stone-900/40 p-5 md:p-6 space-y-4 hover:border-stone-700 transition flex flex-col justify-between"
             >
-              <div className="flex items-start justify-between gap-2 border-b border-stone-800 pb-3">
-                <div>
-                  <span className="text-[10px] font-mono uppercase text-amber-400 font-semibold">
-                    {item.id}
+              <div className="space-y-3">
+                <div className="flex items-start justify-between gap-2 border-b border-stone-800 pb-3">
+                  <div>
+                    <span className="text-[10px] font-mono uppercase text-amber-400 font-semibold">
+                      {item.id}
+                    </span>
+                    <h4 className="text-base font-serif font-medium text-stone-100 mt-0.5">
+                      {item.dimension}
+                    </h4>
+                  </div>
+                  <span
+                    className={`text-[10px] font-mono px-2.5 py-1 rounded font-semibold uppercase shrink-0 ${
+                      item.status === 'CONVERGES'
+                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                        : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                    }`}
+                  >
+                    {item.statusLabel}
                   </span>
-                  <h4 className="text-base font-serif font-medium text-stone-100 mt-0.5">
-                    {item.dimension}
-                  </h4>
                 </div>
-                <span
-                  className={`text-[10px] font-mono px-2.5 py-1 rounded font-semibold uppercase shrink-0 ${
-                    item.status === 'CONVERGES'
-                      ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-                      : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
-                  }`}
-                >
-                  {item.statusLabel}
-                </span>
-              </div>
 
-              <p className="text-xs md:text-sm text-stone-300 leading-relaxed">
-                {item.note}
-              </p>
-
-              <div className="rounded-lg bg-stone-950/70 p-3.5 border border-stone-800/80 text-xs space-y-1">
-                <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider font-semibold block">
-                  Implikasi Praktis Bagi Penulis:
-                </span>
-                <p className="text-stone-200 leading-relaxed font-medium">
-                  {item.writerImplication}
+                <p className="text-xs md:text-sm text-stone-300 leading-relaxed">
+                  {item.note}
                 </p>
+
+                <div className="rounded-lg bg-stone-950/70 p-3.5 border border-stone-800/80 text-xs space-y-1">
+                  <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider font-semibold block">
+                    Implikasi Praktis Bagi Penulis:
+                  </span>
+                  <p className="text-stone-200 leading-relaxed font-medium">
+                    {item.writerImplication}
+                  </p>
+                </div>
+
+                {/* Concrete Sentence Examples (Do vs Don't) */}
+                <div className="space-y-2.5 pt-1">
+                  <span className="text-[10px] font-mono text-stone-400 uppercase tracking-wider font-semibold block">
+                    Contoh Penerapan Kalimat:
+                  </span>
+                  
+                  {/* DO */}
+                  <div className="rounded-lg border border-emerald-500/25 bg-emerald-950/20 p-3 space-y-1">
+                    <div className="flex items-center gap-1.5 text-emerald-400 text-[11px] font-mono font-semibold uppercase">
+                      <CheckCircle2 size={13} />
+                      <span>Yang Dianjurkan (Do)</span>
+                    </div>
+                    <p className="font-serif italic text-xs text-emerald-200 leading-relaxed">
+                      "{item.dos.example}"
+                    </p>
+                    <p className="text-[11px] text-stone-400 leading-normal">
+                      {item.dos.why}
+                    </p>
+                  </div>
+
+                  {/* DON'T */}
+                  <div className="rounded-lg border border-rose-500/25 bg-rose-950/20 p-3 space-y-1">
+                    <div className="flex items-center gap-1.5 text-rose-400 text-[11px] font-mono font-semibold uppercase">
+                      <XCircle size={13} />
+                      <span>Yang Berisiko / Dilarang (Don't)</span>
+                    </div>
+                    <p className="font-serif italic text-xs text-rose-200 leading-relaxed">
+                      "{item.donts.example}"
+                    </p>
+                    <p className="text-[11px] text-stone-400 leading-normal">
+                      {item.donts.why}
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="pt-2 border-t border-stone-800/60 flex items-center justify-between text-[11px] font-mono text-stone-400">
+              <div className="pt-3 border-t border-stone-800/60 flex items-center justify-between text-[11px] font-mono text-stone-400">
                 <span>Riset Global: {item.north}%</span>
                 <span>Konteks Indonesia: {item.south}%</span>
               </div>

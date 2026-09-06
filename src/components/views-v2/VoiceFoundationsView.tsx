@@ -9,7 +9,9 @@ import {
   ShieldCheck, 
   Anchor, 
   Scale, 
-  SlidersHorizontal 
+  SlidersHorizontal,
+  Eye,
+  AlertCircle
 } from 'lucide-react';
 
 interface Props {
@@ -97,50 +99,106 @@ const VALUE_PILLARS: ValuePillar[] = [
     boundaryCondition: 'Langkah awal yang ringan adalah jembatan pembuka, bukan pengganti penanganan klinis jika masalah berlanjut.',
     dos: [
       {
-        example: 'Malam ini cukup rapikan satu sudut meja kerjamu, lalu tidurlah 15 menit lebih awal.',
-        why: 'Satu langkah fisik yang jelas titik mulai dan titik selesainya.'
+        example: 'Langkah pertama biasanya ke puskesmas terdekat, bukan langsung ke psikiater. Katakan di loket: "Saya mau periksa ke dokter umum." Antrean bisa agak ramai, bawalah sesuatu untuk dibaca.',
+        why: 'Satu tindakan nyata, kalimat persis yang harus diucapkan di loket, dan hambatan antrean disebutkan jujur di awal.'
       },
       {
-        example: 'Jalani dulu hari ini. Keputusan besar soal karier bisa dipikirkan lagi saat pikiranmu sudah lebih tenang.',
-        why: 'Menurunkan beban mental jangka panjang menjadi ritme 24 jam yang bisa dikendalikan.'
+        example: 'Malam ini cukup rapikan satu sudut meja kerjamu, lalu tidurlah 15 menit lebih awal.',
+        why: 'Satu langkah fisik yang jelas titik mulai dan titik selesainya.'
       }
     ],
     donts: [
       {
-        example: 'Ubah pola pikirmu sekarang dan tata ulang seluruh hidupmu dari nol!',
-        why: 'Tuntutan abstrak yang memicu rasa putus asa bagi orang yang energinya sudah terkuras.'
+        example: 'Jangan ragu mencari bantuan profesional dan segera ubah pola hidupmu!',
+        why: 'Memberikan anjuran klise tanpa jalur teknis yang jelas bagaimana cara mengaksesnya.'
       },
       {
-        example: 'Jangan malas, buktikan kalau kamu punya disiplin baja!',
-        why: 'Menghakimi dan mengabaikan kenyataan kelelahan fisik.'
+        example: 'Ubah pola pikirmu sekarang dan tata ulang seluruh hidupmu dari nol!',
+        why: 'Tuntutan abstrak yang memicu rasa putus asa bagi orang yang energinya sudah terkuras.'
       }
     ]
   },
   {
     id: 'V04',
-    title: 'Menjadi Jangkar, Bukan Cermin Keputusasaan',
-    tagline: 'An Anchor, Not a Mirror',
-    voiceTrait: 'Tetap tenang dan berakar pada kenyataan fisik; jangan ikut larut dalam kepanikan emosional.',
-    positionNote: 'Ketenangan itu menular. Pembaca yang sedang goyah membutuhkan pegangan yang stabil, bukan cermin yang ikut bergetar panik.',
-    boundaryCondition: 'Bersikap sebagai jangkar bukan berarti dingin atau meremehkan beratnya rasa sakit yang dialami pembaca.',
+    title: 'Mulai dari yang Tampak Nyata',
+    tagline: 'Start from What is Visible / Specific Before Emotional',
+    voiceTrait: 'Gunakan detail situasi konkret yang menghadirkan emosi secara alami; jangan jadikan pengakuan emosi sebagai tiket masuk.',
+    positionNote: 'Pria lebih cepat mengenali situasi fisiknya (jam tiga pagi, cek saldo, pundak kaku) dibanding label emosi. Biarkan pembaca yang menyimpulkan perasaannya sendiri.',
+    boundaryCondition: 'Situasi yang digambarkan tidak boleh terlalu sempit hingga mengecualikan pembaca. Pilih situasi yang jamak dialami pria sehari-hari.',
     dos: [
       {
-        example: 'Tarik napas dulu pelan-pelan. Kopi di meja masih hangat. Kita urai masalahnya satu per satu setelah napasmu kembali teratur.',
-        why: 'Menambatkan perhatian pada sensasi fisik nyata di saat ini alih-alih larut dalam proyeksi kecemasan.'
+        example: 'Jam tiga pagi, lampu kamar sudah mati, tapi jari masih terus menggulir memeriksa saldo rekening.',
+        why: 'Situasi nyata yang langsung ia kenali tanpa perlu mengakui kepada orang lain bahwa ia sedang cemas.'
       },
       {
-        example: 'Sangat wajar kepalamu terasa penuh ketika seluruh tenggat waktu datang bersamaan.',
-        why: 'Memvalidasi beban nyata tanpa membesar-besarkannya menjadi bencana yang tak terobati.'
+        example: 'Hal-hal yang biasanya berubah duluan dalam rutinitas harianmu, sebelum orang lain menyadarinya.',
+        why: 'Urutan bertahap: ia bisa membaca keseluruhan tulisan sebelum memutuskan apakah tulisan ini tentang dirinya.'
       }
     ],
     donts: [
       {
-        example: 'Dunia ini memang jahat dan tidak adil pada pria seperti kita!',
-        why: 'Menyulut rasa dendam, amarah destruktif, dan mentalitas korban bersama.'
+        example: '5 Tanda Kamu Sedang Mengalami Depresi Berat dan Putus Asa.',
+        why: 'Langsung mendiagnosis pembaca di posisi paling rentan, tepat pada slide pertama atau judul tulisan.'
       },
       {
-        example: 'Tenang aja bro, semua pasti indah pada waktunya kok!',
-        why: 'Kepura-puraan positif (toxic positivity) yang terdengar hampa dan meremehkan luka nyata.'
+        example: 'Kamu pasti merasa hampa, kesepian, dan gagal sebagai pria, kan?',
+        why: 'Memaksakan label perasaan lalu menuntutnya membenarkan, yang merupakan biaya keterpaparan terselubung empati.'
+      }
+    ]
+  },
+  {
+    id: 'V05',
+    title: 'Jujur & Terbuka tentang Batasan',
+    tagline: 'Clear About the Limits / Calibrated Uncertainty',
+    voiceTrait: 'Terkalibrasi secara ilmiah pada klaim psikologis; lugas dan tanpa basa-basi pada informasi logistik.',
+    positionNote: 'Belum ada uji kalimat acak berskala besar khusus pria Indonesia. Jangan mengklaim kebenaran mutlak. Sebaliknya, informasi darurat disampaikan tegas tanpa keraguan.',
+    boundaryCondition: 'Kehati-hatian ilmiah bukan berarti kalimat menjadi bertele-tele atau kabur. Pada informasi darurat dan akses bantuan, sampaikan secara pasti tanpa keraguan.',
+    dos: [
+      {
+        example: 'Sebagian laki-laki merasa lebih enteng setelah bertukar pikiran dengan kawan terpercaya. Sebagian lagi tidak. Untuk konteks Indonesia, datanya masih terus kami teliti.',
+        why: 'Jujur dan terkalibrasi pada klaim psikologis, menyebutkan batas bukti ilmiah secara transparan.'
+      },
+      {
+        example: 'Layanan 119 ext. 8. Bebas pulsa, 24 jam. Jika kamu merasa tidak sanggup menelepon sendiri, minta orang terdekat yang mendampingimu.',
+        why: 'Nol keraguan pada logistik darurat, dan mengantisipasi jika pembaca sedang tidak mampu bertindak sendiri.'
+      }
+    ],
+    donts: [
+      {
+        example: 'Metode ini terbukti 100% ampuh mengatasi krisis mental seluruh pria Indonesia.',
+        why: 'Belum ada riset kalimat komparatif di Indonesia, sehingga klaim mutlak seperti ini tidak etis dan merusak integritas.'
+      },
+      {
+        example: 'Mungkin kamu bisa coba menghubungi layanan darurat, siapa tahu bisa sedikit membantu.',
+        why: 'Ragu-ragu pada momen krisis paling berbahaya; instruksi darurat harus disampaikan secara lugas dan pasti.'
+      }
+    ]
+  },
+  {
+    id: 'V06',
+    title: 'Tindakan Nyata, Bukan Tuntutan Moral',
+    tagline: 'Action, Not Demands / Lead by Practice',
+    voiceTrait: 'Subjek kalimat adalah tindakan nyata organisasi dan sistem, bukan menunjuk hidung pembaca; posisi moral dinyatakan satu kali dengan konsekuensi yang kami tanggung sendiri.',
+    positionNote: 'Menceramahi publik dengan tuntutan moral ("laki-laki harus...") memicu penolakan batin (reactance). Tunjukkan apa yang organisasi lakukan secara nyata, bukan apa yang pembaca harus ubah.',
+    boundaryCondition: 'Ini bukan izin untuk bersikap pasif. Aturannya adalah: kalimat berfokus pada apa yang kami kerjakan dan biaya yang kami tanggung sendiri.',
+    dos: [
+      {
+        example: 'Antrean psikiater di faskes rata-rata dua minggu. Kami sedang mendata klinik yang layanannya lebih cepat, dan datanya kami buka gratis untuk umum.',
+        why: 'Subjek kalimat adalah sistem dan komitmen nyata organisasi yang memerlukan kerja keras nyata.'
+      },
+      {
+        example: 'Kami menolak kerja sama iklan produk suplemen di kanal ini, meskipun itu berarti kami kehilangan pemasukan sponsor.',
+        why: 'Satu sikap moral yang tegas, dinyatakan secara jujur dengan biaya/konsekuensi yang ditanggung sendiri oleh brand.'
+      }
+    ],
+    donts: [
+      {
+        example: 'Laki-laki Indonesia harus berhenti gengsi dan sadar kesehatan mental!',
+        why: 'Mengkambinghitamkan pembaca secara kolektif dengan kalimat perintah yang memicu resistensi batin.'
+      },
+      {
+        example: 'Sudah saatnya kita semua peduli pada kesehatan jiwa!',
+        why: 'Khotbah moral tanpa komitmen biaya nyata, dan kata "kita" yang tidak memiliki rujukan tindakan konkret.'
       }
     ]
   }
@@ -245,7 +303,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
   });
 
   const activeValue = VALUE_PILLARS.find((v) => v.id === activeValueId) ?? VALUE_PILLARS[0];
-  const valueIcons = [Compass, ShieldCheck, Anchor, Scale];
+  const valueIcons = [Scale, ShieldCheck, Compass, Eye, AlertCircle, Anchor];
 
   return (
     <div className="space-y-12 pb-16">
@@ -280,20 +338,20 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 4 Core Pillars of Writing */}
+      {/* 6 Core Pillars of Writing */}
       <section className="space-y-6">
         <div>
           <h2 className="text-lg md:text-xl font-serif text-stone-100 flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-amber-400" />
-            4 Pilar Nilai Menungsa dalam Praktik Menulis
+            6 Nilai Utama Menungsa dalam Praktik Menulis (Rekonsiliasi Lengkap V1–V6)
           </h2>
           <p className="text-xs md:text-sm text-stone-400 mt-1">
-            Prinsip utama yang memandu setiap pilihan kata, ritme kalimat, dan pendekatan emosional.
+            Enam prinsip nilai yang disintesis langsung dari basis data riset Menungsa (V1–V6), memandu pilihan kata, ritme kalimat, dan batasan etis penulisan.
           </p>
         </div>
 
         {/* Value selector pills */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {VALUE_PILLARS.map((val, idx) => {
             const Icon = valueIcons[idx % valueIcons.length];
             const isSelected = val.id === activeValueId;
