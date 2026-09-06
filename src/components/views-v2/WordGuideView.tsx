@@ -192,19 +192,18 @@ export const WordGuideView: React.FC = () => {
   return (
     <div className="space-y-10 pb-16">
       {/* Header */}
-      <div className="border-b border-stone-800 pb-6 space-y-3">
-        <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-mono font-medium text-amber-300">
-          <BookOpen size={13} />
-          <span>KAMUS RAGAM & PILIHAN KATA</span>
+      <div className="space-y-3">
+        <div className="kicker flex items-center gap-1.5">
+          <Sparkles size={12} className="text-amber-500" />
+          <span>KAMUS & PILIHAN KATA</span>
         </div>
-        <h1 className="text-2xl md:text-3xl font-serif tracking-tight text-stone-100">
+        <h1 className="text-3xl md:text-4xl font-serif font-semibold tracking-tight text-stone-100 leading-tight">
           Panduan Pilihan Kata, Sapaan & Kata Ganti
         </h1>
-        <p className="text-xs md:text-sm text-stone-300 max-w-3xl leading-relaxed">
+        <p className="text-sm md:text-base text-stone-300 max-w-[74ch] leading-relaxed font-sans">
           Pilihan kata ganti dan sapaan pria menentukan apakah pembaca merasa dihormati atau justru merasa dihakimi. Gunakan panduan praktis ini untuk memastikan pilihan kata naskah Anda selalu tepat sasaran.
         </p>
 
-        {/* Tab Switcher */}
         {/* Tab Switcher */}
         <div role="tablist" aria-label="Navigasi Panduan Kata" className="flex flex-wrap gap-2 pt-2">
           <button
@@ -213,9 +212,9 @@ export const WordGuideView: React.FC = () => {
             aria-selected={activeTab === 'pronouns'}
             aria-controls="panel-pronouns"
             onClick={() => setActiveTab('pronouns')}
-            className={`px-4 py-2 rounded-lg text-xs font-medium transition cursor-pointer flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-[6px] text-xs font-sans transition cursor-pointer flex items-center gap-2 ${
               activeTab === 'pronouns'
-                ? 'bg-stone-200 text-stone-950 font-semibold'
+                ? 'bg-amber-500 text-[#F1ECDF] font-semibold shadow-raised'
                 : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-200'
             }`}
           >
@@ -228,9 +227,9 @@ export const WordGuideView: React.FC = () => {
             aria-selected={activeTab === 'gender'}
             aria-controls="panel-gender"
             onClick={() => setActiveTab('gender')}
-            className={`px-4 py-2 rounded-lg text-xs font-medium transition cursor-pointer flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-[6px] text-xs font-sans transition cursor-pointer flex items-center gap-2 ${
               activeTab === 'gender'
-                ? 'bg-stone-200 text-stone-950 font-semibold'
+                ? 'bg-amber-500 text-[#F1ECDF] font-semibold shadow-raised'
                 : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-200'
             }`}
           >
@@ -243,9 +242,9 @@ export const WordGuideView: React.FC = () => {
             aria-selected={activeTab === 'alternatives'}
             aria-controls="panel-alternatives"
             onClick={() => setActiveTab('alternatives')}
-            className={`px-4 py-2 rounded-lg text-xs font-medium transition cursor-pointer flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-[6px] text-xs font-sans transition cursor-pointer flex items-center gap-2 ${
               activeTab === 'alternatives'
-                ? 'bg-stone-200 text-stone-950 font-semibold'
+                ? 'bg-amber-500 text-[#F1ECDF] font-semibold shadow-raised'
                 : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-200'
             }`}
           >

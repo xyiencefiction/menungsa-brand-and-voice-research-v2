@@ -18,91 +18,162 @@
    ═══════════════════════════════════════════════════════════════ */
 
 @theme {
-  /* Referenced once in the sidebar; Tailwind has no 850 step by default, so the
-     class was silently doing nothing until it was declared here. */
   --color-stone-850: oklch(21.6% .005 49.25);
+
+  /* Menungsa Brand Surfaces & Accents (§2) */
+  --color-bone: #F1ECDF;
+  --color-bone-shade: #DDD6C4;
+
+  --color-mn-green: #2E4034;
+  --color-mn-green-wash: #ECF2EE;
+  --color-mn-green-soft: #C7D3CB;
+  --color-mn-green-mid: #86978B;
+  --color-mn-green-deep: #17261C;
+
+  --color-mn-blue: #17243D;
+  --color-mn-blue-wash: #EBF0FA;
+  --color-mn-blue-soft: #C6D0E2;
+  --color-mn-blue-mid: #8493AD;
+
+  --color-mn-orange: #AF4D28;
+  --color-mn-orange-wash: #FFEBE5;
+  --color-mn-orange-soft: #FCBFAA;
+  --color-mn-orange-mid: #CE7859;
+  --color-mn-orange-deep: #893412;
+
+  --color-mn-gold: #D9B44F;
+  --color-mn-gold-soft: #E2CE9C;
+  --color-mn-gold-mid: #AD8E3C;
+
+  --color-mn-ink: #171918;
+
+  /* Typography mappings (§5) */
+  --font-serif: "Crimson Pro", Georgia, serif;
+  --font-sans: "Avenir Next", "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-logo: "Archivo", sans-serif;
+
+  /* Elevation tokens (§10.1) */
+  --shadow-raised: 0 1px 2px rgba(23, 25, 24, 0.04), 0 2px 8px rgba(23, 25, 24, 0.06);
+  --shadow-overlay: 0 2px 4px rgba(23, 25, 24, 0.05), 0 8px 24px rgba(23, 25, 24, 0.08);
+  --shadow-modal: 0 4px 8px rgba(23, 25, 24, 0.06), 0 24px 48px rgba(23, 25, 24, 0.12);
 }
 
 @layer base {
   :root {
     color-scheme: dark;
 
-    /* Tailwind's own stone-500 lands at 3.65:1 on the card surface, under the 4.5:1
-       floor it is used for (placeholders, muted micro-labels). Lifted one step. */
-    --color-stone-500: #8f8a85;
+    /* ── Menungsa Official CSS Custom Properties (§2.3) ── */
+    --mn-bone:        #F1ECDF;
+    --mn-bone-shade:  #DDD6C4;
+    --mn-green:       #2E4034;
+    --mn-blue:        #17243D;
+    --mn-orange:      #AF4D28;
+    --mn-soft-ink:    #171918;
+    --mn-gold:        #D9B44F;
 
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+    /* green ramp */
+    --mn-green-wash:  #ECF2EE;
+    --mn-green-soft:  #C7D3CB;
+    --mn-green-mid:   #86978B;
+    --mn-green-deep:  #17261C;
+
+    /* blue ramp — no deep step */
+    --mn-blue-wash:   #EBF0FA;
+    --mn-blue-soft:   #C6D0E2;
+    --mn-blue-mid:    #8493AD;
+
+    /* orange ramp */
+    --mn-orange-wash: #FFEBE5;
+    --mn-orange-soft: #FCBFAA;
+    --mn-orange-mid:  #CE7859;
+    --mn-orange-deep: #893412;
+
+    /* gold */
+    --mn-gold-soft:   #E2CE9C;
+    --mn-gold-mid:    #AD8E3C;
+
+    /* semantic defaults */
+    --mn-bg:          var(--mn-bone);
+    --mn-text:        var(--mn-blue);
+    --mn-text-muted:  #4A5A70;
+    --mn-border:      var(--mn-bone-shade);
+    --mn-link:        var(--mn-orange);
+
+    /* elevation (§10.1) — soft-ink tinted, two-layer, y-offset only */
+    --mn-elev-flat:    none;
+    --mn-elev-raised:  0 1px 2px rgba(23, 25, 24, 0.04), 0 2px 8px rgba(23, 25, 24, 0.06);
+    --mn-elev-overlay: 0 2px 4px rgba(23, 25, 24, 0.05), 0 8px 24px rgba(23, 25, 24, 0.08);
+    --mn-elev-modal:   0 4px 8px rgba(23, 25, 24, 0.06), 0 24px 48px rgba(23, 25, 24, 0.12);
+
+    /* Typography (§5) */
+    --font-serif: "Crimson Pro", Georgia, serif;
+    --font-sans: "Avenir Next", "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-logo: "Archivo", sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-    /* ── Type scale ────────────────────────────────────────────
-       Ratio ~1.25. The previous scale did most of its work between
-       9px and 12px (steps of 1.09x), so hierarchy had to be carried
-       by colour and uppercase labels instead of size. */
-    --t-micro: 0.6875rem;  /* 11px — ids, axis ticks, table meta   */
+    /* Dark Mode Defaults (Menungsa Editorial Midnight) */
+    --color-stone-950: #0F172A;
+    --color-stone-900: #17243D;
+    --color-stone-850: #131E33;
+    --color-stone-800: #253654;
+    --color-stone-700: #384D72;
+    --color-stone-600: #627699;
+    --color-stone-500: #8493AD;
+    --color-stone-400: #B0BFCF;
+    --color-stone-300: #CBD7E5;
+    --color-stone-200: #E6EDF5;
+    --color-stone-100: #F1ECDF;
+
+    --color-amber-950: #2E150B;
+    --color-amber-900: #5C2511;
+    --color-amber-800: #893412;
+    --color-amber-700: #AF4D28;
+    --color-amber-500: #CE7859;
+    --color-amber-400: #FCBFAA;
+    --color-amber-300: #FFEBE5;
+    --color-amber-200: #FFF5F2;
+
+    --color-emerald-950: #121F17;
+    --color-emerald-900: #1A2E22;
+    --color-emerald-800: #254231;
+    --color-emerald-700: #2E4034;
+    --color-emerald-500: #5C826A;
+    --color-emerald-400: #86978B;
+    --color-emerald-300: #C7D3CB;
+    --color-emerald-200: #ECF2EE;
+    --color-emerald-100: #F5F9F6;
+
+    --color-sky-950: #0E1624;
+    --color-sky-800: #1D2D49;
+    --color-sky-700: #2A4068;
+    --color-sky-500: #4B6E9E;
+    --color-sky-400: #8493AD;
+    --color-sky-300: #C6D0E2;
+    --color-sky-200: #EBF0FA;
+    --color-sky-100: #F5F8FD;
+
+    /* ── Type scale ──────────────────────────────────────────── */
+    --t-micro: 0.6875rem;  /* 11px — kickers, ids, axis ticks       */
     --t-small: 0.8125rem;  /* 13px — secondary prose, captions     */
-    --t-body:  0.9375rem;  /* 15px — reading size, claim text      */
+    --t-body:  1rem;       /* 16px — reading size, body copy       */
     --t-lead:  1.125rem;   /* 18px — section leads                 */
-    --t-h3:    1.375rem;   /* 22px                                  */
-    --t-h2:    1.75rem;    /* 28px                                  */
-    --t-h1:    2.1875rem;  /* 35px                                  */
+    --t-h3:    1.3125rem;  /* 21px — pull quotes                   */
+    --t-h2:    2rem;       /* 32px — headings                      */
+    --t-h1:    2.75rem;    /* 44px — display                       */
 
-    /* ── Colour contract ───────────────────────────────────────
-       Four roles, and nothing crosses between them.
+    --accent: #CE7859;
+    --accent-ink: #0F172A;
 
-       ORDINAL   one hue, for every graded scale: confidence tier,
-                 matrix support, tone level 1-5, funnel stage. The
-                 ramp always runs from "barely there" to "heaviest
-                 against this surface", which means it points the
-                 opposite way in each theme: brighter as it climbs
-                 on dark, darker as it climbs on light.
-       CATEGORY  up to four hues, nominal facts only. Adjacent forms
-                 only: on all-pairs forms such as scatter, cap at
-                 three and encode the rest with marker shape.
-       STATUS    reserved for failure mode and DO / DON'T. Never a
-                 series colour.
-       ACCENT    one hue for interaction: focus, selection, links.
+    --chart-surface: #0F172A;
+    --chart-grid: #253654;
+    --chart-axis: #627699;
+    --chart-label: #8493AD;
+    --chart-label-strong: #F1ECDF;
+    --chart-muted: #384D72;
 
-       Every value below is validated against its own theme surface
-       for step separation, contrast, and colour-vision distance. */
-
-    --ord-1: #6b4a12;
-    --ord-2: #875c16;
-    --ord-3: #a36f1a;
-    --ord-4: #c1861f;
-    --ord-5: #dda12b;
-    --ord-6: #f7c256;
-
-    /* Ink that stays legible on the low and high ends of the ramp. Which end is
-       light flips with the theme, so both are redefined below. */
-    --ord-ink-lo: #f5efe6;
-    --ord-ink-hi: #1c1917;
-    /* The middle of a six-step ramp is too dark for the light ink and too light for
-       the dark one. Only a near-black clears 4.5:1 there, and it does so in both themes. */
-    --ord-ink-mid: #0b0908;
-
-    --cat-1: #3987e5;
-    --cat-2: #d95926;
-    --cat-3: #199e70;
-    --cat-4: #c98500;
-
-    --status-critical: #f0879f;
-    --status-positive: #6ec08a;
-
-    --accent: #fbbf24;
-    --accent-ink: #0c0a09;
-
-    /* Chart chrome. Grid and axes stay one shade off the surface. */
-    --chart-surface: #0c0a09;
-    --chart-grid: #292524;
-    --chart-axis: #6b665f;
-    --chart-label: #a8a29e;
-    --chart-label-strong: #d6d3d1;
-    --chart-muted: #44403c;
-
-    --scrollbar-track: rgba(28, 25, 23, 0.6);
-    --scrollbar-thumb: rgba(120, 113, 108, 0.45);
-    --scrollbar-thumb-hover: rgba(168, 162, 158, 0.65);
+    --scrollbar-track: rgba(15, 23, 42, 0.6);
+    --scrollbar-thumb: rgba(132, 147, 173, 0.45);
+    --scrollbar-thumb-hover: rgba(198, 208, 226, 0.65);
   }
 
   /* ── Light theme ─────────────────────────────────────────────
@@ -114,212 +185,222 @@
     :root:not([data-theme="dark"]) {
       color-scheme: light;
 
-      --color-stone-950: #fbfbfa;
-      --color-stone-900: #f4f4f2;
-      --color-stone-850: #efefec;
-      --color-stone-800: #e3e2df;
-      --color-stone-700: #cecdc8;
-      --color-stone-600: #a5a29c;
-      --color-stone-500: #6d6a64;
-      --color-stone-400: #5f5c56;
-      --color-stone-300: #47443f;
-      --color-stone-200: #34312d;
-      --color-stone-100: #1f1d1a;
+      /* Surfaces: bone is default page background (§2.1), white for resting cards */
+      --color-stone-950: #F1ECDF;
+      --color-stone-900: #FFFFFF;
+      --color-stone-850: #E9E3D3;
+      --color-stone-800: #DDD6C4;
+      --color-stone-700: #C9BFAC;
+      --color-stone-600: #7E8C9D;
+      --color-stone-500: #4A5A70;
+      --color-stone-400: #33435C;
+      --color-stone-300: #233454;
+      --color-stone-200: #17243D;
+      --color-stone-100: #17243D;
 
-      --color-amber-950: #fdf4e3;
-      --color-amber-900: #f6e3b6;
-      --color-amber-800: #e0bd77;
-      --color-amber-700: #c69235;
-      --color-amber-500: #a5540c;
-      --color-amber-400: #96490b;
-      --color-amber-300: #8a4409;
-      --color-amber-200: #6b3406;
+      /* Amber ramp: mapped to Menungsa Orange (Campaign & Invitation §4) */
+      --color-amber-950: #FFEBE5;
+      --color-amber-900: #FCBFAA;
+      --color-amber-800: #CE7859;
+      --color-amber-700: #893412;
+      --color-amber-500: #AF4D28;
+      --color-amber-400: #CE7859;
+      --color-amber-300: #AF4D28;
+      --color-amber-200: #893412;
 
-      --color-emerald-950: #eaf7ef;
-      --color-emerald-900: #cfeeda;
-      --color-emerald-800: #93d3ad;
-      --color-emerald-700: #3f9c69;
-      --color-emerald-500: #0f7a4a;
-      --color-emerald-400: #0d6b41;
-      --color-emerald-300: #0a5c38;
-      --color-emerald-200: #084a2d;
-      --color-emerald-100: #063822;
+      /* Emerald ramp: mapped to Menungsa Green (Programs & Care §4) */
+      --color-emerald-950: #ECF2EE;
+      --color-emerald-900: #C7D3CB;
+      --color-emerald-800: #86978B;
+      --color-emerald-700: #2E4034;
+      --color-emerald-500: #2E4034;
+      --color-emerald-400: #2E4034;
+      --color-emerald-300: #17261C;
+      --color-emerald-200: #17261C;
+      --color-emerald-100: #17261C;
 
-      --color-rose-950: #fdeef2;
-      --color-rose-900: #fbd7e0;
-      --color-rose-800: #f0a3b6;
-      --color-rose-700: #d95f80;
-      --color-rose-500: #b81d45;
-      --color-rose-400: #a81a3f;
-      --color-rose-300: #961738;
-      --color-rose-200: #7c122e;
-      --color-rose-100: #620e24;
+      /* Sky / Blue ramp: mapped to Menungsa Blue (Evidence & Editorial §4) */
+      --color-sky-950: #EBF0FA;
+      --color-sky-900: #C6D0E2;
+      --color-sky-800: #8493AD;
+      --color-sky-700: #17243D;
+      --color-sky-500: #17243D;
+      --color-sky-400: #17243D;
+      --color-sky-300: #17243D;
+      --color-sky-200: #17243D;
+      --color-sky-100: #17243D;
 
-      --color-sky-950: #ecf5fd;
-      --color-sky-800: #a6cef2;
-      --color-sky-700: #4b93d4;
-      --color-sky-500: #1668b0;
-      --color-sky-400: #135c9e;
-      --color-sky-300: #11518b;
-      --color-sky-200: #0d3f6d;
-      --color-sky-100: #0a3054;
+      --color-rose-950: #FFEBE5;
+      --color-rose-900: #FCBFAA;
+      --color-rose-800: #CE7859;
+      --color-rose-700: #AF4D28;
+      --color-rose-500: #AF4D28;
+      --color-rose-400: #CE7859;
+      --color-rose-300: #AF4D28;
+      --color-rose-200: #893412;
+      --color-rose-100: #893412;
 
-      --color-teal-950: #e9f6f4;
-      --color-teal-800: #93d2c9;
-      --color-teal-500: #0d7a6c;
-      --color-teal-400: #0b6b5f;
-      --color-teal-300: #0a5c52;
-      --color-teal-100: #063a33;
+      --color-teal-950: #ECF2EE;
+      --color-teal-800: #C7D3CB;
+      --color-teal-500: #2E4034;
+      --color-teal-400: #2E4034;
+      --color-teal-300: #17261C;
+      --color-teal-100: #17261C;
 
-      --color-purple-950: #f3eefc;
-      --color-purple-800: #c0a8ee;
-      --color-purple-500: #6b3fc0;
-      --color-purple-400: #5f37ab;
-      --color-purple-300: #542f97;
+      --color-purple-950: #EBF0FA;
+      --color-purple-800: #C6D0E2;
+      --color-purple-500: #17243D;
+      --color-purple-400: #8493AD;
+      --color-purple-300: #17243D;
 
-      --color-blue-950: #eaf2fd;
-      --color-blue-800: #a3c8f2;
-      --color-blue-400: #1a5fae;
-      --color-blue-300: #17538f;
+      --color-blue-950: #EBF0FA;
+      --color-blue-800: #C6D0E2;
+      --color-blue-400: #17243D;
+      --color-blue-300: #17243D;
 
-      --ord-1: #d2a04a;
-      --ord-2: #bf8a2e;
-      --ord-3: #a6711b;
-      --ord-4: #8b5a13;
-      --ord-5: #70470f;
-      --ord-6: #54340b;
+      --ord-1: #E2CE9C;
+      --ord-2: #D9B44F;
+      --ord-3: #AD8E3C;
+      --ord-4: #CE7859;
+      --ord-5: #AF4D28;
+      --ord-6: #893412;
 
-      --ord-ink-lo: #1f1608;
-      --ord-ink-hi: #fdf8ef;
-      --ord-ink-mid: #0b0908;
+      --ord-ink-lo: #17243D;
+      --ord-ink-hi: #F1ECDF;
+      --ord-ink-mid: #171918;
 
-      --cat-1: #2a78d6;
-      --cat-2: #c74a1c;
-      --cat-3: #12805a;
-      --cat-4: #5b3fb0;
+      --cat-1: #17243D;
+      --cat-2: #AF4D28;
+      --cat-3: #2E4034;
+      --cat-4: #D9B44F;
 
-      --status-critical: #b81d45;
-      --status-positive: #0f7a4a;
+      --status-critical: #893412;
+      --status-positive: #2E4034;
 
-      --accent: #a5540c;
-      --accent-ink: #fbfbfa;
+      --accent: #AF4D28;
+      --accent-ink: #F1ECDF;
 
-      --chart-surface: #fbfbfa;
-      --chart-grid: #e6e5e2;
-      --chart-axis: #918d87;
-      --chart-label: #6d6a64;
-      --chart-label-strong: #3d3a35;
-      --chart-muted: #dcdad6;
+      --chart-surface: #FFFFFF;
+      --chart-grid: #DDD6C4;
+      --chart-axis: #8493AD;
+      --chart-label: #4A5A70;
+      --chart-label-strong: #17243D;
+      --chart-muted: #DDD6C4;
 
-      --scrollbar-track: rgba(120, 113, 108, 0.08);
-      --scrollbar-thumb: rgba(87, 83, 78, 0.32);
-      --scrollbar-thumb-hover: rgba(41, 37, 36, 0.5);
+      --scrollbar-track: rgba(221, 214, 196, 0.4);
+      --scrollbar-thumb: rgba(132, 147, 173, 0.45);
+      --scrollbar-thumb-hover: rgba(74, 90, 112, 0.65);
     }
   }
 
   :root[data-theme="light"] {
     color-scheme: light;
 
-    --color-stone-950: #fbfbfa;
-    --color-stone-900: #f4f4f2;
-    --color-stone-850: #efefec;
-    --color-stone-800: #e3e2df;
-    --color-stone-700: #cecdc8;
-    --color-stone-600: #a5a29c;
-    --color-stone-500: #6d6a64;
-    --color-stone-400: #5f5c56;
-    --color-stone-300: #47443f;
-    --color-stone-200: #34312d;
-    --color-stone-100: #1f1d1a;
+    /* Surfaces: bone is default page background (§2.1), white for resting cards */
+    --color-stone-950: #F1ECDF;
+    --color-stone-900: #FFFFFF;
+    --color-stone-850: #E9E3D3;
+    --color-stone-800: #DDD6C4;
+    --color-stone-700: #C9BFAC;
+    --color-stone-600: #7E8C9D;
+    --color-stone-500: #4A5A70;
+    --color-stone-400: #33435C;
+    --color-stone-300: #233454;
+    --color-stone-200: #17243D;
+    --color-stone-100: #17243D;
 
-    --color-amber-950: #fdf4e3;
-    --color-amber-900: #f6e3b6;
-    --color-amber-800: #e0bd77;
-    --color-amber-700: #c69235;
-    --color-amber-500: #a5540c;
-    --color-amber-400: #96490b;
-    --color-amber-300: #8a4409;
-    --color-amber-200: #6b3406;
+    /* Amber ramp: mapped to Menungsa Orange (Campaign & Invitation §4) */
+    --color-amber-950: #FFEBE5;
+    --color-amber-900: #FCBFAA;
+    --color-amber-800: #CE7859;
+    --color-amber-700: #893412;
+    --color-amber-500: #AF4D28;
+    --color-amber-400: #CE7859;
+    --color-amber-300: #AF4D28;
+    --color-amber-200: #893412;
 
-    --color-emerald-950: #eaf7ef;
-    --color-emerald-900: #cfeeda;
-    --color-emerald-800: #93d3ad;
-    --color-emerald-700: #3f9c69;
-    --color-emerald-500: #0f7a4a;
-    --color-emerald-400: #0d6b41;
-    --color-emerald-300: #0a5c38;
-    --color-emerald-200: #084a2d;
-    --color-emerald-100: #063822;
+    /* Emerald ramp: mapped to Menungsa Green (Programs & Care §4) */
+    --color-emerald-950: #ECF2EE;
+    --color-emerald-900: #C7D3CB;
+    --color-emerald-800: #86978B;
+    --color-emerald-700: #2E4034;
+    --color-emerald-500: #2E4034;
+    --color-emerald-400: #2E4034;
+    --color-emerald-300: #17261C;
+    --color-emerald-200: #17261C;
+    --color-emerald-100: #17261C;
 
-    --color-rose-950: #fdeef2;
-    --color-rose-900: #fbd7e0;
-    --color-rose-800: #f0a3b6;
-    --color-rose-700: #d95f80;
-    --color-rose-500: #b81d45;
-    --color-rose-400: #a81a3f;
-    --color-rose-300: #961738;
-    --color-rose-200: #7c122e;
-    --color-rose-100: #620e24;
+    /* Sky / Blue ramp: mapped to Menungsa Blue (Evidence & Editorial §4) */
+    --color-sky-950: #EBF0FA;
+    --color-sky-900: #C6D0E2;
+    --color-sky-800: #8493AD;
+    --color-sky-700: #17243D;
+    --color-sky-500: #17243D;
+    --color-sky-400: #17243D;
+    --color-sky-300: #17243D;
+    --color-sky-200: #17243D;
+    --color-sky-100: #17243D;
 
-    --color-sky-950: #ecf5fd;
-    --color-sky-800: #a6cef2;
-    --color-sky-700: #4b93d4;
-    --color-sky-500: #1668b0;
-    --color-sky-400: #135c9e;
-    --color-sky-300: #11518b;
-    --color-sky-200: #0d3f6d;
-    --color-sky-100: #0a3054;
+    --color-rose-950: #FFEBE5;
+    --color-rose-900: #FCBFAA;
+    --color-rose-800: #CE7859;
+    --color-rose-700: #AF4D28;
+    --color-rose-500: #AF4D28;
+    --color-rose-400: #CE7859;
+    --color-rose-300: #AF4D28;
+    --color-rose-200: #893412;
+    --color-rose-100: #893412;
 
-    --color-teal-950: #e9f6f4;
-    --color-teal-800: #93d2c9;
-    --color-teal-500: #0d7a6c;
-    --color-teal-400: #0b6b5f;
-    --color-teal-300: #0a5c52;
-    --color-teal-100: #063a33;
+    --color-teal-950: #ECF2EE;
+    --color-teal-800: #C7D3CB;
+    --color-teal-500: #2E4034;
+    --color-teal-400: #2E4034;
+    --color-teal-300: #17261C;
+    --color-teal-100: #17261C;
 
-    --color-purple-950: #f3eefc;
-    --color-purple-800: #c0a8ee;
-    --color-purple-500: #6b3fc0;
-    --color-purple-400: #5f37ab;
-    --color-purple-300: #542f97;
+    --color-purple-950: #EBF0FA;
+    --color-purple-800: #C6D0E2;
+    --color-purple-500: #17243D;
+    --color-purple-400: #8493AD;
+    --color-purple-300: #17243D;
 
-    --color-blue-950: #eaf2fd;
-    --color-blue-800: #a3c8f2;
-    --color-blue-400: #1a5fae;
-    --color-blue-300: #17538f;
+    --color-blue-950: #EBF0FA;
+    --color-blue-800: #C6D0E2;
+    --color-blue-400: #17243D;
+    --color-blue-300: #17243D;
 
-    --ord-1: #d2a04a;
-    --ord-2: #bf8a2e;
-    --ord-3: #a6711b;
-    --ord-4: #8b5a13;
-    --ord-5: #70470f;
-    --ord-6: #54340b;
+    --ord-1: #E2CE9C;
+    --ord-2: #D9B44F;
+    --ord-3: #AD8E3C;
+    --ord-4: #CE7859;
+    --ord-5: #AF4D28;
+    --ord-6: #893412;
 
-    --ord-ink-lo: #1f1608;
-    --ord-ink-hi: #fdf8ef;
-    --ord-ink-mid: #0b0908;
+    --ord-ink-lo: #17243D;
+    --ord-ink-hi: #F1ECDF;
+    --ord-ink-mid: #171918;
 
-    --cat-1: #2a78d6;
-    --cat-2: #c74a1c;
-    --cat-3: #12805a;
-    --cat-4: #5b3fb0;
+    --cat-1: #17243D;
+    --cat-2: #AF4D28;
+    --cat-3: #2E4034;
+    --cat-4: #D9B44F;
 
-    --status-critical: #b81d45;
-    --status-positive: #0f7a4a;
+    --status-critical: #893412;
+    --status-positive: #2E4034;
 
-    --accent: #a5540c;
-    --accent-ink: #fbfbfa;
+    --accent: #AF4D28;
+    --accent-ink: #F1ECDF;
 
-    --chart-surface: #fbfbfa;
-    --chart-grid: #e6e5e2;
-    --chart-axis: #918d87;
-    --chart-label: #6d6a64;
-    --chart-label-strong: #3d3a35;
-    --chart-muted: #dcdad6;
+    --chart-surface: #FFFFFF;
+    --chart-grid: #DDD6C4;
+    --chart-axis: #8493AD;
+    --chart-label: #4A5A70;
+    --chart-label-strong: #17243D;
+    --chart-muted: #DDD6C4;
 
-    --scrollbar-track: rgba(120, 113, 108, 0.08);
-    --scrollbar-thumb: rgba(87, 83, 78, 0.32);
-    --scrollbar-thumb-hover: rgba(41, 37, 36, 0.5);
+    --scrollbar-track: rgba(221, 214, 196, 0.4);
+    --scrollbar-thumb: rgba(132, 147, 173, 0.45);
+    --scrollbar-thumb-hover: rgba(74, 90, 112, 0.65);
   }
 
   body {
@@ -482,3 +563,61 @@ input[type="range"]:disabled {
     scroll-behavior: auto !important;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   DESIGN.md §10 Web Component Defaults & Classes
+   ═══════════════════════════════════════════════════════════════ */
+
+.btn-primary {
+  background-color: var(--mn-orange);
+  color: var(--mn-bone);
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+.btn-primary:hover:not(:disabled) {
+  opacity: 0.92;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-stone-100);
+  border: 1px solid var(--color-stone-800);
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 120ms ease;
+}
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--color-stone-600);
+  background-color: var(--color-stone-850);
+}
+
+.kicker {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--mn-orange);
+}
+
+.card-mn {
+  border-radius: 9px;
+  border: 1px solid var(--color-stone-800);
+  background-color: var(--color-stone-900);
+}
+
+/* Archivo logo font-variation-settings (§5.1) */
+.font-logo {
+  font-family: var(--font-logo);
+  font-variation-settings: "wght" 900, "wdth" 125;
+}
+

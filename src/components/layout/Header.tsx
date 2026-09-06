@@ -4,6 +4,9 @@ import type { FigureInfo } from '../common/FigureModal';
 import { ThemeToggle } from './ThemeToggle';
 import type { ViewType } from '../../types';
 
+import { MenungsaWordmark } from '../common/MenungsaWordmark';
+import { MenungsaMarkIcon } from '../common/MenungsaMarkIcon';
+
 interface Props {
   currentView: ViewType;
   onSelectView: (view: ViewType) => void;
@@ -45,19 +48,15 @@ export const Header: React.FC<Props> = ({
             onClick={() => onSelectView('foundations')}
             className="flex items-center gap-2.5 text-left cursor-pointer group"
           >
-            <div className="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-500/40 flex items-center justify-center font-serif font-bold text-amber-300 text-base shadow-xs group-hover:bg-amber-500/30 transition">
-              M
-            </div>
+            <MenungsaMarkIcon size={34} className="group-hover:scale-105 transition-transform" />
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-semibold text-stone-100 text-sm sm:text-base tracking-tight font-sans">
-                  MENUNGSA
-                </span>
-                <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/25 font-semibold">
-                  Edisi Penulis (v2)
+                <MenungsaWordmark size="md" />
+                <span className="text-[10px] font-sans font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-300 border border-amber-500/30">
+                  Edisi Penulis
                 </span>
               </div>
-              <p className="text-[11px] text-stone-300 font-sans hidden sm:block">
+              <p className="text-[11px] text-stone-500 dark:text-stone-400 font-sans hidden sm:block">
                 Panduan Praktis Gaya & Nada Penulisan
               </p>
             </div>

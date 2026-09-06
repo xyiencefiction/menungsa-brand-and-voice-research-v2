@@ -27,9 +27,8 @@ import { PlaybookView } from './components/views/PlaybookView';
 import { ResearchGapsView } from './components/views/ResearchGapsView';
 import { ValuesView } from './components/views/ValuesView';
 import { ChannelsView } from './components/views/ChannelsView';
-import { ScenariosView } from './components/views/ScenariosView';
-
 import { ArrowUpRight } from 'lucide-react';
+import { MenungsaWordmark } from './components/common/MenungsaWordmark';
 
 export function App() {
   const parseHash = (): ViewType => {
@@ -200,9 +199,9 @@ export function App() {
       <footer className="border-t border-stone-800 bg-stone-950/80 py-8 px-4 sm:px-6 text-xs text-stone-500 font-sans">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="font-serif font-bold text-stone-300">MENUNGSA</span>
+            <MenungsaWordmark size="sm" />
             <span>·</span>
-            <span>Panduan Gaya & Nada Penulisan (Writer Edition v2)</span>
+            <span>Panduan Gaya & Nada Penulisan (Edisi Penulis v2)</span>
           </div>
 
           <div className="flex items-center gap-4">

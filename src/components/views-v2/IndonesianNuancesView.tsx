@@ -238,15 +238,15 @@ export const IndonesianNuancesView: React.FC = () => {
   return (
     <div className="space-y-10 pb-16">
       {/* Header */}
-      <div className="border-b border-stone-800 pb-6 space-y-3">
-        <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-mono font-medium text-amber-300">
-          <MapPin size={13} />
+      <div className="space-y-3">
+        <div className="kicker flex items-center gap-1.5">
+          <MapPin size={12} className="text-amber-500" />
           <span>KOMPAS BUDAYA INDONESIA</span>
         </div>
-        <h1 className="text-2xl md:text-3xl font-serif tracking-tight text-stone-100">
+        <h1 className="text-3xl md:text-4xl font-serif font-semibold tracking-tight text-stone-100 leading-tight">
           Navigasi Budaya & Psikologi Pria Indonesia
         </h1>
-        <p className="text-xs md:text-sm text-stone-300 max-w-3xl leading-relaxed">
+        <p className="text-sm md:text-base text-stone-300 max-w-[74ch] leading-relaxed font-sans">
           Mengapa banyak pesan kesehatan mental yang berhasil di negara Barat justru memicu cemoohan di Indonesia? Panduan ini merangkum batas-batas budaya, risiko sorotan publik, dan cara menyapa pria Indonesia secara bermartabat.
         </p>
       </div>
@@ -254,40 +254,40 @@ export const IndonesianNuancesView: React.FC = () => {
       {/* The 3 Golden Cultural Realities */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Card 1 */}
-        <div className="rounded-xl border border-stone-800 bg-stone-900/40 p-6 space-y-3">
-          <div className="h-10 w-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+        <div className="rounded-[9px] border border-stone-800 bg-stone-900/50 p-6 space-y-3 shadow-raised">
+          <div className="h-10 w-10 rounded-[6px] bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500">
             <Eye size={20} />
           </div>
-          <h3 className="font-serif text-base font-semibold text-stone-100">
+          <h3 className="font-serif text-lg font-semibold text-stone-100">
             1. Ruang Publik vs Ruang Privat
           </h3>
-          <p className="text-xs text-stone-300 leading-relaxed">
+          <p className="text-xs text-stone-300 leading-relaxed font-sans">
             Pria Indonesia sangat menjaga status sosial di hadapan kawan sebayanya. Di <strong>ruang publik</strong> (feed media sosial, spanduk, webinar terbuka), naskah harus fokus pada kebugaran fisik, ketrampilan kerja, dan tanggung jawab keluarga. Urusan kerentanan emosional hanya boleh masuk di <strong>ruang privat</strong> (WhatsApp tertutup atau sesi empat mata).
           </p>
         </div>
 
         {/* Card 2 */}
-        <div className="rounded-xl border border-stone-800 bg-stone-900/40 p-6 space-y-3">
-          <div className="h-10 w-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+        <div className="rounded-[9px] border border-stone-800 bg-stone-900/50 p-6 space-y-3 shadow-raised">
+          <div className="h-10 w-10 rounded-[6px] bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500 dark:text-emerald-400">
             <ShieldCheck size={20} />
           </div>
-          <h3 className="font-serif text-base font-semibold text-stone-100">
+          <h3 className="font-serif text-lg font-semibold text-stone-100">
             2. Harga Diri vs Rasa Malu (Isin)
           </h3>
-          <p className="text-xs text-stone-300 leading-relaxed">
+          <p className="text-xs text-stone-300 leading-relaxed font-sans">
             Melabeli pria dengan kata-kata seperti "kamu sedang depresi / kamu rapuh" langsung melucuti martabatnya di depan komunitas. Sentuhlah masalah melalui pengamatan fisik yang wajar dialami sehari-hari (misal: jam tidur yang berantakan, kelelahan kerja) tanpa label klinis yang menghakimi.
           </p>
         </div>
 
         {/* Card 3 */}
-        <div className="rounded-xl border border-stone-800 bg-stone-900/40 p-6 space-y-3">
-          <div className="h-10 w-10 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
+        <div className="rounded-[9px] border border-stone-800 bg-stone-900/50 p-6 space-y-3 shadow-raised">
+          <div className="h-10 w-10 rounded-[6px] bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500 dark:text-sky-400">
             <Scale size={20} />
           </div>
-          <h3 className="font-serif text-base font-semibold text-stone-100">
+          <h3 className="font-serif text-lg font-semibold text-stone-100">
             3. Aktivitas Fisik Bersama
           </h3>
-          <p className="text-xs text-stone-300 leading-relaxed">
+          <p className="text-xs text-stone-300 leading-relaxed font-sans">
             Pria Indonesia jauh lebih mudah terhubung melalui aktivitas fisik bersama (futsal santai, ngopi di teras, kerja bakti) daripada sesi pengakuan emosional terbuka. Emosi pria tertampung dengan aman lewat tugas fisik eksternal, bukan lewat konfrontasi verbal yang canggung.
           </p>
         </div>
@@ -297,11 +297,11 @@ export const IndonesianNuancesView: React.FC = () => {
       <div className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h2 className="text-lg md:text-xl font-serif text-stone-100 flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-amber-400" />
+            <h2 className="text-xl md:text-2xl font-serif font-semibold text-stone-100 flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-amber-500" />
               Apa yang Bisa Diterapkan di Indonesia, dan Apa yang Berbeda
             </h2>
-            <p className="text-xs md:text-sm text-stone-400 mt-1">
+            <p className="text-xs md:text-sm text-stone-400 mt-1 font-sans">
               Perbandingan antara temuan literatur global dengan kenyataan psikologis di Indonesia, lengkap dengan contoh penerapan kalimat nyata. Persentase mengukur bobot kemunculan tema dalam korpus riset masing-masing wilayah.
             </p>
           </div>
@@ -309,9 +309,9 @@ export const IndonesianNuancesView: React.FC = () => {
           <div className="flex gap-1.5">
             <button
               onClick={() => setActiveFilter('all')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono transition cursor-pointer ${
+              className={`px-3 py-1.5 rounded-[6px] text-xs font-sans transition cursor-pointer ${
                 activeFilter === 'all'
-                  ? 'bg-stone-200 text-stone-950 font-semibold'
+                  ? 'bg-amber-500 text-[#F1ECDF] font-semibold shadow-raised'
                   : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-200'
               }`}
             >
@@ -319,9 +319,9 @@ export const IndonesianNuancesView: React.FC = () => {
             </button>
             <button
               onClick={() => setActiveFilter('CONVERGES')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono transition cursor-pointer ${
+              className={`px-3 py-1.5 rounded-[6px] text-xs font-sans transition cursor-pointer ${
                 activeFilter === 'CONVERGES'
-                  ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-semibold'
+                  ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-500 dark:text-emerald-300 font-semibold'
                   : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-200'
               }`}
             >
@@ -329,9 +329,9 @@ export const IndonesianNuancesView: React.FC = () => {
             </button>
             <button
               onClick={() => setActiveFilter('DIVERGES')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono transition cursor-pointer ${
+              className={`px-3 py-1.5 rounded-[6px] text-xs font-sans transition cursor-pointer ${
                 activeFilter === 'DIVERGES'
-                  ? 'bg-amber-500/20 border border-amber-500/40 text-amber-300 font-semibold'
+                  ? 'bg-amber-500/20 border border-amber-500/40 text-amber-500 dark:text-amber-300 font-semibold'
                   : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-200'
               }`}
             >
@@ -344,35 +344,35 @@ export const IndonesianNuancesView: React.FC = () => {
           {filteredContrasts.map((item) => (
             <div
               key={item.id}
-              className="rounded-xl border border-stone-800 bg-stone-900/40 p-5 md:p-6 space-y-4 hover:border-stone-700 transition flex flex-col justify-between"
+              className="rounded-[9px] border border-stone-800 bg-stone-900/50 p-5 md:p-6 space-y-4 hover:border-stone-700 transition flex flex-col justify-between shadow-raised"
             >
               <div className="space-y-3">
                 <div className="flex items-start justify-between gap-2 border-b border-stone-800 pb-3">
                   <div>
-                    <span className="text-[10px] font-mono uppercase text-amber-400 font-semibold">
+                    <span className="text-[10px] font-sans font-bold uppercase text-amber-500 tracking-wider">
                       {item.id}
                     </span>
-                    <h4 className="text-base font-serif font-medium text-stone-100 mt-0.5">
+                    <h4 className="text-lg font-serif font-semibold text-stone-100 mt-0.5">
                       {item.dimension}
                     </h4>
                   </div>
                   <span
-                    className={`text-[10px] font-mono px-2.5 py-1 rounded font-semibold uppercase shrink-0 ${
+                    className={`text-[10px] font-sans px-2.5 py-1 rounded-[6px] font-bold uppercase shrink-0 tracking-wider ${
                       item.status === 'CONVERGES'
-                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-                        : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                        ? 'bg-emerald-500/20 text-emerald-500 dark:text-emerald-300 border border-emerald-500/30'
+                        : 'bg-amber-500/20 text-amber-500 dark:text-amber-300 border border-amber-500/30'
                     }`}
                   >
                     {item.statusLabel}
                   </span>
                 </div>
 
-                <p className="text-xs md:text-sm text-stone-300 leading-relaxed">
+                <p className="text-xs md:text-sm text-stone-300 leading-relaxed font-sans">
                   {item.note}
                 </p>
 
-                <div className="rounded-lg bg-stone-950/70 p-3.5 border border-stone-800/80 text-xs space-y-1">
-                  <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider font-semibold block">
+                <div className="rounded-[6px] bg-stone-950/70 p-3.5 border border-stone-800/80 text-xs space-y-1 font-sans">
+                  <span className="kicker block">
                     Implikasi Praktis Bagi Penulis:
                   </span>
                   <p className="text-stone-200 leading-relaxed font-medium">
@@ -382,43 +382,43 @@ export const IndonesianNuancesView: React.FC = () => {
 
                 {/* Concrete Sentence Examples (Do vs Don't) */}
                 <div className="space-y-2.5 pt-1">
-                  <span className="text-[10px] font-mono text-stone-400 uppercase tracking-wider font-semibold block">
+                  <span className="text-[10px] font-sans font-bold text-stone-400 uppercase tracking-wider block">
                     Contoh Penerapan Kalimat:
                   </span>
                   
                   {/* DO */}
-                  <div className="rounded-lg border border-emerald-500/25 bg-emerald-950/20 p-3 space-y-1">
-                    <div className="flex items-center gap-1.5 text-emerald-400 text-xs font-mono font-semibold uppercase">
+                  <div className="rounded-[6px] border border-emerald-500/25 bg-emerald-950/20 p-3 space-y-1">
+                    <div className="flex items-center gap-1.5 text-emerald-500 dark:text-emerald-400 text-xs font-sans font-bold uppercase">
                       <CheckCircle2 size={13} />
                       <span>Yang Dianjurkan (Do)</span>
                     </div>
-                    <p className="font-serif italic text-xs text-emerald-200 leading-relaxed">
+                    <p className="font-serif italic text-xs md:text-sm text-emerald-800 dark:text-emerald-200 leading-relaxed">
                       "{item.dos.example}"
                     </p>
-                    <p className="text-xs text-stone-300 leading-relaxed">
+                    <p className="text-xs text-stone-300 leading-relaxed font-sans">
                       {item.dos.why}
                     </p>
                   </div>
 
                   {/* DON'T */}
-                  <div className="rounded-lg border border-rose-500/25 bg-rose-950/20 p-3 space-y-1">
-                    <div className="flex items-center gap-1.5 text-rose-400 text-xs font-mono font-semibold uppercase">
+                  <div className="rounded-[6px] border border-amber-700/25 bg-amber-950/20 p-3 space-y-1">
+                    <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 text-xs font-sans font-bold uppercase">
                       <XCircle size={13} />
                       <span>Yang Berisiko / Dilarang (Don't)</span>
                     </div>
-                    <p className="font-serif italic text-xs text-rose-200 leading-relaxed">
+                    <p className="font-serif italic text-xs md:text-sm text-amber-800 dark:text-amber-200 leading-relaxed">
                       "{item.donts.example}"
                     </p>
-                    <p className="text-xs text-stone-300 leading-relaxed">
+                    <p className="text-xs text-stone-300 leading-relaxed font-sans">
                       {item.donts.why}
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-stone-800/60 flex items-center justify-between text-xs font-mono text-stone-400">
-                <span title="Bobot frekuensi tema dalam korpus riset global">Bobot Riset Global: <strong className="text-stone-300 font-semibold">{item.north}%</strong></span>
-                <span title="Bobot frekuensi tema dalam konteks Indonesia">Konteks Indonesia: <strong className="text-amber-300 font-semibold">{item.south}%</strong></span>
+              <div className="pt-3 border-t border-stone-800/60 flex items-center justify-between text-xs font-sans text-stone-400">
+                <span title="Bobot frekuensi tema dalam korpus riset global">Bobot Riset Global: <strong className="text-stone-300 font-semibold font-mono">{item.north}%</strong></span>
+                <span title="Bobot frekuensi tema dalam konteks Indonesia">Konteks Indonesia: <strong className="text-amber-500 font-semibold font-mono">{item.south}%</strong></span>
               </div>
             </div>
           ))}

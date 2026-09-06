@@ -321,15 +321,15 @@ export const CopySandboxView: React.FC = () => {
   return (
     <div className="space-y-12 pb-20">
       {/* Header */}
-      <div className="border-b border-stone-800 pb-6 space-y-3">
-        <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-mono font-medium text-amber-300">
-          <Sliders size={13} />
+      <div className="space-y-3">
+        <div className="kicker flex items-center gap-1.5">
+          <Sliders size={12} className="text-amber-500" />
           <span>SIMULATOR & KAMUS PENGUJI KATA</span>
         </div>
-        <h1 className="text-2xl md:text-3xl font-serif tracking-tight text-stone-100">
+        <h1 className="text-3xl md:text-4xl font-serif font-semibold tracking-tight text-stone-100 leading-tight">
           Lab Uji Draf Naskah & Cheatsheet 9.700+ Kosakata
         </h1>
-        <p className="text-xs md:text-sm text-stone-300 max-w-3xl leading-relaxed">
+        <p className="text-sm md:text-base text-stone-300 max-w-[74ch] leading-relaxed font-sans">
           Uji draf naskah Anda secara langsung dengan sistem pendeteksi hampir sepuluh ribu (9.700+) kata & frasa terkalibrasi. Temukan apakah tulisan Anda berpotensi memicu rasa bersalah (bumerang moral), klise maskulin canggung (cringe), intimidasi klinis, atau sudah selaras dengan gaya membumi Menungsa.
         </p>
       </div>
@@ -357,13 +357,13 @@ export const CopySandboxView: React.FC = () => {
                   setInputText(p.text);
                   setSelectedWord(null);
                 }}
-                className={`text-left px-3 py-2 rounded-lg border text-xs font-sans transition cursor-pointer flex flex-col gap-0.5 ${
+                className={`text-left px-3 py-2 rounded-[6px] border text-xs font-sans transition cursor-pointer flex flex-col gap-0.5 ${
                   inputText === p.text
-                    ? 'bg-amber-950/30 border-amber-500/50 text-amber-200'
+                    ? 'bg-amber-500/20 border-amber-500 text-amber-500 dark:text-amber-200 font-semibold shadow-raised'
                     : 'bg-stone-900/70 border-stone-800 text-stone-300 hover:border-stone-700 hover:text-stone-100'
                 }`}
               >
-                <span className="font-medium text-[11px] truncate">{p.label}</span>
+                <span className="font-semibold text-[11px] truncate">{p.label}</span>
                 <span className="text-[10px] text-stone-400 line-clamp-1">
                   {p.text}
                 </span>
@@ -382,7 +382,7 @@ export const CopySandboxView: React.FC = () => {
               rows={8}
               placeholder="Ketik atau tempel draf naskah Anda di sini untuk diuji dengan 9.700+ kata cheatsheet..."
               aria-label="Kotak uji draf naskah"
-              className="w-full rounded-xl border border-stone-800 bg-stone-900/60 p-4 font-serif text-sm leading-relaxed text-stone-100 placeholder-stone-500 focus:border-amber-500/60 focus:outline-none focus:ring-1 focus:ring-amber-500/30"
+              className="w-full rounded-[9px] border border-stone-800 bg-stone-900/60 p-4 font-sans text-sm md:text-base leading-relaxed text-stone-100 placeholder-stone-500 focus:outline-2 focus:outline-amber-500 focus:outline-offset-1 shadow-raised"
             />
             {inputText && (
               <button
@@ -390,7 +390,7 @@ export const CopySandboxView: React.FC = () => {
                   setInputText('');
                   setSelectedWord(null);
                 }}
-                className="absolute bottom-3 right-3 text-stone-400 hover:text-stone-200 text-xs font-mono px-2.5 py-1 rounded bg-stone-950/80 border border-stone-800 cursor-pointer flex items-center gap-1"
+                className="absolute bottom-3 right-3 text-stone-400 hover:text-stone-200 text-xs font-sans px-2.5 py-1 rounded-[6px] bg-stone-950/80 border border-stone-800 cursor-pointer flex items-center gap-1 shadow-xs"
               >
                 <RotateCcw size={12} />
                 <span>Bersihkan</span>
@@ -557,17 +557,17 @@ export const CopySandboxView: React.FC = () => {
         {/* Right Column: Real-time Diagnostics */}
         <div className="lg:col-span-5 space-y-5">
           {/* 1. Indeks Kalibrasi Nada Menungsa (Composite Calibration Score) */}
-          <div className="rounded-xl border border-stone-800 bg-stone-900/60 p-5 space-y-4">
+          <div className="rounded-[9px] border border-stone-800 bg-stone-900/60 p-5 space-y-4 shadow-raised">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="p-2 rounded-lg bg-amber-500/10 border border-amber-500/25 text-amber-400">
+                <div className="p-2 rounded-[6px] bg-amber-500/10 border border-amber-500/25 text-amber-500">
                   <Gauge size={18} />
                 </div>
                 <div>
-                  <span className="text-xs font-mono uppercase tracking-wider text-stone-200 font-semibold block">
+                  <span className="text-xs font-sans uppercase tracking-wider text-stone-200 font-bold block">
                     Indeks Kalibrasi Nada
                   </span>
-                  <span className="text-[10px] text-stone-400 font-mono">
+                  <span className="text-[10px] text-stone-400 font-sans">
                     Standar Keselarasan Suara Menungsa
                   </span>
                 </div>
@@ -576,9 +576,9 @@ export const CopySandboxView: React.FC = () => {
                 <div className="flex items-baseline gap-1 justify-end">
                   <span className={`text-3xl font-serif font-bold ${
                     analysis.total === 0 ? 'text-stone-500' :
-                    analysis.calibrationScore >= 85 ? 'text-emerald-400' :
-                    analysis.calibrationScore >= 60 ? 'text-amber-400' :
-                    'text-rose-400'
+                    analysis.calibrationScore >= 85 ? 'text-emerald-500 dark:text-emerald-400' :
+                    analysis.calibrationScore >= 60 ? 'text-amber-500 dark:text-amber-400' :
+                    'text-rose-500 dark:text-rose-400'
                   }`}>
                     {analysis.total === 0 ? '--' : analysis.calibrationScore}
                   </span>
@@ -587,34 +587,34 @@ export const CopySandboxView: React.FC = () => {
               </div>
             </div>
 
-            {/* Composite Progress Bar */}
+            {/* Composite Progress Bar - Solid Brand Fills (§2.5) */}
             <div className="space-y-1.5">
               <div className="h-2.5 w-full rounded-full bg-stone-950 overflow-hidden border border-stone-800 flex">
                 <div
                   style={{ width: `${analysis.total === 0 ? 0 : analysis.calibrationScore}%` }}
                   className={`h-full transition-all duration-300 ${
                     analysis.calibrationScore >= 85
-                      ? 'bg-gradient-to-r from-emerald-500 to-teal-400'
+                      ? 'bg-emerald-500'
                       : analysis.calibrationScore >= 60
-                      ? 'bg-gradient-to-r from-amber-500 to-yellow-400'
-                      : 'bg-gradient-to-r from-rose-600 to-rose-400'
+                      ? 'bg-amber-500'
+                      : 'bg-rose-500'
                   }`}
                 />
               </div>
 
-              <div className="flex items-center justify-between text-[11px] font-mono">
+              <div className="flex items-center justify-between text-[11px] font-sans">
                 <span className={`${
                   analysis.total === 0 ? 'text-stone-500' :
-                  analysis.calibrationScore >= 85 ? 'text-emerald-400 font-semibold' :
-                  analysis.calibrationScore >= 60 ? 'text-amber-400 font-semibold' :
-                  'text-rose-400 font-semibold'
+                  analysis.calibrationScore >= 85 ? 'text-emerald-500 dark:text-emerald-400 font-semibold' :
+                  analysis.calibrationScore >= 60 ? 'text-amber-500 dark:text-amber-400 font-semibold' :
+                  'text-rose-500 dark:text-rose-400 font-semibold'
                 }`}>
                   {analysis.total === 0 ? 'Belum Ada Teks' :
                    analysis.calibrationScore >= 85 ? '● Terkalibrasi Prima (Aman & Membumi)' :
                    analysis.calibrationScore >= 60 ? '▲ Cukup Terkalibrasi (Perlu Penyesuaian)' :
                    '✕ Risiko Bumerang Tinggi (Perlu Revisi)'}
                 </span>
-                <span className="text-stone-500">Target ≥ 85</span>
+                <span className="text-stone-500 font-mono">Target ≥ 85</span>
               </div>
             </div>
           </div>

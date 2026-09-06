@@ -145,16 +145,16 @@ export const WritingStudioView: React.FC = () => {
 
   return (
     <div className="space-y-8 pb-16">
-      {/* Studio Header */}
-      <div className="border-b border-stone-800 pb-6 space-y-3">
-        <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-mono font-medium text-amber-300">
-          <Sparkles size={13} />
+      {/* Header */}
+      <div className="space-y-3">
+        <div className="kicker flex items-center gap-1.5">
+          <Sparkles size={12} className="text-amber-500" />
           <span>PUSTAKA CONTOH TULISAN NYATA</span>
         </div>
-        <h1 className="text-2xl md:text-3xl font-serif tracking-tight text-stone-100">
+        <h1 className="text-3xl md:text-4xl font-serif font-semibold tracking-tight text-stone-100 leading-tight">
           Studio Kalimat & Contoh Naskah Terkalibrasi
         </h1>
-        <p className="text-xs md:text-sm text-stone-300 max-w-3xl leading-relaxed">
+        <p className="text-sm md:text-base text-stone-300 max-w-[74ch] leading-relaxed font-sans">
           Kumpulan draf tulisan siap pakai yang dirancang sesuai batas psikologis dan norma budaya pria Indonesia. Setiap contoh menyandingkan kalimat anti-pola yang sering menjadi bumerang dengan kalimat terkalibrasi Menungsa yang aman, membumi, dan bermartabat.
         </p>
       </div>
@@ -168,9 +168,9 @@ export const WritingStudioView: React.FC = () => {
               <button
                 key={ch.id}
                 onClick={() => setSelectedChannel(ch.id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-sans transition cursor-pointer flex items-center gap-1.5 ${
+                className={`px-3 py-1.5 rounded-[6px] text-xs font-sans transition cursor-pointer flex items-center gap-1.5 ${
                   selectedChannel === ch.id
-                    ? 'bg-amber-500 text-stone-950 font-semibold shadow-sm'
+                    ? 'bg-amber-500 text-[#F1ECDF] font-semibold shadow-raised'
                     : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-200 hover:border-stone-700'
                 }`}
               >
@@ -188,7 +188,7 @@ export const WritingStudioView: React.FC = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Cari kata kunci naskah..."
               aria-label="Cari kata kunci naskah"
-              className="w-full rounded-lg border border-stone-800 bg-stone-900/70 pl-8.5 pr-3 py-1.5 text-xs text-stone-200 placeholder-stone-500 focus:border-amber-500/60 focus:outline-none"
+              className="w-full rounded-[6px] border border-stone-800 bg-stone-900/70 pl-8.5 pr-3 py-1.5 text-xs text-stone-200 placeholder-stone-500 focus:outline-2 focus:outline-amber-500 focus:outline-offset-1 font-sans"
             />
           </div>
         </div>
@@ -196,15 +196,15 @@ export const WritingStudioView: React.FC = () => {
         {/* Context Selector Filter — with scroll fade mask */}
         <div className="relative">
           <div
-            className="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-mono text-stone-400"
+            className="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-sans text-stone-400"
             style={{ maskImage: 'linear-gradient(to right, black 88%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, black 88%, transparent 100%)' }}
           >
             <span className="shrink-0 text-stone-400 font-semibold">Situasi Naskah:</span>
           <button
             onClick={() => setSelectedContext('all')}
-            className={`px-2.5 py-1 rounded-md cursor-pointer shrink-0 transition ${
+            className={`px-2.5 py-1 rounded-[6px] cursor-pointer shrink-0 transition font-sans ${
               selectedContext === 'all'
-                ? 'bg-stone-200 text-stone-950 font-semibold'
+                ? 'bg-amber-500 text-[#F1ECDF] font-semibold shadow-raised'
                 : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-200'
             }`}
           >
@@ -217,9 +217,9 @@ export const WritingStudioView: React.FC = () => {
               <button
                 key={ctx.context_id}
                 onClick={() => setSelectedContext(ctx.context_id)}
-                className={`px-2.5 py-1 rounded-md cursor-pointer shrink-0 transition ${
+                className={`px-2.5 py-1 rounded-[6px] cursor-pointer shrink-0 transition font-sans ${
                   isSelected
-                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 font-semibold'
+                    ? 'bg-amber-500/20 text-amber-500 dark:text-amber-300 border border-amber-500/40 font-semibold'
                     : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-200'
                 }`}
               >
@@ -247,15 +247,15 @@ export const WritingStudioView: React.FC = () => {
             return (
               <div
                 key={ex.id}
-                className="rounded-xl border border-stone-800 bg-stone-900/40 p-5 md:p-6 space-y-4 hover:border-stone-700/80 transition"
+                className="rounded-[9px] border border-stone-800 bg-stone-900/50 p-5 md:p-6 space-y-4 hover:border-stone-700/80 transition shadow-raised"
               >
                 {/* Meta Header */}
                 <div className="flex flex-wrap items-center justify-between gap-2 border-b border-stone-800/80 pb-3">
                   <div className="flex items-center gap-2">
-                    <span className="rounded bg-amber-500/10 px-2.5 py-0.5 text-[11px] font-mono font-semibold text-amber-400 border border-amber-500/25">
+                    <span className="rounded-[6px] bg-amber-500/10 px-2.5 py-0.5 text-[11px] font-sans font-bold text-amber-500 border border-amber-500/25 uppercase tracking-wider">
                       {channelLabel}
                     </span>
-                    <span className="text-[11px] font-mono text-stone-300">
+                    <span className="text-[11px] font-sans text-stone-400 font-medium">
                       {ex.contextId}: {contextLabel}
                     </span>
                   </div>
@@ -267,15 +267,15 @@ export const WritingStudioView: React.FC = () => {
                 {/* Comparison Columns */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Calibrated / Worked */}
-                  <div className="rounded-xl border border-emerald-500/30 bg-emerald-950/20 p-4 space-y-3 relative group">
+                  <div className="rounded-[6px] border border-emerald-500/30 bg-emerald-950/20 p-4 space-y-3 relative group">
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-1.5 text-emerald-400 text-xs font-mono font-semibold uppercase">
+                      <div className="flex items-center gap-1.5 text-emerald-500 dark:text-emerald-400 text-xs font-sans font-bold uppercase tracking-wider">
                         <CheckCircle2 size={15} />
                         <span>Gaya Suara Menungsa (Terkalibrasi)</span>
                       </div>
                       <button
                         onClick={() => handleCopy(ex.worked.copy, ex.id)}
-                        className="inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 transition cursor-pointer border border-emerald-500/30"
+                        className="btn-secondary px-2.5 py-1 text-xs gap-1.5 font-sans cursor-pointer"
                         title="Salin ke clipboard"
                         aria-label={isCopied ? "Teks naskah berhasil disalin ke clipboard" : "Salin naskah terkalibrasi ke clipboard"}
                       >
@@ -284,8 +284,8 @@ export const WritingStudioView: React.FC = () => {
                         </span>
                         {isCopied ? (
                           <>
-                            <Check size={13} />
-                            <span>Tersalin!</span>
+                            <Check size={13} className="text-emerald-500" />
+                            <span className="text-emerald-600 dark:text-emerald-400 font-medium">Tersalin!</span>
                           </>
                         ) : (
                           <>
@@ -296,27 +296,27 @@ export const WritingStudioView: React.FC = () => {
                       </button>
                     </div>
 
-                    <blockquote className="font-serif text-sm md:text-base leading-relaxed text-stone-100 italic">
+                    <blockquote className="font-serif text-base leading-relaxed text-stone-100 max-w-[74ch]">
                       "{ex.worked.copy}"
                     </blockquote>
                   </div>
 
                   {/* Weak / Common Anti-Pattern */}
-                  <div className="rounded-xl border border-rose-500/20 bg-rose-950/20 p-4 space-y-3">
-                    <div className="flex items-center gap-1.5 text-rose-400 text-xs font-mono font-semibold uppercase">
+                  <div className="rounded-[6px] border border-amber-700/25 bg-amber-950/20 p-4 space-y-3">
+                    <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 text-xs font-sans font-bold uppercase tracking-wider">
                       <AlertTriangle size={15} />
                       <span>Anti-Pola Umum (Bumerang / Cringe)</span>
                     </div>
 
-                    <blockquote className="font-serif text-sm leading-relaxed text-stone-300 italic">
+                    <blockquote className="font-serif text-sm leading-relaxed text-stone-300 italic max-w-[74ch]">
                       "{ex.weak.copy}"
                     </blockquote>
                   </div>
                 </div>
 
                 {/* Linguistic Rationale */}
-                <div className="rounded-lg bg-stone-950/60 p-4 border border-stone-800/80 text-xs text-stone-300 space-y-1.5">
-                  <div className="font-mono text-[10px] text-amber-400 font-semibold uppercase tracking-wider">
+                <div className="rounded-[6px] bg-stone-950/60 p-4 border border-stone-800/80 text-xs text-stone-300 space-y-1.5 font-sans">
+                  <div className="kicker">
                     Mekanisme & Alasan Pilihan Kata:
                   </div>
                   <p className="leading-relaxed text-stone-200">
