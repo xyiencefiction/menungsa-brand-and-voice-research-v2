@@ -2,11 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { 
   Sliders, 
   Sparkles, 
-  AlertTriangle, 
   CheckCircle2, 
-  HelpCircle, 
-  ArrowRight,
-  RotateCcw,
   ShieldAlert,
   FileText
 } from 'lucide-react';
@@ -25,17 +21,17 @@ const CRINGE_KEYWORDS = [
 const PRESETS = [
   {
     id: 'scolding',
-    label: '1. Contoh Naskah Menggurui (Bumerang)',
+    label: '1. Naskah Menggurui (Bumerang Penolakan)',
     text: 'Sebagai pria sejati, kamu wajib sadar bahwa memendam rasa sakit adalah dosa moral dan aib besar. Jangan jadi pengecut yang lari dari tanggung jawab, bertobatlah dan hadapi beban hidupmu sekarang juga!'
   },
   {
     id: 'cringe',
-    label: '2. Contoh Naskah Klise Alfa (Cringe)',
+    label: '2. Naskah Klise Alfa (Canggung / Cringe)',
     text: 'Bangkitlah wahai para pria alfa! Jangan biarkan dirimu menjadi cowok cemen yang mudah mengeluh. Taklukkan harimu dengan disiplin besi dan buktikan siapa pria tangguh sebenarnya di sini.'
   },
   {
     id: 'calibrated',
-    label: '3. Contoh Naskah Terkalibrasi Menungsa (Aman)',
+    label: '3. Naskah Terkalibrasi Menungsa (Membumi & Aman)',
     text: 'Langkah pertama tidak harus langsung besar. Duduk sejenak 10 menit, rapikan catatan tugas di meja kerja, dan atur ritme istirahatmu. Tubuh kita memang butuh jeda berkala untuk memulihkan energi setelah bekerja keras.'
   }
 ];
@@ -80,40 +76,40 @@ export const CopySandboxView: React.FC = () => {
     if (cringeCount > 0) {
       return {
         status: 'CRINGE_ALERT',
-        title: 'Terdeteksi Klise Hiper-Maskulin (Berpotensi Dicemooh)',
-        description: 'Penggunaan istilah seperti "alfa", "sigma", atau "pria sejati" memicu rasa canggung pada pria dewasa Indonesia. Pesan dianggap tidak tulus atau manipulatif.',
+        title: 'Terdeteksi Klise Maskulinitas yang Canggung (Cringe)',
+        description: 'Penggunaan sebutan seperti "alfa", "sigma", atau "pria sejati" memicu rasa geli dan canggung pada pria dewasa Indonesia. Naskah rentan dicap tidak tulus, dibuat-buat, atau bernada manipulatif.',
         color: 'text-amber-400',
         bg: 'bg-amber-950/20 border-amber-500/30',
-        advice: 'Hapus sebutan identitas maskulinitas. Langsung arahkan naskah pada aktivitas fisik nyata atau ketrampilan fungsional.'
+        advice: 'Hapus sebutan kasta maskulinitas. Langsung arahkan kalimat pada tindakan fisik nyata, ketrampilan kerja, atau tanggung jawab fungsional.'
       };
     }
     if (density >= 35) {
       return {
         status: 'HIGH_MORAL',
-        title: 'Terlalu Menggurui / Normatif (Risiko Tinggi Penolakan)',
-        description: 'Tingginya kata-kata normatif (wajib, harus, dosa, aib) memicu mekanisme pertahanan diri pembaca (reactance). Pembaca merasa dihakimi daripada didukung.',
+        title: 'Terlalu Menggurui / Bernada Menghakimi (Risiko Tinggi Penolakan)',
+        description: 'Tingginya kata-kata normatif (wajib, harus, dosa, aib, pengecut) langsung memicu penolakan batin dan sikap defensif (reactance). Pembaca merasa dihakimi daripada didampingi.',
         color: 'text-rose-400',
         bg: 'bg-rose-950/20 border-rose-500/30',
-        advice: 'Ganti kata perintah "kamu harus" dengan fakta fisiologis atau deskripsi keadaan yang umum dialami.'
+        advice: 'Ganti kata perintah "kamu harus / kamu wajib" dengan pengamatan wajar atau fakta fisiologis tubuh yang umum dialami.'
       };
     }
     if (density >= 15) {
       return {
         status: 'BALANCED',
         title: 'Terukur & Berimbang (Memiliki Bobot Tanpa Menggurui)',
-        description: 'Pesan memiliki ketegasan nilai namun diimbangi dengan konteks yang rasional dan membumi.',
+        description: 'Pesan memiliki ketegasan nilai namun diimbangi dengan konteks yang rasional, tenang, dan bersahaja.',
         color: 'text-amber-300',
         bg: 'bg-amber-950/20 border-amber-500/30',
-        advice: 'Pastikan kalimat penutup memberi ruang kendali (agency) pada pembaca untuk memutuskan langkah berikutnya.'
+        advice: 'Pastikan kalimat penutup memberi ruang kendali mandiri bagi pembaca untuk memutuskan langkah berikutnya tanpa merasa ditekan.'
       };
     }
     return {
       status: 'CALIBRATED',
-      title: 'Aman, Membumi & Fungsional (Gaya Suara Menungsa)',
-      description: 'Naskah bebas dari doktrin moral yang kaku. Fokus pada tindakan konkret, deskripsi bodily rhythm, dan penghormatan pada kedaulatan pembaca.',
+      title: 'Aman, Membumi & Bermartabat (Gaya Suara Menungsa)',
+      description: 'Naskah bebas dari doktrin moral yang kaku. Fokus pada tindakan konkret, deskripsi ritme tubuh yang wajar, dan penghormatan penuh pada kedaulatan pembaca.',
       color: 'text-emerald-400',
       bg: 'bg-emerald-950/20 border-emerald-500/30',
-      advice: 'Draf ini sudah memenuhi standar kehangatan dan ketenangan Menungsa.'
+      advice: 'Draf kalimat ini sudah memenuhi standar kehangatan, ketenangan, dan martabat Menungsa.'
     };
   };
 
@@ -130,8 +126,8 @@ export const CopySandboxView: React.FC = () => {
         <h1 className="text-2xl md:text-3xl font-serif tracking-tight text-stone-100">
           Lab Uji Naskah Interaktif (Live Copy Checker)
         </h1>
-        <p className="text-xs md:text-sm text-stone-400 max-w-3xl leading-relaxed">
-          Tempel atau ketik draf tulisan Anda di bawah ini untuk melihat apakah naskah Anda berpotensi memicu resistensi pembaca, terlampau menggurui, atau sudah selaras dengan suara membumi Menungsa.
+        <p className="text-xs md:text-sm text-stone-300 max-w-3xl leading-relaxed">
+          Tempel atau ketik draf tulisan Anda di bawah ini untuk melihat apakah naskah Anda berpotensi memicu penolakan pembaca, terlampau menggurui, atau sudah selaras dengan suara membumi Menungsa.
         </p>
       </div>
 
@@ -142,7 +138,7 @@ export const CopySandboxView: React.FC = () => {
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono uppercase tracking-wider text-stone-300 flex items-center gap-1.5 font-semibold">
               <FileText size={14} className="text-amber-400" />
-              Kotak Draf Naskah:
+              Kotak Uji Draf Naskah:
             </span>
             <span className="text-[11px] font-mono text-stone-400">
               {analysis.total} Kata
@@ -155,7 +151,7 @@ export const CopySandboxView: React.FC = () => {
               <button
                 key={p.id}
                 onClick={() => setInputText(p.text)}
-                className="px-2.5 py-1 rounded bg-stone-900 border border-stone-800 text-[11px] font-mono text-stone-400 hover:text-stone-200 hover:border-stone-700 transition cursor-pointer"
+                className="px-2.5 py-1 rounded-md bg-stone-900 border border-stone-800 text-[11px] font-sans text-stone-300 hover:text-stone-100 hover:border-stone-700 transition cursor-pointer"
               >
                 {p.label}
               </button>
@@ -167,13 +163,13 @@ export const CopySandboxView: React.FC = () => {
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               rows={8}
-              placeholder="Ketik atau tempel draf naskah Anda di sini..."
+              placeholder="Ketik atau tempel draf naskah Anda di sini untuk diuji..."
               className="w-full rounded-xl border border-stone-800 bg-stone-900/60 p-4 font-serif text-sm leading-relaxed text-stone-100 placeholder-stone-500 focus:border-amber-500/60 focus:outline-none focus:ring-1 focus:ring-amber-500/30"
             />
             {inputText && (
               <button
                 onClick={() => setInputText('')}
-                className="absolute bottom-3 right-3 text-stone-400 hover:text-stone-200 text-xs font-mono px-2 py-1 rounded bg-stone-950/80 border border-stone-800 cursor-pointer"
+                className="absolute bottom-3 right-3 text-stone-400 hover:text-stone-200 text-xs font-mono px-2.5 py-1 rounded bg-stone-950/80 border border-stone-800 cursor-pointer"
               >
                 Bersihkan
               </button>
@@ -183,13 +179,13 @@ export const CopySandboxView: React.FC = () => {
           {/* Detected Keywords Tag Cloud */}
           {(analysis.detectedMoral.length > 0 || analysis.detectedCringe.length > 0) && (
             <div className="rounded-xl border border-stone-800 bg-stone-900/30 p-4 space-y-2 text-xs">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-400 block">
-                Kata-kata Terdeteksi dalam Teks:
+              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-400 block font-semibold">
+                Kata Peringatan yang Terdeteksi dalam Naskah:
               </span>
               <div className="flex flex-wrap gap-1.5">
                 {analysis.detectedMoral.map((w, i) => (
                   <span key={`m-${i}`} className="px-2 py-0.5 rounded bg-rose-500/15 border border-rose-500/30 text-rose-300 font-mono text-[11px]">
-                    moral: "{w}"
+                    penghakiman: "{w}"
                   </span>
                 ))}
                 {analysis.detectedCringe.map((w, i) => (
@@ -207,8 +203,8 @@ export const CopySandboxView: React.FC = () => {
           {/* Moral Density Meter */}
           <div className="rounded-xl border border-stone-800 bg-stone-900/50 p-5 space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-mono uppercase tracking-wider text-stone-300 font-semibold">
-                Kepadatan Moral (Moral Density)
+              <span className="text-xs font-mono uppercase tracking-wider text-stone-200 font-semibold">
+                Kepadatan Nada Moral (Moral Density)
               </span>
               <span className="text-sm font-mono font-bold text-amber-400">
                 {analysis.density}%
@@ -237,15 +233,15 @@ export const CopySandboxView: React.FC = () => {
           </div>
 
           {/* Diagnosis Card */}
-          <div className={`rounded-xl border p-5 space-y-3 ${evaluation.bg}`}>
+          <div className={`rounded-xl border p-5 space-y-3.5 ${evaluation.bg}`}>
             <div className="flex items-start gap-2.5">
               {analysis.density >= 35 || analysis.cringeCount > 0 ? (
-                <ShieldAlert size={18} className={evaluation.color} />
+                <ShieldAlert size={18} className={`${evaluation.color} shrink-0 mt-0.5`} />
               ) : (
-                <CheckCircle2 size={18} className={evaluation.color} />
+                <CheckCircle2 size={18} className={`${evaluation.color} shrink-0 mt-0.5`} />
               )}
               <div className="space-y-1">
-                <h3 className={`text-sm font-serif font-semibold ${evaluation.color}`}>
+                <h3 className={`text-sm font-serif font-semibold ${evaluation.color} leading-snug`}>
                   {evaluation.title}
                 </h3>
                 <p className="text-xs text-stone-300 leading-relaxed">
@@ -254,11 +250,11 @@ export const CopySandboxView: React.FC = () => {
               </div>
             </div>
 
-            <div className="pt-2 border-t border-stone-800/80 text-xs text-stone-300 space-y-1">
+            <div className="pt-2.5 border-t border-stone-800/80 text-xs text-stone-300 space-y-1">
               <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider block font-semibold">
                 Rekomendasi Perbaikan:
               </span>
-              <p className="leading-normal">
+              <p className="leading-relaxed text-stone-200">
                 {evaluation.advice}
               </p>
             </div>
@@ -267,24 +263,24 @@ export const CopySandboxView: React.FC = () => {
           {/* Golden Writing Checklist */}
           <div className="rounded-xl border border-stone-800 bg-stone-900/30 p-5 space-y-3">
             <span className="text-xs font-mono uppercase tracking-wider text-stone-400 font-semibold block">
-              Daftar Periksa Sebelum Tayang (Checklist):
+              Daftar Periksa Sebelum Naskah Tayang:
             </span>
             <div className="space-y-2 text-xs text-stone-300">
-              <label className="flex items-start gap-2">
+              <label className="flex items-start gap-2 cursor-pointer">
                 <input type="checkbox" className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0" />
                 <span>Tidak mendikte pembaca dengan kata "kamu harus" atau "kamu wajib".</span>
               </label>
-              <label className="flex items-start gap-2">
+              <label className="flex items-start gap-2 cursor-pointer">
                 <input type="checkbox" className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0" />
-                <span>Bebas dari label klise maskulinitas ("pria sejati", "alfa").</span>
+                <span>Bebas dari sebutan klise maskulinitas ("pria sejati", "alfa", "pejantan").</span>
               </label>
-              <label className="flex items-start gap-2">
+              <label className="flex items-start gap-2 cursor-pointer">
                 <input type="checkbox" className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0" />
-                <span>Menawarkan kendali (agency) berupa langkah awal yang berbiaya rendah.</span>
+                <span>Menawarkan kedaulatan memilih (agency) berupa langkah kecil yang terjangkau.</span>
               </label>
-              <label className="flex items-start gap-2">
+              <label className="flex items-start gap-2 cursor-pointer">
                 <input type="checkbox" className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0" />
-                <span>Menjaga martabat pria jika dibaca di ruang terbuka / publik.</span>
+                <span>Menjaga martabat pria jika naskah dibaca di ruang terbuka / publik.</span>
               </label>
             </div>
           </div>

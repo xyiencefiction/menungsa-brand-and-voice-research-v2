@@ -54,11 +54,11 @@ export const Header: React.FC<Props> = ({
                 <span className="font-semibold text-stone-100 text-sm sm:text-base tracking-tight font-sans">
                   MENUNGSA
                 </span>
-                <span className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/25 font-semibold">
-                  v2 Writer Edition
+                <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/25 font-semibold">
+                  Edisi Penulis (v2)
                 </span>
               </div>
-              <p className="text-[11px] text-stone-400 font-sans hidden sm:block">
+              <p className="text-[11px] text-stone-300 font-sans hidden sm:block">
                 Panduan Praktis Gaya & Nada Penulisan
               </p>
             </div>

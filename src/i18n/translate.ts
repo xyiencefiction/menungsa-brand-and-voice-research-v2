@@ -31,8 +31,8 @@ export function translate(value: string, language: Language = 'id'): string {
 }
 
 export function readLanguage(): Language {
-  try { return localStorage.getItem(LANGUAGE_KEY) === 'id' ? 'id' : 'en'; }
-  catch { return 'en'; }
+  try { return localStorage.getItem(LANGUAGE_KEY) === 'en' ? 'en' : 'id'; }
+  catch { return 'id'; }
 }
 
 /** Search the original and its Indonesian wording; both languages remain usable. */
