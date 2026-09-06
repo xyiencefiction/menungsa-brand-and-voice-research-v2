@@ -274,10 +274,10 @@ export const CopySandboxView: React.FC = () => {
           <span>SIMULATOR & KAMUS PENGUJI KATA</span>
         </div>
         <h1 className="text-2xl md:text-3xl font-serif tracking-tight text-stone-100">
-          Lab Uji Draf Naskah & Cheatsheet 1.300+ Kosakata
+          Lab Uji Draf Naskah & Cheatsheet 9.700+ Kosakata
         </h1>
         <p className="text-xs md:text-sm text-stone-300 max-w-3xl leading-relaxed">
-          Uji draf naskah Anda secara langsung dengan sistem pendeteksi 1.300+ kata terkalibrasi. Temukan apakah tulisan Anda berpotensi memicu rasa bersalah (bumerang moral), klise maskulin canggung (cringe), intimidasi klinis, atau sudah selaras dengan gaya membumi Menungsa.
+          Uji draf naskah Anda secara langsung dengan sistem pendeteksi hampir sepuluh ribu (9.700+) kata & frasa terkalibrasi. Temukan apakah tulisan Anda berpotensi memicu rasa bersalah (bumerang moral), klise maskulin canggung (cringe), intimidasi klinis, atau sudah selaras dengan gaya membumi Menungsa.
         </p>
       </div>
 
@@ -327,7 +327,7 @@ export const CopySandboxView: React.FC = () => {
                 setSelectedWord(null);
               }}
               rows={8}
-              placeholder="Ketik atau tempel draf naskah Anda di sini untuk diuji dengan 1.300+ kata cheatsheet..."
+              placeholder="Ketik atau tempel draf naskah Anda di sini untuk diuji dengan 9.700+ kata cheatsheet..."
               className="w-full rounded-xl border border-stone-800 bg-stone-900/60 p-4 font-serif text-sm leading-relaxed text-stone-100 placeholder-stone-500 focus:border-amber-500/60 focus:outline-none focus:ring-1 focus:ring-amber-500/30"
             />
             {inputText && (
@@ -536,13 +536,13 @@ export const CopySandboxView: React.FC = () => {
         </div>
       </div>
 
-      {/* SECTION 2: MASTER CHEATSHEET EXPLORER (1,300+ WORDS) */}
+      {/* SECTION 2: MASTER CHEATSHEET EXPLORER (9,700+ WORDS) */}
       <div className="border-t border-stone-800 pt-10 space-y-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="space-y-1.5">
             <div className="inline-flex items-center gap-1.5 text-xs font-mono text-amber-400 uppercase tracking-wider">
               <BookOpen size={14} />
-              <span>KAMUS BESAR KATA & FRASA NASKAH (1.300+ ENTRI)</span>
+              <span>KAMUS BESAR KATA & FRASA NASKAH (9.700+ ENTRI)</span>
             </div>
             <h2 className="text-xl md:text-2xl font-serif text-stone-100">
               Kamus Cheatsheet Kosakata Menungsa
