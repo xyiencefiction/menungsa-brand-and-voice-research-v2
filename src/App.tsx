@@ -32,11 +32,35 @@ import { ScenariosView } from './components/views/ScenariosView';
 import { ArrowUpRight } from 'lucide-react';
 
 export function App() {
-  const [currentView, setCurrentView] = useState<ViewType>('foundations');
+  const parseHash = (): ViewType => {
+    const hash = window.location.hash.replace('#/', '').replace('#', '');
+    const validViews: ViewType[] = [
+      'foundations', 'studio', 'lexicon', 'sandbox', 'indonesia',
+      'overview', 'values', 'playbook', 'voicelab', 'scenarios',
+      'channels', 'language', 'manosphere', 'moral', 'framing',
+      'mechanisms', 'evidence', 'cross-report', 'contradictions',
+      'resonance', 'gaps',
+    ];
+    return validViews.includes(hash as ViewType) ? (hash as ViewType) : 'foundations';
+  };
+
+  const [currentView, setCurrentView] = useState<ViewType>(parseHash);
   const [activeParam, setActiveParam] = useState<string | undefined>(undefined);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedFigure, setSelectedFigure] = useState<FigureInfo | null>(null);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+
+  // Sync view state from browser back/forward
+  useEffect(() => {
+    const onHashChange = () => {
+      const view = parseHash();
+      setCurrentView(view);
+      setActiveParam(undefined);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
 
   // Global keyboard shortcut for search (Cmd+K / Ctrl+K)
   useEffect(() => {
@@ -54,6 +78,7 @@ export function App() {
     setCurrentView(view);
     setActiveParam(param);
     setIsMobileSidebarOpen(false);
+    window.location.hash = `#/${view}`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -156,6 +181,15 @@ export function App() {
         isMobileSidebarOpen={isMobileSidebarOpen}
         onToggleMobileSidebar={() => setIsMobileSidebarOpen((prev) => !prev)}
       />
+
+      {/* Mobile Sidebar Backdrop */}
+      {isMobileSidebarOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-black/60 md:hidden"
+          onClick={() => setIsMobileSidebarOpen(false)}
+          aria-hidden="true"
+        />
+      )}
 
       {/* Main Content Area */}
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-12">

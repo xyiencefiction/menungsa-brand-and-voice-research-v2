@@ -351,13 +351,17 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
         </div>
 
         {/* Value selector pills */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div role="tablist" aria-label="6 Nilai Utama Menungsa" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {VALUE_PILLARS.map((val, idx) => {
             const Icon = valueIcons[idx % valueIcons.length];
             const isSelected = val.id === activeValueId;
             return (
               <button
                 key={val.id}
+                role="tab"
+                id={`tab-value-${val.id}`}
+                aria-selected={isSelected}
+                aria-controls="panel-value-detail"
                 onClick={() => setActiveValueId(val.id)}
                 className={`p-4 rounded-xl border text-left transition-all cursor-pointer ${
                   isSelected
@@ -384,7 +388,12 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
 
         {/* Active Value Deep Dive Card */}
         {activeValue && (
-          <div className="rounded-xl border border-stone-800 bg-stone-900/50 p-6 space-y-6">
+          <div
+            role="tabpanel"
+            id="panel-value-detail"
+            aria-labelledby={`tab-value-${activeValue.id}`}
+            className="rounded-xl border border-stone-800 bg-stone-900/50 p-6 space-y-6"
+          >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="space-y-3 md:col-span-1 border-b md:border-b-0 md:border-r border-stone-800 pb-4 md:pb-0 md:pr-6">
                 <span className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">
@@ -416,7 +425,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
                     {activeValue.dos.map((d, i) => (
                       <div key={i} className="text-xs text-stone-200 border-t border-emerald-900/40 pt-2.5 space-y-1">
                         <div className="font-serif italic text-emerald-300 leading-snug">"{d.example}"</div>
-                        <div className="text-[11px] text-stone-400 leading-normal">{d.why}</div>
+                        <div className="text-xs text-stone-300 leading-relaxed">{d.why}</div>
                       </div>
                     ))}
                   </div>
@@ -430,7 +439,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
                     {activeValue.donts.map((d, i) => (
                       <div key={i} className="text-xs text-stone-200 border-t border-rose-900/40 pt-2.5 space-y-1">
                         <div className="font-serif italic text-rose-300 leading-snug">"{d.example}"</div>
-                        <div className="text-[11px] text-stone-400 leading-normal">{d.why}</div>
+                        <div className="text-xs text-stone-300 leading-relaxed">{d.why}</div>
                       </div>
                     ))}
                   </div>
@@ -505,16 +514,16 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
                     <span>CONTOH PENULISAN BENAR:</span>
                   </div>
                   <p className="font-serif italic text-stone-100">"{rule.doText}"</p>
-                  <p className="text-[11px] text-stone-400 leading-normal">{rule.doWhy}</p>
+                  <p className="text-xs text-stone-300 leading-relaxed">{rule.doWhy}</p>
                 </div>
 
                 <div className="rounded-lg bg-rose-950/20 border border-rose-500/20 p-3 text-xs text-rose-200 space-y-1.5">
-                  <div className="flex items-center gap-1.5 font-semibold text-rose-400 text-[11px] font-mono">
+                  <div className="flex items-center gap-1.5 font-semibold text-rose-400 text-xs font-mono">
                     <XCircle size={13} />
                     <span>HINDARI BENTUK INI:</span>
                   </div>
                   <p className="font-serif italic text-stone-100">"{rule.dontText}"</p>
-                  <p className="text-[11px] text-stone-400 leading-normal">{rule.dontWhy}</p>
+                  <p className="text-xs text-stone-300 leading-relaxed">{rule.dontWhy}</p>
                 </div>
               </div>
             </div>

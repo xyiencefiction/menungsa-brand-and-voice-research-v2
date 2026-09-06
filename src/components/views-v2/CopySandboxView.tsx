@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   Sliders, 
   Sparkles, 
@@ -76,9 +76,31 @@ export const CopySandboxView: React.FC = () => {
 
   // Cheatsheet Browser State
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState<string>('');
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [visibleCount, setVisibleCount] = useState<number>(36);
   const [copiedTerm, setCopiedTerm] = useState<string | null>(null);
+
+  // Stateful pre-publication checklist
+  const [checkedItems, setCheckedItems] = useState<boolean[]>([false, false, false, false]);
+
+  const toggleCheck = (index: number) => {
+    setCheckedItems((prev) => {
+      const next = [...prev];
+      next[index] = !next[index];
+      return next;
+    });
+  };
+
+  const allChecked = checkedItems.every(Boolean);
+
+  // Debounce search query to keep UI 60fps on mobile with 9.7k entries
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearchQuery(searchQuery);
+    }, 150);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
 
   // Analysis Engine
   const analysis = useMemo(() => {
@@ -236,9 +258,9 @@ export const CopySandboxView: React.FC = () => {
     };
   }, [analysis]);
 
-  // Filtered Cheatsheet Items
+  // Filtered Cheatsheet Items (using debounced query for smooth typing)
   const filteredCheatsheet = useMemo(() => {
-    const q = searchQuery.toLowerCase().trim();
+    const q = debouncedSearchQuery.toLowerCase().trim();
     return cheatsheet.filter((item) => {
       const matchCat = activeCategory === 'all' || item.category === activeCategory;
       if (!matchCat) return false;
@@ -249,7 +271,7 @@ export const CopySandboxView: React.FC = () => {
         item.replacement.toLowerCase().includes(q)
       );
     });
-  }, [searchQuery, activeCategory]);
+  }, [debouncedSearchQuery, activeCategory]);
 
   const displayedCheatsheet = useMemo(() => {
     return filteredCheatsheet.slice(0, visibleCount);
@@ -328,6 +350,7 @@ export const CopySandboxView: React.FC = () => {
               }}
               rows={8}
               placeholder="Ketik atau tempel draf naskah Anda di sini untuk diuji dengan 9.700+ kata cheatsheet..."
+              aria-label="Kotak uji draf naskah"
               className="w-full rounded-xl border border-stone-800 bg-stone-900/60 p-4 font-serif text-sm leading-relaxed text-stone-100 placeholder-stone-500 focus:border-amber-500/60 focus:outline-none focus:ring-1 focus:ring-amber-500/30"
             />
             {inputText && (
@@ -511,25 +534,66 @@ export const CopySandboxView: React.FC = () => {
 
           {/* Golden Writing Checklist */}
           <div className="rounded-xl border border-stone-800 bg-stone-900/30 p-5 space-y-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-stone-400 font-semibold block">
-              Daftar Periksa Sebelum Naskah Tayang:
-            </span>
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-mono uppercase tracking-wider text-stone-400 font-semibold block">
+                Daftar Periksa Sebelum Naskah Tayang:
+              </span>
+              <span className="text-[11px] font-mono text-stone-400">
+                {checkedItems.filter(Boolean).length}/4 Selesai
+              </span>
+            </div>
+
+            {allChecked && (
+              <div className="rounded-lg bg-emerald-500/15 border border-emerald-500/30 p-2.5 flex items-center gap-2 text-xs text-emerald-300 animate-fadeIn">
+                <CheckCircle2 size={15} className="shrink-0 text-emerald-400" />
+                <span className="font-medium">Seluruh 4 poin etika naskah terverifikasi aman & membumi.</span>
+              </div>
+            )}
+
             <div className="space-y-2 text-xs text-stone-300">
-              <label className="flex items-start gap-2 cursor-pointer">
-                <input type="checkbox" className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0" />
-                <span>Bebas dari sanksi moral & pendiktean mutlak ("harus", "wajib", "dosa").</span>
+              <label className="flex items-start gap-2 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={checkedItems[0]}
+                  onChange={() => toggleCheck(0)}
+                  className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0 cursor-pointer"
+                />
+                <span className={checkedItems[0] ? 'text-stone-100 line-through opacity-80' : ''}>
+                  Bebas dari sanksi moral & pendiktean mutlak ("harus", "wajib", "dosa").
+                </span>
               </label>
-              <label className="flex items-start gap-2 cursor-pointer">
-                <input type="checkbox" className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0" />
-                <span>Bebas dari klise hierarki maskulinitas ("pria sejati", "alfa", "pejantan").</span>
+              <label className="flex items-start gap-2 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={checkedItems[1]}
+                  onChange={() => toggleCheck(1)}
+                  className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0 cursor-pointer"
+                />
+                <span className={checkedItems[1] ? 'text-stone-100 line-through opacity-80' : ''}>
+                  Bebas dari klise hierarki maskulinitas ("pria sejati", "alfa", "pejantan").
+                </span>
               </label>
-              <label className="flex items-start gap-2 cursor-pointer">
-                <input type="checkbox" className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0" />
-                <span>Bebas dari pelabelan medis prematur dan pemaksaan curhat di ruang publik.</span>
+              <label className="flex items-start gap-2 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={checkedItems[2]}
+                  onChange={() => toggleCheck(2)}
+                  className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0 cursor-pointer"
+                />
+                <span className={checkedItems[2] ? 'text-stone-100 line-through opacity-80' : ''}>
+                  Bebas dari pelabelan medis prematur dan pemaksaan curhat di ruang publik.
+                </span>
               </label>
-              <label className="flex items-start gap-2 cursor-pointer">
-                <input type="checkbox" className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0" />
-                <span>Menawarkan kedaulatan memilih (agency): pembaca bebas menentukan langkahnya sendiri.</span>
+              <label className="flex items-start gap-2 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={checkedItems[3]}
+                  onChange={() => toggleCheck(3)}
+                  className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0 cursor-pointer"
+                />
+                <span className={checkedItems[3] ? 'text-stone-100 line-through opacity-80' : ''}>
+                  Menawarkan kedaulatan memilih (agency): pembaca bebas menentukan langkahnya sendiri.
+                </span>
               </label>
             </div>
           </div>
@@ -571,11 +635,13 @@ export const CopySandboxView: React.FC = () => {
                 setVisibleCount(36);
               }}
               placeholder="Cari kata, frasa, atau alasan risiko (contoh: wajib, alfa, trauma, bernapas, tidur)..."
+              aria-label="Cari kata, frasa, atau alasan risiko"
               className="w-full rounded-xl border border-stone-800 bg-stone-900/80 pl-10 pr-4 py-2.5 text-xs md:text-sm text-stone-100 placeholder-stone-500 focus:border-amber-500/60 focus:outline-none focus:ring-1 focus:ring-amber-500/30 font-sans"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
+                aria-label="Hapus pencarian kata kunci"
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono text-stone-400 hover:text-stone-200"
               >
                 Hapus

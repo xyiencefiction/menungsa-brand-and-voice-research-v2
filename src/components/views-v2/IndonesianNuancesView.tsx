@@ -302,7 +302,7 @@ export const IndonesianNuancesView: React.FC = () => {
               Apa yang Bisa Diterapkan di Indonesia, dan Apa yang Berbeda
             </h2>
             <p className="text-xs md:text-sm text-stone-400 mt-1">
-              Perbandingan antara temuan literatur global dengan kenyataan psikologis di Indonesia, lengkap dengan contoh penerapan kalimat nyata.
+              Perbandingan antara temuan literatur global dengan kenyataan psikologis di Indonesia, lengkap dengan contoh penerapan kalimat nyata. Persentase mengukur bobot kemunculan tema dalam korpus riset masing-masing wilayah.
             </p>
           </div>
 
@@ -388,37 +388,37 @@ export const IndonesianNuancesView: React.FC = () => {
                   
                   {/* DO */}
                   <div className="rounded-lg border border-emerald-500/25 bg-emerald-950/20 p-3 space-y-1">
-                    <div className="flex items-center gap-1.5 text-emerald-400 text-[11px] font-mono font-semibold uppercase">
+                    <div className="flex items-center gap-1.5 text-emerald-400 text-xs font-mono font-semibold uppercase">
                       <CheckCircle2 size={13} />
                       <span>Yang Dianjurkan (Do)</span>
                     </div>
                     <p className="font-serif italic text-xs text-emerald-200 leading-relaxed">
                       "{item.dos.example}"
                     </p>
-                    <p className="text-[11px] text-stone-400 leading-normal">
+                    <p className="text-xs text-stone-300 leading-relaxed">
                       {item.dos.why}
                     </p>
                   </div>
 
                   {/* DON'T */}
                   <div className="rounded-lg border border-rose-500/25 bg-rose-950/20 p-3 space-y-1">
-                    <div className="flex items-center gap-1.5 text-rose-400 text-[11px] font-mono font-semibold uppercase">
+                    <div className="flex items-center gap-1.5 text-rose-400 text-xs font-mono font-semibold uppercase">
                       <XCircle size={13} />
                       <span>Yang Berisiko / Dilarang (Don't)</span>
                     </div>
                     <p className="font-serif italic text-xs text-rose-200 leading-relaxed">
                       "{item.donts.example}"
                     </p>
-                    <p className="text-[11px] text-stone-400 leading-normal">
+                    <p className="text-xs text-stone-300 leading-relaxed">
                       {item.donts.why}
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-stone-800/60 flex items-center justify-between text-[11px] font-mono text-stone-400">
-                <span>Riset Global: {item.north}%</span>
-                <span>Konteks Indonesia: {item.south}%</span>
+              <div className="pt-3 border-t border-stone-800/60 flex items-center justify-between text-xs font-mono text-stone-400">
+                <span title="Bobot frekuensi tema dalam korpus riset global">Bobot Riset Global: <strong className="text-stone-300 font-semibold">{item.north}%</strong></span>
+                <span title="Bobot frekuensi tema dalam konteks Indonesia">Konteks Indonesia: <strong className="text-amber-300 font-semibold">{item.south}%</strong></span>
               </div>
             </div>
           ))}

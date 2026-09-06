@@ -187,14 +187,19 @@ export const WritingStudioView: React.FC = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Cari kata kunci naskah..."
+              aria-label="Cari kata kunci naskah"
               className="w-full rounded-lg border border-stone-800 bg-stone-900/70 pl-8.5 pr-3 py-1.5 text-xs text-stone-200 placeholder-stone-500 focus:border-amber-500/60 focus:outline-none"
             />
           </div>
         </div>
 
-        {/* Context Selector Filter */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-mono text-stone-400">
-          <span className="shrink-0 text-stone-400 font-semibold">Situasi Naskah:</span>
+        {/* Context Selector Filter — with scroll fade mask */}
+        <div className="relative">
+          <div
+            className="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-mono text-stone-400"
+            style={{ maskImage: 'linear-gradient(to right, black 88%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, black 88%, transparent 100%)' }}
+          >
+            <span className="shrink-0 text-stone-400 font-semibold">Situasi Naskah:</span>
           <button
             onClick={() => setSelectedContext('all')}
             className={`px-2.5 py-1 rounded-md cursor-pointer shrink-0 transition ${
@@ -224,6 +229,7 @@ export const WritingStudioView: React.FC = () => {
           })}
         </div>
       </div>
+    </div>
 
       {/* Exemplar Cards Grid */}
       <div className="grid grid-cols-1 gap-6">
@@ -269,17 +275,21 @@ export const WritingStudioView: React.FC = () => {
                       </div>
                       <button
                         onClick={() => handleCopy(ex.worked.copy, ex.id)}
-                        className="inline-flex items-center gap-1 text-[11px] font-mono px-2 py-1 rounded bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 transition cursor-pointer border border-emerald-500/30"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 transition cursor-pointer border border-emerald-500/30"
                         title="Salin ke clipboard"
+                        aria-label={isCopied ? "Teks naskah berhasil disalin ke clipboard" : "Salin naskah terkalibrasi ke clipboard"}
                       >
+                        <span className="sr-only" aria-live="polite">
+                          {isCopied ? "Teks berhasil disalin" : ""}
+                        </span>
                         {isCopied ? (
                           <>
-                            <Check size={12} />
+                            <Check size={13} />
                             <span>Tersalin!</span>
                           </>
                         ) : (
                           <>
-                            <Copy size={12} />
+                            <Copy size={13} />
                             <span>Salin Teks</span>
                           </>
                         )}

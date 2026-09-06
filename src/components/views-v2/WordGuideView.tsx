@@ -205,8 +205,13 @@ export const WordGuideView: React.FC = () => {
         </p>
 
         {/* Tab Switcher */}
-        <div className="flex flex-wrap gap-2 pt-2">
+        {/* Tab Switcher */}
+        <div role="tablist" aria-label="Navigasi Panduan Kata" className="flex flex-wrap gap-2 pt-2">
           <button
+            role="tab"
+            id="tab-pronouns"
+            aria-selected={activeTab === 'pronouns'}
+            aria-controls="panel-pronouns"
             onClick={() => setActiveTab('pronouns')}
             className={`px-4 py-2 rounded-lg text-xs font-medium transition cursor-pointer flex items-center gap-2 ${
               activeTab === 'pronouns'
@@ -218,6 +223,10 @@ export const WordGuideView: React.FC = () => {
             <span>1. Kata Ganti (Kamu, Anda, Kita, Gue)</span>
           </button>
           <button
+            role="tab"
+            id="tab-gender"
+            aria-selected={activeTab === 'gender'}
+            aria-controls="panel-gender"
             onClick={() => setActiveTab('gender')}
             className={`px-4 py-2 rounded-lg text-xs font-medium transition cursor-pointer flex items-center gap-2 ${
               activeTab === 'gender'
@@ -229,6 +238,10 @@ export const WordGuideView: React.FC = () => {
             <span>2. Sapaan Pria & Maskulinitas</span>
           </button>
           <button
+            role="tab"
+            id="tab-alternatives"
+            aria-selected={activeTab === 'alternatives'}
+            aria-controls="panel-alternatives"
             onClick={() => setActiveTab('alternatives')}
             className={`px-4 py-2 rounded-lg text-xs font-medium transition cursor-pointer flex items-center gap-2 ${
               activeTab === 'alternatives'
@@ -244,7 +257,7 @@ export const WordGuideView: React.FC = () => {
 
       {/* TAB 1: PRONOUNS */}
       {activeTab === 'pronouns' && (
-        <div className="space-y-8">
+        <div role="tabpanel" id="panel-pronouns" aria-labelledby="tab-pronouns" className="space-y-8">
           {/* Quick Decision Tool */}
           <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-5 md:p-6 space-y-4">
             <div className="flex items-center gap-2 text-amber-400 text-xs font-mono font-semibold uppercase">
@@ -253,10 +266,12 @@ export const WordGuideView: React.FC = () => {
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-              <div>
-                <label className="text-stone-200 font-medium block mb-1.5">Siapa yang berbicara di naskah ini?</label>
+              <div role="radiogroup" aria-labelledby="speaker-type-label">
+                <label id="speaker-type-label" className="text-stone-200 font-medium block mb-1.5">Siapa yang berbicara di naskah ini?</label>
                 <div className="grid grid-cols-2 gap-2">
                   <button
+                    role="radio"
+                    aria-checked={speakerType === 'institution'}
                     onClick={() => setSpeakerType('institution')}
                     className={`p-3 rounded-lg border text-left cursor-pointer transition ${
                       speakerType === 'institution'
@@ -267,6 +282,8 @@ export const WordGuideView: React.FC = () => {
                     🏢 Organisasi Menungsa
                   </button>
                   <button
+                    role="radio"
+                    aria-checked={speakerType === 'person'}
                     onClick={() => setSpeakerType('person')}
                     className={`p-3 rounded-lg border text-left cursor-pointer transition ${
                       speakerType === 'person'
@@ -279,10 +296,12 @@ export const WordGuideView: React.FC = () => {
                 </div>
               </div>
 
-              <div>
-                <label className="text-stone-200 font-medium block mb-1.5">Di mana naskah ini akan diterbitkan?</label>
+              <div role="radiogroup" aria-labelledby="privacy-type-label">
+                <label id="privacy-type-label" className="text-stone-200 font-medium block mb-1.5">Di mana naskah ini akan diterbitkan?</label>
                 <div className="grid grid-cols-2 gap-2">
                   <button
+                    role="radio"
+                    aria-checked={privacyType === 'public'}
                     onClick={() => setPrivacyType('public')}
                     className={`p-3 rounded-lg border text-left cursor-pointer transition ${
                       privacyType === 'public'
@@ -293,6 +312,8 @@ export const WordGuideView: React.FC = () => {
                     📢 Ruang Terbuka (Medsos, Web)
                   </button>
                   <button
+                    role="radio"
+                    aria-checked={privacyType === 'private'}
                     onClick={() => setPrivacyType('private')}
                     className={`p-3 rounded-lg border text-left cursor-pointer transition ${
                       privacyType === 'private'
@@ -326,10 +347,14 @@ export const WordGuideView: React.FC = () => {
               Katalog Lengkap Kata Ganti Bahasa Indonesia:
             </h3>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
+            <div role="tablist" aria-label="Katalog Kata Ganti" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
               {REGISTERS.map((reg) => (
                 <button
                   key={reg.id}
+                  role="tab"
+                  id={`tab-register-${reg.id}`}
+                  aria-selected={selectedRegisterId === reg.id}
+                  aria-controls="panel-register-detail"
                   onClick={() => setSelectedRegisterId(reg.id)}
                   className={`p-3 rounded-xl border text-center transition cursor-pointer ${
                     selectedRegisterId === reg.id
@@ -347,7 +372,12 @@ export const WordGuideView: React.FC = () => {
 
             {/* Active Register Deep Dive */}
             {activeRegister && (
-              <div className="rounded-xl border border-stone-800 bg-stone-900/40 p-6 space-y-4">
+              <div
+                role="tabpanel"
+                id="panel-register-detail"
+                aria-labelledby={`tab-register-${activeRegister.id}`}
+                className="rounded-xl border border-stone-800 bg-stone-900/40 p-6 space-y-4"
+              >
                 <div className="flex items-center justify-between border-b border-stone-800 pb-3">
                   <div>
                     <span className="text-xs font-mono text-amber-400 uppercase font-semibold">Kata Ganti:</span>
@@ -376,7 +406,7 @@ export const WordGuideView: React.FC = () => {
 
       {/* TAB 2: GENDER ADDRESS */}
       {activeTab === 'gender' && (
-        <div className="space-y-6">
+        <div role="tabpanel" id="panel-gender" aria-labelledby="tab-gender" className="space-y-6">
           <div className="rounded-xl border border-stone-800 bg-stone-900/40 p-6 space-y-5">
             <div>
               <h3 className="text-lg font-serif text-stone-100">Kapan Menggunakan "Pria", "Laki-laki", atau Tanpa Label?</h3>
@@ -431,7 +461,7 @@ export const WordGuideView: React.FC = () => {
 
       {/* TAB 3: ETHICAL ALTERNATIVES */}
       {activeTab === 'alternatives' && (
-        <div className="space-y-6">
+        <div role="tabpanel" id="panel-alternatives" aria-labelledby="tab-alternatives" className="space-y-6">
           <div>
             <h3 className="text-base md:text-lg font-serif text-stone-100">
               Kamus Padanan Etis: Mengubah Klise Bumerang Menjadi Bahasa yang Memberdayakan
