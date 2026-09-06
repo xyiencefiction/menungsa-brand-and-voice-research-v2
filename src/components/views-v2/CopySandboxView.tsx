@@ -10,7 +10,11 @@ import {
   Info,
   Copy,
   Check,
-  RotateCcw
+  RotateCcw,
+  Gauge,
+  HeartPulse,
+  Activity,
+  AlertTriangle
 } from 'lucide-react';
 import cheatsheetRaw from '../../data/copyCheatsheet.json';
 
@@ -81,6 +85,9 @@ export const CopySandboxView: React.FC = () => {
   const [visibleCount, setVisibleCount] = useState<number>(36);
   const [copiedTerm, setCopiedTerm] = useState<string | null>(null);
 
+  // Left Column Keyword Category Filter
+  const [filterCategory, setFilterCategory] = useState<string | null>(null);
+
   // Stateful pre-publication checklist
   const [checkedItems, setCheckedItems] = useState<boolean[]>([false, false, false, false]);
 
@@ -114,6 +121,12 @@ export const CopySandboxView: React.FC = () => {
         imperativeCount: 0,
         recommendedCount: 0,
         density: 0,
+        moralDensity: 0,
+        cringeDensity: 0,
+        clinicalDensity: 0,
+        imperativeDensity: 0,
+        recommendedDensity: 0,
+        calibrationScore: 100,
         matches: [] as { entry: CheatsheetEntry; matchText: string }[],
         matchedCategories: { moral: 0, cringe: 0, clinical: 0, imperative: 0, recommended: 0 }
       };
@@ -163,7 +176,19 @@ export const CopySandboxView: React.FC = () => {
       }
     });
 
-    const density = Math.min(100, Math.round((matchedCategories.moral / Math.max(1, total)) * 100));
+    const moralDensity = Math.min(100, Math.round((matchedCategories.moral / Math.max(1, total)) * 100));
+    const cringeDensity = Math.min(100, Math.round((matchedCategories.cringe / Math.max(1, total)) * 100));
+    const clinicalDensity = Math.min(100, Math.round((matchedCategories.clinical / Math.max(1, total)) * 100));
+    const imperativeDensity = Math.min(100, Math.round((matchedCategories.imperative / Math.max(1, total)) * 100));
+    const recommendedDensity = Math.min(100, Math.round((matchedCategories.recommended / Math.max(1, total)) * 100));
+
+    // Menungsa Voice Calibration Score (0 to 100)
+    let calibrationScore = 100;
+    if (total > 0) {
+      const penalties = (moralDensity * 2.2) + (cringeDensity * 1.8) + (clinicalDensity * 1.5) + (imperativeDensity * 1.2);
+      const bonus = recommendedDensity * 0.4;
+      calibrationScore = Math.max(0, Math.min(100, Math.round(100 - penalties + (penalties === 0 ? 0 : bonus))));
+    }
 
     return {
       total,
@@ -172,7 +197,13 @@ export const CopySandboxView: React.FC = () => {
       clinicalCount: matchedCategories.clinical,
       imperativeCount: matchedCategories.imperative,
       recommendedCount: matchedCategories.recommended,
-      density,
+      density: moralDensity,
+      moralDensity,
+      cringeDensity,
+      clinicalDensity,
+      imperativeDensity,
+      recommendedDensity,
+      calibrationScore,
       matches,
       matchedCategories
     };
@@ -367,24 +398,79 @@ export const CopySandboxView: React.FC = () => {
             )}
           </div>
 
-          {/* Real-time Category Counter Pills */}
-          <div className="flex flex-wrap items-center gap-2 pt-1 text-[11px] font-mono">
-            <span className="text-stone-400 font-sans">Deteksi:</span>
-            <span className={`px-2 py-0.5 rounded border ${analysis.moralCount > 0 ? 'bg-rose-500/20 border-rose-500/40 text-rose-300' : 'bg-stone-900 border-stone-800 text-stone-500'}`}>
-              Moral: {analysis.moralCount}
-            </span>
-            <span className={`px-2 py-0.5 rounded border ${analysis.cringeCount > 0 ? 'bg-amber-500/20 border-amber-500/40 text-amber-300' : 'bg-stone-900 border-stone-800 text-stone-500'}`}>
-              Klise: {analysis.cringeCount}
-            </span>
-            <span className={`px-2 py-0.5 rounded border ${analysis.clinicalCount > 0 ? 'bg-purple-500/20 border-purple-500/40 text-purple-300' : 'bg-stone-900 border-stone-800 text-stone-500'}`}>
-              Klinis: {analysis.clinicalCount}
-            </span>
-            <span className={`px-2 py-0.5 rounded border ${analysis.imperativeCount > 0 ? 'bg-yellow-500/20 border-yellow-500/40 text-yellow-300' : 'bg-stone-900 border-stone-800 text-stone-500'}`}>
-              Agresif: {analysis.imperativeCount}
-            </span>
-            <span className={`px-2 py-0.5 rounded border ${analysis.recommendedCount > 0 ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-300' : 'bg-stone-900 border-stone-800 text-stone-500'}`}>
-              Membumi: {analysis.recommendedCount}
-            </span>
+          {/* Real-time Category Counter Pills (Click to filter detected keywords) */}
+          <div className="space-y-1.5 pt-1">
+            <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-mono">
+              <span className="text-stone-400 font-sans text-xs">Filter Deteksi:</span>
+              <button
+                onClick={() => setFilterCategory(filterCategory === 'moral' ? null : 'moral')}
+                className={`px-2 py-0.5 rounded border transition cursor-pointer ${
+                  filterCategory === 'moral'
+                    ? 'bg-rose-500/30 border-rose-500 text-rose-200 ring-1 ring-rose-400 font-bold'
+                    : analysis.moralCount > 0
+                    ? 'bg-rose-500/15 border-rose-500/40 text-rose-300 hover:bg-rose-500/25'
+                    : 'bg-stone-900 border-stone-800 text-stone-500'
+                }`}
+              >
+                Moral: {analysis.moralCount}
+              </button>
+              <button
+                onClick={() => setFilterCategory(filterCategory === 'cringe' ? null : 'cringe')}
+                className={`px-2 py-0.5 rounded border transition cursor-pointer ${
+                  filterCategory === 'cringe'
+                    ? 'bg-amber-500/30 border-amber-500 text-amber-200 ring-1 ring-amber-400 font-bold'
+                    : analysis.cringeCount > 0
+                    ? 'bg-amber-500/15 border-amber-500/40 text-amber-300 hover:bg-amber-500/25'
+                    : 'bg-stone-900 border-stone-800 text-stone-500'
+                }`}
+              >
+                Klise: {analysis.cringeCount}
+              </button>
+              <button
+                onClick={() => setFilterCategory(filterCategory === 'clinical' ? null : 'clinical')}
+                className={`px-2 py-0.5 rounded border transition cursor-pointer ${
+                  filterCategory === 'clinical'
+                    ? 'bg-purple-500/30 border-purple-500 text-purple-200 ring-1 ring-purple-400 font-bold'
+                    : analysis.clinicalCount > 0
+                    ? 'bg-purple-500/15 border-purple-500/40 text-purple-300 hover:bg-purple-500/25'
+                    : 'bg-stone-900 border-stone-800 text-stone-500'
+                }`}
+              >
+                Klinis: {analysis.clinicalCount}
+              </button>
+              <button
+                onClick={() => setFilterCategory(filterCategory === 'imperative' ? null : 'imperative')}
+                className={`px-2 py-0.5 rounded border transition cursor-pointer ${
+                  filterCategory === 'imperative'
+                    ? 'bg-yellow-500/30 border-yellow-500 text-yellow-200 ring-1 ring-yellow-400 font-bold'
+                    : analysis.imperativeCount > 0
+                    ? 'bg-yellow-500/15 border-yellow-500/40 text-yellow-300 hover:bg-yellow-500/25'
+                    : 'bg-stone-900 border-stone-800 text-stone-500'
+                }`}
+              >
+                Agresif: {analysis.imperativeCount}
+              </button>
+              <button
+                onClick={() => setFilterCategory(filterCategory === 'recommended' ? null : 'recommended')}
+                className={`px-2 py-0.5 rounded border transition cursor-pointer ${
+                  filterCategory === 'recommended'
+                    ? 'bg-emerald-500/30 border-emerald-500 text-emerald-200 ring-1 ring-emerald-400 font-bold'
+                    : analysis.recommendedCount > 0
+                    ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/25'
+                    : 'bg-stone-900 border-stone-800 text-stone-500'
+                }`}
+              >
+                Membumi: {analysis.recommendedCount}
+              </button>
+              {filterCategory && (
+                <button
+                  onClick={() => setFilterCategory(null)}
+                  className="text-[10px] text-stone-400 hover:text-stone-200 underline ml-1 cursor-pointer font-sans"
+                >
+                  Reset Filter
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Detected Keywords Interactive Badges */}
@@ -393,15 +479,15 @@ export const CopySandboxView: React.FC = () => {
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-mono uppercase tracking-wider text-stone-300 font-semibold flex items-center gap-1.5">
                   <Sparkles size={13} className="text-amber-400" />
-                  Kata Kunci yang Terdeteksi dalam Naskah (Klik untuk Telaah):
+                  Kata Kunci yang Terdeteksi {filterCategory ? `(${filterCategory})` : ''}:
                 </span>
                 <span className="text-[10px] text-stone-400 font-mono">
-                  {analysis.matches.length} kata
+                  {(filterCategory ? analysis.matches.filter(m => m.entry.category === filterCategory).length : analysis.matches.length)} kata
                 </span>
               </div>
 
               <div className="flex flex-wrap gap-1.5 max-h-32 overflow-y-auto pr-1">
-                {analysis.matches.map((m, idx) => {
+                {(filterCategory ? analysis.matches.filter(m => m.entry.category === filterCategory) : analysis.matches).map((m, idx) => {
                   const cat = m.entry.category;
                   const isSelected = selectedWord?.term === m.entry.term;
                   const badgeClasses = 
@@ -469,36 +555,212 @@ export const CopySandboxView: React.FC = () => {
         </div>
 
         {/* Right Column: Real-time Diagnostics */}
-        <div className="lg:col-span-5 space-y-6">
-          {/* Moral Density Meter */}
-          <div className="rounded-xl border border-stone-800 bg-stone-900/50 p-5 space-y-4">
+        <div className="lg:col-span-5 space-y-5">
+          {/* 1. Indeks Kalibrasi Nada Menungsa (Composite Calibration Score) */}
+          <div className="rounded-xl border border-stone-800 bg-stone-900/60 p-5 space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-mono uppercase tracking-wider text-stone-200 font-semibold">
-                Kepadatan Nada Moral (Moral Density)
-              </span>
-              <span className="text-sm font-mono font-bold text-amber-400">
-                {analysis.density}%
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 rounded-lg bg-amber-500/10 border border-amber-500/25 text-amber-400">
+                  <Gauge size={18} />
+                </div>
+                <div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-stone-200 font-semibold block">
+                    Indeks Kalibrasi Nada
+                  </span>
+                  <span className="text-[10px] text-stone-400 font-mono">
+                    Standar Keselarasan Suara Menungsa
+                  </span>
+                </div>
+              </div>
+              <div className="text-right">
+                <div className="flex items-baseline gap-1 justify-end">
+                  <span className={`text-3xl font-serif font-bold ${
+                    analysis.total === 0 ? 'text-stone-500' :
+                    analysis.calibrationScore >= 85 ? 'text-emerald-400' :
+                    analysis.calibrationScore >= 60 ? 'text-amber-400' :
+                    'text-rose-400'
+                  }`}>
+                    {analysis.total === 0 ? '--' : analysis.calibrationScore}
+                  </span>
+                  <span className="text-xs font-mono text-stone-500">/100</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Composite Progress Bar */}
+            <div className="space-y-1.5">
+              <div className="h-2.5 w-full rounded-full bg-stone-950 overflow-hidden border border-stone-800 flex">
+                <div
+                  style={{ width: `${analysis.total === 0 ? 0 : analysis.calibrationScore}%` }}
+                  className={`h-full transition-all duration-300 ${
+                    analysis.calibrationScore >= 85
+                      ? 'bg-gradient-to-r from-emerald-500 to-teal-400'
+                      : analysis.calibrationScore >= 60
+                      ? 'bg-gradient-to-r from-amber-500 to-yellow-400'
+                      : 'bg-gradient-to-r from-rose-600 to-rose-400'
+                  }`}
+                />
+              </div>
+
+              <div className="flex items-center justify-between text-[11px] font-mono">
+                <span className={`${
+                  analysis.total === 0 ? 'text-stone-500' :
+                  analysis.calibrationScore >= 85 ? 'text-emerald-400 font-semibold' :
+                  analysis.calibrationScore >= 60 ? 'text-amber-400 font-semibold' :
+                  'text-rose-400 font-semibold'
+                }`}>
+                  {analysis.total === 0 ? 'Belum Ada Teks' :
+                   analysis.calibrationScore >= 85 ? '● Terkalibrasi Prima (Aman & Membumi)' :
+                   analysis.calibrationScore >= 60 ? '▲ Cukup Terkalibrasi (Perlu Penyesuaian)' :
+                   '✕ Risiko Bumerang Tinggi (Perlu Revisi)'}
+                </span>
+                <span className="text-stone-500">Target ≥ 85</span>
+              </div>
+            </div>
+          </div>
+
+          {/* 2. 5-Dimension Density Multi-Meter */}
+          <div className="rounded-xl border border-stone-800 bg-stone-900/40 p-5 space-y-4">
+            <div className="flex items-center justify-between border-b border-stone-800 pb-2.5">
+              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-stone-200 font-semibold">
+                <Activity size={15} className="text-amber-400" />
+                <span>5 Dimensi Kepadatan Nada</span>
+              </div>
+              <span className="text-[10px] font-mono text-stone-400">
+                {analysis.total} kata dianalisis
               </span>
             </div>
 
-            {/* Visual Progress Bar */}
-            <div className="h-3 w-full rounded-full bg-stone-950 overflow-hidden border border-stone-800 flex">
-              <div
-                style={{ width: `${Math.min(analysis.density, 100)}%` }}
-                className={`transition-all duration-300 ${
-                  analysis.density >= 25
-                    ? 'bg-rose-500'
-                    : analysis.density >= 12
-                    ? 'bg-amber-500'
-                    : 'bg-emerald-500'
-                }`}
-              />
-            </div>
+            <div className="space-y-3.5">
+              {/* Dimensi 1: Moral */}
+              <div className="space-y-1">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-stone-300 font-medium flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full bg-rose-500" />
+                    <span>Kepadatan Nada Moral</span>
+                  </span>
+                  <div className="flex items-center gap-2 font-mono">
+                    <span className="text-[11px] text-stone-500">({analysis.moralCount} kata)</span>
+                    <span className={`font-semibold ${analysis.moralDensity > 10 ? 'text-rose-400' : 'text-stone-300'}`}>
+                      {analysis.moralDensity}%
+                    </span>
+                  </div>
+                </div>
+                <div className="h-1.5 w-full rounded-full bg-stone-950 overflow-hidden border border-stone-800/80">
+                  <div
+                    style={{ width: `${Math.min(analysis.moralDensity, 100)}%` }}
+                    className={`h-full transition-all duration-300 ${analysis.moralDensity > 10 ? 'bg-rose-500' : 'bg-rose-500/60'}`}
+                  />
+                </div>
+                <div className="flex items-center justify-between text-[10px] text-stone-400">
+                  <span>Beban dosa, aib & pendiktean mutlak</span>
+                  <span className="font-mono text-stone-500">Aman &lt; 10%</span>
+                </div>
+              </div>
 
-            <div className="flex justify-between text-[10px] font-mono text-stone-400">
-              <span>0% (Aman & Membumi)</span>
-              <span>15% (Terukur)</span>
-              <span>30%+ (Risiko Penolakan)</span>
+              {/* Dimensi 2: Klise */}
+              <div className="space-y-1">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-stone-300 font-medium flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full bg-amber-500" />
+                    <span>Kepadatan Klise Maskulin</span>
+                  </span>
+                  <div className="flex items-center gap-2 font-mono">
+                    <span className="text-[11px] text-stone-500">({analysis.cringeCount} kata)</span>
+                    <span className={`font-semibold ${analysis.cringeDensity > 5 ? 'text-amber-400' : 'text-stone-300'}`}>
+                      {analysis.cringeDensity}%
+                    </span>
+                  </div>
+                </div>
+                <div className="h-1.5 w-full rounded-full bg-stone-950 overflow-hidden border border-stone-800/80">
+                  <div
+                    style={{ width: `${Math.min(analysis.cringeDensity, 100)}%` }}
+                    className={`h-full transition-all duration-300 ${analysis.cringeDensity > 5 ? 'bg-amber-500' : 'bg-amber-500/60'}`}
+                  />
+                </div>
+                <div className="flex items-center justify-between text-[10px] text-stone-400">
+                  <span>Hierarki semu (pria sejati, alfa, pejantan)</span>
+                  <span className="font-mono text-stone-500">Aman 0%</span>
+                </div>
+              </div>
+
+              {/* Dimensi 3: Klinis */}
+              <div className="space-y-1">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-stone-300 font-medium flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full bg-purple-500" />
+                    <span>Kepadatan Jargon Klinis</span>
+                  </span>
+                  <div className="flex items-center gap-2 font-mono">
+                    <span className="text-[11px] text-stone-500">({analysis.clinicalCount} kata)</span>
+                    <span className={`font-semibold ${analysis.clinicalDensity > 10 ? 'text-purple-400' : 'text-stone-300'}`}>
+                      {analysis.clinicalDensity}%
+                    </span>
+                  </div>
+                </div>
+                <div className="h-1.5 w-full rounded-full bg-stone-950 overflow-hidden border border-stone-800/80">
+                  <div
+                    style={{ width: `${Math.min(analysis.clinicalDensity, 100)}%` }}
+                    className={`h-full transition-all duration-300 ${analysis.clinicalDensity > 10 ? 'bg-purple-500' : 'bg-purple-500/60'}`}
+                  />
+                </div>
+                <div className="flex items-center justify-between text-[10px] text-stone-400">
+                  <span>Labeling medis prematur & therapy-speak</span>
+                  <span className="font-mono text-stone-500">Aman &lt; 10%</span>
+                </div>
+              </div>
+
+              {/* Dimensi 4: Tuntutan */}
+              <div className="space-y-1">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-stone-300 font-medium flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full bg-yellow-500" />
+                    <span>Kepadatan Tuntutan Agresif</span>
+                  </span>
+                  <div className="flex items-center gap-2 font-mono">
+                    <span className="text-[11px] text-stone-500">({analysis.imperativeCount} kata)</span>
+                    <span className={`font-semibold ${analysis.imperativeDensity > 10 ? 'text-yellow-400' : 'text-stone-300'}`}>
+                      {analysis.imperativeDensity}%
+                    </span>
+                  </div>
+                </div>
+                <div className="h-1.5 w-full rounded-full bg-stone-950 overflow-hidden border border-stone-800/80">
+                  <div
+                    style={{ width: `${Math.min(analysis.imperativeDensity, 100)}%` }}
+                    className={`h-full transition-all duration-300 ${analysis.imperativeDensity > 10 ? 'bg-yellow-500' : 'bg-yellow-500/60'}`}
+                  />
+                </div>
+                <div className="flex items-center justify-between text-[10px] text-stone-400">
+                  <span>Perintah mendesak & pemaksaan curhat</span>
+                  <span className="font-mono text-stone-500">Aman &lt; 10%</span>
+                </div>
+              </div>
+
+              {/* Dimensi 5: Membumi (Grounded / Somatic - POSITIVE) */}
+              <div className="space-y-1 pt-1 border-t border-stone-800/60">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-emerald-300 font-medium flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                    <span>Indeks Nada Membumi (Grounded)</span>
+                  </span>
+                  <div className="flex items-center gap-2 font-mono">
+                    <span className="text-[11px] text-stone-500">({analysis.recommendedCount} kata)</span>
+                    <span className="font-semibold text-emerald-400">
+                      {analysis.recommendedDensity}%
+                    </span>
+                  </div>
+                </div>
+                <div className="h-1.5 w-full rounded-full bg-stone-950 overflow-hidden border border-emerald-950">
+                  <div
+                    style={{ width: `${Math.min(analysis.recommendedDensity, 100)}%` }}
+                    className="h-full bg-emerald-500 transition-all duration-300"
+                  />
+                </div>
+                <div className="flex items-center justify-between text-[10px] text-stone-400">
+                  <span>Jangkar biologis tubuh & logistik konkret</span>
+                  <span className="font-mono text-emerald-400/90 font-medium">Target ideal &gt; 10%</span>
+                </div>
+              </div>
             </div>
           </div>
 
