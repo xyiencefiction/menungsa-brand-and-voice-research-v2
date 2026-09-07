@@ -75,22 +75,22 @@ export const FramingMatrix: React.FC<Props> = ({
             onClick={() => onToggleVisibility(false)}
             className={`px-2.5 py-1 rounded-md font-mono text-[10px] tracking-wide transition-all cursor-pointer flex items-center gap-1.5 ${
               !isPublic
-                ? 'bg-[#af4d28] text-[#f1ecdf] font-semibold shadow-xs'
+                ? 'bg-amber-600 text-bone font-semibold shadow-xs'
                 : 'text-stone-400 hover:text-stone-200'
             }`}
           >
-            <span className={`w-1.5 h-1.5 rounded-full ${!isPublic ? 'bg-white' : 'bg-stone-600'}`} />
+            <span className={`w-1.5 h-1.5 rounded-full ${!isPublic ? 'bg-bone' : 'bg-stone-600'}`} />
             Privat
           </button>
           <button
             onClick={() => onToggleVisibility(true)}
             className={`px-2.5 py-1 rounded-md font-mono text-[10px] tracking-wide transition-all cursor-pointer flex items-center gap-1.5 ${
               isPublic
-                ? 'bg-[#af4d28] text-[#f1ecdf] font-semibold shadow-xs'
+                ? 'bg-amber-600 text-bone font-semibold shadow-xs'
                 : 'text-stone-400 hover:text-stone-200'
             }`}
           >
-            <span className={`w-1.5 h-1.5 rounded-full ${isPublic ? 'bg-white' : 'bg-stone-600'}`} />
+            <span className={`w-1.5 h-1.5 rounded-full ${isPublic ? 'bg-bone' : 'bg-stone-600'}`} />
             Sorotan Publik
           </button>
         </div>

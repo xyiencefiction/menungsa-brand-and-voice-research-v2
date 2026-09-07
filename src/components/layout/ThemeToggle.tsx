@@ -23,6 +23,11 @@ export function readStoredTheme(): ThemeChoice {
 export function applyTheme(choice: ThemeChoice) {
   const root = document.documentElement;
   root.setAttribute('data-theme', choice);
+  if (choice === 'dark') {
+    root.classList.add('dark');
+  } else {
+    root.classList.remove('dark');
+  }
 }
 
 interface Props {

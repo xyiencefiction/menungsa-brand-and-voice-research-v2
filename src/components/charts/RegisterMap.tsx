@@ -315,7 +315,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
               "{activeReg.term}"
             </span>
             {activeReg.id === 'kamu' && (
-              <span className="px-1.5 py-0.5 rounded font-mono text-[9.5px] uppercase tracking-wider bg-[#af4d28]/20 text-[#fcbfaa] border border-[#af4d28]/40 font-bold">
+              <span className="px-1.5 py-0.5 rounded font-mono text-[9.5px] uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold">
                 ★ Titik Seimbang Menungsa
               </span>
             )}

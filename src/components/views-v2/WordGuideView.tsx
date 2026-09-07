@@ -285,14 +285,14 @@ export const WordGuideView: React.FC = () => {
     <div className="space-y-10 pb-16">
       {/* Header */}
       <div className="space-y-3">
-        <div className="kicker flex items-center gap-1.5 text-[#AF4D28] dark:text-amber-500 font-mono text-xs font-bold uppercase tracking-wider">
-          <Sparkles size={13} className="text-[#AF4D28] dark:text-amber-500" />
+        <div className="kicker flex items-center gap-1.5 text-amber-500 font-mono text-xs font-bold uppercase tracking-wider">
+          <Sparkles size={13} className="text-amber-500" />
           <span>KAMUS &amp; PILIHAN KATA</span>
         </div>
-        <h1 className="text-3xl md:text-4xl font-serif font-bold tracking-tight text-[#17243D] dark:text-stone-100 leading-tight">
+        <h1 className="text-3xl md:text-4xl font-serif font-bold tracking-tight text-stone-100 leading-tight">
           Panduan Pilihan Kata, Sapaan &amp; Kata Ganti
         </h1>
-        <p className="text-sm md:text-base text-[#4A5A70] dark:text-stone-300 max-w-[74ch] leading-relaxed font-sans">
+        <p className="text-sm md:text-base text-stone-400 max-w-[74ch] leading-relaxed font-sans">
           Pilihan kata ganti dan sapaan pria menentukan apakah pembaca merasa dihormati atau justru merasa dihakimi. Gunakan panduan praktis ini untuk memastikan pilihan kata naskah Anda selalu tepat sasaran.
         </p>
 
@@ -306,8 +306,8 @@ export const WordGuideView: React.FC = () => {
             onClick={() => setActiveTab('pronouns')}
             className={`px-4 py-2 rounded-[6px] text-xs font-sans transition cursor-pointer flex items-center gap-2 ${
               activeTab === 'pronouns'
-                ? 'bg-[#2E4034] text-[#F1ECDF] font-semibold shadow-raised border border-[#2E4034] dark:bg-emerald-800 dark:text-stone-100'
-                : 'bg-[#FFFFFF] dark:bg-stone-900 border border-[#DDD6C4] dark:border-stone-800 text-[#17243D] dark:text-stone-400 hover:bg-[#F1ECDF] dark:hover:text-stone-200'
+                ? 'bg-emerald-700 text-bone font-semibold shadow-raised border border-emerald-600 dark:bg-emerald-800'
+                : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-100 hover:bg-stone-850'
             }`}
           >
             <Users size={14} />
@@ -321,8 +321,8 @@ export const WordGuideView: React.FC = () => {
             onClick={() => setActiveTab('gender')}
             className={`px-4 py-2 rounded-[6px] text-xs font-sans transition cursor-pointer flex items-center gap-2 ${
               activeTab === 'gender'
-                ? 'bg-[#2E4034] text-[#F1ECDF] font-semibold shadow-raised border border-[#2E4034] dark:bg-emerald-800 dark:text-stone-100'
-                : 'bg-[#FFFFFF] dark:bg-stone-900 border border-[#DDD6C4] dark:border-stone-800 text-[#17243D] dark:text-stone-400 hover:bg-[#F1ECDF] dark:hover:text-stone-200'
+                ? 'bg-emerald-700 text-bone font-semibold shadow-raised border border-emerald-600 dark:bg-emerald-800'
+                : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-100 hover:bg-stone-850'
             }`}
           >
             <ShieldCheck size={14} />
@@ -336,8 +336,8 @@ export const WordGuideView: React.FC = () => {
             onClick={() => setActiveTab('alternatives')}
             className={`px-4 py-2 rounded-[6px] text-xs font-sans transition cursor-pointer flex items-center gap-2 ${
               activeTab === 'alternatives'
-                ? 'bg-[#2E4034] text-[#F1ECDF] font-semibold shadow-raised border border-[#2E4034] dark:bg-emerald-800 dark:text-stone-100'
-                : 'bg-[#FFFFFF] dark:bg-stone-900 border border-[#DDD6C4] dark:border-stone-800 text-[#17243D] dark:text-stone-400 hover:bg-[#F1ECDF] dark:hover:text-stone-200'
+                ? 'bg-emerald-700 text-bone font-semibold shadow-raised border border-emerald-600 dark:bg-emerald-800'
+                : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-100 hover:bg-stone-850'
             }`}
           >
             <Sparkles size={14} />
@@ -350,18 +350,18 @@ export const WordGuideView: React.FC = () => {
       {activeTab === 'pronouns' && (
         <div role="tabpanel" id="panel-pronouns" aria-labelledby="tab-pronouns" className="space-y-8">
           {/* Quick Decision Tool — Programs & Care (Green Wash Panel) */}
-          <div className="rounded-xl border border-[#C7D3CB] bg-[#ECF2EE] dark:bg-stone-900/60 dark:border-stone-800 p-5 md:p-6 space-y-5 shadow-xs">
-            <div className="flex items-center gap-2 text-[#2E4034] dark:text-emerald-400 text-xs font-mono font-bold uppercase tracking-wider">
+          <div className="rounded-xl border border-emerald-900/40 bg-emerald-950/60 p-5 md:p-6 space-y-5 shadow-xs">
+            <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 text-xs font-mono font-bold uppercase tracking-wider">
               <Sparkles size={15} />
               <span>Asisten Pemilihan Kata Ganti Cepat</span>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
               {/* Question 1 */}
-              <div role="radiogroup" aria-labelledby="speaker-type-label" className="space-y-2.5 md:pr-5 md:border-r md:border-[#C7D3CB] dark:md:border-stone-700">
+              <div role="radiogroup" aria-labelledby="speaker-type-label" className="space-y-2.5 md:pr-5 md:border-r md:border-emerald-900/40">
                 <div className="flex items-center gap-2">
-                  <span className="w-5 h-5 rounded-full bg-[#2E4034] text-[#F1ECDF] dark:bg-emerald-800 dark:text-stone-100 font-mono text-[10px] font-bold flex items-center justify-center shrink-0">1</span>
-                  <label id="speaker-type-label" className="text-[#17243D] dark:text-stone-100 font-bold block text-xs">
+                  <span className="w-5 h-5 rounded-full bg-emerald-700 text-bone font-mono text-[10px] font-bold flex items-center justify-center shrink-0">1</span>
+                  <label id="speaker-type-label" className="text-stone-100 font-bold block text-xs">
                     Siapa yang berbicara di naskah ini?
                   </label>
                 </div>
@@ -372,8 +372,8 @@ export const WordGuideView: React.FC = () => {
                     onClick={() => setSpeakerType('institution')}
                     className={`p-3 rounded-lg border text-left cursor-pointer transition ${
                       speakerType === 'institution'
-                        ? 'border-[#2E4034] bg-[#2E4034] text-[#F1ECDF] font-semibold shadow-sm dark:border-emerald-500 dark:bg-emerald-900/60 dark:text-stone-100'
-                        : 'border-[#DDD6C4] dark:border-stone-700 bg-[#FFFFFF] dark:bg-stone-800/80 text-[#17243D] dark:text-stone-300 hover:bg-[#F1ECDF] dark:hover:bg-stone-700 font-medium'
+                        ? 'border-emerald-700 bg-emerald-700 text-bone font-semibold shadow-xs dark:bg-emerald-800 dark:border-emerald-600'
+                        : 'border-stone-800 bg-stone-900 text-stone-300 hover:bg-stone-850 hover:text-stone-100 font-medium'
                     }`}
                   >
                     🏢 Organisasi Menungsa
@@ -384,8 +384,8 @@ export const WordGuideView: React.FC = () => {
                     onClick={() => setSpeakerType('person')}
                     className={`p-3 rounded-lg border text-left cursor-pointer transition ${
                       speakerType === 'person'
-                        ? 'border-[#2E4034] bg-[#2E4034] text-[#F1ECDF] font-semibold shadow-sm dark:border-emerald-500 dark:bg-emerald-900/60 dark:text-stone-100'
-                        : 'border-[#DDD6C4] dark:border-stone-700 bg-[#FFFFFF] dark:bg-stone-800/80 text-[#17243D] dark:text-stone-300 hover:bg-[#F1ECDF] dark:hover:bg-stone-700 font-medium'
+                        ? 'border-emerald-700 bg-emerald-700 text-bone font-semibold shadow-xs dark:bg-emerald-800 dark:border-emerald-600'
+                        : 'border-stone-800 bg-stone-900 text-stone-300 hover:bg-stone-850 hover:text-stone-100 font-medium'
                     }`}
                   >
                     ✍️ Individu Bernama Nyata
@@ -396,8 +396,8 @@ export const WordGuideView: React.FC = () => {
               {/* Question 2 */}
               <div role="radiogroup" aria-labelledby="privacy-type-label" className="space-y-2.5 md:pl-2">
                 <div className="flex items-center gap-2">
-                  <span className="w-5 h-5 rounded-full bg-[#2E4034] text-[#F1ECDF] dark:bg-emerald-800 dark:text-stone-100 font-mono text-[10px] font-bold flex items-center justify-center shrink-0">2</span>
-                  <label id="privacy-type-label" className="text-[#17243D] dark:text-stone-100 font-bold block text-xs">
+                  <span className="w-5 h-5 rounded-full bg-emerald-700 text-bone font-mono text-[10px] font-bold flex items-center justify-center shrink-0">2</span>
+                  <label id="privacy-type-label" className="text-stone-100 font-bold block text-xs">
                     Di mana naskah ini akan diterbitkan?
                   </label>
                 </div>
@@ -408,8 +408,8 @@ export const WordGuideView: React.FC = () => {
                     onClick={() => setPrivacyType('public')}
                     className={`p-3 rounded-lg border text-left cursor-pointer transition ${
                       privacyType === 'public'
-                        ? 'border-[#2E4034] bg-[#2E4034] text-[#F1ECDF] font-semibold shadow-sm dark:border-emerald-500 dark:bg-emerald-900/60 dark:text-stone-100'
-                        : 'border-[#DDD6C4] dark:border-stone-700 bg-[#FFFFFF] dark:bg-stone-800/80 text-[#17243D] dark:text-stone-300 hover:bg-[#F1ECDF] dark:hover:bg-stone-700 font-medium'
+                        ? 'border-emerald-700 bg-emerald-700 text-bone font-semibold shadow-xs dark:bg-emerald-800 dark:border-emerald-600'
+                        : 'border-stone-800 bg-stone-900 text-stone-300 hover:bg-stone-850 hover:text-stone-100 font-medium'
                     }`}
                   >
                     📢 Ruang Terbuka (Medsos, Web)
@@ -420,8 +420,8 @@ export const WordGuideView: React.FC = () => {
                     onClick={() => setPrivacyType('private')}
                     className={`p-3 rounded-lg border text-left cursor-pointer transition ${
                       privacyType === 'private'
-                        ? 'border-[#2E4034] bg-[#2E4034] text-[#F1ECDF] font-semibold shadow-sm dark:border-emerald-500 dark:bg-emerald-900/60 dark:text-stone-100'
-                        : 'border-[#DDD6C4] dark:border-stone-700 bg-[#FFFFFF] dark:bg-stone-800/80 text-[#17243D] dark:text-stone-300 hover:bg-[#F1ECDF] dark:hover:bg-stone-700 font-medium'
+                        ? 'border-emerald-700 bg-emerald-700 text-bone font-semibold shadow-xs dark:bg-emerald-800 dark:border-emerald-600'
+                        : 'border-stone-800 bg-stone-900 text-stone-300 hover:bg-stone-850 hover:text-stone-100 font-medium'
                     }`}
                   >
                     🔒 Ruang Tertutup (WA, DM, Chat)
@@ -430,17 +430,17 @@ export const WordGuideView: React.FC = () => {
               </div>
             </div>
 
-            {/* Recommendation Result — Neutral Card on Bone */}
-            <div className="rounded-lg bg-[#FFFFFF] dark:bg-stone-950 border border-[#C7D3CB] dark:border-stone-800 p-4 text-xs space-y-1.5 shadow-raised">
-              <span className="text-[10px] font-mono text-[#2E4034] dark:text-emerald-400 uppercase tracking-wider block font-bold">
+            {/* Recommendation Result */}
+            <div className="rounded-lg bg-stone-900 border border-stone-800 p-4 text-xs space-y-1.5 shadow-raised">
+              <span className="text-[10px] font-mono text-emerald-700 dark:text-emerald-400 uppercase tracking-wider block font-bold">
                 Rekomendasi Kata Ganti yang Disarankan:
               </span>
-              <div className="flex flex-wrap items-center gap-3 text-[#17243D] dark:text-stone-100 font-medium text-sm">
-                <span>Orang Pertama: <strong className="text-[#2E4034] dark:text-emerald-400 font-serif text-base font-bold">{recommendation.firstPerson}</strong></span>
-                <span className="text-[#C7D3CB] dark:text-stone-600">·</span>
-                <span>Orang Kedua: <strong className="text-[#2E4034] dark:text-emerald-400 font-serif text-base font-bold">{recommendation.pronoun}</strong></span>
+              <div className="flex flex-wrap items-center gap-3 text-stone-100 font-medium text-sm">
+                <span>Orang Pertama: <strong className="text-emerald-700 dark:text-emerald-300 font-serif text-base font-bold">{recommendation.firstPerson}</strong></span>
+                <span className="text-stone-600">·</span>
+                <span>Orang Kedua: <strong className="text-emerald-700 dark:text-emerald-300 font-serif text-base font-bold">{recommendation.pronoun}</strong></span>
               </div>
-              <p className="text-[#4A5A70] dark:text-stone-300 pt-1 leading-relaxed text-xs">{recommendation.note}</p>
+              <p className="text-stone-400 pt-1 leading-relaxed text-xs">{recommendation.note}</p>
             </div>
           </div>
 
@@ -448,15 +448,15 @@ export const WordGuideView: React.FC = () => {
           <div className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
               <div>
-                <h3 className="text-sm font-mono text-[#AF4D28] dark:text-amber-400 uppercase tracking-wider font-semibold flex items-center gap-2">
+                <h3 className="text-sm font-mono text-amber-500 uppercase tracking-wider font-semibold flex items-center gap-2">
                   <Compass size={15} />
                   <span>Peta Koordinat Relasional Ragam Kata Ganti</span>
                 </h3>
-                <p className="text-xs text-[#4A5A70] dark:text-stone-300 mt-1 leading-relaxed max-w-2xl font-sans">
-                  Pilihan kata ganti menentukan batas jarak sosial antara organisasi dan pembaca pria. Peta di bawah memperlihatkan mengapa Menungsa memilih <strong className="text-[#AF4D28] dark:text-amber-400 font-semibold">"kamu"</strong> di titik seimbang (3/5, 3/5)—cukup hangat untuk peduli, namun cukup tertib untuk menghormati privasi.
+                <p className="text-xs text-stone-400 mt-1 leading-relaxed max-w-2xl font-sans">
+                  Pilihan kata ganti menentukan batas jarak sosial antara organisasi dan pembaca pria. Peta di bawah memperlihatkan mengapa Menungsa memilih <strong className="text-amber-500 font-semibold">"kamu"</strong> di titik seimbang (3/5, 3/5)—cukup hangat untuk peduli, namun cukup tertib untuk menghormati privasi.
                 </p>
               </div>
-              <span className="text-[11px] font-mono text-[#4A5A70] dark:text-stone-500 shrink-0">
+              <span className="text-[11px] font-mono text-stone-500 shrink-0">
                 Klik titik grafik untuk memilih
               </span>
             </div>
@@ -477,28 +477,28 @@ export const WordGuideView: React.FC = () => {
                     role="tabpanel"
                     id="panel-register-detail"
                     aria-labelledby={`tab-register-${activeRegister.id}`}
-                    className="rounded-xl border border-[#DDD6C4] dark:border-stone-800 bg-[#FFFFFF] dark:bg-stone-950/80 p-4 sm:p-5 space-y-3.5 shadow-raised"
+                    className="rounded-xl border border-stone-800 bg-stone-900 p-4 sm:p-5 space-y-3.5 shadow-raised"
                   >
-                    <div className="flex items-center justify-between border-b border-[#DDD6C4] dark:border-stone-800/80 pb-2.5">
+                    <div className="flex items-center justify-between border-b border-stone-800 pb-2.5">
                       <div>
-                        <span className="text-[10px] font-mono text-[#AF4D28] dark:text-amber-400 uppercase font-bold tracking-wider">Profil Kata Ganti:</span>
-                        <h4 className="text-xl font-serif font-bold text-[#17243D] dark:text-stone-100">{activeRegister.name}</h4>
+                        <span className="text-[10px] font-mono text-amber-500 uppercase font-bold tracking-wider">Profil Kata Ganti:</span>
+                        <h4 className="text-xl font-serif font-bold text-stone-100">{activeRegister.name}</h4>
                       </div>
-                      <div className="text-right text-[11px] font-mono text-[#4A5A70] dark:text-stone-400">
-                        <div>Otoritas: <strong className="text-[#AF4D28] dark:text-amber-300 font-bold">{activeRegister.authorityLevel}/5</strong></div>
-                        <div>Keintiman: <strong className="text-[#AF4D28] dark:text-amber-300 font-bold">{activeRegister.intimacyLevel}/5</strong></div>
+                      <div className="text-right text-[11px] font-mono text-stone-400">
+                        <div>Otoritas: <strong className="text-amber-500 font-bold">{activeRegister.authorityLevel}/5</strong></div>
+                        <div>Keintiman: <strong className="text-amber-500 font-bold">{activeRegister.intimacyLevel}/5</strong></div>
                       </div>
                     </div>
 
-                    <div className="space-y-2 text-xs text-[#17243D] dark:text-stone-300 leading-relaxed font-sans">
-                      <div><strong className="text-[#17243D] dark:text-stone-200 font-semibold">Hubungan:</strong> {activeRegister.socialRelationship}</div>
-                      <div><strong className="text-[#17243D] dark:text-stone-200 font-semibold">Kesan:</strong> {activeRegister.impression}</div>
-                      <div className="pt-1.5 border-t border-[#DDD6C4] dark:border-stone-800/60">
-                        <strong className="text-[#17243D] dark:text-stone-200 block mb-0.5 font-semibold">Contoh Kalimat:</strong>
-                        <span className="font-serif italic text-[#2E4034] dark:text-amber-200 text-sm leading-snug font-medium">"{activeRegister.example}"</span>
+                    <div className="space-y-2 text-xs text-stone-300 leading-relaxed font-sans">
+                      <div><strong className="text-stone-100 font-semibold">Hubungan:</strong> {activeRegister.socialRelationship}</div>
+                      <div><strong className="text-stone-100 font-semibold">Kesan:</strong> {activeRegister.impression}</div>
+                      <div className="pt-1.5 border-t border-stone-800">
+                        <strong className="text-stone-100 block mb-0.5 font-semibold">Contoh Kalimat:</strong>
+                        <span className="font-serif italic text-emerald-700 dark:text-emerald-300 text-sm leading-snug font-medium">"{activeRegister.example}"</span>
                       </div>
-                      <div><strong className="text-[#17243D] dark:text-stone-200 font-semibold">Kanal Tepat:</strong> {activeRegister.contexts}</div>
-                      <div className="text-rose-700 dark:text-rose-300/90 pt-1.5 border-t border-[#DDD6C4] dark:border-stone-800/60">
+                      <div><strong className="text-stone-100 font-semibold">Kanal Tepat:</strong> {activeRegister.contexts}</div>
+                      <div className="text-rose-700 dark:text-rose-300 pt-1.5 border-t border-stone-800">
                         <strong className="text-rose-800 dark:text-rose-400 font-bold">Risiko:</strong> {activeRegister.risks}
                       </div>
                     </div>
@@ -509,7 +509,7 @@ export const WordGuideView: React.FC = () => {
 
             {/* Quick Catalog Filter Pills */}
             <div className="space-y-2 pt-2">
-              <h4 className="text-xs font-mono text-[#4A5A70] dark:text-stone-400 uppercase tracking-wider font-semibold">
+              <h4 className="text-xs font-mono text-stone-400 uppercase tracking-wider font-semibold">
                 Katalog Lengkap Kata Ganti:
               </h4>
               <div role="tablist" aria-label="Katalog Kata Ganti" className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2">
@@ -523,12 +523,12 @@ export const WordGuideView: React.FC = () => {
                     onClick={() => setSelectedRegisterId(reg.id)}
                     className={`px-3 py-2 rounded-lg border text-center transition cursor-pointer flex flex-col items-center justify-center ${
                       selectedRegisterId === reg.id
-                        ? 'border-[#2E4034] bg-[#2E4034] text-[#F1ECDF] font-semibold shadow-raised dark:border-amber-500 dark:bg-amber-500/20 dark:text-stone-100'
-                        : 'border-[#DDD6C4] dark:border-stone-800 bg-[#FFFFFF] dark:bg-stone-900/40 text-[#17243D] dark:text-stone-400 hover:border-[#2E4034] dark:hover:border-stone-700'
+                        ? 'border-emerald-700 bg-emerald-700 text-bone font-semibold shadow-raised dark:border-emerald-600 dark:bg-emerald-800'
+                        : 'border-stone-800 bg-stone-900 text-stone-300 hover:border-emerald-700/60 hover:bg-stone-850'
                     }`}
                   >
-                    <div className={`font-serif text-sm ${selectedRegisterId === reg.id ? 'text-[#F1ECDF] font-bold' : 'text-[#17243D] dark:text-stone-100 font-medium'}`}>{reg.name}</div>
-                    <div className={`text-[9.5px] font-mono ${selectedRegisterId === reg.id ? 'text-[#C7D3CB]' : 'text-[#4A5A70] dark:text-stone-500'}`}>
+                    <div className={`font-serif text-sm ${selectedRegisterId === reg.id ? 'text-bone font-bold' : 'text-stone-100 font-medium'}`}>{reg.name}</div>
+                    <div className={`text-[9.5px] font-mono ${selectedRegisterId === reg.id ? 'text-emerald-200' : 'text-stone-500'}`}>
                       {reg.authorityLevel}/5 · {reg.intimacyLevel}/5
                     </div>
                   </button>
@@ -542,50 +542,50 @@ export const WordGuideView: React.FC = () => {
       {/* TAB 2: GENDER ADDRESS */}
       {activeTab === 'gender' && (
         <div role="tabpanel" id="panel-gender" aria-labelledby="tab-gender" className="space-y-6">
-          <div className="rounded-xl border border-[#DDD6C4] dark:border-stone-800 bg-[#FFFFFF] dark:bg-stone-900/40 p-6 space-y-5 shadow-raised">
+          <div className="rounded-xl border border-stone-800 bg-stone-900 p-6 space-y-5 shadow-raised">
             <div>
-              <h3 className="text-lg font-serif font-bold text-[#17243D] dark:text-stone-100">Kapan Menggunakan "Pria", "Laki-laki", atau Tanpa Label?</h3>
-              <p className="text-xs md:text-sm text-[#4A5A70] dark:text-stone-300 leading-relaxed mt-1">
+              <h3 className="text-lg font-serif font-bold text-stone-100">Kapan Menggunakan "Pria", "Laki-laki", atau Tanpa Label?</h3>
+              <p className="text-xs md:text-sm text-stone-400 leading-relaxed mt-1">
                 Penelitian empiris menunjukkan bahwa pria dewasa sering merasa jenuh atau defensif ketika sebuah pesan terus-menerus mendikte identitas gender mereka. Prioritaskan tindakan nyata daripada label maskulinitas.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-              <div className="rounded-xl border border-[#C7D3CB] bg-[#ECF2EE] dark:border-emerald-500/20 dark:bg-emerald-950/20 p-5 space-y-2.5 text-xs shadow-xs">
-                <div className="text-[#2E4034] dark:text-emerald-400 font-mono font-bold uppercase flex items-center gap-1.5">
+              <div className="rounded-xl border border-emerald-900/40 bg-emerald-950/60 p-5 space-y-2.5 text-xs shadow-xs">
+                <div className="text-emerald-700 dark:text-emerald-400 font-mono font-bold uppercase flex items-center gap-1.5">
                   <CheckCircle2 size={15} />
                   <span>Langsung ke Tindakan (Paling Aman)</span>
                 </div>
-                <p className="text-[#17243D] dark:text-stone-300 leading-relaxed">
+                <p className="text-stone-300 leading-relaxed">
                   Tidak perlu menyebut kata "pria" sama sekali jika pesannya tentang rutinitas sehari-hari atau ritme kerja.
                 </p>
-                <div className="font-serif italic text-[#2E4034] dark:text-emerald-300 pt-2 border-t border-[#C7D3CB] dark:border-emerald-900/40 leading-snug font-medium">
+                <div className="font-serif italic text-emerald-700 dark:text-emerald-300 pt-2 border-t border-emerald-900/40 leading-snug font-medium">
                   "Menghadapi tumpukan pekerjaan setelah akhir pekan memang menguras energi."
                 </div>
               </div>
 
-              <div className="rounded-xl border border-[#E2CE9C] bg-[#F7F3E9] dark:border-amber-500/20 dark:bg-amber-950/20 p-5 space-y-2.5 text-xs shadow-xs">
-                <div className="text-[#893412] dark:text-amber-400 font-mono font-bold uppercase flex items-center gap-1.5">
+              <div className="rounded-xl border border-amber-900/40 bg-amber-950/60 p-5 space-y-2.5 text-xs shadow-xs">
+                <div className="text-amber-700 dark:text-amber-400 font-mono font-bold uppercase flex items-center gap-1.5">
                   <CheckCircle2 size={15} />
                   <span>Sapaan "Pria" Terkalibrasi</span>
                 </div>
-                <p className="text-[#17243D] dark:text-stone-300 leading-relaxed">
+                <p className="text-stone-300 leading-relaxed">
                   Gunakan ketika konteksnya spesifik berhubungan dengan biologi pria atau peran sosial kebapakan.
                 </p>
-                <div className="font-serif italic text-[#893412] dark:text-amber-300 pt-2 border-t border-[#E2CE9C] dark:border-amber-900/40 leading-snug font-medium">
+                <div className="font-serif italic text-amber-700 dark:text-amber-300 pt-2 border-t border-amber-900/40 leading-snug font-medium">
                   "Pria di atas 30 tahun sering mengalami penurunan ritme tidur alami."
                 </div>
               </div>
 
-              <div className="rounded-xl border border-rose-300 bg-rose-50/70 dark:border-rose-500/20 dark:bg-rose-950/20 p-5 space-y-2.5 text-xs shadow-xs">
+              <div className="rounded-xl border border-rose-900/40 bg-rose-950/60 p-5 space-y-2.5 text-xs shadow-xs">
                 <div className="text-rose-700 dark:text-rose-400 font-mono font-bold uppercase flex items-center gap-1.5">
                   <AlertCircle size={15} />
                   <span>Label "Pria Sejati" (DILARANG)</span>
                 </div>
-                <p className="text-[#17243D] dark:text-stone-300 leading-relaxed">
+                <p className="text-stone-300 leading-relaxed">
                   Label "Real Men", "Cowok Tangguh", atau "Alfa" langsung dicap sebagai hal yang canggung (cringe) dan manipulatif.
                 </p>
-                <div className="font-serif italic text-rose-800 dark:text-rose-300 pt-2 border-t border-rose-200 dark:border-rose-900/40 leading-snug font-medium">
+                <div className="font-serif italic text-rose-800 dark:text-rose-300 pt-2 border-t border-rose-900/40 leading-snug font-medium">
                   "✕ Pria sejati adalah pria yang berani menangis dan meminta tolong."
                 </div>
               </div>
@@ -599,17 +599,17 @@ export const WordGuideView: React.FC = () => {
         <div role="tabpanel" id="panel-alternatives" aria-labelledby="tab-alternatives" className="space-y-6">
           {/* Header */}
           <div>
-            <h3 className="text-xl md:text-2xl font-serif font-bold text-[#17243D] dark:text-stone-100">
+            <h3 className="text-xl md:text-2xl font-serif font-bold text-stone-100">
               Kamus Padanan Etis: Dari Daya Tarik Manosphere ke Bahasa yang Memberdayakan
             </h3>
-            <p className="text-xs md:text-sm text-[#4A5A70] dark:text-stone-300 mt-1 max-w-3xl leading-relaxed">
+            <p className="text-xs md:text-sm text-stone-400 mt-1 max-w-3xl leading-relaxed">
               Memisahkan kebutuhan psikologis manusiawi yang sah di balik konten maskulinitas dari eksploitasi ideologis yang toksik dan agresif. Menungsa memenuhi fungsi aslinya melalui komunikasi yang membumi, beradab, dan memulihkan martabat.
             </p>
           </div>
 
           {/* Function Selector Filter Pills (from v1) */}
           <div className="space-y-2">
-            <span className="font-mono text-xs text-[#4A5A70] dark:text-stone-400 uppercase tracking-wider block font-semibold">
+            <span className="font-mono text-xs text-stone-400 uppercase tracking-wider block font-semibold">
               Pilih Kebutuhan / Nilai Pokok untuk Didekonstruksi:
             </span>
             <div className="flex flex-wrap gap-2">
@@ -617,8 +617,8 @@ export const WordGuideView: React.FC = () => {
                 onClick={() => setSelectedFunctionId('all')}
                 className={`px-3 py-2 rounded-lg border text-xs font-sans transition cursor-pointer flex items-center gap-1.5 ${
                   selectedFunctionId === 'all'
-                    ? 'bg-[#2E4034] text-[#F1ECDF] font-semibold border-[#2E4034] shadow-raised dark:bg-emerald-800 dark:text-stone-100'
-                    : 'bg-[#FFFFFF] dark:bg-stone-900/60 border-[#DDD6C4] dark:border-stone-800 text-[#17243D] dark:text-stone-300 hover:bg-[#F1ECDF]'
+                    ? 'bg-emerald-700 text-bone font-semibold border-emerald-600 shadow-raised dark:bg-emerald-800'
+                    : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-100 hover:bg-stone-850'
                 }`}
               >
                 <span>Semua Kebutuhan ({ETHICAL_ALTERNATIVES.length})</span>
@@ -631,8 +631,8 @@ export const WordGuideView: React.FC = () => {
                     onClick={() => setSelectedFunctionId(alt.id)}
                     className={`px-3 py-2 rounded-lg border text-left text-xs font-sans transition cursor-pointer flex items-center gap-2 ${
                       isSelected
-                        ? 'bg-[#2E4034] text-[#F1ECDF] font-semibold border-[#2E4034] shadow-raised dark:bg-emerald-800 dark:text-stone-100'
-                        : 'bg-[#FFFFFF] dark:bg-stone-900/60 border-[#DDD6C4] dark:border-stone-800 text-[#17243D] dark:text-stone-300 hover:bg-[#F1ECDF]'
+                        ? 'bg-emerald-700 text-bone font-semibold border-emerald-600 shadow-raised dark:bg-emerald-800'
+                        : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-100 hover:bg-stone-850'
                     }`}
                   >
                     <span className="font-medium whitespace-nowrap">{alt.shortLabel}</span>
@@ -650,41 +650,41 @@ export const WordGuideView: React.FC = () => {
             ).map((item) => (
               <div
                 key={item.id}
-                className="rounded-2xl border border-[#DDD6C4] dark:border-stone-800 bg-[#FFFFFF] dark:bg-stone-900/50 p-5 md:p-6 space-y-5 shadow-raised transition"
+                className="rounded-2xl border border-stone-800 bg-stone-900 p-5 md:p-6 space-y-5 shadow-raised transition"
               >
                 {/* Card Header */}
-                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#DDD6C4] dark:border-stone-800/80 pb-3">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-stone-800 pb-3">
                   <div>
-                    <span className="font-mono text-[10.5px] text-[#AF4D28] dark:text-amber-400 uppercase font-bold tracking-wider block mb-0.5">
+                    <span className="font-mono text-[10.5px] text-amber-500 uppercase font-bold tracking-wider block mb-0.5">
                       Dekonstruksi Nilai &amp; Fungsi Psikologis:
                     </span>
-                    <h4 className="text-xl font-serif font-bold text-[#17243D] dark:text-stone-100">
+                    <h4 className="text-xl font-serif font-bold text-stone-100">
                       {item.functionName}
                     </h4>
                   </div>
                 </div>
 
                 {/* 1 & 2: THE HIGHLIGHTED LEGITIMATE NEED (SPINE) */}
-                <div className="rounded-xl border-2 border-[#17243D]/15 dark:border-blue-500/30 bg-gradient-to-br from-[#EBF0FA] via-[#F1ECDF]/30 to-white dark:from-stone-950 dark:via-blue-950/25 dark:to-stone-900 p-4 sm:p-5 space-y-3 shadow-xs">
+                <div className="rounded-xl border border-sky-800/60 bg-sky-950/60 p-4 sm:p-5 space-y-3 shadow-xs">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#17243D] text-[#F1ECDF] dark:bg-blue-600 dark:text-white font-mono text-[10.5px] font-bold uppercase tracking-wider">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-sky-800 text-bone font-mono text-[10.5px] font-bold uppercase tracking-wider">
                       <HeartHandshake size={13} />
                       <span>1. Kebutuhan Dasar Manusiawi (Sah &amp; Riil)</span>
                     </span>
-                    <span className="text-[10px] font-mono text-[#4A5A70] dark:text-stone-400">
+                    <span className="text-[10px] font-mono text-stone-400">
                       Legitimate Human Need
                     </span>
                   </div>
-                  <p className="text-[#17243D] dark:text-stone-100 font-medium text-sm md:text-[15px] leading-relaxed font-sans">
+                  <p className="text-stone-100 font-medium text-sm md:text-[15px] leading-relaxed font-sans">
                     {item.psychologicalNeed}
                   </p>
                   
                   {/* Psychological Appeal */}
-                  <div className="pt-2.5 border-t border-[#C6D0E2] dark:border-stone-800 flex items-start gap-2 text-xs">
-                    <span className="font-mono font-bold text-[#AF4D28] dark:text-amber-400 uppercase text-[10.5px] shrink-0 mt-0.5">
+                  <div className="pt-2.5 border-t border-sky-800/40 flex items-start gap-2 text-xs">
+                    <span className="font-mono font-bold text-amber-500 uppercase text-[10.5px] shrink-0 mt-0.5">
                       2. Daya Tarik:
                     </span>
-                    <span className="text-[#17243D] dark:text-stone-200 leading-relaxed font-medium">
+                    <span className="text-stone-300 leading-relaxed font-medium">
                       {item.whyCompelling}
                     </span>
                   </div>
@@ -693,43 +693,43 @@ export const WordGuideView: React.FC = () => {
                 {/* 3 & 4: THE TWO IMPLEMENTATIONS GRID */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-sans">
                   {/* 3. Harmful Version */}
-                  <div className="rounded-xl border border-rose-300 bg-rose-50/80 dark:border-rose-900/40 dark:bg-rose-950/20 p-4 space-y-2">
-                    <div className="flex items-center gap-1.5 text-[#893412] dark:text-rose-400 font-bold">
+                  <div className="rounded-xl border border-rose-900/40 bg-rose-950/40 p-4 space-y-2">
+                    <div className="flex items-center gap-1.5 text-rose-700 dark:text-rose-400 font-bold">
                       <X size={16} className="shrink-0 stroke-[2.5]" />
                       <span className="font-mono uppercase text-[10.5px] font-bold tracking-wider">
                         3. Cara Bumerang (Manosphere)
                       </span>
                     </div>
-                    <p className="text-[#17243D] dark:text-stone-100 font-medium leading-relaxed font-sans">
+                    <p className="text-stone-100 font-medium leading-relaxed font-sans">
                       {item.harmfulVersion}
                     </p>
                   </div>
 
                   {/* 4. Ethical Alternative */}
-                  <div className="rounded-xl border border-[#C7D3CB] bg-[#ECF2EE] dark:border-emerald-900/40 dark:bg-emerald-950/20 p-4 space-y-2">
-                    <div className="flex items-center gap-1.5 text-[#2E4034] dark:text-emerald-400">
+                  <div className="rounded-xl border border-emerald-900/40 bg-emerald-950/40 p-4 space-y-2">
+                    <div className="flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400 font-bold">
                       <Check size={16} className="shrink-0 stroke-[2.5]" />
                       <span className="font-mono uppercase text-[10.5px] font-bold tracking-wider">
                         4. Padanan Etis Suara Menungsa
                       </span>
                     </div>
-                    <p className="text-[#17243D] dark:text-stone-100 font-medium leading-relaxed font-sans">
+                    <p className="text-stone-100 font-medium leading-relaxed font-sans">
                       {item.ethicalAlternative}
                     </p>
                   </div>
                 </div>
 
                 {/* Governing Rule / Prinsip Emas */}
-                <div className="rounded-xl bg-[#F1ECDF] dark:bg-stone-950/80 p-3.5 border border-[#DDD6C4] dark:border-stone-800 text-xs flex items-center justify-between gap-3 shadow-xs">
+                <div className="rounded-xl bg-stone-850 p-3.5 border border-stone-800 text-xs flex items-center justify-between gap-3 shadow-xs">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="font-mono text-[#AF4D28] dark:text-amber-400 font-bold uppercase text-[11px] shrink-0">
+                    <span className="font-mono text-amber-500 font-bold uppercase text-[11px] shrink-0">
                       Prinsip Emas:
                     </span>
-                    <span className="text-[#17243D] dark:text-stone-200 font-serif italic text-sm font-medium">
+                    <span className="text-stone-100 font-serif italic text-sm font-medium">
                       "{item.keyPrinciple}"
                     </span>
                   </div>
-                  <ShieldCheck size={18} className="text-[#AF4D28] dark:text-amber-400 shrink-0" />
+                  <ShieldCheck size={18} className="text-amber-500 shrink-0" />
                 </div>
               </div>
             ))}
