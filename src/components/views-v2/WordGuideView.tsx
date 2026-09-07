@@ -167,6 +167,7 @@ interface EthicalAlternativeItem {
   id: string;
   mechanismId: string;
   functionName: string;
+  shortLabel: string;
   psychologicalNeed: string;
   whyCompelling: string;
   harmfulVersion: string;
@@ -178,6 +179,7 @@ const ETHICAL_ALTERNATIVES: EthicalAlternativeItem[] = [
   {
     id: 'certainty',
     mechanismId: 'M03',
+    shortLabel: 'Kepastian',
     functionName: 'Kepastian & Kejelasan Arah Hidup',
     psychologicalNeed: 'Kebutuhan akan kejelasan struktur hidup, penataan kognitif, dan panduan logis saat menghadapi kerumitan karier, relasi, serta status sosial.',
     whyCompelling: 'Meredakan disorientasi dan kebingungan akut; mengubah situasi sosial yang rumit menjadi aturan main yang tampak teratur dan sistematis.',
@@ -188,6 +190,7 @@ const ETHICAL_ALTERNATIVES: EthicalAlternativeItem[] = [
   {
     id: 'validation',
     mechanismId: 'M05',
+    shortLabel: 'Pengakuan Beban',
     functionName: 'Pengakuan Beban & Rasa Didengar',
     psychologicalNeed: 'Kebutuhan untuk merasa dipahami, didengar, dan terbebas dari rasa malu saat belum mampu memenuhi ekspektasi sosial atau standar maskulinitas.',
     whyCompelling: 'Meringankan beban rasa gagal pribadi dengan menegaskan bahwa "bukan cuma kamu yang kesulitan; sistem dan realitas hidup saat ini memang berat."',
@@ -198,6 +201,7 @@ const ETHICAL_ALTERNATIVES: EthicalAlternativeItem[] = [
   {
     id: 'status',
     mechanismId: 'M08',
+    shortLabel: 'Keahlian & Martabat',
     functionName: 'Keahlian Nyata, Martabat & Harga Diri',
     psychologicalNeed: 'Kebutuhan akan rasa berharga (self-worth), rasa hormat sosial antarteman sebaya, kecakapan (competence), dan memiliki dampak nyata yang dirasakan.',
     whyCompelling: 'Menggantikan rasa rendah diri dengan hierarki pencapaian fisik, finansial yang terukur, dan rasa bangga sebagai pria dewasa.',
@@ -208,6 +212,7 @@ const ETHICAL_ALTERNATIVES: EthicalAlternativeItem[] = [
   {
     id: 'agency',
     mechanismId: 'M02',
+    shortLabel: 'Kedaulatan Diri',
     functionName: 'Kedaulatan Diri & Kemampuan Bertindak',
     psychologicalNeed: 'Kebutuhan untuk keluar dari rasa tak berdaya (helplessness) dan memegang kendali atas jalan hidup melalui tindakan nyata yang berbatas tegas.',
     whyCompelling: 'Tindakan nyata memulihkan motivasi, dopamin, dan kedaulatan diri (agency); menolak mentalitas korban yang pasif atau keputusasaan klinis.',
@@ -218,6 +223,7 @@ const ETHICAL_ALTERNATIVES: EthicalAlternativeItem[] = [
   {
     id: 'belonging',
     mechanismId: 'M04',
+    shortLabel: 'Rasa Memiliki',
     functionName: 'Rasa Memiliki & Persaudaraan Sejati',
     psychologicalNeed: 'Kebutuhan akan lingkungan persaudaraan pria (camaraderie) yang aman, di mana ia diterima apa adanya tanpa kecemasan performa atau tuntutan topeng.',
     whyCompelling: 'Menyediakan tempat berlindung dari kesepian sosial akut yang dialami banyak pria dewasa melalui humor, bahasa santai, dan solidaritas senasib.',
@@ -228,6 +234,7 @@ const ETHICAL_ALTERNATIVES: EthicalAlternativeItem[] = [
   {
     id: 'purpose',
     mechanismId: 'M09',
+    shortLabel: 'Makna Hidup',
     functionName: 'Makna Hidup & Tanggung Jawab Luhur',
     psychologicalNeed: 'Kebutuhan eksistensial untuk memiliki tujuan hidup yang lebih besar dari diri sendiri, melindungi orang terkasih, dan menjadi sosok yang berguna bagi sesama.',
     whyCompelling: 'Menjawab kehampaan eksistensial dengan panggilan ksatria untuk memikul tanggung jawab dan merawat orang-orang yang disayangi.',
@@ -633,21 +640,18 @@ export const WordGuideView: React.FC = () => {
                 <span>Semua Kebutuhan ({ETHICAL_ALTERNATIVES.length})</span>
               </button>
               {ETHICAL_ALTERNATIVES.map((alt) => {
-                const isSelected = selectedFunctionId === alt.mechanismId;
+                const isSelected = selectedFunctionId === alt.id;
                 return (
                   <button
-                    key={alt.mechanismId}
-                    onClick={() => setSelectedFunctionId(alt.mechanismId)}
+                    key={alt.id}
+                    onClick={() => setSelectedFunctionId(alt.id)}
                     className={`px-3 py-2 rounded-lg border text-left text-xs font-sans transition cursor-pointer flex items-center gap-2 ${
                       isSelected
                         ? 'bg-[#2E4034] text-[#F1ECDF] font-semibold border-[#2E4034] shadow-raised dark:bg-emerald-800 dark:text-stone-100'
                         : 'bg-[#FFFFFF] dark:bg-stone-900/60 border-[#DDD6C4] dark:border-stone-800 text-[#17243D] dark:text-stone-300 hover:bg-[#F1ECDF]'
                     }`}
                   >
-                    <span className={`font-mono text-[10px] font-bold ${isSelected ? 'text-[#C7D3CB]' : 'text-[#AF4D28] dark:text-amber-400'}`}>
-                      {alt.mechanismId}
-                    </span>
-                    <span className="font-medium whitespace-nowrap">{alt.functionName.split(' & ')[0]}</span>
+                    <span className="font-medium whitespace-nowrap">{alt.shortLabel}</span>
                   </button>
                 );
               })}
@@ -658,25 +662,22 @@ export const WordGuideView: React.FC = () => {
           <div className="grid grid-cols-1 gap-6">
             {(selectedFunctionId === 'all'
               ? ETHICAL_ALTERNATIVES
-              : ETHICAL_ALTERNATIVES.filter((a) => a.mechanismId === selectedFunctionId)
+              : ETHICAL_ALTERNATIVES.filter((a) => a.id === selectedFunctionId)
             ).map((item) => (
               <div
-                key={item.mechanismId}
+                key={item.id}
                 className="rounded-2xl border border-[#DDD6C4] dark:border-stone-800 bg-[#FFFFFF] dark:bg-stone-900/50 p-5 md:p-6 space-y-5 shadow-raised transition"
               >
                 {/* Card Header */}
                 <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#DDD6C4] dark:border-stone-800/80 pb-3">
                   <div>
-                    <span className="font-mono text-[10px] text-[#AF4D28] dark:text-amber-400 uppercase font-bold tracking-wider block">
-                      Proposisi {item.mechanismId} · Dekonstruksi Fungsional:
+                    <span className="font-mono text-[10.5px] text-[#AF4D28] dark:text-amber-400 uppercase font-bold tracking-wider block mb-0.5">
+                      Dekonstruksi Nilai &amp; Fungsi Psikologis:
                     </span>
                     <h4 className="text-xl font-serif font-bold text-[#17243D] dark:text-stone-100">
                       {item.functionName}
                     </h4>
                   </div>
-                  <span className="px-2.5 py-1 rounded font-mono text-xs font-bold bg-[#ECF2EE] text-[#2E4034] border border-[#C7D3CB] dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-800/50">
-                    Mekanisme {item.mechanismId}
-                  </span>
                 </div>
 
                 {/* 1 & 2: THE HIGHLIGHTED LEGITIMATE NEED (SPINE) */}
@@ -699,7 +700,7 @@ export const WordGuideView: React.FC = () => {
                     <span className="font-mono font-bold text-[#AF4D28] dark:text-amber-400 uppercase text-[10.5px] shrink-0 mt-0.5">
                       2. Daya Tarik:
                     </span>
-                    <span className="text-[#4A5A70] dark:text-stone-300 leading-relaxed italic">
+                    <span className="text-[#17243D] dark:text-stone-200 leading-relaxed font-medium">
                       {item.whyCompelling}
                     </span>
                   </div>
@@ -708,14 +709,14 @@ export const WordGuideView: React.FC = () => {
                 {/* 3 & 4: THE TWO IMPLEMENTATIONS GRID */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-sans">
                   {/* 3. Harmful Version */}
-                  <div className="rounded-xl border border-rose-300/80 bg-rose-50/70 dark:border-rose-900/40 dark:bg-rose-950/20 p-4 space-y-2">
-                    <div className="flex items-center gap-1.5 text-rose-700 dark:text-rose-400">
+                  <div className="rounded-xl border border-rose-300 bg-rose-50/80 dark:border-rose-900/40 dark:bg-rose-950/20 p-4 space-y-2">
+                    <div className="flex items-center gap-1.5 text-[#893412] dark:text-rose-400 font-bold">
                       <X size={16} className="shrink-0 stroke-[2.5]" />
                       <span className="font-mono uppercase text-[10.5px] font-bold tracking-wider">
                         3. Cara Bumerang (Manosphere)
                       </span>
                     </div>
-                    <p className="text-rose-950 dark:text-rose-100 leading-relaxed font-sans">
+                    <p className="text-[#17243D] dark:text-stone-100 font-medium leading-relaxed font-sans">
                       {item.harmfulVersion}
                     </p>
                   </div>

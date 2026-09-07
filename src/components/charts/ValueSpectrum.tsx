@@ -118,7 +118,7 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
             </pattern>
           </defs>
 
-          {/* Scale Axis Indicators at Top */}
+          {/* Precision Spectrometer Reference Scale Ticks (1 to 5) */}
           <g className="chart-grid">
             {[1, 2, 3, 4, 5].map((v) => (
               <React.Fragment key={v}>
@@ -127,15 +127,17 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                   y1={M.top - 8}
                   x2={x(v)}
                   y2={H - M.bottom + 2}
-                  stroke="rgba(255, 255, 255, 0.05)"
+                  stroke="var(--chart-grid)"
                   strokeWidth={1}
                   strokeDasharray="2 3"
+                  opacity={0.4}
                 />
                 <text
                   x={x(v)}
                   y={M.top - 14}
                   textAnchor="middle"
-                  className="font-mono text-[9px] fill-stone-500 font-medium"
+                  className="font-mono text-[9px] font-medium select-none"
+                  style={{ fill: 'var(--chart-label)' }}
                 >
                   {v}
                 </text>
@@ -179,7 +181,7 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                     y={y - ROW / 2 + 2}
                     width={trackWidth + 12}
                     height={ROW - 4}
-                    fill="rgba(175, 77, 40, 0.07)"
+                    fill="rgba(175, 77, 40, 0.08)"
                     rx={6}
                   />
                 )}
@@ -253,9 +255,10 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                 <text
                   x={M.left + 4}
                   y={ribbonY - 5}
-                  className="font-sans text-[10px] select-none fill-stone-900 dark:fill-stone-100"
-                  opacity={dim}
+                  className="font-sans text-[10px] select-none tracking-tight"
+                  opacity={active && !isActive ? 0.45 : 1}
                   style={{
+                    fill: 'var(--chart-label-strong)',
                     fontWeight: isActive ? 700 : 500,
                   }}
                 >
@@ -270,14 +273,14 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                     y1={ribbonY - 4}
                     x2={cx}
                     y2={ribbonY + ribbonHeight + 4}
-                    stroke={isActive ? '#fafaf9' : 'rgba(255, 255, 255, 0.4)'}
+                    stroke={isActive ? 'var(--chart-label-strong)' : 'var(--chart-axis)'}
                     strokeWidth={isActive ? 1.5 : 1}
                   />
 
                   {/* Top Pointer Notch */}
                   <path
                     d={`M ${cx - 3.5} ${ribbonY - 4} L ${cx + 3.5} ${ribbonY - 4} L ${cx} ${ribbonY} Z`}
-                    fill={isActive ? '#fafaf9' : '#d6d3d1'}
+                    fill={isActive ? 'var(--chart-label-strong)' : 'var(--chart-axis)'}
                   />
 
                   {/* Active Indicator Pip in Center of Ribbon */}
@@ -286,7 +289,7 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                       cx={cx}
                       cy={ribbonY + ribbonHeight / 2}
                       r={7}
-                      fill="rgba(255, 255, 255, 0.3)"
+                      fill="rgba(175, 77, 40, 0.25)"
                       filter="url(#spectroNeedleGlow)"
                     />
                   )}
@@ -294,9 +297,9 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                     cx={cx}
                     cy={ribbonY + ribbonHeight / 2}
                     r={isActive ? 4.5 : 3.5}
-                    fill={isActive ? '#fafaf9' : '#d6d3d1'}
-                    stroke="#0c0a09"
-                    strokeWidth={1.5}
+                    fill="var(--chart-surface)"
+                    stroke="var(--chart-label-strong)"
+                    strokeWidth={1.8}
                   />
                 </g>
               </g>
