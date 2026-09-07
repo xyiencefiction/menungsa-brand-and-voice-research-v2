@@ -4,8 +4,8 @@ import { scaleLinear } from './chartUtils';
 import { SvgLabel } from './SvgLabel';
 
 const W = 680;
-const ROW = 38;
-const M = { top: 30, right: 164, bottom: 24, left: 164 };
+const ROW = 44;
+const M = { top: 32, right: 154, bottom: 24, left: 154 };
 
 interface Props {
   values: BrandValue[];
@@ -65,6 +65,8 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
   const active = hovered ?? selectedId ?? null;
   const activeValue = values.find((v) => v.id === active);
 
+  const trackWidth = W - M.left - M.right;
+
   return (
     <div className="rounded-xl border border-stone-800 bg-stone-950/90 overflow-hidden shadow-2xl">
       {/* Sleek Compact Header */}
@@ -73,12 +75,12 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
           <h3 className="font-serif font-semibold text-stone-100 text-sm md:text-base">
             Posisi Gaya Komunikasi Menungsa
           </h3>
-          <span className="px-1.5 py-0.5 rounded font-mono text-[9.5px] uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/20">
-            Pilihan Sikap Editorial
+          <span className="px-1.5 py-0.5 rounded font-mono text-[9.5px] uppercase tracking-wider bg-stone-800 text-stone-300 border border-stone-700">
+            Pita Spektrum Nilai
           </span>
         </div>
         <p className="text-stone-400 text-[11px] font-sans">
-          6 Posisi Terpilih pada Skala Ordinal 1–5
+          Spektrum Berkelanjutan Antarkutub Nilai (Skala 1–5)
         </p>
       </header>
 
@@ -88,73 +90,80 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
           viewBox={`0 0 ${W} ${H}`}
           className="w-full h-auto block min-w-[580px]"
           role="img"
-          aria-label="Six brand values plotted as chosen positions on ordinal one to five tracks"
+          aria-label="Six brand values plotted as chosen positions on continuous spectral ribbons"
         >
-          <title>Menungsa voice positions across six value dimensions</title>
+          <title>Menungsa voice positions across continuous value spectrums</title>
 
           <defs>
-            {/* Ambient Warm Glow Filter */}
-            <filter id="spectrumGlow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur" />
+            {/* Diffuse glow filter for active spectrometer needle */}
+            <filter id="spectroNeedleGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
 
-            {/* Glowing Span Linear Gradient */}
-            <linearGradient id="spectrumBarGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#78350f" stopOpacity="0.6" />
-              <stop offset="60%" stopColor="#d97706" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="#f59e0b" stopOpacity="1" />
+            {/* Continuous Active Spectrum Gradient: Cool Slate to Warm Terracotta & Antique Gold */}
+            <linearGradient id="activeSpectrumRibbon" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#1e293b" stopOpacity="0.8" />
+              <stop offset="35%" stopColor="#4338ca" stopOpacity="0.25" />
+              <stop offset="65%" stopColor="#9a3412" stopOpacity="0.75" />
+              <stop offset="90%" stopColor="#af4d28" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="#c5a059" stopOpacity="1" />
             </linearGradient>
 
-            <linearGradient id="inactiveBarGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#44403c" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#78716c" stopOpacity="0.6" />
+            {/* Muted Inactive Spectrum Gradient */}
+            <linearGradient id="inactiveSpectrumRibbon" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#1c1917" stopOpacity="0.6" />
+              <stop offset="50%" stopColor="#292524" stopOpacity="0.7" />
+              <stop offset="100%" stopColor="#44403c" stopOpacity="0.8" />
             </linearGradient>
+
+            {/* Subtle Spectrometer Slit Pattern */}
+            <pattern id="spectroGrating" width="8" height="12" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="0" x2="0" y2="12" stroke="rgba(0, 0, 0, 0.4)" strokeWidth="1" />
+            </pattern>
           </defs>
 
-          {/* Grid lines for 1..5 ticks */}
+          {/* Scale Axis Indicators at Top */}
           <g className="chart-grid">
             {[1, 2, 3, 4, 5].map((v) => (
-              <line
-                key={v}
-                x1={x(v)}
-                y1={M.top - 8}
-                x2={x(v)}
-                y2={H - M.bottom + 2}
-                stroke="rgba(255, 255, 255, 0.06)"
-                strokeWidth={1}
-                strokeDasharray="2 3"
-              />
+              <React.Fragment key={v}>
+                <line
+                  x1={x(v)}
+                  y1={M.top - 8}
+                  x2={x(v)}
+                  y2={H - M.bottom + 2}
+                  stroke="rgba(255, 255, 255, 0.05)"
+                  strokeWidth={1}
+                  strokeDasharray="2 3"
+                />
+                <text
+                  x={x(v)}
+                  y={M.top - 14}
+                  textAnchor="middle"
+                  className="font-mono text-[9px] fill-stone-500 font-medium"
+                >
+                  {v}
+                </text>
+              </React.Fragment>
             ))}
           </g>
 
-          {/* Scale Axis Numbers */}
-          {[1, 2, 3, 4, 5].map((v) => (
-            <text
-              key={`t${v}`}
-              x={x(v)}
-              y={M.top - 14}
-              textAnchor="middle"
-              className="font-mono text-[9px] font-semibold fill-stone-500"
-            >
-              {v}
-            </text>
-          ))}
-
-          {/* Value Tracks */}
+          {/* Value Spectrum Rows */}
           {values.map((v, i) => {
             const y = M.top + i * ROW + ROW / 2;
             const isActive = active === v.id;
             const dim = active && !isActive ? 0.32 : 1;
             const cx = x(v.spectrum.position);
+            const ribbonHeight = 12;
+            const ribbonY = y - ribbonHeight / 2 + 4;
 
             return (
               <g
                 key={v.id}
-                className="chart-mark-interactive cursor-pointer"
+                className="chart-mark-interactive cursor-pointer outline-none focus:outline-none"
                 onMouseEnter={() => setHovered(v.id)}
                 onMouseLeave={() => setHovered(null)}
                 onClick={() => onSelect(v.id)}
@@ -166,136 +175,142 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                     onSelect(v.id);
                   }
                 }}
-                aria-label={`${v.value}: ${v.spectrum.leftPole} to ${v.spectrum.rightPole}, positioned at ${v.spectrum.position} of 5`}
+                aria-label={`${v.value}: ${v.spectrum.leftPole} to ${v.spectrum.rightPole}, posisi ${v.spectrum.position} dari 5`}
               >
-                {/* Hit Box */}
-                <rect x={0} y={y - ROW / 2} width={W} height={ROW} fill="transparent" />
+                {/* Invisible Hit Area */}
+                <rect x={0} y={y - ROW / 2} width={W} height={ROW} fill="transparent" className="outline-none focus:outline-none" />
 
-                {/* Active Row Background Highlight */}
+                {/* Active Row Ambient Glow Backdrop */}
                 {isActive && (
                   <rect
-                    x={M.left - 8}
-                    y={y - ROW / 2 + 3}
-                    width={W - M.left - M.right + 16}
-                    height={ROW - 6}
-                    fill="rgba(245, 158, 11, 0.07)"
+                    x={M.left - 6}
+                    y={y - ROW / 2 + 2}
+                    width={trackWidth + 12}
+                    height={ROW - 4}
+                    fill="rgba(175, 77, 40, 0.07)"
                     rx={6}
                   />
                 )}
 
-                {/* Left & Right Poles Labels */}
+                {/* Left Pole Label (Muted state to avoid) */}
                 <g opacity={dim}>
                   <SvgLabel
                     x={4}
-                    y={y - ROW / 2 + 5}
-                    width={M.left - 16}
+                    y={y - ROW / 2 + 6}
+                    width={M.left - 14}
                     height={ROW - 10}
                     align="end"
-                    tone="strong"
-                    size={10}
+                    tone="label"
+                    size={9.5}
                     lines={2}
                   >
                     {ID_POLES[v.id]?.left || v.spectrum.leftPole}
                   </SvgLabel>
+                </g>
+
+                {/* Continuous Spectral Ribbon Bar */}
+                <rect
+                  x={M.left}
+                  y={ribbonY}
+                  width={trackWidth}
+                  height={ribbonHeight}
+                  rx={ribbonHeight / 2}
+                  fill={isActive ? 'url(#activeSpectrumRibbon)' : 'url(#inactiveSpectrumRibbon)'}
+                  stroke="rgba(255, 255, 255, 0.08)"
+                  strokeWidth={1}
+                  opacity={dim}
+                />
+
+                {/* Optical Grating Hash Overlay */}
+                <rect
+                  x={M.left}
+                  y={ribbonY}
+                  width={trackWidth}
+                  height={ribbonHeight}
+                  rx={ribbonHeight / 2}
+                  fill="url(#spectroGrating)"
+                  opacity={dim * 0.7}
+                />
+
+                {/* Right Pole Label (Recommended approach) */}
+                <g opacity={dim}>
                   <SvgLabel
                     x={W - M.right + 10}
-                    y={y - ROW / 2 + 5}
+                    y={y - ROW / 2 + 6}
                     width={M.right - 14}
                     height={ROW - 10}
                     tone="strong"
-                    size={10}
+                    size={9.5}
                     lines={2}
                   >
                     {ID_POLES[v.id]?.right || v.spectrum.rightPole}
                   </SvgLabel>
                 </g>
 
-                {/* Base Track Runway (unclaimed portion) */}
-                <line
-                  x1={cx}
-                  y1={y}
-                  x2={x(5)}
-                  y2={y}
-                  stroke="rgba(255, 255, 255, 0.12)"
-                  strokeWidth={isActive ? 3.5 : 2.5}
-                  strokeLinecap="round"
-                  opacity={dim}
-                />
-
-                {/* Chosen Position Range Fill (glowing amber) */}
-                <line
-                  x1={x(1)}
-                  y1={y}
-                  x2={cx}
-                  y2={y}
-                  stroke={isActive ? 'url(#spectrumBarGrad)' : 'url(#inactiveBarGrad)'}
-                  strokeWidth={isActive ? 4.5 : 3}
-                  strokeLinecap="round"
-                  opacity={dim}
-                />
-
-                {/* Scale Pips along the track */}
-                {[1, 2, 3, 4, 5].map((pip) => (
-                  <circle
-                    key={`pip-${pip}`}
-                    cx={x(pip)}
-                    cy={y}
-                    r={1.5}
-                    fill={pip <= v.spectrum.position ? '#f59e0b' : 'rgba(255, 255, 255, 0.25)'}
-                    opacity={dim}
-                  />
-                ))}
-
-                {/* Active Node Ambient Glow Aura */}
-                {isActive && (
-                  <circle
-                    cx={cx}
-                    cy={y}
-                    r={14}
-                    fill="rgba(245, 158, 11, 0.25)"
-                    filter="url(#spectrumGlow)"
-                  />
-                )}
-
-                {/* Active Outer Pulsing Ring */}
-                {isActive && (
-                  <circle
-                    cx={cx}
-                    cy={y}
-                    r={9.5}
-                    fill="none"
-                    stroke="#f59e0b"
-                    strokeWidth={1.2}
-                    strokeDasharray="2 2"
-                    className="animate-spin-slow"
-                  />
-                )}
-
-                {/* Chosen Position Node Mark */}
-                <circle
-                  cx={cx}
-                  cy={y}
-                  r={isActive ? 6 : 4.5}
-                  fill={isActive ? '#f59e0b' : '#d97706'}
-                  stroke="#0c0a09"
-                  strokeWidth={2}
-                  opacity={dim}
-                />
-
-                {/* Title Badge above the point */}
+                {/* Value Shortened Title above the ribbon */}
                 <text
-                  x={cx}
-                  y={y - 9}
-                  textAnchor="middle"
-                  className="font-sans text-[10px] select-none"
+                  x={M.left + 4}
+                  y={ribbonY - 4}
+                  className="font-sans text-[9.5px] select-none"
                   opacity={dim}
                   style={{
-                    fill: isActive ? '#fef3c7' : '#a8a29e',
+                    fill: isActive ? '#f5f5f4' : '#a8a29e',
                     fontWeight: isActive ? 700 : 500,
                   }}
                 >
-                  {ID_POLES[v.id]?.title.split(',')[0].replace(' untuk Memulai', '').replace(' yang Masuk Akal', '') || v.value}
+                  {ID_POLES[v.id]?.title.split(',')[0] || v.value}
                 </text>
+
+                {/* Spectrometer Cursor: Precision Vertical Needle & Pip */}
+                <g opacity={dim}>
+                  {/* Subtle Needle Trail */}
+                  <line
+                    x1={cx}
+                    y1={ribbonY - 5}
+                    x2={cx}
+                    y2={ribbonY + ribbonHeight + 5}
+                    stroke={isActive ? '#fafaf9' : 'rgba(255, 255, 255, 0.4)'}
+                    strokeWidth={isActive ? 1.5 : 1}
+                  />
+
+                  {/* Top Pointer Notch */}
+                  <path
+                    d={`M ${cx - 3.5} ${ribbonY - 5} L ${cx + 3.5} ${ribbonY - 5} L ${cx} ${ribbonY - 1} Z`}
+                    fill={isActive ? '#fafaf9' : '#a8a29e'}
+                  />
+
+                  {/* Active Indicator Pip in Center of Ribbon */}
+                  {isActive && (
+                    <circle
+                      cx={cx}
+                      cy={ribbonY + ribbonHeight / 2}
+                      r={7}
+                      fill="rgba(255, 255, 255, 0.3)"
+                      filter="url(#spectroNeedleGlow)"
+                    />
+                  )}
+                  <circle
+                    cx={cx}
+                    cy={ribbonY + ribbonHeight / 2}
+                    r={isActive ? 4.5 : 3.5}
+                    fill={isActive ? '#fafaf9' : '#d6d3d1'}
+                    stroke="#0c0a09"
+                    strokeWidth={1.5}
+                  />
+
+                  {/* Score Pill Tag beside cursor */}
+                  <text
+                    x={cx + (v.spectrum.position >= 5 ? -8 : 8)}
+                    y={ribbonY - 4}
+                    textAnchor={v.spectrum.position >= 5 ? 'end' : 'start'}
+                    className="font-mono text-[9px] font-bold select-none"
+                    style={{
+                      fill: isActive ? '#c5a059' : '#78716c',
+                    }}
+                  >
+                    posisi {v.spectrum.position}/5
+                  </text>
+                </g>
               </g>
             );
           })}
@@ -306,7 +321,7 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
       {activeValue && (
         <div className="px-4 py-2.5 border-t border-stone-800 bg-stone-900/50 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1.5 text-xs font-sans">
           <div className="flex flex-wrap items-baseline gap-2">
-            <span className="font-serif font-semibold text-amber-400 text-sm">
+            <span className="font-serif font-semibold text-stone-100 text-sm">
               {ID_POLES[activeValue.id]?.title || activeValue.value}
             </span>
             <span className="text-stone-400 text-[11px]">
@@ -321,8 +336,8 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
 
       {/* Footer */}
       <footer className="px-4 py-1.5 border-t border-stone-800 text-stone-500 text-[10px] font-mono flex items-center justify-between">
-        <span>KESEPAKATAN EDITORIAL MENUNGSA</span>
-        <span className="text-stone-400 hidden sm:inline">SKALA ORDINAL 1–5</span>
+        <span>KOMITMEN SPEKTRUM EDITORIAL MENUNGSA</span>
+        <span className="text-stone-400 hidden sm:inline">KONTINUUM ORDINAL 1–5</span>
       </footer>
     </div>
   );

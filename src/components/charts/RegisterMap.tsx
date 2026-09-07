@@ -84,7 +84,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
             <h3 className="font-serif font-semibold text-stone-100 text-sm md:text-base">
               Peta Koordinat Ragam Bahasa &amp; Kata Ganti
             </h3>
-            <span className="px-1.5 py-0.5 rounded font-mono text-[9.5px] uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/20">
+            <span className="px-1.5 py-0.5 rounded font-mono text-[9.5px] uppercase tracking-wider bg-stone-800 text-stone-300 border border-stone-700">
               Otoritas × Keakraban
             </span>
           </div>
@@ -100,7 +100,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
             return (
               <span key={s} className="inline-flex items-center gap-1 bg-stone-900/80 px-1.5 py-0.5 rounded border border-stone-800">
                 <svg width={10} height={10} viewBox="0 0 10 10" aria-hidden className="shrink-0">
-                  <path d={shapePath(s, 5, 5, 3.5)} fill="#f59e0b" />
+                  <path d={shapePath(s, 5, 5, 3.5)} fill="#af4d28" />
                 </svg>
                 <span className="whitespace-nowrap">{entry?.label}</span>
               </span>
@@ -131,22 +131,22 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
 
             {/* Sweet Spot Concentric Glow for (3,3) */}
             <radialGradient id="sweetSpotGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.18" />
-              <stop offset="50%" stopColor="#d97706" stopOpacity="0.06" />
+              <stop offset="0%" stopColor="#af4d28" stopOpacity="0.18" />
+              <stop offset="50%" stopColor="#893412" stopOpacity="0.06" />
               <stop offset="100%" stopColor="#0c0a09" stopOpacity="0" />
             </radialGradient>
           </defs>
 
           {/* Sweet Spot Concentric Ambient Halo at (3, 3) */}
           <circle cx={sweetX} cy={sweetY} r={56} fill="url(#sweetSpotGlow)" />
-          <circle cx={sweetX} cy={sweetY} r={46} fill="none" stroke="rgba(245, 158, 11, 0.15)" strokeWidth={1} strokeDasharray="3 3" />
-          <circle cx={sweetX} cy={sweetY} r={28} fill="none" stroke="rgba(245, 158, 11, 0.25)" strokeWidth={1} />
+          <circle cx={sweetX} cy={sweetY} r={46} fill="none" stroke="rgba(175, 77, 40, 0.15)" strokeWidth={1} strokeDasharray="3 3" />
+          <circle cx={sweetX} cy={sweetY} r={28} fill="none" stroke="rgba(175, 77, 40, 0.25)" strokeWidth={1} />
 
           <text
             x={sweetX}
             y={sweetY + 38}
             textAnchor="middle"
-            className="font-mono text-[8px] uppercase tracking-wider fill-amber-500/70 select-none"
+            className="font-mono text-[8px] uppercase tracking-wider fill-stone-400 select-none"
           >
             ★ Titik Seimbang Menungsa
           </text>
@@ -160,7 +160,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
                   y1={M.top}
                   x2={x(v)}
                   y2={H - M.bottom}
-                  stroke={v === 3 ? 'rgba(245, 158, 11, 0.25)' : 'rgba(255, 255, 255, 0.06)'}
+                  stroke={v === 3 ? 'rgba(175, 77, 40, 0.35)' : 'rgba(255, 255, 255, 0.06)'}
                   strokeWidth={v === 3 ? 1.2 : 0.8}
                   strokeDasharray={v === 3 ? '3 3' : '2 3'}
                 />
@@ -169,7 +169,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
                   y1={y(v)}
                   x2={W - M.right}
                   y2={y(v)}
-                  stroke={v === 3 ? 'rgba(245, 158, 11, 0.25)' : 'rgba(255, 255, 255, 0.06)'}
+                  stroke={v === 3 ? 'rgba(175, 77, 40, 0.35)' : 'rgba(255, 255, 255, 0.06)'}
                   strokeWidth={v === 3 ? 1.2 : 0.8}
                   strokeDasharray={v === 3 ? '3 3' : '2 3'}
                 />
@@ -229,14 +229,14 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
             const shape = TYPE_SHAPES[r.type]?.shape ?? 'circle';
 
             return (
-              <g key={r.id} opacity={dimmed ? 0.25 : 1} className="cursor-pointer">
+              <g key={r.id} opacity={dimmed ? 0.25 : 1} className="cursor-pointer outline-none focus:outline-none">
                 {/* Hit Area */}
                 <circle
                   cx={cx}
                   cy={cy}
                   r={20}
                   fill="transparent"
-                  className="chart-mark-interactive chart-focusable"
+                  className="chart-mark-interactive chart-focusable outline-none focus:outline-none"
                   tabIndex={0}
                   role="button"
                   aria-label={`${r.label}, otoritas ${r.authorityLevel}, kedekatan ${r.intimacyLevel}`}
@@ -259,7 +259,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
                     cx={cx}
                     cy={cy}
                     r={14}
-                    fill="rgba(245, 158, 11, 0.25)"
+                    fill="rgba(175, 77, 40, 0.25)"
                     filter="url(#regGlow)"
                     pointerEvents="none"
                   />
@@ -272,7 +272,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
                     cy={cy}
                     r={11}
                     fill="none"
-                    stroke="#f59e0b"
+                    stroke="#af4d28"
                     strokeWidth={1.2}
                     strokeDasharray="2 2"
                     pointerEvents="none"
@@ -283,7 +283,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
                 {/* Shape Glyph */}
                 <path
                   d={shapePath(shape, cx, cy, isActive ? 6.5 : 5)}
-                  fill={isActive ? '#f59e0b' : '#a8a29e'}
+                  fill={isActive ? '#af4d28' : '#a8a29e'}
                   stroke="#0c0a09"
                   strokeWidth={1.5}
                   pointerEvents="none"
@@ -296,12 +296,12 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
                   textAnchor="middle"
                   className="font-sans text-[10px] select-none pointer-events-none"
                   style={{
-                    fill: isActive ? '#fef3c7' : '#a8a29e',
+                    fill: isActive ? '#fafaf9' : '#a8a29e',
                     fontWeight: isActive ? 700 : 500,
-                    textShadow: isActive ? '0 1px 4px rgba(0,0,0,0.9)' : 'none',
+                    textShadow: isActive ? '0 1px 4px rgba(0,0,0,0.8)' : 'none',
                   }}
                 >
-                  {r.term.split(' / ')[0]}
+                  {r.label}
                 </text>
               </g>
             );
@@ -313,7 +313,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
       {activeReg && (
         <div className="px-4 py-2.5 border-t border-stone-800 bg-stone-900/50 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1.5 text-xs font-sans">
           <div className="flex flex-wrap items-baseline gap-2">
-            <span className="font-serif font-semibold text-amber-400 text-sm">
+            <span className="font-serif font-semibold text-stone-100 text-sm">
               "{activeReg.term}"
             </span>
             <span className="font-mono text-stone-400 text-[10.5px]">

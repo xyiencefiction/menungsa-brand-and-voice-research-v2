@@ -492,8 +492,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
       {/* 6 Core Pillars of Writing */}
       <section className="space-y-6">
         <div>
-          <h2 className="text-lg md:text-xl font-serif text-stone-100 flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-amber-400" />
+          <h2 className="text-xl md:text-2xl font-serif font-bold text-stone-100">
             6 Nilai Utama Menungsa dalam Praktik Menulis
           </h2>
           <p className="text-xs md:text-sm text-stone-400 mt-1 font-sans">
@@ -612,8 +611,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
       {/* 2x2 Framing Matrix & Behavioral Visibility Context */}
       <section className="space-y-6">
         <div>
-          <h2 className="text-lg md:text-xl font-serif text-stone-100 flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-amber-400" />
+          <h2 className="text-xl md:text-2xl font-serif font-bold text-stone-100">
             Matriks Batas Keberlakuan 2×2: Kapan Pembingkaian Maskulinitas Bekerja vs Bumerang
           </h2>
           <p className="text-xs md:text-sm text-stone-400 mt-1 font-sans">

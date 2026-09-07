@@ -16,16 +16,17 @@
     <title>Menungsa Writing & Voice Guide — Panduan Praktis Penulis (v2)</title>
     <meta name="description" content="Panduan praktis gaya, nada, dan pilihan kata Menungsa untuk penulis, copywriter, dan kreator konten. Dilengkapi pustaka contoh naskah, panduan kata ganti, dan uji teks interaktif." />
     <script>
-      // Applies the stored theme before first paint. Without this the page renders in
-      // the stylesheet default for one frame and flashes when React mounts.
+      // Applies the stored theme before first paint with default to light theme
       (function () {
         try {
           var t = localStorage.getItem('menungsa-theme');
-          if (t === 'light' || t === 'dark') {
-            document.documentElement.setAttribute('data-theme', t);
+          if (t === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } else {
+            document.documentElement.setAttribute('data-theme', 'light');
           }
         } catch (e) {
-          /* blocked site data: fall through to the system preference */
+          document.documentElement.setAttribute('data-theme', 'light');
         }
       })();
     </script>

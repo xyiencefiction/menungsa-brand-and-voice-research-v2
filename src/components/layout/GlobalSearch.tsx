@@ -70,9 +70,12 @@ export const GlobalSearch: React.FC<Props> = ({ isOpen, onClose, onNavigate }) =
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 bg-black/80 backdrop-blur-sm p-4">
+    <div
+      className="fixed inset-0 z-50 flex items-start justify-center pt-20 bg-black/80 backdrop-blur-sm p-4 cursor-pointer"
+      onClick={onClose}
+    >
       <div 
-        className="bg-stone-900 border border-stone-700 w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-100"
+        className="bg-stone-900 border border-stone-700 w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-100 cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search input bar */}

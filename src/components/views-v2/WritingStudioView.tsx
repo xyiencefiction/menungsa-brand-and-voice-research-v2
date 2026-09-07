@@ -255,36 +255,35 @@ export const WritingStudioView: React.FC = () => {
             ))}
           </div>
 
-          {/* Layout Mode Switcher (2-Kolom Default vs 1-Kolom) */}
-          <div className="flex items-center gap-1 self-end md:self-auto bg-stone-900 border border-stone-800 rounded-[6px] p-1 shrink-0" role="group" aria-label="Tata Letak Tampilan">
-            <span className="text-[11px] font-sans text-stone-400 font-medium px-1.5 hidden xl:inline">Tampilan:</span>
+          {/* Layout Mode Switcher (Icons only) */}
+          <div className="flex items-center gap-0.5 self-end md:self-auto bg-stone-900 border border-stone-800 rounded-[6px] p-1 shrink-0" role="group" aria-label="Tata Letak Tampilan">
             <button
               type="button"
               onClick={() => setLayoutMode('two-column')}
               aria-pressed={layoutMode === 'two-column'}
-              className={`px-2.5 py-1 rounded-[4px] text-xs font-sans flex items-center gap-1.5 cursor-pointer transition ${
+              aria-label="Tampilan 2 Kolom Berdampingan"
+              className={`p-1.5 rounded-[4px] cursor-pointer transition ${
                 layoutMode === 'two-column'
-                  ? 'bg-amber-500 text-[#F1ECDF] font-semibold shadow-raised'
+                  ? 'bg-amber-600 text-[#F1ECDF] shadow-raised'
                   : 'text-stone-400 hover:text-stone-200'
               }`}
-              title="Tampilan 2 Kolom Berdampingan (Default)"
+              title="Tampilan 2 Kolom"
             >
-              <LayoutGrid size={13} />
-              <span className="text-xs">2 Kolom</span>
+              <LayoutGrid size={15} />
             </button>
             <button
               type="button"
               onClick={() => setLayoutMode('single-column')}
               aria-pressed={layoutMode === 'single-column'}
-              className={`px-2.5 py-1 rounded-[4px] text-xs font-sans flex items-center gap-1.5 cursor-pointer transition ${
+              aria-label="Tampilan 1 Kolom Penuh"
+              className={`p-1.5 rounded-[4px] cursor-pointer transition ${
                 layoutMode === 'single-column'
-                  ? 'bg-amber-500 text-[#F1ECDF] font-semibold shadow-raised'
+                  ? 'bg-amber-600 text-[#F1ECDF] shadow-raised'
                   : 'text-stone-400 hover:text-stone-200'
               }`}
-              title="Tampilan 1 Kolom Penuh"
+              title="Tampilan 1 Kolom"
             >
-              <StretchHorizontal size={13} />
-              <span className="text-xs">1 Kolom</span>
+              <StretchHorizontal size={15} />
             </button>
           </div>
         </div>
@@ -399,13 +398,13 @@ export const WritingStudioView: React.FC = () => {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-1.5 text-emerald-500 dark:text-emerald-400 text-xs font-sans font-bold uppercase tracking-wider">
                           <CheckCircle2 size={15} />
-                          <span>Gaya Suara Menungsa (Terkalibrasi)</span>
+                          <span>Gaya Suara Menungsa</span>
                         </div>
                         <button
                           onClick={() => handleCopy(ex.worked.copy, ex.id)}
                           className="btn-secondary px-2.5 py-1 text-xs gap-1.5 font-sans cursor-pointer shrink-0"
                           title="Salin ke clipboard"
-                          aria-label={isCopied ? "Teks naskah berhasil disalin ke clipboard" : "Salin naskah terkalibrasi ke clipboard"}
+                          aria-label={isCopied ? "Teks naskah berhasil disalin ke clipboard" : "Salin naskah ke clipboard"}
                         >
                           <span className="sr-only" aria-live="polite">
                             {isCopied ? "Teks berhasil disalin" : ""}
@@ -483,13 +482,13 @@ export const WritingStudioView: React.FC = () => {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-1.5 text-emerald-500 dark:text-emerald-400 text-xs font-sans font-bold uppercase tracking-wider">
                         <CheckCircle2 size={15} />
-                        <span>Gaya Suara Menungsa (Terkalibrasi)</span>
+                        <span>Gaya Suara Menungsa</span>
                       </div>
                       <button
                         onClick={() => handleCopy(ex.worked.copy, ex.id)}
                         className="btn-secondary px-2.5 py-1 text-xs gap-1.5 font-sans cursor-pointer"
                         title="Salin ke clipboard"
-                        aria-label={isCopied ? "Teks naskah berhasil disalin ke clipboard" : "Salin naskah terkalibrasi ke clipboard"}
+                        aria-label={isCopied ? "Teks naskah berhasil disalin ke clipboard" : "Salin naskah ke clipboard"}
                       >
                         <span className="sr-only" aria-live="polite">
                           {isCopied ? "Teks berhasil disalin" : ""}

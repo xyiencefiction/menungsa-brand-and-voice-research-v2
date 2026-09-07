@@ -578,9 +578,13 @@ button:disabled {
 .chart-mark-interactive:hover {
   opacity: 0.82;
 }
-.chart-focusable:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+.chart-focusable:focus,
+.chart-focusable:focus-visible,
+.chart-mark-interactive:focus,
+.chart-mark-interactive:focus-visible,
+svg :focus,
+svg :focus-visible {
+  outline: none !important;
 }
 
 input[type="range"] {

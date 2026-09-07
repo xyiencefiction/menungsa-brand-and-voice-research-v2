@@ -60,7 +60,7 @@ export const FramingMatrix: React.FC<Props> = ({
             <h3 className="font-serif font-semibold text-stone-100 text-sm md:text-base">
               Matriks Batas Keberlakuan 2×2
             </h3>
-            <span className="px-1.5 py-0.5 rounded font-mono text-[9.5px] uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/20">
+            <span className="px-1.5 py-0.5 rounded font-mono text-[9.5px] uppercase tracking-wider bg-stone-800 text-stone-300 border border-stone-700">
               Interaktif
             </span>
           </div>
@@ -75,22 +75,22 @@ export const FramingMatrix: React.FC<Props> = ({
             onClick={() => onToggleVisibility(false)}
             className={`px-2.5 py-1 rounded-md font-mono text-[10px] tracking-wide transition-all cursor-pointer flex items-center gap-1.5 ${
               !isPublic
-                ? 'bg-amber-500 text-stone-950 font-bold shadow-xs'
+                ? 'bg-[#af4d28] text-[#f1ecdf] font-semibold shadow-xs'
                 : 'text-stone-400 hover:text-stone-200'
             }`}
           >
-            <span className={`w-1.5 h-1.5 rounded-full ${!isPublic ? 'bg-stone-950' : 'bg-stone-600'}`} />
+            <span className={`w-1.5 h-1.5 rounded-full ${!isPublic ? 'bg-white' : 'bg-stone-600'}`} />
             Privat
           </button>
           <button
             onClick={() => onToggleVisibility(true)}
             className={`px-2.5 py-1 rounded-md font-mono text-[10px] tracking-wide transition-all cursor-pointer flex items-center gap-1.5 ${
               isPublic
-                ? 'bg-amber-500 text-stone-950 font-bold shadow-xs'
+                ? 'bg-[#af4d28] text-[#f1ecdf] font-semibold shadow-xs'
                 : 'text-stone-400 hover:text-stone-200'
             }`}
           >
-            <span className={`w-1.5 h-1.5 rounded-full ${isPublic ? 'bg-stone-950' : 'bg-stone-600'}`} />
+            <span className={`w-1.5 h-1.5 rounded-full ${isPublic ? 'bg-white' : 'bg-stone-600'}`} />
             Sorotan Publik
           </button>
         </div>
@@ -124,30 +124,30 @@ export const FramingMatrix: React.FC<Props> = ({
               patternTransform="rotate(45 0 0)"
               patternUnits="userSpaceOnUse"
             >
-              <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(245, 158, 11, 0.12)" strokeWidth="0.9" />
+              <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(255, 255, 255, 0.08)" strokeWidth="0.9" />
             </pattern>
 
             {/* Quadrant Radial Gradients for Architectural Atmosphere */}
             <radialGradient id="gradTopLeft" cx="25%" cy="25%" r="75%">
-              <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.12" />
-              <stop offset="60%" stopColor="#b45309" stopOpacity="0.04" />
+              <stop offset="0%" stopColor="#af4d28" stopOpacity="0.10" />
+              <stop offset="60%" stopColor="#7c2d12" stopOpacity="0.03" />
               <stop offset="100%" stopColor="#0c0a09" stopOpacity="0" />
             </radialGradient>
 
             <radialGradient id="gradTopRight" cx="75%" cy="25%" r="75%">
-              <stop offset="0%" stopColor="#ef4444" stopOpacity="0.09" />
-              <stop offset="60%" stopColor="#7f1d1d" stopOpacity="0.03" />
+              <stop offset="0%" stopColor="#ef4444" stopOpacity="0.08" />
+              <stop offset="60%" stopColor="#7f1d1d" stopOpacity="0.02" />
               <stop offset="100%" stopColor="#0c0a09" stopOpacity="0" />
             </radialGradient>
 
             <radialGradient id="gradBottomLeft" cx="25%" cy="75%" r="75%">
-              <stop offset="0%" stopColor="#10b981" stopOpacity="0.09" />
+              <stop offset="0%" stopColor="#10b981" stopOpacity="0.08" />
               <stop offset="60%" stopColor="#064e3b" stopOpacity="0.02" />
               <stop offset="100%" stopColor="#0c0a09" stopOpacity="0" />
             </radialGradient>
 
             <radialGradient id="gradBottomRight" cx="75%" cy="75%" r="75%">
-              <stop offset="0%" stopColor="#78716c" stopOpacity="0.08" />
+              <stop offset="0%" stopColor="#78716c" stopOpacity="0.07" />
               <stop offset="60%" stopColor="#292524" stopOpacity="0.02" />
               <stop offset="100%" stopColor="#0c0a09" stopOpacity="0" />
             </radialGradient>
@@ -191,7 +191,7 @@ export const FramingMatrix: React.FC<Props> = ({
             y1={midY}
             x2={W - M.right}
             y2={midY}
-            stroke="rgba(245, 158, 11, 0.35)"
+            stroke="rgba(255, 255, 255, 0.15)"
             strokeWidth={1}
             strokeDasharray="3 3"
           />
@@ -200,19 +200,19 @@ export const FramingMatrix: React.FC<Props> = ({
             y1={M.top}
             x2={midX}
             y2={H - M.bottom}
-            stroke="rgba(245, 158, 11, 0.35)"
+            stroke="rgba(255, 255, 255, 0.15)"
             strokeWidth={1}
             strokeDasharray="3 3"
           />
 
           {/* Center Nexus Dot with Rings */}
-          <circle cx={midX} cy={midY} r={8} fill="none" stroke="rgba(245, 158, 11, 0.2)" strokeWidth={1} />
-          <circle cx={midX} cy={midY} r={2} fill="rgba(245, 158, 11, 0.8)" />
+          <circle cx={midX} cy={midY} r={7} fill="none" stroke="rgba(255, 255, 255, 0.15)" strokeWidth={1} />
+          <circle cx={midX} cy={midY} r={2} fill="rgba(255, 255, 255, 0.6)" />
 
           {/* Quadrant Labels with Minimal Architectural Typography */}
           {/* Top-Left: Identity Shield Zone */}
           <g transform={`translate(${M.left + 10}, ${M.top + 8})`}>
-            <text className="font-mono text-[9.5px] uppercase font-bold tracking-wider fill-amber-400">
+            <text className="font-mono text-[9.5px] uppercase font-bold tracking-wider fill-stone-300">
               Zona Perisai Identitas
             </text>
             <text y={13} className="font-sans text-[8.5px] fill-stone-400">
@@ -285,7 +285,7 @@ export const FramingMatrix: React.FC<Props> = ({
             return (
               <g
                 key={item.id}
-                className="chart-mark-interactive cursor-pointer"
+                className="chart-mark-interactive cursor-pointer outline-none focus:outline-none"
                 onMouseEnter={() => setHoveredAction(item.id)}
                 onMouseLeave={() => setHoveredAction(null)}
                 onClick={() => onSelectAction(item.id)}
@@ -300,7 +300,7 @@ export const FramingMatrix: React.FC<Props> = ({
                 aria-label={`${item.name}, ${isPublic ? 'Public' : 'Private'}`}
               >
                 {/* Hit Target Area */}
-                <circle cx={cx} cy={cy} r={24} fill="transparent" />
+                <circle cx={cx} cy={cy} r={24} fill="transparent" className="outline-none focus:outline-none" />
 
                 {/* Vertical Dotted Needles / Trajectory */}
                 <line
@@ -308,7 +308,7 @@ export const FramingMatrix: React.FC<Props> = ({
                   y1={yPriv}
                   x2={cx}
                   y2={yPub}
-                  stroke={active ? 'rgba(245, 158, 11, 0.7)' : 'rgba(255, 255, 255, 0.15)'}
+                  stroke={active ? 'rgba(175, 77, 40, 0.85)' : 'rgba(255, 255, 255, 0.15)'}
                   strokeWidth={active ? 1.5 : 1}
                   strokeDasharray="2 3"
                 />
@@ -329,7 +329,7 @@ export const FramingMatrix: React.FC<Props> = ({
                     cx={cx}
                     cy={cy}
                     r={18}
-                    fill="rgba(245, 158, 11, 0.15)"
+                    fill="rgba(175, 77, 40, 0.2)"
                     filter="url(#matrixAmberGlow)"
                   />
                 )}
@@ -341,7 +341,7 @@ export const FramingMatrix: React.FC<Props> = ({
                     cy={cy}
                     r={12}
                     fill="none"
-                    stroke="#f59e0b"
+                    stroke="#af4d28"
                     strokeWidth={1.2}
                     strokeDasharray="3 2"
                     className="animate-spin-slow"
@@ -353,7 +353,7 @@ export const FramingMatrix: React.FC<Props> = ({
                   cx={cx}
                   cy={cy}
                   r={active ? 6.5 : 4.5}
-                  fill={active ? '#f59e0b' : '#d97706'}
+                  fill={active ? '#af4d28' : '#893412'}
                   stroke="#0c0a09"
                   strokeWidth={2}
                 />
@@ -365,7 +365,7 @@ export const FramingMatrix: React.FC<Props> = ({
                   textAnchor="middle"
                   className="font-sans text-[10.5px] select-none"
                   style={{
-                    fill: active ? '#fef3c7' : '#d6d3d1',
+                    fill: active ? '#fafaf9' : '#d6d3d1',
                     fontWeight: active ? 700 : 500,
                     textShadow: active ? '0 1px 4px rgba(0,0,0,0.9)' : 'none',
                   }}
@@ -381,7 +381,7 @@ export const FramingMatrix: React.FC<Props> = ({
       {/* Footer Status Bar with Active Context */}
       <footer className="px-3.5 py-2 border-t border-stone-800 bg-stone-900/60 flex flex-wrap items-center justify-between gap-2 text-[11px] font-sans">
         <div className="flex items-center gap-1.5">
-          <span className="font-mono text-amber-400 font-bold uppercase text-[10px]">Aktif:</span>
+          <span className="font-mono text-stone-400 font-bold uppercase text-[10px]">Aktif:</span>
           <span className="text-stone-100 font-semibold">{activeItem.name}</span>
           <span className="text-stone-500">·</span>
           <span className="text-stone-300 font-mono text-[10.5px]">

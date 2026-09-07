@@ -343,9 +343,23 @@ export const CopySandboxView: React.FC = () => {
               <FileText size={14} className="text-amber-400" />
               Kotak Uji Draf Naskah:
             </span>
-            <span className="text-[11px] font-mono text-stone-400">
-              {analysis.total} Kata • Terdeteksi {analysis.matches.length} Istilah
-            </span>
+            {/* Status Pill Badge */}
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono border bg-stone-900/90 border-stone-800 shadow-xs">
+              <span className={`w-1.5 h-1.5 rounded-full ${
+                analysis.matches.length === 0
+                  ? 'bg-emerald-400'
+                  : analysis.calibrationScore >= 70
+                  ? 'bg-emerald-400'
+                  : analysis.calibrationScore >= 40
+                  ? 'bg-amber-500'
+                  : 'bg-rose-400'
+              }`} />
+              <span className="text-stone-300 font-medium">{analysis.total} Kata</span>
+              <span className="text-stone-600">•</span>
+              <span className="text-stone-400">
+                Terdeteksi <strong className={analysis.matches.length > 0 ? 'text-stone-200 font-semibold' : 'text-stone-400'}>{analysis.matches.length} Istilah</strong>
+              </span>
+            </div>
           </div>
 
           {/* Quick Presets */}

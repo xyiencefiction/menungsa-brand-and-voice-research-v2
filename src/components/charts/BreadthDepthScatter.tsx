@@ -114,7 +114,7 @@ export const BreadthDepthScatter: React.FC<Props> = ({ selectedId, onSelect }) =
                     className="cursor-pointer hover:bg-stone-900/60"
                   >
                     <td className="p-2.5">
-                      <span className="font-mono text-amber-400 mr-2">{p.id}</span>
+                      <span className="font-mono text-stone-400 font-bold mr-2">{p.id}</span>
                       <span className="text-stone-200">{p.name}</span>
                     </td>
                     <td className="p-2.5 text-right font-mono text-stone-300 tabular-nums">{p.breadth} / 7</td>
@@ -175,11 +175,11 @@ export const BreadthDepthScatter: React.FC<Props> = ({ selectedId, onSelect }) =
               const isActive = active === p.id;
               const stroke = tierStroke(p.tier);
               return (
-                <g key={p.id}>
+                <g key={p.id} className="outline-none focus:outline-none">
                   {/* Hit area larger than the mark, per minimum target size. */}
                   <circle
                     cx={cx} cy={cy} r={13} fill="transparent"
-                    className="chart-mark-interactive chart-focusable"
+                    className="chart-mark-interactive chart-focusable outline-none focus:outline-none"
                     tabIndex={0}
                     role="button"
                     aria-label={`${p.id} ${p.name}, ${p.breadth} domains, ${p.studies} studies, ${CONFIDENCE_LABEL[p.tier]}`}

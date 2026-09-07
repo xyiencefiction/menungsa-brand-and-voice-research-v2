@@ -73,7 +73,7 @@ export const MechanismModel: React.FC<Props> = ({ mechanisms, selectedId, onSele
             onClick={() => onSelect(m.mechanism_id)}
             className={`px-1.5 py-0.5 rounded font-mono border transition ${
               m.mechanism_id === selected.mechanism_id
-                ? 'bg-amber-500 text-stone-950 font-bold border-amber-400'
+                ? 'bg-[#af4d28] text-stone-100 font-semibold border-[#893412]'
                 : 'bg-stone-900 text-stone-400 border-stone-800 hover:text-stone-200'
             }`}
             style={{ fontSize: 'var(--t-micro)' }}

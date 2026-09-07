@@ -84,13 +84,10 @@ export const Header: React.FC<Props> = ({
           <button
             onClick={onOpenSearch}
             className="flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg bg-stone-900 hover:bg-stone-800 border border-stone-800 text-stone-300 text-xs font-sans transition cursor-pointer"
-            title="Cari kata kunci panduan (⌘K)"
+            title="Cari kata kunci panduan"
           >
-            <Search size={14} className="text-amber-400/90" />
+            <Search size={14} className="text-stone-400" />
             <span className="hidden lg:inline text-stone-400">Cari panduan...</span>
-            <kbd className="hidden lg:inline-block px-1.5 py-0.5 font-mono text-[10px] bg-stone-800 text-stone-400 border border-stone-700 rounded">
-              ⌘K
-            </kbd>
           </button>
 
           <ThemeToggle />
