@@ -11,7 +11,8 @@ import {
   Scale, 
   SlidersHorizontal,
   Eye,
-  AlertCircle
+  AlertCircle,
+  Camera
 } from 'lucide-react';
 
 interface Props {
@@ -307,33 +308,95 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
 
   return (
     <div className="space-y-12 pb-16">
-      {/* Hero Header */}
-      <section className="relative overflow-hidden rounded-[9px] border border-stone-800 bg-stone-900/60 p-6 md:p-10 shadow-raised">
-        <div className="max-w-3xl space-y-4">
-          <div className="kicker flex items-center gap-1.5">
-            <Sparkles size={12} className="text-amber-500" />
-            <span>PANDUAN PRAKTIS PENULIS & KREATOR</span>
+      {/* Hero Header with Seamless Documentary Photography Integration */}
+      <section className="relative overflow-hidden rounded-[9px] border border-stone-800 bg-stone-900/60 p-6 md:p-8 lg:p-10 shadow-raised">
+        {/* Subtle atmospheric ambient glow behind the photo */}
+        <div className="absolute -right-16 -top-16 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center relative z-10">
+          {/* Left Column: Headline & Philosophy */}
+          <div className="lg:col-span-7 space-y-4">
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-[6px] bg-stone-900 border border-stone-800 text-[11px] font-sans font-bold text-amber-500 uppercase tracking-wider">
+                <Sparkles size={12} className="text-amber-500" />
+                <span>PANDUAN PRAKTIS PENULIS & KREATOR</span>
+              </div>
+              <span className="text-[11px] font-sans text-stone-400 font-medium px-2 py-0.5 rounded-[6px] bg-stone-950/70 border border-stone-800">
+                Edisi Penulis v2
+              </span>
+            </div>
+
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-stone-100 leading-[1.15]">
+              Karakter & Dasar Suara Menungsa
+            </h1>
+
+            <p className="text-sm sm:text-base leading-relaxed text-stone-300 font-sans max-w-[65ch]">
+              Menungsa berbicara dengan nada <strong>tenang, jujur, membumi, dan tidak menggurui</strong>. Kami tidak memosisikan diri sebagai figur moral yang menyalahkan, bukan pula kawan khayalan yang berpura-pura akrab. Kami hadir sebagai pendamping yang menghormati kedaulatan dan harga diri pembaca.
+            </p>
+
+            <div className="flex flex-wrap gap-3 pt-2">
+              <button
+                onClick={() => onNavigate('studio')}
+                className="btn-primary px-4 py-2.5 text-xs font-medium cursor-pointer shadow-raised gap-2"
+              >
+                <span>Buka Studio Contoh Tulisan</span>
+                <ArrowRight size={14} />
+              </button>
+              <button
+                onClick={() => onNavigate('sandbox')}
+                className="btn-secondary px-4 py-2.5 text-xs font-medium cursor-pointer"
+              >
+                <span>Uji Draf Kalimat Anda</span>
+              </button>
+            </div>
+
+            {/* Micro specs / quick trust signals */}
+            <div className="pt-3 border-t border-stone-800/60 flex flex-wrap items-center gap-4 text-xs text-stone-400 font-sans">
+              <div className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                <span>6 Nilai Inti Terkalibrasi</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                <span>56 Naskah Nyata Siap Pakai</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-stone-400" />
+                <span>Standar Budaya DESIGN.md v1.4</span>
+              </div>
+            </div>
           </div>
-          <h1 className="text-3xl md:text-5xl font-serif font-semibold tracking-tight text-stone-100 leading-tight">
-            Karakter & Dasar Suara Menungsa
-          </h1>
-          <p className="text-base leading-relaxed text-stone-300 font-sans max-w-[74ch]">
-            Menungsa berbicara dengan nada <strong>tenang, jujur, membumi, dan tidak menggurui</strong>. Kami tidak memosisikan diri sebagai figur moral yang menyalahkan, bukan pula kawan khayalan yang berpura-pura akrab. Kami hadir sebagai pendamping yang menghormati kedaulatan dan harga diri pembaca.
-          </p>
-          <div className="flex flex-wrap gap-3 pt-2">
-            <button
-              onClick={() => onNavigate('studio')}
-              className="btn-primary px-4 py-2.5 text-xs font-medium cursor-pointer shadow-raised gap-2"
-            >
-              <span>Buka Studio Contoh Tulisan</span>
-              <ArrowRight size={14} />
-            </button>
-            <button
-              onClick={() => onNavigate('sandbox')}
-              className="btn-secondary px-4 py-2.5 text-xs font-medium cursor-pointer"
-            >
-              <span>Uji Draf Kalimat Anda</span>
-            </button>
+
+          {/* Right Column: Seamless Cover Photography Mount */}
+          <div className="lg:col-span-5">
+            <div className="relative group overflow-hidden rounded-[8px] border border-stone-800 bg-stone-950 shadow-raised">
+              {/* Top Film Tag */}
+              <div className="absolute top-2.5 right-2.5 z-20 flex items-center gap-1.5 px-2 py-0.5 rounded-[4px] bg-stone-950/80 backdrop-blur-md border border-stone-800/80 text-[10px] font-mono text-stone-300">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                <span>35mm · Monokrom Alami</span>
+              </div>
+
+              {/* Cover Image */}
+              <div className="aspect-[16/10] sm:aspect-[21/9] lg:aspect-[16/10] w-full overflow-hidden bg-stone-950">
+                <img
+                  src="/brand/menungsa-cover.png"
+                  alt="Dokumentasi interaksi diskusi pria Indonesia dengan pencahayaan alami monokrom candid"
+                  className="w-full h-full object-cover object-center filter contrast-105 group-hover:scale-102 transition-transform duration-700 select-none"
+                  loading="eager"
+                />
+              </div>
+
+              {/* Scrim Caption Overlay (DESIGN.md §7.1: Scrim soft-ink to transparent) */}
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-stone-950 via-stone-950/80 to-transparent p-3.5 pt-8 text-left z-20">
+                <p className="font-serif text-xs text-stone-200 leading-snug italic">
+                  "Hadir sebagai pendamping yang setara, tanpa tuntutan kerapuhan di ruang publik."
+                </p>
+                <div className="flex items-center justify-between mt-1 text-[10px] font-sans text-stone-400">
+                  <span>Dokumentasi Lapangan Menungsa</span>
+                  <span className="font-mono text-stone-500">Candid · 2026</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -530,6 +593,68 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
           ))}
         </div>
       </section>
+
+      {/* Brand Identity & Photography Principles (DESIGN.md §6 & §7) */}
+      <section className="rounded-[9px] border border-stone-800 bg-stone-900/40 p-6 md:p-8 space-y-6 shadow-raised">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-800/80 pb-5">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <Camera size={14} className="text-amber-500" />
+              <span className="text-[11px] font-sans font-bold uppercase tracking-wider text-amber-500">
+                IDENTITAS VISUAL & KARAKTER FOTOGRAFI (DESIGN.MD §7)
+              </span>
+            </div>
+            <h2 className="text-xl md:text-2xl font-serif font-semibold text-stone-100">
+              Bagaimana Suara Menungsa Berwujud Secara Visual
+            </h2>
+            <p className="text-xs md:text-sm text-stone-400 mt-1 max-w-[70ch]">
+              Prinsip tulisan yang tenang dan bermartabat tercermin secara utuh dalam pilihan citra visual: tanpa rekayasa pose, tanpa dramatisasi palsu, dan menghargai kedaulatan audiens.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3 shrink-0 p-2.5 rounded-[8px] bg-stone-950/80 border border-stone-800">
+            <img
+              src="/brand/menungsa-mark.png"
+              alt="Menungsa Mark m;"
+              className="w-10 h-10 rounded-[6px] border border-stone-800 object-cover shadow-xs select-none"
+            />
+            <div className="text-xs font-sans">
+              <div className="font-semibold text-stone-200">Ligatur Resmi Menungsa</div>
+              <div className="text-[10px] text-stone-400">Titik Koma (;) Pencegahan Bunuh Diri</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="rounded-[6px] border border-stone-800/80 bg-stone-950/50 p-4 space-y-2">
+            <div className="text-xs font-sans font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+              <span>01 · Kandid & Tanpa Pose (Unposed)</span>
+            </div>
+            <p className="text-xs text-stone-300 leading-relaxed font-sans">
+              Subjek tidak pernah menatap kamera atau berpose teatrikal. Foto menangkap momen nyata saat berpikir, berbincang, bekerja, atau beristirahat secara bersahaja.
+            </p>
+          </div>
+
+          <div className="rounded-[6px] border border-stone-800/80 bg-stone-950/50 p-4 space-y-2">
+            <div className="text-xs font-sans font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+              <span>02 · Cahaya Alami & Monokrom 35mm</span>
+            </div>
+            <p className="text-xs text-stone-300 leading-relaxed font-sans">
+              Menolak filter kecantikan buatan atau saturasi warna tinggi. Menggunakan pencahayaan natural dan gradasi hitam-putih yang hangat dengan bayangan terbuka.
+            </p>
+          </div>
+
+          <div className="rounded-[6px] border border-stone-800/80 bg-stone-950/50 p-4 space-y-2">
+            <div className="text-xs font-sans font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+              <span>03 · Menjaga Martabat (Dignity First)</span>
+            </div>
+            <p className="text-xs text-stone-300 leading-relaxed font-sans">
+              Pantang mengeksploitasi penderitaan sebagai tontonan publik. Tidak menampilkan adegan krisis berbahaya, keputusasaan di bibir tebing, atau tangisan demi viralitas.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
+
