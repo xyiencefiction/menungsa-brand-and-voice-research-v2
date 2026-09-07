@@ -246,39 +246,6 @@ export const WordGuideView: React.FC = () => {
   const [selectedRegisterId, setSelectedRegisterId] = useState<string>('kamu');
   const [selectedFunctionId, setSelectedFunctionId] = useState<string>('all');
 
-  // Quick Decision Assistant state
-  const [speakerType, setSpeakerType] = useState<'institution' | 'person'>('institution');
-  const [privacyType, setPrivacyType] = useState<'public' | 'private'>('public');
-
-  const getRecommendedPronoun = () => {
-    if (speakerType === 'institution') {
-      return privacyType === 'public'
-        ? {
-            pronoun: 'kamu',
-            firstPerson: 'kami',
-            note: 'Standar bawaan organisasi: santun, langsung, hangat, tanpa berpura-pura menjadi teman tongkrongan.',
-          }
-        : {
-            pronoun: 'kamu / Anda',
-            firstPerson: 'kami',
-            note: 'Gunakan kamu untuk pendampingan hangat, atau Anda jika konteksnya layanan medis resmi Puskesmas/klinik.',
-          };
-    } else {
-      return privacyType === 'public'
-        ? {
-            pronoun: 'kamu / Anda',
-            firstPerson: 'saya',
-            note: 'Jika penulis bernama nyata menulis esai publik, gunakan saya dan sapa pembaca dengan kamu.',
-          }
-        : {
-            pronoun: 'lo',
-            firstPerson: 'gue',
-            note: 'Gue/lo sah HANYA jika dua individu bernama nyata berbicara dalam obrolan santai di ranah privat.',
-          };
-    }
-  };
-
-  const recommendation = getRecommendedPronoun();
   const activeRegister = REGISTERS.find((r) => r.id === selectedRegisterId) ?? REGISTERS[0];
 
   return (
@@ -348,102 +315,7 @@ export const WordGuideView: React.FC = () => {
 
       {/* TAB 1: PRONOUNS */}
       {activeTab === 'pronouns' && (
-        <div role="tabpanel" id="panel-pronouns" aria-labelledby="tab-pronouns" className="space-y-8">
-          {/* Quick Decision Tool — Programs & Care (Green Wash Panel) */}
-          <div className="rounded-xl border border-emerald-900/40 bg-emerald-950/60 p-5 md:p-6 space-y-5 shadow-xs">
-            <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 text-xs font-mono font-bold uppercase tracking-wider">
-              <Sparkles size={15} />
-              <span>Asisten Pemilihan Kata Ganti Cepat</span>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
-              {/* Question 1 */}
-              <div role="radiogroup" aria-labelledby="speaker-type-label" className="space-y-2.5 md:pr-5 md:border-r md:border-emerald-900/40">
-                <div className="flex items-center gap-2">
-                  <span className="w-5 h-5 rounded-full bg-emerald-700 text-bone font-mono text-[10px] font-bold flex items-center justify-center shrink-0">1</span>
-                  <label id="speaker-type-label" className="text-stone-100 font-bold block text-xs">
-                    Siapa yang berbicara di naskah ini?
-                  </label>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  <button
-                    role="radio"
-                    aria-checked={speakerType === 'institution'}
-                    onClick={() => setSpeakerType('institution')}
-                    className={`p-3 rounded-lg border text-left cursor-pointer transition ${
-                      speakerType === 'institution'
-                        ? 'border-emerald-700 bg-emerald-700 text-bone font-semibold shadow-xs dark:bg-emerald-800 dark:border-emerald-600'
-                        : 'border-stone-800 bg-stone-900 text-stone-300 hover:bg-stone-850 hover:text-stone-100 font-medium'
-                    }`}
-                  >
-                    🏢 Organisasi Menungsa
-                  </button>
-                  <button
-                    role="radio"
-                    aria-checked={speakerType === 'person'}
-                    onClick={() => setSpeakerType('person')}
-                    className={`p-3 rounded-lg border text-left cursor-pointer transition ${
-                      speakerType === 'person'
-                        ? 'border-emerald-700 bg-emerald-700 text-bone font-semibold shadow-xs dark:bg-emerald-800 dark:border-emerald-600'
-                        : 'border-stone-800 bg-stone-900 text-stone-300 hover:bg-stone-850 hover:text-stone-100 font-medium'
-                    }`}
-                  >
-                    ✍️ Individu Bernama Nyata
-                  </button>
-                </div>
-              </div>
-
-              {/* Question 2 */}
-              <div role="radiogroup" aria-labelledby="privacy-type-label" className="space-y-2.5 md:pl-2">
-                <div className="flex items-center gap-2">
-                  <span className="w-5 h-5 rounded-full bg-emerald-700 text-bone font-mono text-[10px] font-bold flex items-center justify-center shrink-0">2</span>
-                  <label id="privacy-type-label" className="text-stone-100 font-bold block text-xs">
-                    Di mana naskah ini akan diterbitkan?
-                  </label>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  <button
-                    role="radio"
-                    aria-checked={privacyType === 'public'}
-                    onClick={() => setPrivacyType('public')}
-                    className={`p-3 rounded-lg border text-left cursor-pointer transition ${
-                      privacyType === 'public'
-                        ? 'border-emerald-700 bg-emerald-700 text-bone font-semibold shadow-xs dark:bg-emerald-800 dark:border-emerald-600'
-                        : 'border-stone-800 bg-stone-900 text-stone-300 hover:bg-stone-850 hover:text-stone-100 font-medium'
-                    }`}
-                  >
-                    📢 Ruang Terbuka (Medsos, Web)
-                  </button>
-                  <button
-                    role="radio"
-                    aria-checked={privacyType === 'private'}
-                    onClick={() => setPrivacyType('private')}
-                    className={`p-3 rounded-lg border text-left cursor-pointer transition ${
-                      privacyType === 'private'
-                        ? 'border-emerald-700 bg-emerald-700 text-bone font-semibold shadow-xs dark:bg-emerald-800 dark:border-emerald-600'
-                        : 'border-stone-800 bg-stone-900 text-stone-300 hover:bg-stone-850 hover:text-stone-100 font-medium'
-                    }`}
-                  >
-                    🔒 Ruang Tertutup (WA, DM, Chat)
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Recommendation Result */}
-            <div className="rounded-lg bg-stone-900 border border-stone-800 p-4 text-xs space-y-1.5 shadow-raised">
-              <span className="text-[10px] font-mono text-emerald-700 dark:text-emerald-400 uppercase tracking-wider block font-bold">
-                Rekomendasi Kata Ganti yang Disarankan:
-              </span>
-              <div className="flex flex-wrap items-center gap-3 text-stone-100 font-medium text-sm">
-                <span>Orang Pertama: <strong className="text-emerald-700 dark:text-emerald-300 font-serif text-base font-bold">{recommendation.firstPerson}</strong></span>
-                <span className="text-stone-600">·</span>
-                <span>Orang Kedua: <strong className="text-emerald-700 dark:text-emerald-300 font-serif text-base font-bold">{recommendation.pronoun}</strong></span>
-              </div>
-              <p className="text-stone-400 pt-1 leading-relaxed text-xs">{recommendation.note}</p>
-            </div>
-          </div>
-
+        <div role="tabpanel" id="panel-pronouns" aria-labelledby="tab-pronouns" className="space-y-6">
           {/* Interactive 2D Register Map & Active Register Deep Dive (2-Column Desktop Grid) */}
           <div className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
