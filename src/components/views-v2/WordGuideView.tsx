@@ -409,8 +409,8 @@ export const WordGuideView: React.FC = () => {
             </div>
           </div>
 
-          {/* Interactive 2D Register Map */}
-          <div className="space-y-3">
+          {/* Interactive 2D Register Map & Active Register Deep Dive (2-Column Desktop Grid) */}
+          <div className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
               <div>
                 <h3 className="text-sm font-mono text-amber-400 uppercase tracking-wider font-semibold flex items-center gap-2">
@@ -426,72 +426,80 @@ export const WordGuideView: React.FC = () => {
               </span>
             </div>
 
-            <RegisterMap
-              registers={languageRegisters}
-              selectedId={selectedRegisterId}
-              onSelect={(id) => setSelectedRegisterId(id)}
-            />
-          </div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+              <div className="lg:col-span-7">
+                <RegisterMap
+                  registers={languageRegisters}
+                  selectedId={selectedRegisterId}
+                  onSelect={(id) => setSelectedRegisterId(id)}
+                />
+              </div>
 
-          {/* Pronoun Details Cards */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-mono text-stone-400 uppercase tracking-wider font-semibold">
-              Katalog Lengkap Kata Ganti Bahasa Indonesia (Pilih untuk Membaca Profil):
-            </h3>
+              {/* Active Register Deep Dive (Right Column) */}
+              <div className="lg:col-span-5">
+                {activeRegister && (
+                  <div
+                    role="tabpanel"
+                    id="panel-register-detail"
+                    aria-labelledby={`tab-register-${activeRegister.id}`}
+                    className="rounded-xl border border-stone-800 bg-stone-950/80 p-4 sm:p-5 space-y-3.5 shadow-xl"
+                  >
+                    <div className="flex items-center justify-between border-b border-stone-800/80 pb-2.5">
+                      <div>
+                        <span className="text-[10px] font-mono text-amber-400 uppercase font-bold tracking-wider">Profil Kata Ganti:</span>
+                        <h4 className="text-xl font-serif font-semibold text-stone-100">{activeRegister.name}</h4>
+                      </div>
+                      <div className="text-right text-[11px] font-mono text-stone-400">
+                        <div>Otoritas: <strong className="text-amber-300">{activeRegister.authorityLevel}/5</strong></div>
+                        <div>Keintiman: <strong className="text-amber-300">{activeRegister.intimacyLevel}/5</strong></div>
+                      </div>
+                    </div>
 
-            <div role="tablist" aria-label="Katalog Kata Ganti" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
-              {REGISTERS.map((reg) => (
-                <button
-                  key={reg.id}
-                  role="tab"
-                  id={`tab-register-${reg.id}`}
-                  aria-selected={selectedRegisterId === reg.id}
-                  aria-controls="panel-register-detail"
-                  onClick={() => setSelectedRegisterId(reg.id)}
-                  className={`p-3 rounded-xl border text-center transition cursor-pointer ${
-                    selectedRegisterId === reg.id
-                      ? 'border-amber-500 bg-amber-500/20 text-stone-100 font-semibold ring-1 ring-amber-500/40 shadow-raised'
-                      : 'border-stone-800 bg-stone-900/50 text-stone-400 hover:border-stone-700 hover:text-stone-200'
-                  }`}
-                >
-                  <div className="font-serif text-lg text-stone-100">{reg.name}</div>
-                  <div className="text-[10px] font-mono text-stone-400 mt-0.5">
-                    Otoritas {reg.authorityLevel} · Intim {reg.intimacyLevel}
+                    <div className="space-y-2 text-xs text-stone-300 leading-relaxed font-sans">
+                      <div><strong className="text-stone-200">Hubungan:</strong> {activeRegister.socialRelationship}</div>
+                      <div><strong className="text-stone-200">Kesan:</strong> {activeRegister.impression}</div>
+                      <div className="pt-1.5 border-t border-stone-800/60">
+                        <strong className="text-stone-200 block mb-0.5">Contoh Kalimat:</strong>
+                        <span className="font-serif italic text-amber-200 text-sm leading-snug">"{activeRegister.example}"</span>
+                      </div>
+                      <div><strong className="text-stone-200">Kanal Tepat:</strong> {activeRegister.contexts}</div>
+                      <div className="text-rose-300/90 pt-1.5 border-t border-stone-800/60">
+                        <strong className="text-rose-400">Risiko:</strong> {activeRegister.risks}
+                      </div>
+                    </div>
                   </div>
-                </button>
-              ))}
+                )}
+              </div>
             </div>
 
-            {/* Active Register Deep Dive */}
-            {activeRegister && (
-              <div
-                role="tabpanel"
-                id="panel-register-detail"
-                aria-labelledby={`tab-register-${activeRegister.id}`}
-                className="rounded-xl border border-stone-800 bg-stone-900/40 p-6 space-y-4"
-              >
-                <div className="flex items-center justify-between border-b border-stone-800 pb-3">
-                  <div>
-                    <span className="text-xs font-mono text-amber-400 uppercase font-semibold">Kata Ganti:</span>
-                    <h4 className="text-2xl font-serif text-stone-100">{activeRegister.name}</h4>
-                  </div>
-                  <div className="text-right text-xs font-mono text-stone-400">
-                    <div>Tingkat Otoritas: {activeRegister.authorityLevel}/5</div>
-                    <div>Tingkat Keintiman: {activeRegister.intimacyLevel}/5</div>
-                  </div>
-                </div>
-
-                <div className="space-y-2.5 text-xs text-stone-300 leading-relaxed">
-                  <div><strong className="text-stone-200">Hubungan Sosial:</strong> {activeRegister.socialRelationship}</div>
-                  <div><strong className="text-stone-200">Kesan yang Muncul:</strong> {activeRegister.impression}</div>
-                  <div><strong className="text-stone-200">Contoh Kalimat:</strong> <span className="font-serif italic text-amber-300 text-sm">"{activeRegister.example}"</span></div>
-                  <div><strong className="text-stone-200">Kanal yang Tepat:</strong> {activeRegister.contexts}</div>
-                  <div className="text-rose-300/90 pt-1 border-t border-stone-800/80">
-                    <strong className="text-rose-400">Risiko Jika Salah Tempat:</strong> {activeRegister.risks}
-                  </div>
-                </div>
+            {/* Quick Catalog Filter Pills */}
+            <div className="space-y-2 pt-2">
+              <h4 className="text-xs font-mono text-stone-400 uppercase tracking-wider font-semibold">
+                Katalog Lengkap Kata Ganti:
+              </h4>
+              <div role="tablist" aria-label="Katalog Kata Ganti" className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2">
+                {REGISTERS.map((reg) => (
+                  <button
+                    key={reg.id}
+                    role="tab"
+                    id={`tab-register-${reg.id}`}
+                    aria-selected={selectedRegisterId === reg.id}
+                    aria-controls="panel-register-detail"
+                    onClick={() => setSelectedRegisterId(reg.id)}
+                    className={`px-3 py-2 rounded-lg border text-center transition cursor-pointer flex flex-col items-center justify-center ${
+                      selectedRegisterId === reg.id
+                        ? 'border-amber-500 bg-amber-500/20 text-stone-100 font-semibold ring-1 ring-amber-500/40 shadow-xs'
+                        : 'border-stone-800 bg-stone-900/40 text-stone-400 hover:border-stone-700 hover:text-stone-200'
+                    }`}
+                  >
+                    <div className="font-serif text-sm text-stone-100">{reg.name}</div>
+                    <div className="text-[9.5px] font-mono text-stone-500">
+                      {reg.authorityLevel}/5 · {reg.intimacyLevel}/5
+                    </div>
+                  </button>
+                ))}
               </div>
-            )}
+            </div>
           </div>
         </div>
       )}

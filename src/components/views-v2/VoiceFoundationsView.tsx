@@ -621,89 +621,97 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
           </p>
         </div>
 
-        <FramingMatrix
-          selectedAction={selectedAction}
-          isPublic={isPublicGaze}
-          onSelectAction={(id) => setSelectedAction(id)}
-          onToggleVisibility={(isPub) => setIsPublicGaze(isPub)}
-        />
+        {/* 2-Column Desktop Grid: Fitted Chart on Left, Dynamic Guidance on Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+          <div className="lg:col-span-7">
+            <FramingMatrix
+              selectedAction={selectedAction}
+              isPublic={isPublicGaze}
+              onSelectAction={(id) => setSelectedAction(id)}
+              onToggleVisibility={(isPub) => setIsPublicGaze(isPub)}
+            />
+          </div>
 
-        {/* Dynamic Contextual Copywriting Guidance Card */}
-        {(() => {
-          const insight = FRAMING_INSIGHTS[selectedAction];
-          const gazeInfo = isPublicGaze ? insight.publicGaze : insight.privateGaze;
-          return (
-            <div className="rounded-[9px] border border-stone-800 bg-stone-900/50 p-6 space-y-5 shadow-raised transition-all">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-stone-800/80 pb-4">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono font-bold uppercase text-amber-500 tracking-wider">
-                      Implikasi Penulisan Naskah
-                    </span>
-                    <span className="text-stone-500">·</span>
-                    <span className="text-xs text-stone-400 font-sans">{insight.category}</span>
-                  </div>
-                  <h3 className="text-xl font-serif font-semibold text-stone-100 mt-1">
-                    {insight.title}
-                  </h3>
-                </div>
-
-                <div className="flex items-center gap-2 shrink-0">
-                  <span className={`px-2.5 py-1 rounded-full text-[11px] font-mono border ${gazeInfo.threatColor}`}>
-                    {gazeInfo.threatLevel}
-                  </span>
-                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800/70 border border-stone-700/60 text-stone-300 text-xs font-sans">
-                    {isPublicGaze ? <Globe size={13} className="text-rose-400" /> : <Lock size={13} className="text-sky-400" />}
-                    <span>{isPublicGaze ? 'Ruang Linimasa Publik' : 'Saluran Privat'}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                <div className="space-y-3">
-                  <div className="space-y-1">
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-stone-400">
-                      Realitas Sosial &amp; Hambatan Psikologis:
-                    </span>
-                    <p className="text-xs text-stone-300 leading-relaxed font-sans">
-                      {gazeInfo.culturalContext}
-                    </p>
-                  </div>
-                  <div className="space-y-1 pt-2 border-t border-stone-800/60">
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-amber-400 font-semibold">
-                      Prinsip Solusi Copywriting Menungsa:
-                    </span>
-                    <p className="text-xs text-stone-200 leading-relaxed font-sans">
-                      {gazeInfo.writingStrategy}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="space-y-2.5">
-                  <div className="rounded-[6px] bg-emerald-950/20 border border-emerald-500/20 p-3 text-xs space-y-1">
-                    <div className="flex items-center gap-1.5 font-bold text-emerald-500 dark:text-emerald-400 text-[11px]">
-                      <CheckCircle2 size={13} />
-                      <span>DO</span>
+          {/* Dynamic Contextual Copywriting Guidance Card (Right Column) */}
+          <div className="lg:col-span-5">
+            {(() => {
+              const insight = FRAMING_INSIGHTS[selectedAction];
+              const gazeInfo = isPublicGaze ? insight.publicGaze : insight.privateGaze;
+              return (
+                <div className="rounded-xl border border-stone-800 bg-stone-950/80 p-4 sm:p-5 space-y-4 shadow-xl">
+                  {/* Card Header */}
+                  <div className="space-y-2 border-b border-stone-800/80 pb-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-[10px] font-mono font-bold uppercase text-amber-500 tracking-wider">
+                          Panduan Naskah
+                        </span>
+                        <span className="text-stone-500">·</span>
+                        <span className="text-[11px] text-stone-400 font-sans">{insight.category}</span>
+                      </div>
+                      <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono border ${gazeInfo.threatColor}`}>
+                        {gazeInfo.threatLevel}
+                      </span>
                     </div>
-                    <p className="font-serif italic text-emerald-800 dark:text-emerald-200">
-                      "{gazeInfo.exampleDo}"
-                    </p>
+
+                    <div className="flex items-baseline justify-between gap-2">
+                      <h3 className="text-lg font-serif font-semibold text-stone-100 leading-snug">
+                        {insight.title}
+                      </h3>
+                      <div className="flex items-center gap-1 text-stone-400 text-[11px] font-sans shrink-0">
+                        {isPublicGaze ? <Globe size={12} className="text-rose-400" /> : <Lock size={12} className="text-amber-400" />}
+                        <span>{isPublicGaze ? 'Publik' : 'Privat'}</span>
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="rounded-[6px] bg-amber-950/20 border border-amber-700/20 p-3 text-xs space-y-1">
-                    <div className="flex items-center gap-1.5 font-bold text-amber-600 dark:text-amber-400 text-[11px]">
-                      <XCircle size={13} />
-                      <span>DON'T</span>
+                  {/* Context & Strategy */}
+                  <div className="space-y-2.5 text-xs font-sans">
+                    <div>
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-stone-400 block mb-0.5">
+                        Hambatan Psikologis:
+                      </span>
+                      <p className="text-stone-300 leading-relaxed">
+                        {gazeInfo.culturalContext}
+                      </p>
                     </div>
-                    <p className="font-serif italic text-amber-800 dark:text-amber-200">
-                      "{gazeInfo.exampleDont}"
-                    </p>
+                    <div className="pt-2 border-t border-stone-800/50">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-semibold block mb-0.5">
+                        Solusi Copywriting Menungsa:
+                      </span>
+                      <p className="text-stone-200 leading-relaxed">
+                        {gazeInfo.writingStrategy}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Do & Don't Samples */}
+                  <div className="space-y-2 pt-1 border-t border-stone-800/50">
+                    <div className="rounded-lg bg-emerald-950/25 border border-emerald-500/25 p-2.5 text-xs space-y-1">
+                      <div className="flex items-center gap-1.5 font-bold text-emerald-400 text-[10.5px]">
+                        <CheckCircle2 size={13} />
+                        <span>DO</span>
+                      </div>
+                      <p className="font-serif italic text-emerald-200 leading-snug">
+                        "{gazeInfo.exampleDo}"
+                      </p>
+                    </div>
+
+                    <div className="rounded-lg bg-amber-950/25 border border-amber-700/25 p-2.5 text-xs space-y-1">
+                      <div className="flex items-center gap-1.5 font-bold text-amber-400 text-[10.5px]">
+                        <XCircle size={13} />
+                        <span>DON'T</span>
+                      </div>
+                      <p className="font-serif italic text-amber-200 leading-snug">
+                        "{gazeInfo.exampleDont}"
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          );
-        })()}
+              );
+            })()}
+          </div>
+        </div>
       </section>
 
       {/* The Golden Do's & Don'ts Playbook */}

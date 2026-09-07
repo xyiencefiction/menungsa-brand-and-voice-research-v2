@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { scaleLinear } from './chartUtils';
-import { SvgLabel } from './SvgLabel';
 
 export interface ActionItem {
   id: 'therapy' | 'skincare' | 'fitness' | 'parenting';
@@ -17,15 +16,15 @@ interface Props {
   onToggleVisibility: (isPublic: boolean) => void;
 }
 
-const W = 760;
-const H = 450;
-const M = { top: 44, right: 36, bottom: 64, left: 66 };
+const W = 580;
+const H = 340;
+const M = { top: 32, right: 28, bottom: 42, left: 42 };
 
 const ACTIONS: ActionItem[] = [
   { id: 'therapy', name: 'Terapi Psikologis', xVal: 18, yPrivate: 22, yPublic: 80 },
   { id: 'skincare', name: 'Skincare & Perawatan Diri', xVal: 34, yPrivate: 18, yPublic: 70 },
   { id: 'parenting', name: 'Pengasuhan Anak', xVal: 54, yPrivate: 25, yPublic: 76 },
-  { id: 'fitness', name: 'Gym / Latihan Kekuatan', xVal: 84, yPrivate: 24, yPublic: 78 },
+  { id: 'fitness', name: 'Gym & Kekuatan', xVal: 84, yPrivate: 24, yPublic: 78 },
 ];
 
 export const FramingMatrix: React.FC<Props> = ({
@@ -42,236 +41,233 @@ export const FramingMatrix: React.FC<Props> = ({
   const midX = x(50);
   const midY = y(50);
   const quadW = midX - M.left;
+  const quadH = midY - M.top;
 
   const activeId = hoveredAction ?? selectedAction;
   const activeItem = ACTIONS.find((a) => a.id === activeId) ?? ACTIONS[0];
 
+  // Determine which quadrant the active item currently falls into
+  const activeYVal = isPublic ? activeItem.yPublic : activeItem.yPrivate;
+  const isTopQuad = activeYVal >= 50;
+  const isLeftQuad = activeItem.xVal <= 50;
+
   return (
-    <div className="rounded-xl border border-stone-800 bg-stone-950 overflow-hidden">
-      <header className="px-5 py-3.5 border-b border-stone-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+    <div className="rounded-xl border border-stone-800 bg-stone-950/90 overflow-hidden shadow-2xl">
+      {/* Header with Title & Visibility Toggle */}
+      <header className="px-4 py-2.5 border-b border-stone-800 flex flex-wrap items-center justify-between gap-2 bg-stone-900/40">
         <div>
-          <h3 className="font-serif font-semibold text-stone-100" style={{ fontSize: 'var(--t-h3)' }}>
-            Matriks Batas Keberlakuan 2×2
-          </h3>
-          <p className="text-stone-400 mt-0.5" style={{ fontSize: 'var(--t-small)' }}>
-            Persepsi Budaya Perilaku × Tingkat Visibilitas Sosial (Brough dkk. serta White &amp; Dahl)
+          <div className="flex items-center gap-2">
+            <h3 className="font-serif font-semibold text-stone-100 text-sm md:text-base">
+              Matriks Batas Keberlakuan 2×2
+            </h3>
+            <span className="px-1.5 py-0.5 rounded font-mono text-[9.5px] uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              Interaktif
+            </span>
+          </div>
+          <p className="text-stone-400 text-[11px] font-sans">
+            Koding Budaya × Visibilitas Sosial (Gaze)
           </p>
         </div>
 
-        <div className="flex items-center gap-1.5 self-start sm:self-auto shrink-0">
-          <span className="font-mono text-stone-500 uppercase mr-1" style={{ fontSize: 'var(--t-micro)' }}>SOROTAN:</span>
+        {/* Mode Toggle Pills */}
+        <div className="flex items-center gap-1 bg-stone-950 p-0.5 rounded-lg border border-stone-800 shrink-0">
           <button
             onClick={() => onToggleVisibility(false)}
-            className={`px-2.5 py-1 rounded-lg font-mono transition border cursor-pointer ${
+            className={`px-2.5 py-1 rounded-md font-mono text-[10px] tracking-wide transition-all cursor-pointer flex items-center gap-1.5 ${
               !isPublic
-                ? 'bg-sky-500 text-stone-950 font-bold border-sky-400'
-                : 'bg-stone-900 text-stone-400 border-stone-800 hover:text-stone-200'
+                ? 'bg-amber-500 text-stone-950 font-bold shadow-xs'
+                : 'text-stone-400 hover:text-stone-200'
             }`}
-            style={{ fontSize: 'var(--t-micro)' }}
           >
+            <span className={`w-1.5 h-1.5 rounded-full ${!isPublic ? 'bg-stone-950' : 'bg-stone-600'}`} />
             Privat
           </button>
           <button
             onClick={() => onToggleVisibility(true)}
-            className={`px-2.5 py-1 rounded-lg font-mono transition border cursor-pointer ${
+            className={`px-2.5 py-1 rounded-md font-mono text-[10px] tracking-wide transition-all cursor-pointer flex items-center gap-1.5 ${
               isPublic
-                ? 'bg-rose-500 text-stone-950 font-bold border-rose-400'
-                : 'bg-stone-900 text-stone-400 border-stone-800 hover:text-stone-200'
+                ? 'bg-amber-500 text-stone-950 font-bold shadow-xs'
+                : 'text-stone-400 hover:text-stone-200'
             }`}
-            style={{ fontSize: 'var(--t-micro)' }}
           >
+            <span className={`w-1.5 h-1.5 rounded-full ${isPublic ? 'bg-stone-950' : 'bg-stone-600'}`} />
             Sorotan Publik
           </button>
         </div>
       </header>
 
-      <div className="p-4 overflow-x-auto">
+      {/* SVG Canvas */}
+      <div className="p-3 overflow-x-auto relative">
         <svg
           viewBox={`0 0 ${W} ${H}`}
-          className="w-full h-auto block min-w-[620px]"
+          className="w-full h-auto block min-w-[500px]"
           role="img"
           aria-label="2x2 matrix plotting behaviors across cultural coding and public exposure"
         >
           <title>Matriks Batas Keberlakuan 2×2: koding budaya dan keterpaparan publik</title>
-          {/* Quadrant backgrounds */}
-          {/* Top-Left: Public × Feminine (Identity Threat & Protective Shield Zone) */}
-          <rect
-            x={M.left}
-            y={M.top}
-            width={midX - M.left}
-            height={midY - M.top}
-            fill="var(--cat-2)"
-            opacity={0.09}
-          />
-          {/* Bottom-Left: Private × Feminine (Pragmatic Neutral Zone) */}
-          <rect
-            x={M.left}
-            y={midY}
-            width={midX - M.left}
-            height={H - M.bottom - midY}
-            fill="var(--ord-5)"
-            opacity={0.07}
-          />
-          {/* Top-Right: Public × Masculine (Redundancy & Backfire Zone) */}
-          <rect
-            x={midX}
-            y={M.top}
-            width={W - M.right - midX}
-            height={midY - M.top}
-            fill="var(--cat-2)"
-            opacity={0.06}
-          />
-          {/* Bottom-Right: Private × Masculine (Direct Craft Zone) */}
-          <rect
-            x={midX}
-            y={midY}
-            width={W - M.right - midX}
-            height={H - M.bottom - midY}
-            fill="var(--chart-muted)"
-            opacity={0.05}
-          />
 
-          {/* Quadrant Descriptive Labels using bounded SvgLabel */}
-          {/* Top-Left: Identity Shielding Zone */}
-          <SvgLabel
-            x={M.left + 12}
-            y={M.top + 8}
-            width={quadW - 24}
-            height={18}
-            tone="warn"
-            size={11}
-            weight={700}
-          >
-            Zona Perisai Identitas
-          </SvgLabel>
-          <SvgLabel
-            x={M.left + 12}
-            y={M.top + 26}
-            width={quadW - 24}
-            height={44}
-            tone="label"
-            size={9.5}
-            lines={2}
-          >
-            Risiko sosial tinggi · Isyarat ramah-pria atau diskret menolong pembaca
-          </SvgLabel>
+          <defs>
+            {/* Ambient Warm Glow Filter */}
+            <filter id="matrixAmberGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
 
-          {/* Top-Right: Redundancy & Backfire Zone */}
-          <SvgLabel
-            x={midX + 14}
-            y={M.top + 8}
-            width={quadW - 24}
-            height={18}
-            tone="warn"
-            size={11}
-            weight={700}
-          >
-            Zona Redundan &amp; Bumerang
-          </SvgLabel>
-          <SvgLabel
-            x={midX + 14}
-            y={M.top + 26}
-            width={quadW - 24}
-            height={44}
-            tone="label"
-            size={9.5}
-            lines={2}
-          >
-            Sudah dianggap maskulin · Label 'Pria Alfa' justru dicemooh sebagai hal yang canggung/berlebihan
-          </SvgLabel>
+            {/* Diagonal Hatch Pattern for Active Quadrant */}
+            <pattern
+              id="diagonalHatch"
+              width="6"
+              height="6"
+              patternTransform="rotate(45 0 0)"
+              patternUnits="userSpaceOnUse"
+            >
+              <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(245, 158, 11, 0.12)" strokeWidth="0.9" />
+            </pattern>
 
-          {/* Bottom-Left: Pragmatic Neutral Zone */}
-          <SvgLabel
-            x={M.left + 12}
-            y={midY + 10}
-            width={quadW - 24}
-            height={18}
-            tone="accent"
-            size={11}
-            weight={700}
-          >
-            Zona Netral Pragmatis
-          </SvgLabel>
-          <SvgLabel
-            x={M.left + 12}
-            y={midY + 28}
-            width={quadW - 24}
-            height={44}
-            tone="label"
-            size={9.5}
-            lines={2}
-          >
-            Pengawasan sosial rendah · Pesan netral-gender berkinerja sama baiknya tanpa embel 'Pria Sejati'
-          </SvgLabel>
+            {/* Quadrant Radial Gradients for Architectural Atmosphere */}
+            <radialGradient id="gradTopLeft" cx="25%" cy="25%" r="75%">
+              <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.12" />
+              <stop offset="60%" stopColor="#b45309" stopOpacity="0.04" />
+              <stop offset="100%" stopColor="#0c0a09" stopOpacity="0" />
+            </radialGradient>
 
-          {/* Bottom-Right: Direct Craft Zone */}
-          <SvgLabel
-            x={midX + 14}
-            y={midY + 10}
-            width={quadW - 24}
-            height={18}
-            tone="strong"
-            size={11}
-            weight={700}
-          >
-            Zona Keahlian &amp; Tindakan Nyata
-          </SvgLabel>
-          <SvgLabel
-            x={midX + 14}
-            y={midY + 28}
-            width={quadW - 24}
-            height={44}
-            tone="label"
-            size={9.5}
-            lines={2}
-          >
-            Fokus pada progres keahlian dan manfaat langsung yang nyata
-          </SvgLabel>
+            <radialGradient id="gradTopRight" cx="75%" cy="25%" r="75%">
+              <stop offset="0%" stopColor="#ef4444" stopOpacity="0.09" />
+              <stop offset="60%" stopColor="#7f1d1d" stopOpacity="0.03" />
+              <stop offset="100%" stopColor="#0c0a09" stopOpacity="0" />
+            </radialGradient>
 
-          {/* Dividing Quadrant Axes */}
-          <line
-            x1={midX}
-            y1={M.top}
-            x2={midX}
-            y2={H - M.bottom}
-            stroke="var(--chart-grid)"
-            strokeWidth={1.5}
-            strokeDasharray="4 4"
-          />
-          <line
-            x1={M.left}
-            y1={midY}
-            x2={W - M.right}
-            y2={midY}
-            stroke="var(--chart-grid)"
-            strokeWidth={1.5}
-            strokeDasharray="4 4"
-          />
+            <radialGradient id="gradBottomLeft" cx="25%" cy="75%" r="75%">
+              <stop offset="0%" stopColor="#10b981" stopOpacity="0.09" />
+              <stop offset="60%" stopColor="#064e3b" stopOpacity="0.02" />
+              <stop offset="100%" stopColor="#0c0a09" stopOpacity="0" />
+            </radialGradient>
 
-          {/* Outer Border */}
+            <radialGradient id="gradBottomRight" cx="75%" cy="75%" r="75%">
+              <stop offset="0%" stopColor="#78716c" stopOpacity="0.08" />
+              <stop offset="60%" stopColor="#292524" stopOpacity="0.02" />
+              <stop offset="100%" stopColor="#0c0a09" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+
+          {/* Quadrant Atmospheric Fills */}
+          <rect x={M.left} y={M.top} width={quadW} height={quadH} fill="url(#gradTopLeft)" />
+          <rect x={midX} y={M.top} width={W - M.right - midX} height={quadH} fill="url(#gradTopRight)" />
+          <rect x={M.left} y={midY} width={quadW} height={H - M.bottom - midY} fill="url(#gradBottomLeft)" />
+          <rect x={midX} y={midY} width={W - M.right - midX} height={H - M.bottom - midY} fill="url(#gradBottomRight)" />
+
+          {/* Active Quadrant Hatch Highlight */}
+          {isTopQuad && isLeftQuad && (
+            <rect x={M.left} y={M.top} width={quadW} height={quadH} fill="url(#diagonalHatch)" />
+          )}
+          {isTopQuad && !isLeftQuad && (
+            <rect x={midX} y={M.top} width={W - M.right - midX} height={quadH} fill="url(#diagonalHatch)" />
+          )}
+          {!isTopQuad && isLeftQuad && (
+            <rect x={M.left} y={midY} width={quadW} height={H - M.bottom - midY} fill="url(#diagonalHatch)" />
+          )}
+          {!isTopQuad && !isLeftQuad && (
+            <rect x={midX} y={midY} width={W - M.right - midX} height={H - M.bottom - midY} fill="url(#diagonalHatch)" />
+          )}
+
+          {/* Outer Border & Fine Grid Lines */}
           <rect
             x={M.left}
             y={M.top}
             width={W - M.left - M.right}
             height={H - M.top - M.bottom}
             fill="none"
-            stroke="var(--chart-grid)"
+            stroke="rgba(255, 255, 255, 0.08)"
             strokeWidth={1}
+            rx={4}
           />
 
+          {/* Center Crosshair Hairline Axes */}
+          <line
+            x1={M.left}
+            y1={midY}
+            x2={W - M.right}
+            y2={midY}
+            stroke="rgba(245, 158, 11, 0.35)"
+            strokeWidth={1}
+            strokeDasharray="3 3"
+          />
+          <line
+            x1={midX}
+            y1={M.top}
+            x2={midX}
+            y2={H - M.bottom}
+            stroke="rgba(245, 158, 11, 0.35)"
+            strokeWidth={1}
+            strokeDasharray="3 3"
+          />
+
+          {/* Center Nexus Dot with Rings */}
+          <circle cx={midX} cy={midY} r={8} fill="none" stroke="rgba(245, 158, 11, 0.2)" strokeWidth={1} />
+          <circle cx={midX} cy={midY} r={2} fill="rgba(245, 158, 11, 0.8)" />
+
+          {/* Quadrant Labels with Minimal Architectural Typography */}
+          {/* Top-Left: Identity Shield Zone */}
+          <g transform={`translate(${M.left + 10}, ${M.top + 8})`}>
+            <text className="font-mono text-[9.5px] uppercase font-bold tracking-wider fill-amber-400">
+              Zona Perisai Identitas
+            </text>
+            <text y={13} className="font-sans text-[8.5px] fill-stone-400">
+              Risiko sosial tinggi · Isyarat ramah-pria menolong pembaca
+            </text>
+          </g>
+
+          {/* Top-Right: Redundancy & Backfire */}
+          <g transform={`translate(${midX + 10}, ${M.top + 8})`}>
+            <text className="font-mono text-[9.5px] uppercase font-bold tracking-wider fill-rose-400">
+              Zona Redundan &amp; Bumerang
+            </text>
+            <text y={13} className="font-sans text-[8.5px] fill-stone-400">
+              Sudah maskulin · Pelebelan 'Pria Alfa' justru dicemooh
+            </text>
+          </g>
+
+          {/* Bottom-Left: Safe Pragmatic Zone */}
+          <g transform={`translate(${M.left + 10}, ${midY + 12})`}>
+            <text className="font-mono text-[9.5px] uppercase font-bold tracking-wider fill-emerald-400">
+              Zona Pragmatis Netral
+            </text>
+            <text y={13} className="font-sans text-[8.5px] fill-stone-400">
+              Aman dan hening · Tidak butuh penegasan maskulin agresif
+            </text>
+          </g>
+
+          {/* Bottom-Right: Direct Craft Zone */}
+          <g transform={`translate(${midX + 10}, ${midY + 12})`}>
+            <text className="font-mono text-[9.5px] uppercase font-bold tracking-wider fill-stone-300">
+              Zona Keahlian Langsung
+            </text>
+            <text y={13} className="font-sans text-[8.5px] fill-stone-400">
+              Aktivitas berbasis aksi · Fokus pada instruksi teknis
+            </text>
+          </g>
+
           {/* Axis Labels */}
-          <text x={(M.left + W - M.right) / 2} y={H - 16} textAnchor="middle" className="chart-axis-label">
-            ← Persepsi Feminin / Rentan &nbsp; · &nbsp; Kode Budaya Awal &nbsp; · &nbsp; Persepsi Maskulin →
+          <text
+            x={(M.left + W - M.right) / 2}
+            y={H - 12}
+            textAnchor="middle"
+            className="font-mono text-[9px] uppercase tracking-wider fill-stone-500"
+          >
+            ← Feminin / Rentan &nbsp; · &nbsp; Persepsi Koding Budaya &nbsp; · &nbsp; Maskulin →
           </text>
 
           <text
-            x={20}
+            x={14}
             y={(M.top + H - M.bottom) / 2}
             textAnchor="middle"
-            className="chart-axis-label"
-            transform={`rotate(-90 20 ${(M.top + H - M.bottom) / 2})`}
+            className="font-mono text-[9px] uppercase tracking-wider fill-stone-500"
+            transform={`rotate(-90 14 ${(M.top + H - M.bottom) / 2})`}
           >
-            - Ruang Privat (Diskret) &nbsp; · &nbsp; Risiko Sorotan Sosial &nbsp; · &nbsp; Ruang Publik (Terbuka) +
+            - Ruang Privat (Diskret) &nbsp; · &nbsp; Visibilitas Sosial &nbsp; · &nbsp; Sorotan Publik +
           </text>
 
           {/* Plotted Action Nodes */}
@@ -283,10 +279,13 @@ export const FramingMatrix: React.FC<Props> = ({
             const isHovered = hoveredAction === item.id;
             const active = isSelected || isHovered;
 
+            const yPriv = y(item.yPrivate);
+            const yPub = y(item.yPublic);
+
             return (
               <g
                 key={item.id}
-                className="chart-mark-interactive"
+                className="chart-mark-interactive cursor-pointer"
                 onMouseEnter={() => setHoveredAction(item.id)}
                 onMouseLeave={() => setHoveredAction(null)}
                 onClick={() => onSelectAction(item.id)}
@@ -300,54 +299,75 @@ export const FramingMatrix: React.FC<Props> = ({
                 }}
                 aria-label={`${item.name}, ${isPublic ? 'Public' : 'Private'}`}
               >
-                {/* Hit target area */}
-                <circle cx={cx} cy={cy} r={22} fill="transparent" />
+                {/* Hit Target Area */}
+                <circle cx={cx} cy={cy} r={24} fill="transparent" />
 
-                {/* Trail line from private to public position */}
+                {/* Vertical Dotted Needles / Trajectory */}
                 <line
                   x1={cx}
-                  y1={y(item.yPrivate)}
+                  y1={yPriv}
                   x2={cx}
-                  y2={y(item.yPublic)}
-                  stroke="var(--chart-grid)"
-                  strokeWidth={1.5}
+                  y2={yPub}
+                  stroke={active ? 'rgba(245, 158, 11, 0.7)' : 'rgba(255, 255, 255, 0.15)'}
+                  strokeWidth={active ? 1.5 : 1}
                   strokeDasharray="2 3"
-                  opacity={active ? 0.8 : 0.4}
                 />
 
-                {/* Active halo */}
+                {/* Ghost Node for Opposite State */}
+                <circle
+                  cx={cx}
+                  cy={isPublic ? yPriv : yPub}
+                  r={3.5}
+                  fill="none"
+                  stroke="rgba(255, 255, 255, 0.25)"
+                  strokeWidth={1}
+                />
+
+                {/* Active Ambient Glow Aura */}
                 {active && (
                   <circle
                     cx={cx}
                     cy={cy}
-                    r={15}
-                    fill="none"
-                    stroke="var(--accent)"
-                    strokeWidth={2}
-                    className="animate-pulse"
+                    r={18}
+                    fill="rgba(245, 158, 11, 0.15)"
+                    filter="url(#matrixAmberGlow)"
                   />
                 )}
 
-                {/* Point circle */}
+                {/* Outer Ring on Active */}
+                {active && (
+                  <circle
+                    cx={cx}
+                    cy={cy}
+                    r={12}
+                    fill="none"
+                    stroke="#f59e0b"
+                    strokeWidth={1.2}
+                    strokeDasharray="3 2"
+                    className="animate-spin-slow"
+                  />
+                )}
+
+                {/* Main Node Dot */}
                 <circle
                   cx={cx}
                   cy={cy}
-                  r={active ? 8 : 6}
-                  fill={active ? 'var(--accent)' : 'var(--ord-5)'}
-                  stroke="var(--chart-surface)"
+                  r={active ? 6.5 : 4.5}
+                  fill={active ? '#f59e0b' : '#d97706'}
+                  stroke="#0c0a09"
                   strokeWidth={2}
-                  className="chart-mark"
                 />
 
                 {/* Text Label */}
                 <text
                   x={cx}
-                  y={item.id === 'skincare' && isPublic ? cy + 20 : cy - 12}
+                  y={item.id === 'skincare' && isPublic ? cy + 18 : cy - 11}
                   textAnchor="middle"
-                  className="chart-mark-label"
+                  className="font-sans text-[10.5px] select-none"
                   style={{
-                    fill: active ? 'var(--accent)' : 'var(--chart-label-strong)',
-                    fontWeight: active ? 600 : 500,
+                    fill: active ? '#fef3c7' : '#d6d3d1',
+                    fontWeight: active ? 700 : 500,
+                    textShadow: active ? '0 1px 4px rgba(0,0,0,0.9)' : 'none',
                   }}
                 >
                   {item.name}
@@ -358,24 +378,19 @@ export const FramingMatrix: React.FC<Props> = ({
         </svg>
       </div>
 
-      {activeItem && (
-        <div className="px-5 py-3 border-t border-stone-800 bg-stone-900/50 flex flex-wrap items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2">
-            <span className="font-mono text-amber-400 font-bold uppercase text-[11px]">Perilaku Terpilih:</span>
-            <span className="text-stone-100 font-medium">{activeItem.name}</span>
-            <span className="text-stone-500">·</span>
-            <span className="text-stone-400 font-mono text-[11px]">
-              {isPublic ? 'Ruang Publik (Tinggi Sorotan Sosial)' : 'Ruang Privat (Rendah Sorotan Sosial)'}
-            </span>
-          </div>
-          <span className="font-mono text-stone-400 text-[11px]">
-            Klik salah satu titik perilaku atau gunakan tombol Sorotan di atas
+      {/* Footer Status Bar with Active Context */}
+      <footer className="px-3.5 py-2 border-t border-stone-800 bg-stone-900/60 flex flex-wrap items-center justify-between gap-2 text-[11px] font-sans">
+        <div className="flex items-center gap-1.5">
+          <span className="font-mono text-amber-400 font-bold uppercase text-[10px]">Aktif:</span>
+          <span className="text-stone-100 font-semibold">{activeItem.name}</span>
+          <span className="text-stone-500">·</span>
+          <span className="text-stone-300 font-mono text-[10.5px]">
+            {isPublic ? 'Ruang Publik (Sorotan Tinggi)' : 'Ruang Privat (Diskret)'}
           </span>
         </div>
-      )}
-
-      <footer className="px-5 py-3 border-t border-stone-800 text-stone-500" style={{ fontSize: 'var(--t-micro)' }}>
-        <span className="font-mono uppercase tracking-wider">Catatan Riset:</span> Matriks 2×2 ini merupakan model batas konseptual yang diadopsi dari Brough dkk. serta White &amp; Dahl untuk mengilustrasikan kapan pembingkaian maskulinitas berfungsi sebagai perisai pelindung yang diperlukan vs kapan ia menciptakan penolakan (cringe).
+        <span className="text-[10px] text-stone-500 font-mono hidden sm:inline">
+          Klik titik perilaku untuk mengeksplorasi
+        </span>
       </footer>
     </div>
   );
