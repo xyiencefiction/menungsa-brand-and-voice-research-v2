@@ -66,12 +66,12 @@ const PRESETS = [
 ];
 
 const CATEGORY_TABS = [
-  { id: 'all', label: 'Semua Kosakata', count: cheatsheet.length, color: 'text-stone-300' },
-  { id: 'moral', label: '🔴 Penghakiman Moral', count: cheatsheet.filter(c => c.category === 'moral').length, color: 'text-rose-400' },
-  { id: 'cringe', label: '🟠 Klise Maskulin', count: cheatsheet.filter(c => c.category === 'cringe').length, color: 'text-amber-400' },
-  { id: 'clinical', label: '🟣 Jargon Klinis', count: cheatsheet.filter(c => c.category === 'clinical').length, color: 'text-purple-400' },
-  { id: 'imperative', label: '🟡 Perintah Agresif', count: cheatsheet.filter(c => c.category === 'imperative').length, color: 'text-amber-800 dark:text-yellow-400 font-medium' },
-  { id: 'recommended', label: '🟢 Kata Membumi', count: cheatsheet.filter(c => c.category === 'recommended').length, color: 'text-emerald-400' },
+  { id: 'all', label: 'Semua Kosakata', count: cheatsheet.length, color: 'text-stone-200' },
+  { id: 'moral', label: '🔴 Penghakiman Moral', count: cheatsheet.filter(c => c.category === 'moral').length, color: 'text-rose-200 font-semibold' },
+  { id: 'cringe', label: '🟠 Klise Maskulin', count: cheatsheet.filter(c => c.category === 'cringe').length, color: 'text-amber-200 font-semibold' },
+  { id: 'clinical', label: '🟣 Jargon Klinis', count: cheatsheet.filter(c => c.category === 'clinical').length, color: 'text-purple-200 font-semibold' },
+  { id: 'imperative', label: '🟡 Perintah Agresif', count: cheatsheet.filter(c => c.category === 'imperative').length, color: 'text-yellow-200 font-semibold' },
+  { id: 'recommended', label: '🟢 Kata Membumi', count: cheatsheet.filter(c => c.category === 'recommended').length, color: 'text-emerald-200 font-semibold' },
 ];
 
 export const CopySandboxView: React.FC = () => {
@@ -262,8 +262,8 @@ export const CopySandboxView: React.FC = () => {
         status: 'IMPERATIVE_ALERT',
         title: 'Perintah Curhat Terlalu Agresif (Melanggar Batas Privasi)',
         description: `Terdeteksi ${imperativeCount} pemaksaan pengakuan ("buka hatimu", "tumpahkan semuanya"). Pria cenderung menutup diri jika dipaksa terbuka di ruang umum.`,
-        color: 'text-amber-800 dark:text-yellow-400 font-semibold',
-        bg: 'bg-amber-500/15 dark:bg-yellow-950/20 border-amber-600/40 dark:border-yellow-500/30',
+        color: 'text-yellow-200 font-semibold',
+        bg: 'bg-yellow-950/20 border-yellow-500/30',
         advice: 'Beri ruang kendali penuh (agency): "Boleh datang, boleh sekadar duduk mendengarkan tanpa keharusan berbicara."'
       };
     }
@@ -406,9 +406,9 @@ export const CopySandboxView: React.FC = () => {
                 onClick={() => setFilterCategory(filterCategory === 'moral' ? null : 'moral')}
                 className={`px-2 py-0.5 rounded border transition cursor-pointer ${
                   filterCategory === 'moral'
-                    ? 'bg-rose-500/30 border-rose-500 text-rose-200 ring-1 ring-rose-400 font-bold'
+                    ? 'bg-rose-500/30 border-rose-500 text-rose-100 ring-1 ring-rose-400 font-bold'
                     : analysis.moralCount > 0
-                    ? 'bg-rose-500/15 border-rose-500/40 text-rose-300 hover:bg-rose-500/25'
+                    ? 'bg-rose-500/15 border-rose-500/40 text-rose-200 font-semibold hover:bg-rose-500/25'
                     : 'bg-stone-900 border-stone-800 text-stone-500'
                 }`}
               >
@@ -418,9 +418,9 @@ export const CopySandboxView: React.FC = () => {
                 onClick={() => setFilterCategory(filterCategory === 'cringe' ? null : 'cringe')}
                 className={`px-2 py-0.5 rounded border transition cursor-pointer ${
                   filterCategory === 'cringe'
-                    ? 'bg-amber-500/30 border-amber-600 text-amber-950 dark:text-amber-200 ring-1 ring-amber-400 font-bold'
+                    ? 'bg-amber-500/30 border-amber-500 text-amber-100 ring-1 ring-amber-400 font-bold'
                     : analysis.cringeCount > 0
-                    ? 'bg-amber-500/15 border-amber-500/40 text-amber-900 dark:text-amber-300 font-medium hover:bg-amber-500/25'
+                    ? 'bg-amber-500/15 border-amber-500/40 text-amber-200 font-semibold hover:bg-amber-500/25'
                     : 'bg-stone-900 border-stone-800 text-stone-500'
                 }`}
               >
@@ -430,9 +430,9 @@ export const CopySandboxView: React.FC = () => {
                 onClick={() => setFilterCategory(filterCategory === 'clinical' ? null : 'clinical')}
                 className={`px-2 py-0.5 rounded border transition cursor-pointer ${
                   filterCategory === 'clinical'
-                    ? 'bg-purple-500/30 border-purple-500 text-purple-950 dark:text-purple-200 ring-1 ring-purple-400 font-bold'
+                    ? 'bg-purple-500/30 border-purple-500 text-purple-100 ring-1 ring-purple-400 font-bold'
                     : analysis.clinicalCount > 0
-                    ? 'bg-purple-500/15 border-purple-500/40 text-purple-900 dark:text-purple-300 font-medium hover:bg-purple-500/25'
+                    ? 'bg-purple-500/15 border-purple-500/40 text-purple-200 font-semibold hover:bg-purple-500/25'
                     : 'bg-stone-900 border-stone-800 text-stone-500'
                 }`}
               >
@@ -442,9 +442,9 @@ export const CopySandboxView: React.FC = () => {
                 onClick={() => setFilterCategory(filterCategory === 'imperative' ? null : 'imperative')}
                 className={`px-2 py-0.5 rounded border transition cursor-pointer ${
                   filterCategory === 'imperative'
-                    ? 'bg-amber-500/30 border-amber-600 text-amber-950 dark:text-yellow-200 ring-1 ring-amber-500 font-bold'
+                    ? 'bg-yellow-500/30 border-yellow-500 text-yellow-100 ring-1 ring-yellow-400 font-bold'
                     : analysis.imperativeCount > 0
-                    ? 'bg-amber-500/20 border-amber-600/50 text-amber-950 dark:text-yellow-300 font-medium hover:bg-amber-500/30'
+                    ? 'bg-yellow-500/15 border-yellow-500/40 text-yellow-200 font-semibold hover:bg-yellow-500/25'
                     : 'bg-stone-900 border-stone-800 text-stone-500'
                 }`}
               >
@@ -454,9 +454,9 @@ export const CopySandboxView: React.FC = () => {
                 onClick={() => setFilterCategory(filterCategory === 'recommended' ? null : 'recommended')}
                 className={`px-2 py-0.5 rounded border transition cursor-pointer ${
                   filterCategory === 'recommended'
-                    ? 'bg-emerald-500/30 border-emerald-500 text-emerald-950 dark:text-emerald-200 ring-1 ring-emerald-400 font-bold'
+                    ? 'bg-emerald-500/30 border-emerald-500 text-emerald-100 ring-1 ring-emerald-400 font-bold'
                     : analysis.recommendedCount > 0
-                    ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-900 dark:text-emerald-300 font-medium hover:bg-emerald-500/25'
+                    ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-200 font-semibold hover:bg-emerald-500/25'
                     : 'bg-stone-900 border-stone-800 text-stone-500'
                 }`}
               >
@@ -491,11 +491,11 @@ export const CopySandboxView: React.FC = () => {
                   const cat = m.entry.category;
                   const isSelected = selectedWord?.term === m.entry.term;
                   const badgeClasses = 
-                    cat === 'moral' ? 'bg-rose-500/15 border-rose-500/40 text-rose-900 dark:text-rose-300 hover:bg-rose-500/25' :
-                    cat === 'cringe' ? 'bg-amber-500/15 border-amber-500/40 text-amber-900 dark:text-amber-300 hover:bg-amber-500/25' :
-                    cat === 'clinical' ? 'bg-purple-500/15 border-purple-500/40 text-purple-900 dark:text-purple-300 hover:bg-purple-500/25' :
-                    cat === 'imperative' ? 'bg-amber-500/20 border-amber-600/50 text-amber-950 dark:text-yellow-200 font-medium hover:bg-amber-500/30' :
-                    'bg-emerald-500/15 border-emerald-500/40 text-emerald-900 dark:text-emerald-300 hover:bg-emerald-500/25';
+                    cat === 'moral' ? 'bg-rose-500/15 border-rose-500/40 text-rose-200 font-semibold hover:bg-rose-500/25' :
+                    cat === 'cringe' ? 'bg-amber-500/15 border-amber-500/40 text-amber-200 font-semibold hover:bg-amber-500/25' :
+                    cat === 'clinical' ? 'bg-purple-500/15 border-purple-500/40 text-purple-200 font-semibold hover:bg-purple-500/25' :
+                    cat === 'imperative' ? 'bg-yellow-500/15 border-yellow-500/40 text-yellow-200 font-semibold hover:bg-yellow-500/25' :
+                    'bg-emerald-500/15 border-emerald-500/40 text-emerald-200 font-semibold hover:bg-emerald-500/25';
 
                   return (
                     <button
@@ -971,11 +971,11 @@ export const CopySandboxView: React.FC = () => {
                 'hover:border-emerald-500/40';
 
               const tagBg = 
-                item.category === 'moral' ? 'bg-rose-500/10 text-rose-800 dark:text-rose-300 border-rose-500/30' :
-                item.category === 'cringe' ? 'bg-amber-500/10 text-amber-900 dark:text-amber-300 border-amber-500/30' :
-                item.category === 'clinical' ? 'bg-purple-500/10 text-purple-900 dark:text-purple-300 border-purple-500/30' :
-                item.category === 'imperative' ? 'bg-amber-500/20 text-amber-950 dark:text-yellow-200 border-amber-600/40 dark:border-yellow-500/30 font-medium' :
-                'bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border-emerald-500/30';
+                item.category === 'moral' ? 'bg-rose-500/15 text-rose-200 border-rose-500/30 font-semibold' :
+                item.category === 'cringe' ? 'bg-amber-500/15 text-amber-200 border-amber-500/30 font-semibold' :
+                item.category === 'clinical' ? 'bg-purple-500/15 text-purple-200 border-purple-500/30 font-semibold' :
+                item.category === 'imperative' ? 'bg-yellow-500/15 text-yellow-200 border-yellow-500/30 font-semibold' :
+                'bg-emerald-500/15 text-emerald-200 border-emerald-500/30 font-semibold';
 
               return (
                 <div

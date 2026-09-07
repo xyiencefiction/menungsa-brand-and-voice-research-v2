@@ -149,8 +149,32 @@
     --color-sky-500: #4B6E9E;
     --color-sky-400: #8493AD;
     --color-sky-300: #C6D0E2;
-    --color-sky-200: #EBF0FA;
     --color-sky-100: #F5F8FD;
+
+    --color-rose-950: #2E150B;
+    --color-rose-900: #4C0519;
+    --color-rose-800: #881337;
+    --color-rose-500: #E11D48;
+    --color-rose-400: #FB7185;
+    --color-rose-300: #FDA4AF;
+    --color-rose-200: #FFE4E6;
+
+    --color-purple-950: #1B112C;
+    --color-purple-900: #2E1065;
+    --color-purple-800: #581C87;
+    --color-purple-500: #A855F7;
+    --color-purple-400: #C084FC;
+    --color-purple-300: #E9D5FF;
+    --color-purple-200: #F3E8FF;
+
+    --color-yellow-950: #261E0A;
+    --color-yellow-900: #42340F;
+    --color-yellow-800: #715514;
+    --color-yellow-700: #8C6A18;
+    --color-yellow-500: #D9B44F;
+    --color-yellow-400: #E2CE9C;
+    --color-yellow-300: #F3E7C4;
+    --color-yellow-200: #FCF8ED;
 
     /* ── Type scale ──────────────────────────────────────────── */
     --t-micro: 0.6875rem;  /* 11px — kickers, ids, axis ticks       */
@@ -252,6 +276,18 @@
       --color-purple-500: #17243D;
       --color-purple-400: #8493AD;
       --color-purple-300: #17243D;
+      --color-purple-200: #17243D;
+      --color-purple-100: #17243D;
+
+      --color-yellow-950: #FDF9EE;
+      --color-yellow-900: #F7ECD0;
+      --color-yellow-800: #E2CE9C;
+      --color-yellow-700: #8C6F24;
+      --color-yellow-500: #AD8E3C;
+      --color-yellow-400: #8C6F24;
+      --color-yellow-300: #6B5214;
+      --color-yellow-200: #4D390A;
+      --color-yellow-100: #332405;
 
       --color-blue-950: #EBF0FA;
       --color-blue-800: #C6D0E2;
@@ -363,6 +399,18 @@
     --color-purple-500: #17243D;
     --color-purple-400: #8493AD;
     --color-purple-300: #17243D;
+    --color-purple-200: #17243D;
+    --color-purple-100: #17243D;
+
+    --color-yellow-950: #FDF9EE;
+    --color-yellow-900: #F7ECD0;
+    --color-yellow-800: #E2CE9C;
+    --color-yellow-700: #8C6F24;
+    --color-yellow-500: #AD8E3C;
+    --color-yellow-400: #8C6F24;
+    --color-yellow-300: #6B5214;
+    --color-yellow-200: #4D390A;
+    --color-yellow-100: #332405;
 
     --color-blue-950: #EBF0FA;
     --color-blue-800: #C6D0E2;
