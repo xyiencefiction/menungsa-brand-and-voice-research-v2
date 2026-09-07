@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Search, X, ArrowRight, BookOpen, GitFork, Sliders, MessageSquare, ShieldAlert } from 'lucide-react';
 import { searchKnowledgeBase } from '../../data';
 import type { ViewType } from '../../types';
+import { playSound } from '../../utils/sound';
 
 interface Props {
   isOpen: boolean;
@@ -25,6 +26,7 @@ export const GlobalSearch: React.FC<Props> = ({ isOpen, onClose, onNavigate }) =
 
   useEffect(() => {
     if (isOpen) {
+      playSound('modal-open');
       const timer = setTimeout(() => inputRef.current?.focus(), 50);
       return () => clearTimeout(timer);
     } else {
@@ -37,17 +39,21 @@ export const GlobalSearch: React.FC<Props> = ({ isOpen, onClose, onNavigate }) =
       if (!isOpen) return;
 
       if (e.key === 'Escape') {
+        playSound('modal-close');
         onClose();
       } else if (e.key === 'ArrowDown') {
         e.preventDefault();
+        playSound('tick');
         setSelectedIndex(prev => (prev < results.length - 1 ? prev + 1 : 0));
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
+        playSound('tick');
         setSelectedIndex(prev => (prev > 0 ? prev - 1 : results.length - 1));
       } else if (e.key === 'Enter') {
         e.preventDefault();
         if (results[selectedIndex]) {
           const item = results[selectedIndex];
+          playSound('tab');
           onNavigate(item.view as ViewType, item.id);
           onClose();
         }

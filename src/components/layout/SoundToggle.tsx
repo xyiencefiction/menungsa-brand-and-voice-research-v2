@@ -38,3 +38,4 @@ export const SoundToggle: React.FC<Props> = ({ isScrolled = false, className = '
     </button>
   );
 };
+

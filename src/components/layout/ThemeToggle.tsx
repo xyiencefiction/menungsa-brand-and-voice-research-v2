@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Sun, Moon } from 'lucide-react';
+import { playSound } from '../../utils/sound';
 
 export type ThemeChoice = 'light' | 'dark';
 
@@ -66,7 +67,12 @@ export const ThemeToggle: React.FC<Props> = ({ className = '', isScrolled = fals
             aria-checked={active}
             aria-label={`${label} theme`}
             title={`${label} theme`}
-            onClick={() => setChoice(value)}
+            onClick={() => {
+              if (choice !== value) {
+                playSound(value === 'light' ? 'theme-light' : 'theme-dark');
+                setChoice(value);
+              }
+            }}
             className={`p-1.5 rounded-md transition ${
               active
                 ? 'bg-amber-500/20 text-amber-300'

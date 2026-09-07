@@ -368,6 +368,7 @@ export const CopySandboxView: React.FC = () => {
               <button
                 key={p.id}
                 onClick={() => {
+                  playSound('tab');
                   setInputText(p.text);
                   setSelectedWord(null);
                 }}
@@ -401,6 +402,7 @@ export const CopySandboxView: React.FC = () => {
             {inputText && (
               <button
                 onClick={() => {
+                  playSound('paper');
                   setInputText('');
                   setSelectedWord(null);
                 }}
