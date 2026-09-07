@@ -14,6 +14,7 @@ import {
   Gauge,
   Activity
 } from 'lucide-react';
+import { playSound } from '../../utils/sound';
 import cheatsheetRaw from '../../data/copyCheatsheet.json';
 
 interface CheatsheetEntry {
@@ -308,6 +309,7 @@ export const CopySandboxView: React.FC = () => {
 
   const handleCopyReplacement = (text: string, term: string) => {
     navigator.clipboard.writeText(text);
+    playSound('pop');
     setCopiedTerm(term);
     setTimeout(() => setCopiedTerm(null), 2000);
   };

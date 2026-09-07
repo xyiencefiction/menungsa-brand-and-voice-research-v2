@@ -12,6 +12,7 @@ import {
   LayoutGrid,
   StretchHorizontal
 } from 'lucide-react';
+import { playSound } from '../../utils/sound';
 
 const CONTEXT_ID_MAP: Record<string, string> = {
   C01: 'Psikoedukasi & Ritme Tubuh',
@@ -193,6 +194,7 @@ export const WritingStudioView: React.FC = () => {
   const handleCopy = async (text: string, id: string) => {
     try {
       await navigator.clipboard.writeText(text);
+      playSound('pop');
       setCopiedId(id);
       setTimeout(() => setCopiedId(null), 2000);
     } catch {

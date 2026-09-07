@@ -7,6 +7,7 @@ const GlobalSearch = React.lazy(() => import('./components/layout/GlobalSearch')
 const FigureModal = React.lazy(() => import('./components/common/FigureModal').then(m => ({ default: m.FigureModal })));
 
 import { ArrowUpRight } from 'lucide-react';
+import { initSoundInteraction } from './utils/sound';
 
 // v2 Primary Views (Lazy Loaded for minimal initial bundle)
 const VoiceFoundationsView = React.lazy(() => import('./components/views-v2/VoiceFoundationsView').then(m => ({ default: m.VoiceFoundationsView })));
@@ -48,6 +49,11 @@ export function App() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedFigure, setSelectedFigure] = useState<FigureInfo | null>(null);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+
+  // Initialize tactile UX sounds for buttons, tabs, toggles
+  useEffect(() => {
+    return initSoundInteraction();
+  }, []);
 
   // Sync view state from browser back/forward
   useEffect(() => {

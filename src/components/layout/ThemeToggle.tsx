@@ -32,9 +32,10 @@ export function applyTheme(choice: ThemeChoice) {
 
 interface Props {
   className?: string;
+  isScrolled?: boolean;
 }
 
-export const ThemeToggle: React.FC<Props> = ({ className = '' }) => {
+export const ThemeToggle: React.FC<Props> = ({ className = '', isScrolled = false }) => {
   const [choice, setChoice] = useState<ThemeChoice>(() => readStoredTheme());
 
   useEffect(() => {
@@ -50,7 +51,11 @@ export const ThemeToggle: React.FC<Props> = ({ className = '' }) => {
     <div
       role="radiogroup"
       aria-label="Colour theme"
-      className={`flex items-center gap-0.5 p-0.5 rounded-lg bg-stone-900 border border-stone-800 ${className}`}
+      className={`flex items-center gap-0.5 p-0.5 rounded-lg bg-stone-900 border transition-all duration-300 ${
+        isScrolled
+          ? 'border-stone-700/70 dark:border-stone-800/90 shadow-[0_4px_14px_-2px_rgba(0,0,0,0.15),0_2px_6px_-1px_rgba(0,0,0,0.1)] dark:shadow-[0_6px_20px_-3px_rgba(0,0,0,0.5)] backdrop-blur-md'
+          : 'border-stone-800'
+      } ${className}`}
     >
       {OPTIONS.map(({ value, label, Icon }) => {
         const active = choice === value;
