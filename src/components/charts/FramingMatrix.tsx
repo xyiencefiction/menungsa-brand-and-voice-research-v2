@@ -302,27 +302,6 @@ export const FramingMatrix: React.FC<Props> = ({
                 {/* Hit Target Area */}
                 <circle cx={cx} cy={cy} r={24} fill="transparent" className="outline-none focus:outline-none" />
 
-                {/* Vertical Dotted Needles / Trajectory */}
-                <line
-                  x1={cx}
-                  y1={yPriv}
-                  x2={cx}
-                  y2={yPub}
-                  stroke={active ? 'rgba(175, 77, 40, 0.85)' : 'rgba(255, 255, 255, 0.15)'}
-                  strokeWidth={active ? 1.5 : 1}
-                  strokeDasharray="2 3"
-                />
-
-                {/* Ghost Node for Opposite State */}
-                <circle
-                  cx={cx}
-                  cy={isPublic ? yPriv : yPub}
-                  r={3.5}
-                  fill="none"
-                  stroke="rgba(255, 255, 255, 0.25)"
-                  strokeWidth={1}
-                />
-
                 {/* Active Ambient Glow Aura */}
                 {active && (
                   <circle
@@ -361,7 +340,7 @@ export const FramingMatrix: React.FC<Props> = ({
                 {/* Text Label */}
                 <text
                   x={cx}
-                  y={item.id === 'skincare' && isPublic ? cy + 18 : cy - 11}
+                  y={isPublic ? cy - 14 : cy + 18}
                   textAnchor="middle"
                   className={`font-sans text-[10.5px] select-none ${
                     active
