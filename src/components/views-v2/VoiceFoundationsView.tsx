@@ -39,7 +39,7 @@ const VALUE_PILLARS: ValuePillar[] = [
     id: 'V1',
     title: 'Kesetaraan, Bukan Penghakiman',
     tagline: 'Equal Footing, Not Judgement',
-    voiceTrait: 'Pantang menyematkan kata sifat evaluatif atau menghakimi di depan pembaca.',
+    voiceTrait: 'Sapa pembaca tanpa menilai apakah ia cukup kuat, berani, atau pantas dihargai.',
     positionNote: 'Satu-satunya nilai mutlak tanpa kompromi. Menukarnya demi mengejar interaksi atau viralitas sesaat justru merusak rasa aman pembaca.',
     boundaryCondition: 'Penilaian risiko medis darurat tetap membutuhkan terminologi yang presisi. Menggambarkan situasi sebagai hal yang berbahaya tidak sama dengan menghakimi pribadi pembaca.',
     dos: [
@@ -59,11 +59,11 @@ const VALUE_PILLARS: ValuePillar[] = [
       },
       {
         example: 'Kamu hebat banget sudah mau terbuka dan meruntuhkan egomu.',
-        why: 'Pujian yang terdengar menggurui justru mengaktifkan kembali rasa gagal yang sedang ia alami.'
+        why: 'Pujian ini disertai penilaian bahwa pembaca sebelumnya dikuasai ego. Akui keterbukaannya tanpa menilai dirinya.'
       },
       {
         example: 'Pria sejati tidak takut mengakui luka batinnya.',
-        why: 'Pola kalimat terlarang: mendefinisikan kemaskulinan lalu menyewakannya kembali sebagai syarat moral.'
+        why: 'Kalimat ini menjadikan keberanian bercerita sebagai syarat untuk disebut laki-laki sejati.'
       }
     ]
   },
@@ -72,12 +72,12 @@ const VALUE_PILLARS: ValuePillar[] = [
     title: 'Rendah Hambatan untuk Memulai',
     tagline: 'Easy to Begin / Low Response Cost',
     voiceTrait: 'Jelaskan apa yang akan terjadi secara transparan sebelum mengajak siapa pun bergabung.',
-    positionNote: 'Pria menghindari rasa malu dan sorotan publik, bukan menghindari bantuan. Turunkan biaya psikologis sekecil mungkin agar mereka berani melangkah.',
+    positionNote: 'Rasa malu, kekhawatiran diketahui orang lain, dan ketidakjelasan proses dapat membuat langkah pertama terasa berat. Jelaskan pilihan yang tersedia.',
     boundaryCondition: 'Pada kondisi krisis darurat (risiko menyakiti diri), gunakan instruksi yang tegas, lugas, dan terarah tanpa keraguan.',
     dos: [
       {
         example: 'Selasa pukul 19.00 di ruang belakang. Gratis. Boleh datang tanpa bicara apa-apa, dan boleh pulang kapan saja.',
-        why: 'Waktu, tempat, durasi, biaya, dan pintu keluar disebutkan di awal sebelum kalimat ajakan dibuat.'
+        why: 'Contoh ini menyebut waktu, tempat, biaya, dan kebebasan untuk pulang. Tambahkan durasi jika sudah diketahui.'
       },
       {
         example: 'Tidak ada presensi, tidak ada sesi perkenalan wajib keliling lingkaran.',
@@ -87,11 +87,11 @@ const VALUE_PILLARS: ValuePillar[] = [
     donts: [
       {
         example: 'Yuk tumpahkan semua beban hidup yang kamu pendam selama ini!',
-        why: 'Menetapkan penelanjangan emosi yang intens sebagai harga tiket masuk.'
+        why: 'Ajakan ini menuntut pembaca langsung menceritakan pengalaman yang pribadi.'
       },
       {
         example: 'Ceritakan masalah terberatmu di sini sekarang juga.',
-        why: 'Kalimat perintah yang menuntut pembukaan luka batin secara sepihak.'
+        why: 'Kalimat ini mendesak pembaca menceritakan hal pribadi sebelum ia siap.'
       }
     ]
   },
@@ -99,8 +99,8 @@ const VALUE_PILLARS: ValuePillar[] = [
     id: 'V3',
     title: 'Satu Langkah Nyata yang Masuk Akal',
     tagline: 'One Actionable Step',
-    voiceTrait: 'Tawarkan satu tindakan konkret, mudah dibatalkan, dan sebutkan hambatannya secara jujur.',
-    positionNote: 'Tindakan nyata memulihkan rasa berdaya (agency). Jangan memberi daftar tuntutan perubahan hidup yang mustahil dilakukan orang yang sedang kehabisan energi.',
+    voiceTrait: 'Tawarkan satu langkah yang jelas dan realistis. Jelaskan biaya, waktu, serta pilihan untuk berhenti jika memang tersedia.',
+    positionNote: 'Bantu pembaca melihat satu hal yang bisa ia lakukan. Hindari daftar perubahan besar yang sulit dijalankan sekaligus.',
     boundaryCondition: 'Langkah awal yang ringan adalah jembatan pembuka, bukan pengganti penanganan klinis jika masalah berlanjut.',
     dos: [
       {
@@ -108,14 +108,14 @@ const VALUE_PILLARS: ValuePillar[] = [
         why: 'Satu tindakan nyata, kalimat persis yang harus diucapkan di loket, dan hambatan antrean disebutkan jujur di awal.'
       },
       {
-        example: 'Malam ini cukup rapikan satu sudut meja kerjamu, lalu tidurlah 15 menit lebih awal.',
-        why: 'Satu langkah fisik yang jelas titik mulai dan titik selesainya.'
+        example: 'Malam ini, coba rapikan satu sudut meja kerjamu.',
+        why: 'Ada satu tindakan dengan awal dan akhir yang jelas.'
       }
     ],
     donts: [
       {
         example: 'Jangan ragu mencari bantuan profesional dan segera ubah pola hidupmu!',
-        why: 'Memberikan anjuran klise tanpa jalur teknis yang jelas bagaimana cara mengaksesnya.'
+        why: 'Ajakan ini belum menjelaskan bantuan apa yang tersedia dan cara mengaksesnya.'
       },
       {
         example: 'Ubah pola pikirmu sekarang dan tata ulang seluruh hidupmu dari nol!',
@@ -128,15 +128,15 @@ const VALUE_PILLARS: ValuePillar[] = [
     title: 'Mulai dari yang Tampak Nyata',
     tagline: 'Start from What is Visible / Specific Before Emotional',
     voiceTrait: 'Gunakan detail situasi konkret yang menghadirkan emosi secara alami; jangan jadikan pengakuan emosi sebagai tiket masuk.',
-    positionNote: 'Pria lebih cepat mengenali situasi fisiknya (jam tiga pagi, cek saldo, pundak kaku) dibanding label emosi. Biarkan pembaca yang menyimpulkan perasaannya sendiri.',
+    positionNote: 'Detail sehari-hari dapat membantu pembaca mengenali situasinya. Beri ruang baginya untuk menamai perasaannya sendiri.',
     boundaryCondition: 'Situasi yang digambarkan tidak boleh terlalu sempit hingga mengecualikan pembaca. Pilih situasi yang jamak dialami pria sehari-hari.',
     dos: [
       {
-        example: 'Jam tiga pagi, lampu kamar sudah mati, tapi jari masih terus menggulir memeriksa saldo rekening.',
+        example: 'Jam tiga pagi, lampu kamar sudah mati, tapi kamu masih membuka aplikasi bank untuk mengecek saldo.',
         why: 'Situasi nyata yang langsung ia kenali tanpa perlu mengakui kepada orang lain bahwa ia sedang cemas.'
       },
       {
-        example: 'Hal-hal yang biasanya berubah duluan dalam rutinitas harianmu, sebelum orang lain menyadarinya.',
+        example: 'Perubahan kecil dalam keseharian yang mungkin baru kamu sadari.',
         why: 'Urutan bertahap: ia bisa membaca keseluruhan tulisan sebelum memutuskan apakah tulisan ini tentang dirinya.'
       }
     ],
@@ -147,7 +147,7 @@ const VALUE_PILLARS: ValuePillar[] = [
       },
       {
         example: 'Kamu pasti merasa hampa, kesepian, dan gagal sebagai pria, kan?',
-        why: 'Memaksakan label perasaan lalu menuntutnya membenarkan, yang merupakan biaya keterpaparan terselubung empati.'
+        why: 'Kalimat ini menebak perasaan pembaca dan mendesaknya untuk membenarkan tebakan itu.'
       }
     ]
   },
@@ -155,17 +155,17 @@ const VALUE_PILLARS: ValuePillar[] = [
     id: 'V5',
     title: 'Jujur & Terbuka tentang Batasan',
     tagline: 'Clear About the Limits / Calibrated Uncertainty',
-    voiceTrait: 'Terkalibrasi secara ilmiah pada klaim psikologis; lugas dan tanpa basa-basi pada informasi logistik.',
-    positionNote: 'Belum ada uji kalimat acak berskala besar khusus pria Indonesia. Jangan mengklaim kebenaran mutlak. Sebaliknya, informasi darurat disampaikan tegas tanpa keraguan.',
-    boundaryCondition: 'Kehati-hatian ilmiah bukan berarti kalimat menjadi bertele-tele atau kabur. Pada informasi darurat dan akses bantuan, sampaikan secara pasti tanpa keraguan.',
+    voiceTrait: 'Sesuaikan klaim dengan bukti yang tersedia. Sampaikan informasi layanan yang sudah diverifikasi secara jelas.',
+    positionNote: 'Dalam 14 dokumen yang ditelaah, tidak ditemukan eksperimen acak yang menguji pilihan kata pada laki-laki dewasa Indonesia. Contoh di sini merupakan usulan penerapan, bukan kalimat yang terbukti efektif.',
+    boundaryCondition: 'Jelaskan ketidakpastian riset dengan singkat. Untuk bantuan darurat, berikan langkah yang jelas dan informasi layanan yang sudah diverifikasi.',
     dos: [
       {
-        example: 'Sebagian laki-laki merasa lebih enteng setelah bertukar pikiran dengan kawan terpercaya. Sebagian lagi tidak. Untuk konteks Indonesia, datanya masih terus kami teliti.',
-        why: 'Jujur dan terkalibrasi pada klaim psikologis, menyebutkan batas bukti ilmiah secara transparan.'
+        example: 'Sebagian laki-laki merasa lebih enteng setelah bercerita. Sebagian lagi tidak. Dalam korpus yang ditelaah, pilihan kalimatnya belum diuji pada laki-laki dewasa Indonesia.',
+        why: 'Menyebutkan keterbatasan pengetahuan tanpa membuat janji hasil yang pasti.'
       },
       {
-        example: 'Layanan 119 ext. 8. Bebas pulsa, 24 jam. Jika kamu merasa tidak sanggup menelepon sendiri, minta orang terdekat yang mendampingimu.',
-        why: 'Nol keraguan pada logistik darurat, dan mengantisipasi jika pembaca sedang tidak mampu bertindak sendiri.'
+        example: 'Untuk dukungan psikologis, periksa akses layanan di Healing119.id. Jika ada bahaya segera, cari bantuan darurat atau minta orang yang kamu percaya menemanimu ke IGD terdekat.',
+        why: 'Memberikan langkah rujukan dan jalur darurat tanpa menjanjikan jam operasional yang belum diverifikasi.'
       }
     ],
     donts: [
@@ -183,17 +183,17 @@ const VALUE_PILLARS: ValuePillar[] = [
     id: 'V6',
     title: 'Tindakan Nyata, Bukan Tuntutan Moral',
     tagline: 'Action, Not Demands / Lead by Practice',
-    voiceTrait: 'Subjek kalimat adalah tindakan nyata organisasi dan sistem, bukan menunjuk hidung pembaca; posisi moral dinyatakan satu kali dengan konsekuensi yang kami tanggung sendiri.',
+    voiceTrait: 'Jelaskan tindakan dan komitmen Menungsa secara konkret. Jika menyatakan sikap, sebutkan langkah yang menyertainya.',
     positionNote: 'Menceramahi publik dengan tuntutan moral ("laki-laki harus...") memicu penolakan batin (reactance). Tunjukkan apa yang organisasi lakukan secara nyata, bukan apa yang pembaca harus ubah.',
-    boundaryCondition: 'Ini bukan izin untuk bersikap pasif. Aturannya adalah: kalimat berfokus pada apa yang kami kerjakan dan biaya yang kami tanggung sendiri.',
+    boundaryCondition: 'Sikap organisasi tetap perlu jelas. Hubungkan sikap itu dengan tindakan yang dapat diperiksa.',
     dos: [
       {
-        example: 'Antrean psikiater di faskes rata-rata dua minggu. Kami sedang mendata klinik yang layanannya lebih cepat, dan datanya kami buka gratis untuk umum.',
-        why: 'Subjek kalimat adalah sistem dan komitmen nyata organisasi yang memerlukan kerja keras nyata.'
+        example: 'Kami sedang menyusun informasi layanan kesehatan mental di beberapa wilayah. Daftar ini akan memuat fasilitas yang telah diverifikasi dan tanggal pemeriksaan terakhir.',
+        why: 'Pesan berfokus pada hambatan layanan dan tindakan organisasi untuk menanganinya.'
       },
       {
         example: 'Kami menolak kerja sama iklan produk suplemen di kanal ini, meskipun itu berarti kami kehilangan pemasukan sponsor.',
-        why: 'Satu sikap moral yang tegas, dinyatakan secara jujur dengan biaya/konsekuensi yang ditanggung sendiri oleh brand.'
+        why: 'Sikap organisasi disertai konsekuensi yang bersedia ditanggung. Gunakan hanya jika keputusan ini benar-benar dibuat.'
       }
     ],
     donts: [
@@ -203,7 +203,7 @@ const VALUE_PILLARS: ValuePillar[] = [
       },
       {
         example: 'Sudah saatnya kita semua peduli pada kesehatan jiwa!',
-        why: 'Khotbah moral tanpa komitmen biaya nyata, dan kata "kita" yang tidak memiliki rujukan tindakan konkret.'
+        why: 'Ajakan ini belum menyebut siapa yang akan bertindak dan apa yang akan dilakukan.'
       }
     ]
   }
@@ -225,31 +225,31 @@ const PLAYBOOK_ITEMS: PlaybookItem[] = [
   {
     id: 'R01',
     category: 'REGULATION',
-    categoryLabel: 'Pengendalian Emosi',
+    categoryLabel: 'Keterbukaan dan privasi',
     action: 'Jadikan langkah pertama kecil, privat, dan tanpa beban komitmen',
-    rationale: 'Pria menghindari rasa malu sosial, bukan menghindari bantuan. Menurunkan biaya psikologis jauh lebih penting daripada menaikkan intensitas emosi ajakan.',
+    rationale: 'Jelaskan langkah pertama, siapa yang dapat melihat respons pembaca, dan apakah ia bisa berhenti. Ini usulan berdasarkan sintesis, bukan bukti bahwa satu pendekatan selalu lebih efektif.',
     doText: 'Sesi berikutnya Selasa pukul 19.00. Boleh datang, boleh sekadar duduk mengamati dulu.',
     doWhy: 'Memberikan pilihan leluasa sehingga hadir ke lokasi bukan berarti terikat komitmen apa pun.',
     dontText: 'Yuk tumpahkan semua unek-unekmu di kolom komentar postingan ini!',
-    dontWhy: 'Menuntut penelanjangan emosi di ruang terbuka publik yang memicu rasa malu dan defensif.'
+    dontWhy: 'Ajakan ini meminta pengalaman pribadi dibagikan di kolom komentar yang terbuka.'
   },
   {
     id: 'R02',
     category: 'FRAMING',
     categoryLabel: 'Maskulinitas & Martabat',
     action: 'Gunakan latar situasi nyata agar emosi hadir secara alami',
-    rationale: 'Pria lebih tersentuh oleh deskripsi rutinitas fisik yang nyata dialami dibanding label diagnosis klinis yang mengintimidasi.',
+    rationale: 'Gunakan situasi yang relevan sebagai pembuka. Istilah klinis tetap dapat dijelaskan saat dibutuhkan, tanpa mendiagnosis pembaca.',
     doText: 'Jam tiga pagi, lampu kamar sudah mati, tapi jari masih terus menggulir layar ponsel.',
     doWhy: 'Satu situasi yang nyata terlihat, tanpa melabeli perasaan, tanpa memaksa pembaca mengakui kerapuhan.',
     dontText: 'Kenali 5 tanda kamu sedang mengalami depresi berat dan gangguan mental!',
-    dontWhy: 'Melabeli secara prematur dan membuat pembaca merasa dinilai sebagai orang yang rusak.'
+    dontWhy: 'Judul ini menyatakan diagnosis pembaca sebelum ada penilaian profesional.'
   },
   {
     id: 'R03',
     category: 'AUDIENCE_DEFENSE',
-    categoryLabel: 'Mencegah Resistensi',
+    categoryLabel: 'Ajakan tanpa paksaan',
     action: 'Tawarkan kendali mandiri dengan pilihan sukarela yang nyata',
-    rationale: 'Kalimat perintah memicu penolakan psikologis (reactance). Pria butuh merasa bahwa kendali keputusan tetap berada di tangannya.',
+    rationale: 'Bahasa yang menekan kebebasan memilih dapat memicu penolakan. Temuan ini tidak khusus pada laki-laki.',
     doText: 'Ada dua hal kecil yang bisa dicoba malam ini: jalan santai 15 menit atau mandi air hangat sebelum tidur.',
     doWhy: 'Memberi opsi dan membiarkan pembaca memilih sendiri ritme yang paling nyaman baginya.',
     dontText: 'Kamu harus berhenti memendam emosi dan wajib konsultasi sekarang juga!',
@@ -259,8 +259,8 @@ const PLAYBOOK_ITEMS: PlaybookItem[] = [
     id: 'R04',
     category: 'REGISTER',
     categoryLabel: 'Ragam Bahasa',
-    action: 'Gunakan kata ganti "kamu" sebagai standar bawaan organisasi yang santun',
-    rationale: 'Kata "kamu" terasa langsung dan hangat tanpa berpura-pura menjadi sahabat tongkrongan palsu.',
+    action: 'Gunakan “kamu” sebagai sapaan utama dalam panduan Menungsa',
+    rationale: '“Kamu” dipilih sebagai sapaan utama Menungsa. Sesuaikan dengan hubungan penulis dan pembaca serta konteks layanan.',
     doText: 'Ketika tubuhmu memberi sinyal lelah yang berkepanjangan, dengarkan.',
     doWhy: 'Bicara jujur sebagai pendamping yang menghormati jarak sosial pembaca.',
     dontText: 'Halo bro/cuy, gimana kabar mental lo hari ini? Curhat yuk sama mimin!',
@@ -270,19 +270,19 @@ const PLAYBOOK_ITEMS: PlaybookItem[] = [
     id: 'R05',
     category: 'FRAMING',
     categoryLabel: 'Maskulinitas & Martabat',
-    action: 'Jaga kehormatan pria di ruang publik; simpan hal emosional di ruang privat',
-    rationale: 'Di ruang publik (media sosial, baliho), pria menjaga harga diri dan status sosial. Tempatkan emosi sensitif di saluran privat (chat tertutup).',
-    doText: 'Di linimasa publik: fokus pada manajemen waktu, kebugaran fisik, dan ketrampilan kerja nyata.',
-    doWhy: 'Aman dibaca di depan kawan sebaya tanpa khawatir dihakimi atau diledek.',
+    action: 'Jaga pilihan pembaca saat membahas pengalaman pribadi',
+    rationale: 'Di ruang publik, hindari meminta pembaca mengungkap pengalaman pribadi. Topik emosi tetap dapat dibahas; sediakan pilihan untuk merespons secara privat.',
+    doText: 'Di linimasa publik: bahas pengalaman sehari-hari dan emosi tanpa meminta pembaca menceritakan masalahnya di komentar.',
+    doWhy: 'Pembaca dapat mengikuti pembahasan tanpa perlu membagikan pengalaman pribadi.',
     dontText: 'Share di kolom komentar, cerita paling sedih atau aib rumah tangga yang selama ini kamu pendam dari pasanganmu!',
     dontWhy: 'Meminta pembongkaran privasi keluarga di linimasa terbuka yang melanggar batas martabat pria di ruang publik.'
   },
   {
     id: 'R06',
     category: 'AUDIENCE_DEFENSE',
-    categoryLabel: 'Mencegah Resistensi',
+    categoryLabel: 'Ajakan tanpa paksaan',
     action: 'Hindari label "Pria Sejati", "Cowok Alfa", atau kasta maskulinitas',
-    rationale: 'Label hiper-maskulin langsung dicap sebagai hal yang canggung (cringe) dan manipulatif oleh pria dewasa Indonesia.',
+    rationale: 'Menungsa menghindari label yang menjadikan harga diri laki-laki bergantung pada standar ketangguhan atau pencapaian.',
     doText: 'Menyelesaikan pekerjaan dengan tuntas dan menjaga keluarga tetap aman.',
     doWhy: 'Fokus pada tanggung jawab dan fungsi nyata tanpa embel-embel jargon maskulinitas.',
     dontText: 'Cowok yang bernilai tinggi itu nggak kenal kata menyerah. Buktikan kamu punya mental baja untuk sukses!',
@@ -328,8 +328,8 @@ const FRAMING_INSIGHTS: Record<'therapy' | 'skincare' | 'fitness' | 'parenting',
     privateGaze: {
       threatLevel: 'Sangat Rendah (Ruang Aman)',
       threatColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
-      culturalContext: 'Di saluran tertutup (chat WhatsApp privat, ruang konsultasi 1-on-1), penjagaan status sosial luntur. Pria tidak lagi butuh perisai maskulinitas untuk membuktikan ketangguhannya.',
-      writingStrategy: 'Turunkan perisai jargon maskulin. Gunakan bahasa yang tenang, bersahaja, tanpa pujian berlebih ("kamu hebat sudah mau terbuka" justru mengingatkan pada ujian yang gagal). Berikan validasi tanpa penghakiman.',
+      culturalContext: 'Percakapan privat dapat mengurangi sorotan orang lain, tetapi belum tentu terasa aman bagi setiap orang. Tetap jelaskan batas privasi dan hormati pilihan untuk tidak bercerita.',
+      writingStrategy: 'Gunakan bahasa yang tenang. Tanggapi cerita tanpa menilai keberanian atau harga diri orang yang bercerita.',
       exampleDo: 'Ini ruang privat. Kamu tidak harus langsung bercerita jika belum siap. Kita bisa mulai dari apa yang sedang paling mengganjal hari ini.',
       exampleDont: 'Cowok bernilai tinggi harus berani runtuhkan ego dan menangis di sesi konseling.'
     }
@@ -341,15 +341,15 @@ const FRAMING_INSIGHTS: Record<'therapy' | 'skincare' | 'fitness' | 'parenting',
     publicGaze: {
       threatLevel: 'Sedang-Tinggi (Potensi Ejekan Sosial)',
       threatColor: 'text-amber-400 bg-amber-500/10 border-amber-500/30',
-      culturalContext: 'Perawatan kulit bagi pria sering dicurigai sebagai perilaku genit atau kemayu bila dikomunikasikan dengan istilah estetika kecantikan (glowing, glass skin, pori-pori halus).',
-      writingStrategy: 'Bingkai perawatan diri sebagai higienitas mendasar dan perlindungan fisik fungsional setelah beraktivitas di jalan/lapangan (debu motor, polusi, terik matahari). Anggap seperti sabun mandi atau pasta gigi.',
+      culturalContext: 'Dalam konteks tertentu, perawatan kulit dikaitkan dengan norma gender. Jangan menganggap semua pembaca memiliki kekhawatiran yang sama.',
+      writingStrategy: 'Jelaskan fungsi produk dan cara penggunaannya secara konkret. Hindari janji hasil yang belum dibuktikan.',
       exampleDo: 'Sabun pembersih untuk mengangkat debu jalanan dan minyak setelah seharian di jalan, tanpa rasa perih atau licin.',
       exampleDont: 'Rahasia cowok glowing dan memesona agar disukai banyak wanita idaman.'
     },
     privateGaze: {
       threatLevel: 'Rendah (Pilihan Mandiri)',
       threatColor: 'text-sky-400 bg-sky-500/10 border-sky-500/30',
-      culturalContext: 'Saat memilih produk secara mandiri di kamar mandi atau e-commerce, pria menghargai kepraktisan teknis dan efisiensi waktu, bukan janji glamor.',
+      culturalContext: 'Jelaskan kegunaan produk dan langkah pemakaian agar pembaca bisa menilai kesesuaiannya dengan kebutuhan sendiri.',
       writingStrategy: 'Gunakan panduan berbasis langkah konkret yang ringkas (misal: 3 menit, 2 produk utama). Jelaskan bahan aktif secara lugas dan fungsi klinisnya tanpa basa-basi.',
       exampleDo: 'Dua langkah simpel sehabis mandi: bersihkan muka, lalu pakai pelembap tabir surya sebelum keluar rumah.',
       exampleDont: 'Treatment 10 langkah kecantikan pria modern agar tampil paripurna sepanjang hari.'
@@ -363,7 +363,7 @@ const FRAMING_INSIGHTS: Record<'therapy' | 'skincare' | 'fitness' | 'parenting',
       threatLevel: 'Moderat (Sorotan Peran Ganda)',
       threatColor: 'text-sky-400 bg-sky-500/10 border-sky-500/30',
       culturalContext: 'Di masyarakat urban, keterlibatan ayah (involved fatherhood) diapresiasi, namun di ranah sosial yang lebih tradisional, pria masih dicap "suami takut istri" atau sekadar "bantu-bantu momong" jika tidak dibingkai secara bermartabat.',
-      writingStrategy: 'Posisikan ayah sebagai pilar kepemimpinan moral dan teladan nyata dalam tumbuh kembang anak, bukan sekadar "asisten ibu" yang butuh disanjung secara berlebihan saat mengganti popok.',
+      writingStrategy: 'Gambarkan ayah sebagai orang tua yang ikut bertanggung jawab dalam pengasuhan sehari-hari.',
       exampleDo: 'Hadir mendampingi anak belajar menyelesaikan masalah dan mengelola emosinya sejak dini.',
       exampleDont: 'Suami idaman yang mau bantu-bantu pekerjaan istri dan tidak malu gendong anak di depan umum.'
     },
@@ -371,7 +371,7 @@ const FRAMING_INSIGHTS: Record<'therapy' | 'skincare' | 'fitness' | 'parenting',
       threatLevel: 'Sangat Rendah (Refleksi Tanggung Jawab)',
       threatColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
       culturalContext: 'Dalam refleksi privat, ayah sering memikul kecemasan besar: takut gagal menafkahi secara holistik, rasa bersalah karena waktu kerja yang panjang, dan kebingungan cara berkomunikasi dengan anak remaja.',
-      writingStrategy: 'Akui keletihan emosional menjadi kepala keluarga dengan hangat. Berikan panduan percakapan yang praktis untuk diucapkan ayah kepada anaknya di meja makan.',
+      writingStrategy: 'Akui bahwa pengasuhan bisa melelahkan. Berikan contoh percakapan yang membantu ayah mendengarkan anak.',
       exampleDo: 'Saat pulang kerja dalam keadaan lelah, sepuluh menit mendengarkan ceritanya tanpa memegang ponsel sudah sangat berarti bagi anakmu.',
       exampleDont: 'Kalau kamu tidak punya waktu untuk anak, jangan mengaku sebagai ayah yang baik.'
     }
@@ -384,7 +384,7 @@ const FRAMING_INSIGHTS: Record<'therapy' | 'skincare' | 'fitness' | 'parenting',
       threatLevel: 'Rendah (High Cultural Alignment)',
       threatColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
       culturalContext: 'Latihan fisik adalah domain yang paling diterima secara sosial bagi pria. Namun jebakan terbesarnya adalah retorika "hustle toxic", "alpha grindset", dan penghinaan terhadap mereka yang bertubuh gemuk/lemah.',
-      writingStrategy: 'Hindari klise manosphere yang agresif ("no pain no gain", "cowok lembek"). Bingkai latihan kekuatan sebagai investasi stamina jangka panjang untuk merawat keluarga dan menjaga kesehatan mandiri.',
+      writingStrategy: 'Jelaskan manfaat dan tujuan latihan sesuai bukti. Hindari ejekan terhadap bentuk tubuh atau kemampuan peserta.',
       exampleDo: 'Membangun kekuatan otot dan daya tahan jantung agar tetap bugar mendampingi keluarga hingga usia lanjut.',
       exampleDont: 'Hancurkan rasa malasmu, cowok lembek tidak punya masa depan di dunia yang keras ini!'
     },
@@ -392,7 +392,7 @@ const FRAMING_INSIGHTS: Record<'therapy' | 'skincare' | 'fitness' | 'parenting',
       threatLevel: 'Sangat Rendah (Pemulihan & Disiplin Diri)',
       threatColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
       culturalContext: 'Secara personal, pria sering bergulat dengan rasa malu karena kelebihan berat badan, cedera sendi menahun, atau kelelahan kronis akibat kerja fisik berlebih.',
-      writingStrategy: 'Dorong pemulihan yang realistis, respek terhadap sinyal tubuh yang lelah, dan eliminasi rasa bersalah ketika harus beristirahat dari jadwal latihan.',
+      writingStrategy: 'Akui kebutuhan beristirahat dan pulih. Hindari menilai jeda latihan sebagai kegagalan pribadi.',
       exampleDo: 'Ketika sendi terasa nyeri atau badan demam, istirahat adalah keputusan yang cerdas, bukan kegagalan disiplin.',
       exampleDont: 'Rasa sakit itu ilusi. Jangan pernah skip latihan apa pun alasannya jika kamu pria sejati.'
     }
@@ -406,8 +406,8 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const categories = [
-    { id: 'all', label: 'Semua Aturan' },
-    { id: 'REGULATION', label: 'Pengendalian Emosi' },
+    { id: 'all', label: 'Semua panduan' },
+    { id: 'REGULATION', label: 'Keterbukaan dan privasi' },
     { id: 'REGISTER', label: 'Ragam Bahasa & Kata Ganti' },
     { id: 'FRAMING', label: 'Maskulinitas & Martabat' },
     { id: 'AUDIENCE_DEFENSE', label: 'Mencegah Resistensi' },
@@ -458,7 +458,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
         {/* Middle Stage: Editorial Headline & Actions */}
         <div className="relative z-10 my-4 sm:my-6 space-y-4 sm:space-y-5 max-w-2xl">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif font-medium tracking-tight text-stone-100 leading-[1.12]">
-            Karakter &amp; Dasar Suara Menungsa
+            Cara Menungsa berbicara kepada pembaca
           </h1>
 
           <p className="text-sm sm:text-base md:text-lg leading-relaxed text-stone-200/90 font-sans max-w-xl text-balance">
@@ -470,14 +470,14 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
               onClick={() => onNavigate('studio')}
               className="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-semibold text-xs sm:text-sm transition-all shadow-raised flex items-center gap-2 cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
             >
-              <span>Buka Studio Naskah</span>
+              <span>Lihat contoh naskah</span>
               <ArrowRight size={15} />
             </button>
             <button
               onClick={() => onNavigate('sandbox')}
               className="px-5 py-3 rounded-xl bg-stone-900/80 hover:bg-stone-800/90 text-stone-200 border border-stone-700/70 backdrop-blur-md font-medium text-xs sm:text-sm transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
             >
-              <span>Uji Kalimat di Lab</span>
+              <span>Periksa draf</span>
             </button>
             <button
               onClick={() => onNavigate('lexicon')}
@@ -493,10 +493,10 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
       <section className="space-y-6">
         <div>
           <h2 className="text-xl md:text-2xl font-serif font-bold text-stone-100">
-            6 Nilai Utama Menungsa dalam Praktik Menulis
+            Enam prinsip menulis Menungsa
           </h2>
           <p className="text-xs md:text-sm text-stone-400 mt-1 font-sans">
-            Enam prinsip nilai yang disintesis langsung dari basis data riset Menungsa, memandu pilihan kata, ritme kalimat, dan batasan etis penulisan.
+            Prinsip ini menggabungkan temuan riset, pertimbangan editorial, dan nilai Menungsa. Contoh kalimatnya belum diuji pada pembaca Indonesia.
           </p>
         </div>
 
@@ -508,7 +508,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
         />
 
         {/* Value selector cards without V1, V2, V6 clutter */}
-        <div role="tablist" aria-label="6 Nilai Utama Menungsa" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div role="tablist" aria-label="Enam prinsip menulis" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {VALUE_PILLARS.map((val, idx) => {
             const Icon = valueIcons[idx % valueIcons.length];
             const isSelected = val.id === activeValueId;
@@ -551,7 +551,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="space-y-3 md:col-span-1 border-b md:border-b-0 md:border-r border-stone-800 pb-4 md:pb-0 md:pr-6">
                 <span className="kicker block">
-                  KARAKTER SUARA & PRINSIP
+                  Prinsip menulis
                 </span>
                 <h3 className="text-2xl font-serif font-semibold text-stone-100 leading-tight">{activeValue.title}</h3>
                 <p className="text-xs text-amber-500/90 font-sans italic">{activeValue.tagline}</p>
@@ -560,7 +560,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
                 </p>
                 <div className="pt-2">
                   <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-stone-400 block mb-1">
-                    POSISI DALAM NADA MENUNGSA:
+                    Mengapa ini penting
                   </span>
                   <p className="text-xs text-stone-300 bg-stone-950/60 p-3 rounded-[6px] border border-stone-800/80 leading-relaxed font-sans">
                     {activeValue.positionNote}
@@ -600,7 +600,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
                 </div>
 
                 <div className="text-xs text-stone-400 bg-stone-950/40 p-3.5 rounded-[6px] border border-stone-800/80 leading-relaxed font-sans">
-                  <strong className="text-stone-200">Batas Keberlakuan:</strong> {activeValue.boundaryCondition}
+                  <strong className="text-stone-200">Kapan perlu disesuaikan</strong> {activeValue.boundaryCondition}
                 </div>
               </div>
             </div>
@@ -612,10 +612,10 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
       <section className="space-y-6">
         <div>
           <h2 className="text-xl md:text-2xl font-serif font-bold text-stone-100">
-            Matriks Batas Keberlakuan 2×2: Kapan Pembingkaian Maskulinitas Bekerja vs Bumerang
+            Mempertimbangkan norma gender dan ruang publik atau privat
           </h2>
           <p className="text-xs md:text-sm text-stone-400 mt-1 font-sans">
-            Sintesis model konseptual dari Brough dkk. serta White &amp; Dahl: bagaimana interaksi persepsi budaya perilaku dan visibilitas sosial (Gaze) memandu strategi penulisan.
+            Model konseptual yang diadaptasi dari Brough dkk. serta White dan Dahl. Penerapannya pada contoh Indonesia adalah usulan editorial, bukan hasil uji pilihan kata di Indonesia.
           </p>
         </div>
 
@@ -667,7 +667,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
                   <div className="space-y-2.5 text-xs font-sans">
                     <div>
                       <span className="text-[10px] font-mono uppercase tracking-wider text-stone-400 block mb-0.5">
-                        Hambatan Psikologis:
+                        Hal yang perlu dipertimbangkan
                       </span>
                       <p className="text-stone-300 leading-relaxed">
                         {gazeInfo.culturalContext}
@@ -675,7 +675,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
                     </div>
                     <div className="pt-2 border-t border-stone-800/50">
                       <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-semibold block mb-0.5">
-                        Solusi Copywriting Menungsa:
+                        Saran penulisan
                       </span>
                       <p className="text-stone-200 leading-relaxed">
                         {gazeInfo.writingStrategy}
@@ -718,10 +718,10 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
           <div>
             <h2 className="text-xl md:text-2xl font-serif font-semibold text-stone-100 flex items-center gap-2">
               <SlidersHorizontal size={18} className="text-amber-500" />
-              Aturan Emas Penulisan (Do's & Don'ts Playbook)
+              Panduan singkat menulis
             </h2>
             <p className="text-xs md:text-sm text-stone-400 mt-1 font-sans">
-              Prinsip operasional cepat untuk memastikan naskah Anda bebas dari jebakan bumerang.
+              Gunakan contoh berikut untuk meninjau cara menyapa, mengajak, dan menjelaskan informasi kepada pembaca.
             </p>
           </div>
 

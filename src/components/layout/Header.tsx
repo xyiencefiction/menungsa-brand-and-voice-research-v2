@@ -22,11 +22,11 @@ export const Header: React.FC<Props> = ({
   onToggleMobileSidebar,
 }) => {
   const primaryTabs: { id: ViewType; label: string; icon: React.ComponentType<{ size: number; className?: string }> }[] = [
-    { id: 'foundations', label: 'Prinsip Suara', icon: Sparkles },
-    { id: 'studio', label: 'Studio Naskah', icon: PenTool },
+    { id: 'foundations', label: 'Prinsip menulis', icon: Sparkles },
+    { id: 'studio', label: 'Contoh naskah', icon: PenTool },
     { id: 'lexicon', label: 'Pilihan Kata', icon: BookOpen },
-    { id: 'sandbox', label: 'Lab Uji Naskah', icon: Sliders },
-    { id: 'indonesia', label: 'Kompas Budaya', icon: MapPin },
+    { id: 'sandbox', label: 'Periksa draf', icon: Sliders },
+    { id: 'indonesia', label: 'Konteks Indonesia', icon: MapPin },
   ];
 
   return (
@@ -37,7 +37,7 @@ export const Header: React.FC<Props> = ({
           <button
             onClick={onToggleMobileSidebar}
             className="p-1.5 rounded-lg text-stone-400 hover:text-stone-100 hover:bg-stone-900 md:hidden cursor-pointer"
-            aria-label={isMobileSidebarOpen ? 'Tutup navigasi seluler' : 'Buka navigasi seluler'}
+            aria-label={isMobileSidebarOpen ? 'Tutup menu' : 'Buka menu'}
             aria-expanded={isMobileSidebarOpen}
           >
             {isMobileSidebarOpen ? <X size={20} /> : <Menu size={20} />}
@@ -46,7 +46,7 @@ export const Header: React.FC<Props> = ({
           <button
             onClick={() => onSelectView('foundations')}
             className="flex items-center text-left cursor-pointer group focus:outline-none"
-            aria-label="Menungsa Beranda"
+            aria-label="Beranda Menungsa"
             title="Menungsa"
           >
             <img
@@ -58,7 +58,7 @@ export const Header: React.FC<Props> = ({
         </div>
 
         {/* Center Desktop Navigation Tabs */}
-        <nav aria-label="Navigasi Utama" className="hidden md:flex items-center gap-1 bg-stone-900/70 p-1 rounded-xl border border-stone-800/80">
+        <nav aria-label="Navigasi utama" className="hidden md:flex items-center gap-1 bg-stone-900/70 p-1 rounded-xl border border-stone-800/80">
           {primaryTabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = currentView === tab.id;
@@ -98,9 +98,9 @@ export const Header: React.FC<Props> = ({
 
       {/* Mobile Drawer Navigation */}
       {isMobileSidebarOpen && (
-        <nav aria-label="Navigasi Seluler" className="md:hidden border-t border-stone-800 bg-stone-950 px-4 py-4 space-y-2">
+        <nav aria-label="Menu utama" className="md:hidden border-t border-stone-800 bg-stone-950 px-4 py-4 space-y-2">
           <div className="text-[11px] font-mono text-stone-500 uppercase tracking-wider px-2 mb-2">
-            Modul Panduan Penulis:
+            Panduan menulis
           </div>
           {primaryTabs.map((tab) => {
             const Icon = tab.icon;

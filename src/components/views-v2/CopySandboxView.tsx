@@ -43,22 +43,22 @@ cheatsheet
 const PRESETS = [
   {
     id: 'scolding',
-    label: '1. Naskah Menggurui (Bumerang Penolakan Moral)',
+    label: '1. Contoh ajakan yang menghakimi',
     text: 'Sebagai pria sejati, kamu wajib sadar bahwa memendam rasa sakit adalah dosa moral dan aib besar. Jangan jadi pengecut yang lari dari tanggung jawab, bertobatlah dan hadapi beban hidupmu sekarang juga!'
   },
   {
     id: 'cringe',
-    label: '2. Naskah Klise Maskulin (Canggung & Cringe)',
+    label: '2. Contoh tuntutan maskulinitas',
     text: 'Bangkitlah wahai para pria alfa! Jangan biarkan dirimu menjadi cowok cemen yang mudah mengeluh. Taklukkan harimu dengan disiplin besi dan buktikan siapa pejantan tangguh sebenarnya di sini.'
   },
   {
     id: 'clinical',
-    label: '3. Naskah Jargon Klinis & Perintah Agresif (Intimidatif)',
+    label: '3. Contoh diagnosis dan desakan bercerita',
     text: 'Kamu sedang mengalami burnout akut dan trauma masa kecil yang belum sembuh. Jangan pura-pura kuat, segera tumpahkan semuanya, buka lukamu di sini dan konsultasi sekarang sebelum terlambat!'
   },
   {
     id: 'calibrated',
-    label: '4. Naskah Terkalibrasi Menungsa (Membumi, Bersahaja & Aman)',
+    label: '4. Contoh ajakan yang memberi pilihan',
     text: 'Langkah pertama tidak harus langsung besar. Duduk sejenak di meja kerja, rapikan catatan tugas, dan nikmati secangkir kopi hangat. Tubuh kita memang butuh jeda sejenak untuk memulihkan tenaga.'
   }
 ];
@@ -214,76 +214,76 @@ export const CopySandboxView: React.FC = () => {
     if (total === 0) {
       return {
         status: 'EMPTY',
-        title: 'Kotak Uji Masih Kosong',
-        description: 'Tulis atau tempel draf naskah Anda di atas, atau pilih salah satu contoh naskah siap uji.',
+        title: 'Belum ada draf',
+        description: 'Tulis atau tempel draf di kotak naskah, atau pilih contoh untuk mencoba pemeriksaan.',
         color: 'text-stone-400',
         bg: 'bg-stone-900/40 border-stone-800',
-        advice: 'Pilih preset naskah atau ketik draf promosi/artikel yang ingin dievaluasi.'
+        advice: 'Pilih contoh atau masukkan draf yang ingin diperiksa.'
       };
     }
 
     if (moralCount > 0 && density >= 25) {
       return {
         status: 'HIGH_MORAL',
-        title: 'Terlalu Menggurui / Menghakimi (Risiko Tinggi Penolakan)',
+        title: 'Ada istilah yang perlu diperiksa konteksnya',
         description: `Terdeteksi ${moralCount} kata bernada sanksi moral/keharusan mutlak. Gaya ini memicu resistensi batin (reactance) seketika pada pembaca pria dewasa.`,
         color: 'text-rose-400',
         bg: 'bg-rose-950/20 border-rose-500/30',
-        advice: 'Ganti kata perintah normatif ("wajib", "harus", "dosa", "aib") dengan pengamatan wajar atau ritme harian yang dialami bersama.'
+        advice: 'Periksa apakah kata yang ditandai benar-benar menghakimi atau memaksa. Kata “harus” dan “wajib” juga dapat muncul dalam penjelasan yang tepat.'
       };
     }
 
     if (cringeCount > 0) {
       return {
         status: 'CRINGE_ALERT',
-        title: 'Terdeteksi Klise Maskulin & Manosphere (Cringe)',
+        title: 'Ada istilah tentang standar maskulinitas',
         description: `Terdeteksi ${cringeCount} istilah klise seperti kasta maskulinitas ("alfa", "pejantan", "pria sejati"). Pembaca merasa canggung dan menganggap naskah tidak tulus.`,
         color: 'text-amber-400',
         bg: 'bg-amber-950/20 border-amber-500/30',
-        advice: 'Hapus kasta dan hierarki maskulinitas. Langsung arahkan naskah pada keahlian nyata, penyelesaian masalah fungsional, dan tanggung jawab praktis.'
+        advice: 'Periksa apakah kalimat menjadikan ketangguhan, penghasilan, atau pencapaian sebagai ukuran harga diri.'
       };
     }
 
     if (clinicalCount > 0) {
       return {
         status: 'CLINICAL_ALERT',
-        title: 'Jargon Klinis Prematur / Therapy-Speak Berlebih',
+        title: 'Ada istilah kesehatan mental',
         description: `Terdeteksi ${clinicalCount} diagnosis medis atau label psikologis ("depresi", "trauma", "burnout"). Ini berisiko memicu rasa malu sosial (public shame) dicap abnormal.`,
         color: 'text-purple-400',
         bg: 'bg-purple-950/20 border-purple-500/30',
-        advice: 'Bahasakan keluhan melalui rutinitas fisik nyata: jam istirahat yang kurang, ketegangan otot leher, atau tumpukan berkas kerja di kantor.'
+        advice: 'Pastikan istilah klinis digunakan dengan tepat dan dijelaskan bila perlu. Jangan menghapus istilah diagnosis dari materi edukasi hanya karena ditandai.'
       };
     }
 
     if (imperativeCount > 0) {
       return {
         status: 'IMPERATIVE_ALERT',
-        title: 'Perintah Curhat Terlalu Agresif (Melanggar Batas Privasi)',
+        title: 'Ada ajakan yang perlu diperiksa',
         description: `Terdeteksi ${imperativeCount} pemaksaan pengakuan ("buka hatimu", "tumpahkan semuanya"). Pria cenderung menutup diri jika dipaksa terbuka di ruang umum.`,
         color: 'text-yellow-200 font-semibold',
         bg: 'bg-yellow-950/20 border-yellow-500/30',
-        advice: 'Beri ruang kendali penuh (agency): "Boleh datang, boleh sekadar duduk mendengarkan tanpa keharusan berbicara."'
+        advice: 'Periksa apakah ajakan memberi pilihan atau justru mendesak pembaca membagikan hal pribadi.'
       };
     }
 
     if (recommendedCount > 0 || (moralCount === 0 && cringeCount === 0 && clinicalCount === 0 && imperativeCount === 0)) {
       return {
         status: 'CALIBRATED',
-        title: 'Aman, Membumi & Bermartabat (Selaras Suara Menungsa)',
-        description: 'Naskah bebas dari sanksi moral yang menekan, bebas klise berlebihan, dan menghormati batas martabat serta kedaulatan pembaca.',
+        title: 'Ada kata yang tercatat sebagai contoh bahasa konkret',
+        description: 'Kecocokan kata belum menunjukkan apakah seluruh naskah sesuai panduan. Baca ulang konteks, klaim, dan ajakannya.',
         color: 'text-emerald-400',
         bg: 'bg-emerald-950/20 border-emerald-500/30',
-        advice: 'Draf naskah ini sudah matang dan sangat layak untuk dipublikasikan.'
+        advice: 'Lanjutkan dengan tinjauan manual sebelum menerbitkan.'
       };
     }
 
     return {
       status: 'NEUTRAL',
-      title: 'Perlu Pengamatan Konteks Lebih Lanjut',
-      description: 'Naskah tidak memicu peringatan mayor, namun perhatikan alur kalimat agar tetap bersahaja dan menenangkan.',
+      title: 'Tinjau naskah secara utuh',
+      description: 'Tidak banyak istilah yang ditandai. Hasil ini tidak memastikan ketepatan isi atau kesesuaian nada.',
       color: 'text-stone-300',
       bg: 'bg-stone-900/50 border-stone-800',
-      advice: 'Pastikan kalimat penutup tidak terkesan memaksa pembaca mengambil keputusan secara tergesa-gesa.'
+      advice: 'Periksa konteks, fakta, dan pilihan yang diberikan kepada pembaca.'
     };
   }, [analysis]);
 
@@ -322,7 +322,7 @@ export const CopySandboxView: React.FC = () => {
       <div className="space-y-3">
         <div className="kicker flex items-center gap-1.5">
           <Sliders size={12} className="text-amber-500" />
-          <span>SIMULATOR & KAMUS PENGUJI KATA</span>
+          <span>Pemeriksaan kata dan frasa</span>
         </div>
         <h1 className="text-3xl md:text-4xl font-serif font-semibold tracking-tight text-stone-100 leading-tight">
           Lab Uji Draf Naskah & Cheatsheet {cheatsheet.length.toLocaleString('id-ID')}+ Kosakata
@@ -339,7 +339,7 @@ export const CopySandboxView: React.FC = () => {
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono uppercase tracking-wider text-stone-300 flex items-center gap-1.5 font-semibold">
               <FileText size={14} className="text-amber-400" />
-              Kotak Uji Draf Naskah:
+              Draf yang ingin diperiksa
             </span>
             {/* Status Pill Badge */}
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono border bg-stone-900/90 border-stone-800 shadow-xs">
@@ -393,7 +393,7 @@ export const CopySandboxView: React.FC = () => {
               }}
               rows={8}
               placeholder={`Ketik atau tempel draf naskah Anda di sini untuk diuji dengan ${cheatsheet.length.toLocaleString('id-ID')}+ kata cheatsheet...`}
-              aria-label="Kotak uji draf naskah"
+              aria-label="Draf yang ingin diperiksa"
               className="w-full rounded-[9px] border border-stone-800 bg-stone-900/60 p-4 font-sans text-sm md:text-base leading-relaxed text-stone-100 placeholder-stone-500 focus:outline-2 focus:outline-amber-500 focus:outline-offset-1 shadow-raised"
             />
             {inputText && (
@@ -403,7 +403,7 @@ export const CopySandboxView: React.FC = () => {
                   setSelectedWord(null);
                 }}
                 className="absolute bottom-3 right-3 text-stone-400 hover:text-stone-200 text-xs font-sans px-2.5 py-1 rounded-[6px] bg-stone-950/80 border border-stone-800 cursor-pointer flex items-center gap-1 shadow-xs"
-                aria-label="Bersihkan kotak uji naskah"
+                aria-label="Kosongkan draf kotak uji naskah"
               >
                 <RotateCcw size={12} />
                 <span>Bersihkan</span>
@@ -414,7 +414,7 @@ export const CopySandboxView: React.FC = () => {
           {/* Real-time Category Counter Pills (Click to filter detected keywords) */}
           <div className="space-y-1.5 pt-1">
             <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-mono">
-              <span className="text-stone-400 font-sans text-xs">Filter Deteksi:</span>
+              <span className="text-stone-400 font-sans text-xs">Tampilkan kategori:</span>
               <button
                 onClick={() => setFilterCategory(filterCategory === 'moral' ? null : 'moral')}
                 className={`px-2 py-0.5 rounded border transition cursor-pointer ${
@@ -480,7 +480,7 @@ export const CopySandboxView: React.FC = () => {
                   onClick={() => setFilterCategory(null)}
                   className="text-[10px] text-stone-400 hover:text-stone-200 underline ml-1 cursor-pointer font-sans"
                 >
-                  Reset Filter
+                  Tampilkan semua kategori
                 </button>
               )}
             </div>
@@ -546,7 +546,7 @@ export const CopySandboxView: React.FC = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1">
                     <div>
                       <span className="text-[10px] font-mono uppercase text-rose-400 block font-semibold">
-                        Dampak Psikologis pada Pembaca:
+                        Hal yang perlu diperhatikan
                       </span>
                       <p className="text-stone-300 mt-0.5 leading-relaxed">
                         {selectedWord.impact}
@@ -554,7 +554,7 @@ export const CopySandboxView: React.FC = () => {
                     </div>
                     <div>
                       <span className="text-[10px] font-mono uppercase text-emerald-400 block font-semibold">
-                        Rekomendasi Solusi / Pengganti:
+                        Saran penulisan
                       </span>
                       <p className="text-stone-300 mt-0.5 leading-relaxed">
                         {selectedWord.replacement}
@@ -569,7 +569,7 @@ export const CopySandboxView: React.FC = () => {
 
         {/* Right Column: Real-time Diagnostics */}
         <div className="lg:col-span-5 space-y-5">
-          {/* 1. Indeks Kalibrasi Nada Menungsa (Composite Calibration Score) */}
+          {/* 1. Skor pencocokan kata Menungsa (Composite Calibration Score) */}
           <div className="rounded-[9px] border border-stone-800 bg-stone-900/60 p-5 space-y-4 shadow-raised">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
@@ -581,7 +581,7 @@ export const CopySandboxView: React.FC = () => {
                     Indeks Kalibrasi Nada
                   </span>
                   <span className="text-[10px] text-stone-400 font-sans">
-                    Standar Keselarasan Suara Menungsa
+                    Perhitungan internal; belum divalidasi
                   </span>
                 </div>
               </div>
@@ -615,19 +615,22 @@ export const CopySandboxView: React.FC = () => {
                 />
               </div>
 
-              <div className="flex items-center justify-between text-[11px] font-sans">
+              <p className="text-[11px] text-stone-400 leading-relaxed font-sans border-t border-stone-800/80 pt-3">
+              Pemeriksaan ini mencocokkan kata dan frasa dengan daftar editorial. Sistem belum memahami konteks, negasi, kutipan, atau ketepatan fakta. Hasilnya membantu meninjau draf, bukan menentukan apakah naskah aman atau siap terbit.
+            </p>
+            <div className="flex items-center justify-between text-[11px] font-sans">
                 <span className={`${
                   analysis.total === 0 ? 'text-stone-500' :
                   analysis.calibrationScore >= 85 ? 'text-emerald-500 dark:text-emerald-400 font-semibold' :
                   analysis.calibrationScore >= 60 ? 'text-amber-500 dark:text-amber-400 font-semibold' :
                   'text-rose-500 dark:text-rose-400 font-semibold'
                 }`}>
-                  {analysis.total === 0 ? 'Belum Ada Teks' :
-                   analysis.calibrationScore >= 85 ? '● Terkalibrasi Prima (Aman & Membumi)' :
-                   analysis.calibrationScore >= 60 ? '▲ Cukup Terkalibrasi (Perlu Penyesuaian)' :
-                   '✕ Risiko Bumerang Tinggi (Perlu Revisi)'}
+                  {analysis.total === 0 ? 'Belum ada draf' :
+                   analysis.calibrationScore >= 85 ? '● Skor tinggi pada pencocokan kata' :
+                   analysis.calibrationScore >= 60 ? '▲ Skor menengah pada pencocokan kata' :
+                   '✕ Skor rendah pada pencocokan kata'}
                 </span>
-                <span className="text-stone-500 font-mono">Target ≥ 85</span>
+                <span className="text-stone-500 font-mono">Bukan penilaian kelayakan terbit</span>
               </div>
             </div>
           </div>
@@ -637,7 +640,7 @@ export const CopySandboxView: React.FC = () => {
             <div className="flex items-center justify-between border-b border-stone-800 pb-2.5">
               <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-stone-200 font-semibold">
                 <Activity size={15} className="text-amber-400" />
-                <span>5 Dimensi Kepadatan Nada</span>
+                <span>Ringkasan kecocokan per kategori</span>
               </div>
               <span className="text-[10px] font-mono text-stone-400">
                 {analysis.total} kata dianalisis
@@ -650,7 +653,7 @@ export const CopySandboxView: React.FC = () => {
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-stone-300 font-medium flex items-center gap-1.5">
                     <span className="h-2 w-2 rounded-full bg-rose-500" />
-                    <span>Kepadatan Nada Moral</span>
+                    <span>Kecocokan kategori penghakiman</span>
                   </span>
                   <div className="flex items-center gap-2 font-mono">
                     <span className="text-[11px] text-stone-500">({analysis.moralCount} kata)</span>
@@ -666,8 +669,8 @@ export const CopySandboxView: React.FC = () => {
                   />
                 </div>
                 <div className="flex items-center justify-between text-[10px] text-stone-400">
-                  <span>Beban dosa, aib & pendiktean mutlak</span>
-                  <span className="font-mono text-stone-500">Aman &lt; 10%</span>
+                  <span>Periksa apakah kalimat menilai atau menekan pembaca</span>
+                  <span className="font-mono text-stone-500">Bukan ambang keamanan</span>
                 </div>
               </div>
 
@@ -676,7 +679,7 @@ export const CopySandboxView: React.FC = () => {
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-stone-300 font-medium flex items-center gap-1.5">
                     <span className="h-2 w-2 rounded-full bg-amber-500" />
-                    <span>Kepadatan Klise Maskulin</span>
+                    <span>Kecocokan kategori maskulinitas</span>
                   </span>
                   <div className="flex items-center gap-2 font-mono">
                     <span className="text-[11px] text-stone-500">({analysis.cringeCount} kata)</span>
@@ -692,8 +695,8 @@ export const CopySandboxView: React.FC = () => {
                   />
                 </div>
                 <div className="flex items-center justify-between text-[10px] text-stone-400">
-                  <span>Hierarki semu (pria sejati, alfa, pejantan)</span>
-                  <span className="font-mono text-stone-500">Aman 0%</span>
+                  <span>Periksa tuntutan tentang “laki-laki yang seharusnya”</span>
+                  <span className="font-mono text-stone-500">Bukan ambang keamanan</span>
                 </div>
               </div>
 
@@ -702,7 +705,7 @@ export const CopySandboxView: React.FC = () => {
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-stone-300 font-medium flex items-center gap-1.5">
                     <span className="h-2 w-2 rounded-full bg-purple-500" />
-                    <span>Kepadatan Jargon Klinis</span>
+                    <span>Kecocokan istilah kesehatan mental</span>
                   </span>
                   <div className="flex items-center gap-2 font-mono">
                     <span className="text-[11px] text-stone-500">({analysis.clinicalCount} kata)</span>
@@ -718,8 +721,8 @@ export const CopySandboxView: React.FC = () => {
                   />
                 </div>
                 <div className="flex items-center justify-between text-[10px] text-stone-400">
-                  <span>Labeling medis prematur & therapy-speak</span>
-                  <span className="font-mono text-stone-500">Aman &lt; 10%</span>
+                  <span>Periksa ketepatan istilah dan konteks penggunaannya</span>
+                  <span className="font-mono text-stone-500">Bukan ambang keamanan</span>
                 </div>
               </div>
 
@@ -728,7 +731,7 @@ export const CopySandboxView: React.FC = () => {
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-stone-300 font-medium flex items-center gap-1.5">
                     <span className="h-2 w-2 rounded-full bg-yellow-500" />
-                    <span>Kepadatan Tuntutan Agresif</span>
+                    <span>Kecocokan kategori ajakan</span>
                   </span>
                   <div className="flex items-center gap-2 font-mono">
                     <span className="text-[11px] text-stone-500">({analysis.imperativeCount} kata)</span>
@@ -744,8 +747,8 @@ export const CopySandboxView: React.FC = () => {
                   />
                 </div>
                 <div className="flex items-center justify-between text-[10px] text-stone-400">
-                  <span>Perintah mendesak & pemaksaan curhat</span>
-                  <span className="font-mono text-stone-500">Aman &lt; 10%</span>
+                  <span>Periksa desakan dan pilihan pembaca</span>
+                  <span className="font-mono text-stone-500">Bukan ambang keamanan</span>
                 </div>
               </div>
 
@@ -754,7 +757,7 @@ export const CopySandboxView: React.FC = () => {
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-emerald-300 font-medium flex items-center gap-1.5">
                     <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                    <span>Indeks Nada Membumi (Grounded)</span>
+                    <span>Kecocokan contoh bahasa konkret</span>
                   </span>
                   <div className="flex items-center gap-2 font-mono">
                     <span className="text-[11px] text-stone-500">({analysis.recommendedCount} kata)</span>
@@ -770,8 +773,8 @@ export const CopySandboxView: React.FC = () => {
                   />
                 </div>
                 <div className="flex items-center justify-between text-[10px] text-stone-400">
-                  <span>Jangkar biologis tubuh & logistik konkret</span>
-                  <span className="font-mono text-emerald-400/90 font-medium">Target ideal &gt; 10%</span>
+                  <span>Kata tentang kegiatan sehari-hari dan informasi praktis</span>
+                  <span className="font-mono text-emerald-400/90 font-medium">Tidak ada proporsi ideal yang diuji</span>
                 </div>
               </div>
             </div>
@@ -799,7 +802,7 @@ export const CopySandboxView: React.FC = () => {
 
             <div className="pt-2.5 border-t border-stone-800/80 text-xs text-stone-300 space-y-1">
               <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider block font-semibold">
-                Rekomendasi Perbaikan:
+                Saran untuk ditinjau
               </span>
               <p className="leading-relaxed text-stone-200">
                 {evaluation.advice}
@@ -811,7 +814,7 @@ export const CopySandboxView: React.FC = () => {
           <div className="rounded-xl border border-stone-800 bg-stone-900/30 p-5 space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs font-mono uppercase tracking-wider text-stone-400 font-semibold block">
-                Daftar Periksa Sebelum Naskah Tayang:
+                Periksa sebelum menerbitkan
               </span>
               <span className="text-[11px] font-mono text-stone-400">
                 {checkedItems.filter(Boolean).length}/4 Selesai
@@ -821,7 +824,7 @@ export const CopySandboxView: React.FC = () => {
             {allChecked && (
               <div className="rounded-lg bg-emerald-500/15 border border-emerald-500/30 p-2.5 flex items-center gap-2 text-xs text-emerald-300 animate-fadeIn">
                 <CheckCircle2 size={15} className="shrink-0 text-emerald-400" />
-                <span className="font-medium">Seluruh 4 poin etika naskah terverifikasi aman & membumi.</span>
+                <span className="font-medium">Empat poin sudah kamu tandai. Tetap periksa fakta dan konteks naskah.</span>
               </div>
             )}
 
@@ -834,7 +837,7 @@ export const CopySandboxView: React.FC = () => {
                   className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0 cursor-pointer"
                 />
                 <span className={checkedItems[0] ? 'text-stone-100 line-through opacity-80' : ''}>
-                  Bebas dari sanksi moral & pendiktean mutlak ("harus", "wajib", "dosa").
+                  Kalimat tidak mempermalukan atau memaksa pembaca. Nilai kata seperti “harus” sesuai konteksnya.
                 </span>
               </label>
               <label className="flex items-start gap-2 cursor-pointer select-none">
@@ -845,7 +848,7 @@ export const CopySandboxView: React.FC = () => {
                   className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0 cursor-pointer"
                 />
                 <span className={checkedItems[1] ? 'text-stone-100 line-through opacity-80' : ''}>
-                  Bebas dari klise hierarki maskulinitas ("pria sejati", "alfa", "pejantan").
+                  Harga diri pembaca tidak dibuat bergantung pada standar maskulinitas tertentu.
                 </span>
               </label>
               <label className="flex items-start gap-2 cursor-pointer select-none">
@@ -856,7 +859,7 @@ export const CopySandboxView: React.FC = () => {
                   className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0 cursor-pointer"
                 />
                 <span className={checkedItems[2] ? 'text-stone-100 line-through opacity-80' : ''}>
-                  Bebas dari pelabelan medis prematur dan pemaksaan curhat di ruang publik.
+                  Istilah kesehatan mental digunakan dengan tepat; pembaca tidak didiagnosis atau dipaksa bercerita.
                 </span>
               </label>
               <label className="flex items-start gap-2 cursor-pointer select-none">
@@ -867,7 +870,7 @@ export const CopySandboxView: React.FC = () => {
                   className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0 cursor-pointer"
                 />
                 <span className={checkedItems[3] ? 'text-stone-100 line-through opacity-80' : ''}>
-                  Menawarkan kedaulatan memilih (agency): pembaca bebas menentukan langkahnya sendiri.
+                  Ajakan memberi pilihan yang nyata; instruksi darurat tetap jelas dan langsung.
                 </span>
               </label>
             </div>
@@ -884,10 +887,10 @@ export const CopySandboxView: React.FC = () => {
               <span>KAMUS BESAR KATA & FRASA NASKAH ({cheatsheet.length.toLocaleString('id-ID')}+ ENTRI)</span>
             </div>
             <h2 className="text-xl md:text-2xl font-serif text-stone-100">
-              Kamus Cheatsheet Kosakata Menungsa
+              Daftar kata dan frasa
             </h2>
             <p className="text-xs md:text-sm text-stone-400 max-w-2xl">
-              Telusuri ribuan kata dan frasa yang sudah dipetakan ke dalam lima kategori psikologis. Gunakan kamus ini untuk mencari alternatif kata yang lebih tenang, membumi, dan tidak memicu penolakan batin.
+              Telusuri kata dan frasa untuk membantu meninjau naskah. Kategori dalam daftar ini adalah panduan editorial. Makna dan dampak suatu kata bergantung pada kalimatnya.
             </p>
           </div>
 
@@ -909,8 +912,8 @@ export const CopySandboxView: React.FC = () => {
                 setSearchQuery(e.target.value);
                 setVisibleCount(36);
               }}
-              placeholder="Cari kata, frasa, atau alasan risiko (contoh: wajib, alfa, trauma, bernapas, tidur)..."
-              aria-label="Cari kata, frasa, atau alasan risiko"
+              placeholder="Cari kata, frasa, atau penjelasan…"
+              aria-label="Cari dalam daftar kata dan frasa"
               className="w-full rounded-xl border border-stone-800 bg-stone-900/80 pl-10 pr-4 py-2.5 text-xs md:text-sm text-stone-100 placeholder-stone-500 focus:border-amber-500/60 focus:outline-none focus:ring-1 focus:ring-amber-500/30 font-sans"
             />
             {searchQuery && (
@@ -1009,10 +1012,10 @@ export const CopySandboxView: React.FC = () => {
 
                       <button
                         onClick={() => handleAppendToSandbox(item.term)}
-                        title="Sisipkan kata ini ke Kotak Uji Naskah"
+                        title="Tambahkan kata ini ke draf"
                         className="text-[10px] font-mono px-2 py-1 rounded bg-stone-800 hover:bg-stone-700 text-stone-300 hover:text-stone-100 transition cursor-pointer border border-stone-700"
                       >
-                        + Uji Kata
+                        Tambahkan ke draf
                       </button>
                     </div>
 
@@ -1040,7 +1043,7 @@ export const CopySandboxView: React.FC = () => {
 
                     <button
                       onClick={() => handleCopyReplacement(item.replacement, item.term)}
-                      title="Salin saran solusi"
+                      title="Salin saran"
                       className="p-1 rounded text-stone-400 hover:text-stone-200 transition shrink-0 cursor-pointer"
                     >
                       {copiedTerm === item.term ? (

@@ -90,8 +90,8 @@ function addCollocations(rootWords, modifiers, category, categoryLabel, severity
 const moralCat = 'moral';
 const moralLabel = 'Penghakiman Moral & Menggurui';
 const moralSev = 'critical';
-const moralImp = 'Memicu rasa bersalah berlebih, defensif batin, dan penolakan psikologis (reactance) pada pria dewasa.';
-const moralRep = 'Gunakan pengamatan faktual netral tanpa label dosa/aib/kewajiban mutlak.';
+const moralImp = 'Kata ini dapat dipakai untuk menekan atau menghakimi, tetapi maknanya bergantung pada kalimat.';
+const moralRep = 'Periksa konteks, termasuk negasi dan kutipan. Ubah tuntutan yang mempermalukan pembaca menjadi informasi atau pilihan yang jelas.';
 
 const moralRootList = [
   'wajib', 'harus', 'dosa', 'aib', 'malu', 'hina', 'nista', 'cela', 'bejat', 'moral',
@@ -179,8 +179,8 @@ moralPronominals.forEach(p => {
 const cringeCat = 'cringe';
 const cringeLabel = 'Klise Maskulin & Jargon Manosphere';
 const cringeSev = 'warning';
-const cringeImp = 'Memicu rasa canggung (cringe), dicap tidak tulus, dan menurunkan reputasi naskah di mata pria dewasa.';
-const cringeRep = 'Arahkan naskah pada ketrampilan nyata, keahlian fungsional, dan tanggung jawab dewasa.';
+const cringeImp = 'Istilah ini dapat terasa dipaksakan bila tidak sesuai dengan penutur dan pembaca.';
+const cringeRep = 'Pilih ungkapan yang memang digunakan penutur. Hindari label yang menilai harga diri laki-laki.';
 
 const cringeRoots = [
   'alfa', 'alpha', 'sigma', 'beta', 'omega', 'gamma', 'delta', 'chad', 'gigachad',
@@ -268,8 +268,8 @@ cringePrefixes.forEach(pre => {
 const clinicalCat = 'clinical';
 const clinicalLabel = 'Jargon Klinis Prematur & Therapy-Speak';
 const clinicalSev = 'warning';
-const clinicalImp = 'Melabeli pembaca secara prematur dan menimbulkan rasa malu sosial dicap abnormal.';
-const clinicalRep = 'Gunakan deskripsi rutinitas fisik harian (ritme tidur, kelelahan kerja, ketegangan otot).';
+const clinicalImp = 'Istilah kesehatan mental perlu digunakan dengan konteks dan penjelasan yang tepat.';
+const clinicalRep = 'Pertahankan istilah jika relevan untuk edukasi. Ubah kalimat yang menyimpulkan diagnosis pembaca tanpa penilaian profesional.';
 
 const clinicalRoots = [
   'depresi', 'anxiety', 'cemas', 'panik', 'fobia', 'phobia', 'bipolar', 'skizofrenia',
@@ -347,7 +347,7 @@ clinicalRoots.forEach(r => {
 const imperativeCat = 'imperative';
 const imperativeLabel = 'Perintah Agresif & Pemaksaan Curhat';
 const imperativeSev = 'critical';
-const imperativeImp = 'Menuntut pembongkaran privasi secara sepihak dan melanggar batas kenyamanan pria di ruang publik.';
+const imperativeImp = 'Periksa apakah ajakan memberi pilihan atau mendesak pembaca melampaui kesediaannya.';
 const imperativeRep = 'Beri ruang kendali mandiri (agency): "Boleh datang, boleh sekadar duduk mendengarkan."';
 
 const imperativeVerbs = [
@@ -411,8 +411,8 @@ imperativeVerbsList.forEach(v => {
 const recCat = 'recommended';
 const recLabel = 'Pilihan Kata Membumi & Bermartabat';
 const recSev = 'positive';
-const recImp = 'Membumi, menenangkan emosi, menghormati otonomi pembaca, dan terbebas dari jebakan bumerang.';
-const recRep = 'Gaya bahasa Menungsa terkalibrasi';
+const recImp = 'Pilihan kata yang berfokus pada situasi sehari-hari dan tindakan yang dapat dilakukan.';
+const recRep = 'Gaya penulisan Menungsa';
 
 const recRoots = [
   'istirahat', 'rehat', 'jeda', 'tidur', 'napas', 'santai', 'tenang', 'segar', 'hangat',

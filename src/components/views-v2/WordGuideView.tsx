@@ -31,10 +31,10 @@ const REGISTERS: RegisterItem[] = [
     name: 'kamu',
     authorityLevel: 3,
     intimacyLevel: 3,
-    socialRelationship: 'Langsung, hangat, dan setara. Standar bawaan organisasi Menungsa.',
-    impression: 'Menyapa langsung tanpa kepalsuan akrab yang berlebihan, menghormati otonomi pembaca.',
+    socialRelationship: 'Langsung dan cukup akrab. Sapaan utama yang dipilih Menungsa untuk panduan ini.',
+    impression: 'Menyapa pembaca secara langsung. Kehangatannya bergantung pada kalimat dan konteks.',
     risks: 'Dapat terasa mendikte jika dipadukan dengan kata kerja imperatif ("kamu harus", "kamu wajib").',
-    contexts: 'Semua kanal publik dan privat: feed media sosial, carousel, esai pengantar, panduan ringkas.',
+    contexts: 'Panduan dan konten umum Menungsa; sesuaikan untuk layanan formal atau audiens tertentu.',
     example: 'Ketika tubuhmu memberi sinyal lelah yang tak kunjung reda, dengarkan.'
   },
   {
@@ -42,8 +42,8 @@ const REGISTERS: RegisterItem[] = [
     name: 'Anda',
     authorityLevel: 5,
     intimacyLevel: 1,
-    socialRelationship: 'Formal, menjaga jarak institusional, dan menghormati privasi profesional tinggi.',
-    impression: 'Tertib, klinis, dan menghormati batasan hukum serta kerahasiaan medis.',
+    socialRelationship: 'Formal dan menjaga jarak yang sopan.',
+    impression: 'Cocok untuk konteks yang memerlukan sapaan formal. Kata ganti ini tidak menjamin kerahasiaan layanan.',
     risks: 'Terasa kaku, birokratis, dan dingin jika digunakan dalam narasi empati atau obrolan santai.',
     contexts: 'Formulir pendaftaran konseling resmi, syarat & ketentuan, pemberitahuan privasi, rujukan medis.',
     example: 'Jadwal konsultasi Anda telah terkonfirmasi untuk hari Selasa pukul 14.00 WIB.'
@@ -53,10 +53,10 @@ const REGISTERS: RegisterItem[] = [
     name: 'kita',
     authorityLevel: 2,
     intimacyLevel: 4,
-    socialRelationship: 'Inklusif dan merangkul; menempatkan penulis dan pembaca dalam satu perahu pengalaman manusiawi.',
-    impression: 'Rasa senasib biologis dan kebersamaan yang menenangkan.',
+    socialRelationship: 'Melibatkan penulis dan pembaca dalam hal yang memang dialami atau dilakukan bersama.',
+    impression: 'Menunjukkan kebersamaan tanpa mengasumsikan pengalaman semua orang sama.',
     risks: 'Terdengar sok tahu atau memaksakan asumsi jika pembaca sedang tidak mengalami beban tersebut.',
-    contexts: 'Pembahasan ritme fisiologis tubuh, fenomena sosial bersama, atau refleksi kemanusiaan.',
+    contexts: 'Kegiatan bersama atau refleksi yang benar-benar melibatkan penulis dan pembaca.',
     example: 'Tubuh kita memang butuh jeda berkala setelah bekerja berhari-hari tanpa henti.'
   },
   {
@@ -64,8 +64,8 @@ const REGISTERS: RegisterItem[] = [
     name: 'kami',
     authorityLevel: 3,
     intimacyLevel: 2,
-    socialRelationship: 'Penutur jamak atas nama institusi resmi Menungsa.',
-    impression: 'Jujur bahwa pesan ini datang dari sebuah lembaga, bukan teman khayalan yang berpura-pura nongkrong.',
+    socialRelationship: 'Mewakili tim atau organisasi, tanpa memasukkan pembaca.',
+    impression: 'Memperjelas bahwa Menungsa yang menyampaikan pesan.',
     risks: 'Dapat terasa berjarak jika dipakai terus-menerus tanpa menyapa pembaca secara personal.',
     contexts: 'Pernyataan kebijakan organisasi, transparansi program, metodologi riset, dan laporan kegiatan.',
     example: 'Kami di Menungsa menyiapkan ruang ini agar kamu bisa beristirahat sejenak tanpa tuntutan.'
@@ -75,10 +75,10 @@ const REGISTERS: RegisterItem[] = [
     name: 'gue / gua',
     authorityLevel: 1,
     intimacyLevel: 5,
-    socialRelationship: 'Solidaritas horizontal antarteman sebaya di ranah privat perkotaan.',
-    impression: 'Percakapan riil anak muda yang autentik dan tanpa sekat.',
-    risks: 'SANGAT FATAL jika dipakai akun resmi organisasi (terdengar canggung, pura-pura gaul, dan merusak kredibilitas institusi).',
-    contexts: 'HANYA berhak digunakan oleh staf atau kreator yang menulis atas nama pribadi dan berwajah nyata.',
+    socialRelationship: 'Bahasa percakapan yang lazim dalam sebagian lingkungan, terutama yang akrab dengan ragam Jakarta.',
+    impression: 'Dapat terasa akrab jika memang digunakan penutur sehari-hari.',
+    risks: 'Dapat terasa dipaksakan ketika tidak sesuai dengan kebiasaan penutur atau pembaca. Bukan pilihan utama akun organisasi Menungsa.',
+    contexts: 'Cerita pribadi atau percakapan oleh penutur yang memang terbiasa menggunakannya, termasuk konten publik.',
     example: 'Waktu usaha bengkel gue tutup dua tahun lalu, rasanya bangun tidur aja berat banget.'
   },
   {
@@ -88,7 +88,7 @@ const REGISTERS: RegisterItem[] = [
     intimacyLevel: 5,
     socialRelationship: 'Sapaan orang kedua akrab antarteman tongkrongan sebaya.',
     impression: 'Santai, tanpa basa-basi formal.',
-    risks: 'Jika akun anonim organisasi menyapa pembaca dengan "lo/bro", pembaca merasa privasinya diterobos tanpa lisensi kedekatan.',
+    risks: 'Dapat terasa terlalu akrab bagi pembaca yang tidak biasa disapa demikian.',
     contexts: 'Konten video kreator personal bernama jelas, dialog naskah teater/cerita fiksi.',
     example: 'Kalau hari ini lo belum sanggup cerita, nggak apa-apa, duduk aja dulu.'
   },
@@ -97,8 +97,8 @@ const REGISTERS: RegisterItem[] = [
     name: 'aku',
     authorityLevel: 2,
     intimacyLevel: 4,
-    socialRelationship: 'Intim, reflektif, kontemplatif batin, dan kejujuran personal.',
-    impression: 'Ruang renungan puitis atau esai pengalaman hidup yang tenang.',
+    socialRelationship: 'Kata ganti orang pertama untuk cerita pribadi atau percakapan sehari-hari.',
+    impression: 'Tingkat keakrabannya bergantung pada penutur, daerah, dan situasi.',
     risks: 'Bisa terdengar terlalu melankolis atau romantis jika dipakai dalam instruksi navigasi layanan.',
     contexts: 'Esai refleksi diri orang pertama, monolog video dokumenter, kisah pemulihan personal.',
     example: 'Bulan ketiga setelah toko tutup, aku masih sering bangun jam lima pagi menyeduh kopi di teras.'
@@ -108,33 +108,33 @@ const REGISTERS: RegisterItem[] = [
     name: 'saya',
     authorityLevel: 4,
     intimacyLevel: 1,
-    socialRelationship: 'Penutur tunggal formal dengan martabat klinis dan kesantunan universal.',
+    socialRelationship: 'Kata ganti orang pertama yang sopan dan lazim digunakan dalam beragam situasi.',
     impression: 'Objektif, tenang, berwibawa, dan dapat diandalkan.',
     risks: 'Kurang intim jika digunakan dalam obrolan lingkaran kecil antarteman sebaya.',
-    contexts: 'Wawancara resmi, penjelasan dokter/psikolog berlisensi, esai editorial pakar.',
-    example: 'Dalam praktik klinis saya, kelelahan mental sering kali diawali dari penolakan terhadap batas fisik.'
+    contexts: 'Wawancara, penjelasan profesional, cerita pribadi, atau percakapan yang memerlukan sapaan sopan.',
+    example: 'Dalam sesi ini, saya akan menjelaskan pilihan yang tersedia. Kamu bisa bertanya jika ada yang belum jelas.'
   },
   {
     id: 'laki-laki',
     name: 'laki-laki',
     authorityLevel: 3,
     intimacyLevel: 3,
-    socialRelationship: 'Penanda identitas gender deskriptif dan sosiologis.',
-    impression: 'Netral, ilmiah, dan membumi tanpa muatan gengsi.',
+    socialRelationship: 'Sebutan umum untuk laki-laki, termasuk dalam pembahasan sosial dan demografi.',
+    impression: 'Gunakan saat identitas gender relevan dengan isi pesan.',
     risks: 'Menimbulkan kejenuhan identitas (gender fatigue) bila diulang di setiap kalimat.',
     contexts: 'Analisis sosiokultural, statistik beban peran keluarga, dan dialog kesehatan umum.',
-    example: 'Banyak laki-laki dewasa memikul tanggung jawab ekonomi tanpa memiliki saluran pelepasan emosi yang aman.'
+    example: 'Sebagian laki-laki menghadapi tekanan untuk terus memenuhi kebutuhan keluarga, meski mereka sendiri sedang kesulitan.'
   },
   {
     id: 'pria',
     name: 'pria',
     authorityLevel: 4,
     intimacyLevel: 2,
-    socialRelationship: 'Penanda demografis formal dan kehormatan dewasa.',
-    impression: 'Tertib, berwibawa, dan sedikit berjarak aspirasional.',
+    socialRelationship: 'Sebutan untuk laki-laki yang lazim dalam tulisan formal.',
+    impression: 'Dapat terasa lebih formal; pilih sesuai konteks dan konsistensi naskah.',
     risks: 'Rentan disalahgunakan jika digabung dengan klise manosphere ("Pria Sejati", "Pria Bernilai Tinggi").',
-    contexts: 'Konteks biologis spesifik (kardiovaskular, hormon) atau peran tanggung jawab ayah.',
-    example: 'Pria di atas usia 35 tahun disarankan memeriksa tekanan darah secara berkala.'
+    contexts: 'Artikel, informasi layanan, atau pembahasan demografi saat gender relevan.',
+    example: 'Panduan ini ditujukan untuk pria dewasa yang ingin mengetahui pilihan dukungan.'
   },
   {
     id: 'cowok',
@@ -145,16 +145,16 @@ const REGISTERS: RegisterItem[] = [
     impression: 'Ringan, santai, dan tidak kaku.',
     risks: 'Dapat terdengar meremehkan (infantilizing) pria dewasa usia 40-an jika dipakai di layanan formal.',
     contexts: 'Humor situasional di balik layar, konten visual olahraga santai, ruang pemuda.',
-    example: 'Cowok kalau sudah ngumpul ngoprek motor tua biasanya lupa waktu sampai sore.'
+    example: 'Beberapa cowok di komunitas ini rutin bertemu untuk mengerjakan hobi bersama.'
   },
   {
     id: 'bro',
     name: 'bro / bang / mas / pak',
     authorityLevel: 2,
     intimacyLevel: 4,
-    socialRelationship: 'Penanda keakraban sebaya yang dikalibrasi: Bro (modern sebaya), Bang/Mas (hormat sebaya), Pak (otoritas/sesepuh).',
-    impression: 'Sapaan hangat yang menjembatani jarak tanpa formalitas berlebihan.',
-    risks: 'SANGAT FATAL jika dipakai akun anonim institusi (misalnya bot otomatis menyapa "Halo Bro!") — memicu rasa malu akut dan ejekan publik.',
+    socialRelationship: 'Sapaan dengan penggunaan yang berbeda-beda menurut daerah, usia, dan hubungan.',
+    impression: 'Pilih sapaan yang lazim bagi pembaca; “bro”, “bang”, “mas”, dan “pak” tidak saling menggantikan begitu saja.',
+    risks: 'Sapaan yang tidak sesuai konteks dapat terasa dipaksakan. Jangan menganggap “pak” memiliki keakraban yang sama dengan “bro”.',
     contexts: 'Fasilitator individu dalam sesi komunitas tatap muka, balasan komentar personal, dan percakapan langsung antarsebaya.',
     example: 'Bang, kalau ada waktu luang besok sore, kita ngobrol santai di warung belakang kantor ya.'
   }
@@ -178,11 +178,11 @@ const ETHICAL_ALTERNATIVES: EthicalAlternativeItem[] = [
     mechanismId: 'M03',
     shortLabel: 'Kepastian',
     functionName: 'Kepastian & Kejelasan Arah Hidup',
-    psychologicalNeed: 'Kebutuhan akan kejelasan struktur hidup, penataan kognitif, dan panduan logis saat menghadapi kerumitan karier, relasi, serta status sosial.',
+    psychologicalNeed: 'Kebutuhan memahami persoalan dan melihat pilihan langkah yang tersedia.',
     whyCompelling: 'Meredakan disorientasi dan kebingungan akut; mengubah situasi sosial yang rumit menjadi aturan main yang tampak teratur dan sistematis.',
-    harmfulVersion: 'Doktrin mutlak Red Pill, teori evolusi pseudo-biologis deterministik, generalisasi kebencian pada wanita (hipergami), dan fatalisme blackpill.',
-    ethicalAlternative: 'Menyediakan peta psikologi dan dinamika sosial yang realistis dengan kejujuran terukur (calibrated uncertainty). Menyebutkan kesulitan nyata tanpa menciptakan musuh khayalan.',
-    keyPrinciple: 'Struktur penjelasan yang realistis dan terkalibrasi, bukan aturan mutlak palsu.'
+    harmfulVersion: 'Penjelasan mutlak yang menyalahkan perempuan atau menganggap nasib laki-laki sudah ditentukan secara biologis.',
+    ethicalAlternative: 'Jelaskan persoalan dengan bukti yang tersedia. Sebutkan apa yang belum diketahui tanpa menciptakan kambing hitam.',
+    keyPrinciple: 'Beri penjelasan yang jelas dan akui keterbatasannya.'
   },
   {
     id: 'validation',
@@ -192,7 +192,7 @@ const ETHICAL_ALTERNATIVES: EthicalAlternativeItem[] = [
     psychologicalNeed: 'Kebutuhan untuk merasa dipahami, didengar, dan terbebas dari rasa malu saat belum mampu memenuhi ekspektasi sosial atau standar maskulinitas.',
     whyCompelling: 'Meringankan beban rasa gagal pribadi dengan menegaskan bahwa "bukan cuma kamu yang kesulitan; sistem dan realitas hidup saat ini memang berat."',
     harmfulVersion: 'Memanfaatkan luka batin menjadi kebencian kolektif (grievance amplification), menyalahkan wanita, menyalahkan keluarga, atau mendendam pada gerakan kesetaraan.',
-    ethicalAlternative: 'Memvalidasi beratnya beban peran pria modern, ketidakpastian ekonomi, dan kesepian batin TANPA menyediakan kambing hitam atau musuh khayalan.',
+    ethicalAlternative: 'Akui tekanan yang dihadapi pembaca tanpa membenarkan kebencian terhadap orang lain.',
     keyPrinciple: 'Validasi rasa lelah dan kesulitan hidupnya, jangan pernah memvalidasi kebenciannya.'
   },
   {
@@ -203,26 +203,26 @@ const ETHICAL_ALTERNATIVES: EthicalAlternativeItem[] = [
     psychologicalNeed: 'Kebutuhan akan rasa berharga (self-worth), rasa hormat sosial antarteman sebaya, kecakapan (competence), dan memiliki dampak nyata yang dirasakan.',
     whyCompelling: 'Menggantikan rasa rendah diri dengan hierarki pencapaian fisik, finansial yang terukur, dan rasa bangga sebagai pria dewasa.',
     harmfulVersion: 'Konsep dominasi agresif "Pria Nilai Tinggi (High-Value Man)", merendahkan pria lain yang berpenghasilan rendah, serta obsesi fisik superfisial (looksmaxxing).',
-    ethicalAlternative: 'Menambatkan martabat pada kecakapan hidup dewasa, pertumbuhan diri mandiri, keterampilan karya nyata, serta tanggung jawab etis pada keluarga dan komunitas.',
+    ethicalAlternative: 'Bantu pembaca mengembangkan keterampilan tanpa menjadikan kemampuan, penghasilan, atau pencapaian sebagai syarat untuk dihargai.',
     keyPrinciple: 'Membangun keahlian dan rasa bernilai tanpa perlu membanding-bandingkan kasta sosial.'
   },
   {
     id: 'agency',
     mechanismId: 'M02',
     shortLabel: 'Kedaulatan Diri',
-    functionName: 'Kedaulatan Diri & Kemampuan Bertindak',
+    functionName: 'Kemampuan memilih dan bertindak',
     psychologicalNeed: 'Kebutuhan untuk keluar dari rasa tak berdaya (helplessness) dan memegang kendali atas jalan hidup melalui tindakan nyata yang berbatas tegas.',
-    whyCompelling: 'Tindakan nyata memulihkan motivasi, dopamin, dan kedaulatan diri (agency); menolak mentalitas korban yang pasif atau keputusasaan klinis.',
+    whyCompelling: 'Langkah yang jelas dapat membantu seseorang melihat pilihan yang masih tersedia. Ini bukan klaim tentang perubahan dopamin atau kepastian pulihnya motivasi.',
     harmfulVersion: 'Disiplin brutal (toxic grindset), individualisme ekstrem, mengabaikan keterbatasan ekonomi riil, dan menuduh pria yang lelah/depresi sebagai orang "kurang disiplin".',
-    ethicalAlternative: 'Menawarkan langkah-langkah awal yang konkret, ringan, dan berambang rendah (low-threshold), sambil tetap berempati secara jujur pada keterbatasan ekonomi nyata.',
-    keyPrinciple: 'Kemandirian bertindak (agency) yang dipadukan dengan empati pada realitas hidup.'
+    ethicalAlternative: 'Tawarkan langkah yang realistis sambil mengakui keterbatasan waktu, uang, dan tenaga.',
+    keyPrinciple: 'Bantu pembaca bertindak sesuai pilihan dan kemampuannya.'
   },
   {
     id: 'belonging',
     mechanismId: 'M04',
     shortLabel: 'Rasa Memiliki',
-    functionName: 'Rasa Memiliki & Persaudaraan Sejati',
-    psychologicalNeed: 'Kebutuhan akan lingkungan persaudaraan pria (camaraderie) yang aman, di mana ia diterima apa adanya tanpa kecemasan performa atau tuntutan topeng.',
+    functionName: 'Rasa diterima dalam kelompok',
+    psychologicalNeed: 'Kebutuhan memiliki tempat untuk berinteraksi dan diterima tanpa harus membuktikan diri.',
     whyCompelling: 'Menyediakan tempat berlindung dari kesepian sosial akut yang dialami banyak pria dewasa melalui humor, bahasa santai, dan solidaritas senasib.',
     harmfulVersion: 'Kelompok berbasis permusuhan bersama (us vs them), ruang gema yang menguji kemaskulinan dengan menolak kelembutan, serta radikalisasi anggota rentan.',
     ethicalAlternative: 'Membangun wadah pria yang berakar pada aktivitas bersama (olahraga rekreasional, hobi karya, saling bantu berdampingan), di mana kebersamaan tumbuh secara wajar.',
@@ -232,12 +232,12 @@ const ETHICAL_ALTERNATIVES: EthicalAlternativeItem[] = [
     id: 'purpose',
     mechanismId: 'M09',
     shortLabel: 'Makna Hidup',
-    functionName: 'Makna Hidup & Tanggung Jawab Luhur',
+    functionName: 'Makna dan tujuan hidup',
     psychologicalNeed: 'Kebutuhan eksistensial untuk memiliki tujuan hidup yang lebih besar dari diri sendiri, melindungi orang terkasih, dan menjadi sosok yang berguna bagi sesama.',
-    whyCompelling: 'Menjawab kehampaan eksistensial dengan panggilan ksatria untuk memikul tanggung jawab dan merawat orang-orang yang disayangi.',
+    whyCompelling: 'Menawarkan tujuan dan peran yang dirasa berarti. Daya tariknya dapat berbeda pada setiap orang.',
     harmfulVersion: 'Glorifikasi kekerasan fisik, retorika perang suci, fantasi dominasi agresif, dan sindrom pahlawan yang angkuh serta manipulatif.',
-    ethicalAlternative: 'Menghidupkan kembali kebajikan pria melalui kesabaran mengayomi, ketenangan menghadapi krisis, dan kontribusi nyata yang merawat keluarga serta lingkungan.',
-    keyPrinciple: 'Kepahlawanan dalam kesabaran merawat, bukan dalam agresi menaklukkan.'
+    ethicalAlternative: 'Dukung tujuan yang berarti bagi pembaca, termasuk merawat diri, hubungan, dan lingkungan.',
+    keyPrinciple: 'Beri ruang untuk berkontribusi tanpa menjadikannya syarat harga diri.'
   }
 ];
 
@@ -260,7 +260,7 @@ export const WordGuideView: React.FC = () => {
           Panduan Pilihan Kata, Sapaan &amp; Kata Ganti
         </h1>
         <p className="text-sm md:text-base text-stone-400 max-w-[74ch] leading-relaxed font-sans">
-          Pilihan kata ganti dan sapaan pria menentukan apakah pembaca merasa dihormati atau justru merasa dihakimi. Gunakan panduan praktis ini untuk memastikan pilihan kata naskah Anda selalu tepat sasaran.
+          Pilih sapaan sesuai hubungan dengan pembaca dan situasi pesan. Panduan ini membantu menimbang pilihan, bukan menentukan satu sapaan yang selalu tepat.
         </p>
 
         {/* Tab Switcher */}
@@ -278,7 +278,7 @@ export const WordGuideView: React.FC = () => {
             }`}
           >
             <Users size={14} />
-            <span>1. Kata Ganti (Kamu, Anda, Kita, Gue)</span>
+            <span>1. Kata ganti</span>
           </button>
           <button
             role="tab"
@@ -293,7 +293,7 @@ export const WordGuideView: React.FC = () => {
             }`}
           >
             <ShieldCheck size={14} />
-            <span>2. Sapaan Pria &amp; Maskulinitas</span>
+            <span>2. Sebutan laki-laki</span>
           </button>
           <button
             role="tab"
@@ -308,7 +308,7 @@ export const WordGuideView: React.FC = () => {
             }`}
           >
             <Sparkles size={14} />
-            <span>3. Padanan Etis (Anti-Bumerang)</span>
+            <span>3. Kebutuhan dan pendekatan</span>
           </button>
         </div>
       </div>
@@ -322,14 +322,14 @@ export const WordGuideView: React.FC = () => {
               <div>
                 <h3 className="text-sm font-mono text-amber-500 uppercase tracking-wider font-semibold flex items-center gap-2">
                   <Compass size={15} />
-                  <span>Peta Koordinat Relasional Ragam Kata Ganti</span>
+                  <span>Memahami jarak dan keakraban dalam sapaan</span>
                 </h3>
                 <p className="text-xs text-stone-400 mt-1 leading-relaxed max-w-2xl font-sans">
                   Pilihan kata ganti menentukan batas jarak sosial antara organisasi dan pembaca pria. Peta di bawah memperlihatkan mengapa Menungsa memilih <strong className="text-amber-500 font-semibold">"kamu"</strong> di titik seimbang (3/5, 3/5)—cukup hangat untuk peduli, namun cukup tertib untuk menghormati privasi.
                 </p>
               </div>
               <span className="text-[11px] font-mono text-stone-500 shrink-0">
-                Klik titik grafik untuk memilih
+                Pilih titik untuk melihat penjelasan
               </span>
             </div>
 
@@ -353,7 +353,7 @@ export const WordGuideView: React.FC = () => {
                   >
                     <div className="flex items-center justify-between border-b border-stone-800 pb-2.5">
                       <div>
-                        <span className="text-[10px] font-mono text-amber-500 uppercase font-bold tracking-wider">Profil Kata Ganti:</span>
+                        <span className="text-[10px] font-mono text-amber-500 uppercase font-bold tracking-wider">Penjelasan sapaan</span>
                         <h4 className="text-xl font-serif font-bold text-stone-100">{activeRegister.name}</h4>
                       </div>
                       <div className="text-right text-[11px] font-mono text-stone-400">
@@ -369,7 +369,7 @@ export const WordGuideView: React.FC = () => {
                         <strong className="text-stone-100 block mb-0.5 font-semibold">Contoh Kalimat:</strong>
                         <span className="font-serif italic text-emerald-700 dark:text-emerald-300 text-sm leading-snug font-medium">"{activeRegister.example}"</span>
                       </div>
-                      <div><strong className="text-stone-100 font-semibold">Kanal Tepat:</strong> {activeRegister.contexts}</div>
+                      <div><strong className="text-stone-100 font-semibold">Konteks penggunaan:</strong> {activeRegister.contexts}</div>
                       <div className="text-rose-700 dark:text-rose-300 pt-1.5 border-t border-stone-800">
                         <strong className="text-rose-800 dark:text-rose-400 font-bold">Risiko:</strong> {activeRegister.risks}
                       </div>
@@ -382,9 +382,9 @@ export const WordGuideView: React.FC = () => {
             {/* Quick Catalog Filter Pills */}
             <div className="space-y-2 pt-2">
               <h4 className="text-xs font-mono text-stone-400 uppercase tracking-wider font-semibold">
-                Katalog Lengkap Kata Ganti:
+                Daftar kata ganti dan sapaan
               </h4>
-              <div role="tablist" aria-label="Katalog Kata Ganti" className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2">
+              <div role="tablist" aria-label="Daftar kata ganti dan sapaan" className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2">
                 {REGISTERS.map((reg) => (
                   <button
                     key={reg.id}
@@ -418,7 +418,7 @@ export const WordGuideView: React.FC = () => {
             <div>
               <h3 className="text-lg font-serif font-bold text-stone-100">Kapan Menggunakan "Pria", "Laki-laki", atau Tanpa Label?</h3>
               <p className="text-xs md:text-sm text-stone-400 leading-relaxed mt-1">
-                Penelitian empiris menunjukkan bahwa pria dewasa sering merasa jenuh atau defensif ketika sebuah pesan terus-menerus mendikte identitas gender mereka. Prioritaskan tindakan nyata daripada label maskulinitas.
+                Sebut identitas gender jika relevan. Hindari menjadikan suatu tindakan sebagai syarat untuk disebut laki-laki yang baik atau sejati.
               </p>
             </div>
 
@@ -426,7 +426,7 @@ export const WordGuideView: React.FC = () => {
               <div className="rounded-xl border border-emerald-900/40 bg-emerald-950/60 p-5 space-y-2.5 text-xs shadow-xs">
                 <div className="text-emerald-700 dark:text-emerald-400 font-mono font-bold uppercase flex items-center gap-1.5">
                   <CheckCircle2 size={15} />
-                  <span>Langsung ke Tindakan (Paling Aman)</span>
+                  <span>Sebut tindakan atau situasinya</span>
                 </div>
                 <p className="text-stone-300 leading-relaxed">
                   Tidak perlu menyebut kata "pria" sama sekali jika pesannya tentang rutinitas sehari-hari atau ritme kerja.
@@ -439,23 +439,23 @@ export const WordGuideView: React.FC = () => {
               <div className="rounded-xl border border-amber-900/40 bg-amber-950/60 p-5 space-y-2.5 text-xs shadow-xs">
                 <div className="text-amber-700 dark:text-amber-400 font-mono font-bold uppercase flex items-center gap-1.5">
                   <CheckCircle2 size={15} />
-                  <span>Sapaan "Pria" Terkalibrasi</span>
+                  <span>Sebut gender jika relevan</span>
                 </div>
                 <p className="text-stone-300 leading-relaxed">
-                  Gunakan ketika konteksnya spesifik berhubungan dengan biologi pria atau peran sosial kebapakan.
+                  Gunakan “pria” atau “laki-laki” saat informasi tentang gender diperlukan untuk memahami pesan.
                 </p>
                 <div className="font-serif italic text-amber-700 dark:text-amber-300 pt-2 border-t border-amber-900/40 leading-snug font-medium">
-                  "Pria di atas 30 tahun sering mengalami penurunan ritme tidur alami."
+                  “Panduan dukungan untuk laki-laki dewasa.”
                 </div>
               </div>
 
               <div className="rounded-xl border border-rose-900/40 bg-rose-950/60 p-5 space-y-2.5 text-xs shadow-xs">
                 <div className="text-rose-700 dark:text-rose-400 font-mono font-bold uppercase flex items-center gap-1.5">
                   <AlertCircle size={15} />
-                  <span>Label "Pria Sejati" (DILARANG)</span>
+                  <span>Hindari syarat “pria sejati”</span>
                 </div>
                 <p className="text-stone-300 leading-relaxed">
-                  Label "Real Men", "Cowok Tangguh", atau "Alfa" langsung dicap sebagai hal yang canggung (cringe) dan manipulatif.
+                  Menungsa tidak memakai label ini untuk menilai harga diri pembaca atau mendesaknya melakukan sesuatu.
                 </p>
                 <div className="font-serif italic text-rose-800 dark:text-rose-300 pt-2 border-t border-rose-900/40 leading-snug font-medium">
                   "✕ Pria sejati adalah pria yang berani menangis dan meminta tolong."
@@ -472,17 +472,17 @@ export const WordGuideView: React.FC = () => {
           {/* Header */}
           <div>
             <h3 className="text-xl md:text-2xl font-serif font-bold text-stone-100">
-              Kamus Padanan Etis: Dari Daya Tarik Manosphere ke Bahasa yang Memberdayakan
+              Menanggapi kebutuhan tanpa memperkuat kebencian
             </h3>
             <p className="text-xs md:text-sm text-stone-400 mt-1 max-w-3xl leading-relaxed">
-              Memisahkan kebutuhan psikologis manusiawi yang sah di balik konten maskulinitas dari eksploitasi ideologis yang toksik dan agresif. Menungsa memenuhi fungsi aslinya melalui komunikasi yang membumi, beradab, dan memulihkan martabat.
+              Sebagian konten manosphere menawarkan kejelasan, pengakuan, atau rasa diterima. Tanggapi kebutuhan itu tanpa membenarkan penjelasan yang menyalahkan atau merendahkan kelompok lain.
             </p>
           </div>
 
           {/* Function Selector Filter Pills (from v1) */}
           <div className="space-y-2">
             <span className="font-mono text-xs text-stone-400 uppercase tracking-wider block font-semibold">
-              Pilih Kebutuhan / Nilai Pokok untuk Didekonstruksi:
+              Pilih kebutuhan yang ingin dibahas
             </span>
             <div className="flex flex-wrap gap-2">
               <button
@@ -528,7 +528,7 @@ export const WordGuideView: React.FC = () => {
                 <div className="flex flex-wrap items-center justify-between gap-2 border-b border-stone-800 pb-3">
                   <div>
                     <span className="font-mono text-[10.5px] text-amber-500 uppercase font-bold tracking-wider block mb-0.5">
-                      Dekonstruksi Nilai &amp; Fungsi Psikologis:
+                      Kebutuhan dan cara menanggapinya
                     </span>
                     <h4 className="text-xl font-serif font-bold text-stone-100">
                       {item.functionName}
@@ -541,10 +541,10 @@ export const WordGuideView: React.FC = () => {
                   <div className="flex items-center justify-between gap-2">
                     <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-sky-800 text-bone font-mono text-[10.5px] font-bold uppercase tracking-wider">
                       <HeartHandshake size={13} />
-                      <span>1. Kebutuhan Dasar Manusiawi (Sah &amp; Riil)</span>
+                      <span>1. Kebutuhan yang ingin dipenuhi</span>
                     </span>
                     <span className="text-[10px] font-mono text-stone-400">
-                      Legitimate Human Need
+                      Kebutuhan pembaca
                     </span>
                   </div>
                   <p className="text-stone-100 font-medium text-sm md:text-[15px] leading-relaxed font-sans">
@@ -554,7 +554,7 @@ export const WordGuideView: React.FC = () => {
                   {/* Psychological Appeal */}
                   <div className="pt-2.5 border-t border-sky-800/40 flex items-start gap-2 text-xs">
                     <span className="font-mono font-bold text-amber-500 uppercase text-[10.5px] shrink-0 mt-0.5">
-                      2. Daya Tarik:
+                      2. Mengapa menarik
                     </span>
                     <span className="text-stone-300 leading-relaxed font-medium">
                       {item.whyCompelling}
@@ -569,7 +569,7 @@ export const WordGuideView: React.FC = () => {
                     <div className="flex items-center gap-1.5 text-rose-700 dark:text-rose-400 font-bold">
                       <X size={16} className="shrink-0 stroke-[2.5]" />
                       <span className="font-mono uppercase text-[10.5px] font-bold tracking-wider">
-                        3. Cara Bumerang (Manosphere)
+                        3. Cara yang dapat merugikan
                       </span>
                     </div>
                     <p className="text-stone-100 font-medium leading-relaxed font-sans">
@@ -582,7 +582,7 @@ export const WordGuideView: React.FC = () => {
                     <div className="flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400 font-bold">
                       <Check size={16} className="shrink-0 stroke-[2.5]" />
                       <span className="font-mono uppercase text-[10.5px] font-bold tracking-wider">
-                        4. Padanan Etis Suara Menungsa
+                        4. Pendekatan Menungsa
                       </span>
                     </div>
                     <p className="text-stone-100 font-medium leading-relaxed font-sans">
@@ -595,7 +595,7 @@ export const WordGuideView: React.FC = () => {
                 <div className="rounded-xl bg-stone-850 p-3.5 border border-stone-800 text-xs flex items-center justify-between gap-3 shadow-xs">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="font-mono text-amber-500 font-bold uppercase text-[11px] shrink-0">
-                      Prinsip Emas:
+                      Pegangan penulisan
                     </span>
                     <span className="text-stone-100 font-serif italic text-sm font-medium">
                       "{item.keyPrinciple}"
