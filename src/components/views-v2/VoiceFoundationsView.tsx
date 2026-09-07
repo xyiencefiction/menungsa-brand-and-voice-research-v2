@@ -501,19 +501,20 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
         </div>
 
         {/* Visualizer & 6 Value Selector Cards (2-Column Desktop Grid) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
           {/* Left Column: Value Spectrum Chart */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 flex flex-col">
             <ValueSpectrum
               values={brandValues}
               selectedId={activeValueId}
               onSelect={(id) => setActiveValueId(id)}
+              className="h-full flex flex-col justify-between"
             />
           </div>
 
           {/* Right Column: 6 Value Selector Cards (2 cols x 3 rows on desktop) */}
-          <div className="lg:col-span-5">
-            <div role="tablist" aria-label="Enam prinsip menulis" className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-2 gap-2.5">
+          <div className="lg:col-span-5 flex flex-col">
+            <div role="tablist" aria-label="Enam prinsip menulis" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 lg:grid-rows-3 gap-2.5 sm:gap-3 h-full">
               {VALUE_PILLARS.map((val, idx) => {
                 const Icon = valueIcons[idx % valueIcons.length];
                 const isSelected = val.id === activeValueId;
@@ -525,19 +526,19 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
                     aria-selected={isSelected}
                     aria-controls="panel-value-detail"
                     onClick={() => setActiveValueId(val.id)}
-                    className={`p-3 sm:p-3.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between min-h-[105px] ${
+                    className={`p-3 sm:p-3.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-start gap-1.5 h-full ${
                       isSelected
                         ? 'border-amber-500/70 bg-amber-500/10 text-stone-100 shadow-raised ring-1 ring-amber-500/40'
                         : 'border-stone-800 bg-stone-900/40 text-stone-400 hover:border-stone-700 hover:text-stone-200'
                     }`}
                   >
-                    <div className="flex items-start gap-2 mb-1.5">
+                    <div className="flex items-start gap-2 mb-0.5">
                       <Icon size={16} className={`shrink-0 mt-0.5 ${isSelected ? 'text-amber-500' : 'text-stone-400'}`} />
                       <div className="font-serif text-sm font-semibold text-stone-100 leading-snug">
                         {val.title}
                       </div>
                     </div>
-                    <div className="text-[11px] text-stone-400 pl-6 line-clamp-2 leading-relaxed font-sans">
+                    <div className="text-[11px] sm:text-[11.5px] text-stone-400 pl-6 leading-relaxed font-sans">
                       {val.voiceTrait}
                     </div>
                   </button>

@@ -11,6 +11,7 @@ interface Props {
   values: BrandValue[];
   selectedId?: string;
   onSelect: (id: string) => void;
+  className?: string;
 }
 
 const ID_POLES: Record<string, { title: string; left: string; right: string; dimension: string; positionNote: string }> = {
@@ -58,7 +59,7 @@ const ID_POLES: Record<string, { title: string; left: string; right: string; dim
   }
 };
 
-export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect }) => {
+export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect, className }) => {
   const [hovered, setHovered] = useState<string | null>(null);
   const H = M.top + values.length * ROW + M.bottom;
   const x = scaleLinear(1, 5, M.left, W - M.right);
@@ -68,7 +69,7 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
   const trackWidth = W - M.left - M.right;
 
   return (
-    <div className="rounded-xl border border-stone-800 bg-stone-950/90 overflow-hidden shadow-2xl">
+    <div className={`rounded-xl border border-stone-800 bg-stone-950/90 overflow-hidden shadow-2xl ${className ?? ''}`}>
       {/* Sleek Compact Header */}
       <header className="px-4 py-2.5 border-b border-stone-800 flex flex-wrap items-center justify-between gap-2 bg-stone-900/40">
         <div className="flex items-center gap-2">
@@ -85,7 +86,7 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
       </header>
 
       {/* SVG Canvas */}
-      <div className="p-3 overflow-x-auto relative">
+      <div className="p-3 overflow-x-auto relative flex-1 flex items-center justify-center">
         <svg
           viewBox={`0 0 ${W} ${H}`}
           className="w-full h-auto block min-w-[480px]"
