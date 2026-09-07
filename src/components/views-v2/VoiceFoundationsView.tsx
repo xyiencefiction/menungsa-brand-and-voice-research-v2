@@ -11,8 +11,7 @@ import {
   Scale, 
   SlidersHorizontal,
   Eye,
-  AlertCircle,
-  Camera
+  AlertCircle
 } from 'lucide-react';
 
 interface Props {
@@ -600,67 +599,6 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Brand Identity & Photography Principles (DESIGN.md §6 & §7) */}
-      <section className="rounded-[9px] border border-stone-800 bg-stone-900/40 p-6 md:p-8 space-y-6 shadow-raised">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-800/80 pb-5">
-          <div>
-            <div className="flex items-center gap-2 mb-1">
-              <Camera size={14} className="text-amber-500" />
-              <span className="text-[11px] font-sans font-bold uppercase tracking-wider text-amber-500">
-                IDENTITAS VISUAL & KARAKTER FOTOGRAFI (DESIGN.MD §7)
-              </span>
-            </div>
-            <h2 className="text-xl md:text-2xl font-serif font-semibold text-stone-100">
-              Bagaimana Suara Menungsa Berwujud Secara Visual
-            </h2>
-            <p className="text-xs md:text-sm text-stone-400 mt-1 max-w-[70ch]">
-              Prinsip tulisan yang tenang dan bermartabat tercermin secara utuh dalam pilihan citra visual: tanpa rekayasa pose, tanpa dramatisasi palsu, dan menghargai kedaulatan audiens.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-3 shrink-0 p-2.5 rounded-[8px] bg-stone-950/80 border border-stone-800">
-            <img
-              src="/brand/menungsa-mark.png"
-              alt="Menungsa Mark m;"
-              className="w-10 h-10 rounded-[6px] border border-stone-800 object-cover shadow-xs select-none"
-            />
-            <div className="text-xs font-sans">
-              <div className="font-semibold text-stone-200">Ligatur Resmi Menungsa</div>
-              <div className="text-[10px] text-stone-400">Titik Koma (;) Pencegahan Bunuh Diri</div>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="rounded-[6px] border border-stone-800/80 bg-stone-950/50 p-4 space-y-2">
-            <div className="text-xs font-sans font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
-              <span>01 · Kandid & Tanpa Pose (Unposed)</span>
-            </div>
-            <p className="text-xs text-stone-300 leading-relaxed font-sans">
-              Subjek tidak pernah menatap kamera atau berpose teatrikal. Foto menangkap momen nyata saat berpikir, berbincang, bekerja, atau beristirahat secara bersahaja.
-            </p>
-          </div>
-
-          <div className="rounded-[6px] border border-stone-800/80 bg-stone-950/50 p-4 space-y-2">
-            <div className="text-xs font-sans font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
-              <span>02 · Cahaya Alami & Gradasi Organik</span>
-            </div>
-            <p className="text-xs text-stone-300 leading-relaxed font-sans">
-              Menolak filter kecantikan buatan atau saturasi warna berlebihan. Menggunakan pencahayaan natural dan gradasi tona hangat dengan bayangan terbuka.
-            </p>
-          </div>
-
-          <div className="rounded-[6px] border border-stone-800/80 bg-stone-950/50 p-4 space-y-2">
-            <div className="text-xs font-sans font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
-              <span>03 · Menjaga Martabat (Dignity First)</span>
-            </div>
-            <p className="text-xs text-stone-300 leading-relaxed font-sans">
-              Pantang mengeksploitasi penderitaan sebagai tontonan publik. Tidak menampilkan adegan krisis berbahaya, keputusasaan di bibir tebing, atau tangisan demi viralitas.
-            </p>
-          </div>
         </div>
       </section>
     </div>
