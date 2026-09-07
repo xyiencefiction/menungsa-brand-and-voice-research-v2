@@ -102,7 +102,9 @@ const moralRootList = [
   'kejam', 'binal', 'biadab', 'culas', 'khilaf', 'dakwa', 'adili', 'hakimi', 'cibir',
   'cemooh', 'cerca', 'leceh', 'lancang', 'takabur', 'sombong', 'angkuh', 'pongah', 'congkak',
   'kufur', 'fasik', 'munafikun', 'sesat', 'terkutuk', 'bangkai', 'najis', 'kemungkaran',
-  'kemaksiatan', 'kemerosotan', 'kebatilan', 'kedustaan', 'kebohongan', 'kepalsuan'
+  'kemaksiatan', 'kemerosotan', 'kebatilan', 'kedustaan', 'kebohongan', 'kepalsuan',
+  'nirempati', 'rundung', 'hujat', 'nyinyir', 'pansos', 'parasit', 'kere', 'caci',
+  'fitnah', 'hasut', 'olok', 'sindir', 'kambinghitam'
 ];
 
 moralRootList.forEach(r => {
@@ -155,7 +157,18 @@ const moralPhrases = [
   'petuah menggurui', 'tuntutan mutlak', 'moral hazard', 'dekadensi moral', 'kemerosotan akhlak', 'rusak akhlak',
   'akhlak bejat', 'tanpa akhlak', 'buta moral', 'mati nurani', 'nurani mati', 'tumpul nurani', 'kehilangan nurani',
   'hina di mata masyarakat', 'aib di lingkungan', 'dicap pendosa', 'berlumuran dosa', 'kesesatan nyata',
-  'kacang lupa kulitnya', 'lupa daratan', 'tinggi hati', 'buta mata buta hati', 'pria amoral', 'moralitas rendah'
+  'kacang lupa kulitnya', 'lupa daratan', 'tinggi hati', 'buta mata buta hati', 'pria amoral', 'moralitas rendah',
+  // Economic & provider failure shaming
+  'gagal jadi pria', 'gagal sebagai kepala keluarga', 'tidak becus menafkahi', 'suami tidak berguna', 'pria tak bermodal',
+  'beban keluarga seumur hidup', 'mental miskin', 'mental pengemis', 'lelaki miskin', 'pria kere', 'gaji umr jangan nikah',
+  'pria parasit', 'numpang hidup pada istri', 'lelaki tanpa masa depan', 'kepala keluarga gagal', 'harga diri di dompet',
+  'tidak tahu malu minta bantuan',
+  // Cyberbullying, nirempati & moral vigilantism
+  'bullying the bully', 'serang balik pelakunya', 'hujat sampai jera', 'kuliti aibnya sampai tuntas', 'buka identitas keluarganya',
+  'biar tahu rasa dia', 'manusia nirfaedah', 'pansos di atas duka', 'pansos atas kematian', 'nyari panggung atas musibah',
+  'sok suci kamu', 'merasa paling benar', 'jangan sok peduli', 'diledek sok suci', 'dosa jari netizen', 'makin dihujat makin puas',
+  'pantas dihakimi massa', 'layak dibully', 'korban lebay', 'korban mencari perhatian', 'jangan playing victim', 'drama bunuh diri',
+  'cari sensasi saja', 'kurang perhatian keluarga', 'mati konyol', 'meninggal sia-sia'
 ];
 moralPhrases.forEach(p => addTerm(p, moralCat, moralLabel, moralSev, moralImp, moralRep));
 
@@ -246,8 +259,14 @@ const cringePhrases = [
   'jiwa baja', 'mental baja', 'pria tak kenal ampun', 'pria tanpa emosi', 'dingin seperti es',
   'tatapan predator', 'aura pembunuh', 'killer instinct pria', 'naluri pemburu', 'pria dominan mutlak',
   'jangan pernah memperlihatkan kelemahan', 'jangan pernah menangis di depan wanita',
-  'pria sejati pantang tumbang', 'cowok sejati anti lelet', 'disiplin besi pria', 'sikap pantang ampun',
-  'kasta pejantan unggul', 'lelaki pemenang mutlak', 'rantai kuasa pria', 'naluri kejantanan murni'
+  'kasta pejantan unggul', 'lelaki pemenang mutlak', 'rantai kuasa pria', 'naluri kejantanan murni',
+  // Toxic provider demands & extreme hustle/stoicism clichés
+  'pria wajib kaya', 'laki-laki harus berduit', 'harga diri pria adalah uang', 'lelaki sejati pantang miskin',
+  'pria miskin dilarang mengeluh', 'hustle sampai mati', 'tidur itu untuk orang lemah', 'grind 24 jam nonstop',
+  'pantang tidur sebelum kaya', 'rejeki dipatok ayam kalau tidur', 'lelaki harus tahan banting tanpa batas',
+  'jangan cengeng jadi cowok', 'cowok kok baperan', 'cowok kok gampang sedih', 'air mata haram bagi pria',
+  'pria sejati tak butuh istirahat', 'otot kawat tulang besi', 'tunjukkan dominasimu', 'pria alfa pantang curhat',
+  'pria sejati tahan banting', 'cowok tangguh pantang ke psikolog'
 ];
 cringePhrases.forEach(p => addTerm(p, cringeCat, cringeLabel, cringeSev, cringeImp, cringeRep));
 
@@ -327,7 +346,13 @@ const clinicalPhrases = [
   'regresi emosional', 'hypervigilance', 'kewaspadaan berlebih patologis', 'fight or flight kronis',
   'vagus nerve rusak', 'saraf vagus tegang', 'gangguan makan', 'katatonia', 'self harm',
   'menyakiti diri', 'pikiran bunuh diri', 'suicidal ideation', 'ide bunuh diri',
-  'gangguan panik berulang', 'skrining kesehatan mental', 'gejala psikologis akut', 'konseling psikiatri'
+  'gangguan panik berulang', 'skrining kesehatan mental', 'gejala psikologis akut', 'konseling psikiatri',
+  // Pop-clinical exaggeration of everyday fatigue & dramatized distress
+  'otak overheat parah', 'social battery habis total', 'mentally drained akut', 'emotional breakdown parah',
+  'mati rasa total', 'numb batin', 'dissociating akut', 'sensorik overload parah', 'doomscrolling tiada henti',
+  'krisis eksistensial akut', 'mental health rusak', 'terserang penyakit jiwa', 'otak rusak karena overthinking',
+  'jiwa yang terkoyak parah', 'mentalitas rapuh', 'lemah mental kronis', 'stres tak tertolong',
+  'terjebak jurang kegelapan', 'gejala depresi berat', 'skrining mandiri depresi'
 ];
 clinicalPhrases.forEach(p => addTerm(p, clinicalCat, clinicalLabel, clinicalSev, clinicalImp, clinicalRep));
 
@@ -386,7 +411,14 @@ const imperativePhrases = [
   'berhentilah bermimpi kosong', 'buka dirimu seutuhnya', 'jangan menutup diri', 'katakan yang sebenarnya detik ini',
   'jangan munafik di hadapan kami', 'tunjukkan lukamu tanpa malu', 'lepaskan rasa gengsimu', 'jangan membisu',
   'pecahkan keheninganmu sekarang', 'jangan tunggu besok', 'bergeraklah sekarang juga', 'jangan malas lagi',
-  'singkirkan keraguanmu saat ini juga', 'wajib tonton sampai selesai', 'segera daftar jangan ditunda'
+  'singkirkan keraguanmu saat ini juga', 'wajib tonton sampai selesai', 'segera daftar jangan ditunda',
+  // Coercive disclosure & aggressive social imperatives
+  'speak up sekarang juga', 'wajib bersuara detik ini', 'jangan cuma diam', 'kamu ikut bersalah kalau diam',
+  'tunjukkan keberpihakanmu sekarang', 'kenapa kamu masih bungkam', 'buka suaramu jangan pengecut',
+  'ceritakan traumamu di kolom komentar', 'tumpahkan seluruh lukamu di sini', 'jangan pura-pura tuli',
+  'buka rahasiamu tanpa ragu', 'buka lukamu di hadapan publik', 'jangan simpan sendiri lukamu',
+  'wajib curhat malam ini', 'kamu berdosa kalau tidak speak up', 'viralkan sampai pelakunya hancur',
+  'laporkan sekarang juga tanpa pikir panjang'
 ];
 imperativePhrases.forEach(p => addTerm(p, imperativeCat, imperativeLabel, imperativeSev, imperativeImp, imperativeRep));
 
@@ -420,7 +452,8 @@ const recRoots = [
   'bersandar', 'merawat', 'menjaga', 'melindungi', 'damping', 'ayomi', 'sapa', 'kawan',
   'teman', 'saudara', 'keluarga', 'rumah', 'tangga', 'kerja', 'berkas', 'catatan', 'meja',
   'tugas', 'prioritas', 'jadwal', 'langkah', 'tahap', 'pelan', 'wajar', 'lapang', 'jernih',
-  'cermat', 'ukur', 'santun', 'martabat', 'teguh', 'tabah', 'merdeka', 'sukarela'
+  'cermat', 'ukur', 'santun', 'martabat', 'teguh', 'tabah', 'merdeka', 'sukarela',
+  'dukung', 'ruang', 'valid', 'resapi', 'simak', 'hadir', 'hening', 'ronda', 'nobar'
 ];
 
 recRoots.forEach(r => {
@@ -475,7 +508,20 @@ const recPhrases = [
   'melihat dari berbagai sisi', 'kebijaksanaan bersahaja', 'ketabahan yang tenang', 'kejujuran pada diri sendiri',
   'menerima apa adanya', 'berdamai dengan keadaan', 'tindakan terukur', 'tutur kata santun', 'menjaga martabat diri',
   'keteladanan nyata', 'budi pekerti luhur', 'ketenangan batiniah', 'ketegasan yang ramah',
-  'waktu istirahat yang cukup', 'tempo kerja yang wajar', 'menghargai jeda', 'menjaga kejernihan berpikir'
+  'waktu istirahat yang cukup', 'tempo kerja yang wajar', 'menghargai jeda', 'menjaga kejernihan berpikir',
+  // Authentic Menungsa solidarity, grounding & everyday realities
+  'ruang mendukung', 'kelompok dukungan khusus laki-laki', 'aman untuk merasa', 'pria adalah manusia',
+  'wajar merasa gelisah', 'wajar merasa lelah', 'wajar jika sedih', 'hadir sepenuh hati',
+  'mendengarkan secara aktif', 'memvalidasi perasaan', 'menemani kawan bicara', 'kawan bicara yang tenang',
+  'tanpa takut diledek', 'tanpa takut dihakimi', 'tanpa paksaan bercerita', 'ruang aman untuk diam',
+  'boleh sekadar mendengarkan', 'tidak harus sendirian', 'pelan-pelan saja', 'merasa cukup',
+  'menghormati duka yang mendalam', 'jeda dari layar ponsel', 'dunia yang terlalu bising',
+  'kabur sebentar untuk istirahat', 'krl yang sumpek', 'beban kerja menumpuk', 'pekerjaan lepas',
+  'pulang ke rumah', 'istirahat malam yang tenang', 'menghirup napas lega', 'kebutuhan hidup yang nyata',
+  'beban ekonomi keluarga', 'kebaikan untuk diri sendiri', 'peduli tanpa merasa serba salah',
+  'hadir mendampingi dengan tenang', 'langkah kecil yang masuk akal', 'menyapa dengan setara',
+  'ruang yang nyaman untuk bernapas', 'menjaga ritme harian', 'mencari bantuan profesional yang terjangkau',
+  'akses faskes terdekat', 'layanan konseling yang aman'
 ];
 recPhrases.forEach(p => addTerm(p, recCat, recLabel, recSev, recImp, recRep));
 
