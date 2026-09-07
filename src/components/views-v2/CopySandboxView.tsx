@@ -101,7 +101,7 @@ export const CopySandboxView: React.FC = () => {
 
   const allChecked = checkedItems.every(Boolean);
 
-  // Debounce search query to keep UI 60fps on mobile with 9.7k entries
+  // Debounce search query to keep UI 60fps on mobile with 10.9k+ entries
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearchQuery(searchQuery);
@@ -330,7 +330,7 @@ export const CopySandboxView: React.FC = () => {
           Lab Uji Draf Naskah & Cheatsheet {cheatsheet.length.toLocaleString('id-ID')}+ Kosakata
         </h1>
         <p className="text-sm md:text-base text-stone-300 max-w-[74ch] leading-relaxed font-sans">
-          Uji draf naskah Anda secara langsung dengan sistem pendeteksi lebih dari empat belas ribu ({cheatsheet.length.toLocaleString('id-ID')}+) kata & frasa terkalibrasi. Temukan apakah tulisan Anda berpotensi memicu rasa bersalah (bumerang moral), klise maskulin canggung (cringe), intimidasi klinis, atau sudah selaras dengan gaya membumi Menungsa.
+          Uji draf naskah Anda secara langsung dengan sistem pendeteksi lebih dari {cheatsheet.length.toLocaleString('id-ID')}+ kata & frasa terkalibrasi. Temukan apakah tulisan Anda berpotensi memicu rasa bersalah (bumerang moral), klise maskulin canggung (cringe), intimidasi klinis, atau sudah selaras dengan gaya membumi Menungsa.
         </p>
       </div>
 
@@ -380,7 +380,7 @@ export const CopySandboxView: React.FC = () => {
                 setSelectedWord(null);
               }}
               rows={8}
-              placeholder="Ketik atau tempel draf naskah Anda di sini untuk diuji dengan 9.700+ kata cheatsheet..."
+              placeholder={`Ketik atau tempel draf naskah Anda di sini untuk diuji dengan ${cheatsheet.length.toLocaleString('id-ID')}+ kata cheatsheet...`}
               aria-label="Kotak uji draf naskah"
               className="w-full rounded-[9px] border border-stone-800 bg-stone-900/60 p-4 font-sans text-sm md:text-base leading-relaxed text-stone-100 placeholder-stone-500 focus:outline-2 focus:outline-amber-500 focus:outline-offset-1 shadow-raised"
             />
@@ -862,13 +862,13 @@ export const CopySandboxView: React.FC = () => {
         </div>
       </div>
 
-      {/* SECTION 2: MASTER CHEATSHEET EXPLORER (9,700+ WORDS) */}
+      {/* SECTION 2: MASTER CHEATSHEET EXPLORER (10,946+ WORDS) */}
       <div className="border-t border-stone-800 pt-10 space-y-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="space-y-1.5">
             <div className="inline-flex items-center gap-1.5 text-xs font-mono text-amber-400 uppercase tracking-wider">
               <BookOpen size={14} />
-              <span>KAMUS BESAR KATA & FRASA NASKAH (9.700+ ENTRI)</span>
+              <span>KAMUS BESAR KATA & FRASA NASKAH ({cheatsheet.length.toLocaleString('id-ID')}+ ENTRI)</span>
             </div>
             <h2 className="text-xl md:text-2xl font-serif text-stone-100">
               Kamus Cheatsheet Kosakata Menungsa
@@ -880,7 +880,7 @@ export const CopySandboxView: React.FC = () => {
 
           <div className="flex items-center gap-2">
             <span className="text-xs font-mono text-stone-400 bg-stone-900 border border-stone-800 px-3 py-1.5 rounded-lg">
-              Total Database: <strong className="text-amber-300 font-mono">{cheatsheet.length}</strong> Kata/Frasa
+              Total Database: <strong className="text-amber-300 font-mono">{cheatsheet.length.toLocaleString('id-ID')}</strong> Kata/Frasa
             </span>
           </div>
         </div>
