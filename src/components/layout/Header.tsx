@@ -4,8 +4,6 @@ import type { FigureInfo } from '../common/FigureModal';
 import { ThemeToggle } from './ThemeToggle';
 import type { ViewType } from '../../types';
 
-import { MenungsaWordmark } from '../common/MenungsaWordmark';
-import { MenungsaMarkIcon } from '../common/MenungsaMarkIcon';
 
 interface Props {
   currentView: ViewType;
@@ -46,20 +44,15 @@ export const Header: React.FC<Props> = ({
 
           <button
             onClick={() => onSelectView('foundations')}
-            className="flex items-center gap-2.5 text-left cursor-pointer group"
+            className="flex items-center text-left cursor-pointer group focus:outline-none"
+            aria-label="Menungsa Beranda"
+            title="Menungsa"
           >
-            <MenungsaMarkIcon size={34} className="group-hover:scale-105 transition-transform" />
-            <div>
-              <div className="flex items-center gap-2">
-                <MenungsaWordmark size="md" />
-                <span className="text-[10px] font-sans font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-300 border border-amber-500/30">
-                  Edisi Penulis
-                </span>
-              </div>
-              <p className="text-[11px] text-stone-500 dark:text-stone-400 font-sans hidden sm:block">
-                Panduan Praktis Gaya & Nada Penulisan
-              </p>
-            </div>
+            <img
+              src="/brand/menungsa-mark.png"
+              alt="Menungsa"
+              className="w-10 h-10 rounded-[10px] border border-stone-800/90 shadow-xs object-cover select-none group-hover:scale-105 group-hover:border-amber-500/50 transition-all duration-200"
+            />
           </button>
         </div>
 

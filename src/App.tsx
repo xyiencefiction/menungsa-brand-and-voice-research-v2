@@ -28,7 +28,6 @@ import { ResearchGapsView } from './components/views/ResearchGapsView';
 import { ValuesView } from './components/views/ValuesView';
 import { ChannelsView } from './components/views/ChannelsView';
 import { ArrowUpRight } from 'lucide-react';
-import { MenungsaWordmark } from './components/common/MenungsaWordmark';
 
 export function App() {
   const parseHash = (): ViewType => {
@@ -198,14 +197,12 @@ export function App() {
       {/* Footer */}
       <footer className="border-t border-stone-800 bg-stone-950/80 py-8 px-4 sm:px-6 text-xs text-stone-500 font-sans">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-3">
             <img
               src="/brand/menungsa-mark.png"
-              alt="Menungsa Mark"
-              className="w-5 h-5 rounded-[4px] border border-stone-800 object-cover shrink-0 select-none"
+              alt="Menungsa"
+              className="w-6 h-6 rounded-[6px] border border-stone-800 object-cover shrink-0 select-none"
             />
-            <MenungsaWordmark size="sm" />
-            <span>·</span>
             <span>Panduan Gaya & Nada Penulisan (Edisi Penulis v2)</span>
           </div>
 
