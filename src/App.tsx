@@ -222,7 +222,7 @@ export function App() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-stone-400 hover:text-amber-400 transition"
             >
-              <span>Baca dasar riset (situs v1)</span>
+              <span>Baca dasar riset</span>
               <ArrowUpRight size={13} />
             </a>
           </div>
