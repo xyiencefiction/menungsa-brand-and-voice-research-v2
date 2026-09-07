@@ -390,7 +390,7 @@ export const IndonesianNuancesView: React.FC = () => {
                   <div className="rounded-[6px] border border-emerald-500/25 bg-emerald-950/20 p-3 space-y-1">
                     <div className="flex items-center gap-1.5 text-emerald-500 dark:text-emerald-400 text-xs font-sans font-bold uppercase">
                       <CheckCircle2 size={13} />
-                      <span>Yang Dianjurkan (Do)</span>
+                      <span>Do</span>
                     </div>
                     <p className="font-serif italic text-xs md:text-sm text-emerald-800 dark:text-emerald-200 leading-relaxed">
                       "{item.dos.example}"
@@ -404,7 +404,7 @@ export const IndonesianNuancesView: React.FC = () => {
                   <div className="rounded-[6px] border border-amber-700/25 bg-amber-950/20 p-3 space-y-1">
                     <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 text-xs font-sans font-bold uppercase">
                       <XCircle size={13} />
-                      <span>Yang Berisiko / Dilarang (Don't)</span>
+                      <span>Don't</span>
                     </div>
                     <p className="font-serif italic text-xs md:text-sm text-amber-800 dark:text-amber-200 leading-relaxed">
                       "{item.donts.example}"

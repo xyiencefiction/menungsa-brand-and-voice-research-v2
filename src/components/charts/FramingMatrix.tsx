@@ -22,10 +22,10 @@ const H = 450;
 const M = { top: 44, right: 36, bottom: 64, left: 66 };
 
 const ACTIONS: ActionItem[] = [
-  { id: 'therapy', name: 'Psychological Therapy', xVal: 18, yPrivate: 22, yPublic: 80 },
-  { id: 'skincare', name: 'Skincare / Grooming', xVal: 34, yPrivate: 18, yPublic: 70 },
-  { id: 'parenting', name: 'Child Caregiving', xVal: 54, yPrivate: 25, yPublic: 76 },
-  { id: 'fitness', name: 'Gym / Strength Training', xVal: 84, yPrivate: 24, yPublic: 78 },
+  { id: 'therapy', name: 'Terapi Psikologis', xVal: 18, yPrivate: 22, yPublic: 80 },
+  { id: 'skincare', name: 'Skincare & Perawatan Diri', xVal: 34, yPrivate: 18, yPublic: 70 },
+  { id: 'parenting', name: 'Pengasuhan Anak', xVal: 54, yPrivate: 25, yPublic: 76 },
+  { id: 'fitness', name: 'Gym / Latihan Kekuatan', xVal: 84, yPrivate: 24, yPublic: 78 },
 ];
 
 export const FramingMatrix: React.FC<Props> = ({
@@ -51,36 +51,36 @@ export const FramingMatrix: React.FC<Props> = ({
       <header className="px-5 py-3.5 border-b border-stone-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <h3 className="font-serif font-semibold text-stone-100" style={{ fontSize: 'var(--t-h3)' }}>
-            2×2 Boundary Condition Matrix
+            Matriks Batas Keberlakuan 2×2
           </h3>
           <p className="text-stone-400 mt-0.5" style={{ fontSize: 'var(--t-small)' }}>
-            Prior Cultural Coding of Behavior × Social Visibility (Brough et al. & White & Dahl)
+            Persepsi Budaya Perilaku × Tingkat Visibilitas Sosial (Brough dkk. serta White &amp; Dahl)
           </p>
         </div>
 
         <div className="flex items-center gap-1.5 self-start sm:self-auto shrink-0">
-          <span className="font-mono text-stone-500 uppercase mr-1" style={{ fontSize: 'var(--t-micro)' }}>Gaze:</span>
+          <span className="font-mono text-stone-500 uppercase mr-1" style={{ fontSize: 'var(--t-micro)' }}>SOROTAN:</span>
           <button
             onClick={() => onToggleVisibility(false)}
-            className={`px-2.5 py-1 rounded-lg font-mono transition border ${
+            className={`px-2.5 py-1 rounded-lg font-mono transition border cursor-pointer ${
               !isPublic
                 ? 'bg-sky-500 text-stone-950 font-bold border-sky-400'
                 : 'bg-stone-900 text-stone-400 border-stone-800 hover:text-stone-200'
             }`}
             style={{ fontSize: 'var(--t-micro)' }}
           >
-            Private
+            Privat
           </button>
           <button
             onClick={() => onToggleVisibility(true)}
-            className={`px-2.5 py-1 rounded-lg font-mono transition border ${
+            className={`px-2.5 py-1 rounded-lg font-mono transition border cursor-pointer ${
               isPublic
                 ? 'bg-rose-500 text-stone-950 font-bold border-rose-400'
                 : 'bg-stone-900 text-stone-400 border-stone-800 hover:text-stone-200'
             }`}
             style={{ fontSize: 'var(--t-micro)' }}
           >
-            Public Gaze
+            Sorotan Publik
           </button>
         </div>
       </header>
@@ -141,7 +141,7 @@ export const FramingMatrix: React.FC<Props> = ({
             size={11}
             weight={700}
           >
-            Identity Shielding Zone
+            Zona Perisai Identitas
           </SvgLabel>
           <SvgLabel
             x={M.left + 12}
@@ -152,7 +152,7 @@ export const FramingMatrix: React.FC<Props> = ({
             size={9.5}
             lines={2}
           >
-            High social risk · Male-sensitive or discrete cues protect against ridicule
+            Risiko sosial tinggi · Isyarat ramah-pria atau diskret menolong pembaca
           </SvgLabel>
 
           {/* Top-Right: Redundancy & Backfire Zone */}
@@ -165,7 +165,7 @@ export const FramingMatrix: React.FC<Props> = ({
             size={11}
             weight={700}
           >
-            Redundancy &amp; Backfire Zone
+            Zona Redundan &amp; Bumerang
           </SvgLabel>
           <SvgLabel
             x={midX + 14}
@@ -176,7 +176,7 @@ export const FramingMatrix: React.FC<Props> = ({
             size={9.5}
             lines={2}
           >
-            Already masculine · Hyper-masculine 'Alpha' labels ridiculed as cringe
+            Sudah dianggap maskulin · Label 'Pria Alfa' justru dicemooh sebagai hal yang canggung/berlebihan
           </SvgLabel>
 
           {/* Bottom-Left: Pragmatic Neutral Zone */}
@@ -189,7 +189,7 @@ export const FramingMatrix: React.FC<Props> = ({
             size={11}
             weight={700}
           >
-            Pragmatic Neutral Zone
+            Zona Netral Pragmatis
           </SvgLabel>
           <SvgLabel
             x={M.left + 12}
@@ -200,7 +200,7 @@ export const FramingMatrix: React.FC<Props> = ({
             size={9.5}
             lines={2}
           >
-            Low social gaze · Gender-neutral copy performs equally well (0 lift from 'Real Men')
+            Pengawasan sosial rendah · Pesan netral-gender berkinerja sama baiknya tanpa embel 'Pria Sejati'
           </SvgLabel>
 
           {/* Bottom-Right: Direct Craft Zone */}
@@ -213,7 +213,7 @@ export const FramingMatrix: React.FC<Props> = ({
             size={11}
             weight={700}
           >
-            Direct Craft Zone
+            Zona Keahlian &amp; Tindakan Nyata
           </SvgLabel>
           <SvgLabel
             x={midX + 14}
@@ -224,7 +224,7 @@ export const FramingMatrix: React.FC<Props> = ({
             size={9.5}
             lines={2}
           >
-            Focus on craft, progression &amp; tangible utility
+            Fokus pada progres keahlian dan manfaat langsung yang nyata
           </SvgLabel>
 
           {/* Dividing Quadrant Axes */}
@@ -260,7 +260,7 @@ export const FramingMatrix: React.FC<Props> = ({
 
           {/* Axis Labels */}
           <text x={(M.left + W - M.right) / 2} y={H - 16} textAnchor="middle" className="chart-axis-label">
-            ← Culturally Coded as Feminine / Vulnerable &nbsp; · &nbsp; Prior Cultural Coding &nbsp; · &nbsp; Culturally Coded as Masculine →
+            ← Persepsi Feminin / Rentan &nbsp; · &nbsp; Kode Budaya Awal &nbsp; · &nbsp; Persepsi Maskulin →
           </text>
 
           <text
@@ -270,7 +270,7 @@ export const FramingMatrix: React.FC<Props> = ({
             className="chart-axis-label"
             transform={`rotate(-90 20 ${(M.top + H - M.bottom) / 2})`}
           >
-            ← Private / Discretion &nbsp; · &nbsp; Social Gaze Risk &nbsp; · &nbsp; Public Exposure / High Gaze →
+            - Ruang Privat (Diskret) &nbsp; · &nbsp; Risiko Sorotan Sosial &nbsp; · &nbsp; Ruang Publik (Terbuka) +
           </text>
 
           {/* Plotted Action Nodes */}
@@ -360,23 +360,21 @@ export const FramingMatrix: React.FC<Props> = ({
       {activeItem && (
         <div className="px-5 py-3 border-t border-stone-800 bg-stone-900/50 flex flex-wrap items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-amber-400 font-bold uppercase text-[11px]">Selected Behavior:</span>
+            <span className="font-mono text-amber-400 font-bold uppercase text-[11px]">Perilaku Terpilih:</span>
             <span className="text-stone-100 font-medium">{activeItem.name}</span>
             <span className="text-stone-500">·</span>
             <span className="text-stone-400 font-mono text-[11px]">
-              {isPublic ? 'High Social Exposure (Public)' : 'Low Social Exposure (Private)'}
+              {isPublic ? 'Ruang Publik (Tinggi Sorotan Sosial)' : 'Ruang Privat (Rendah Sorotan Sosial)'}
             </span>
           </div>
           <span className="font-mono text-stone-400 text-[11px]">
-            Click any behavior node or use the Gaze toggle above to explore boundary shifts
+            Klik salah satu titik perilaku atau gunakan tombol Sorotan di atas
           </span>
         </div>
       )}
 
       <footer className="px-5 py-3 border-t border-stone-800 text-stone-500" style={{ fontSize: 'var(--t-micro)' }}>
-        <span className="font-mono uppercase tracking-wider">Does not represent</span> measured statistical variance.
-        The 2×2 quadrant is a conceptual boundary model derived from Brough et al. and White &amp; Dahl to illustrate
-        when explicit masculinity framing acts as a necessary protective shield versus when it manufactures friction.
+        <span className="font-mono uppercase tracking-wider">Catatan Riset:</span> Matriks 2×2 ini merupakan model batas konseptual yang diadopsi dari Brough dkk. serta White &amp; Dahl untuk mengilustrasikan kapan pembingkaian maskulinitas berfungsi sebagai perisai pelindung yang diperlukan vs kapan ia menciptakan penolakan (cringe).
       </footer>
     </div>
   );

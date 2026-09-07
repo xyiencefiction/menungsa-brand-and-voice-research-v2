@@ -6,8 +6,11 @@ import {
   AlertCircle, 
   CheckCircle2, 
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  Compass
 } from 'lucide-react';
+import { RegisterMap } from '../charts/RegisterMap';
+import { languageRegisters } from '../../data';
 
 interface RegisterItem {
   id: string;
@@ -28,32 +31,32 @@ const REGISTERS: RegisterItem[] = [
     authorityLevel: 3,
     intimacyLevel: 3,
     socialRelationship: 'Langsung, hangat, dan setara. Standar bawaan organisasi Menungsa.',
-    impression: 'Menyapa langsung tanpa kepalsuan akrab yang berlebihan.',
-    risks: 'Dapat terasa terlalu menuntut jika dipadukan dengan kalimat perintah ("kamu harus").',
-    contexts: 'Semua kanal publik dan privat: feed media sosial, carousel, artikel, panduan ringkas.',
-    example: 'Ketika tubuhmu memberi sinyal lelah, dengarkan.'
+    impression: 'Menyapa langsung tanpa kepalsuan akrab yang berlebihan, menghormati otonomi pembaca.',
+    risks: 'Dapat terasa mendikte jika dipadukan dengan kata kerja imperatif ("kamu harus", "kamu wajib").',
+    contexts: 'Semua kanal publik dan privat: feed media sosial, carousel, esai pengantar, panduan ringkas.',
+    example: 'Ketika tubuhmu memberi sinyal lelah yang tak kunjung reda, dengarkan.'
   },
   {
     id: 'Anda',
     name: 'Anda',
-    authorityLevel: 4,
+    authorityLevel: 5,
     intimacyLevel: 1,
-    socialRelationship: 'Formal, menghormati jarak sosial, dan menjaga kesantunan profesional.',
-    impression: 'Tertib, klinis, dan menghormati batasan privasi tinggi.',
-    risks: 'Terasa kaku dan berjarak jika digunakan dalam obrolan empati santai.',
-    contexts: 'Layanan konsultasi medis resmi, formulir pendaftaran klinik, syarat & ketentuan hukum.',
-    example: 'Jadwal konsultasi Anda telah terkonfirmasi untuk hari Selasa pukul 14.00.'
+    socialRelationship: 'Formal, menjaga jarak institusional, dan menghormati privasi profesional tinggi.',
+    impression: 'Tertib, klinis, dan menghormati batasan hukum serta kerahasiaan medis.',
+    risks: 'Terasa kaku, birokratis, dan dingin jika digunakan dalam narasi empati atau obrolan santai.',
+    contexts: 'Formulir pendaftaran konseling resmi, syarat & ketentuan, pemberitahuan privasi, rujukan medis.',
+    example: 'Jadwal konsultasi Anda telah terkonfirmasi untuk hari Selasa pukul 14.00 WIB.'
   },
   {
     id: 'kita',
     name: 'kita',
     authorityLevel: 2,
     intimacyLevel: 4,
-    socialRelationship: 'Inklusif dan merangkul; menempatkan penulis dan pembaca dalam satu perahu.',
-    impression: 'Rasa senasib dan kebersamaan biologis manusiawi.',
-    risks: 'Terdengar sok tahu atau memaksakan asumsi jika pembaca tidak sedang mengalami hal tersebut.',
-    contexts: 'Pembahasan ritme fisiologis tubuh, fenomena sosial umum, atau refleksi kemanusiaan.',
-    example: 'Tubuh kita memang butuh jeda setelah bekerja berhari-hari tanpa henti.'
+    socialRelationship: 'Inklusif dan merangkul; menempatkan penulis dan pembaca dalam satu perahu pengalaman manusiawi.',
+    impression: 'Rasa senasib biologis dan kebersamaan yang menenangkan.',
+    risks: 'Terdengar sok tahu atau memaksakan asumsi jika pembaca sedang tidak mengalami beban tersebut.',
+    contexts: 'Pembahasan ritme fisiologis tubuh, fenomena sosial bersama, atau refleksi kemanusiaan.',
+    example: 'Tubuh kita memang butuh jeda berkala setelah bekerja berhari-hari tanpa henti.'
   },
   {
     id: 'kami',
@@ -61,32 +64,87 @@ const REGISTERS: RegisterItem[] = [
     authorityLevel: 3,
     intimacyLevel: 2,
     socialRelationship: 'Penutur jamak atas nama institusi resmi Menungsa.',
-    impression: 'Jujur bahwa pesan ini datang dari sebuah lembaga, bukan teman khayalan.',
-    risks: 'Dapat terasa dingin jika dipakai berlebihan tanpa menyapa pembaca.',
-    contexts: 'Pernyataan kebijakan organisasi, transparansi program, dan pelaporan kegiatan.',
-    example: 'Kami di Menungsa menyiapkan ruang ini agar teman-teman bisa rehat sejenak.'
+    impression: 'Jujur bahwa pesan ini datang dari sebuah lembaga, bukan teman khayalan yang berpura-pura nongkrong.',
+    risks: 'Dapat terasa berjarak jika dipakai terus-menerus tanpa menyapa pembaca secara personal.',
+    contexts: 'Pernyataan kebijakan organisasi, transparansi program, metodologi riset, dan laporan kegiatan.',
+    example: 'Kami di Menungsa menyiapkan ruang ini agar kamu bisa beristirahat sejenak tanpa tuntutan.'
   },
   {
-    id: 'gue / lo',
-    name: 'gue / lo',
+    id: 'gue',
+    name: 'gue / gua',
     authorityLevel: 1,
     intimacyLevel: 5,
-    socialRelationship: 'Akrab, kasual, dan personal antarteman sebaya.',
-    impression: 'Percakapan riil anak muda di ranah privat.',
-    risks: 'Sangat berbahaya jika dipakai akun anonim institusi (terdengar canggung dan dibuat-buat).',
-    contexts: 'HANYA boleh jika penulis adalah individu bernama nyata yang menulis esai personal atas nama sendiri.',
-    example: 'Waktu usaha gue tutup dua tahun lalu, rasanya bangun tidur aja susah banget.'
+    socialRelationship: 'Solidaritas horizontal antarteman sebaya di ranah privat perkotaan.',
+    impression: 'Percakapan riil anak muda yang autentik dan tanpa sekat.',
+    risks: 'SANGAT FATAL jika dipakai akun resmi organisasi (terdengar canggung, pura-pura gaul, dan merusak kredibilitas institusi).',
+    contexts: 'HANYA berhak digunakan oleh staf atau kreator yang menulis atas nama pribadi dan berwajah nyata.',
+    example: 'Waktu usaha bengkel gue tutup dua tahun lalu, rasanya bangun tidur aja berat banget.'
   },
   {
-    id: 'pria / laki-laki',
-    name: 'pria / laki-laki',
+    id: 'lo',
+    name: 'lo / lu',
+    authorityLevel: 1,
+    intimacyLevel: 5,
+    socialRelationship: 'Sapaan orang kedua akrab antarteman tongkrongan sebaya.',
+    impression: 'Santai, tanpa basa-basi formal.',
+    risks: 'Jika akun anonim organisasi menyapa pembaca dengan "lo/bro", pembaca merasa privasinya diterobos tanpa lisensi kedekatan.',
+    contexts: 'Konten video kreator personal bernama jelas, dialog naskah teater/cerita fiksi.',
+    example: 'Kalau hari ini lo belum sanggup cerita, nggak apa-apa, duduk aja dulu.'
+  },
+  {
+    id: 'aku',
+    name: 'aku',
+    authorityLevel: 2,
+    intimacyLevel: 4,
+    socialRelationship: 'Intim, reflektif, kontemplatif batin, dan kejujuran personal.',
+    impression: 'Ruang renungan puitis atau esai pengalaman hidup yang tenang.',
+    risks: 'Bisa terdengar terlalu melankolis atau romantis jika dipakai dalam instruksi navigasi layanan.',
+    contexts: 'Esai refleksi diri orang pertama, monolog video dokumenter, kisah pemulihan personal.',
+    example: 'Bulan ketiga setelah toko tutup, aku masih sering bangun jam lima pagi menyeduh kopi di teras.'
+  },
+  {
+    id: 'saya',
+    name: 'saya',
+    authorityLevel: 4,
+    intimacyLevel: 1,
+    socialRelationship: 'Penutur tunggal formal dengan martabat klinis dan kesantunan universal.',
+    impression: 'Objektif, tenang, berwibawa, dan dapat diandalkan.',
+    risks: 'Kurang intim jika digunakan dalam obrolan lingkaran kecil antarteman sebaya.',
+    contexts: 'Wawancara resmi, penjelasan dokter/psikolog berlisensi, esai editorial pakar.',
+    example: 'Dalam praktik klinis saya, kelelahan mental sering kali diawali dari penolakan terhadap batas fisik.'
+  },
+  {
+    id: 'laki-laki',
+    name: 'laki-laki',
     authorityLevel: 3,
+    intimacyLevel: 3,
+    socialRelationship: 'Penanda identitas gender deskriptif dan sosiologis.',
+    impression: 'Netral, ilmiah, dan membumi tanpa muatan gengsi.',
+    risks: 'Menimbulkan kejenuhan identitas (gender fatigue) bila diulang di setiap kalimat.',
+    contexts: 'Analisis sosiokultural, statistik beban peran keluarga, dan dialog kesehatan umum.',
+    example: 'Banyak laki-laki dewasa memikul tanggung jawab ekonomi tanpa memiliki saluran pelepasan emosi yang aman.'
+  },
+  {
+    id: 'pria',
+    name: 'pria',
+    authorityLevel: 4,
     intimacyLevel: 2,
-    socialRelationship: 'Penanda identitas gender faktual.',
-    impression: 'Objektif dan ilmiah.',
-    risks: 'Memicu kejenuhan (gender fatigue) jika terus diulang-ulang di setiap kalimat.',
-    contexts: 'Pembahasan isu biologi pria (kardiovaskular, hormon tidur) atau peran sosial kebapakan.',
-    example: 'Pria dewasa sering menunda pemeriksaan kesehatan hingga gejala fisik terasa mengganggu.'
+    socialRelationship: 'Penanda demografis formal dan kehormatan dewasa.',
+    impression: 'Tertib, berwibawa, dan sedikit berjarak aspirasional.',
+    risks: 'Rentan disalahgunakan jika digabung dengan klise manosphere ("Pria Sejati", "Pria Bernilai Tinggi").',
+    contexts: 'Konteks biologis spesifik (kardiovaskular, hormon) atau peran tanggung jawab ayah.',
+    example: 'Pria di atas usia 35 tahun disarankan memeriksa tekanan darah secara berkala.'
+  },
+  {
+    id: 'cowok',
+    name: 'cowok',
+    authorityLevel: 1,
+    intimacyLevel: 4,
+    socialRelationship: 'Sebutan kasual santai bernuansa muda dan tongkrongan.',
+    impression: 'Ringan, santai, dan tidak kaku.',
+    risks: 'Dapat terdengar meremehkan (infantilizing) pria dewasa usia 40-an jika dipakai di layanan formal.',
+    contexts: 'Humor situasional di balik layar, konten visual olahraga santai, ruang pemuda.',
+    example: 'Cowok kalau sudah ngumpul ngoprek motor tua biasanya lupa waktu sampai sore.'
   }
 ];
 
@@ -340,13 +398,37 @@ export const WordGuideView: React.FC = () => {
             </div>
           </div>
 
+          {/* Interactive 2D Register Map */}
+          <div className="space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+              <div>
+                <h3 className="text-sm font-mono text-amber-400 uppercase tracking-wider font-semibold flex items-center gap-2">
+                  <Compass size={15} />
+                  <span>Peta Koordinat Relasional Ragam Kata Ganti</span>
+                </h3>
+                <p className="text-xs text-stone-300 mt-1 leading-relaxed max-w-2xl font-sans">
+                  Pilihan kata ganti menentukan batas jarak sosial antara organisasi dan pembaca pria. Peta di bawah memperlihatkan mengapa Menungsa memilih <strong className="text-amber-400">"kamu"</strong> di titik seimbang (3/5, 3/5)—cukup hangat untuk peduli, namun cukup tertib untuk menghormati privasi.
+                </p>
+              </div>
+              <span className="text-[11px] font-mono text-stone-500 shrink-0">
+                Klik titik grafik untuk memilih
+              </span>
+            </div>
+
+            <RegisterMap
+              registers={languageRegisters}
+              selectedId={selectedRegisterId}
+              onSelect={(id) => setSelectedRegisterId(id)}
+            />
+          </div>
+
           {/* Pronoun Details Cards */}
           <div className="space-y-4">
             <h3 className="text-sm font-mono text-stone-400 uppercase tracking-wider font-semibold">
-              Katalog Lengkap Kata Ganti Bahasa Indonesia:
+              Katalog Lengkap Kata Ganti Bahasa Indonesia (Pilih untuk Membaca Profil):
             </h3>
 
-            <div role="tablist" aria-label="Katalog Kata Ganti" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
+            <div role="tablist" aria-label="Katalog Kata Ganti" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
               {REGISTERS.map((reg) => (
                 <button
                   key={reg.id}
@@ -357,7 +439,7 @@ export const WordGuideView: React.FC = () => {
                   onClick={() => setSelectedRegisterId(reg.id)}
                   className={`p-3 rounded-xl border text-center transition cursor-pointer ${
                     selectedRegisterId === reg.id
-                      ? 'border-amber-500 bg-amber-500/20 text-stone-100 font-semibold ring-1 ring-amber-500/40'
+                      ? 'border-amber-500 bg-amber-500/20 text-stone-100 font-semibold ring-1 ring-amber-500/40 shadow-raised'
                       : 'border-stone-800 bg-stone-900/50 text-stone-400 hover:border-stone-700 hover:text-stone-200'
                   }`}
                 >

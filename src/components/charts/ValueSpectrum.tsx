@@ -22,29 +22,74 @@ interface Props {
  * was found rather than chosen, so the marks sit on the same ordinal 1-5 tracks the
  * tone lab already uses, and the two values that stop short of the pole say why.
  */
+const ID_POLES: Record<string, { title: string; left: string; right: string; dimension: string; positionNote: string }> = {
+  V1: {
+    title: 'Kesetaraan, Bukan Penghakiman',
+    left: 'Menilai pembaca',
+    right: 'Menyapa setara',
+    dimension: 'Bagaimana pembaca disapa',
+    positionNote: 'Satu-satunya nilai mutlak tanpa kompromi. Menukarnya demi interaksi sesaat merusak rasa aman pembaca.'
+  },
+  V2: {
+    title: 'Rendah Hambatan untuk Memulai',
+    left: 'Berat untuk dimulai',
+    right: 'Mudah untuk dimulai',
+    dimension: 'Biaya merespons komunikasi',
+    positionNote: 'Pria menghindari rasa malu dan sorotan publik. Turunkan biaya memulai sekecil mungkin.'
+  },
+  V3: {
+    title: 'Satu Langkah Nyata yang Masuk Akal',
+    left: 'Dorongan yang umum',
+    right: 'Langkah yang nyata',
+    dimension: 'Bentuk ajakan bertindak',
+    positionNote: 'Tawarkan tindakan nyata yang terjangkau untuk memulihkan kedaulatan diri (agency).'
+  },
+  V4: {
+    title: 'Mulai dari yang Tampak Nyata',
+    left: 'Label/perasaan dulu',
+    right: 'Situasi yang tampak dulu',
+    dimension: 'Urutan penyampaian emosi',
+    positionNote: 'Deskripsi situasi fisik memungkinkan emosi hadir secara alami tanpa merasa dihakimi.'
+  },
+  V5: {
+    title: 'Jujur & Terbuka tentang Batasan',
+    left: 'Kepastian mutlak',
+    right: 'Kepastian sesuai bukti',
+    dimension: 'Derajat kepastian klaim',
+    positionNote: 'Jujur terhadap ketidakpastian ilmiah; batasi klaim pada bukti yang dapat diverifikasi.'
+  },
+  V6: {
+    title: 'Tindakan Nyata, Bukan Tuntutan Moral',
+    left: 'Menuntut pembaca berubah',
+    right: 'Menunjukkan tindakan & kondisi',
+    dimension: 'Arah tuntutan perubahan',
+    positionNote: 'Fokus pada pembenahan sistem dan kondisi lingkungan, bukan menuduh karakter pembaca.'
+  }
+};
+
 export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect }) => {
   const [hovered, setHovered] = useState<string | null>(null);
   const H = M.top + values.length * ROW + M.bottom;
   const x = scaleLinear(1, 5, M.left, W - M.right);
   const active = hovered ?? selectedId ?? null;
-  const activeValue = values.find((v) => v.id === active);
+  const activeValue = values.find((v) => v.id === active || v.id === `V0${active?.replace('V', '')}` || active === `V0${v.id.replace('V', '')}`);
 
   return (
     <div className="rounded-xl border border-stone-800 bg-stone-950 overflow-hidden">
       <header className="px-5 py-3.5 border-b border-stone-800">
         <div className="flex flex-wrap items-center gap-2">
           <h3 className="font-serif font-semibold text-stone-100" style={{ fontSize: 'var(--t-h3)' }}>
-            Where the voice stands
+            Posisi gaya komunikasi Menungsa
           </h3>
           <span
-            className="px-2 py-0.5 rounded border font-mono uppercase tracking-wider"
-            style={{ borderColor: 'var(--cat-2)', color: 'var(--cat-2)', fontSize: 'var(--t-micro)' }}
+            className="px-2 py-0.5 rounded border font-mono uppercase tracking-wider bg-amber-500/10 border-amber-500/30 text-amber-400"
+            style={{ fontSize: 'var(--t-micro)' }}
           >
-            Strategic synthesis
+            Sintesis Strategis
           </span>
         </div>
         <p className="text-stone-400 mt-0.5" style={{ fontSize: 'var(--t-small)' }}>
-          Six positions Menungsa has chosen, not six quantities anyone measured. Hover a row for why it sits where it does.
+          Enam posisi yang dipilih Menungsa, bukan enam besaran yang diukur siapa pun. Arahkan kursor ke sebuah baris untuk melihat alasan posisinya.
         </p>
       </header>
 
@@ -70,7 +115,7 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
 
           {values.map((v, i) => {
             const y = M.top + i * ROW + ROW / 2;
-            const isActive = active === v.id;
+            const isActive = active === v.id || (active ? active.replace('V0', 'V') === v.id.replace('V0', 'V') : false);
             const dim = active && !isActive ? 0.26 : 1;
             const cx = x(v.spectrum.position);
 
@@ -96,11 +141,11 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                 <g opacity={dim}>
                   <SvgLabel x={6} y={y - ROW / 2 + 8} width={M.left - 22} height={ROW - 16}
                     align="end" tone="strong" lines={2}>
-                    {v.spectrum.leftPole}
+                    {ID_POLES[v.id]?.left || v.spectrum.leftPole}
                   </SvgLabel>
                   <SvgLabel x={W - M.right + 12} y={y - ROW / 2 + 8} width={M.right - 20} height={ROW - 16}
                     tone="strong" lines={2}>
-                    {v.spectrum.rightPole}
+                    {ID_POLES[v.id]?.right || v.spectrum.rightPole}
                   </SvgLabel>
                 </g>
 
@@ -124,11 +169,11 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                   className="chart-mark" opacity={dim}
                 />
                 <text
-                  x={cx} y={y - 15} textAnchor="middle"
+                  x={cx} y={y - 14} textAnchor="middle"
                   className="chart-axis-label" opacity={dim}
-                  style={{ fill: 'var(--chart-label-strong)' }}
+                  style={{ fill: isActive ? 'var(--accent)' : 'var(--chart-label-strong)', fontSize: '11px', fontWeight: isActive ? 600 : 500 }}
                 >
-                  {v.id}
+                  {ID_POLES[v.id]?.title.split(',')[0].replace(' untuk Memulai', '').replace(' yang Masuk Akal', '') || v.value}
                 </text>
                 {/* A value that stops short of the pole carries a reason; the gap is marked. */}
                 {v.spectrum.position < 5 && (
@@ -145,23 +190,21 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
       {activeValue && (
         <div className="px-5 py-3 border-t border-stone-800 bg-stone-900/40 space-y-1">
           <div className="flex flex-wrap items-baseline gap-2">
-            <span className="font-mono text-stone-500" style={{ fontSize: 'var(--t-micro)' }}>
-              {activeValue.id}
+            <span className="font-serif font-semibold text-amber-400" style={{ fontSize: 'var(--t-small)' }}>
+              {ID_POLES[activeValue.id]?.title || activeValue.value}
             </span>
-            <span className="font-serif font-semibold text-stone-100" style={{ fontSize: 'var(--t-small)' }}>
-              {activeValue.spectrum.dimension}
+            <span className="text-stone-400 text-xs font-sans">
+              — {ID_POLES[activeValue.id]?.dimension || activeValue.spectrum.dimension}
             </span>
           </div>
-          <p className="text-stone-300 leading-relaxed" style={{ fontSize: 'var(--t-small)' }}>
-            {activeValue.spectrum.positionNote}
+          <p className="text-stone-300 leading-relaxed font-sans" style={{ fontSize: 'var(--t-small)' }}>
+            {ID_POLES[activeValue.id]?.positionNote || activeValue.spectrum.positionNote}
           </p>
         </div>
       )}
 
       <footer className="px-5 py-3 border-t border-stone-800 text-stone-500" style={{ fontSize: 'var(--t-micro)' }}>
-        <span className="font-mono uppercase tracking-wider">Does not represent</span> measurement.
-        No reader was asked to rate Menungsa on any of these dimensions. The positions are editorial commitments
-        derived from the corpus, and the numbers are ordinal placeholders for an argument, not scores.
+        <span className="font-mono uppercase tracking-wider">Bukan Hasil Pengukuran:</span> Tidak ada pembaca yang diminta memberi nilai pada dimensi-dimensi ini. Posisi-posisi ini adalah komitmen editorial yang disintesis dari basis data riset Menungsa, dan angka 1–5 adalah penanda ordinal untuk spektrum pilihan, bukan skor evaluasi.
       </footer>
     </div>
   );

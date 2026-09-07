@@ -27,11 +27,11 @@ const M = { top: 52, right: 34, bottom: 54, left: 62 };
  * both that and printing.
  */
 const TYPE_SHAPES: Record<string, { label: string; shape: 'circle' | 'square' | 'triangle' | 'diamond' }> = {
-  '1st_person_singular': { label: '1st person singular', shape: 'circle' },
-  '2nd_person_singular': { label: '2nd person singular', shape: 'square' },
-  '1st_person_plural': { label: '1st person plural', shape: 'diamond' },
-  gender_term: { label: 'Gender term', shape: 'triangle' },
-  vocative: { label: 'Vocative', shape: 'diamond' },
+  '1st_person_singular': { label: 'orang pertama tunggal', shape: 'circle' },
+  '2nd_person_singular': { label: 'orang ke-2 tunggal', shape: 'square' },
+  '1st_person_plural': { label: 'orang pertama jamak', shape: 'diamond' },
+  gender_term: { label: 'istilah gender', shape: 'triangle' },
+  vocative: { label: 'panggilan', shape: 'diamond' },
 };
 
 function shapePath(shape: string, cx: number, cy: number, r: number): string {
@@ -93,16 +93,16 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
     <div className="rounded-xl border border-stone-800 bg-stone-950 overflow-hidden">
       <header className="px-5 py-3.5 border-b border-stone-800">
         <h3 className="font-serif font-semibold text-stone-100" style={{ fontSize: 'var(--t-h3)' }}>
-          Where each register actually sits
+          Peta Koordinat Ragam Bahasa &amp; Kata Ganti
         </h3>
         <p className="text-stone-400 mt-0.5" style={{ fontSize: 'var(--t-small)' }}>
-          Authority against intimacy. The gap in the upper middle is the position an institutional mental-health voice most needs and cannot borrow.
+          Otoritas terhadap kedekatan hubungan. Titik tengah yang seimbang (3/5, 3/5) adalah posisi yang paling dibutuhkan suara institusi tanpa meminjam keakraban semu.
         </p>
       </header>
 
       <div className="relative">
         <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto block" role="img"
-          aria-label="Map of twelve Indonesian registers by authority level against intimacy level">
+          aria-label="Peta ragam bahasa dan kata ganti berdasarkan tingkat otoritas dan kedekatan hubungan">
           <g className="chart-grid">
             {[1, 2, 3, 4, 5].map((v) => (
               <React.Fragment key={v}>
@@ -120,11 +120,11 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
           ))}
 
           <text x={(M.left + W - M.right) / 2} y={H - 14} textAnchor="middle" className="chart-axis-label">
-            authority · institutional distance →
+            otoritas · jarak institusional →
           </text>
           <text x={18} y={(M.top + H - M.bottom) / 2} textAnchor="middle" className="chart-axis-label"
             transform={`rotate(-90 18 ${(M.top + H - M.bottom) / 2})`}>
-            intimacy · licensed closeness →
+            kedekatan yang sesuai hubungan →
           </text>
 
           {/* The legend used to sit at a fixed 132px stride, which collided as soon as the
@@ -199,7 +199,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
             style={{ fontSize: 'var(--t-small)' }}>
             <div className="text-stone-100 font-medium">{activeReg.label}</div>
             <div className="font-mono text-stone-400 tabular-nums mt-0.5" style={{ fontSize: 'var(--t-micro)' }}>
-              authority {activeReg.authorityLevel}/5 · intimacy {activeReg.intimacyLevel}/5
+              otoritas {activeReg.authorityLevel}/5 · intimacy {activeReg.intimacyLevel}/5
             </div>
             <p className="text-stone-300 mt-1.5 leading-snug" style={{ fontSize: 'var(--t-micro)' }}>
               {activeReg.socialRelationship}
@@ -209,9 +209,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
       </div>
 
       <footer className="px-5 py-3 border-t border-stone-800 text-stone-500" style={{ fontSize: 'var(--t-micro)' }}>
-        <span className="font-mono uppercase tracking-wider">Does not represent</span> measured perception.
-        Both scales are analyst codings from sociolinguistic description and brand corpora; no Indonesian
-        reader has been asked to rate these terms in a controlled test.
+        <span className="font-mono uppercase tracking-wider">Catatan Riset:</span> Kedua skala ini merupakan hasil pengodean analisis dari deskripsi sosiolinguistik dan korpus komunikasi Menungsa. Pilihan kata ganti selalu merupakan pertimbangan relasional yang relatif.
       </footer>
     </div>
   );
