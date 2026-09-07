@@ -56,13 +56,13 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
 
     let dx = 0;
     let dy = 0;
-    let labelDy = -11;
+    let labelDy = -9;
 
     if (total > 1) {
       const j = jitter(n, total, 16);
       dx = j.dx;
       dy = j.dy;
-      labelDy = dy >= 0 ? 17 : -11;
+      labelDy = dy >= 0 ? 14 : -9;
     }
 
     return { ...r, dx, dy, labelDy };
@@ -289,16 +289,18 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
                   pointerEvents="none"
                 />
 
-                {/* Text Label */}
+                {/* Text Label - Smaller, Refined Typography */}
                 <text
                   x={cx}
                   y={cy + r.labelDy}
                   textAnchor="middle"
-                  className="font-sans text-[10px] select-none pointer-events-none"
+                  className={`font-sans text-[8px] select-none pointer-events-none tracking-tight ${
+                    isActive
+                      ? 'fill-stone-900 dark:fill-stone-100 font-bold'
+                      : 'fill-stone-600 dark:fill-stone-400 font-medium'
+                  }`}
                   style={{
-                    fill: isActive ? '#fafaf9' : '#a8a29e',
-                    fontWeight: isActive ? 700 : 500,
-                    textShadow: isActive ? '0 1px 4px rgba(0,0,0,0.8)' : 'none',
+                    textShadow: isActive ? '0 1px 3px rgba(0,0,0,0.4)' : 'none',
                   }}
                 >
                   {r.label}

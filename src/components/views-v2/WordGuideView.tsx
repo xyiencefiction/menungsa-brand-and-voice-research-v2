@@ -327,24 +327,30 @@ export const WordGuideView: React.FC = () => {
       {activeTab === 'pronouns' && (
         <div role="tabpanel" id="panel-pronouns" aria-labelledby="tab-pronouns" className="space-y-8">
           {/* Quick Decision Tool */}
-          <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-5 md:p-6 space-y-4">
-            <div className="flex items-center gap-2 text-amber-400 text-xs font-mono font-semibold uppercase">
+          <div className="rounded-xl border border-emerald-600/30 dark:border-emerald-500/30 bg-gradient-to-br from-emerald-950/20 via-stone-900/40 to-teal-950/20 p-5 md:p-6 space-y-5 shadow-sm">
+            <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-semibold uppercase tracking-wider">
               <Sparkles size={15} />
               <span>Asisten Pemilihan Kata Ganti Cepat</span>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-              <div role="radiogroup" aria-labelledby="speaker-type-label">
-                <label id="speaker-type-label" className="text-stone-200 font-medium block mb-1.5">Siapa yang berbicara di naskah ini?</label>
-                <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
+              {/* Question 1 */}
+              <div role="radiogroup" aria-labelledby="speaker-type-label" className="space-y-2.5 md:pr-5 md:border-r md:border-stone-300 dark:md:border-stone-800">
+                <div className="flex items-center gap-2">
+                  <span className="w-4 h-4 rounded-full bg-emerald-800/30 text-emerald-700 dark:text-emerald-300 font-mono text-[10px] font-bold flex items-center justify-center">1</span>
+                  <label id="speaker-type-label" className="text-stone-800 dark:text-stone-200 font-semibold block text-xs">
+                    Siapa yang berbicara di naskah ini?
+                  </label>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <button
                     role="radio"
                     aria-checked={speakerType === 'institution'}
                     onClick={() => setSpeakerType('institution')}
                     className={`p-3 rounded-lg border text-left cursor-pointer transition ${
                       speakerType === 'institution'
-                        ? 'border-amber-500 bg-amber-500/20 text-stone-100 font-semibold'
-                        : 'border-stone-800 bg-stone-900 text-stone-400'
+                        ? 'border-emerald-600 dark:border-emerald-500 bg-emerald-900/25 dark:bg-emerald-950/40 text-stone-900 dark:text-stone-100 font-semibold ring-1 ring-emerald-500/40'
+                        : 'border-stone-300 dark:border-stone-800 bg-stone-100/50 dark:bg-stone-900/80 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200'
                     }`}
                   >
                     🏢 Organisasi Menungsa
@@ -355,8 +361,8 @@ export const WordGuideView: React.FC = () => {
                     onClick={() => setSpeakerType('person')}
                     className={`p-3 rounded-lg border text-left cursor-pointer transition ${
                       speakerType === 'person'
-                        ? 'border-amber-500 bg-amber-500/20 text-stone-100 font-semibold'
-                        : 'border-stone-800 bg-stone-900 text-stone-400'
+                        ? 'border-emerald-600 dark:border-emerald-500 bg-emerald-900/25 dark:bg-emerald-950/40 text-stone-900 dark:text-stone-100 font-semibold ring-1 ring-emerald-500/40'
+                        : 'border-stone-300 dark:border-stone-800 bg-stone-100/50 dark:bg-stone-900/80 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200'
                     }`}
                   >
                     ✍️ Individu Bernama Nyata
@@ -364,17 +370,23 @@ export const WordGuideView: React.FC = () => {
                 </div>
               </div>
 
-              <div role="radiogroup" aria-labelledby="privacy-type-label">
-                <label id="privacy-type-label" className="text-stone-200 font-medium block mb-1.5">Di mana naskah ini akan diterbitkan?</label>
-                <div className="grid grid-cols-2 gap-2">
+              {/* Question 2 */}
+              <div role="radiogroup" aria-labelledby="privacy-type-label" className="space-y-2.5 md:pl-2">
+                <div className="flex items-center gap-2">
+                  <span className="w-4 h-4 rounded-full bg-emerald-800/30 text-emerald-700 dark:text-emerald-300 font-mono text-[10px] font-bold flex items-center justify-center">2</span>
+                  <label id="privacy-type-label" className="text-stone-800 dark:text-stone-200 font-semibold block text-xs">
+                    Di mana naskah ini akan diterbitkan?
+                  </label>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <button
                     role="radio"
                     aria-checked={privacyType === 'public'}
                     onClick={() => setPrivacyType('public')}
                     className={`p-3 rounded-lg border text-left cursor-pointer transition ${
                       privacyType === 'public'
-                        ? 'border-amber-500 bg-amber-500/20 text-stone-100 font-semibold'
-                        : 'border-stone-800 bg-stone-900 text-stone-400'
+                        ? 'border-emerald-600 dark:border-emerald-500 bg-emerald-900/25 dark:bg-emerald-950/40 text-stone-900 dark:text-stone-100 font-semibold ring-1 ring-emerald-500/40'
+                        : 'border-stone-300 dark:border-stone-800 bg-stone-100/50 dark:bg-stone-900/80 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200'
                     }`}
                   >
                     📢 Ruang Terbuka (Medsos, Web)
@@ -385,8 +397,8 @@ export const WordGuideView: React.FC = () => {
                     onClick={() => setPrivacyType('private')}
                     className={`p-3 rounded-lg border text-left cursor-pointer transition ${
                       privacyType === 'private'
-                        ? 'border-amber-500 bg-amber-500/20 text-stone-100 font-semibold'
-                        : 'border-stone-800 bg-stone-900 text-stone-400'
+                        ? 'border-emerald-600 dark:border-emerald-500 bg-emerald-900/25 dark:bg-emerald-950/40 text-stone-900 dark:text-stone-100 font-semibold ring-1 ring-emerald-500/40'
+                        : 'border-stone-300 dark:border-stone-800 bg-stone-100/50 dark:bg-stone-900/80 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200'
                     }`}
                   >
                     🔒 Ruang Tertutup (WA, DM, Chat)
@@ -396,16 +408,16 @@ export const WordGuideView: React.FC = () => {
             </div>
 
             {/* Recommendation Result */}
-            <div className="rounded-lg bg-stone-900 border border-stone-800 p-4 text-xs space-y-1.5">
-              <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider block font-semibold">
+            <div className="rounded-lg bg-stone-900/80 border border-emerald-500/30 p-4 text-xs space-y-1.5 shadow-sm">
+              <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 uppercase tracking-wider block font-semibold">
                 Rekomendasi Kata Ganti yang Disarankan:
               </span>
-              <div className="flex flex-wrap items-center gap-3 text-stone-100 font-medium text-sm">
-                <span>Orang Pertama: <strong className="text-amber-300 font-serif text-base">{recommendation.firstPerson}</strong></span>
-                <span>·</span>
-                <span>Orang Kedua: <strong className="text-amber-300 font-serif text-base">{recommendation.pronoun}</strong></span>
+              <div className="flex flex-wrap items-center gap-3 text-stone-900 dark:text-stone-100 font-medium text-sm">
+                <span>Orang Pertama: <strong className="text-emerald-700 dark:text-emerald-300 font-serif text-base">{recommendation.firstPerson}</strong></span>
+                <span className="text-stone-400">·</span>
+                <span>Orang Kedua: <strong className="text-emerald-700 dark:text-emerald-300 font-serif text-base">{recommendation.pronoun}</strong></span>
               </div>
-              <p className="text-stone-300 pt-1 leading-relaxed">{recommendation.note}</p>
+              <p className="text-stone-600 dark:text-stone-300 pt-1 leading-relaxed">{recommendation.note}</p>
             </div>
           </div>
 

@@ -135,14 +135,14 @@ export const FramingMatrix: React.FC<Props> = ({
             </radialGradient>
 
             <radialGradient id="gradTopRight" cx="75%" cy="25%" r="75%">
-              <stop offset="0%" stopColor="#ef4444" stopOpacity="0.08" />
-              <stop offset="60%" stopColor="#7f1d1d" stopOpacity="0.02" />
+              <stop offset="0%" stopColor="#ef4444" stopOpacity="0.16" />
+              <stop offset="60%" stopColor="#b91c1c" stopOpacity="0.06" />
               <stop offset="100%" stopColor="#0c0a09" stopOpacity="0" />
             </radialGradient>
 
             <radialGradient id="gradBottomLeft" cx="25%" cy="75%" r="75%">
-              <stop offset="0%" stopColor="#10b981" stopOpacity="0.08" />
-              <stop offset="60%" stopColor="#064e3b" stopOpacity="0.02" />
+              <stop offset="0%" stopColor="#10b981" stopOpacity="0.16" />
+              <stop offset="60%" stopColor="#047857" stopOpacity="0.06" />
               <stop offset="100%" stopColor="#0c0a09" stopOpacity="0" />
             </radialGradient>
 
@@ -363,11 +363,13 @@ export const FramingMatrix: React.FC<Props> = ({
                   x={cx}
                   y={item.id === 'skincare' && isPublic ? cy + 18 : cy - 11}
                   textAnchor="middle"
-                  className="font-sans text-[10.5px] select-none"
+                  className={`font-sans text-[10.5px] select-none ${
+                    active
+                      ? 'fill-stone-900 dark:fill-stone-100 font-bold'
+                      : 'fill-stone-700 dark:fill-stone-300 font-medium'
+                  }`}
                   style={{
-                    fill: active ? '#fafaf9' : '#d6d3d1',
-                    fontWeight: active ? 700 : 500,
-                    textShadow: active ? '0 1px 4px rgba(0,0,0,0.9)' : 'none',
+                    textShadow: active ? '0 1px 4px rgba(0,0,0,0.5)' : 'none',
                   }}
                 >
                   {item.name}

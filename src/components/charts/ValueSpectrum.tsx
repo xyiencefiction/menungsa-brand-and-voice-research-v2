@@ -104,25 +104,17 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
               </feMerge>
             </filter>
 
-            {/* Continuous Active Spectrum Gradient: Cool Slate to Warm Terracotta & Antique Gold */}
-            <linearGradient id="activeSpectrumRibbon" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#1e293b" stopOpacity="0.8" />
-              <stop offset="35%" stopColor="#4338ca" stopOpacity="0.25" />
-              <stop offset="65%" stopColor="#9a3412" stopOpacity="0.75" />
-              <stop offset="90%" stopColor="#af4d28" stopOpacity="0.95" />
-              <stop offset="100%" stopColor="#c5a059" stopOpacity="1" />
-            </linearGradient>
-
-            {/* Muted Inactive Spectrum Gradient */}
-            <linearGradient id="inactiveSpectrumRibbon" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#1c1917" stopOpacity="0.6" />
-              <stop offset="50%" stopColor="#292524" stopOpacity="0.7" />
-              <stop offset="100%" stopColor="#44403c" stopOpacity="0.8" />
+            {/* Continuous Orange to Green Spectrum Gradient: Menungsa Orange (#AF4D28) to Menungsa Green (#2E4034) */}
+            <linearGradient id="spectrumOrangeToGreen" gradientUnits="userSpaceOnUse" x1={M.left} y1="0" x2={W - M.right} y2="0">
+              <stop offset="0%" stopColor="#AF4D28" />
+              <stop offset="35%" stopColor="#C4733E" />
+              <stop offset="70%" stopColor="#5D7A68" />
+              <stop offset="100%" stopColor="#2E4034" />
             </linearGradient>
 
             {/* Subtle Spectrometer Slit Pattern */}
             <pattern id="spectroGrating" width="8" height="12" patternUnits="userSpaceOnUse">
-              <line x1="0" y1="0" x2="0" y2="12" stroke="rgba(0, 0, 0, 0.4)" strokeWidth="1" />
+              <line x1="0" y1="0" x2="0" y2="12" stroke="rgba(0, 0, 0, 0.35)" strokeWidth="1" />
             </pattern>
           </defs>
 
@@ -208,28 +200,38 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                   </SvgLabel>
                 </g>
 
-                {/* Continuous Spectral Ribbon Bar */}
+                {/* Empty / Muted Gray Track for Full 1-5 Continuum */}
                 <rect
                   x={M.left}
                   y={ribbonY}
                   width={trackWidth}
                   height={ribbonHeight}
                   rx={ribbonHeight / 2}
-                  fill={isActive ? 'url(#activeSpectrumRibbon)' : 'url(#inactiveSpectrumRibbon)'}
-                  stroke="rgba(255, 255, 255, 0.08)"
-                  strokeWidth={1}
-                  opacity={dim}
+                  fill="rgba(120, 113, 108, 0.18)"
+                  stroke="rgba(120, 113, 108, 0.28)"
+                  strokeWidth={0.8}
                 />
 
-                {/* Optical Grating Hash Overlay */}
+                {/* Active Colored Ribbon Filled Only Up to Position (e.g. 4/5 fills up to point 4, remainder is gray) */}
                 <rect
                   x={M.left}
                   y={ribbonY}
-                  width={trackWidth}
+                  width={Math.max(ribbonHeight, cx - M.left)}
+                  height={ribbonHeight}
+                  rx={ribbonHeight / 2}
+                  fill="url(#spectrumOrangeToGreen)"
+                  opacity={isActive ? 1 : 0.6}
+                />
+
+                {/* Optical Grating Hash Overlay on Filled Portion */}
+                <rect
+                  x={M.left}
+                  y={ribbonY}
+                  width={Math.max(ribbonHeight, cx - M.left)}
                   height={ribbonHeight}
                   rx={ribbonHeight / 2}
                   fill="url(#spectroGrating)"
-                  opacity={dim * 0.7}
+                  opacity={isActive ? 0.35 : 0.15}
                 />
 
                 {/* Right Pole Label (Recommended approach) */}
@@ -247,36 +249,35 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                   </SvgLabel>
                 </g>
 
-                {/* Value Shortened Title above the ribbon */}
+                {/* Value Shortened Title above the ribbon - High Contrast in Light & Dark Mode */}
                 <text
                   x={M.left + 4}
-                  y={ribbonY - 4}
-                  className="font-sans text-[9.5px] select-none"
+                  y={ribbonY - 5}
+                  className="font-sans text-[10px] select-none fill-stone-900 dark:fill-stone-100"
                   opacity={dim}
                   style={{
-                    fill: isActive ? '#f5f5f4' : '#a8a29e',
                     fontWeight: isActive ? 700 : 500,
                   }}
                 >
                   {ID_POLES[v.id]?.title.split(',')[0] || v.value}
                 </text>
 
-                {/* Spectrometer Cursor: Precision Vertical Needle & Pip */}
+                {/* Spectrometer Cursor: Precision Vertical Needle & Pip at Target Position */}
                 <g opacity={dim}>
                   {/* Subtle Needle Trail */}
                   <line
                     x1={cx}
-                    y1={ribbonY - 5}
+                    y1={ribbonY - 4}
                     x2={cx}
-                    y2={ribbonY + ribbonHeight + 5}
+                    y2={ribbonY + ribbonHeight + 4}
                     stroke={isActive ? '#fafaf9' : 'rgba(255, 255, 255, 0.4)'}
                     strokeWidth={isActive ? 1.5 : 1}
                   />
 
                   {/* Top Pointer Notch */}
                   <path
-                    d={`M ${cx - 3.5} ${ribbonY - 5} L ${cx + 3.5} ${ribbonY - 5} L ${cx} ${ribbonY - 1} Z`}
-                    fill={isActive ? '#fafaf9' : '#a8a29e'}
+                    d={`M ${cx - 3.5} ${ribbonY - 4} L ${cx + 3.5} ${ribbonY - 4} L ${cx} ${ribbonY} Z`}
+                    fill={isActive ? '#fafaf9' : '#d6d3d1'}
                   />
 
                   {/* Active Indicator Pip in Center of Ribbon */}
@@ -297,19 +298,6 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                     stroke="#0c0a09"
                     strokeWidth={1.5}
                   />
-
-                  {/* Score Pill Tag beside cursor */}
-                  <text
-                    x={cx + (v.spectrum.position >= 5 ? -8 : 8)}
-                    y={ribbonY - 4}
-                    textAnchor={v.spectrum.position >= 5 ? 'end' : 'start'}
-                    className="font-mono text-[9px] font-bold select-none"
-                    style={{
-                      fill: isActive ? '#c5a059' : '#78716c',
-                    }}
-                  >
-                    posisi {v.spectrum.position}/5
-                  </text>
                 </g>
               </g>
             );
