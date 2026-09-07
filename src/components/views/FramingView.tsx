@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Term } from '../common/Term';
-import { Compass, CheckCircle2, XCircle, AlertTriangle, HelpCircle, ArrowRight, ShieldAlert } from 'lucide-react';
+import { CheckCircle2, HelpCircle } from 'lucide-react';
 import { FramingMatrix } from '../charts/FramingMatrix';
 
 export const FramingView: React.FC = () => {

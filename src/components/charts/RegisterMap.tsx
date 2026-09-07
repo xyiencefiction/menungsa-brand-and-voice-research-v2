@@ -143,7 +143,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
                   y1={M.top}
                   x2={x(v)}
                   y2={H - M.bottom}
-                  stroke={v === 3 ? 'rgba(175, 77, 40, 0.35)' : 'rgba(255, 255, 255, 0.06)'}
+                  stroke={v === 3 ? 'rgba(175, 77, 40, 0.35)' : 'var(--chart-grid)'}
                   strokeWidth={v === 3 ? 1.2 : 0.8}
                   strokeDasharray={v === 3 ? '3 3' : '2 3'}
                 />
@@ -152,7 +152,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
                   y1={y(v)}
                   x2={W - M.right}
                   y2={y(v)}
-                  stroke={v === 3 ? 'rgba(175, 77, 40, 0.35)' : 'rgba(255, 255, 255, 0.06)'}
+                  stroke={v === 3 ? 'rgba(175, 77, 40, 0.35)' : 'var(--chart-grid)'}
                   strokeWidth={v === 3 ? 1.2 : 0.8}
                   strokeDasharray={v === 3 ? '3 3' : '2 3'}
                 />
@@ -179,7 +179,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
             width={W - M.left - M.right}
             height={H - M.top - M.bottom}
             fill="none"
-            stroke="rgba(255, 255, 255, 0.08)"
+            stroke="var(--chart-grid)"
             strokeWidth={1}
             rx={4}
           />
@@ -280,7 +280,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
                 <path
                   d={shapePath(shape, cx, cy, isActive ? 6.5 : 5)}
                   fill={isActive ? '#af4d28' : '#a8a29e'}
-                  stroke="#0c0a09"
+                  stroke="var(--chart-surface)"
                   strokeWidth={1.5}
                   pointerEvents="none"
                 />
@@ -292,8 +292,8 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
                   textAnchor="middle"
                   className={`font-sans text-[8px] select-none pointer-events-none tracking-tight ${
                     isActive
-                      ? 'fill-stone-900 dark:fill-stone-100 font-bold'
-                      : 'fill-stone-600 dark:fill-stone-400 font-medium'
+                      ? 'fill-stone-100 font-bold'
+                      : 'fill-stone-400 font-medium'
                   }`}
                   style={{
                     textShadow: isActive ? '0 1px 3px rgba(0,0,0,0.4)' : 'none',

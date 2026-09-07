@@ -124,7 +124,7 @@ export const FramingMatrix: React.FC<Props> = ({
               patternTransform="rotate(45 0 0)"
               patternUnits="userSpaceOnUse"
             >
-              <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(255, 255, 255, 0.08)" strokeWidth="0.9" />
+              <line x1="0" y1="0" x2="0" y2="6" stroke="var(--chart-grid)" strokeWidth={0.9} />
             </pattern>
 
             {/* Quadrant Radial Gradients for Architectural Atmosphere */}
@@ -180,7 +180,7 @@ export const FramingMatrix: React.FC<Props> = ({
             width={W - M.left - M.right}
             height={H - M.top - M.bottom}
             fill="none"
-            stroke="rgba(255, 255, 255, 0.08)"
+            stroke="var(--chart-grid)"
             strokeWidth={1}
             rx={4}
           />
@@ -191,7 +191,7 @@ export const FramingMatrix: React.FC<Props> = ({
             y1={midY}
             x2={W - M.right}
             y2={midY}
-            stroke="rgba(255, 255, 255, 0.15)"
+            stroke="var(--chart-axis)"
             strokeWidth={1}
             strokeDasharray="3 3"
           />
@@ -200,14 +200,14 @@ export const FramingMatrix: React.FC<Props> = ({
             y1={M.top}
             x2={midX}
             y2={H - M.bottom}
-            stroke="rgba(255, 255, 255, 0.15)"
+            stroke="var(--chart-axis)"
             strokeWidth={1}
             strokeDasharray="3 3"
           />
 
           {/* Center Nexus Dot with Rings */}
-          <circle cx={midX} cy={midY} r={7} fill="none" stroke="rgba(255, 255, 255, 0.15)" strokeWidth={1} />
-          <circle cx={midX} cy={midY} r={2} fill="rgba(255, 255, 255, 0.6)" />
+          <circle cx={midX} cy={midY} r={7} fill="none" stroke="var(--chart-axis)" strokeWidth={1} />
+          <circle cx={midX} cy={midY} r={2} fill="var(--chart-axis)" />
 
           {/* Quadrant Labels with Minimal Architectural Typography */}
           {/* Top-Left: Identity Protection Zone */}
@@ -279,9 +279,6 @@ export const FramingMatrix: React.FC<Props> = ({
             const isHovered = hoveredAction === item.id;
             const active = isSelected || isHovered;
 
-            const yPriv = y(item.yPrivate);
-            const yPub = y(item.yPublic);
-
             return (
               <g
                 key={item.id}
@@ -344,8 +341,8 @@ export const FramingMatrix: React.FC<Props> = ({
                   textAnchor="middle"
                   className={`font-sans text-[10.5px] select-none ${
                     active
-                      ? 'fill-stone-900 dark:fill-stone-100 font-bold'
-                      : 'fill-stone-700 dark:fill-stone-300 font-medium'
+                      ? 'fill-stone-100 font-bold'
+                      : 'fill-stone-300 font-medium'
                   }`}
                   style={{
                     textShadow: active ? '0 1px 4px rgba(0,0,0,0.5)' : 'none',

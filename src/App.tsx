@@ -15,22 +15,13 @@ const WordGuideView = React.lazy(() => import('./components/views-v2/WordGuideVi
 const CopySandboxView = React.lazy(() => import('./components/views-v2/CopySandboxView').then(m => ({ default: m.CopySandboxView })));
 const IndonesianNuancesView = React.lazy(() => import('./components/views-v2/IndonesianNuancesView').then(m => ({ default: m.IndonesianNuancesView })));
 
-// Legacy Views for Deep Link Support (Lazy Loaded on demand)
-const OverviewView = React.lazy(() => import('./components/views/OverviewView').then(m => ({ default: m.OverviewView })));
+// Research Deep Link Support (Lazy Loaded on demand)
 const MechanismsView = React.lazy(() => import('./components/views/MechanismsView').then(m => ({ default: m.MechanismsView })));
 const EvidenceView = React.lazy(() => import('./components/views/EvidenceView').then(m => ({ default: m.EvidenceView })));
 const CrossReportView = React.lazy(() => import('./components/views/CrossReportView').then(m => ({ default: m.CrossReportView })));
 const ContradictionsView = React.lazy(() => import('./components/views/ContradictionsView').then(m => ({ default: m.ContradictionsView })));
-const LanguageLabView = React.lazy(() => import('./components/views/LanguageLabView').then(m => ({ default: m.LanguageLabView })));
 const ResonanceView = React.lazy(() => import('./components/views/ResonanceView').then(m => ({ default: m.ResonanceView })));
-const FramingView = React.lazy(() => import('./components/views/FramingView').then(m => ({ default: m.FramingView })));
-const ManosphereView = React.lazy(() => import('./components/views/ManosphereView').then(m => ({ default: m.ManosphereView })));
-const MoralCommsView = React.lazy(() => import('./components/views/MoralCommsView').then(m => ({ default: m.MoralCommsView })));
-const VoiceLabView = React.lazy(() => import('./components/views/VoiceLabView').then(m => ({ default: m.VoiceLabView })));
-const PlaybookView = React.lazy(() => import('./components/views/PlaybookView').then(m => ({ default: m.PlaybookView })));
 const ResearchGapsView = React.lazy(() => import('./components/views/ResearchGapsView').then(m => ({ default: m.ResearchGapsView })));
-const ValuesView = React.lazy(() => import('./components/views/ValuesView').then(m => ({ default: m.ValuesView })));
-const ChannelsView = React.lazy(() => import('./components/views/ChannelsView').then(m => ({ default: m.ChannelsView })));
 
 const ViewFallback: React.FC = () => (
   <div className="min-h-[45vh] flex flex-col items-center justify-center space-y-3 py-16 animate-pulse" role="status" aria-label="Memuat panduan">
