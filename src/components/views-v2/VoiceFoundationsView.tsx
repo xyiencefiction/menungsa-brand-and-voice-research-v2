@@ -269,8 +269,8 @@ const PLAYBOOK_ITEMS: PlaybookItem[] = [
     rationale: 'Di ruang publik (media sosial, baliho), pria menjaga harga diri dan status sosial. Tempatkan emosi sensitif di saluran privat (chat tertutup).',
     doText: 'Di linimasa publik: fokus pada manajemen waktu, kebugaran fisik, dan ketrampilan kerja nyata.',
     doWhy: 'Aman dibaca di depan kawan sebaya tanpa khawatir dihakimi atau diledek.',
-    dontText: 'Di linimasa publik: meminta pria menangis bersama atau membuka aib rumah tangganya.',
-    dontWhy: 'Melanggar batas privasi budaya Indonesia dan memicu cemoohan publik.'
+    dontText: 'Share di kolom komentar, cerita paling sedih atau aib rumah tangga yang selama ini kamu pendam dari pasanganmu!',
+    dontWhy: 'Meminta pembongkaran privasi keluarga di linimasa terbuka yang melanggar batas martabat pria di ruang publik.'
   },
   {
     id: 'R06',
@@ -280,8 +280,8 @@ const PLAYBOOK_ITEMS: PlaybookItem[] = [
     rationale: 'Label hiper-maskulin langsung dicap sebagai hal yang canggung (cringe) dan manipulatif oleh pria dewasa Indonesia.',
     doText: 'Menyelesaikan pekerjaan dengan tuntas dan menjaga keluarga tetap aman.',
     doWhy: 'Fokus pada tanggung jawab dan fungsi nyata tanpa embel-embel jargon maskulinitas.',
-    dontText: 'Buktikan kalau kamu pria alfa sejati yang pantang menyerah menaklukkan dunia!',
-    dontWhy: 'Klise manosphere yang terdengar kekanak-kanakan dan tidak membumi.'
+    dontText: 'Cowok yang bernilai tinggi itu nggak kenal kata menyerah. Buktikan kamu punya mental baja untuk sukses!',
+    dontWhy: 'Slogan hustle/manosphere klise yang menekan pembaca dengan tuntutan performa semu.'
   }
 ];
 
