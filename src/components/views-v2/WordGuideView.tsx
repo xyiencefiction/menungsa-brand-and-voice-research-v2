@@ -400,7 +400,7 @@ export const WordGuideView: React.FC = () => {
                     }`}
                   >
                     <div className={`font-serif text-sm ${selectedRegisterId === reg.id ? 'text-bone font-bold' : 'text-stone-100 font-medium'}`}>{reg.name}</div>
-                    <div className={`text-[9.5px] font-mono ${selectedRegisterId === reg.id ? 'text-emerald-200' : 'text-stone-500'}`}>
+                    <div className={`text-[9.5px] font-mono ${selectedRegisterId === reg.id ? 'text-bone/80' : 'text-stone-500'}`}>
                       {reg.authorityLevel}/5 · {reg.intimacyLevel}/5
                     </div>
                   </button>
