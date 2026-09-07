@@ -80,7 +80,7 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
           </span>
         </div>
         <p className="text-stone-400 text-[11px] font-sans">
-          Spektrum Berkelanjutan Antarkutub Nilai (Skala 1–5)
+          Spektrum Berkelanjutan Antarkutub Nilai
         </p>
       </header>
 
@@ -118,30 +118,20 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
             </pattern>
           </defs>
 
-          {/* Precision Spectrometer Reference Scale Ticks (1 to 5) */}
+          {/* Precision Spectrometer Reference Scale Grid Lines */}
           <g className="chart-grid">
             {[1, 2, 3, 4, 5].map((v) => (
-              <React.Fragment key={v}>
-                <line
-                  x1={x(v)}
-                  y1={M.top - 8}
-                  x2={x(v)}
-                  y2={H - M.bottom + 2}
-                  stroke="var(--chart-grid)"
-                  strokeWidth={1}
-                  strokeDasharray="2 3"
-                  opacity={0.4}
-                />
-                <text
-                  x={x(v)}
-                  y={M.top - 14}
-                  textAnchor="middle"
-                  className="font-mono text-[9px] font-medium select-none"
-                  style={{ fill: 'var(--chart-label)' }}
-                >
-                  {v}
-                </text>
-              </React.Fragment>
+              <line
+                key={v}
+                x1={x(v)}
+                y1={M.top - 6}
+                x2={x(v)}
+                y2={H - M.bottom + 2}
+                stroke="var(--chart-grid)"
+                strokeWidth={1}
+                strokeDasharray="2 3"
+                opacity={0.35}
+              />
             ))}
           </g>
 
@@ -152,7 +142,7 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
             const dim = active && !isActive ? 0.32 : 1;
             const cx = x(v.spectrum.position);
             const ribbonHeight = 12;
-            const ribbonY = y - ribbonHeight / 2 + 4;
+            const ribbonY = y - ribbonHeight / 2;
 
             return (
               <g
@@ -190,9 +180,9 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                 <g opacity={dim}>
                   <SvgLabel
                     x={4}
-                    y={y - ROW / 2 + 6}
+                    y={y - ROW / 2}
                     width={M.left - 14}
-                    height={ROW - 10}
+                    height={ROW}
                     align="end"
                     tone="label"
                     size={9.5}
@@ -240,9 +230,9 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                 <g opacity={dim}>
                   <SvgLabel
                     x={W - M.right + 10}
-                    y={y - ROW / 2 + 6}
+                    y={y - ROW / 2}
                     width={M.right - 14}
-                    height={ROW - 10}
+                    height={ROW}
                     tone="strong"
                     size={9.5}
                     lines={2}
@@ -250,20 +240,6 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                     {ID_POLES[v.id]?.right || v.spectrum.rightPole}
                   </SvgLabel>
                 </g>
-
-                {/* Value Shortened Title above the ribbon - High Contrast in Light & Dark Mode */}
-                <text
-                  x={M.left + 4}
-                  y={ribbonY - 5}
-                  className="font-sans text-[10px] select-none tracking-tight"
-                  opacity={active && !isActive ? 0.45 : 1}
-                  style={{
-                    fill: 'var(--chart-label-strong)',
-                    fontWeight: isActive ? 700 : 500,
-                  }}
-                >
-                  {ID_POLES[v.id]?.title.split(',')[0] || v.value}
-                </text>
 
                 {/* Spectrometer Cursor: Precision Vertical Needle & Pip at Target Position */}
                 <g opacity={dim}>
@@ -328,7 +304,7 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
       {/* Footer */}
       <footer className="px-4 py-1.5 border-t border-stone-800 text-stone-500 text-[10px] font-mono flex items-center justify-between">
         <span>KOMITMEN SPEKTRUM EDITORIAL MENUNGSA</span>
-        <span className="text-stone-400 hidden sm:inline">KONTINUUM ORDINAL 1–5</span>
+        <span className="text-stone-400 hidden sm:inline">KONTINUUM BERKELANJUTAN</span>
       </footer>
     </div>
   );
