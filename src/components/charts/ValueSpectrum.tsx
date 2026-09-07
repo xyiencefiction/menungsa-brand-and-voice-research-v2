@@ -3,9 +3,9 @@ import type { BrandValue } from '../../types';
 import { scaleLinear } from './chartUtils';
 import { SvgLabel } from './SvgLabel';
 
-const W = 680;
-const ROW = 44;
-const M = { top: 32, right: 154, bottom: 24, left: 154 };
+const W = 620;
+const ROW = 42;
+const M = { top: 28, right: 136, bottom: 20, left: 136 };
 
 interface Props {
   values: BrandValue[];
@@ -88,7 +88,7 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
       <div className="p-3 overflow-x-auto relative">
         <svg
           viewBox={`0 0 ${W} ${H}`}
-          className="w-full h-auto block min-w-[580px]"
+          className="w-full h-auto block min-w-[480px]"
           role="img"
           aria-label="Six brand values plotted as chosen positions on continuous spectral ribbons"
         >
@@ -181,11 +181,11 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                   <SvgLabel
                     x={4}
                     y={y - ROW / 2}
-                    width={M.left - 14}
+                    width={M.left - 12}
                     height={ROW}
                     align="end"
                     tone="label"
-                    size={9.5}
+                    size={8.8}
                     lines={2}
                   >
                     {ID_POLES[v.id]?.left || v.spectrum.leftPole}
@@ -229,12 +229,12 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
                 {/* Right Pole Label (Recommended approach) */}
                 <g opacity={dim}>
                   <SvgLabel
-                    x={W - M.right + 10}
+                    x={W - M.right + 8}
                     y={y - ROW / 2}
-                    width={M.right - 14}
+                    width={M.right - 12}
                     height={ROW}
                     tone="strong"
-                    size={9.5}
+                    size={8.8}
                     lines={2}
                   >
                     {ID_POLES[v.id]?.right || v.spectrum.rightPole}

@@ -500,44 +500,51 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
           </p>
         </div>
 
-        {/* Visualizer: Value Spectrum */}
-        <ValueSpectrum
-          values={brandValues}
-          selectedId={activeValueId}
-          onSelect={(id) => setActiveValueId(id)}
-        />
+        {/* Visualizer & 6 Value Selector Cards (2-Column Desktop Grid) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+          {/* Left Column: Value Spectrum Chart */}
+          <div className="lg:col-span-7">
+            <ValueSpectrum
+              values={brandValues}
+              selectedId={activeValueId}
+              onSelect={(id) => setActiveValueId(id)}
+            />
+          </div>
 
-        {/* Value selector cards without V1, V2, V6 clutter */}
-        <div role="tablist" aria-label="Enam prinsip menulis" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {VALUE_PILLARS.map((val, idx) => {
-            const Icon = valueIcons[idx % valueIcons.length];
-            const isSelected = val.id === activeValueId;
-            return (
-              <button
-                key={val.id}
-                role="tab"
-                id={`tab-value-${val.id}`}
-                aria-selected={isSelected}
-                aria-controls="panel-value-detail"
-                onClick={() => setActiveValueId(val.id)}
-                className={`p-4 rounded-[9px] border text-left transition-all cursor-pointer ${
-                  isSelected
-                    ? 'border-amber-500/60 bg-amber-500/10 text-stone-100 shadow-raised ring-1 ring-amber-500/30'
-                    : 'border-stone-800 bg-stone-900/40 text-stone-400 hover:border-stone-700 hover:text-stone-200'
-                }`}
-              >
-                <div className="flex items-start gap-2.5 mb-2">
-                  <Icon size={18} className={`shrink-0 mt-0.5 ${isSelected ? 'text-amber-500' : 'text-stone-400'}`} />
-                  <div className="font-serif text-base font-semibold text-stone-100 leading-snug">
-                    {val.title}
-                  </div>
-                </div>
-                <div className="text-xs text-stone-400 pl-7 line-clamp-2 leading-relaxed font-sans">
-                  {val.voiceTrait}
-                </div>
-              </button>
-            );
-          })}
+          {/* Right Column: 6 Value Selector Cards (2 cols x 3 rows on desktop) */}
+          <div className="lg:col-span-5">
+            <div role="tablist" aria-label="Enam prinsip menulis" className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-2 gap-2.5">
+              {VALUE_PILLARS.map((val, idx) => {
+                const Icon = valueIcons[idx % valueIcons.length];
+                const isSelected = val.id === activeValueId;
+                return (
+                  <button
+                    key={val.id}
+                    role="tab"
+                    id={`tab-value-${val.id}`}
+                    aria-selected={isSelected}
+                    aria-controls="panel-value-detail"
+                    onClick={() => setActiveValueId(val.id)}
+                    className={`p-3 sm:p-3.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between min-h-[105px] ${
+                      isSelected
+                        ? 'border-amber-500/70 bg-amber-500/10 text-stone-100 shadow-raised ring-1 ring-amber-500/40'
+                        : 'border-stone-800 bg-stone-900/40 text-stone-400 hover:border-stone-700 hover:text-stone-200'
+                    }`}
+                  >
+                    <div className="flex items-start gap-2 mb-1.5">
+                      <Icon size={16} className={`shrink-0 mt-0.5 ${isSelected ? 'text-amber-500' : 'text-stone-400'}`} />
+                      <div className="font-serif text-sm font-semibold text-stone-100 leading-snug">
+                        {val.title}
+                      </div>
+                    </div>
+                    <div className="text-[11px] text-stone-400 pl-6 line-clamp-2 leading-relaxed font-sans">
+                      {val.voiceTrait}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         {/* Active Value Deep Dive Card */}
