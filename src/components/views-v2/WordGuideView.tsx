@@ -10,7 +10,7 @@ import {
   X,
   HeartHandshake
 } from 'lucide-react';
-import { RegisterMap } from '../charts/RegisterMap';
+import { RegisterMap, LunarPips } from '../charts/RegisterMap';
 import { languageRegisters } from '../../data';
 
 interface RegisterItem {
@@ -356,9 +356,9 @@ export const WordGuideView: React.FC = () => {
                         <span className="text-[10px] font-mono text-amber-500 uppercase font-bold tracking-wider">Penjelasan sapaan</span>
                         <h4 className="text-xl font-serif font-bold text-stone-100">{activeRegister.name}</h4>
                       </div>
-                      <div className="text-right text-[11px] font-mono text-stone-400">
-                        <div>Otoritas: <strong className="text-amber-500 font-bold">{activeRegister.authorityLevel}/5</strong></div>
-                        <div>Keintiman: <strong className="text-amber-500 font-bold">{activeRegister.intimacyLevel}/5</strong></div>
+                      <div className="flex flex-col items-end gap-1.5 text-[11px] font-mono text-stone-400">
+                        <LunarPips level={activeRegister.authorityLevel} label="Otoritas" />
+                        <LunarPips level={activeRegister.intimacyLevel} label="Keintiman" />
                       </div>
                     </div>
 

@@ -35,6 +35,45 @@ function shapePath(shape: string, cx: number, cy: number, r: number): string {
   }
 }
 
+export const LunarPips: React.FC<{
+  level: number;
+  max?: number;
+  label: string;
+  activeColor?: string;
+}> = ({
+  level,
+  max = 5,
+  label,
+  activeColor = 'bg-amber-400 dark:bg-amber-300 shadow-[0_0_5px_rgba(245,158,11,0.5)]',
+}) => {
+  return (
+    <span
+      className="inline-flex items-center gap-1.5 align-middle"
+      title={`${label}: ${level}/${max}`}
+      aria-label={`${label} ${level} dari ${max}`}
+    >
+      <span className="text-stone-400 text-[10.5px] font-mono">{label}</span>
+      <span className="inline-flex items-center gap-1" aria-hidden="true">
+        {Array.from({ length: max }, (_, i) => {
+          const isFilled = i < level;
+          return (
+            <span
+              key={i}
+              className={`inline-block w-2 h-2 rounded-full transition-all duration-200 ${
+                isFilled
+                  ? activeColor
+                  : 'border border-stone-600/70 dark:border-stone-700/80 bg-stone-800/30'
+              }`}
+            />
+          );
+        })}
+      </span>
+      <span className="sr-only">({level}/{max})</span>
+    </span>
+  );
+};
+
+
 export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, licensedIds }) => {
   const [hover, setHover] = useState<string | null>(null);
 
@@ -309,8 +348,8 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
 
       {/* Integrated Non-Obstructing Status Bar */}
       {activeReg && (
-        <div className="px-4 py-2.5 border-t border-stone-800 bg-stone-900/50 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1.5 text-xs font-sans">
-          <div className="flex flex-wrap items-baseline gap-2">
+        <div className="px-4 py-2.5 border-t border-stone-800 bg-stone-900/50 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 text-xs font-sans">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
             <span className="font-serif font-semibold text-stone-100 text-sm">
               "{activeReg.term}"
             </span>
@@ -319,9 +358,11 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
                 ★ Titik Seimbang Menungsa
               </span>
             )}
-            <span className="font-mono text-stone-400 text-[10.5px]">
-              Otoritas {activeReg.authorityLevel}/5 · Kedekatan {activeReg.intimacyLevel}/5
-            </span>
+            <div className="inline-flex items-center gap-2">
+              <LunarPips level={activeReg.authorityLevel} label="Otoritas" />
+              <span className="text-stone-600 select-none text-[10px]">·</span>
+              <LunarPips level={activeReg.intimacyLevel} label="Kedekatan" />
+            </div>
           </div>
           <p className="text-stone-300 text-[11.5px] leading-relaxed max-w-xl">
             {activeReg.socialRelationship}
