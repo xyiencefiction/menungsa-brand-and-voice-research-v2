@@ -72,9 +72,6 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
   const activeReg = placed.find((r) => r.id === active);
   const shapes = Array.from(new Set(registers.map((r) => TYPE_SHAPES[r.type]?.shape ?? 'circle')));
 
-  const sweetX = x(3);
-  const sweetY = y(3);
-
   return (
     <div className="rounded-xl border border-stone-800 bg-stone-950/90 overflow-hidden shadow-2xl">
       {/* Sleek Compact Header */}
@@ -129,27 +126,13 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
               </feMerge>
             </filter>
 
-            {/* Sweet Spot Concentric Glow for (3,3) */}
-            <radialGradient id="sweetSpotGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#af4d28" stopOpacity="0.18" />
-              <stop offset="50%" stopColor="#893412" stopOpacity="0.06" />
-              <stop offset="100%" stopColor="#0c0a09" stopOpacity="0" />
+            {/* Dynamic Radial Glow Halo for Active Selected Node */}
+            <radialGradient id="nodeHaloGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#af4d28" stopOpacity="0.35" />
+              <stop offset="55%" stopColor="#af4d28" stopOpacity="0.12" />
+              <stop offset="100%" stopColor="#af4d28" stopOpacity="0" />
             </radialGradient>
           </defs>
-
-          {/* Sweet Spot Concentric Ambient Halo at (3, 3) */}
-          <circle cx={sweetX} cy={sweetY} r={56} fill="url(#sweetSpotGlow)" />
-          <circle cx={sweetX} cy={sweetY} r={46} fill="none" stroke="rgba(175, 77, 40, 0.15)" strokeWidth={1} strokeDasharray="3 3" />
-          <circle cx={sweetX} cy={sweetY} r={28} fill="none" stroke="rgba(175, 77, 40, 0.25)" strokeWidth={1} />
-
-          <text
-            x={sweetX}
-            y={sweetY + 38}
-            textAnchor="middle"
-            className="font-mono text-[8px] uppercase tracking-wider fill-stone-400 select-none"
-          >
-            ★ Titik Seimbang Menungsa
-          </text>
 
           {/* Precision Grid Lines */}
           <g className="chart-grid">
@@ -253,31 +236,44 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
                   }}
                 />
 
-                {/* Ambient Glow for Active */}
+                {/* Dynamic Multi-layered Halo Effect for Active Selected Node */}
                 {isActive && (
-                  <circle
-                    cx={cx}
-                    cy={cy}
-                    r={14}
-                    fill="rgba(175, 77, 40, 0.25)"
-                    filter="url(#regGlow)"
-                    pointerEvents="none"
-                  />
-                )}
+                  <>
+                    {/* 1. Ambient Radial Halo Glow */}
+                    <circle
+                      cx={cx}
+                      cy={cy}
+                      r={28}
+                      fill="url(#nodeHaloGlow)"
+                      pointerEvents="none"
+                    />
 
-                {/* Outer Ring on Active */}
-                {isActive && (
-                  <circle
-                    cx={cx}
-                    cy={cy}
-                    r={11}
-                    fill="none"
-                    stroke="#af4d28"
-                    strokeWidth={1.2}
-                    strokeDasharray="2 2"
-                    pointerEvents="none"
-                    className="animate-spin-slow"
-                  />
+                    {/* 2. Concentric Dashed Orbit Ring */}
+                    <circle
+                      cx={cx}
+                      cy={cy}
+                      r={18}
+                      fill="none"
+                      stroke="#af4d28"
+                      strokeOpacity={0.65}
+                      strokeWidth={1.2}
+                      strokeDasharray="3 3"
+                      pointerEvents="none"
+                      className="animate-spin-slow"
+                    />
+
+                    {/* 3. Inner Focus Ring */}
+                    <circle
+                      cx={cx}
+                      cy={cy}
+                      r={11}
+                      fill="none"
+                      stroke="#af4d28"
+                      strokeWidth={1.5}
+                      filter="url(#regGlow)"
+                      pointerEvents="none"
+                    />
+                  </>
                 )}
 
                 {/* Shape Glyph */}
@@ -318,6 +314,11 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
             <span className="font-serif font-semibold text-stone-100 text-sm">
               "{activeReg.term}"
             </span>
+            {activeReg.id === 'kamu' && (
+              <span className="px-1.5 py-0.5 rounded font-mono text-[9.5px] uppercase tracking-wider bg-[#af4d28]/20 text-[#fcbfaa] border border-[#af4d28]/40 font-bold">
+                ★ Titik Seimbang Menungsa
+              </span>
+            )}
             <span className="font-mono text-stone-400 text-[10.5px]">
               Otoritas {activeReg.authorityLevel}/5 · Kedekatan {activeReg.intimacyLevel}/5
             </span>
