@@ -92,6 +92,7 @@ export const FramingMatrix: React.FC<Props> = ({
           role="img"
           aria-label="2x2 matrix plotting behaviors across cultural coding and public exposure"
         >
+          <title>Matriks Batas Keberlakuan 2×2: koding budaya dan keterpaparan publik</title>
           {/* Quadrant backgrounds */}
           {/* Top-Left: Public × Feminine (Identity Threat & Protective Shield Zone) */}
           <rect

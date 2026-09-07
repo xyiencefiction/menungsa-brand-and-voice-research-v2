@@ -36,7 +36,7 @@ interface ValuePillar {
 
 const VALUE_PILLARS: ValuePillar[] = [
   {
-    id: 'V01',
+    id: 'V1',
     title: 'Kesetaraan, Bukan Penghakiman',
     tagline: 'Equal Footing, Not Judgement',
     voiceTrait: 'Pantang menyematkan kata sifat evaluatif atau menghakimi di depan pembaca.',
@@ -68,7 +68,7 @@ const VALUE_PILLARS: ValuePillar[] = [
     ]
   },
   {
-    id: 'V02',
+    id: 'V2',
     title: 'Rendah Hambatan untuk Memulai',
     tagline: 'Easy to Begin / Low Response Cost',
     voiceTrait: 'Jelaskan apa yang akan terjadi secara transparan sebelum mengajak siapa pun bergabung.',
@@ -96,7 +96,7 @@ const VALUE_PILLARS: ValuePillar[] = [
     ]
   },
   {
-    id: 'V03',
+    id: 'V3',
     title: 'Satu Langkah Nyata yang Masuk Akal',
     tagline: 'One Actionable Step',
     voiceTrait: 'Tawarkan satu tindakan konkret, mudah dibatalkan, dan sebutkan hambatannya secara jujur.',
@@ -124,7 +124,7 @@ const VALUE_PILLARS: ValuePillar[] = [
     ]
   },
   {
-    id: 'V04',
+    id: 'V4',
     title: 'Mulai dari yang Tampak Nyata',
     tagline: 'Start from What is Visible / Specific Before Emotional',
     voiceTrait: 'Gunakan detail situasi konkret yang menghadirkan emosi secara alami; jangan jadikan pengakuan emosi sebagai tiket masuk.',
@@ -152,7 +152,7 @@ const VALUE_PILLARS: ValuePillar[] = [
     ]
   },
   {
-    id: 'V05',
+    id: 'V5',
     title: 'Jujur & Terbuka tentang Batasan',
     tagline: 'Clear About the Limits / Calibrated Uncertainty',
     voiceTrait: 'Terkalibrasi secara ilmiah pada klaim psikologis; lugas dan tanpa basa-basi pada informasi logistik.',
@@ -180,7 +180,7 @@ const VALUE_PILLARS: ValuePillar[] = [
     ]
   },
   {
-    id: 'V06',
+    id: 'V6',
     title: 'Tindakan Nyata, Bukan Tuntutan Moral',
     tagline: 'Action, Not Demands / Lead by Practice',
     voiceTrait: 'Subjek kalimat adalah tindakan nyata organisasi dan sistem, bukan menunjuk hidung pembaca; posisi moral dinyatakan satu kali dengan konsekuensi yang kami tanggung sendiri.',
@@ -400,7 +400,7 @@ const FRAMING_INSIGHTS: Record<'therapy' | 'skincare' | 'fitness' | 'parenting',
 };
 
 export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
-  const [activeValueId, setActiveValueId] = useState<string>('V01');
+  const [activeValueId, setActiveValueId] = useState<string>('V1');
   const [selectedAction, setSelectedAction] = useState<'therapy' | 'skincare' | 'fitness' | 'parenting'>('therapy');
   const [isPublicGaze, setIsPublicGaze] = useState<boolean>(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -505,10 +505,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
         <ValueSpectrum
           values={brandValues}
           selectedId={activeValueId}
-          onSelect={(id) => {
-            const norm = id.startsWith('V0') ? id : id.replace('V', 'V0');
-            setActiveValueId(norm);
-          }}
+          onSelect={(id) => setActiveValueId(id)}
         />
 
         {/* Value selector cards without V1, V2, V6 clutter */}

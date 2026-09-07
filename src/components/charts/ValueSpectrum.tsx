@@ -72,7 +72,7 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
   const H = M.top + values.length * ROW + M.bottom;
   const x = scaleLinear(1, 5, M.left, W - M.right);
   const active = hovered ?? selectedId ?? null;
-  const activeValue = values.find((v) => v.id === active || v.id === `V0${active?.replace('V', '')}` || active === `V0${v.id.replace('V', '')}`);
+  const activeValue = values.find((v) => v.id === active);
 
   return (
     <div className="rounded-xl border border-stone-800 bg-stone-950 overflow-hidden">
@@ -115,7 +115,7 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect })
 
           {values.map((v, i) => {
             const y = M.top + i * ROW + ROW / 2;
-            const isActive = active === v.id || (active ? active.replace('V0', 'V') === v.id.replace('V0', 'V') : false);
+            const isActive = active === v.id;
             const dim = active && !isActive ? 0.26 : 1;
             const cx = x(v.spectrum.position);
 

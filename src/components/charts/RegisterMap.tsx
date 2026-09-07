@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { LanguageRegister } from '../../types';
-import { scaleLinear } from './chartUtils';
+import { scaleLinear, jitter } from './chartUtils';
 
 interface Props {
   registers: LanguageRegister[];
@@ -71,15 +71,10 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
     let labelDy = -13;
 
     if (total > 1) {
-      if (n === 0) {
-        dx = -18;
-        dy = -6;
-        labelDy = -13; // label above marker
-      } else {
-        dx = 18;
-        dy = 6;
-        labelDy = 19; // label below marker
-      }
+      const j = jitter(n, total, 18);
+      dx = j.dx;
+      dy = j.dy;
+      labelDy = dy >= 0 ? 19 : -13;
     }
 
     return { ...r, dx, dy, labelDy };
@@ -103,6 +98,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
       <div className="relative">
         <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto block" role="img"
           aria-label="Peta ragam bahasa dan kata ganti berdasarkan tingkat otoritas dan kedekatan hubungan">
+          <title>Peta Koordinat Ragam Bahasa dan Kata Ganti</title>
           <g className="chart-grid">
             {[1, 2, 3, 4, 5].map((v) => (
               <React.Fragment key={v}>

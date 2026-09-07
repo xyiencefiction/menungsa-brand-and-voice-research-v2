@@ -161,6 +161,40 @@ export const ToneSlope: React.FC<SlopeProps> = ({ a, b }) => {
   const [hover, setHover] = useState<string | null>(null);
   const yFor = (v: number) => SM.top + ((5 - v) / 4) * (SH - SM.top - SM.bottom);
 
+  // Collision-avoidance nudge for left-column labels sharing the same value
+  const leftNudge = new Map<string, number>();
+  {
+    const yGroups = new Map<number, string[]>();
+    TONE_DIMENSIONS.forEach((d) => {
+      const va = toneValue(a, d.key);
+      const arr = yGroups.get(va) ?? [];
+      arr.push(d.key);
+      yGroups.set(va, arr);
+    });
+    yGroups.forEach((keys) => {
+      if (keys.length <= 1) return;
+      const mid = (keys.length - 1) / 2;
+      keys.forEach((k, i) => leftNudge.set(k, (i - mid) * 14));
+    });
+  }
+
+  // Same for right-column labels
+  const rightNudge = new Map<string, number>();
+  {
+    const yGroups = new Map<number, string[]>();
+    TONE_DIMENSIONS.forEach((d) => {
+      const vb = toneValue(b, d.key);
+      const arr = yGroups.get(vb) ?? [];
+      arr.push(d.key);
+      yGroups.set(vb, arr);
+    });
+    yGroups.forEach((keys) => {
+      if (keys.length <= 1) return;
+      const mid = (keys.length - 1) / 2;
+      keys.forEach((k, i) => rightNudge.set(k, (i - mid) * 14));
+    });
+  }
+
   return (
     <div className="rounded-xl border border-stone-800 bg-stone-950 overflow-hidden">
       <header className="px-5 py-3.5 border-b border-stone-800">
@@ -215,14 +249,14 @@ export const ToneSlope: React.FC<SlopeProps> = ({ a, b }) => {
                 <circle cx={SW - SM.right} cy={yFor(vb)} r={4} fill="var(--cat-1)" className="chart-mark" opacity={hover && !isHover ? 0.28 : 1} />
 
                 <text
-                  x={SM.left - 26} y={yFor(va) + 3.5} textAnchor="end"
+                  x={SM.left - 26} y={yFor(va) + 3.5 + (leftNudge.get(d.key) ?? 0)} textAnchor="end"
                   className="chart-mark-label"
                   opacity={hover && !isHover ? 0.3 : 1}
                 >
                   {d.short}
                 </text>
                 <text
-                  x={SW - SM.right + 12} y={yFor(vb) + 3.5}
+                  x={SW - SM.right + 12} y={yFor(vb) + 3.5 + (rightNudge.get(d.key) ?? 0)}
                   className="chart-mark-label"
                   opacity={hover && !isHover ? 0.3 : 1}
                 >

@@ -145,6 +145,17 @@ const REGISTERS: RegisterItem[] = [
     risks: 'Dapat terdengar meremehkan (infantilizing) pria dewasa usia 40-an jika dipakai di layanan formal.',
     contexts: 'Humor situasional di balik layar, konten visual olahraga santai, ruang pemuda.',
     example: 'Cowok kalau sudah ngumpul ngoprek motor tua biasanya lupa waktu sampai sore.'
+  },
+  {
+    id: 'bro',
+    name: 'bro / bang / mas / pak',
+    authorityLevel: 2,
+    intimacyLevel: 4,
+    socialRelationship: 'Penanda keakraban sebaya yang dikalibrasi: Bro (modern sebaya), Bang/Mas (hormat sebaya), Pak (otoritas/sesepuh).',
+    impression: 'Sapaan hangat yang menjembatani jarak tanpa formalitas berlebihan.',
+    risks: 'SANGAT FATAL jika dipakai akun anonim institusi (misalnya bot otomatis menyapa \"Halo Bro!\") — memicu rasa malu akut dan ejekan publik.',
+    contexts: 'Fasilitator individu dalam sesi komunitas tatap muka, balasan komentar personal, dan percakapan langsung antarsebaya.',
+    example: 'Bang, kalau ada waktu luang besok sore, kita ngobrol santai di warung belakang kantor ya.'
   }
 ];
 
