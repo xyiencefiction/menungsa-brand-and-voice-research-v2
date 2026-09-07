@@ -334,5 +334,341 @@
       "copy": "Kalah itu haram hukumnya! Buktikan siapa jantan terkuat di lapangan ini!"
     },
     "rationale": "Uses recreational sports as a low-exposure social container where camaraderie flourishes without performance anxiety."
+  },
+  {
+    "id": "EX-C01-3",
+    "contextId": "C01",
+    "channel": "Micro-Guide Slide",
+    "worked": {
+      "copy": "Saat seharian fokus di depan layar, otot leher dan rahang sering mengencang tanpa kita sadari. Ini respons alami tubuh saat memproses stimulus intens. Mengistirahatkan mata ke luar jendela selama 30 detik membantu memberi sinyal aman pada sistem saraf otonom."
+    },
+    "weak": {
+      "copy": "Waspada racun gadget! Otakmu sedang terbakar dan radiasi layar merusak mentalmu perlahan. Detoks digital sekarang juga kalau mau selamat!"
+    },
+    "rationale": "Menjelaskan ketegangan fisik secara objektif dan fisiologis, memberikan jeda mikro yang mudah dilakukan tanpa menakut-nakuti atau mengutuk teknologi harian."
+  },
+  {
+    "id": "EX-C01-4",
+    "contextId": "C01",
+    "channel": "Workplace Wellness Bulletin",
+    "worked": {
+      "copy": "Napas yang mendadak terasa pendek saat membaca email pekerjaan bukan tanda kamu panik berlebihan. Secara biologis, itu respons kewaspadaan alami saat otak mendeteksi beban baru. Mengembuskan napas lebih panjang dari tarikan napas membantu menurunkan detak jantung kembali ke ritme normal."
+    },
+    "weak": {
+      "copy": "Apakah kamu mengidap anxiety disorder di kantor? Cek tanda-tanda kecemasan kronis ini dan temui dokter jiwa sekarang!"
+    },
+    "rationale": "Menyediakan pemahaman mekanisme fisiologis yang netral tanpa buru-buru menyematkan label klinis atau menciptakan histeria medis di tempat kerja."
+  },
+  {
+    "id": "EX-C02-3",
+    "contextId": "C02",
+    "channel": "Feed Observation Post",
+    "worked": {
+      "copy": "Masih sanggup menyetir motor pulang ke rumah. Masih mencuci piring dan memberi makan kucing. Cuma pas ada pesan dari teman mengajak ngopi santai di akhir pekan, kamu menatap layar dan baru membalasnya tiga hari kemudian. Tidak perlu merasa bersalah. Kapasitas sosial memang ada fasenya."
+    },
+    "weak": {
+      "copy": "Cowok yang suka ghosting teman itu fix punya attachment issue dan trauma inner child! Jangan jadi orang toxic, sembuhkan lukamu!"
+    },
+    "rationale": "Menggambarkan penurunan kapasitas sosial secara faktual dan membumi tanpa melabelinya sebagai cacat kepribadian atau menuntut pertanggungjawaban instan."
+  },
+  {
+    "id": "EX-C02-4",
+    "contextId": "C02",
+    "channel": "Short Reflection Fragment",
+    "worked": {
+      "copy": "Beli makanan favorit sepulang kerja. Sampai di meja kos, plastiknya dibuka, sendoknya diambil, tapi setelah dua suapan nasinya cuma diaduk-aduk sambil menatap dinding. Perut lapar, tapi kepala rasanya terlalu ramai."
+    },
+    "weak": {
+      "copy": "Hilang nafsu makan adalah gejala awal depresi klinis berbahaya! Jangan anggap remeh kesehatan mentalmu bro!"
+    },
+    "rationale": "Mengakhiri naskah murni pada observasi perilaku tanpa tambahan nasihat, tanpa evaluasi moral, dan tanpa ajakan komersial terselubung."
+  },
+  {
+    "id": "EX-C03-3",
+    "contextId": "C03",
+    "channel": "First-Person Personal Essay",
+    "worked": {
+      "copy": "Enam bulan setelah usaha sablon tutup, saya masih sering merapikan rak cat di garasi. Menyeka debu di atas kaleng-kaleng yang sudah kering, mencocokkan kode warna yang tidak akan dipakai lagi. Kehilangan arah sering kali hadir bukan sebagai tangisan, melainkan gerakan tangan yang mencari hal-hal familiar."
+    },
+    "weak": {
+      "copy": "Aku ingin mencurahkan seluruh isi hatiku yang hancur berkeping-keping. Aku merasa gagal sebagai laki-laki, tidak berguna dan penuh kehinaan."
+    },
+    "rationale": "Menambatkan rasa kehilangan pada benda fisik dan rutinitas nyata. Penutur menjaga martabatnya tanpa menjadikan kesedihan sebagai tontonan melodramatis."
+  },
+  {
+    "id": "EX-C03-4",
+    "contextId": "C03",
+    "channel": "Short Video Voiceover",
+    "worked": {
+      "copy": "Malam itu jam satu pagi, kami cuma berdiri di balkon kontrakan sambil merokok dan memandangi jalan tol yang mulai sepi. Tidak ada yang bertanya proyek mana yang mandek atau tabungan tinggal berapa. Kadang kehadiran yang menenangkan cukup berupa kebersamaan tanpa tuntutan harus mencari jawaban."
+    },
+    "weak": {
+      "copy": "Hancurkan egomu kawan! Buka lukamu di depanku malam ini, menangislah sepuasnya di pelukanku!"
+    },
+    "rationale": "Menghadirkan kebersamaan yang aman melalui kegiatan bersama di ruang fisik, tanpa paksaan membuka aib atau kerapuhan yang berlebihan."
+  },
+  {
+    "id": "EX-C04-3",
+    "contextId": "C04",
+    "channel": "Community Gathering Invitation",
+    "worked": {
+      "copy": "Jalan pagi santai keliling Kebun Raya, Minggu ini pukul 07.00 WIB. Rute datar beraspal 40 menit, dilanjutkan minum teh hangat di warung terdekat. Boleh berjalan sambil mengobrol, boleh jalan sendirian memakai earphone. Gratis, tidak ada absensi atau perkenalan formal."
+    },
+    "weak": {
+      "copy": "Panggilan untuk para pejuang hidup! Mari berkumpul di lingkaran sakral persaudaraan untuk menyembuhkan luka batin masa lalu!"
+    },
+    "rationale": "Menjelaskan rute, durasi, dan kebebasan untuk tetap diam atau mendengarkan musik, melenyapkan kecemasan sosial dari pertemuan tatap muka."
+  },
+  {
+    "id": "EX-C04-4",
+    "contextId": "C04",
+    "channel": "WhatsApp Community Broadcast",
+    "worked": {
+      "copy": "Sabtu sore pukul 16.00 WIB ada pemutaran film dokumenter singkat di kedai kopi [Alamat]. Kapasitas 12 orang. Begitu datang langsung cari tempat duduk yang nyaman. Tidak ada sesi tanya-jawab wajib atau keharusan memperkenalkan diri."
+    },
+    "weak": {
+      "copy": "Kumpul wajib komunitas Menungsa! Siapkan cerita paling sedihmu untuk di-sharing bersama teman-teman seperjuangan!"
+    },
+    "rationale": "Menegaskan batas partisipasi yang aman sejak awal, memastikan peserta tidak merasa dijebak dalam sesi pengungkapan pribadi."
+  },
+  {
+    "id": "EX-C05-3",
+    "contextId": "C05",
+    "channel": "Support Session Logistics Note",
+    "worked": {
+      "copy": "Detail sesi diskusi tertutup: Ruang Rapat B lantai 2. Masuk melalui pintu timur agar langsung ke lift. Ruangan tidak berjendela kaca ke arah koridor umum sehingga privasi terjaga penuh. Didampingi satu konselor berlisensi."
+    },
+    "weak": {
+      "copy": "Masuklah ke ruang suci ini dan rasakan kehangatan cinta yang akan meluruhkan seluruh penderitaan jiwamu!"
+    },
+    "rationale": "Memaparkan logistik spasial dan denah privasi fisik secara presisi guna meminimalkan ketakutan terlihat oleh orang lain."
+  },
+  {
+    "id": "EX-C05-4",
+    "contextId": "C05",
+    "channel": "Attendance Clarification Notice",
+    "worked": {
+      "copy": "Selama sesi pendampingan berlangsung, pintu ruangan tidak dikunci. Jika di tengah sesi kamu merasa gerah, ingin ke kamar kecil, atau butuh menghirup udara di luar, kamu boleh langsung keluar tanpa perlu izin fasilitator."
+    },
+    "weak": {
+      "copy": "Sekali melangkah masuk, kamu tidak boleh mundur! Tuntaskan proses penyembuhanmu sampai selesai!"
+    },
+    "rationale": "Menghapus biaya keluar (exit friction) sepenuhnya, mencegah munculnya rasa terkekang atau terjebak dalam sesi bantuan."
+  },
+  {
+    "id": "EX-C06-3",
+    "contextId": "C06",
+    "channel": "Clinic Navigation Guide",
+    "worked": {
+      "copy": "Jika ingin berkonsultasi di Puskesmas: datang sebelum jam 09.00 pagi, ambil nomor antrean loket pendaftaran, dan sampaikan 'ingin ke poli konsultasi umum/jiwa'. Siapkan KTP dan kartu BPJS aktif. Biaya konsultasi ditanggung penuh oleh BPJS."
+    },
+    "weak": {
+      "copy": "Jangan biarkan gengsimu membunuhmu perlahan! Segera cari psikiater sekarang juga sebelum kamu gila dan menyusahkan orang lain!"
+    },
+    "rationale": "Menyediakan panduan alur langkah yang sangat konkret, terukur biayanya, dan mudah dipraktikkan tanpa celaan moral atau ancaman menakut-nakuti."
+  },
+  {
+    "id": "EX-C06-4",
+    "contextId": "C06",
+    "channel": "Informal Help Step",
+    "worked": {
+      "copy": "Mencari pertolongan tidak harus diawali dari hal berat. Menghubungi teman lama dan berkata 'sedang longgar nggak, ada hal teknis kerjaan yang mau kutanyakan' sudah bisa menjadi jembatan awal untuk keluar dari rasa buntu."
+    },
+    "weak": {
+      "copy": "Tundukkan kepalamu dan akui kelemahanmu di depan sahabatmu! Jangan sombong sok mandiri!"
+    },
+    "rationale": "Menjadikan konsultasi seputar hal praktis/teknis sebagai jembatan yang sah dan tidak mengancam harga diri laki-laki."
+  },
+  {
+    "id": "EX-C07-3",
+    "contextId": "C07",
+    "channel": "Crisis De-escalation Protocol",
+    "worked": {
+      "copy": "Bila malam ini pikiran untuk melukai diri sendiri terasa sangat kuat: jauhkan benda-benda berisiko dari ruangan tidur, basuh wajah dengan air dingin mengalir, dan hubungi saluran darurat 119 ekstensi 8 atau datangi IGD terdekat sekarang."
+    },
+    "weak": {
+      "copy": "Istigfar dan ingat dosa besar! Hidupmu milik Tuhan, jangan jadi orang putus asa yang lemah imannya!"
+    },
+    "rationale": "Instruksi fisik de-eskalasi yang lugas tanpa basa-basi metafora, tanpa tudingan religius atau penghakiman moral yang berbahaya bagi keselamatan."
+  },
+  {
+    "id": "EX-C07-4",
+    "contextId": "C07",
+    "channel": "Immediate Safety Notice",
+    "worked": {
+      "copy": "Jika teman atau kerabatmu mengatakan ingin mengakhiri hidup: jangan mendebat atau menyepelekan ucapannya. Dampingi secara fisik malam ini dan segera hubungi tenaga medis atau IGD rumah sakit terdekat."
+    },
+    "weak": {
+      "copy": "Nasihati dia bahwa cobaan hidup adalah tanda kasih sayang, suruh dia banyak bersyukur dan jangan lebay!"
+    },
+    "rationale": "Pedoman mendampingi orang dalam krisis secara aman berbasis bukti keselamatan jiwa, menyingkirkan nasihat klise yang memperburuk risiko."
+  },
+  {
+    "id": "EX-C08-3",
+    "contextId": "C08",
+    "channel": "Cultural Belief Reframing",
+    "worked": {
+      "copy": "Niat untuk tidak merepotkan keluarga adalah bentuk tanggung jawab yang terhormat. Namun memeriksa mesin mobil ke bengkel resmi bukan tanda pengemudi tidak becus; itu langkah pemeliharaan agar kendaraan tetap bisa mengantar keluarga dengan aman."
+    },
+    "weak": {
+      "copy": "Pemikiran patriarki kuno yang melarang pria minta tolong itu racun masyarakat! Buang ke tempat sampah!"
+    },
+    "rationale": "Mengafirmasi niat baik tanggung jawab pria terlebih dahulu, kemudian memakai analogi mekanik yang netral untuk menata ulang persepsi tanpa merendahkan."
+  },
+  {
+    "id": "EX-C08-4",
+    "contextId": "C08",
+    "channel": "Myth Clarification Card",
+    "worked": {
+      "copy": "Mitos: 'Laki-laki dewasa harus selalu tahu jalan keluar dari setiap masalah.' Realitas: Dalam situasi ekonomi yang cepat berubah, ketidakpastian adalah kondisi objektif yang dihadapi semua orang, bukan tanda kelemahan pribadi."
+    },
+    "weak": {
+      "copy": "Berhentilah berpura-pura tahu segalanya! Mengakulah kalau otakmu sudah buntu dan jangan gengsi!"
+    },
+    "rationale": "Memisahkan tekanan situasi objektif dari penilaian karakter personal, membongkar mitos tanpa mempermalukan pembaca."
+  },
+  {
+    "id": "EX-C09-3",
+    "contextId": "C09",
+    "channel": "Structural Analysis Article",
+    "worked": {
+      "copy": "Beban generasi roti lapis (sandwich generation)—menanggung biaya orang tua sekaligus menyekolahkan anak di tengah inflasi—berakar pada minimnya sistem pensiun universal, bukan karena kurangnya etos kerja individu."
+    },
+    "weak": {
+      "copy": "Kamu miskin karena salah kelola keuangan dan terlalu manja menanggung keluarga! Belajar financial literacy dong!"
+    },
+    "rationale": "Mengarahkan analisis pada faktor struktural ekonomi dan jaminan sosial makro, bukan menyalahkan individu yang sedang berjuang keras."
+  },
+  {
+    "id": "EX-C09-4",
+    "contextId": "C09",
+    "channel": "Workplace Culture Commentary",
+    "worked": {
+      "copy": "Tuntutan siaga membalas pesan kantor hingga larut malam secara sistematis merampas waktu istirahat pekerja. Kebijakan batas jam kerja yang tegas di tempat kerja bukan bentuk ketidaksetiaan, melainkan syarat menjaga produktivitas jangka panjang."
+    },
+    "weak": {
+      "copy": "Mental budak korporat zaman sekarang gampang mengeluh kalau disuruh kerja lembur sedikit saja!"
+    },
+    "rationale": "Mengkritisi sistem tata kelola tempat kerja secara profesional dan terukur tanpa mencemooh pekerja maupun atasan secara emosional."
+  },
+  {
+    "id": "EX-C10-3",
+    "contextId": "C10",
+    "channel": "Policy Advocacy Release",
+    "worked": {
+      "copy": "Data Kemenkes menunjukkan rasio tenaga psikolog klinis di luar Pulau Jawa masih kurang dari 1 per 100.000 penduduk. Menungsa mengajukan usulan penempatan tenaga kesehatan jiwa terdistribusi dalam skema afirmasi faskes daerah."
+    },
+    "weak": {
+      "copy": "Pemerintah tidak becus mengurus rakyat! Daerah luar Jawa dianaktirikan dan dibiarkan menderita sendirian!"
+    },
+    "rationale": "Menyajikan data resmi terverifikasi dan menawarkan usulan kebijakan yang konkret dan konstruktif alih-alih melontarkan retorika amarah."
+  },
+  {
+    "id": "EX-C10-4",
+    "contextId": "C10",
+    "channel": "Campaign Action Statement",
+    "worked": {
+      "copy": "Dari pemantauan di 40 fasilitas kesehatan primer, hanya 15% yang memiliki ruang konsultasi tertutup dan kedap suara. Kami mendorong Kementerian Kesehatan menetapkan standar ruang privasi fisik sebagai syarat akreditasi faskes."
+    },
+    "weak": {
+      "copy": "Fasilitas kesehatan kita sangat memalukan dan tidak manusiawi! Viralkan sampai pejabatnya dipecat!"
+    },
+    "rationale": "Mendasarkan advokasi pada temuan fisik yang terukur (ruang kedap suara) dan jalur regulasi formal (syarat akreditasi)."
+  },
+  {
+    "id": "EX-C11-3",
+    "contextId": "C11",
+    "channel": "Behind-The-Scenes Social Snippet",
+    "worked": {
+      "copy": "Tadi siang tim berniat menyusun panduan latihan napas 5 menit yang efisien. Namun kami berakhir berdiskusi 40 menit mengenai merek kopi sachet mana yang paling aman untuk lambung pekerja malam."
+    },
+    "weak": {
+      "copy": "Wkwk tim Menungsa isinya cowok-cowok jompo yang lambungnya ringkih semua, memalukan banget ya!"
+    },
+    "rationale": "Menggunakan humor observasional mandiri yang bersahabat tanpa pernah mencemooh kelemahan audiens atau isu kesehatan serius."
+  },
+  {
+    "id": "EX-C11-4",
+    "contextId": "C11",
+    "channel": "Casual Everyday Anecdote",
+    "worked": {
+      "copy": "Membeli sepatu lari baru dengan tekad bulat: 'Mulai besok pagi lari rutin 5 km.' Tiga minggu kemudian: sepatunya baru dua kali dipakai, dan dua-duanya cuma untuk ke warung membeli kecap dan obat nyamuk."
+    },
+    "weak": {
+      "copy": "Dasar pemalas banyak wacana! Beli barang mahal cuma buat pamer doang, nggak ada niat berubah!"
+    },
+    "rationale": "Mengangkat paradoks niat vs realitas harian yang dialami bersama dengan kehangatan humor situasi tanpa nada menghakimi."
+  },
+  {
+    "id": "EX-C12-3",
+    "contextId": "C12",
+    "channel": "Recovery Case Feature",
+    "worked": {
+      "copy": "Kemajuan bagi Reza bukan mendadak menjadi orang yang selalu bersemangat. Melainkan minggu ini ia berhasil bangun, merapikan kasur, dan mandi pagi tiga hari berturut-turut tanpa merasa bersalah saat sisa harinya terasa lambat."
+    },
+    "weak": {
+      "copy": "Dulu terpuruk miskin dan depresi berat, kini sukses bangkit menjadi miliarder tangguh! Jangan pernah menyerah!"
+    },
+    "rationale": "Mengakui progres mikro yang realistis dan terjangkau di mana ritme lambat dinormalisasi, tanpa narasi transformasi fiksi bombastis."
+  },
+  {
+    "id": "EX-C12-4",
+    "contextId": "C12",
+    "channel": "Habit Rehabilitation Vignette",
+    "worked": {
+      "copy": "Perubahan yang bertahan lama pada Bayu berawal dari satu aturan sederhana: meletakkan pengisi daya ponsel di ruang tengah, bukan di samping bantal tidur. Kualitas tidurnya membaik secara terukur dalam dua minggu."
+    },
+    "weak": {
+      "copy": "Disiplin militer adalah kunci sukses pria sejati! Hancurkan semua godaan ponselmu sekarang juga!"
+    },
+    "rationale": "Mengidentifikasi satu perubahan lingkungan fisik yang terjangkau (choice architecture) ketimbang menuntut kemauan baja."
+  },
+  {
+    "id": "EX-C13-3",
+    "contextId": "C13",
+    "channel": "Grief & Hardship Reflection",
+    "worked": {
+      "copy": "Kehilangan pekerjaan bukan sekadar terhentinya pemasukan bulanan, melainkan hilangnya rutinitas pagi dan rasa memiliki peran sosial. Wajar bila minggu-minggu pertama rasanya limbung. Tidak ada kewajiban untuk langsung memaksakan diri merasa optimis."
+    },
+    "weak": {
+      "copy": "Rezeki sudah diatur Tuhan kawan! Jangan cengeng, anggap saja ini ujian iman agar kamu naik kelas!"
+    },
+    "rationale": "Memberikan ruang sah bagi duka hilangnya peran sosial tanpa tergesa-gesa menyuntikkan penghiburan hampa atau nasihat moral yang menyalahkan."
+  },
+  {
+    "id": "EX-C13-4",
+    "contextId": "C13",
+    "channel": "Bereavement Support Message",
+    "worked": {
+      "copy": "Rasa rindu pada seseorang yang telah tiada tidak memiliki batas waktu kalender yang rapi. Bila setahun kemudian aroma masakan atau lagu lama di radio mendadak membuat tenggorokanmu tercekat, itu hal yang wajar. Duka bukan sesuatu yang harus diburu-buru dihapus."
+    },
+    "weak": {
+      "copy": "Ikhlaskan saja, kalau kamu menangis terus arwahnya tidak tenang di sana!"
+    },
+    "rationale": "Mendampingi proses berduka jangka panjang secara penuh rasa hormat, menolak klise penghiburan yang membebani perasaan orang yang berduka."
+  },
+  {
+    "id": "EX-C14-3",
+    "contextId": "C14",
+    "channel": "Physical Activity Debrief",
+    "worked": {
+      "copy": "Jalan santai sore selama 30 menit mengitari taman perumahan bukan tentang mengejar target kalori. Melainkan membiarkan mata melihat langit terbuka dan merasakan udara segar setelah seharian duduk di depan meja kerja."
+    },
+    "weak": {
+      "copy": "No pain no gain! Hancurkan batas kemampuan fisikmu sampai muntah darah kalau mau jadi pria perkasa!"
+    },
+    "rationale": "Menekankan pemulihan sensorik dan relaksasi somatik tubuh alami ketimbang glorifikasi rasa sakit atau obsesi performa militeristik."
+  },
+  {
+    "id": "EX-C14-4",
+    "contextId": "C14",
+    "channel": "Sports Community Note",
+    "worked": {
+      "copy": "Gowes santai minggu pagi ini rutenya datar 15 kilometer. Ritme kayuhan santai mengikuti yang paling belakang, dan tujuan utamanya sarapan bubur ayam hangat bersama. Tidak ada yang ditinggal."
+    },
+    "weak": {
+      "copy": "Gowes ini bukan buat orang lemah! Siapa yang tertinggal di tanjakan langsung kami tinggal!"
+    },
+    "rationale": "Menjadikan olahraga bersama sebagai wadah persahabatan yang hangat dan inklusif dengan hambatan sosial nol."
   }
 ]
