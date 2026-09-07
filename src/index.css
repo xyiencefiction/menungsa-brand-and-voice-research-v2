@@ -195,6 +195,25 @@
     --chart-label-strong: #F1ECDF;
     --chart-muted: #384D72;
 
+    --ord-1: #42340F;
+    --ord-2: #715514;
+    --ord-3: #8C6A18;
+    --ord-4: #AD8E3C;
+    --ord-5: #D9B44F;
+    --ord-6: #E2CE9C;
+
+    --ord-ink-lo: #F1ECDF;
+    --ord-ink-hi: #0F172A;
+    --ord-ink-mid: #F1ECDF;
+
+    --cat-1: #8493AD;
+    --cat-2: #CE7859;
+    --cat-3: #5C826A;
+    --cat-4: #D9B44F;
+
+    --status-critical: #FB7185;
+    --status-positive: #86978B;
+
     --scrollbar-track: rgba(15, 23, 42, 0.6);
     --scrollbar-thumb: rgba(132, 147, 173, 0.45);
     --scrollbar-thumb-hover: rgba(198, 208, 226, 0.65);

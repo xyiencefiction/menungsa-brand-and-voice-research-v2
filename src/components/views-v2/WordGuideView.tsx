@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import { 
-  BookOpen, 
   Users, 
   ShieldCheck, 
   AlertCircle, 
   CheckCircle2, 
   Sparkles,
-  ArrowRight,
   Compass,
   Check,
   X,
-  HeartHandshake,
-  Info
+  HeartHandshake
 } from 'lucide-react';
 import { RegisterMap } from '../charts/RegisterMap';
 import { languageRegisters } from '../../data';
@@ -157,7 +154,7 @@ const REGISTERS: RegisterItem[] = [
     intimacyLevel: 4,
     socialRelationship: 'Penanda keakraban sebaya yang dikalibrasi: Bro (modern sebaya), Bang/Mas (hormat sebaya), Pak (otoritas/sesepuh).',
     impression: 'Sapaan hangat yang menjembatani jarak tanpa formalitas berlebihan.',
-    risks: 'SANGAT FATAL jika dipakai akun anonim institusi (misalnya bot otomatis menyapa \"Halo Bro!\") — memicu rasa malu akut dan ejekan publik.',
+    risks: 'SANGAT FATAL jika dipakai akun anonim institusi (misalnya bot otomatis menyapa "Halo Bro!") — memicu rasa malu akut dan ejekan publik.',
     contexts: 'Fasilitator individu dalam sesi komunitas tatap muka, balasan komentar personal, dan percakapan langsung antarsebaya.',
     example: 'Bang, kalau ada waktu luang besok sore, kita ngobrol santai di warung belakang kantor ya.'
   }
@@ -607,19 +604,6 @@ export const WordGuideView: React.FC = () => {
             </h3>
             <p className="text-xs md:text-sm text-[#4A5A70] dark:text-stone-300 mt-1 max-w-3xl leading-relaxed">
               Memisahkan kebutuhan psikologis manusiawi yang sah di balik konten maskulinitas dari eksploitasi ideologis yang toksik dan agresif. Menungsa memenuhi fungsi aslinya melalui komunikasi yang membumi, beradab, dan memulihkan martabat.
-            </p>
-          </div>
-
-          {/* Demographics & Prevalence Reality Check (from v1) */}
-          <div className="p-4 bg-[#EBF0FA] dark:bg-stone-900/70 border border-[#C6D0E2] dark:border-stone-800 rounded-xl space-y-1.5 text-xs text-[#17243D] dark:text-stone-300 shadow-xs">
-            <div className="flex items-center gap-2">
-              <Info size={16} className="text-[#AF4D28] dark:text-sky-400 shrink-0" />
-              <strong className="font-mono text-[#17243D] dark:text-stone-200 uppercase text-[11px] font-bold">
-                Realitas Empiris Audiens (Studi Movember 2025):
-              </strong>
-            </div>
-            <p className="leading-relaxed text-xs">
-              Mayoritas pria muda berinteraksi rutin dengan figur maskulinitas daring, dan pengikutnya justru cenderung bekerja, berpendidikan, serta berpenghasilan mapan, namun memikul rasa kesepian batin yang setara. Mereka bukan kelompok pinggiran yang rusak—mereka pria arus utama yang mencari kompas hidup praktis yang gagal disediakan lembaga tradisional.
             </p>
           </div>
 

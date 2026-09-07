@@ -1,33 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import type { ViewType } from './types';
 import { Header } from './components/layout/Header';
-import { GlobalSearch } from './components/layout/GlobalSearch';
-import { FigureModal, type FigureInfo } from './components/common/FigureModal';
+import type { FigureInfo } from './components/common/FigureModal';
 
-// v2 Primary Views
-import { VoiceFoundationsView } from './components/views-v2/VoiceFoundationsView';
-import { WritingStudioView } from './components/views-v2/WritingStudioView';
-import { WordGuideView } from './components/views-v2/WordGuideView';
-import { CopySandboxView } from './components/views-v2/CopySandboxView';
-import { IndonesianNuancesView } from './components/views-v2/IndonesianNuancesView';
+const GlobalSearch = React.lazy(() => import('./components/layout/GlobalSearch').then(m => ({ default: m.GlobalSearch })));
+const FigureModal = React.lazy(() => import('./components/common/FigureModal').then(m => ({ default: m.FigureModal })));
 
-// Legacy Views for Deep Link Support
-import { OverviewView } from './components/views/OverviewView';
-import { MechanismsView } from './components/views/MechanismsView';
-import { EvidenceView } from './components/views/EvidenceView';
-import { CrossReportView } from './components/views/CrossReportView';
-import { ContradictionsView } from './components/views/ContradictionsView';
-import { LanguageLabView } from './components/views/LanguageLabView';
-import { ResonanceView } from './components/views/ResonanceView';
-import { FramingView } from './components/views/FramingView';
-import { ManosphereView } from './components/views/ManosphereView';
-import { MoralCommsView } from './components/views/MoralCommsView';
-import { VoiceLabView } from './components/views/VoiceLabView';
-import { PlaybookView } from './components/views/PlaybookView';
-import { ResearchGapsView } from './components/views/ResearchGapsView';
-import { ValuesView } from './components/views/ValuesView';
-import { ChannelsView } from './components/views/ChannelsView';
 import { ArrowUpRight } from 'lucide-react';
+
+// v2 Primary Views (Lazy Loaded for minimal initial bundle)
+const VoiceFoundationsView = React.lazy(() => import('./components/views-v2/VoiceFoundationsView').then(m => ({ default: m.VoiceFoundationsView })));
+const WritingStudioView = React.lazy(() => import('./components/views-v2/WritingStudioView').then(m => ({ default: m.WritingStudioView })));
+const WordGuideView = React.lazy(() => import('./components/views-v2/WordGuideView').then(m => ({ default: m.WordGuideView })));
+const CopySandboxView = React.lazy(() => import('./components/views-v2/CopySandboxView').then(m => ({ default: m.CopySandboxView })));
+const IndonesianNuancesView = React.lazy(() => import('./components/views-v2/IndonesianNuancesView').then(m => ({ default: m.IndonesianNuancesView })));
+
+// Legacy Views for Deep Link Support (Lazy Loaded on demand)
+const OverviewView = React.lazy(() => import('./components/views/OverviewView').then(m => ({ default: m.OverviewView })));
+const MechanismsView = React.lazy(() => import('./components/views/MechanismsView').then(m => ({ default: m.MechanismsView })));
+const EvidenceView = React.lazy(() => import('./components/views/EvidenceView').then(m => ({ default: m.EvidenceView })));
+const CrossReportView = React.lazy(() => import('./components/views/CrossReportView').then(m => ({ default: m.CrossReportView })));
+const ContradictionsView = React.lazy(() => import('./components/views/ContradictionsView').then(m => ({ default: m.ContradictionsView })));
+const LanguageLabView = React.lazy(() => import('./components/views/LanguageLabView').then(m => ({ default: m.LanguageLabView })));
+const ResonanceView = React.lazy(() => import('./components/views/ResonanceView').then(m => ({ default: m.ResonanceView })));
+const FramingView = React.lazy(() => import('./components/views/FramingView').then(m => ({ default: m.FramingView })));
+const ManosphereView = React.lazy(() => import('./components/views/ManosphereView').then(m => ({ default: m.ManosphereView })));
+const MoralCommsView = React.lazy(() => import('./components/views/MoralCommsView').then(m => ({ default: m.MoralCommsView })));
+const VoiceLabView = React.lazy(() => import('./components/views/VoiceLabView').then(m => ({ default: m.VoiceLabView })));
+const PlaybookView = React.lazy(() => import('./components/views/PlaybookView').then(m => ({ default: m.PlaybookView })));
+const ResearchGapsView = React.lazy(() => import('./components/views/ResearchGapsView').then(m => ({ default: m.ResearchGapsView })));
+const ValuesView = React.lazy(() => import('./components/views/ValuesView').then(m => ({ default: m.ValuesView })));
+const ChannelsView = React.lazy(() => import('./components/views/ChannelsView').then(m => ({ default: m.ChannelsView })));
+
+const ViewFallback: React.FC = () => (
+  <div className="min-h-[45vh] flex flex-col items-center justify-center space-y-3 py-16 animate-pulse" role="status" aria-label="Memuat panduan">
+    <div className="w-8 h-8 rounded-full border-2 border-amber-500/30 border-t-amber-500 animate-spin" />
+    <span className="font-mono text-xs text-stone-500 dark:text-stone-400">Memuat modul panduan...</span>
+  </div>
+);
 
 export function App() {
   const parseHash = (): ViewType => {
@@ -191,7 +201,9 @@ export function App() {
 
       {/* Main Content Area */}
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-12">
-        {renderView()}
+        <React.Suspense fallback={<ViewFallback />}>
+          {renderView()}
+        </React.Suspense>
       </main>
 
       {/* Footer */}
@@ -221,22 +233,28 @@ export function App() {
       </footer>
 
       {/* Global Search Modal */}
-      <GlobalSearch
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-        onNavigate={(v, p) => {
-          setIsSearchOpen(false);
-          handleNavigate(v, p);
-        }}
-      />
+      {isSearchOpen && (
+        <React.Suspense fallback={null}>
+          <GlobalSearch
+            isOpen={isSearchOpen}
+            onClose={() => setIsSearchOpen(false)}
+            onNavigate={(v, p) => {
+              setIsSearchOpen(false);
+              handleNavigate(v, p);
+            }}
+          />
+        </React.Suspense>
+      )}
 
       {/* Figure Modal */}
       {selectedFigure && (
-        <FigureModal
-          selectedFigure={selectedFigure}
-          onSelectFigure={(fig) => setSelectedFigure(fig)}
-          onClose={() => setSelectedFigure(null)}
-        />
+        <React.Suspense fallback={null}>
+          <FigureModal
+            selectedFigure={selectedFigure}
+            onSelectFigure={(fig) => setSelectedFigure(fig)}
+            onClose={() => setSelectedFigure(null)}
+          />
+        </React.Suspense>
       )}
     </div>
   );

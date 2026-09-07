@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, ZoomIn, Download, ExternalLink, Image } from 'lucide-react';
+import { X, ExternalLink } from 'lucide-react';
 
 export interface FigureInfo {
   id: string;
@@ -153,7 +153,12 @@ export const FigureModal: React.FC<Props> = ({ selectedFigure, onClose, onSelect
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 overflow-y-auto">
-      <div className="relative bg-stone-900 border border-stone-700 rounded-xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
+      <div 
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Diagram ${selectedFigure.title}`}
+        className="relative bg-stone-900 border border-stone-700 rounded-xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden"
+      >
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-stone-800 bg-stone-950/70">
           <div className="flex items-center gap-3">
@@ -165,7 +170,8 @@ export const FigureModal: React.FC<Props> = ({ selectedFigure, onClose, onSelect
           <div className="flex items-center gap-2">
             <button
               onClick={() => setUsePng(!usePng)}
-              className="px-2.5 py-1 text-xs font-mono rounded bg-stone-800 hover:bg-stone-700 text-stone-300 border border-stone-700 transition"
+              className="px-2.5 py-1 text-xs font-mono rounded bg-stone-800 hover:bg-stone-700 text-stone-300 border border-stone-700 transition cursor-pointer"
+              aria-label="Ganti format gambar ke PNG atau SVG"
               title="Toggle SVG / PNG format"
             >
               Format: {usePng ? 'PNG (Bitmap)' : 'SVG (Vector)'}
@@ -175,13 +181,15 @@ export const FigureModal: React.FC<Props> = ({ selectedFigure, onClose, onSelect
               target="_blank"
               rel="noreferrer"
               className="p-1.5 rounded hover:bg-stone-800 text-stone-400 hover:text-stone-200 transition"
+              aria-label="Buka gambar ukuran penuh di tab baru"
               title="Open full image in new tab"
             >
               <ExternalLink size={18} />
             </a>
             <button
               onClick={onClose}
-              className="p-1.5 rounded hover:bg-stone-800 text-stone-400 hover:text-stone-200 transition"
+              className="p-1.5 rounded hover:bg-stone-800 text-stone-400 hover:text-stone-200 transition cursor-pointer"
+              aria-label="Tutup penampil diagram"
             >
               <X size={20} />
             </button>

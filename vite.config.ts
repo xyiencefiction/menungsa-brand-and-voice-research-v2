@@ -19,4 +19,25 @@ export default defineConfig({
       },
     },
   ],
+  build: {
+    chunkSizeWarningLimit: 800,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('copyCheatsheet.json')) {
+            return 'copy-cheatsheet-data';
+          }
+          if (id.includes('/src/i18n/') && id.endsWith('.json')) {
+            return 'i18n-locales';
+          }
+          if (id.includes('node_modules/lucide-react')) {
+            return 'lucide-icons';
+          }
+          if (id.includes('node_modules/papaparse')) {
+            return 'papaparse';
+          }
+        },
+      },
+    },
+  },
 })

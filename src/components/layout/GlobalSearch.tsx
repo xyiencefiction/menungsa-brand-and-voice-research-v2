@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Search, X, ArrowRight, BookOpen, GitFork, Sliders, MessageSquare, ShieldAlert } from 'lucide-react';
-import { searchKnowledgeBase, type SearchResult } from '../../data';
+import { searchKnowledgeBase } from '../../data';
 import type { ViewType } from '../../types';
 
 interface Props {
@@ -11,24 +11,26 @@ interface Props {
 
 export const GlobalSearch: React.FC<Props> = ({ isOpen, onClose, onNavigate }) => {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<SearchResult[]>([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 50);
-    } else {
-      setQuery('');
-      setResults([]);
-    }
-  }, [isOpen]);
+  const results = useMemo(() => {
+    if (!query.trim()) return [];
+    return searchKnowledgeBase(query);
+  }, [query]);
 
   useEffect(() => {
-    const res = searchKnowledgeBase(query);
-    setResults(res);
     setSelectedIndex(0);
   }, [query]);
+
+  useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(() => inputRef.current?.focus(), 50);
+      return () => clearTimeout(timer);
+    } else {
+      setQuery('');
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -75,6 +77,9 @@ export const GlobalSearch: React.FC<Props> = ({ isOpen, onClose, onNavigate }) =
       onClick={onClose}
     >
       <div 
+        role="dialog"
+        aria-modal="true"
+        aria-label="Pencarian Panduan Menungsa"
         className="bg-stone-900 border border-stone-700 w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-100 cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
@@ -87,10 +92,15 @@ export const GlobalSearch: React.FC<Props> = ({ isOpen, onClose, onNavigate }) =
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search concepts (e.g., agency, reactance, gue, bapak, humor, M01, X02, C06)..."
+            aria-label="Cari konsep atau kata kunci panduan"
             className="w-full bg-transparent text-stone-100 text-sm placeholder-stone-500 focus:outline-none"
           />
           {query && (
-            <button onClick={() => setQuery('')} className="text-stone-400 hover:text-stone-200">
+            <button 
+              onClick={() => setQuery('')} 
+              aria-label="Hapus teks pencarian"
+              className="text-stone-400 hover:text-stone-200 cursor-pointer"
+            >
               <X size={16} />
             </button>
           )}
@@ -115,7 +125,8 @@ export const GlobalSearch: React.FC<Props> = ({ isOpen, onClose, onNavigate }) =
                   <button
                     key={tag}
                     onClick={() => setQuery(tag.split(' ')[0])}
-                    className="px-2.5 py-1 rounded bg-stone-800/80 hover:bg-stone-700 text-stone-300 font-mono text-[11px] transition"
+                    aria-label={`Cari konsep ${tag}`}
+                    className="px-2.5 py-1 rounded bg-stone-800/80 hover:bg-stone-700 text-stone-300 font-mono text-[11px] transition cursor-pointer"
                   >
                     {tag}
                   </button>

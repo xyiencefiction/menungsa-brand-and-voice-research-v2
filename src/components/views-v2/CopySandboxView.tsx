@@ -12,9 +12,7 @@ import {
   Check,
   RotateCcw,
   Gauge,
-  HeartPulse,
-  Activity,
-  AlertTriangle
+  Activity
 } from 'lucide-react';
 import cheatsheetRaw from '../../data/copyCheatsheet.json';
 
@@ -405,6 +403,7 @@ export const CopySandboxView: React.FC = () => {
                   setSelectedWord(null);
                 }}
                 className="absolute bottom-3 right-3 text-stone-400 hover:text-stone-200 text-xs font-sans px-2.5 py-1 rounded-[6px] bg-stone-950/80 border border-stone-800 cursor-pointer flex items-center gap-1 shadow-xs"
+                aria-label="Bersihkan kotak uji naskah"
               >
                 <RotateCcw size={12} />
                 <span>Bersihkan</span>

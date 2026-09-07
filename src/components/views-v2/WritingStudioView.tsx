@@ -154,21 +154,21 @@ const RATIONALE_ID_MAP: Record<string, string> = {
   'EX-C14-4': 'Menjadikan olahraga bersama sebagai wadah persahabatan yang hangat dan inklusif dengan hambatan sosial nol.'
 };
 
+const CHANNELS_LIST = [
+  { id: 'all', label: 'Semua Format', icon: SlidersHorizontal },
+  { id: 'social', label: '📱 Feed & Medsos', match: ['Social', 'Feed', 'Carousel', 'Reflection', 'Snippet', 'Anecdote', 'Slide'] },
+  { id: 'chat', label: '💬 WhatsApp & Komunitas', match: ['WhatsApp', 'Broadcast', 'Community', 'Note', 'Email', 'Notice', 'Gathering', 'Onboarding'] },
+  { id: 'campaign', label: '📢 Kampanye & Advokasi', match: ['Campaign', 'Poster', 'Announcement', 'Ad', 'Advocacy', 'Statement', 'Release'] },
+  { id: 'guide', label: '🏥 Panduan & Faskes', match: ['Guide', 'Clinical', 'Health', 'Debrief', 'Navigation', 'Bulletin', 'Logistics', 'Slide', 'Vignette', 'Feature'] },
+  { id: 'crisis', label: '🚨 Krisis & Keamanan', match: ['Crisis', 'Support', 'First-Person', 'Safety', 'Bereavement', 'De-escalation'] },
+];
+
 export const WritingStudioView: React.FC = () => {
   const [selectedChannel, setSelectedChannel] = useState<string>('all');
   const [selectedContext, setSelectedContext] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [layoutMode, setLayoutMode] = useState<'two-column' | 'single-column'>('two-column');
-
-  const channelsList = [
-    { id: 'all', label: 'Semua Format', icon: SlidersHorizontal },
-    { id: 'social', label: '📱 Feed & Medsos', match: ['Social', 'Feed', 'Carousel', 'Reflection', 'Snippet', 'Anecdote', 'Slide'] },
-    { id: 'chat', label: '💬 WhatsApp & Komunitas', match: ['WhatsApp', 'Broadcast', 'Community', 'Note', 'Email', 'Notice', 'Gathering', 'Onboarding'] },
-    { id: 'campaign', label: '📢 Kampanye & Advokasi', match: ['Campaign', 'Poster', 'Announcement', 'Ad', 'Advocacy', 'Statement', 'Release'] },
-    { id: 'guide', label: '🏥 Panduan & Faskes', match: ['Guide', 'Clinical', 'Health', 'Debrief', 'Navigation', 'Bulletin', 'Logistics', 'Slide', 'Vignette', 'Feature'] },
-    { id: 'crisis', label: '🚨 Krisis & Keamanan', match: ['Crisis', 'Support', 'First-Person', 'Safety', 'Bereavement', 'De-escalation'] },
-  ];
 
   const handleCopy = (text: string, id: string) => {
     navigator.clipboard.writeText(text);
@@ -188,7 +188,7 @@ export const WritingStudioView: React.FC = () => {
     return toneExemplars.filter((ex) => {
       // Channel filter
       if (selectedChannel !== 'all') {
-        const activeFilter = channelsList.find((c) => c.id === selectedChannel);
+        const activeFilter = CHANNELS_LIST.find((c) => c.id === selectedChannel);
         if (activeFilter?.match) {
           const matched = activeFilter.match.some((m) => 
             ex.channel.toLowerCase().includes(m.toLowerCase())
@@ -238,12 +238,13 @@ export const WritingStudioView: React.FC = () => {
         {/* Row 1: Channel Chips & Layout Switcher */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-stone-800/60 pb-3">
           {/* Format Chips */}
-          <div className="flex flex-wrap items-center gap-1.5">
+          <div role="group" aria-label="Pilihan format kanal" className="flex flex-wrap items-center gap-1.5">
             <span className="text-xs font-sans text-stone-400 font-semibold mr-1 hidden sm:inline">Kanal:</span>
-            {channelsList.map((ch) => (
+            {CHANNELS_LIST.map((ch) => (
               <button
                 key={ch.id}
                 onClick={() => setSelectedChannel(ch.id)}
+                aria-pressed={selectedChannel === ch.id}
                 className={`px-3 py-1.5 rounded-[6px] text-xs font-sans transition cursor-pointer flex items-center gap-1.5 ${
                   selectedChannel === ch.id
                     ? 'bg-amber-500 text-[#F1ECDF] font-semibold shadow-raised'

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Sparkles, Menu, X, BookOpen, PenTool, MessageSquare, Sliders, MapPin } from 'lucide-react';
+import { Search, Sparkles, Menu, X, BookOpen, PenTool, Sliders, MapPin } from 'lucide-react';
 import type { FigureInfo } from '../common/FigureModal';
 import { ThemeToggle } from './ThemeToggle';
 import type { ViewType } from '../../types';
@@ -37,7 +37,8 @@ export const Header: React.FC<Props> = ({
           <button
             onClick={onToggleMobileSidebar}
             className="p-1.5 rounded-lg text-stone-400 hover:text-stone-100 hover:bg-stone-900 md:hidden cursor-pointer"
-            aria-label="Toggle Navigation"
+            aria-label={isMobileSidebarOpen ? 'Tutup navigasi seluler' : 'Buka navigasi seluler'}
+            aria-expanded={isMobileSidebarOpen}
           >
             {isMobileSidebarOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -57,7 +58,7 @@ export const Header: React.FC<Props> = ({
         </div>
 
         {/* Center Desktop Navigation Tabs */}
-        <nav className="hidden md:flex items-center gap-1 bg-stone-900/70 p-1 rounded-xl border border-stone-800/80">
+        <nav aria-label="Navigasi Utama" className="hidden md:flex items-center gap-1 bg-stone-900/70 p-1 rounded-xl border border-stone-800/80">
           {primaryTabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = currentView === tab.id;
@@ -84,7 +85,8 @@ export const Header: React.FC<Props> = ({
           <button
             onClick={onOpenSearch}
             className="flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg bg-stone-900 hover:bg-stone-800 border border-stone-800 text-stone-300 text-xs font-sans transition cursor-pointer"
-            title="Cari kata kunci panduan"
+            aria-label="Cari kata kunci panduan"
+            title="Cari kata kunci panduan (Cmd+K)"
           >
             <Search size={14} className="text-stone-400" />
             <span className="hidden lg:inline text-stone-400">Cari panduan...</span>
@@ -96,7 +98,7 @@ export const Header: React.FC<Props> = ({
 
       {/* Mobile Drawer Navigation */}
       {isMobileSidebarOpen && (
-        <div className="md:hidden border-t border-stone-800 bg-stone-950 px-4 py-4 space-y-2">
+        <nav aria-label="Navigasi Seluler" className="md:hidden border-t border-stone-800 bg-stone-950 px-4 py-4 space-y-2">
           <div className="text-[11px] font-mono text-stone-500 uppercase tracking-wider px-2 mb-2">
             Modul Panduan Penulis:
           </div>
@@ -121,7 +123,7 @@ export const Header: React.FC<Props> = ({
               </button>
             );
           })}
-        </div>
+        </nav>
       )}
     </header>
   );
