@@ -316,41 +316,41 @@ const FRAMING_INSIGHTS: Record<'therapy' | 'skincare' | 'fitness' | 'parenting',
   therapy: {
     id: 'therapy',
     title: 'Terapi Psikologis & Konseling',
-    category: 'Perilaku Rentan (Feminine-Coded dalam Kultur Tradisional)',
+    category: 'Perilaku yang dianggap rentan',
     publicGaze: {
-      threatLevel: 'Sangat Tinggi (High Identity Threat)',
+      threatLevel: 'Sangat sensitif terhadap sorotan sosial',
       threatColor: 'text-rose-400 bg-rose-500/10 border-rose-500/30',
-      culturalContext: 'Di linimasa terbuka, pria Indonesia menghadapi stigma sosial berat: takut dicap "lemah", "gagal mengurus diri", atau "kurang beriman". Ajakan terbuka untuk curhat di ruang publik memicu penolakan psikologis (reactance).',
-      writingStrategy: 'Gunakan bingkai fungsi kerja/daya tahan kognitif ("manajemen stres kerja", "pemulihan fokus"). Jangan meminta pembaca membuka luka batin di kolom komentar; sediakan tautan privat satu-klik langsung ke ruang aman tanpa saksi.',
-      exampleDo: 'Konsultasi privat untuk mengurai beban pikiran dan memulihkan stamina kerja. Bebas dari sorotan publik.',
-      exampleDont: 'Yuk tumpahkan trauma masa lalumu dan akui kerapuhan mentalmu di kolom komentar ini, Bro!'
+      culturalContext: 'Di ruang publik, sebagian pria dapat merasa lebih berisiko dinilai ketika membicarakan masalah psikologis—misalnya dianggap "lemah", "tidak mampu mengurus diri", atau "kurang beriman". Karena itu, ajakan untuk membuka pengalaman pribadi secara terbuka dapat memicu resistensi.',
+      writingStrategy: 'Bingkai pesan melalui manfaat yang konkret, seperti mengelola stres kerja atau memulihkan fokus. Hindari meminta orang membagikan pengalaman pribadi di kolom komentar. Jika ingin mengajak mereka bercerita, arahkan ke kanal privat yang mudah diakses.',
+      exampleDo: 'Konsultasi privat untuk membantu mengelola beban pikiran dan kembali fokus, tanpa perlu membagikannya di ruang publik.',
+      exampleDont: 'Berani jujur? Ceritakan luka dan masalah mentalmu di kolom komentar.'
     },
     privateGaze: {
-      threatLevel: 'Sangat Rendah (Ruang Aman)',
+      threatLevel: 'Relatif aman & privat',
       threatColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
-      culturalContext: 'Percakapan privat dapat mengurangi sorotan orang lain, tetapi belum tentu terasa aman bagi setiap orang. Tetap jelaskan batas privasi dan hormati pilihan untuk tidak bercerita.',
-      writingStrategy: 'Gunakan bahasa yang tenang. Tanggapi cerita tanpa menilai keberanian atau harga diri orang yang bercerita.',
+      culturalContext: 'Percakapan privat dapat mengurangi sorotan sosial, tetapi belum tentu langsung terasa aman bagi setiap orang. Jelaskan batas privasi dengan jelas dan hormati pilihan orang untuk belum bercerita.',
+      writingStrategy: 'Gunakan bahasa yang tenang. Tanggapi cerita tanpa menilai keberanian, kekuatan, atau harga diri orang yang bercerita.',
       exampleDo: 'Ini ruang privat. Kamu tidak harus langsung bercerita jika belum siap. Kita bisa mulai dari apa yang sedang paling mengganjal hari ini.',
-      exampleDont: 'Cowok bernilai tinggi harus berani runtuhkan ego dan menangis di sesi konseling.'
+      exampleDont: 'Kalau kamu serius ingin pulih, kamu harus berani membongkar rahasiamu sekarang tanpa ragu.'
     }
   },
   skincare: {
     id: 'skincare',
     title: 'Skincare & Perawatan Diri',
-    category: 'Perilaku Higienitas (Historically Female-Coded)',
+    category: 'Perawatan Diri & Kebersihan',
     publicGaze: {
-      threatLevel: 'Sedang-Tinggi (Potensi Ejekan Sosial)',
+      threatLevel: 'Perlu kehati-hatian sosial',
       threatColor: 'text-amber-400 bg-amber-500/10 border-amber-500/30',
-      culturalContext: 'Dalam konteks tertentu, perawatan kulit dikaitkan dengan norma gender. Jangan menganggap semua pembaca memiliki kekhawatiran yang sama.',
-      writingStrategy: 'Jelaskan fungsi produk dan cara penggunaannya secara konkret. Hindari janji hasil yang belum dibuktikan.',
+      culturalContext: 'Dalam sebagian konteks sosial, perawatan kulit masih sering dikaitkan dengan norma gender tertentu. Jangan berasumsi semua pembaca merasa canggung atau memiliki kekhawatiran yang sama.',
+      writingStrategy: 'Jelaskan fungsi produk dan cara penggunaannya secara konkret. Hindari janji hasil yang berlebihan atau belum jelas dasarnya.',
       exampleDo: 'Sabun pembersih untuk mengangkat debu jalanan dan minyak setelah seharian di jalan, tanpa rasa perih atau licin.',
-      exampleDont: 'Rahasia cowok glowing dan memesona agar disukai banyak wanita idaman.'
+      exampleDont: 'Biar tetap kelihatan segar dan makin menarik, cowok juga wajib punya skincare routine.'
     },
     privateGaze: {
-      threatLevel: 'Rendah (Pilihan Mandiri)',
+      threatLevel: 'Pilihan mandiri & privat',
       threatColor: 'text-sky-400 bg-sky-500/10 border-sky-500/30',
       culturalContext: 'Jelaskan kegunaan produk dan langkah pemakaian agar pembaca bisa menilai kesesuaiannya dengan kebutuhan sendiri.',
-      writingStrategy: 'Gunakan panduan berbasis langkah konkret yang ringkas (misal: 3 menit, 2 produk utama). Jelaskan bahan aktif secara lugas dan fungsi klinisnya tanpa basa-basi.',
+      writingStrategy: 'Gunakan panduan langkah demi langkah yang ringkas. Jelaskan bahan aktif dan manfaatnya secara singkat, jelas, dan tidak bertele-tele.',
       exampleDo: 'Dua langkah simpel sehabis mandi: bersihkan muka, lalu pakai pelembap tabir surya sebelum keluar rumah.',
       exampleDont: 'Treatment 10 langkah kecantikan pria modern agar tampil paripurna sepanjang hari.'
     }
@@ -358,20 +358,20 @@ const FRAMING_INSIGHTS: Record<'therapy' | 'skincare' | 'fitness' | 'parenting',
   parenting: {
     id: 'parenting',
     title: 'Pengasuhan Anak & Keterlibatan Domestik',
-    category: 'Perilaku Relasional (Transisi Norma Modern)',
+    category: 'Pengasuhan & Keterlibatan Domestik',
     publicGaze: {
-      threatLevel: 'Moderat (Sorotan Peran Ganda)',
+      threatLevel: 'Sorotan peran ganda',
       threatColor: 'text-sky-400 bg-sky-500/10 border-sky-500/30',
-      culturalContext: 'Di masyarakat urban, keterlibatan ayah (involved fatherhood) diapresiasi, namun di ranah sosial yang lebih tradisional, pria masih dicap "suami takut istri" atau sekadar "bantu-bantu momong" jika tidak dibingkai secara bermartabat.',
+      culturalContext: 'Di banyak lingkungan urban, keterlibatan ayah dalam pengasuhan makin dihargai. Namun di lingkungan yang lebih tradisional, pria masih bisa dicap "suami takut istri" atau dianggap sekadar "membantu" jika tidak dibingkai secara bermartabat.',
       writingStrategy: 'Gambarkan ayah sebagai orang tua yang ikut bertanggung jawab dalam pengasuhan sehari-hari.',
       exampleDo: 'Hadir mendampingi anak belajar menyelesaikan masalah dan mengelola emosinya sejak dini.',
       exampleDont: 'Suami idaman yang mau bantu-bantu pekerjaan istri dan tidak malu gendong anak di depan umum.'
     },
     privateGaze: {
-      threatLevel: 'Sangat Rendah (Refleksi Tanggung Jawab)',
+      threatLevel: 'Refleksi tanggung jawab',
       threatColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
-      culturalContext: 'Dalam refleksi privat, ayah sering memikul kecemasan besar: takut gagal menafkahi secara holistik, rasa bersalah karena waktu kerja yang panjang, dan kebingungan cara berkomunikasi dengan anak remaja.',
-      writingStrategy: 'Akui bahwa pengasuhan bisa melelahkan. Berikan contoh percakapan yang membantu ayah mendengarkan anak.',
+      culturalContext: 'Dalam refleksi privat, ayah bisa membawa kecemasan seperti takut belum cukup memenuhi kebutuhan keluarga, rasa bersalah karena waktu kerja yang panjang, atau kebingungan membangun komunikasi dengan anak.',
+      writingStrategy: 'Akui bahwa pengasuhan bisa melelahkan. Berikan contoh percakapan sederhana yang membantu ayah hadir dan mendengarkan anak.',
       exampleDo: 'Saat pulang kerja dalam keadaan lelah, sepuluh menit mendengarkan ceritanya tanpa memegang ponsel sudah sangat berarti bagi anakmu.',
       exampleDont: 'Kalau kamu tidak punya waktu untuk anak, jangan mengaku sebagai ayah yang baik.'
     }
@@ -379,22 +379,22 @@ const FRAMING_INSIGHTS: Record<'therapy' | 'skincare' | 'fitness' | 'parenting',
   fitness: {
     id: 'fitness',
     title: 'Gym & Latihan Beban Fisik',
-    category: 'Perilaku Budaya Selaras (Masculine-Coded)',
+    category: 'Aktivitas yang Selaras dengan Norma Maskulin',
     publicGaze: {
-      threatLevel: 'Rendah (High Cultural Alignment)',
+      threatLevel: 'Diterima secara sosial',
       threatColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
-      culturalContext: 'Latihan fisik adalah domain yang paling diterima secara sosial bagi pria. Namun jebakan terbesarnya adalah retorika "hustle toxic", "alpha grindset", dan penghinaan terhadap mereka yang bertubuh gemuk/lemah.',
-      writingStrategy: 'Jelaskan manfaat dan tujuan latihan sesuai bukti. Hindari ejekan terhadap bentuk tubuh atau kemampuan peserta.',
+      culturalContext: 'Topik latihan fisik umumnya mudah diterima secara sosial ketika ditujukan kepada pria. Namun jebakannya adalah retorika disiplin ekstrem, glorifikasi "alpha", dan ejekan terhadap tubuh atau kemampuan orang lain.',
+      writingStrategy: 'Jelaskan manfaat dan tujuan latihan secara realistis dan berbasis bukti. Hindari mempermalukan bentuk tubuh, kemampuan, atau jeda latihan seseorang.',
       exampleDo: 'Membangun kekuatan otot dan daya tahan jantung agar tetap bugar mendampingi keluarga hingga usia lanjut.',
       exampleDont: 'Hancurkan rasa malasmu, cowok lembek tidak punya masa depan di dunia yang keras ini!'
     },
     privateGaze: {
-      threatLevel: 'Sangat Rendah (Pemulihan & Disiplin Diri)',
+      threatLevel: 'Pemulihan mandiri',
       threatColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
-      culturalContext: 'Secara personal, pria sering bergulat dengan rasa malu karena kelebihan berat badan, cedera sendi menahun, atau kelelahan kronis akibat kerja fisik berlebih.',
-      writingStrategy: 'Akui kebutuhan beristirahat dan pulih. Hindari menilai jeda latihan sebagai kegagalan pribadi.',
+      culturalContext: 'Secara personal, pria bisa bergulat dengan rasa malu karena berat badan, cedera lama, atau kelelahan berkepanjangan akibat beban kerja dan latihan.',
+      writingStrategy: 'Akui kebutuhan untuk beristirahat dan pulih. Hindari membingkai jeda latihan sebagai kegagalan pribadi.',
       exampleDo: 'Ketika sendi terasa nyeri atau badan demam, istirahat adalah keputusan yang cerdas, bukan kegagalan disiplin.',
-      exampleDont: 'Rasa sakit itu ilusi. Jangan pernah skip latihan apa pun alasannya jika kamu pria sejati.'
+      exampleDont: 'Kalau serius ingin berkembang, jangan jadikan capek atau nyeri sebagai alasan untuk berhenti latihan.'
     }
   }
 };
@@ -649,7 +649,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <div className="flex items-center gap-1.5">
                         <span className="text-[10px] font-mono font-bold uppercase text-amber-500 tracking-wider">
-                          Panduan Naskah
+                          PANDUAN PENULISAN
                         </span>
                         <span className="text-stone-500">·</span>
                         <span className="text-[11px] text-stone-400 font-sans">{insight.category}</span>

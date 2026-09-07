@@ -21,10 +21,10 @@ const H = 340;
 const M = { top: 32, right: 28, bottom: 42, left: 42 };
 
 const ACTIONS: ActionItem[] = [
-  { id: 'therapy', name: 'Terapi Psikologis', xVal: 18, yPrivate: 22, yPublic: 80 },
+  { id: 'therapy', name: 'Terapi Psikologis & Konseling', xVal: 18, yPrivate: 22, yPublic: 80 },
   { id: 'skincare', name: 'Skincare & Perawatan Diri', xVal: 34, yPrivate: 18, yPublic: 70 },
   { id: 'parenting', name: 'Pengasuhan Anak', xVal: 54, yPrivate: 25, yPublic: 76 },
-  { id: 'fitness', name: 'Gym & Kekuatan', xVal: 84, yPrivate: 24, yPublic: 78 },
+  { id: 'fitness', name: 'Gym & Latihan Beban Fisik', xVal: 84, yPrivate: 24, yPublic: 78 },
 ];
 
 export const FramingMatrix: React.FC<Props> = ({
@@ -58,14 +58,14 @@ export const FramingMatrix: React.FC<Props> = ({
         <div>
           <div className="flex items-center gap-2">
             <h3 className="font-serif font-semibold text-stone-100 text-sm md:text-base">
-              Matriks Batas Keberlakuan 2×2
+              Matriks Konteks Komunikasi
             </h3>
             <span className="px-1.5 py-0.5 rounded font-mono text-[9.5px] uppercase tracking-wider bg-stone-800 text-stone-300 border border-stone-700">
               Interaktif
             </span>
           </div>
           <p className="text-stone-400 text-[11px] font-sans">
-            Koding Budaya × Visibilitas Sosial (Gaze)
+            Persepsi Gender × Tingkat Sorotan Sosial
           </p>
         </div>
 
@@ -80,7 +80,7 @@ export const FramingMatrix: React.FC<Props> = ({
             }`}
           >
             <span className={`w-1.5 h-1.5 rounded-full ${!isPublic ? 'bg-bone' : 'bg-stone-600'}`} />
-            Privat
+            Ruang Privat
           </button>
           <button
             onClick={() => onToggleVisibility(true)}
@@ -91,7 +91,7 @@ export const FramingMatrix: React.FC<Props> = ({
             }`}
           >
             <span className={`w-1.5 h-1.5 rounded-full ${isPublic ? 'bg-bone' : 'bg-stone-600'}`} />
-            Sorotan Publik
+            Ruang Publik
           </button>
         </div>
       </header>
@@ -210,43 +210,43 @@ export const FramingMatrix: React.FC<Props> = ({
           <circle cx={midX} cy={midY} r={2} fill="rgba(255, 255, 255, 0.6)" />
 
           {/* Quadrant Labels with Minimal Architectural Typography */}
-          {/* Top-Left: Identity Shield Zone */}
+          {/* Top-Left: Identity Protection Zone */}
           <g transform={`translate(${M.left + 10}, ${M.top + 8})`}>
             <text className="font-mono text-[9.5px] uppercase font-bold tracking-wider fill-stone-300">
-              Zona Perisai Identitas
+              ZONA PERLINDUNGAN IDENTITAS
             </text>
             <text y={13} className="font-sans text-[8.5px] fill-stone-400">
-              Risiko sosial tinggi · Isyarat ramah-pria menolong pembaca
+              Risiko sosial tinggi · Isyarat yang terasa aman bagi pria dapat membantu
             </text>
           </g>
 
           {/* Top-Right: Redundancy & Backfire */}
           <g transform={`translate(${midX + 10}, ${M.top + 8})`}>
             <text className="font-mono text-[9.5px] uppercase font-bold tracking-wider fill-rose-400">
-              Zona Redundan &amp; Bumerang
+              ZONA BERLEBIHAN &amp; BISA BERBALIK ARAH
             </text>
             <text y={13} className="font-sans text-[8.5px] fill-stone-400">
-              Sudah maskulin · Pelebelan 'Pria Alfa' justru dicemooh
+              Sudah dianggap maskulin · Penegasan maskulinitas justru bisa terasa berlebihan
             </text>
           </g>
 
           {/* Bottom-Left: Safe Pragmatic Zone */}
           <g transform={`translate(${M.left + 10}, ${midY + 12})`}>
             <text className="font-mono text-[9.5px] uppercase font-bold tracking-wider fill-emerald-400">
-              Zona Pragmatis Netral
+              ZONA NETRAL &amp; PRAKTIS
             </text>
             <text y={13} className="font-sans text-[8.5px] fill-stone-400">
-              Aman dan hening · Tidak butuh penegasan maskulin agresif
+              Relatif aman dan privat · Tidak perlu penegasan maskulinitas yang kuat
             </text>
           </g>
 
-          {/* Bottom-Right: Direct Craft Zone */}
+          {/* Bottom-Right: Direct Action Zone */}
           <g transform={`translate(${midX + 10}, ${midY + 12})`}>
             <text className="font-mono text-[9.5px] uppercase font-bold tracking-wider fill-stone-300">
-              Zona Keahlian Langsung
+              ZONA AKSI LANGSUNG
             </text>
             <text y={13} className="font-sans text-[8.5px] fill-stone-400">
-              Aktivitas berbasis aksi · Fokus pada instruksi teknis
+              Berorientasi tindakan · Fokus pada instruksi dan keterampilan praktis
             </text>
           </g>
 
@@ -257,7 +257,7 @@ export const FramingMatrix: React.FC<Props> = ({
             textAnchor="middle"
             className="font-mono text-[9px] uppercase tracking-wider fill-stone-500"
           >
-            ← Feminin / Rentan &nbsp; · &nbsp; Persepsi Koding Budaya &nbsp; · &nbsp; Maskulin →
+            ← DIANGGAP FEMININ / RENTAN &nbsp; · &nbsp; PERSEPSI BUDAYA &nbsp; · &nbsp; DIANGGAP MASKULIN →
           </text>
 
           <text
@@ -267,7 +267,7 @@ export const FramingMatrix: React.FC<Props> = ({
             className="font-mono text-[9px] uppercase tracking-wider fill-stone-500"
             transform={`rotate(-90 14 ${(M.top + H - M.bottom) / 2})`}
           >
-            - Ruang Privat (Diskret) &nbsp; · &nbsp; Visibilitas Sosial &nbsp; · &nbsp; Sorotan Publik +
+            PRIVAT · MINIM SOROTAN &nbsp; · &nbsp; TINGKAT SOROTAN SOSIAL &nbsp; · &nbsp; PUBLIK · BANYAK SOROTAN
           </text>
 
           {/* Plotted Action Nodes */}
@@ -366,7 +366,7 @@ export const FramingMatrix: React.FC<Props> = ({
           <span className="text-stone-100 font-semibold">{activeItem.name}</span>
           <span className="text-stone-500">·</span>
           <span className="text-stone-300 font-mono text-[10.5px]">
-            {isPublic ? 'Ruang Publik (Sorotan Tinggi)' : 'Ruang Privat (Diskret)'}
+            {isPublic ? 'Ruang Publik (Banyak Sorotan)' : 'Ruang Privat (Minim Sorotan)'}
           </span>
         </div>
         <span className="text-[10px] text-stone-500 font-mono hidden sm:inline">
