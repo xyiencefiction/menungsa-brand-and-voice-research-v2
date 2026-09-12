@@ -11,6 +11,7 @@ import {
   HeartHandshake
 } from 'lucide-react';
 import { RegisterMap, LunarPips, MoonPhase } from '../charts/RegisterMap';
+import { handleTablistKeys } from '../../utils/overlay';
 import { languageRegisters } from '../../data';
 
 interface RegisterItem {
@@ -241,6 +242,8 @@ const ETHICAL_ALTERNATIVES: EthicalAlternativeItem[] = [
   }
 ];
 
+const GUIDE_TABS = ['pronouns', 'gender', 'alternatives'] as const;
+
 export const WordGuideView: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'pronouns' | 'gender' | 'alternatives'>('pronouns');
   const [selectedRegisterId, setSelectedRegisterId] = useState<string>('kamu');
@@ -264,16 +267,22 @@ export const WordGuideView: React.FC = () => {
         </p>
 
         {/* Tab Switcher */}
-        <div role="tablist" aria-label="Navigasi Panduan Kata" className="flex flex-wrap gap-2 pt-2">
+        <div
+          role="tablist"
+          aria-label="Navigasi Panduan Kata"
+          onKeyDown={(e) => handleTablistKeys(e, (i) => setActiveTab(GUIDE_TABS[i]))}
+          className="flex flex-wrap gap-2 pt-2"
+        >
           <button
             role="tab"
             id="tab-pronouns"
             aria-selected={activeTab === 'pronouns'}
             aria-controls="panel-pronouns"
+            tabIndex={activeTab === 'pronouns' ? 0 : -1}
             onClick={() => setActiveTab('pronouns')}
             className={`px-4 py-2 rounded-[6px] text-xs font-sans transition cursor-pointer flex items-center gap-2 ${
               activeTab === 'pronouns'
-                ? 'bg-emerald-700 text-bone font-semibold shadow-raised border border-emerald-600 dark:bg-emerald-800'
+                ? 'bg-emerald-700 text-bone font-semibold shadow-raised border border-emerald-800 dark:border-emerald-500 dark:bg-emerald-800'
                 : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-100 hover:bg-stone-850'
             }`}
           >
@@ -285,10 +294,11 @@ export const WordGuideView: React.FC = () => {
             id="tab-gender"
             aria-selected={activeTab === 'gender'}
             aria-controls="panel-gender"
+            tabIndex={activeTab === 'gender' ? 0 : -1}
             onClick={() => setActiveTab('gender')}
             className={`px-4 py-2 rounded-[6px] text-xs font-sans transition cursor-pointer flex items-center gap-2 ${
               activeTab === 'gender'
-                ? 'bg-emerald-700 text-bone font-semibold shadow-raised border border-emerald-600 dark:bg-emerald-800'
+                ? 'bg-emerald-700 text-bone font-semibold shadow-raised border border-emerald-800 dark:border-emerald-500 dark:bg-emerald-800'
                 : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-100 hover:bg-stone-850'
             }`}
           >
@@ -300,10 +310,11 @@ export const WordGuideView: React.FC = () => {
             id="tab-alternatives"
             aria-selected={activeTab === 'alternatives'}
             aria-controls="panel-alternatives"
+            tabIndex={activeTab === 'alternatives' ? 0 : -1}
             onClick={() => setActiveTab('alternatives')}
             className={`px-4 py-2 rounded-[6px] text-xs font-sans transition cursor-pointer flex items-center gap-2 ${
               activeTab === 'alternatives'
-                ? 'bg-emerald-700 text-bone font-semibold shadow-raised border border-emerald-600 dark:bg-emerald-800'
+                ? 'bg-emerald-700 text-bone font-semibold shadow-raised border border-emerald-800 dark:border-emerald-500 dark:bg-emerald-800'
                 : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-100 hover:bg-stone-850'
             }`}
           >
@@ -371,7 +382,7 @@ export const WordGuideView: React.FC = () => {
                       </div>
                       <div><strong className="text-stone-100 font-semibold">Konteks penggunaan:</strong> {activeRegister.contexts}</div>
                       <div className="text-rose-700 dark:text-rose-300 pt-1.5 border-t border-stone-800">
-                        <strong className="text-rose-800 dark:text-rose-400 font-bold">Risiko:</strong> {activeRegister.risks}
+                        <strong className="text-rose-700 dark:text-rose-400 font-bold">Risiko:</strong> {activeRegister.risks}
                       </div>
                     </div>
                   </div>
@@ -384,7 +395,12 @@ export const WordGuideView: React.FC = () => {
               <h4 className="text-xs font-mono text-stone-400 uppercase tracking-wider font-semibold">
                 Daftar kata ganti dan sapaan
               </h4>
-              <div role="tablist" aria-label="Daftar kata ganti dan sapaan" className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2">
+              <div
+                role="tablist"
+                aria-label="Daftar kata ganti dan sapaan"
+                onKeyDown={(e) => handleTablistKeys(e, (i) => setSelectedRegisterId(REGISTERS[i].id))}
+                className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2"
+              >
                 {REGISTERS.map((reg) => (
                   <button
                     key={reg.id}
@@ -392,10 +408,11 @@ export const WordGuideView: React.FC = () => {
                     id={`tab-register-${reg.id}`}
                     aria-selected={selectedRegisterId === reg.id}
                     aria-controls="panel-register-detail"
+                    tabIndex={selectedRegisterId === reg.id ? 0 : -1}
                     onClick={() => setSelectedRegisterId(reg.id)}
                     className={`px-3 py-2.5 rounded-lg border text-center transition cursor-pointer flex flex-col items-center justify-center gap-1.5 ${
                       selectedRegisterId === reg.id
-                        ? 'border-emerald-700 bg-emerald-700 text-bone font-semibold shadow-raised dark:border-emerald-600 dark:bg-emerald-800'
+                        ? 'border-emerald-700 bg-emerald-700 text-bone font-semibold shadow-raised dark:border-emerald-500 dark:bg-emerald-800'
                         : 'border-stone-800 bg-stone-900 text-stone-300 hover:border-emerald-700/60 hover:bg-stone-850'
                     }`}
                     title={`Otoritas: ${reg.authorityLevel}/5 · Kedekatan: ${reg.intimacyLevel}/5`}
@@ -408,15 +425,15 @@ export const WordGuideView: React.FC = () => {
                         <MoonPhase
                           level={reg.authorityLevel}
                           size={12}
-                          className={selectedRegisterId === reg.id ? 'text-amber-200' : 'text-amber-400/90'}
+                          className={selectedRegisterId === reg.id ? 'text-bone' : 'text-amber-500 dark:text-amber-400/90'}
                         />
                       </span>
-                      <span className="text-[9px] text-stone-500 opacity-40 select-none">·</span>
+                      <span className={`text-[9px] select-none ${selectedRegisterId === reg.id ? 'text-bone/50' : 'text-stone-500/60'}`}>·</span>
                       <span className="inline-flex items-center gap-1" title={`Kedekatan: ${reg.intimacyLevel}/5`}>
                         <MoonPhase
                           level={reg.intimacyLevel}
                           size={12}
-                          className={selectedRegisterId === reg.id ? 'text-emerald-200' : 'text-emerald-400/90'}
+                          className={selectedRegisterId === reg.id ? 'text-bone' : 'text-emerald-500 dark:text-emerald-400/90'}
                         />
                       </span>
                     </div>
@@ -474,7 +491,7 @@ export const WordGuideView: React.FC = () => {
                 <p className="text-stone-300 leading-relaxed">
                   Menungsa tidak memakai label ini untuk menilai harga diri pembaca atau mendesaknya melakukan sesuatu.
                 </p>
-                <div className="font-serif italic text-rose-800 dark:text-rose-300 pt-2 border-t border-rose-900/40 leading-snug font-medium">
+                <div className="font-serif italic text-rose-700 dark:text-rose-300 pt-2 border-t border-rose-900/40 leading-snug font-medium">
                   "✕ Pria sejati adalah pria yang berani menangis dan meminta tolong."
                 </div>
               </div>
@@ -504,9 +521,10 @@ export const WordGuideView: React.FC = () => {
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setSelectedFunctionId('all')}
+                aria-pressed={selectedFunctionId === 'all'}
                 className={`px-3 py-2 rounded-lg border text-xs font-sans transition cursor-pointer flex items-center gap-1.5 ${
                   selectedFunctionId === 'all'
-                    ? 'bg-emerald-700 text-bone font-semibold border-emerald-600 shadow-raised dark:bg-emerald-800'
+                    ? 'bg-emerald-700 text-bone font-semibold border-emerald-800 shadow-raised dark:border-emerald-500 dark:bg-emerald-800'
                     : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-100 hover:bg-stone-850'
                 }`}
               >
@@ -518,9 +536,10 @@ export const WordGuideView: React.FC = () => {
                   <button
                     key={alt.id}
                     onClick={() => setSelectedFunctionId(alt.id)}
+                    aria-pressed={isSelected}
                     className={`px-3 py-2 rounded-lg border text-left text-xs font-sans transition cursor-pointer flex items-center gap-2 ${
                       isSelected
-                        ? 'bg-emerald-700 text-bone font-semibold border-emerald-600 shadow-raised dark:bg-emerald-800'
+                        ? 'bg-emerald-700 text-bone font-semibold border-emerald-800 shadow-raised dark:border-emerald-500 dark:bg-emerald-800'
                         : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-100 hover:bg-stone-850'
                     }`}
                   >

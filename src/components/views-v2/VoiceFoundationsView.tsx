@@ -1,20 +1,9 @@
 import React, { useState } from 'react';
 import type { ViewType } from '../../types';
-import { 
-  Compass, 
-  CheckCircle2, 
-  XCircle, 
-  Sparkles, 
-  ArrowRight, 
-  ShieldCheck, 
-  Anchor, 
-  Scale, 
-  SlidersHorizontal,
-  Eye,
-  AlertCircle
-} from 'lucide-react';
+import { CheckCircle2, XCircle, Sparkles, ArrowRight, SlidersHorizontal } from 'lucide-react';
 import { ValueSpectrum } from '../charts/ValueSpectrum';
 import { ContextCheck } from './ContextCheck';
+import { ComparisonTable } from '../common/ComparisonTable';
 import { brandValues } from '../../data';
 
 interface Props {
@@ -288,6 +277,11 @@ const PLAYBOOK_ITEMS: PlaybookItem[] = [
   }
 ];
 
+/** Reader-facing name per value id, handed to the spectrum as its row labels. */
+const VALUE_TITLES: Record<string, string> = Object.fromEntries(
+  VALUE_PILLARS.map((v) => [v.id, v.title]),
+);
+
 const VOICE_TRAITS = [
   'Akrab',
   'Empatik',
@@ -316,8 +310,6 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
     return r.category === selectedCategory;
   });
 
-  const activeValue = VALUE_PILLARS.find((v) => v.id === activeValueId) ?? VALUE_PILLARS[0];
-  const valueIcons = [Scale, ShieldCheck, Compass, Eye, AlertCircle, Anchor];
 
   return (
     <div className="space-y-12 pb-16">
@@ -329,6 +321,8 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
           alt="Dokumentasi interaksi diskusi autentik Menungsa"
           className="absolute inset-0 w-full h-full object-cover object-[75%_center] lg:object-[80%_center] scale-[1.01] pointer-events-none select-none"
           loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
 
         {/* Multi-layer cinematic scrim gradients for AAA legibility */}
@@ -348,7 +342,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
         {/* Top Header Row: Frosted Glass Badge */}
         <div className="relative z-10 flex items-center justify-start">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-stone-950/70 backdrop-blur-md border border-stone-700/60 text-xs font-medium text-amber-300 shadow-xs">
-            <Sparkles size={13} className="text-amber-400" />
+            <Sparkles size={13} className="text-amber-500 dark:text-amber-400" />
             <span className="tracking-wide">Panduan Menulis di Menungsa</span>
           </div>
         </div>
@@ -386,20 +380,20 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <button
               onClick={() => onNavigate('studio')}
-              className="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-semibold text-xs sm:text-sm transition-all shadow-raised flex items-center gap-2 cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+              className="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-semibold text-xs sm:text-sm transition-[scale,background-color] duration-150 ease-out shadow-raised flex items-center gap-2 cursor-pointer hover:scale-[1.02] active:scale-[0.96]"
             >
               <span>Contoh penulisan</span>
               <ArrowRight size={15} />
             </button>
             <button
               onClick={() => onNavigate('sandbox')}
-              className="px-5 py-3 rounded-xl bg-stone-900/80 hover:bg-stone-800/90 text-stone-200 border border-stone-700/70 backdrop-blur-md font-medium text-xs sm:text-sm transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+              className="px-5 py-3 rounded-xl bg-stone-900/80 hover:bg-stone-800/90 text-stone-200 border border-stone-700/70 backdrop-blur-md font-medium text-xs sm:text-sm transition-[scale,background-color] duration-150 ease-out cursor-pointer hover:scale-[1.02] active:scale-[0.96]"
             >
               <span>Cek tulisanmu</span>
             </button>
             <button
               onClick={() => onNavigate('lexicon')}
-              className="hidden sm:inline-flex px-4 py-3 rounded-xl bg-stone-950/50 hover:bg-stone-900/70 text-stone-300 border border-stone-800/80 backdrop-blur-md text-xs sm:text-sm transition-all cursor-pointer"
+              className="hidden sm:inline-flex px-4 py-3 rounded-xl bg-stone-950/50 hover:bg-stone-900/70 text-stone-300 border border-stone-800/80 backdrop-blur-md text-xs sm:text-sm transition-[scale,background-color] duration-150 ease-out cursor-pointer"
             >
               <span>Pemilihan kata</span>
             </button>
@@ -418,158 +412,89 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
           </p>
         </div>
 
-        {/* Visualizer & 6 Value Selector Cards (2-Column Desktop Grid) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
-          {/* Left Column: Value Spectrum Chart */}
-          <div className="lg:col-span-7 flex flex-col">
-            <ValueSpectrum
-              values={brandValues}
-              selectedId={activeValueId}
-              onSelect={(id) => setActiveValueId(id)}
-              className="h-full flex flex-col justify-between"
-            />
-          </div>
-
-          {/* Right Column: 6 Value Selector Cards (2 cols x 3 rows on desktop) */}
-          <div className="lg:col-span-5 flex flex-col">
-            <div role="tablist" aria-label="Enam prinsip menulis" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 lg:grid-rows-3 gap-2.5 sm:gap-3 h-full">
-              {VALUE_PILLARS.map((val, idx) => {
-                const Icon = valueIcons[idx % valueIcons.length];
-                const isSelected = val.id === activeValueId;
-
-                return (
-                  <button
-                    key={val.id}
-                    role="tab"
-                    id={`tab-${val.id}`}
-                    aria-selected={isSelected}
-                    aria-controls={`panel-${val.id}`}
-                    onClick={() => setActiveValueId(val.id)}
-                    className={`text-left p-4 sm:p-5 rounded-xl border transition-all duration-200 cursor-pointer flex items-center justify-between gap-3 group h-full ${
-                      isSelected
-                        ? 'bg-amber-500/10 border-amber-500/80 shadow-[0_0_20px_rgba(245,158,11,0.15)] ring-1 ring-amber-500/30'
-                        : 'bg-stone-900/50 hover:bg-stone-900 border-stone-800/80 hover:border-stone-700/80'
-                    }`}
-                  >
-                    <span className={`text-base sm:text-lg font-serif font-semibold leading-snug ${
-                      isSelected ? 'text-amber-200' : 'text-stone-200 group-hover:text-stone-100'
-                    }`}>
-                      {val.title}
+        {/* One selector, not two.
+            The six cards that used to sit beside this chart were a second
+            selector for the same six items, and carried a second set of names
+            for them, so six values arrived on screen under twelve labels. The
+            rows below now carry the reader-facing name; the principle name and
+            the position note open with the panel, where they read as a sequence
+            rather than a contradiction. */}
+        <ValueSpectrum
+          values={brandValues}
+          rowTitles={VALUE_TITLES}
+          selectedId={activeValueId}
+          onSelect={(id) => setActiveValueId(id === activeValueId ? '' : id)}
+          renderDetail={(id) => {
+            const val = VALUE_PILLARS.find((v) => v.id === id);
+            if (!val) return null;
+            return (
+              <div className="space-y-4 border-t border-stone-800/80 pt-4">
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-3">
+                  <span className="text-xs font-sans font-bold tracking-widest uppercase text-amber-500 dark:text-amber-400/90 block">
+                    VALUE {val.id.replace('V', '').padStart(2, '0')}
+                  </span>
+                  <div className="text-xs font-sans text-stone-300 bg-stone-950/60 px-3.5 py-2 rounded-lg border border-stone-800 md:max-w-md">
+                    <span className="font-semibold text-amber-500 dark:text-amber-400 font-mono text-[10.5px] uppercase block mb-0.5">
+                      Karakter Suara
                     </span>
-                    <Icon
-                      size={20}
-                      className={`shrink-0 transition-colors ${
-                        isSelected ? 'text-amber-400' : 'text-stone-500 group-hover:text-stone-400'
-                      }`}
-                    />
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        {/* Deep Dive Section of Selected Value Pillar */}
-        {activeValue && (
-          <div
-            role="tabpanel"
-            id={`panel-${activeValue.id}`}
-            aria-labelledby={`tab-${activeValue.id}`}
-            className="rounded-2xl border border-stone-800 bg-stone-900/40 p-6 sm:p-8 space-y-6 shadow-xl animate-in fade-in duration-200"
-          >
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-800/80 pb-4">
-              <div>
-                <span className="text-xs font-sans font-bold tracking-widest uppercase text-amber-400/90 block mb-1">
-                  VALUE {activeValue.id.replace('V', '').padStart(2, '0')}
-                </span>
-                <div className="flex items-center gap-2">
-                  <h3 className="text-2xl font-serif font-semibold text-stone-100">
-                    {activeValue.title}
-                  </h3>
+                    {val.voiceTrait}
+                  </div>
                 </div>
-              </div>
 
-              <div className="text-xs font-sans text-stone-300 bg-stone-950/60 px-3.5 py-2 rounded-lg border border-stone-800 max-w-md">
-                <span className="font-semibold text-amber-400 font-mono text-[10.5px] uppercase block mb-0.5">
-                  Karakter Suara
-                </span>
-                {activeValue.voiceTrait}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-              {/* Left Column: Alasan Nilai */}
-              <div className="lg:col-span-5 space-y-4">
                 <div>
-                  <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-stone-400 mb-2">
+                  <h6 className="text-xs font-mono font-bold uppercase tracking-wider text-stone-400 mb-2">
                     Mengapa ini penting
-                  </h4>
+                  </h6>
                   <p className="text-sm text-stone-300 leading-relaxed font-sans bg-stone-950/30 p-4 rounded-xl border border-stone-800/60">
-                    {activeValue.positionNote}
+                    {val.positionNote}
                   </p>
                 </div>
 
                 <div className="text-xs text-stone-400 bg-stone-950/40 p-3.5 rounded-xl border border-stone-800/80 leading-relaxed font-sans">
-                  <strong className="text-stone-200">Kapan perlu disesuaikan:</strong> {activeValue.boundaryCondition}
+                  <strong className="text-stone-200">Kapan perlu disesuaikan:</strong> {val.boundaryCondition}
                 </div>
-              </div>
 
-              {/* Right Column: DO and DON'T Comparison Table */}
-              <div className="lg:col-span-7 space-y-4">
-                <div className="overflow-hidden rounded-xl border border-stone-800 bg-stone-950/70 shadow-raised">
-                  <table className="w-full text-left border-collapse table-fixed font-sans text-xs">
-                    <thead>
-                      <tr className="border-b border-stone-800 bg-stone-900/90">
-                        <th className="w-1/2 p-3 font-semibold uppercase tracking-wider text-emerald-400 border-r border-stone-800">
-                          <div className="flex items-center gap-1.5 font-mono text-[11px]">
-                            <CheckCircle2 size={14} className="shrink-0 text-emerald-400" />
-                            <span>DO (Sesuai Panduan)</span>
-                          </div>
-                        </th>
-                        <th className="w-1/2 p-3 font-semibold uppercase tracking-wider text-rose-400">
-                          <div className="flex items-center gap-1.5 font-mono text-[11px]">
-                            <XCircle size={14} className="shrink-0 text-rose-400" />
-                            <span>DON'T (Perlu Dihindari)</span>
-                          </div>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-stone-800/70">
-                      {Array.from({ length: Math.max(activeValue.dos.length, activeValue.donts.length) }).map((_, idx) => {
-                        const d = activeValue.dos[idx];
-                        const dt = activeValue.donts[idx];
-                        return (
-                          <tr key={idx} className="hover:bg-stone-900/20 transition-colors">
-                            <td className="w-1/2 p-3.5 align-top border-r border-stone-800/70 bg-emerald-950/10 space-y-1.5">
-                              {d ? (
-                                <>
-                                  <p className="font-serif italic text-emerald-300 leading-snug">"{d.example}"</p>
-                                  <p className="text-xs text-stone-300 leading-relaxed font-sans">{d.why}</p>
-                                </>
-                              ) : (
-                                <span className="text-stone-600 italic">-</span>
-                              )}
-                            </td>
-                            <td className="w-1/2 p-3.5 align-top bg-rose-950/10 space-y-1.5">
-                              {dt ? (
-                                <>
-                                  <p className="font-serif italic text-rose-300 leading-snug">"{dt.example}"</p>
-                                  <p className="text-xs text-stone-300 leading-relaxed font-sans">{dt.why}</p>
-                                </>
-                              ) : (
-                                <span className="text-stone-600 italic">-</span>
-                              )}
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
+                <ComparisonTable
+                  positiveLabel={
+                    <>
+                      <CheckCircle2 size={14} className="shrink-0 text-emerald-400" />
+                      <span>DO (Sesuai Panduan)</span>
+                    </>
+                  }
+                  negativeLabel={
+                    <>
+                      <XCircle size={14} className="shrink-0 text-rose-500 dark:text-rose-400" />
+                      <span>DON'T (Perlu Dihindari)</span>
+                    </>
+                  }
+                  emptySlot={<span className="text-stone-500 italic">-</span>}
+                  rows={Array.from({
+                    length: Math.max(val.dos.length, val.donts.length),
+                  }).map((_, idx) => {
+                    const d = val.dos[idx];
+                    const dt = val.donts[idx];
+                    return {
+                      id: `${val.id}-${idx}`,
+                      positive: d && (
+                        <>
+                          <p className="font-serif italic text-emerald-300 leading-snug">"{d.example}"</p>
+                          <p className="text-[13px] text-stone-300 leading-relaxed font-sans">{d.why}</p>
+                        </>
+                      ),
+                      negative: dt && (
+                        <>
+                          <p className="font-serif italic text-rose-300 leading-snug">"{dt.example}"</p>
+                          <p className="text-[13px] text-stone-300 leading-relaxed font-sans">{dt.why}</p>
+                        </>
+                      ),
+                    };
+                  })}
+                />
               </div>
-            </div>
-          </div>
-        )}
+            );
+          }}
+        />
+
       </section>
 
       {/* New Context Check Component replacing Framing Matrix */}
@@ -577,7 +502,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
 
       {/* The Golden Do's & Don'ts Playbook */}
       <section className="space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="space-y-3">
           <div>
             <h2 className="text-xl md:text-2xl font-serif font-semibold text-stone-100 flex items-center gap-2">
               <SlidersHorizontal size={18} className="text-amber-500" />
@@ -589,12 +514,13 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
           </div>
 
           {/* Filter Pills */}
-          <div className="flex flex-wrap gap-1.5">
+          <div role="group" aria-label="Panduan singkat menulis" className="ctl-row no-scrollbar scroll-hint-x">
             {categories.map((c) => (
               <button
                 key={c.id}
                 onClick={() => setSelectedCategory(c.id)}
-                className={`px-3 py-1 rounded-[6px] text-xs font-sans transition cursor-pointer ${
+                aria-pressed={selectedCategory === c.id}
+                className={`px-3 py-1.5 rounded-[6px] text-xs font-sans whitespace-nowrap transition cursor-pointer ${
                   selectedCategory === c.id
                     ? 'bg-amber-500 text-stone-950 font-semibold shadow-raised'
                     : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-200 hover:bg-stone-800'
@@ -628,38 +554,39 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
                 {rule.rationale}
               </p>
 
-              <div className="overflow-hidden rounded-lg border border-stone-800 bg-stone-950/60 mt-3 shadow-xs">
-                <table className="w-full text-left border-collapse table-fixed text-xs font-sans">
-                  <thead>
-                    <tr className="border-b border-stone-800 bg-stone-900/80">
-                      <th className="w-1/2 p-2.5 font-semibold text-emerald-400 border-r border-stone-800">
-                        <div className="flex items-center gap-1.5 font-mono text-[10.5px]">
-                          <CheckCircle2 size={13} className="shrink-0 text-emerald-400" />
-                          <span>DO</span>
-                        </div>
-                      </th>
-                      <th className="w-1/2 p-2.5 font-semibold text-rose-400">
-                        <div className="flex items-center gap-1.5 font-mono text-[10.5px]">
-                          <XCircle size={13} className="shrink-0 text-rose-400" />
-                          <span>DON'T</span>
-                        </div>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="w-1/2 p-3 align-top border-r border-stone-800/80 bg-emerald-950/10 space-y-1.5">
+              <ComparisonTable
+                dense
+                className="mt-3"
+                positiveLabel={
+                  <>
+                    <CheckCircle2 size={13} className="shrink-0 text-emerald-400" />
+                    <span>DO</span>
+                  </>
+                }
+                negativeLabel={
+                  <>
+                    <XCircle size={13} className="shrink-0 text-rose-500 dark:text-rose-400" />
+                    <span>DON'T</span>
+                  </>
+                }
+                rows={[
+                  {
+                    id: rule.id,
+                    positive: (
+                      <>
                         <p className="font-serif italic text-emerald-300 leading-snug">"{rule.doText}"</p>
-                        <p className="text-[11.5px] text-stone-300 leading-relaxed">{rule.doWhy}</p>
-                      </td>
-                      <td className="w-1/2 p-3 align-top bg-rose-950/10 space-y-1.5">
+                        <p className="text-[13px] text-stone-300 leading-relaxed">{rule.doWhy}</p>
+                      </>
+                    ),
+                    negative: (
+                      <>
                         <p className="font-serif italic text-rose-300 leading-snug">"{rule.dontText}"</p>
-                        <p className="text-[11.5px] text-stone-300 leading-relaxed">{rule.dontWhy}</p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                        <p className="text-[13px] text-stone-300 leading-relaxed">{rule.dontWhy}</p>
+                      </>
+                    ),
+                  },
+                ]}
+              />
             </div>
           ))}
         </div>

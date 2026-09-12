@@ -58,6 +58,20 @@
   --shadow-raised: 0 1px 2px rgba(23, 25, 24, 0.04), 0 2px 8px rgba(23, 25, 24, 0.06);
   --shadow-overlay: 0 2px 4px rgba(23, 25, 24, 0.05), 0 8px 24px rgba(23, 25, 24, 0.08);
   --shadow-modal: 0 4px 8px rgba(23, 25, 24, 0.06), 0 24px 48px rgba(23, 25, 24, 0.12);
+
+  /* Tailwind's default shadow scale is pure black at up to 0.25 alpha, which
+     DESIGN.md §10.1 forbids twice over: the tint must come from `soft-ink`
+     (#171918) so the shade stays in the same family as the warm `bone` ground,
+     and the opacity ceiling anywhere in the system is 0.12. Remapping the scale
+     here retires every ad-hoc `shadow-xl` / `shadow-2xl` in the markup onto the
+     four sanctioned steps without touching a single className. */
+  --shadow-2xs: var(--shadow-raised);
+  --shadow-xs:  var(--shadow-raised);
+  --shadow-sm:  var(--shadow-raised);
+  --shadow-md:  var(--shadow-raised);
+  --shadow-lg:  var(--shadow-overlay);
+  --shadow-xl:  var(--shadow-overlay);
+  --shadow-2xl: var(--shadow-modal);
 }
 
 @layer base {
@@ -599,13 +613,35 @@ button:disabled {
 .chart-mark-interactive:hover {
   opacity: 0.82;
 }
-.chart-focusable:focus,
+/* Chart marks carry `tabIndex={0}` and `role="button"`, so they are real stops in
+   the tab order. Blanket-suppressing their outline left keyboard users moving
+   through six value rows and eight register nodes with no visible position at
+   all. Suppress the ring only for the pointer case, and give the keyboard case a
+   ring the SVG can actually show: `outline` lands on the wrong box for a
+   transparent hit-area circle, so the focus state is drawn as a stroke instead. */
+svg :focus:not(:focus-visible) {
+  outline: none;
+}
+
 .chart-focusable:focus-visible,
-.chart-mark-interactive:focus,
-.chart-mark-interactive:focus-visible,
-svg :focus,
-svg :focus-visible {
-  outline: none !important;
+.chart-mark-interactive:focus-visible {
+  outline: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-dasharray: none;
+  paint-order: stroke;
+}
+
+/* The hit area is a transparent circle; a stroke on it reads as the focus ring. */
+circle.chart-focusable:focus-visible,
+circle.chart-mark-interactive:focus-visible {
+  fill: color-mix(in oklab, var(--accent) 12%, transparent);
+}
+
+g.chart-mark-interactive:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  stroke: none;
 }
 
 input[type="range"] {
@@ -624,6 +660,386 @@ input[type="range"]:disabled {
 }
 .animate-fadeIn {
   animation: fadeIn 200ms ease-out;
+}
+
+/* ── Entrances ───────────────────────────────────────────────
+   The markup asked for `animate-in fade-in`, `zoom-in-95` and
+   `slide-in-from-right`, which belong to the `tailwindcss-animate` plugin. That
+   plugin is not a dependency, so every one of those classes compiled to nothing
+   and the panels they were on appeared instantly. These are the real thing.
+   Enter uses ease-out; exits elsewhere stay shorter than their enter. */
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes railIn {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.animate-overlay-in { animation: overlayIn 140ms ease-out; }
+.animate-panel-in   { animation: panelIn 180ms cubic-bezier(0.2, 0, 0, 1); }
+.animate-rail-in    { animation: railIn 200ms cubic-bezier(0.2, 0, 0, 1); }
+
+/* `animate-spin-slow` was referenced by two charts and defined by neither, so the
+   orbit ring around an active node never moved. SVG needs `transform-box` or the
+   rotation pivots on the viewport origin and the ring flies off canvas. */
+@keyframes spinSlow {
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spinSlow 12s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+/* ── Comparison table ────────────────────────────────────────
+   DO / DON'T is the core content pattern of this guideline and it is a genuine
+   two-column comparison — but only while there is room for two columns. The
+   deciding width is the CARD's, not the viewport's: the studio's two-column mode
+   puts these inside ~250px cards on a 1280px desktop, where a viewport
+   breakpoint would happily keep them side by side and squeeze each example into
+   a ~20-character measure. A container query asks the right question.
+
+   Below the threshold the pair stacks, and each block repeats its own DO /
+   DON'T label — the header row alone is too far away to carry meaning once the
+   cells are no longer beside each other. */
+
+.cmp {
+  container-type: inline-size;
+  container-name: cmp;
+}
+
+/* A second threshold, because one number cannot serve both kinds of content.
+   The value pillars, the playbook and the context check carry examples with a
+   median of ~100 characters: two ~250px columns give those four comfortable
+   lines. The writing studio's exemplars have a median of 210 characters and a
+   90th percentile of 307 — the same 250px column turns those into a nine-line
+   ribbon. They need roughly 400px a side before the pair reads as a comparison
+   rather than as two narrow poems, so they only split at 54rem. */
+.cmp-wide {
+  container-name: cmpwide;
+}
+
+.cmp-head {
+  display: none;
+}
+
+.cmp-row {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.cmp-stack-label {
+  display: flex;
+}
+
+/* Stacked is the base state: the divider between the two halves runs horizontal.
+   This has to be declared BEFORE the container query — both selectors carry the
+   same specificity, so whichever is written last would win regardless of whether
+   the query matches. */
+.cmp-cell-do {
+  border-block-end: 1px solid var(--color-stone-800);
+}
+.cmp-row + .cmp-row {
+  border-block-start: 1px solid var(--color-stone-800);
+}
+
+@container cmp (min-width: 34rem) {
+  .cmp-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .cmp-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cmp-stack-label {
+    display: none;
+  }
+  .cmp-cell-do {
+    border-block-end: 0;
+    border-inline-end: 1px solid var(--color-stone-800);
+  }
+}
+
+@container cmpwide (min-width: 54rem) {
+  .cmp-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .cmp-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cmp-stack-label {
+    display: none;
+  }
+  .cmp-cell-do {
+    border-block-end: 0;
+    border-inline-end: 1px solid var(--color-stone-800);
+  }
+}
+
+/* ── Value spectrum ──────────────────────────────────────────
+   Six positions on a shared 1-5 rail. Was an SVG whose fixed viewBox scaled
+   every type size with the container; as CSS the type holds its declared size
+   at every width and the rails align across rows without arithmetic.
+
+   The 8.5rem pole columns are the SVG's old 136px margins, so a single ruler
+   above the list lines up with all six rails. Below 40rem the poles drop under
+   the rail and read as "from X to Y" instead of squeezing three columns onto a
+   phone. */
+
+.vs-track,
+.vs-ruler {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 0.375rem 0.75rem;
+}
+
+.vs-track > .vs-pole {
+  font-size: 0.75rem;
+  line-height: 1.35;
+  grid-row: 2;
+}
+.vs-track > .vs-pole-end {
+  text-align: end;
+}
+.vs-track > .vs-rail {
+  grid-row: 1;
+}
+
+/* Narrow: the two poles share one row beneath the rail. */
+.vs-track {
+  grid-template-areas:
+    'rail'
+    'poles';
+}
+.vs-track > .vs-rail {
+  grid-area: rail;
+}
+.vs-track > .vs-pole {
+  grid-area: poles;
+}
+.vs-track > .vs-pole-end {
+  justify-self: end;
+}
+
+.vs-ruler {
+  display: none;
+}
+
+@media (min-width: 40rem) {
+  .vs-track,
+  .vs-ruler {
+    grid-template-columns: minmax(0, 8.5rem) 1fr minmax(0, 8.5rem);
+    grid-template-areas: 'left rail right';
+  }
+  .vs-track > .vs-pole {
+    grid-area: left;
+    text-align: end;
+  }
+  .vs-track > .vs-pole-end {
+    grid-area: right;
+    text-align: start;
+    justify-self: start;
+  }
+  .vs-ruler {
+    display: grid;
+  }
+}
+
+.vs-ruler-ticks {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* The rail: an empty track, a gradient fill clipped to the position, the
+   optical grating over it, then the needle and pip that mark the value. */
+.vs-rail {
+  position: relative;
+  height: 10px;
+  border-radius: 9999px;
+  background: rgba(120, 113, 108, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(120, 113, 108, 0.28);
+}
+
+.vs-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  /* Copied from the SVG's `spectrumOrangeToGreen`. The gradient is anchored to
+     the full rail and then clipped, exactly as `userSpaceOnUse` did, so the
+     colours do not restretch as the position changes. */
+  background-image:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.35) 0 1px, transparent 1px 8px),
+    linear-gradient(90deg, #af4d28 0%, #c4733e 35%, #5d7a68 70%, #2e4034 100%);
+  clip-path: inset(0 calc(100% - var(--p)) 0 0);
+}
+
+.vs-needle {
+  position: absolute;
+  left: var(--p);
+  top: -4px;
+  bottom: -4px;
+  width: 1.5px;
+  transform: translateX(-50%);
+  background: var(--chart-label-strong);
+  border-radius: 1px;
+}
+
+.vs-pip {
+  position: absolute;
+  left: var(--p);
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background: var(--chart-surface);
+  box-shadow: 0 0 0 1.8px var(--chart-label-strong);
+}
+
+.vs-row:hover .vs-pip,
+.vs-row:focus-within .vs-pip {
+  box-shadow: 0 0 0 1.8px var(--chart-label-strong), 0 0 0 6px color-mix(in oklab, var(--accent) 22%, transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .vs-pip {
+    transition: box-shadow 150ms ease-out;
+  }
+}
+
+/* ── Context check ───────────────────────────────────────────
+   Three checks in a fixed order read as a sequence only if something says so.
+   A connecting rail between the numbered steps does it without a word changing;
+   it is drawn only where the steps sit side by side, since a rule between two
+   stacked blocks says nothing. */
+@media (min-width: 48rem) {
+  .cc-steps {
+    position: relative;
+  }
+  .cc-step + .cc-step::before {
+    content: '';
+    position: absolute;
+    top: 2.1rem;
+    inset-inline-start: calc(-1rem - 1px);
+    width: 1rem;
+    border-block-start: 1px dashed var(--color-stone-700);
+  }
+  .cc-step {
+    position: relative;
+  }
+}
+
+/* Four example pairs arriving at once read as a block of text. Offsetting each
+   by 40ms lets the eye follow them in the order they are meant to be read. The
+   table is remounted per tab so the sequence replays on a real change, and
+   `backwards` keeps row four hidden until its turn rather than flashing first. */
+.cmp-stagger .cmp-row {
+  animation: fadeIn 220ms ease-out backwards;
+}
+.cmp-stagger .cmp-row:nth-child(2) { animation-delay: 40ms; }
+.cmp-stagger .cmp-row:nth-child(3) { animation-delay: 80ms; }
+.cmp-stagger .cmp-row:nth-child(4) { animation-delay: 120ms; }
+.cmp-stagger .cmp-row:nth-child(5) { animation-delay: 160ms; }
+.cmp-stagger .cmp-row:nth-child(6) { animation-delay: 200ms; }
+
+/* ── Control rows ────────────────────────────────────────────
+   Filters were sharing a row with the heading in three views, so long Indonesian
+   labels wrapped and left an orphan pill under the title. Giving the controls a
+   row of their own costs one line of height and removes the wrap entirely.
+
+   On a phone the row becomes a rail: it scrolls sideways with the next chip
+   peeking past the fade rather than stacking into four lines of buttons. */
+.ctl-row {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  overflow-x: auto;
+  padding-block-end: 0.125rem;
+}
+
+@media (min-width: 40rem) {
+  .ctl-row {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+.ctl-row > * {
+  flex: 0 0 auto;
+}
+
+/* Sticky only where the list outlives the first screen — 56 exemplars and a
+   10,482-entry dictionary. A six-card playbook does not need its filter to
+   follow the reader down; pinning chrome that is not needed just eats the
+   viewport. Sits below the masthead, which is taller on a phone because the
+   navigation rail lives under the bar. */
+.ctl-sticky {
+  position: sticky;
+  top: 6.75rem;
+  z-index: 20;
+  background: color-mix(in srgb, var(--color-stone-950) 94%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@media (min-width: 48rem) {
+  .ctl-sticky {
+    top: 4.25rem;
+  }
+}
+
+/* ── Scroll affordance ───────────────────────────────────────
+   A pannable region that ends flush with its own edge looks finished. Fading the
+   trailing edge is the cue that there is more to the right; it is removed once
+   the region is scrolled to the end. */
+.scroll-hint-x {
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 2.5rem), transparent 100%);
+  mask-image: linear-gradient(to right, black calc(100% - 2.5rem), transparent 100%);
+}
+.scroll-hint-x[data-at-end="true"] {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+.scroll-hint-y {
+  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 1.75rem), transparent 100%);
+  mask-image: linear-gradient(to bottom, black calc(100% - 1.75rem), transparent 100%);
+}
+.scroll-hint-y[data-at-end="true"] {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+/* Horizontal rails hide their scrollbar; the peeking next item is the affordance. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Press feedback ──────────────────────────────────────────
+   `opacity: 0.82` alone reads as a control going quiet, not as one being
+   pressed. A 0.96 scale is the smallest step that still registers as tactile;
+   anything below 0.95 reads as exaggerated. Buttons that own their own press
+   transform opt out with `data-press="none"`. */
+:where(button, [role="button"]):not(:disabled):not([data-press="none"]):active {
+  scale: 0.96;
+}
+:where(button, [role="button"]):not([data-press="none"]) {
+  transition-property: scale, opacity, background-color, border-color, color;
+  transition-duration: 120ms;
+  transition-timing-function: ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {

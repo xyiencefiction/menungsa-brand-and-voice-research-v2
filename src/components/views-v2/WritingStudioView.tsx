@@ -13,6 +13,7 @@ import {
   StretchHorizontal
 } from 'lucide-react';
 import { playSound } from '../../utils/sound';
+import { ComparisonTable } from '../common/ComparisonTable';
 
 const CONTEXT_ID_MAP: Record<string, string> = {
   C01: 'Psikoedukasi & Ritme Tubuh',
@@ -273,18 +274,18 @@ export const WritingStudioView: React.FC = () => {
       </div>
 
       {/* Control Bar: Format Filters, Situasi Naskah Dropdown, Search, and Layout Toggle */}
-      <div className="space-y-3 rounded-[9px] border border-stone-800 bg-stone-900/50 p-4 shadow-raised">
+      <div className="ctl-sticky space-y-2.5 rounded-[9px] border border-stone-800 bg-stone-900/50 p-4 shadow-raised">
         {/* Row 1: Channel Chips & Layout Switcher */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-stone-800/60 pb-3">
           {/* Format Chips */}
-          <div role="group" aria-label="Pilihan format kanal" className="flex flex-wrap items-center gap-1.5">
+          <div role="group" aria-label="Pilihan format kanal" className="ctl-row no-scrollbar scroll-hint-x">
             <span className="text-xs font-sans text-stone-400 font-semibold mr-1 hidden sm:inline">Kanal:</span>
             {CHANNELS_LIST.map((ch) => (
               <button
                 key={ch.id}
                 onClick={() => setSelectedChannel(ch.id)}
                 aria-pressed={selectedChannel === ch.id}
-                className={`px-3 py-1.5 rounded-[6px] text-xs font-sans transition cursor-pointer flex items-center gap-1.5 ${
+                className={`px-3 py-1.5 rounded-[6px] text-xs font-sans whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 ${
                   selectedChannel === ch.id
                     ? 'bg-amber-500 text-[#F1ECDF] font-semibold shadow-raised'
                     : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-200 hover:border-stone-700'
@@ -304,7 +305,7 @@ export const WritingStudioView: React.FC = () => {
               aria-label="Tampilkan kartu dalam dua kolom"
               className={`p-1.5 rounded-[4px] cursor-pointer transition ${
                 layoutMode === 'two-column'
-                  ? 'bg-amber-600 text-[#F1ECDF] shadow-raised'
+                  ? 'bg-amber-500 text-[#F1ECDF] shadow-raised'
                   : 'text-stone-400 hover:text-stone-200'
               }`}
               title="Dua kolom"
@@ -318,7 +319,7 @@ export const WritingStudioView: React.FC = () => {
               aria-label="Tampilkan kartu dalam satu kolom"
               className={`p-1.5 rounded-[4px] cursor-pointer transition ${
                 layoutMode === 'single-column'
-                  ? 'bg-amber-600 text-[#F1ECDF] shadow-raised'
+                  ? 'bg-amber-500 text-[#F1ECDF] shadow-raised'
                   : 'text-stone-400 hover:text-stone-200'
               }`}
               title="Satu kolom"
@@ -329,7 +330,7 @@ export const WritingStudioView: React.FC = () => {
         </div>
 
         {/* Row 2: Situasi Naskah Dropdown & Search Input */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-0.5">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
           {/* Situasi Naskah Dropdown (Space-saving replacement for horizontal pills) */}
           <div className="flex items-center gap-2 flex-1 max-w-full md:max-w-md">
             <label htmlFor="context-select" className="text-xs font-sans text-stone-300 font-semibold whitespace-nowrap shrink-0">
@@ -373,8 +374,11 @@ export const WritingStudioView: React.FC = () => {
         </div>
 
         {/* Counter and Active Filter Notification */}
-        <div className="flex items-center justify-between text-xs text-stone-400 font-sans pt-1 border-t border-stone-800/40">
-          <span>
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-xs text-stone-400 font-sans">
+          {/* Changing a filter changes only this number. Announcing it is the
+              only feedback a screen-reader user gets that the filter did
+              anything at all. */}
+          <span aria-live="polite">
             Menampilkan <strong className="text-amber-500 font-bold">{filteredExemplars.length}</strong> dari {toneExemplars.length} contoh naskah terkalibrasi
             {selectedContext !== 'all' && (
               <span className="ml-1.5 text-stone-300">
@@ -389,7 +393,7 @@ export const WritingStudioView: React.FC = () => {
                 setSelectedChannel('all');
                 setSearchQuery('');
               }}
-              className="text-amber-500 hover:text-amber-400 text-xs cursor-pointer underline underline-offset-2 transition"
+              className="text-amber-500 hover:text-amber-500 dark:text-amber-400 text-xs cursor-pointer underline underline-offset-2 transition"
             >
               Hapus semua filter
             </button>
@@ -432,63 +436,59 @@ export const WritingStudioView: React.FC = () => {
                     </div>
 
                     {/* Comparison Table */}
-                    <div className="overflow-hidden rounded-lg border border-stone-800 bg-stone-950/60 shadow-raised">
-                      <table className="w-full text-left border-collapse table-fixed font-sans text-xs">
-                        <thead>
-                          <tr className="border-b border-stone-800 bg-stone-900/90">
-                            <th className="w-1/2 p-3 font-semibold uppercase tracking-wider text-emerald-400 border-r border-stone-800">
-                              <div className="flex items-center justify-between gap-1">
-                                <div className="flex items-center gap-1.5 font-mono text-[11px]">
-                                  <CheckCircle2 size={14} className="shrink-0 text-emerald-400" />
-                                  <span>Contoh sesuai panduan</span>
-                                </div>
-                                <button
-                                  onClick={() => handleCopy(workedCopy, ex.id)}
-                                  className="btn-secondary px-2 py-0.5 text-[11px] gap-1 font-sans cursor-pointer shrink-0"
-                                  title="Salin naskah"
-                                  aria-label={isCopied ? "Teks naskah berhasil disalin ke clipboard" : "Salin naskah ke clipboard"}
-                                >
-                                  <span className="sr-only" aria-live="polite">
-                                    {isCopied ? "Teks berhasil disalin" : ""}
-                                  </span>
-                                  {isCopied ? (
-                                    <>
-                                      <Check size={11} className="text-emerald-500" />
-                                      <span className="text-emerald-400 font-medium">Disalin</span>
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Copy size={11} />
-                                      <span>Salin</span>
-                                    </>
-                                  )}
-                                </button>
-                              </div>
-                            </th>
-                            <th className="w-1/2 p-3 font-semibold uppercase tracking-wider text-rose-400">
-                              <div className="flex items-center gap-1.5 font-mono text-[11px]">
-                                <AlertTriangle size={14} className="shrink-0 text-rose-400" />
-                                <span>Contoh yang perlu ditinjau</span>
-                              </div>
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td className="w-1/2 p-4 align-top border-r border-stone-800/80 bg-emerald-950/10">
-                              <blockquote className="font-serif text-sm md:text-base leading-relaxed text-stone-100">
-                                "{workedCopy}"
-                              </blockquote>
-                            </td>
-                            <td className="w-1/2 p-4 align-top bg-rose-950/10">
-                              <blockquote className="font-serif text-xs md:text-sm leading-relaxed text-stone-300 italic">
-                                "{ex.weak.copy}"
-                              </blockquote>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                    <ComparisonTable
+                      measure="long"
+                      positiveLabel={
+                        <>
+                          <CheckCircle2 size={14} className="shrink-0 text-emerald-400" />
+                          <span>Contoh sesuai panduan</span>
+                        </>
+                      }
+                      positiveHeaderAction={
+                        <button
+                          onClick={() => handleCopy(workedCopy, ex.id)}
+                          className="btn-secondary px-2 py-0.5 text-[11px] gap-1 font-sans cursor-pointer shrink-0"
+                          title="Salin naskah"
+                          aria-label={isCopied ? "Teks naskah berhasil disalin ke clipboard" : "Salin naskah ke clipboard"}
+                        >
+                          <span className="sr-only" aria-live="polite">
+                            {isCopied ? "Teks berhasil disalin" : ""}
+                          </span>
+                          {isCopied ? (
+                            <>
+                              <Check size={11} className="text-emerald-500" />
+                              <span className="text-emerald-700 dark:text-emerald-400 font-medium">Disalin</span>
+                            </>
+                          ) : (
+                            <>
+                              <Copy size={11} />
+                              <span>Salin</span>
+                            </>
+                          )}
+                        </button>
+                      }
+                      negativeLabel={
+                        <>
+                          <AlertTriangle size={14} className="shrink-0 text-rose-500 dark:text-rose-400" />
+                          <span>Contoh yang perlu ditinjau</span>
+                        </>
+                      }
+                      rows={[
+                        {
+                          id: ex.id,
+                          positive: (
+                            <blockquote className="font-serif italic leading-relaxed text-stone-100">
+                              "{workedCopy}"
+                            </blockquote>
+                          ),
+                          negative: (
+                            <blockquote className="font-serif italic leading-relaxed text-stone-200">
+                              "{ex.weak.copy}"
+                            </blockquote>
+                          ),
+                        },
+                      ]}
+                    />
                   </div>
 
                   {/* Linguistic Rationale at bottom */}
@@ -523,63 +523,59 @@ export const WritingStudioView: React.FC = () => {
                 </div>
 
                 {/* Comparison Table */}
-                <div className="overflow-hidden rounded-lg border border-stone-800 bg-stone-950/60 shadow-raised">
-                  <table className="w-full text-left border-collapse table-fixed font-sans text-xs">
-                    <thead>
-                      <tr className="border-b border-stone-800 bg-stone-900/90">
-                        <th className="w-1/2 p-3 font-semibold uppercase tracking-wider text-emerald-400 border-r border-stone-800">
-                          <div className="flex items-center justify-between gap-1">
-                            <div className="flex items-center gap-1.5 font-mono text-[11px]">
-                              <CheckCircle2 size={14} className="shrink-0 text-emerald-400" />
-                              <span>Contoh sesuai panduan</span>
-                            </div>
-                            <button
-                              onClick={() => handleCopy(workedCopy, ex.id)}
-                              className="btn-secondary px-2.5 py-1 text-xs gap-1.5 font-sans cursor-pointer"
-                              title="Salin naskah"
-                              aria-label={isCopied ? "Teks naskah berhasil disalin ke clipboard" : "Salin naskah ke clipboard"}
-                            >
-                              <span className="sr-only" aria-live="polite">
-                                {isCopied ? "Teks berhasil disalin" : ""}
-                              </span>
-                              {isCopied ? (
-                                <>
-                                  <Check size={13} className="text-emerald-500" />
-                                  <span className="text-emerald-600 dark:text-emerald-400 font-medium">Teks disalin</span>
-                                </>
-                              ) : (
-                                <>
-                                  <Copy size={13} />
-                                  <span>Salin naskah</span>
-                                </>
-                              )}
-                            </button>
-                          </div>
-                        </th>
-                        <th className="w-1/2 p-3 font-semibold uppercase tracking-wider text-rose-400">
-                          <div className="flex items-center gap-1.5 font-mono text-[11px]">
-                            <AlertTriangle size={14} className="shrink-0 text-rose-400" />
-                            <span>Contoh yang perlu ditinjau</span>
-                          </div>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="w-1/2 p-4 md:p-5 align-top border-r border-stone-800/80 bg-emerald-950/10">
-                          <blockquote className="font-serif text-base leading-relaxed text-stone-100 max-w-[74ch]">
-                            "{workedCopy}"
-                          </blockquote>
-                        </td>
-                        <td className="w-1/2 p-4 md:p-5 align-top bg-rose-950/10">
-                          <blockquote className="font-serif text-sm leading-relaxed text-stone-300 italic max-w-[74ch]">
-                            "{ex.weak.copy}"
-                          </blockquote>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                <ComparisonTable
+                  measure="long"
+                  positiveLabel={
+                    <>
+                      <CheckCircle2 size={14} className="shrink-0 text-emerald-400" />
+                      <span>Contoh sesuai panduan</span>
+                    </>
+                  }
+                  positiveHeaderAction={
+                    <button
+                      onClick={() => handleCopy(workedCopy, ex.id)}
+                      className="btn-secondary px-2.5 py-1 text-xs gap-1.5 font-sans cursor-pointer"
+                      title="Salin naskah"
+                      aria-label={isCopied ? "Teks naskah berhasil disalin ke clipboard" : "Salin naskah ke clipboard"}
+                    >
+                      <span className="sr-only" aria-live="polite">
+                        {isCopied ? "Teks berhasil disalin" : ""}
+                      </span>
+                      {isCopied ? (
+                        <>
+                          <Check size={13} className="text-emerald-500" />
+                          <span className="text-emerald-700 dark:text-emerald-400 font-medium">Teks disalin</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy size={13} />
+                          <span>Salin naskah</span>
+                        </>
+                      )}
+                    </button>
+                  }
+                  negativeLabel={
+                    <>
+                      <AlertTriangle size={14} className="shrink-0 text-rose-500 dark:text-rose-400" />
+                      <span>Contoh yang perlu ditinjau</span>
+                    </>
+                  }
+                  rows={[
+                    {
+                      id: ex.id,
+                      positive: (
+                        <blockquote className="font-serif italic leading-relaxed text-stone-100 max-w-[74ch]">
+                          "{workedCopy}"
+                        </blockquote>
+                      ),
+                      negative: (
+                        <blockquote className="font-serif italic leading-relaxed text-stone-200 max-w-[74ch]">
+                          "{ex.weak.copy}"
+                        </blockquote>
+                      ),
+                    },
+                  ]}
+                />
 
                 {/* Linguistic Rationale */}
                 <div className="rounded-[6px] bg-stone-950/60 p-4 border border-stone-800/80 text-xs text-stone-300 space-y-1.5 font-sans">

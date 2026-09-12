@@ -281,7 +281,7 @@ export const IndonesianNuancesView: React.FC = () => {
 
       {/* Practical Comparison Table */}
       <div className="space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="space-y-3">
           <div>
             <h2 className="text-xl md:text-2xl font-serif font-semibold text-stone-100 flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-amber-500" />
@@ -292,10 +292,11 @@ export const IndonesianNuancesView: React.FC = () => {
             </p>
           </div>
 
-          <div className="flex gap-1.5">
+          <div role="group" aria-label="Apa yang Bisa Diterapkan di Indonesia, dan Apa yang Berbeda" className="ctl-row no-scrollbar scroll-hint-x">
             <button
               onClick={() => setActiveFilter('all')}
-              className={`px-3 py-1.5 rounded-[6px] text-xs font-sans transition cursor-pointer ${
+              aria-pressed={activeFilter === 'all'}
+              className={`px-3 py-1.5 rounded-[6px] text-xs font-sans whitespace-nowrap transition cursor-pointer ${
                 activeFilter === 'all'
                   ? 'bg-amber-500 text-[#F1ECDF] font-semibold shadow-raised'
                   : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-200'
@@ -305,7 +306,8 @@ export const IndonesianNuancesView: React.FC = () => {
             </button>
             <button
               onClick={() => setActiveFilter('CONVERGES')}
-              className={`px-3 py-1.5 rounded-[6px] text-xs font-sans transition cursor-pointer ${
+              aria-pressed={activeFilter === 'CONVERGES'}
+              className={`px-3 py-1.5 rounded-[6px] text-xs font-sans whitespace-nowrap transition cursor-pointer ${
                 activeFilter === 'CONVERGES'
                   ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-500 dark:text-emerald-300 font-semibold'
                   : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-200'
@@ -315,7 +317,8 @@ export const IndonesianNuancesView: React.FC = () => {
             </button>
             <button
               onClick={() => setActiveFilter('DIVERGES')}
-              className={`px-3 py-1.5 rounded-[6px] text-xs font-sans transition cursor-pointer ${
+              aria-pressed={activeFilter === 'DIVERGES'}
+              className={`px-3 py-1.5 rounded-[6px] text-xs font-sans whitespace-nowrap transition cursor-pointer ${
                 activeFilter === 'DIVERGES'
                   ? 'bg-amber-500/20 border border-amber-500/40 text-amber-500 dark:text-amber-300 font-semibold'
                   : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-200'
@@ -325,7 +328,8 @@ export const IndonesianNuancesView: React.FC = () => {
             </button>
             <button
               onClick={() => setActiveFilter('GAP')}
-              className={`px-3 py-1.5 rounded-[6px] text-xs font-sans transition cursor-pointer ${
+              aria-pressed={activeFilter === 'GAP'}
+              className={`px-3 py-1.5 rounded-[6px] text-xs font-sans whitespace-nowrap transition cursor-pointer ${
                 activeFilter === 'GAP'
                   ? 'bg-sky-500/20 border border-sky-500/40 text-sky-400 font-semibold'
                   : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-200'
@@ -387,7 +391,7 @@ export const IndonesianNuancesView: React.FC = () => {
                       <CheckCircle2 size={13} />
                       <span>Do</span>
                     </div>
-                    <p className="font-serif italic text-xs md:text-sm text-emerald-800 dark:text-emerald-200 leading-relaxed">
+                    <p className="font-serif italic text-xs md:text-sm text-emerald-700 dark:text-emerald-200 leading-relaxed">
                       "{item.dos.example}"
                     </p>
                     <p className="text-xs text-stone-300 leading-relaxed font-sans">
@@ -397,11 +401,11 @@ export const IndonesianNuancesView: React.FC = () => {
 
                   {/* DON'T */}
                   <div className="rounded-[6px] border border-amber-700/25 bg-amber-950/20 p-3 space-y-1">
-                    <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 text-xs font-sans font-bold uppercase">
+                    <div className="flex items-center gap-1.5 text-amber-500 dark:text-amber-400 text-xs font-sans font-bold uppercase">
                       <XCircle size={13} />
                       <span>Don't</span>
                     </div>
-                    <p className="font-serif italic text-xs md:text-sm text-amber-800 dark:text-amber-200 leading-relaxed">
+                    <p className="font-serif italic text-xs md:text-sm text-amber-700 dark:text-amber-200 leading-relaxed">
                       "{item.donts.example}"
                     </p>
                     <p className="text-xs text-stone-300 leading-relaxed font-sans">
@@ -411,12 +415,22 @@ export const IndonesianNuancesView: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-stone-800/60 flex items-center justify-between text-xs font-sans text-stone-400">
+              <div className="pt-3 border-t border-stone-800/60 text-xs font-sans text-stone-400">
                 {item.north !== undefined && item.south !== undefined ? (
-                  <>
-                    <span title="Frekuensi tema dalam kelompok studi Global North (154 studi)">Studi Global North: <strong className="text-stone-300 font-semibold font-mono">{item.north}%</strong></span>
-                    <span title="Frekuensi tema dalam kelompok studi Global South (154 studi)">Studi Global South: <strong className="text-amber-500 font-semibold font-mono">{item.south}%</strong></span>
-                  </>
+                  <div className="space-y-2">
+                    <div className="space-y-1" title="Frekuensi tema dalam kelompok studi Global North (154 studi)">
+                      <span className="block">Studi Global North: <strong className="text-stone-300 font-semibold font-mono tabular-nums">{item.north}%</strong></span>
+                      <div className="h-1.5 w-full rounded-full bg-stone-800 overflow-hidden" aria-hidden="true">
+                        <div className="h-full rounded-full bg-stone-500" style={{ width: `${item.north}%` }} />
+                      </div>
+                    </div>
+                    <div className="space-y-1" title="Frekuensi tema dalam kelompok studi Global South (154 studi)">
+                      <span className="block">Studi Global South: <strong className="text-amber-500 font-semibold font-mono tabular-nums">{item.south}%</strong></span>
+                      <div className="h-1.5 w-full rounded-full bg-stone-800 overflow-hidden" aria-hidden="true">
+                        <div className="h-full rounded-full bg-amber-500" style={{ width: `${item.south}%` }} />
+                      </div>
+                    </div>
+                  </div>
                 ) : (
                   <span className="text-[11px] text-stone-500 font-sans italic">
                     Tidak tersedia angka pembanding dalam sumber

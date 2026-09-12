@@ -206,7 +206,7 @@ export const MechanismsView: React.FC<Props> = ({
       {/* Mechanism Deep Detail Modal / Drawer */}
       {activeMechanism && (
         <div className="fixed inset-0 z-50 flex items-center justify-end bg-black/80 backdrop-blur-xs p-0 sm:p-4">
-          <div className="bg-stone-900 border-l sm:border border-stone-700 w-full max-w-2xl h-full sm:h-[94vh] sm:rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-right duration-200">
+          <div className="bg-stone-900 border-l sm:border border-stone-700 w-full max-w-2xl h-full sm:h-[94vh] sm:rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-rail-in">
             {/* Drawer Header */}
             <div className="px-6 py-4 border-b border-stone-800 flex items-center justify-between bg-stone-950/80">
               <div className="flex items-center gap-3">

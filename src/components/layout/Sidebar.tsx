@@ -113,7 +113,7 @@ export const Sidebar: React.FC<Props> = ({
                       }`}
                     >
                       <div className="flex items-center gap-2.5">
-                        <Icon size={15} className={isActive ? 'text-amber-400' : 'text-stone-400'} />
+                        <Icon size={15} className={isActive ? 'text-amber-500 dark:text-amber-400' : 'text-stone-400'} />
                         <span>{item.label}</span>
                       </div>
                       {item.badge && (
@@ -135,7 +135,7 @@ export const Sidebar: React.FC<Props> = ({
 
         {/* Epistemic guardrail footnote */}
         <div className="mt-8 p-3 bg-stone-900/50 border border-stone-800/80 rounded-lg text-[11px] font-sans text-stone-400 space-y-1">
-          <span className="font-mono text-amber-400 block text-[10px] uppercase font-semibold">
+          <span className="font-mono text-amber-500 dark:text-amber-400 block text-[10px] uppercase font-semibold">
             Epistemic Boundary
           </span>
           <p className="leading-tight">

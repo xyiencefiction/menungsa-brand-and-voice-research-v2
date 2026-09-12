@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import type { ViewType } from './types';
 import { Header } from './components/layout/Header';
 import type { FigureInfo } from './components/common/FigureModal';
@@ -48,12 +48,26 @@ export function App() {
   const [activeParam, setActiveParam] = useState<string | undefined>(undefined);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedFigure, setSelectedFigure] = useState<FigureInfo | null>(null);
-  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+  const mainRef = useRef<HTMLElement | null>(null);
+  const isFirstView = useRef(true);
 
   // Initialize tactile UX sounds for buttons, tabs, toggles
   useEffect(() => {
     return initSoundInteraction();
   }, []);
+
+  // A hash router swaps the whole page without moving focus, so a screen reader
+  // is left reading the header it had already passed and a keyboard user resumes
+  // tabbing from wherever the old page's nav button was. Moving focus to the new
+  // main region on every navigation — but never on first paint, which would steal
+  // focus from the address bar — restores the sense of having gone somewhere.
+  useEffect(() => {
+    if (isFirstView.current) {
+      isFirstView.current = false;
+      return;
+    }
+    mainRef.current?.focus();
+  }, [currentView]);
 
   // Sync view state from browser back/forward
   useEffect(() => {
@@ -82,7 +96,6 @@ export function App() {
   const handleNavigate = (view: ViewType, param?: string) => {
     setCurrentView(view);
     setActiveParam(param);
-    setIsMobileSidebarOpen(false);
     window.location.hash = `#/${view}`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -177,27 +190,32 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-stone-950 text-stone-100 font-sans flex flex-col antialiased selection:bg-amber-500/30 selection:text-amber-200">
+      {/* The first stop in the tab order: every keyboard visitor otherwise has to
+          walk the whole masthead before reaching the page they asked for. Hidden
+          until focused, so nothing changes visually for pointer users. */}
+      <a
+        href="#main"
+        onClick={() => mainRef.current?.focus()}
+        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-lg focus:bg-amber-500 focus:px-4 focus:py-2 focus:text-xs focus:font-semibold focus:text-stone-950 focus:shadow-overlay"
+      >
+        Lewati ke konten utama
+      </a>
+
       {/* Top Navigation Header */}
       <Header
         currentView={currentView}
         onSelectView={(v) => handleNavigate(v)}
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenFigure={(fig) => setSelectedFigure(fig)}
-        isMobileSidebarOpen={isMobileSidebarOpen}
-        onToggleMobileSidebar={() => setIsMobileSidebarOpen((prev) => !prev)}
       />
 
-      {/* Mobile Sidebar Backdrop */}
-      {isMobileSidebarOpen && (
-        <div
-          className="fixed inset-0 z-30 bg-black/60 md:hidden"
-          onClick={() => setIsMobileSidebarOpen(false)}
-          aria-hidden="true"
-        />
-      )}
-
       {/* Main Content Area */}
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-12">
+      <main
+        id="main"
+        ref={mainRef}
+        tabIndex={-1}
+        className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-12 focus:outline-none"
+      >
         <React.Suspense fallback={<ViewFallback />}>
           {renderView()}
         </React.Suspense>
@@ -220,7 +238,7 @@ export function App() {
               href="https://menungsa-brand-and-voice-research.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-stone-400 hover:text-amber-400 transition"
+              className="inline-flex items-center gap-1 text-stone-400 hover:text-amber-500 dark:text-amber-400 transition"
             >
               <span>Lihat dasar di balik guide ini</span>
               <ArrowUpRight size={13} />

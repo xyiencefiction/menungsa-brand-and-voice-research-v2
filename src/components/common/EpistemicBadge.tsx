@@ -28,7 +28,7 @@ export const EpistemicBadge: React.FC<Props> = ({ status, className = '' }) => {
     color = 'bg-amber-950/80 text-amber-300 border-amber-700/60';
     shortLabel = 'WESTERN / REGIONAL EXTRAPOLATION';
   } else if (s.includes('SPECULATIVE') || s.includes('UNTESTED') || s.includes('UNKNOWN')) {
-    color = 'bg-rose-950/80 text-rose-300 border-rose-700/60';
+    color = 'bg-rose-950/80 text-rose-300 border-rose-700/60 dark:border-rose-800/60';
     shortLabel = 'SPECULATIVE / UNTESTED IN ID';
   }
 

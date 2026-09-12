@@ -114,7 +114,7 @@ export const LunarPips: React.FC<{
       title={`${label}: ${level}/${max}`}
       aria-label={`${label} ${level} dari ${max}`}
     >
-      <MoonPhase level={level} size={13} className="text-amber-400 shrink-0" />
+      <MoonPhase level={level} size={13} className="text-amber-500 dark:text-amber-400 shrink-0" />
       <span className="text-stone-400 text-[10.5px] font-mono">{label}</span>
       <span className="inline-flex items-center gap-1" aria-hidden="true">
         {Array.from({ length: max }, (_, i) => {
@@ -209,11 +209,19 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
       </header>
 
       {/* SVG Canvas */}
-      <div className="p-3 overflow-x-auto relative">
+      {/* `role="img"` hid the eight nodes that are `role="button"` and keyboard
+          reachable; a group keeps the label without flattening the controls. */}
+      <div
+        className="p-3 overflow-x-auto relative scroll-hint-x"
+        onScroll={(e) => {
+          const el = e.currentTarget;
+          el.dataset.atEnd = String(el.scrollLeft + el.clientWidth >= el.scrollWidth - 2);
+        }}
+      >
         <svg
           viewBox={`0 0 ${W} ${H}`}
-          className="w-full h-auto block min-w-[480px]"
-          role="img"
+          className="w-full h-auto block min-w-[520px]"
+          role="group"
           aria-label="Peta ragam bahasa dan kata ganti berdasarkan tingkat otoritas dan kedekatan hubungan"
         >
           <title>Peta Koordinat Ragam Bahasa dan Kata Ganti</title>
@@ -265,10 +273,10 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
           {/* Ticks Numbers */}
           {[1, 2, 3, 4, 5].map((v) => (
             <React.Fragment key={`t${v}`}>
-              <text x={x(v)} y={H - M.bottom + 14} textAnchor="middle" className="font-mono text-[9px] fill-stone-500">
+              <text x={x(v)} y={H - M.bottom + 14} textAnchor="middle" className="font-mono text-[10px] fill-stone-500">
                 {v}
               </text>
-              <text x={M.left - 8} y={y(v) + 3} textAnchor="end" className="font-mono text-[9px] fill-stone-500">
+              <text x={M.left - 8} y={y(v) + 3} textAnchor="end" className="font-mono text-[10px] fill-stone-500">
                 {v}
               </text>
             </React.Fragment>
@@ -291,7 +299,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
             x={(M.left + W - M.right) / 2}
             y={H - 10}
             textAnchor="middle"
-            className="font-mono text-[8.5px] uppercase tracking-wider fill-stone-500"
+            className="font-mono text-[9.5px] uppercase tracking-wider fill-stone-500"
           >
             ← Rendah · Otoritas &amp; Jarak Institusional · Tinggi →
           </text>
@@ -299,7 +307,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
             x={12}
             y={(M.top + H - M.bottom) / 2}
             textAnchor="middle"
-            className="font-mono text-[8.5px] uppercase tracking-wider fill-stone-500"
+            className="font-mono text-[9.5px] uppercase tracking-wider fill-stone-500"
             transform={`rotate(-90 12 ${(M.top + H - M.bottom) / 2})`}
           >
             ← Rendah · Kedekatan Hubungan (Intimacy) · Tinggi →
@@ -314,14 +322,14 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
             const shape = TYPE_SHAPES[r.type]?.shape ?? 'circle';
 
             return (
-              <g key={r.id} opacity={dimmed ? 0.25 : 1} className="cursor-pointer outline-none focus:outline-none">
+              <g key={r.id} opacity={dimmed ? 0.25 : 1} className="cursor-pointer">
                 {/* Hit Area */}
                 <circle
                   cx={cx}
                   cy={cy}
                   r={20}
                   fill="transparent"
-                  className="chart-mark-interactive chart-focusable outline-none focus:outline-none"
+                  className="chart-mark-interactive chart-focusable"
                   tabIndex={0}
                   role="button"
                   aria-label={`${r.label}, otoritas ${r.authorityLevel}, kedekatan ${r.intimacyLevel}`}
@@ -381,7 +389,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
                 {/* Shape Glyph */}
                 <path
                   d={shapePath(shape, cx, cy, isActive ? 6.5 : 5)}
-                  fill={isActive ? '#af4d28' : '#a8a29e'}
+                  fill={isActive ? '#af4d28' : 'var(--chart-axis)'}
                   stroke="var(--chart-surface)"
                   strokeWidth={1.5}
                   pointerEvents="none"
@@ -392,7 +400,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
                   x={cx}
                   y={cy + r.labelDy}
                   textAnchor="middle"
-                  className={`font-sans text-[8px] select-none pointer-events-none tracking-tight ${
+                  className={`font-sans text-[10px] select-none pointer-events-none tracking-tight ${
                     isActive
                       ? 'fill-stone-100 font-bold'
                       : 'fill-stone-400 font-medium'
@@ -423,7 +431,7 @@ export const RegisterMap: React.FC<Props> = ({ registers, selectedId, onSelect, 
             )}
             <div className="inline-flex items-center gap-2">
               <LunarPips level={activeReg.authorityLevel} label="Otoritas" />
-              <span className="text-stone-600 select-none text-[10px]">·</span>
+              <span className="text-stone-500 select-none text-[10px]">·</span>
               <LunarPips level={activeReg.intimacyLevel} label="Kedekatan" />
             </div>
           </div>

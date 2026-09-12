@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { ChevronDown } from 'lucide-react';
 import type { BrandValue } from '../../types';
-import { scaleLinear } from './chartUtils';
-import { SvgLabel } from './SvgLabel';
 
-const W = 620;
-const ROW = 42;
-const M = { top: 28, right: 136, bottom: 20, left: 136 };
-
-interface Props {
-  values: BrandValue[];
-  selectedId?: string;
-  onSelect: (id: string) => void;
-  className?: string;
-}
+/**
+ * The six voice values, each as a position on its own 1-5 spectrum.
+ *
+ * This was an SVG chart with a fixed 620x300 viewBox scaled by `w-full`, which
+ * made every type size a function of the container width: 9.5px on a phone,
+ * 19.9px at 1280 and 24.3px at 1536 — larger than the page's own headings. The
+ * drawing here is a position on a rail, not a plot, so HTML holds it better:
+ * type stays at the size it is declared, the rails align across rows without
+ * arithmetic, each row is a real button with a native focus ring, and the whole
+ * thing reflows on a phone instead of scrolling sideways.
+ *
+ * The ribbon gradient is copied verbatim from the SVG it replaces, including the
+ * optical grating, so the artwork is unchanged.
+ */
 
 const ID_POLES: Record<string, { title: string; left: string; right: string; dimension: string; positionNote: string }> = {
   V1: {
@@ -58,242 +61,136 @@ const ID_POLES: Record<string, { title: string; left: string; right: string; dim
     positionNote: 'Fokus pada pembenahan sistem dan kondisi lingkungan, bukan menuduh karakter pembaca.'
   }
 };
+interface Props {
+  values: BrandValue[];
+  /** Reader-facing name per value, supplied by the view that owns them. Falls
+   *  back to the dataset's own `value` field. */
+  rowTitles?: Record<string, string>;
+  selectedId?: string;
+  onSelect: (id: string) => void;
+  /**
+   * Body of the open panel. Omit it and the rows stay a plain selector with no
+   * panel at all — which is what the legacy Values view needs, since it renders
+   * its own detail article below and would otherwise show two.
+   */
+  renderDetail?: (id: string) => React.ReactNode;
+  className?: string;
+}
 
-export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect, className }) => {
-  const [hovered, setHovered] = useState<string | null>(null);
-  const H = M.top + values.length * ROW + M.bottom;
-  const x = scaleLinear(1, 5, M.left, W - M.right);
-  const active = hovered ?? selectedId ?? null;
-  const activeValue = values.find((v) => v.id === active);
+const SCALE = [1, 2, 3, 4, 5];
 
-  const trackWidth = W - M.left - M.right;
+/** Position 1-5 as a percentage along the rail. */
+const pct = (position: number) => ((position - 1) / 4) * 100;
 
-  return (
-    <div className={`rounded-xl border border-stone-800 bg-stone-950/90 overflow-hidden shadow-2xl ${className ?? ''}`}>
-      {/* Sleek Compact Header */}
-      <header className="px-4 py-2.5 border-b border-stone-800 flex items-center justify-between gap-2 bg-stone-900/40">
-        <h3 className="font-serif font-semibold text-stone-100 text-sm md:text-base">
-          Spektrum Voice Menungsa
-        </h3>
-      </header>
+export const ValueSpectrum: React.FC<Props> = ({
+  values,
+  rowTitles,
+  selectedId,
+  onSelect,
+  renderDetail,
+  className,
+}) => (
+  <div className={`rounded-xl border border-stone-800 bg-stone-950/90 overflow-hidden shadow-overlay ${className ?? ''}`}>
+    <header className="px-4 py-2.5 border-b border-stone-800 flex items-center justify-between gap-2 bg-stone-900/40">
+      <h3 className="font-serif font-semibold text-stone-100 text-sm md:text-base">
+        Spektrum Voice Menungsa
+      </h3>
+    </header>
 
-      {/* SVG Canvas */}
-      <div className="p-3 overflow-x-auto relative flex-1 flex items-center justify-center">
-        <svg
-          viewBox={`0 0 ${W} ${H}`}
-          className="w-full h-auto block min-w-[480px]"
-          role="img"
-          aria-label="Six brand values plotted as chosen positions on continuous spectral ribbons"
-        >
-          <title>Menungsa voice positions across continuous value spectrums</title>
+    {/* One ruler for all six rails. Every rail occupies the same grid column, so
+        a single scale serves them all instead of repeating ticks per row. */}
+    <div className="vs-ruler px-4 pt-3 pb-1" aria-hidden="true">
+      <span />
+      <div className="vs-ruler-ticks">
+        {SCALE.map((v) => (
+          <span key={v} className="font-mono text-[10px] text-stone-500 tabular-nums">
+            {v}
+          </span>
+        ))}
+      </div>
+      <span />
+    </div>
 
-          <defs>
-            {/* Diffuse glow filter for active spectrometer needle */}
-            <filter id="spectroNeedleGlow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
+    <div className="divide-y divide-stone-800/70" role="group" aria-label="Enam prinsip menulis">
+      {values.map((v, i) => {
+        const pole = ID_POLES[v.id];
+        const isAccordion = Boolean(renderDetail);
+        const isOpen = selectedId === v.id;
+        const position = pct(v.spectrum.position);
 
-            {/* Continuous Orange to Green Spectrum Gradient: Menungsa Orange (#AF4D28) to Menungsa Green (#2E4034) */}
-            <linearGradient id="spectrumOrangeToGreen" gradientUnits="userSpaceOnUse" x1={M.left} y1="0" x2={W - M.right} y2="0">
-              <stop offset="0%" stopColor="#AF4D28" />
-              <stop offset="35%" stopColor="#C4733E" />
-              <stop offset="70%" stopColor="#5D7A68" />
-              <stop offset="100%" stopColor="#2E4034" />
-            </linearGradient>
-
-            {/* Subtle Spectrometer Slit Pattern */}
-            <pattern id="spectroGrating" width="8" height="12" patternUnits="userSpaceOnUse">
-              <line x1="0" y1="0" x2="0" y2="12" stroke="rgba(0, 0, 0, 0.35)" strokeWidth="1" />
-            </pattern>
-          </defs>
-
-          {/* Precision Spectrometer Reference Scale Grid Lines */}
-          <g className="chart-grid">
-            {[1, 2, 3, 4, 5].map((v) => (
-              <line
-                key={v}
-                x1={x(v)}
-                y1={M.top - 6}
-                x2={x(v)}
-                y2={H - M.bottom + 2}
-                stroke="var(--chart-grid)"
-                strokeWidth={1}
-                strokeDasharray="2 3"
-                opacity={0.35}
-              />
-            ))}
-          </g>
-
-          {/* Value Spectrum Rows */}
-          {values.map((v, i) => {
-            const y = M.top + i * ROW + ROW / 2;
-            const isActive = active === v.id;
-            const dim = active && !isActive ? 0.32 : 1;
-            const cx = x(v.spectrum.position);
-            const ribbonHeight = 12;
-            const ribbonY = y - ribbonHeight / 2;
-
-            return (
-              <g
-                key={v.id}
-                className="chart-mark-interactive cursor-pointer outline-none focus:outline-none"
-                onMouseEnter={() => setHovered(v.id)}
-                onMouseLeave={() => setHovered(null)}
+        return (
+          <div key={v.id} className={`vs-row px-4 py-3.5 ${isOpen ? 'bg-stone-900/40' : ''}`}>
+            <h4 className="m-0">
+              <button
+                type="button"
+                id={`vs-row-${v.id}`}
+                aria-expanded={isAccordion ? isOpen : undefined}
+                aria-controls={isAccordion ? `vs-panel-${v.id}` : undefined}
+                aria-pressed={isAccordion ? undefined : isOpen}
                 onClick={() => onSelect(v.id)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    onSelect(v.id);
-                  }
-                }}
-                aria-label={`${v.value}: ${v.spectrum.leftPole} to ${v.spectrum.rightPole}, posisi ${v.spectrum.position} dari 5`}
+                className="w-full flex items-center gap-3 text-left cursor-pointer group"
               >
-                {/* Invisible Hit Area */}
-                <rect x={0} y={y - ROW / 2} width={W} height={ROW} fill="transparent" className="outline-none focus:outline-none" />
-
-                {/* Active Row Ambient Glow Backdrop */}
-                {isActive && (
-                  <rect
-                    x={M.left - 6}
-                    y={y - ROW / 2 + 2}
-                    width={trackWidth + 12}
-                    height={ROW - 4}
-                    fill="rgba(175, 77, 40, 0.08)"
-                    rx={6}
+                <span className="font-mono text-[11px] tabular-nums text-stone-500 shrink-0">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span
+                  className={`font-serif text-base sm:text-lg font-semibold leading-snug flex-1 ${
+                    isOpen ? 'text-amber-500 dark:text-amber-300' : 'text-stone-100 group-hover:text-amber-500 dark:group-hover:text-amber-300'
+                  }`}
+                >
+                  {rowTitles?.[v.id] ?? v.value}
+                </span>
+                {isAccordion && (
+                  <ChevronDown
+                    size={16}
+                    className={`shrink-0 text-stone-500 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                   />
                 )}
+              </button>
+            </h4>
 
-                {/* Left Pole Label (Muted state to avoid) */}
-                <g opacity={dim}>
-                  <SvgLabel
-                    x={4}
-                    y={y - ROW / 2}
-                    width={M.left - 12}
-                    height={ROW}
-                    align="end"
-                    tone="label"
-                    size={8.8}
-                    lines={2}
-                  >
-                    {ID_POLES[v.id]?.left || v.spectrum.leftPole}
-                  </SvgLabel>
-                </g>
+            <p className="kicker mt-1.5 mb-2">{pole?.dimension ?? v.spectrum.dimension}</p>
 
-                {/* Empty / Muted Gray Track for Full 1-5 Continuum */}
-                <rect
-                  x={M.left}
-                  y={ribbonY}
-                  width={trackWidth}
-                  height={ribbonHeight}
-                  rx={ribbonHeight / 2}
-                  fill="rgba(120, 113, 108, 0.18)"
-                  stroke="rgba(120, 113, 108, 0.28)"
-                  strokeWidth={0.8}
-                />
+            <div className="vs-track">
+              <span className="vs-pole text-stone-500 dark:text-stone-400">
+                {pole?.left ?? v.spectrum.leftPole}
+              </span>
+              <div
+                className="vs-rail"
+                style={{ '--p': `${position}%` } as React.CSSProperties}
+                role="img"
+                aria-label={`Posisi ${v.spectrum.position} dari 5`}
+              >
+                <span className="vs-fill" />
+                <span className="vs-needle" />
+                <span className="vs-pip" />
+              </div>
+              <span className="vs-pole vs-pole-end text-stone-300 font-medium">
+                {pole?.right ?? v.spectrum.rightPole}
+              </span>
+            </div>
 
-                {/* Active Colored Ribbon Filled Only Up to Position (e.g. 4/5 fills up to point 4, remainder is gray) */}
-                <rect
-                  x={M.left}
-                  y={ribbonY}
-                  width={Math.max(ribbonHeight, cx - M.left)}
-                  height={ribbonHeight}
-                  rx={ribbonHeight / 2}
-                  fill="url(#spectrumOrangeToGreen)"
-                  opacity={isActive ? 1 : 0.6}
-                />
-
-                {/* Optical Grating Hash Overlay on Filled Portion */}
-                <rect
-                  x={M.left}
-                  y={ribbonY}
-                  width={Math.max(ribbonHeight, cx - M.left)}
-                  height={ribbonHeight}
-                  rx={ribbonHeight / 2}
-                  fill="url(#spectroGrating)"
-                  opacity={isActive ? 0.35 : 0.15}
-                />
-
-                {/* Right Pole Label (Recommended approach) */}
-                <g opacity={dim}>
-                  <SvgLabel
-                    x={W - M.right + 8}
-                    y={y - ROW / 2}
-                    width={M.right - 12}
-                    height={ROW}
-                    tone="strong"
-                    size={8.8}
-                    lines={2}
-                  >
-                    {ID_POLES[v.id]?.right || v.spectrum.rightPole}
-                  </SvgLabel>
-                </g>
-
-                {/* Spectrometer Cursor: Precision Vertical Needle & Pip at Target Position */}
-                <g opacity={dim}>
-                  {/* Subtle Needle Trail */}
-                  <line
-                    x1={cx}
-                    y1={ribbonY - 4}
-                    x2={cx}
-                    y2={ribbonY + ribbonHeight + 4}
-                    stroke={isActive ? 'var(--chart-label-strong)' : 'var(--chart-axis)'}
-                    strokeWidth={isActive ? 1.5 : 1}
-                  />
-
-                  {/* Top Pointer Notch */}
-                  <path
-                    d={`M ${cx - 3.5} ${ribbonY - 4} L ${cx + 3.5} ${ribbonY - 4} L ${cx} ${ribbonY} Z`}
-                    fill={isActive ? 'var(--chart-label-strong)' : 'var(--chart-axis)'}
-                  />
-
-                  {/* Active Indicator Pip in Center of Ribbon */}
-                  {isActive && (
-                    <circle
-                      cx={cx}
-                      cy={ribbonY + ribbonHeight / 2}
-                      r={7}
-                      fill="rgba(175, 77, 40, 0.25)"
-                      filter="url(#spectroNeedleGlow)"
-                    />
-                  )}
-                  <circle
-                    cx={cx}
-                    cy={ribbonY + ribbonHeight / 2}
-                    r={isActive ? 4.5 : 3.5}
-                    fill="var(--chart-surface)"
-                    stroke="var(--chart-label-strong)"
-                    strokeWidth={1.8}
-                  />
-                </g>
-              </g>
-            );
-          })}
-        </svg>
-      </div>
-
-      {/* Active Position Rationale Drawer */}
-      {activeValue && (
-        <div className="px-4 py-2.5 border-t border-stone-800 bg-stone-900/50 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1.5 text-xs font-sans">
-          <div className="flex flex-wrap items-baseline gap-2">
-            <span className="font-serif font-semibold text-stone-100 text-sm">
-              {ID_POLES[activeValue.id]?.title || activeValue.value}
-            </span>
-            <span className="text-stone-400 text-[11px]">
-              ({ID_POLES[activeValue.id]?.dimension || activeValue.spectrum.dimension})
-            </span>
+            {isOpen && renderDetail && (
+              <div
+                role="region"
+                id={`vs-panel-${v.id}`}
+                aria-labelledby={`vs-row-${v.id}`}
+                className="mt-4 rounded-xl border border-stone-800 bg-stone-950/60 p-4 sm:p-5 space-y-4 animate-fadeIn"
+              >
+                <div className="space-y-1.5">
+                  <h5 className="font-serif text-lg sm:text-xl font-semibold text-stone-100 leading-snug">
+                    {pole?.title ?? v.value}
+                  </h5>
+                  <p className="text-sm text-stone-300 leading-relaxed font-sans">
+                    {pole?.positionNote ?? v.spectrum.positionNote}
+                  </p>
+                </div>
+                {renderDetail?.(v.id)}
+              </div>
+            )}
           </div>
-          <p className="text-stone-300 text-[11.5px] leading-relaxed max-w-xl">
-            {ID_POLES[activeValue.id]?.positionNote || activeValue.spectrum.positionNote}
-          </p>
-        </div>
-      )}
-
+        );
+      })}
     </div>
-  );
-};
+  </div>
+);

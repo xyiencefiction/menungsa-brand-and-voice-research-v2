@@ -52,7 +52,7 @@ export const EntityRail: React.FC<Props> = ({ entityId, onNavigate, className = 
     return (
       <section className={`rounded-xl border border-stone-800 bg-stone-950 p-4 ${className}`}>
         <div className="flex items-center gap-2 mb-1.5">
-          <Link2 size={14} className="text-stone-600 shrink-0" />
+          <Link2 size={14} className="text-stone-500 shrink-0" />
           <h4 className="font-mono uppercase tracking-wider text-stone-400" style={{ fontSize: 'var(--t-micro)' }}>
             No cross-references recorded
           </h4>
@@ -107,7 +107,7 @@ export const EntityRail: React.FC<Props> = ({ entityId, onNavigate, className = 
               onClick={() => onNavigate(item.view, item.id)}
               className="w-full text-left p-2 rounded-lg hover:bg-stone-900 transition group flex items-start gap-2.5"
             >
-              <span className="font-mono text-amber-400/90 shrink-0 pt-px" style={{ fontSize: 'var(--t-micro)' }}>
+              <span className="font-mono text-amber-500 dark:text-amber-400/90 shrink-0 pt-px" style={{ fontSize: 'var(--t-micro)' }}>
                 {item.id}
               </span>
               <span className="min-w-0 flex-1">
@@ -118,7 +118,7 @@ export const EntityRail: React.FC<Props> = ({ entityId, onNavigate, className = 
                   {item.detail}
                 </span>
               </span>
-              <ArrowUpRight size={13} className="text-stone-600 group-hover:text-amber-400 transition shrink-0 mt-0.5" />
+              <ArrowUpRight size={13} className="text-stone-500 group-hover:text-amber-500 dark:text-amber-400 transition shrink-0 mt-0.5" />
             </button>
           </li>
         ))}

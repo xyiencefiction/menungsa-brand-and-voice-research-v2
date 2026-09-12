@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Eye, Lock, Globe, CheckCircle2, XCircle, ShieldAlert } from 'lucide-react';
+import { ComparisonTable } from '../common/ComparisonTable';
+import { handleTablistKeys } from '../../utils/overlay';
 
 interface DoDontPair {
   doText: string;
@@ -122,6 +124,21 @@ const CONTEXT_TABS: TabData[] = [
   },
 ];
 
+/**
+ * The three visibility positions, tied to the tabs that select them.
+ *
+ * This was three fixed dots on a line: decoration shaped like a chart, encoding
+ * nothing and connected to nothing. Two of the three correspond to a tab, so the
+ * highlight can follow the reader's choice; `gender` is a different axis
+ * entirely, and when it is active no position is claimed rather than a wrong one
+ * being lit.
+ */
+const VISIBILITY_POINTS: { tab: 'public' | 'private' | null; label: string; dot: string; tone: string }[] = [
+  { tab: 'private', label: 'Privat', dot: 'bg-emerald-500', tone: 'text-emerald-700 dark:text-emerald-400' },
+  { tab: null, label: 'Terlihat orang lain', dot: 'bg-amber-500', tone: 'text-amber-700 dark:text-amber-300' },
+  { tab: 'public', label: 'Publik + personal', dot: 'bg-rose-500', tone: 'text-rose-700 dark:text-rose-400' },
+];
+
 export const ContextCheck: React.FC = () => {
   const [activeTabId, setActiveTabId] = useState<'public' | 'private' | 'gender'>('public');
 
@@ -143,49 +160,21 @@ export const ContextCheck: React.FC = () => {
         </p>
       </div>
 
-      {/* B. Prinsip Utama & Visual Continuum */}
-      <div className="rounded-xl border border-stone-800/90 bg-stone-900/40 p-5 sm:p-6 space-y-5">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="space-y-2 max-w-xl">
-            <span className="text-[10.5px] font-mono uppercase tracking-wider text-amber-400 font-semibold block">
-              Prinsip Utama
-            </span>
-            <blockquote className="text-base sm:text-lg font-serif italic text-amber-200/95 border-l-2 border-amber-500/70 pl-3 leading-snug">
-              “Semakin publik dan semakin personal tindakannya, semakin rendah tuntutan untuk membuka diri.”
-            </blockquote>
-          </div>
-
-          {/* Simple Visual Continuum (Privat -> Terlihat orang lain -> Publik + personal) */}
-          <div className="lg:w-80 shrink-0 bg-stone-950/60 border border-stone-800/80 rounded-xl p-3.5 space-y-3">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-stone-400 block">
-              Spektrum Keterlihatan
-            </span>
-            <div className="flex items-center justify-between text-[11px] font-sans text-stone-300 relative">
-              {/* Connecting line */}
-              <div className="absolute top-1/2 left-3 right-3 h-0.5 bg-stone-700 -translate-y-1/2 -z-0" />
-
-              <div className="relative z-10 flex flex-col items-center gap-1">
-                <span className="w-3 h-3 rounded-full bg-emerald-500 ring-2 ring-stone-950" />
-                <span className="text-[10.5px] font-medium text-emerald-400">Privat</span>
-              </div>
-
-              <div className="relative z-10 flex flex-col items-center gap-1">
-                <span className="w-3 h-3 rounded-full bg-amber-500 ring-2 ring-stone-950" />
-                <span className="text-[10.5px] font-medium text-amber-300">Terlihat orang lain</span>
-              </div>
-
-              <div className="relative z-10 flex flex-col items-center gap-1">
-                <span className="w-3 h-3 rounded-full bg-rose-500 ring-2 ring-stone-950" />
-                <span className="text-[10.5px] font-medium text-rose-400">Publik + personal</span>
-              </div>
-            </div>
-          </div>
+      {/* B. Prinsip Utama */}
+      <div className="rounded-xl border border-stone-800/90 bg-stone-900/40 p-5 sm:p-6">
+        <div className="space-y-2 max-w-3xl">
+          <span className="text-[10.5px] font-mono uppercase tracking-wider text-amber-500 dark:text-amber-400 font-semibold block">
+            Prinsip Utama
+          </span>
+          <blockquote className="text-base sm:text-lg font-serif italic text-amber-800 dark:text-amber-200/95 border-l-2 border-amber-500/70 pl-3 leading-snug">
+            “Semakin publik dan semakin personal tindakannya, semakin rendah tuntutan untuk membuka diri.”
+          </blockquote>
         </div>
       </div>
 
       {/* C. Tiga Context Check Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="rounded-xl border border-stone-800 bg-stone-900/30 p-4 space-y-2">
+      <ol className="cc-steps grid grid-cols-1 md:grid-cols-3 gap-4 list-none p-0 m-0">
+        <li className="cc-step rounded-xl border border-stone-800 bg-stone-900/30 p-4 space-y-2">
           <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-stone-300">
             <span className="flex items-center justify-center w-5 h-5 rounded-full bg-stone-800 text-stone-200 text-[10px]">1</span>
             <span>Cek ruangnya</span>
@@ -193,9 +182,9 @@ export const ContextCheck: React.FC = () => {
           <p className="text-xs sm:text-sm text-stone-300 leading-relaxed font-sans">
             “Apakah respons pembaca akan terlihat oleh teman, keluarga, rekan kerja, pasangan, atau publik?”
           </p>
-        </div>
+        </li>
 
-        <div className="rounded-xl border border-stone-800 bg-stone-900/30 p-4 space-y-2">
+        <li className="cc-step rounded-xl border border-stone-800 bg-stone-900/30 p-4 space-y-2">
           <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-stone-300">
             <span className="flex items-center justify-center w-5 h-5 rounded-full bg-stone-800 text-stone-200 text-[10px]">2</span>
             <span>Cek social cost</span>
@@ -203,9 +192,9 @@ export const ContextCheck: React.FC = () => {
           <p className="text-xs sm:text-sm text-stone-300 leading-relaxed font-sans">
             “Apakah tindakan yang kita ajak masih berpotensi dinilai memalukan, lemah, atau ‘tidak laki-laki’ dalam konteks audiens ini?”
           </p>
-        </div>
+        </li>
 
-        <div className="rounded-xl border border-stone-800 bg-stone-900/30 p-4 space-y-2">
+        <li className="cc-step rounded-xl border border-stone-800 bg-stone-900/30 p-4 space-y-2">
           <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-stone-300">
             <span className="flex items-center justify-center w-5 h-5 rounded-full bg-stone-800 text-stone-200 text-[10px]">3</span>
             <span>Sesuaikan ajakannya</span>
@@ -213,20 +202,58 @@ export const ContextCheck: React.FC = () => {
           <p className="text-xs sm:text-sm text-stone-300 leading-relaxed font-sans">
             “Semakin tinggi risiko penilaian sosial, semakin kecil tuntutan untuk mengungkapkan pengalaman pribadi di depan orang lain.”
           </p>
-        </div>
-      </div>
+        </li>
+      </ol>
 
       {/* D. Interactive Context Examples */}
       <div className="space-y-4">
+        {/* The spectrum now sits directly above the control that moves it, so the
+            highlight changing is visible in the same glance as the click. */}
+        <div className="rounded-xl border border-stone-800/80 bg-stone-950/60 p-4 space-y-3">
+          <span className="text-[10px] font-mono uppercase tracking-wider text-stone-500 dark:text-stone-400 block">
+            Spektrum Keterlihatan
+          </span>
+          <div className="flex items-center justify-between text-[11px] font-sans relative">
+            <div className="absolute top-[7px] left-3 right-3 h-0.5 bg-stone-800 -translate-y-1/2" aria-hidden="true" />
+            {VISIBILITY_POINTS.map((point) => {
+              const claimed = VISIBILITY_POINTS.some((p) => p.tab === activeTabId);
+              const isActive = point.tab === activeTabId;
+              return (
+                <div
+                  key={point.label}
+                  className={`relative z-10 flex flex-col items-center gap-1 text-center transition-opacity duration-200 ${
+                    !claimed ? 'opacity-70' : isActive ? 'opacity-100' : 'opacity-35'
+                  }`}
+                >
+                  <span
+                    className={`w-3 h-3 rounded-full ring-2 ring-stone-950 transition-transform duration-200 ${point.dot} ${
+                      isActive ? 'scale-150' : ''
+                    }`}
+                  />
+                  <span className={`text-[10.5px] font-medium ${point.tone}`}>{point.label}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Selector Tabs */}
-        <div role="tablist" aria-label="Pilihan Ruang dan Norma" className="flex flex-wrap gap-2">
+        <div
+          role="tablist"
+          aria-label="Pilihan Ruang dan Norma"
+          onKeyDown={(e) => handleTablistKeys(e, (i) => setActiveTabId(CONTEXT_TABS[i].id))}
+          className="flex flex-wrap gap-2"
+        >
           {CONTEXT_TABS.map((tab) => {
             const isActive = tab.id === activeTabId;
             return (
               <button
                 key={tab.id}
                 role="tab"
+                id={`context-tab-${tab.id}`}
                 aria-selected={isActive}
+                aria-controls="context-tabpanel"
+                tabIndex={isActive ? 0 : -1}
                 onClick={() => setActiveTabId(tab.id)}
                 className={`px-4 py-2 rounded-lg text-xs font-sans font-medium transition cursor-pointer flex items-center gap-2 ${
                   isActive
@@ -244,59 +271,61 @@ export const ContextCheck: React.FC = () => {
         </div>
 
         {/* Tab Panel */}
-        <div className="rounded-xl border border-stone-800 bg-stone-900/50 p-5 space-y-4">
+        <div
+          role="tabpanel"
+          id="context-tabpanel"
+          aria-labelledby={`context-tab-${activeTab.id}`}
+          className="rounded-xl border border-stone-800 bg-stone-900/50 p-5 space-y-4"
+        >
           <div className="space-y-1">
             <h3 className="text-lg font-serif font-semibold text-stone-100">{activeTab.title}</h3>
             <p className="text-xs sm:text-sm text-stone-300 leading-relaxed font-sans">{activeTab.description}</p>
           </div>
 
           {/* Unified Comparison Table */}
-          <div className="overflow-hidden rounded-xl border border-stone-800 bg-stone-950/70 shadow-raised">
-            <table className="w-full text-left border-collapse table-fixed font-sans text-xs">
-              <thead>
-                <tr className="border-b border-stone-800 bg-stone-900/90">
-                  <th className="w-1/2 p-3 font-semibold uppercase tracking-wider text-emerald-400 border-r border-stone-800">
-                    <div className="flex items-center gap-1.5 font-mono text-[11px]">
-                      <CheckCircle2 size={14} className="shrink-0 text-emerald-400" />
-                      <span>DO (Sesuai Panduan)</span>
-                    </div>
-                  </th>
-                  <th className="w-1/2 p-3 font-semibold uppercase tracking-wider text-rose-400">
-                    <div className="flex items-center gap-1.5 font-mono text-[11px]">
-                      <XCircle size={14} className="shrink-0 text-rose-400" />
-                      <span>DON'T (Perlu Dihindari)</span>
-                    </div>
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-stone-800/70">
-                {activeTab.pairs.map((pair, idx) => (
-                  <tr key={idx} className="hover:bg-stone-900/20 transition-colors">
-                    <td className="w-1/2 p-3.5 align-top border-r border-stone-800/70 bg-emerald-950/10 space-y-1.5">
-                      <p className="font-serif italic text-emerald-200 text-xs sm:text-sm leading-snug">
-                        "{pair.doText}"
-                      </p>
-                      {pair.doWhy && (
-                        <p className="text-[11px] text-stone-400 leading-relaxed font-sans">
-                          {pair.doWhy}
-                        </p>
-                      )}
-                    </td>
-                    <td className="w-1/2 p-3.5 align-top bg-rose-950/10 space-y-1.5">
-                      <p className="font-serif italic text-rose-200 text-xs sm:text-sm leading-snug">
-                        "{pair.dontText}"
-                      </p>
-                      {pair.dontWhy && (
-                        <p className="text-[11px] text-stone-400 leading-relaxed font-sans">
-                          {pair.dontWhy}
-                        </p>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <ComparisonTable
+            key={activeTab.id}
+            className="cmp-stagger"
+            positiveLabel={
+              <>
+                <CheckCircle2 size={14} className="shrink-0 text-emerald-400" />
+                <span>DO (Sesuai Panduan)</span>
+              </>
+            }
+            negativeLabel={
+              <>
+                <XCircle size={14} className="shrink-0 text-rose-500 dark:text-rose-400" />
+                <span>DON'T (Perlu Dihindari)</span>
+              </>
+            }
+            rows={activeTab.pairs.map((pair, idx) => ({
+              id: `${activeTab.id}-${idx}`,
+              positive: (
+                <>
+                  <p className="font-serif italic text-emerald-700 dark:text-emerald-200 leading-snug">
+                    "{pair.doText}"
+                  </p>
+                  {pair.doWhy && (
+                    <p className="text-[13px] text-stone-500 dark:text-stone-400 leading-relaxed font-sans">
+                      {pair.doWhy}
+                    </p>
+                  )}
+                </>
+              ),
+              negative: (
+                <>
+                  <p className="font-serif italic text-rose-700 dark:text-rose-200 leading-snug">
+                    "{pair.dontText}"
+                  </p>
+                  {pair.dontWhy && (
+                    <p className="text-[13px] text-stone-500 dark:text-stone-400 leading-relaxed font-sans">
+                      {pair.dontWhy}
+                    </p>
+                  )}
+                </>
+              ),
+            }))}
+          />
 
           <p className="text-xs text-stone-400 bg-stone-950/50 p-3 rounded-lg border border-stone-800/80 leading-relaxed font-sans">
             {activeTab.note}
@@ -306,7 +335,7 @@ export const ContextCheck: React.FC = () => {
 
       {/* E. Rangkuman / Takeaway */}
       <div className="rounded-xl border border-stone-800/80 bg-stone-950/60 p-5 space-y-3">
-        <span className="text-[11px] font-mono uppercase tracking-wider text-amber-400 font-bold block">
+        <span className="text-[11px] font-mono uppercase tracking-wider text-amber-500 dark:text-amber-400 font-bold block">
           Prinsip sederhananya
         </span>
         <div className="space-y-2 text-xs sm:text-sm text-stone-300 leading-relaxed font-sans">

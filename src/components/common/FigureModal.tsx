@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { X, ExternalLink } from 'lucide-react';
+import { useBodyScrollLock, useFocusTrap } from '../../utils/overlay';
 
 export interface FigureInfo {
   id: string;
@@ -146,18 +147,30 @@ export function getFigure(id: string): FigureInfo {
 
 export const FigureModal: React.FC<Props> = ({ selectedFigure, onClose, onSelectFigure }) => {
   const [usePng, setUsePng] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  // The viewer had no Escape, no backdrop dismiss, no focus trap and no scroll
+  // lock: it covered the page while the page kept scrolling underneath, and Tab
+  // walked straight out of the dialog into content nobody could see.
+  useFocusTrap(panelRef, Boolean(selectedFigure), onClose);
+  useBodyScrollLock(Boolean(selectedFigure));
 
   if (!selectedFigure) return null;
 
   const currentSrc = `/figures/${selectedFigure.fileName}.${usePng ? 'png' : 'svg'}`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 overflow-y-auto">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 overflow-y-auto animate-overlay-in"
+      onClick={onClose}
+    >
       <div 
+        ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-label={`Diagram ${selectedFigure.title}`}
-        className="relative bg-stone-900 border border-stone-700 rounded-xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+        className="relative bg-stone-900 border border-stone-700 rounded-xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden animate-panel-in"
       >
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-stone-800 bg-stone-950/70">
@@ -203,7 +216,7 @@ export const FigureModal: React.FC<Props> = ({ selectedFigure, onClose, onSelect
             <img
               src={currentSrc}
               alt={selectedFigure.title}
-              className="max-h-[500px] w-auto object-contain transition-all hover:scale-[1.02]"
+              className="max-h-[500px] w-auto object-contain transition-[scale] duration-200 ease-out hover:scale-[1.02]"
               onError={() => setUsePng(true)}
             />
           </div>
@@ -219,7 +232,7 @@ export const FigureModal: React.FC<Props> = ({ selectedFigure, onClose, onSelect
               <p className="text-stone-200 leading-relaxed">{selectedFigure.encoding}</p>
             </div>
             <div className="p-3.5 bg-stone-950/60 rounded-lg border border-rose-900/40 space-y-1.5 bg-rose-950/10">
-              <span className="font-mono text-rose-400 uppercase tracking-wider text-[10px]">What It Does NOT Represent</span>
+              <span className="font-mono text-rose-500 dark:text-rose-400 uppercase tracking-wider text-[10px]">What It Does NOT Represent</span>
               <p className="text-stone-200 leading-relaxed">{selectedFigure.notRepresented}</p>
             </div>
           </div>

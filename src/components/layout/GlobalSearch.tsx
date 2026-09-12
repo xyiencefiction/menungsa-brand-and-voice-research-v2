@@ -3,6 +3,7 @@ import { Search, X, ArrowRight, BookOpen, GitFork, Sliders, MessageSquare, Shiel
 import { searchKnowledgeBase } from '../../data';
 import type { ViewType } from '../../types';
 import { playSound } from '../../utils/sound';
+import { useBodyScrollLock, useFocusTrap } from '../../utils/overlay';
 
 interface Props {
   isOpen: boolean;
@@ -14,6 +15,13 @@ export const GlobalSearch: React.FC<Props> = ({ isOpen, onClose, onNavigate }) =
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
+
+  // Escape is already owned by the keydown effect below, which also plays the
+  // dismiss sound; handing it to the trap as well would fire both twice.
+  useFocusTrap(panelRef, isOpen);
+  useBodyScrollLock(isOpen);
 
   const results = useMemo(() => {
     if (!query.trim()) return [];
@@ -23,6 +31,14 @@ export const GlobalSearch: React.FC<Props> = ({ isOpen, onClose, onNavigate }) =
   useEffect(() => {
     setSelectedIndex(0);
   }, [query]);
+
+  // Arrowing past the fold moved an invisible selection: the highlight was on a
+  // row well below the scroll edge with nothing on screen to show it had moved.
+  useEffect(() => {
+    listRef.current
+      ?.querySelector('[data-selected="true"]')
+      ?.scrollIntoView({ block: 'nearest' });
+  }, [selectedIndex, query]);
 
   useEffect(() => {
     if (isOpen) {
@@ -68,25 +84,26 @@ export const GlobalSearch: React.FC<Props> = ({ isOpen, onClose, onNavigate }) =
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
-      case 'Mechanism': return <Sliders size={14} className="text-amber-400" />;
-      case 'Contradiction': return <GitFork size={14} className="text-purple-400" />;
-      case 'Context': return <MessageSquare size={14} className="text-blue-400" />;
+      case 'Mechanism': return <Sliders size={14} className="text-amber-500 dark:text-amber-400" />;
+      case 'Contradiction': return <GitFork size={14} className="text-purple-500 dark:text-purple-400" />;
+      case 'Context': return <MessageSquare size={14} className="text-sky-400" />;
       case 'Language': return <BookOpen size={14} className="text-emerald-400" />;
-      case 'Claim': return <ShieldAlert size={14} className="text-rose-400" />;
+      case 'Claim': return <ShieldAlert size={14} className="text-rose-500 dark:text-rose-400" />;
       default: return <Search size={14} className="text-stone-400" />;
     }
   };
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center pt-20 bg-black/80 backdrop-blur-sm p-4 cursor-pointer"
+      className="fixed inset-0 z-50 flex items-start justify-center pt-20 bg-black/80 backdrop-blur-sm p-4 cursor-pointer animate-overlay-in"
       onClick={onClose}
     >
       <div 
+        ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-label="Pencarian Panduan Menungsa"
-        className="bg-stone-900 border border-stone-700 w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-100 cursor-default"
+        className="bg-stone-900 border border-stone-700 w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden flex flex-col animate-panel-in cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search input bar */}
@@ -99,6 +116,10 @@ export const GlobalSearch: React.FC<Props> = ({ isOpen, onClose, onNavigate }) =
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Cari"
             aria-label="Cari"
+            role="combobox"
+            aria-expanded={results.length > 0}
+            aria-controls="global-search-results"
+            aria-activedescendant={results[selectedIndex] ? `global-search-option-${selectedIndex}` : undefined}
             className="w-full bg-transparent text-stone-100 text-sm placeholder-stone-500 focus:outline-none"
           />
           {query && (
@@ -116,7 +137,13 @@ export const GlobalSearch: React.FC<Props> = ({ isOpen, onClose, onNavigate }) =
         </div>
 
         {/* Results list */}
-        <div className="max-h-[60vh] overflow-y-auto divide-y divide-stone-800/60 p-2">
+        <div
+          ref={listRef}
+          id="global-search-results"
+          role="listbox"
+          aria-label="Pencarian Panduan Menungsa"
+          className="max-h-[60vh] overflow-y-auto divide-y divide-stone-800/60 p-2"
+        >
           {query.trim().length > 1 && results.length === 0 && (
             <div className="py-8 text-center text-stone-400 text-sm">
               No results found for "<span className="text-stone-200">{query}</span>"
@@ -132,12 +159,17 @@ export const GlobalSearch: React.FC<Props> = ({ isOpen, onClose, onNavigate }) =
           {results.map((res, idx) => (
             <div
               key={`${res.category}-${res.id}-${idx}`}
+              id={`global-search-option-${idx}`}
+              role="option"
+              aria-selected={idx === selectedIndex}
+              data-selected={idx === selectedIndex}
+              onMouseEnter={() => setSelectedIndex(idx)}
               onClick={() => {
                 onNavigate(res.view as ViewType, res.id);
                 onClose();
               }}
-              className={`p-3 rounded-lg flex items-center justify-between cursor-pointer transition ${
-                idx === selectedIndex ? 'bg-amber-500/15 border border-amber-500/30' : 'hover:bg-stone-800/50'
+              className={`p-3 rounded-lg flex items-center justify-between cursor-pointer transition-colors ${
+                idx === selectedIndex ? 'bg-amber-500/15 border border-amber-500/30' : 'border border-transparent hover:bg-stone-800/50'
               }`}
             >
               <div className="flex items-start gap-3 overflow-hidden pr-2">

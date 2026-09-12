@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { 
   Sliders, 
   Sparkles, 
@@ -75,6 +75,13 @@ const CATEGORY_TABS = [
 
 export const CopySandboxView: React.FC = () => {
   const [inputText, setInputText] = useState<string>(PRESETS[0].text);
+  // Every keystroke re-scanned 4,772 multi-word phrases against the whole draft.
+  // On a short preset that is a few milliseconds; on a long draft it is tens of
+  // them, on the same thread that has to paint the character just typed. The
+  // textarea stays bound to `inputText` so typing is never held up; only the
+  // scan waits for a pause.
+  const [analysisText, setAnalysisText] = useState<string>(PRESETS[0].text);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [selectedWord, setSelectedWord] = useState<CheatsheetEntry | null>(null);
 
   // Cheatsheet Browser State
@@ -100,6 +107,11 @@ export const CopySandboxView: React.FC = () => {
 
   const allChecked = checkedItems.every(Boolean);
 
+  useEffect(() => {
+    const timer = setTimeout(() => setAnalysisText(inputText), 120);
+    return () => clearTimeout(timer);
+  }, [inputText]);
+
   // Debounce search query to keep UI 60fps on mobile with 10.9k+ entries
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -110,7 +122,7 @@ export const CopySandboxView: React.FC = () => {
 
   // Analysis Engine
   const analysis = useMemo(() => {
-    const rawText = inputText.trim();
+    const rawText = analysisText.trim();
     if (!rawText) {
       return {
         total: 0,
@@ -248,7 +260,7 @@ export const CopySandboxView: React.FC = () => {
       matches,
       matchedCategories
     };
-  }, [inputText]);
+  }, [analysisText]);
 
   // Overall Tone Evaluation
   const evaluation = useMemo(() => {
@@ -270,7 +282,7 @@ export const CopySandboxView: React.FC = () => {
         status: 'HIGH_MORAL',
         title: 'Periksa nada menghakimi',
         description: 'Ada kata atau frasa yang dapat terdengar seperti kewajiban moral, penilaian, atau tuntutan terhadap pembaca. Maknanya tetap bergantung pada konteks.',
-        color: 'text-rose-400',
+        color: 'text-rose-500 dark:text-rose-400',
         bg: 'bg-rose-950/20 border-rose-500/30',
         advice: 'Baca ulang bagian yang ditandai. Jika tidak benar-benar diperlukan, ubah tuntutan menjadi pilihan atau jelaskan alasan di balik arahan tersebut.'
       };
@@ -281,7 +293,7 @@ export const CopySandboxView: React.FC = () => {
         status: 'CRINGE_ALERT',
         title: 'Periksa standar maskulinitas',
         description: 'Ada istilah yang dapat menjadikan kekuatan, status, penampilan, atau pencapaian sebagai ukuran seperti apa laki-laki seharusnya.',
-        color: 'text-amber-400',
+        color: 'text-amber-500 dark:text-amber-400',
         bg: 'bg-amber-950/20 border-amber-500/30',
         advice: 'Pastikan nilai seseorang tidak ditentukan oleh ketangguhan, penghasilan, penampilan, dominasi, atau label seperti “pria sejati”.'
       };
@@ -292,7 +304,7 @@ export const CopySandboxView: React.FC = () => {
         status: 'CLINICAL_ALERT',
         title: 'Periksa penggunaan istilah klinis',
         description: 'Ada istilah kesehatan mental atau diagnosis yang membutuhkan konteks dan tingkat kepastian yang tepat.',
-        color: 'text-purple-400',
+        color: 'text-purple-500 dark:text-purple-400',
         bg: 'bg-purple-950/20 border-purple-500/30',
         advice: 'Pastikan istilah tidak digunakan untuk mendiagnosis pembaca. Jelaskan artinya jika membantu, dan bedakan tanda yang mungkin muncul dari diagnosis yang membutuhkan penilaian profesional.'
       };
@@ -358,6 +370,16 @@ export const CopySandboxView: React.FC = () => {
 
   const handleAppendToSandbox = (term: string) => {
     setInputText((prev) => (prev ? `${prev} ${term}` : term));
+    // The dictionary sits far below the draft box, so the append it triggers used
+    // to happen entirely off-screen. Returning to the box — and to the caret at
+    // the end of the text — is what makes the action legible as an edit.
+    requestAnimationFrame(() => {
+      const el = textareaRef.current;
+      if (!el) return;
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      el.focus({ preventScroll: true });
+      el.setSelectionRange(el.value.length, el.value.length);
+    });
   };
 
   return (
@@ -382,7 +404,7 @@ export const CopySandboxView: React.FC = () => {
         <div className="lg:col-span-7 space-y-4">
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono uppercase tracking-wider text-stone-300 flex items-center gap-1.5 font-semibold">
-              <FileText size={14} className="text-amber-400" />
+              <FileText size={14} className="text-amber-500 dark:text-amber-400" />
               Draf yang ingin diperiksa
             </span>
             {/* Status Pill Badge */}
@@ -397,7 +419,7 @@ export const CopySandboxView: React.FC = () => {
                   : 'bg-rose-400'
               }`} />
               <span className="text-stone-300 font-medium">{analysis.total} Kata</span>
-              <span className="text-stone-600">•</span>
+              <span className="text-stone-500">•</span>
               <span className="text-stone-400">
                 Terdeteksi <strong className={analysis.matches.length > 0 ? 'text-stone-200 font-semibold' : 'text-stone-400'}>{analysis.matches.length} Istilah</strong>
               </span>
@@ -431,6 +453,7 @@ export const CopySandboxView: React.FC = () => {
           {/* Textarea */}
           <div className="relative">
             <textarea
+              ref={textareaRef}
               value={inputText}
               onChange={(e) => {
                 setInputText(e.target.value);
@@ -463,9 +486,10 @@ export const CopySandboxView: React.FC = () => {
               <span className="text-stone-400 font-sans text-xs">Tampilkan kategori:</span>
               <button
                 onClick={() => setFilterCategory(filterCategory === 'moral' ? null : 'moral')}
+                aria-pressed={filterCategory === 'moral'}
                 className={`px-2 py-0.5 rounded border transition cursor-pointer ${
                   filterCategory === 'moral'
-                    ? 'bg-rose-500/30 border-rose-500 text-rose-100 ring-1 ring-rose-400 font-bold'
+                    ? 'bg-rose-500/30 border-rose-500 text-rose-200 ring-1 ring-rose-400 font-bold'
                     : analysis.moralCount > 0
                     ? 'bg-rose-500/15 border-rose-500/40 text-rose-200 font-semibold hover:bg-rose-500/25'
                     : 'bg-stone-900 border-stone-800 text-stone-500'
@@ -475,9 +499,10 @@ export const CopySandboxView: React.FC = () => {
               </button>
               <button
                 onClick={() => setFilterCategory(filterCategory === 'cringe' ? null : 'cringe')}
+                aria-pressed={filterCategory === 'cringe'}
                 className={`px-2 py-0.5 rounded border transition cursor-pointer ${
                   filterCategory === 'cringe'
-                    ? 'bg-amber-500/30 border-amber-500 text-amber-100 ring-1 ring-amber-400 font-bold'
+                    ? 'bg-amber-500/30 border-amber-500 text-amber-200 ring-1 ring-amber-400 font-bold'
                     : analysis.cringeCount > 0
                     ? 'bg-amber-500/15 border-amber-500/40 text-amber-200 font-semibold hover:bg-amber-500/25'
                     : 'bg-stone-900 border-stone-800 text-stone-500'
@@ -487,9 +512,10 @@ export const CopySandboxView: React.FC = () => {
               </button>
               <button
                 onClick={() => setFilterCategory(filterCategory === 'clinical' ? null : 'clinical')}
+                aria-pressed={filterCategory === 'clinical'}
                 className={`px-2 py-0.5 rounded border transition cursor-pointer ${
                   filterCategory === 'clinical'
-                    ? 'bg-purple-500/30 border-purple-500 text-purple-100 ring-1 ring-purple-400 font-bold'
+                    ? 'bg-purple-500/30 border-purple-500 text-purple-200 ring-1 ring-purple-400 font-bold'
                     : analysis.clinicalCount > 0
                     ? 'bg-purple-500/15 border-purple-500/40 text-purple-200 font-semibold hover:bg-purple-500/25'
                     : 'bg-stone-900 border-stone-800 text-stone-500'
@@ -499,9 +525,10 @@ export const CopySandboxView: React.FC = () => {
               </button>
               <button
                 onClick={() => setFilterCategory(filterCategory === 'imperative' ? null : 'imperative')}
+                aria-pressed={filterCategory === 'imperative'}
                 className={`px-2 py-0.5 rounded border transition cursor-pointer ${
                   filterCategory === 'imperative'
-                    ? 'bg-yellow-500/30 border-yellow-500 text-yellow-100 ring-1 ring-yellow-400 font-bold'
+                    ? 'bg-yellow-500/30 border-yellow-500 text-yellow-200 ring-1 ring-yellow-400 font-bold'
                     : analysis.imperativeCount > 0
                     ? 'bg-yellow-500/15 border-yellow-500/40 text-yellow-200 font-semibold hover:bg-yellow-500/25'
                     : 'bg-stone-900 border-stone-800 text-stone-500'
@@ -511,9 +538,10 @@ export const CopySandboxView: React.FC = () => {
               </button>
               <button
                 onClick={() => setFilterCategory(filterCategory === 'recommended' ? null : 'recommended')}
+                aria-pressed={filterCategory === 'recommended'}
                 className={`px-2 py-0.5 rounded border transition cursor-pointer ${
                   filterCategory === 'recommended'
-                    ? 'bg-emerald-500/30 border-emerald-500 text-emerald-100 ring-1 ring-emerald-400 font-bold'
+                    ? 'bg-emerald-500/30 border-emerald-500 text-emerald-200 ring-1 ring-emerald-400 font-bold'
                     : analysis.recommendedCount > 0
                     ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-200 font-semibold hover:bg-emerald-500/25'
                     : 'bg-stone-900 border-stone-800 text-stone-500'
@@ -537,7 +565,7 @@ export const CopySandboxView: React.FC = () => {
             <div className="rounded-xl border border-stone-800 bg-stone-900/40 p-4 space-y-3 text-xs">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-mono uppercase tracking-wider text-stone-300 font-semibold flex items-center gap-1.5">
-                  <Sparkles size={13} className="text-amber-400" />
+                  <Sparkles size={13} className="text-amber-500 dark:text-amber-400" />
                   Kata Kunci yang Terdeteksi {filterCategory ? `(${filterCategory})` : ''}:
                 </span>
                 <span className="text-[10px] text-stone-400 font-mono">
@@ -545,7 +573,13 @@ export const CopySandboxView: React.FC = () => {
                 </span>
               </div>
 
-              <div className="flex flex-wrap gap-1.5 max-h-32 overflow-y-auto pr-1">
+              <div
+                className="flex flex-wrap gap-1.5 max-h-32 overflow-y-auto pr-1 scroll-hint-y"
+                onScroll={(e) => {
+                  const el = e.currentTarget;
+                  el.dataset.atEnd = String(el.scrollTop + el.clientHeight >= el.scrollHeight - 2);
+                }}
+              >
                 {(filterCategory ? analysis.matches.filter(m => m.entry.category === filterCategory) : analysis.matches).map((m, idx) => {
                   const cat = m.entry.category;
                   const isSelected = selectedWord?.term === m.entry.term;
@@ -591,7 +625,7 @@ export const CopySandboxView: React.FC = () => {
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1">
                     <div>
-                      <span className="text-[10px] font-mono uppercase text-rose-400 block font-semibold">
+                      <span className="text-[10px] font-mono uppercase text-rose-500 dark:text-rose-400 block font-semibold">
                         Hal yang perlu diperhatikan
                       </span>
                       <p className="text-stone-300 mt-0.5 leading-relaxed">
@@ -616,7 +650,9 @@ export const CopySandboxView: React.FC = () => {
         {/* Right Column: Real-time Diagnostics */}
         <div className="lg:col-span-5 space-y-5">
           {/* 1. Skor pencocokan kata Menungsa (Composite Calibration Score) */}
-          <div className="rounded-[9px] border border-stone-800 bg-stone-900/60 p-5 space-y-4 shadow-raised">
+          {/* Pinned on wide screens: editing happens in the left column, and a
+              score that scrolls away is a score nobody watches while they edit. */}
+          <div className="rounded-[9px] border border-stone-800 bg-stone-900/60 p-5 space-y-4 shadow-raised lg:sticky lg:top-20 lg:z-10">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 rounded-[6px] bg-amber-500/10 border border-amber-500/25 text-amber-500">
@@ -651,7 +687,7 @@ export const CopySandboxView: React.FC = () => {
               <div className="h-2.5 w-full rounded-full bg-stone-950 overflow-hidden border border-stone-800 flex">
                 <div
                   style={{ width: `${analysis.total === 0 ? 0 : analysis.calibrationScore}%` }}
-                  className={`h-full transition-all duration-300 ${
+                  className={`h-full transition-[width,background-color] duration-300 ease-out ${
                     analysis.calibrationScore >= 85
                       ? 'bg-emerald-500'
                       : analysis.calibrationScore >= 60
@@ -685,7 +721,7 @@ export const CopySandboxView: React.FC = () => {
           <div className="rounded-xl border border-stone-800 bg-stone-900/40 p-5 space-y-4">
             <div className="flex items-center justify-between border-b border-stone-800 pb-2.5">
               <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-stone-200 font-semibold">
-                <Activity size={15} className="text-amber-400" />
+                <Activity size={15} className="text-amber-500 dark:text-amber-400" />
                 <span>Ringkasan kecocokan per kategori</span>
               </div>
               <span className="text-[10px] font-mono text-stone-400">
@@ -703,7 +739,7 @@ export const CopySandboxView: React.FC = () => {
                   </span>
                   <div className="flex items-center gap-2 font-mono">
                     <span className="text-[11px] text-stone-500">({analysis.moralCount} kata)</span>
-                    <span className={`font-semibold ${analysis.moralDensity > 10 ? 'text-rose-400' : 'text-stone-300'}`}>
+                    <span className={`font-semibold ${analysis.moralDensity > 10 ? 'text-rose-500 dark:text-rose-400' : 'text-stone-300'}`}>
                       {analysis.moralDensity}%
                     </span>
                   </div>
@@ -711,7 +747,7 @@ export const CopySandboxView: React.FC = () => {
                 <div className="h-1.5 w-full rounded-full bg-stone-950 overflow-hidden border border-stone-800/80">
                   <div
                     style={{ width: `${Math.min(analysis.moralDensity, 100)}%` }}
-                    className={`h-full transition-all duration-300 ${analysis.moralDensity > 10 ? 'bg-rose-500' : 'bg-rose-500/60'}`}
+                    className={`h-full transition-[width,background-color] duration-300 ease-out ${analysis.moralDensity > 10 ? 'bg-rose-500' : 'bg-rose-500/60'}`}
                   />
                 </div>
                 <div className="flex items-center justify-between text-[10px] text-stone-400">
@@ -729,7 +765,7 @@ export const CopySandboxView: React.FC = () => {
                   </span>
                   <div className="flex items-center gap-2 font-mono">
                     <span className="text-[11px] text-stone-500">({analysis.cringeCount} kata)</span>
-                    <span className={`font-semibold ${analysis.cringeDensity > 5 ? 'text-amber-400' : 'text-stone-300'}`}>
+                    <span className={`font-semibold ${analysis.cringeDensity > 5 ? 'text-amber-500 dark:text-amber-400' : 'text-stone-300'}`}>
                       {analysis.cringeDensity}%
                     </span>
                   </div>
@@ -737,7 +773,7 @@ export const CopySandboxView: React.FC = () => {
                 <div className="h-1.5 w-full rounded-full bg-stone-950 overflow-hidden border border-stone-800/80">
                   <div
                     style={{ width: `${Math.min(analysis.cringeDensity, 100)}%` }}
-                    className={`h-full transition-all duration-300 ${analysis.cringeDensity > 5 ? 'bg-amber-500' : 'bg-amber-500/60'}`}
+                    className={`h-full transition-[width,background-color] duration-300 ease-out ${analysis.cringeDensity > 5 ? 'bg-amber-500' : 'bg-amber-500/60'}`}
                   />
                 </div>
                 <div className="flex items-center justify-between text-[10px] text-stone-400">
@@ -755,7 +791,7 @@ export const CopySandboxView: React.FC = () => {
                   </span>
                   <div className="flex items-center gap-2 font-mono">
                     <span className="text-[11px] text-stone-500">({analysis.clinicalCount} kata)</span>
-                    <span className={`font-semibold ${analysis.clinicalDensity > 10 ? 'text-purple-400' : 'text-stone-300'}`}>
+                    <span className={`font-semibold ${analysis.clinicalDensity > 10 ? 'text-purple-500 dark:text-purple-400' : 'text-stone-300'}`}>
                       {analysis.clinicalDensity}%
                     </span>
                   </div>
@@ -763,7 +799,7 @@ export const CopySandboxView: React.FC = () => {
                 <div className="h-1.5 w-full rounded-full bg-stone-950 overflow-hidden border border-stone-800/80">
                   <div
                     style={{ width: `${Math.min(analysis.clinicalDensity, 100)}%` }}
-                    className={`h-full transition-all duration-300 ${analysis.clinicalDensity > 10 ? 'bg-purple-500' : 'bg-purple-500/60'}`}
+                    className={`h-full transition-[width,background-color] duration-300 ease-out ${analysis.clinicalDensity > 10 ? 'bg-purple-500' : 'bg-purple-500/60'}`}
                   />
                 </div>
                 <div className="flex items-center justify-between text-[10px] text-stone-400">
@@ -781,7 +817,7 @@ export const CopySandboxView: React.FC = () => {
                   </span>
                   <div className="flex items-center gap-2 font-mono">
                     <span className="text-[11px] text-stone-500">({analysis.imperativeCount} kata)</span>
-                    <span className={`font-semibold ${analysis.imperativeDensity > 10 ? 'text-yellow-400' : 'text-stone-300'}`}>
+                    <span className={`font-semibold ${analysis.imperativeDensity > 10 ? 'text-yellow-300 dark:text-yellow-400' : 'text-stone-300'}`}>
                       {analysis.imperativeDensity}%
                     </span>
                   </div>
@@ -789,7 +825,7 @@ export const CopySandboxView: React.FC = () => {
                 <div className="h-1.5 w-full rounded-full bg-stone-950 overflow-hidden border border-stone-800/80">
                   <div
                     style={{ width: `${Math.min(analysis.imperativeDensity, 100)}%` }}
-                    className={`h-full transition-all duration-300 ${analysis.imperativeDensity > 10 ? 'bg-yellow-500' : 'bg-yellow-500/60'}`}
+                    className={`h-full transition-[width,background-color] duration-300 ease-out ${analysis.imperativeDensity > 10 ? 'bg-yellow-500' : 'bg-yellow-500/60'}`}
                   />
                 </div>
                 <div className="flex items-center justify-between text-[10px] text-stone-400">
@@ -815,7 +851,7 @@ export const CopySandboxView: React.FC = () => {
                 <div className="h-1.5 w-full rounded-full bg-stone-950 overflow-hidden border border-emerald-950">
                   <div
                     style={{ width: `${Math.min(analysis.recommendedDensity, 100)}%` }}
-                    className="h-full bg-emerald-500 transition-all duration-300"
+                    className="h-full bg-emerald-500 transition-[width,background-color] duration-300 ease-out"
                   />
                 </div>
                 <div className="flex items-center justify-between text-[10px] text-stone-400">
@@ -847,7 +883,7 @@ export const CopySandboxView: React.FC = () => {
             </div>
 
             <div className="pt-2.5 border-t border-stone-800/80 text-xs text-stone-300 space-y-1">
-              <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider block font-semibold">
+              <span className="text-[10px] font-mono text-amber-500 dark:text-amber-400 uppercase tracking-wider block font-semibold">
                 Saran untuk ditinjau
               </span>
               <p className="leading-relaxed text-stone-200">
@@ -880,7 +916,7 @@ export const CopySandboxView: React.FC = () => {
                   type="checkbox"
                   checked={checkedItems[0]}
                   onChange={() => toggleCheck(0)}
-                  className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0 cursor-pointer"
+                  className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 cursor-pointer"
                 />
                 <span className={checkedItems[0] ? 'text-stone-100 line-through opacity-80' : ''}>
                   Kalimat tidak mempermalukan atau memaksa pembaca. Nilai kata seperti “harus” sesuai konteksnya.
@@ -891,7 +927,7 @@ export const CopySandboxView: React.FC = () => {
                   type="checkbox"
                   checked={checkedItems[1]}
                   onChange={() => toggleCheck(1)}
-                  className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0 cursor-pointer"
+                  className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 cursor-pointer"
                 />
                 <span className={checkedItems[1] ? 'text-stone-100 line-through opacity-80' : ''}>
                   Harga diri pembaca tidak dibuat bergantung pada standar maskulinitas tertentu.
@@ -902,7 +938,7 @@ export const CopySandboxView: React.FC = () => {
                   type="checkbox"
                   checked={checkedItems[2]}
                   onChange={() => toggleCheck(2)}
-                  className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0 cursor-pointer"
+                  className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 cursor-pointer"
                 />
                 <span className={checkedItems[2] ? 'text-stone-100 line-through opacity-80' : ''}>
                   Istilah kesehatan mental digunakan dengan tepat; pembaca tidak didiagnosis atau dipaksa bercerita.
@@ -913,7 +949,7 @@ export const CopySandboxView: React.FC = () => {
                   type="checkbox"
                   checked={checkedItems[3]}
                   onChange={() => toggleCheck(3)}
-                  className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 focus:ring-0 cursor-pointer"
+                  className="mt-0.5 rounded border-stone-700 bg-stone-800 text-amber-500 cursor-pointer"
                 />
                 <span className={checkedItems[3] ? 'text-stone-100 line-through opacity-80' : ''}>
                   Ajakan memberi pilihan yang nyata; instruksi darurat tetap jelas dan langsung.
@@ -928,7 +964,7 @@ export const CopySandboxView: React.FC = () => {
       <div className="border-t border-stone-800 pt-10 space-y-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="space-y-1.5">
-            <div className="inline-flex items-center gap-1.5 text-xs font-mono text-amber-400 uppercase tracking-wider">
+            <div className="inline-flex items-center gap-1.5 text-xs font-mono text-amber-500 dark:text-amber-400 uppercase tracking-wider">
               <BookOpen size={14} />
               <span>KAMUS BESAR KATA & FRASA NASKAH ({cheatsheet.length.toLocaleString('id-ID')}+ ENTRI)</span>
             </div>
@@ -948,7 +984,7 @@ export const CopySandboxView: React.FC = () => {
         </div>
 
         {/* Search Bar & Category Filters */}
-        <div className="space-y-3">
+        <div className="ctl-sticky space-y-3 py-2">
           <div className="relative">
             <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-500" />
             <input
@@ -960,7 +996,7 @@ export const CopySandboxView: React.FC = () => {
               }}
               placeholder="Cari kata, frasa, atau penjelasan…"
               aria-label="Cari dalam daftar kata dan frasa"
-              className="w-full rounded-xl border border-stone-800 bg-stone-900/80 pl-10 pr-4 py-2.5 text-xs md:text-sm text-stone-100 placeholder-stone-500 focus:border-amber-500/60 focus:outline-none focus:ring-1 focus:ring-amber-500/30 font-sans"
+              className="w-full rounded-xl border border-stone-800 bg-stone-900/80 pl-10 pr-4 py-2.5 text-xs md:text-sm text-stone-100 placeholder-stone-500 hover:border-stone-700 font-sans"
             />
             {searchQuery && (
               <button
@@ -974,7 +1010,7 @@ export const CopySandboxView: React.FC = () => {
           </div>
 
           {/* Category Filter Pills */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-thin">
+          <div role="group" aria-label="Cari kata, frasa, atau penjelasan…" className="ctl-row no-scrollbar scroll-hint-x">
             {CATEGORY_TABS.map((tab) => {
               const isActive = activeCategory === tab.id;
               return (
@@ -1079,7 +1115,7 @@ export const CopySandboxView: React.FC = () => {
                   {/* Recommendation / Alternative */}
                   <div className="pt-2 border-t border-stone-800/80 flex items-start justify-between gap-2 text-xs">
                     <div className="space-y-0.5 flex-1">
-                      <span className="text-[10px] font-mono uppercase text-amber-400 block font-semibold">
+                      <span className="text-[10px] font-mono uppercase text-amber-500 dark:text-amber-400 block font-semibold">
                         {isRecommended ? 'Karakter Kalimat:' : 'Saran Solusi:'}
                       </span>
                       <p className="text-[11px] text-stone-300 leading-snug">

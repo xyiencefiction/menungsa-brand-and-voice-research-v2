@@ -75,7 +75,7 @@ export const FramingMatrix: React.FC<Props> = ({
             onClick={() => onToggleVisibility(false)}
             className={`px-2.5 py-1 rounded-md font-mono text-[10px] tracking-wide transition-all cursor-pointer flex items-center gap-1.5 ${
               !isPublic
-                ? 'bg-amber-600 text-bone font-semibold shadow-xs'
+                ? 'bg-amber-500 text-bone font-semibold shadow-xs'
                 : 'text-stone-400 hover:text-stone-200'
             }`}
           >
@@ -86,7 +86,7 @@ export const FramingMatrix: React.FC<Props> = ({
             onClick={() => onToggleVisibility(true)}
             className={`px-2.5 py-1 rounded-md font-mono text-[10px] tracking-wide transition-all cursor-pointer flex items-center gap-1.5 ${
               isPublic
-                ? 'bg-amber-600 text-bone font-semibold shadow-xs'
+                ? 'bg-amber-500 text-bone font-semibold shadow-xs'
                 : 'text-stone-400 hover:text-stone-200'
             }`}
           >

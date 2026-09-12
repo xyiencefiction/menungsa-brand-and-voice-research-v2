@@ -17,7 +17,23 @@ function add(value, origin) {
   if (!entries.has(key)) entries.set(key, new Set());
   entries.get(key).add(origin);
 }
-const ignoredProps = new Set(['className', 'key', 'id', 'value', 'htmlFor', 'd', 'fill', 'stroke', 'viewBox', 'type', 'role', 'src', 'href', 'target', 'rel', 'style']);
+const ignoredProps = new Set(['className', 'key', 'id', 'value', 'htmlFor', 'd', 'fill', 'stroke', 'viewBox', 'type', 'role', 'src', 'href', 'target', 'rel', 'style', 'aria-controls', 'aria-labelledby', 'aria-describedby', 'aria-activedescendant', 'aria-owns', 'data-sound', 'data-press']);
+/** Is this expression the value of an attribute that never holds human text?
+ *
+ * A template literal inside `className` or `aria-activedescendant` is wiring, not
+ * copy — translating `option-${i}` would break the reference it points at — yet
+ * the catalog was collecting those heads and the locale check was then demanding
+ * translations for them. The value is often wrapped in a conditional or a
+ * concatenation first, so this climbs rather than looking only at the parent. */
+function inIgnoredAttribute(node) {
+  let cur = node.parent;
+  for (let hops = 0; cur && hops < 8; hops += 1, cur = cur.parent) {
+    if (ts.isJsxAttribute(cur)) return ignoredProps.has(cur.name.text);
+    if (ts.isJsxElement(cur) || ts.isJsxSelfClosingElement(cur) || ts.isJsxFragment(cur) || ts.isSourceFile(cur)) return false;
+  }
+  return false;
+}
+
 function walkSource(file) {
   const ast = ts.createSourceFile(file, fs.readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
   function visit(n) {
@@ -29,7 +45,7 @@ function walkSource(file) {
       if (ts.isPropertyAssignment(p) && ['id', 'view', 'kind', 'fileName', 'color', 'className', 'value'].includes(p.name.getText())) return;
       if (n.text.includes(' ') || ts.isJsxAttribute(p) || (ts.isPropertyAssignment(p) && ['label', 'title', 'description', 'name', 'subtitle', 'category', 'unit'].includes(p.name.getText()))) add(n.text, file.replace(root + '/', ''));
     }
-    if (ts.isTemplateExpression(n)) {
+    if (ts.isTemplateExpression(n) && !inIgnoredAttribute(n)) {
       add(n.head.text, file.replace(root + '/', ''));
       for (const s of n.templateSpans) add(s.literal.text, file.replace(root + '/', ''));
     }

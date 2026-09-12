@@ -52,9 +52,9 @@ export const ThemeToggle: React.FC<Props> = ({ className = '', isScrolled = fals
     <div
       role="radiogroup"
       aria-label="Colour theme"
-      className={`flex items-center gap-0.5 p-0.5 rounded-lg bg-stone-900 border transition-all duration-300 ${
+      className={`flex items-center gap-0.5 p-0.5 rounded-lg bg-stone-900 border transition-[background-color,border-color,box-shadow,color] duration-300 ${
         isScrolled
-          ? 'border-stone-700/70 dark:border-stone-800/90 shadow-[0_4px_14px_-2px_rgba(0,0,0,0.15),0_2px_6px_-1px_rgba(0,0,0,0.1)] dark:shadow-[0_6px_20px_-3px_rgba(0,0,0,0.5)] backdrop-blur-md'
+          ? 'border-stone-700/70 dark:border-stone-800/90 shadow-overlay backdrop-blur-md'
           : 'border-stone-800'
       } ${className}`}
     >
