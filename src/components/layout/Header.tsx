@@ -34,11 +34,11 @@ export const Header: React.FC<Props> = ({
   }, []);
 
   const primaryTabs: { id: ViewType; label: string; icon: React.ComponentType<{ size: number; className?: string }> }[] = [
-    { id: 'foundations', label: 'Prinsip menulis', icon: Sparkles },
-    { id: 'studio', label: 'Contoh naskah', icon: PenTool },
-    { id: 'lexicon', label: 'Pilihan Kata', icon: BookOpen },
-    { id: 'sandbox', label: 'Periksa draf', icon: Sliders },
-    { id: 'indonesia', label: 'Konteks Indonesia', icon: MapPin },
+    { id: 'foundations', label: 'Voice & Tone Menungsa', icon: Sparkles },
+    { id: 'studio', label: 'Contoh Penulisan', icon: PenTool },
+    { id: 'lexicon', label: 'Pemilihan Kata', icon: BookOpen },
+    { id: 'sandbox', label: 'Cek Tulisan', icon: Sliders },
+    { id: 'indonesia', label: 'Konteks Lokal', icon: MapPin },
   ];
 
   return (
@@ -86,8 +86,8 @@ export const Header: React.FC<Props> = ({
           <button
             onClick={() => onSelectView('foundations')}
             className="flex items-center text-left cursor-pointer group focus:outline-none"
-            aria-label="Beranda Menungsa"
-            title="Menungsa"
+            aria-label="Home"
+            title="Menungsa Writing Guideline"
           >
             <img
               src="/brand/menungsa-mark.png"
@@ -142,11 +142,11 @@ export const Header: React.FC<Props> = ({
                 ? 'bg-stone-900/90 hover:bg-stone-850 border border-stone-700/70 dark:border-stone-800/90 shadow-[0_4px_14px_-2px_rgba(0,0,0,0.15),0_2px_6px_-1px_rgba(0,0,0,0.1)] dark:shadow-[0_6px_20px_-3px_rgba(0,0,0,0.5)] backdrop-blur-md'
                 : 'bg-stone-900 hover:bg-stone-800 border border-stone-800'
             }`}
-            aria-label="Cari kata kunci panduan"
-            title="Cari kata kunci panduan (Cmd+K)"
+            aria-label="Cari"
+            title="Cari (Cmd+K)"
           >
             <Search size={14} className="text-stone-400" />
-            <span className="hidden lg:inline text-stone-400">Cari panduan...</span>
+            <span className="hidden lg:inline text-stone-400">Cari</span>
           </button>
 
           {/* Sound Interaction Toggle */}
@@ -161,7 +161,7 @@ export const Header: React.FC<Props> = ({
       {isMobileSidebarOpen && (
         <nav aria-label="Menu utama" className="md:hidden border-t border-stone-800 bg-stone-950 px-4 py-4 space-y-2">
           <div className="text-[11px] font-mono text-stone-500 uppercase tracking-wider px-2 mb-2">
-            Panduan menulis
+            Menungsa Writing Guideline
           </div>
           {primaryTabs.map((tab) => {
             const Icon = tab.icon;

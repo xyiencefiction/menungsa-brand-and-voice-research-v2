@@ -4,24 +4,49 @@
     "scenario": "Recognition carousel on a social feed",
     "channelId": "CH1",
     "contextId": "C02",
-    "valueIds": ["V4", "V1", "V2"],
-    "brief": "A post about the distance between still functioning and actually being fine. The job is that he recognises himself without conceding anything, so it asks for nothing at all.",
+    "valueIds": [
+      "V4",
+      "V1",
+      "V2"
+    ],
+    "brief": "Menggambarkan perubahan kecil yang bisa muncul di tengah rutinitas yang masih berjalan. Tujuannya membantu pembaca mengenali perubahan dalam kesehariannya tanpa langsung memberi label, diagnosis, atau tuntutan untuk melakukan sesuatu.\n* **Fokus Utama:** R01 Setara, Bukan Menghakimi · R04 Mulai dari yang Terlihat · R05 Jelas soal Batasan.\n* **Risiko Utama:** Mengubah beberapa perubahan keseharian menjadi checklist diagnosis atau menyimpulkan bahwa pembaca “sebenarnya tidak baik-baik saja”.\n**Contoh yang Perlu Dihindari**\n**Slide 1 — 5 tanda kamu sebenarnya nggak baik-baik saja**\nMasih bisa kerja bukan berarti mentalmu baik-baik saja. Kalau beberapa tanda ini terjadi ke kamu, bisa jadi kamu sedang burnout.\nSwipe untuk cek tandanya.\n**Mengapa perlu dihindari:** Terlihat seperti konten pengenalan, tetapi sudah menyimpulkan keadaan psikologis pembaca. Format “tanda-tanda” juga mudah dibaca sebagai checklist diagnosis.\n**Contoh Penerapan Menungsa**\n**Slide 1 —** Ada hal-hal kecil yang kadang berubah di tengah rutinitas yang masih jalan.\n**Slide 2 —** Jam tidur masih sama. Tapi belakangan, pukul tiga pagi kamu masih melihat langit-langit kamar.\n**Slide 3 —** Tugasnya tetap selesai. Tapi membuka file pertama saja sekarang butuh waktu lebih lama.\n**Slide 4 —** Masih datang waktu diajak nongkrong. Cuma lebih sering duduk sambil dengar yang lain ngobrol.\n**Slide 5 —** Satu perubahan belum tentu berarti sesuatu. Tapi kalau beberapa hal mulai berbeda dari biasanya, mungkin itu layak diperhatikan.\n**Caption —** Kadang perubahan lebih mudah terlihat dari rutinitas sehari-hari sebelum kita tahu harus menamainya apa. Contoh di atas bukan checklist diagnosis; pengalaman tiap orang bisa berbeda.\n**Mengapa ini lebih sesuai:** Dimulai dari perubahan yang dapat dikenali, bukan label psikologis. Slide terakhir tidak mengatakan bahwa perubahan tersebut pasti merupakan gejala kondisi tertentu.\n**Catatan editorial:** Jika memakai pengalaman pribadi anggota tim, gunakan pengalaman yang benar-benar diberikan dan disetujui untuk dipublikasikan. Jangan menampilkan kutipan personal fiktif seolah kesaksian nyata.\n\n---",
     "weak": {
-      "copy": "5 Tanda Kamu Sebenarnya Nggak Baik-Baik Aja 😔\n\nSwipe buat cari tahu! Kalau kamu ngalamin salah satunya, jangan ragu buat cari bantuan profesional ya. Kamu nggak sendirian! 💪",
+      "copy": "**Slide 1 — 5 tanda kamu sebenarnya nggak baik-baik saja**\nMasih bisa kerja bukan berarti mentalmu baik-baik saja. Kalau beberapa tanda ini terjadi ke kamu, bisa jadi kamu sedang burnout.\nSwipe untuk cek tandanya.",
       "problems": [
-        { "example": "5 Tanda Kamu Sebenarnya Nggak Baik-Baik Aja", "why": "Diagnoses the reader on the first slide, at the highest-exposure point of the funnel." },
-        { "example": "jangan ragu buat cari bantuan profesional", "why": "A call to action with no pathway, in a context whose whole function is to ask for nothing." },
-        { "example": "Kamu nggak sendirian!", "why": "Recognition delivered as reassurance rather than as description, which is the corruption this context is most prone to." }
+        {
+          "example": "**Slide 1 — 5 tanda kamu sebenarnya nggak baik-baik saja**\nMasih bisa kerja bukan berarti mentalmu baik-baik saja. Kalau beberapa tanda ini terjadi ke kamu, bisa jadi kamu sedang burnout.\nSwipe untuk cek tandanya.",
+          "why": "Terlihat seperti konten pengenalan, tetapi sudah menyimpulkan keadaan psikologis pembaca. Format “tanda-tanda” juga mudah dibaca sebagai checklist diagnosis."
+        }
       ]
     },
     "worked": {
-      "copy": "Slide 1 — Hal-hal yang biasanya berubah duluan\n\nSlide 2 — Tidur masih jam yang sama. Cuma sekarang matanya melek sampai jam tiga.\n\nSlide 3 — Kerjaan masih beres. Cuma butuh dua kali lebih lama buat mulai.\n\nSlide 4 — Masih ikut nongkrong. Cuma lebih banyak dengerin.\n\nSlide 5 — Nggak ada yang salah sama semua itu. Cuma biasanya itu yang berubah duluan.\n\nCaption — Gue nulis ini karena tiga dari empat hal di atas kejadian ke gue tahun lalu, dan gue baru nyadar pas ada yang nyeletuk. — Rio, tim konten Menungsa",
+      "copy": "**Slide 1 —** Ada hal-hal kecil yang kadang berubah di tengah rutinitas yang masih jalan.\n**Slide 2 —** Jam tidur masih sama. Tapi belakangan, pukul tiga pagi kamu masih melihat langit-langit kamar.\n**Slide 3 —** Tugasnya tetap selesai. Tapi membuka file pertama saja sekarang butuh waktu lebih lama.\n**Slide 4 —** Masih datang waktu diajak nongkrong. Cuma lebih sering duduk sambil dengar yang lain ngobrol.\n**Slide 5 —** Satu perubahan belum tentu berarti sesuatu. Tapi kalau beberapa hal mulai berbeda dari biasanya, mungkin itu layak diperhatikan.\n**Caption —** Kadang perubahan lebih mudah terlihat dari rutinitas sehari-hari sebelum kita tahu harus menamainya apa. Contoh di atas bukan checklist diagnosis; pengalaman tiap orang bisa berbeda.",
       "annotations": [
-        { "example": "Hal-hal yang biasanya berubah duluan", "valueId": "V4", "why": "Opens on an observable pattern rather than on a claim about him, so he can read all five slides without conceding anything." },
-        { "example": "Cuma sekarang matanya melek sampai jam tiga.", "valueId": "V4", "why": "A concrete situation he supplies the emotion to. No feeling is named anywhere in the piece." },
-        { "example": "Nggak ada yang salah sama semua itu.", "valueId": "V1", "why": "Removes the evaluation instead of adding a reassuring one. He is not told he is brave or broken." },
-        { "example": "Gue nulis ini karena tiga dari empat hal di atas kejadian ke gue", "valueId": "V2", "why": "The colloquial register is licensed because a named person is speaking about himself. The same words from the account would read as impersonation." },
-        { "example": "— Rio, tim konten Menungsa", "valueId": "V1", "why": "The post ends on the description. No call to action, which is the documented setting for this context." }
+        {
+          "example": "Hal-hal yang biasanya berubah duluan",
+          "valueId": "V4",
+          "why": "Dimulai dari perubahan yang dapat dikenali, bukan label psikologis. Slide terakhir tidak mengatakan bahwa perubahan tersebut pasti merupakan gejala kondisi tertentu."
+        },
+        {
+          "example": "Cuma sekarang matanya melek sampai jam tiga.",
+          "valueId": "V4",
+          "why": "A concrete situation he supplies the emotion to. No feeling is named anywhere in the piece."
+        },
+        {
+          "example": "Nggak ada yang salah sama semua itu.",
+          "valueId": "V1",
+          "why": "Removes the evaluation instead of adding a reassuring one. He is not told he is brave or broken."
+        },
+        {
+          "example": "Gue nulis ini karena tiga dari empat hal di atas kejadian ke gue",
+          "valueId": "V2",
+          "why": "The colloquial register is licensed because a named person is speaking about himself. The same words from the account would read as impersonation."
+        },
+        {
+          "example": "— Rio, tim konten Menungsa",
+          "valueId": "V1",
+          "why": "The post ends on the description. No call to action, which is the documented setting for this context."
+        }
       ]
     },
     "epistemicTier": "PROMISING / TENTATIVE",
@@ -32,25 +57,49 @@
     "scenario": "Email inviting someone to a peer support session",
     "channelId": "CH2",
     "contextId": "C05",
-    "valueIds": ["V2", "V3", "V1"],
-    "brief": "Someone left an email address weeks ago. The job is to make attending cost as little as possible, which means the logistics are the content rather than a footnote under the encouragement.",
+    "valueIds": [
+      "V2",
+      "V3",
+      "V1"
+    ],
+    "brief": "Mengundang orang yang sebelumnya memberikan alamat email untuk menerima informasi program. Tujuannya membuat calon peserta tahu apa yang akan terjadi sebelum memutuskan hadir, tanpa menuntut keterbukaan pribadi.\n* **Fokus Utama:** R02 Mudah untuk Dimulai · C04 Undangan Komunitas · C05 Dukungan Kelompok.\n* **Risiko Utama:** Menjual “ruang aman” sebagai janji, menyembunyikan aturan penting, atau membuat keikutsertaan terasa seperti komitmen besar.\n**Contoh yang Perlu Dihindari**\n**Subjek: Ruang aman buat kamu minggu ini**\nSelasa ini Ruang MENdukung kembali hadir. Di sini kamu bisa berbagi apa pun tanpa takut dihakimi bersama teman-teman yang memahami apa yang kamu rasakan.\nKuota terbatas, jadi segera konfirmasi kehadiranmu.\n**Mengapa perlu dihindari:** “Tanpa takut dihakimi” menjanjikan pengalaman yang tidak dapat dijamin. Format, durasi, cara berpartisipasi, dan aturan privasi justru belum dijelaskan.\n**Contoh Penerapan Menungsa**\n**Subjek: Ruang MENdukung — Selasa, 19.00 WIB**\nSelasa ini Ruang MENdukung berlangsung pukul 19.00–21.00 WIB di [lokasi/platform]. Gratis, dengan maksimal [jumlah peserta yang sudah dipastikan].\nSesi difasilitasi oleh [peran/kualifikasi yang sudah diverifikasi]. Di awal, fasilitator akan menjelaskan alur sesi dan aturan kerahasiaan. Setelah itu, kamu boleh bercerita, menjawab seperlunya, atau cukup mendengarkan.\n**Sebelum memutuskan ikut, ini yang perlu kamu tahu:**\n* [Cara pendaftaran yang berlaku.]\n* [Kebijakan nama, dokumentasi, dan penggunaan data.]\n* [Aturan membatalkan kehadiran.]\n* [Batas kerahasiaan yang memang berlaku.]\nKalau ingin ikut, daftar melalui [jalur privat]. Kalau belum ingin, email ini tidak perlu dibalas.\n**Mengapa ini lebih sesuai:** Keputusan hadir dibuat setelah calon peserta mendapat gambaran yang cukup. Menungsa tidak meminta cerita pribadi sebagai syarat untuk bergabung dan tidak menjanjikan pengalaman yang tidak bisa dikendalikan sepenuhnya.\n**Catatan editorial:** Jangan menulis aturan seperti “boleh pulang kapan saja”, “tidak ada daftar hadir”, atau “tidak akan dihubungi kembali” kecuali itu kebijakan program yang benar-benar berlaku.\n\n---",
     "weak": {
-      "copy": "Halo Sobat Menungsa! 🎉\n\nYuk gabung di support group kami! Tempat aman untuk berbagi cerita, melepas beban, dan menemukan dukungan dari sesama laki-laki hebat.\n\nJangan ragu, kamu tidak sendirian! Daftar sekarang sebelum kuota habis!",
+      "copy": "**Subjek: Ruang aman buat kamu minggu ini**\nSelasa ini Ruang MENdukung kembali hadir. Di sini kamu bisa berbagi apa pun tanpa takut dihakimi bersama teman-teman yang memahami apa yang kamu rasakan.\nKuota terbatas, jadi segera konfirmasi kehadiranmu.",
       "problems": [
-        { "example": "berbagi cerita, melepas beban", "why": "Sets emotional disclosure as the described purpose of attending, which is the entry price the response-cost mechanism says keeps men away." },
-        { "example": "sesama laki-laki hebat", "why": "An evaluative adjective attached to the reader, and a conditional one." },
-        { "example": "sebelum kuota habis", "why": "Manufactured urgency raises the cost of hesitating in a context built to make hesitating free." },
-        { "example": "Tempat aman", "why": "Claims a property of the room instead of describing what happens in it, so the reader has to take it on trust." }
+        {
+          "example": "**Subjek: Ruang aman buat kamu minggu ini**\nSelasa ini Ruang MENdukung kembali hadir. Di sini kamu bisa berbagi apa pun tanpa takut dihakimi bersama teman-teman yang memahami apa yang kamu rasakan.\nKuota terbatas, jadi segera konfirmasi kehadiranmu.",
+          "why": "“Tanpa takut dihakimi” menjanjikan pengalaman yang tidak dapat dijamin. Format, durasi, cara berpartisipasi, dan aturan privasi justru belum dijelaskan."
+        }
       ]
     },
     "worked": {
-      "copy": "Subjek: Selasa, 19.00 — apa yang terjadi di ruangan itu\n\nKami membuka sesi kelompok setiap Selasa, pukul 19.00 sampai 21.00, di [alamat]. Gratis.\n\nIsinya begini. Delapan sampai dua belas orang, duduk melingkar, satu fasilitator. Lima menit pertama dipakai membacakan aturan. Setelah itu siapa pun boleh bicara, dan boleh juga tidak. Minggu lalu ada dua orang yang tidak bicara sama sekali sampai sesi selesai.\n\nYang perlu kamu tahu sebelum datang:\n— Tidak ada daftar hadir dan tidak ada perkenalan wajib.\n— Tidak ada foto dan tidak ada dokumentasi.\n— Boleh pulang kapan saja tanpa pamit.\n— Kalau kamu datang sekali lalu tidak datang lagi, tidak ada yang menghubungi untuk menanyakan alasannya.\n\nKalau mau datang, balas email ini dengan satu kata: datang. Kalau tidak, email ini tidak perlu dibalas.",
+      "copy": "**Subjek: Ruang MENdukung — Selasa, 19.00 WIB**\nSelasa ini Ruang MENdukung berlangsung pukul 19.00–21.00 WIB di [lokasi/platform]. Gratis, dengan maksimal [jumlah peserta yang sudah dipastikan].\nSesi difasilitasi oleh [peran/kualifikasi yang sudah diverifikasi]. Di awal, fasilitator akan menjelaskan alur sesi dan aturan kerahasiaan. Setelah itu, kamu boleh bercerita, menjawab seperlunya, atau cukup mendengarkan.\n**Sebelum memutuskan ikut, ini yang perlu kamu tahu:**\n* [Cara pendaftaran yang berlaku.]\n* [Kebijakan nama, dokumentasi, dan penggunaan data.]\n* [Aturan membatalkan kehadiran.]\n* [Batas kerahasiaan yang memang berlaku.]\nKalau ingin ikut, daftar melalui [jalur privat]. Kalau belum ingin, email ini tidak perlu dibalas.",
       "annotations": [
-        { "example": "Selasa, pukul 19.00 sampai 21.00, di [alamat]. Gratis.", "valueId": "V2", "why": "Time, duration, place and cost arrive before any invitation. This is the setting where behavioural explicitness and certainty both sit at maximum." },
-        { "example": "siapa pun boleh bicara, dan boleh juga tidak", "valueId": "V2", "why": "States the permission explicitly rather than implying it, which removes the specific fear rather than reassuring against it." },
-        { "example": "Minggu lalu ada dua orang yang tidak bicara sama sekali", "valueId": "V4", "why": "Describes the room with a verifiable detail instead of asserting that it is safe." },
-        { "example": "tidak ada yang menghubungi untuk menanyakan alasannya", "valueId": "V2", "why": "Names the exit cost and sets it at zero. Leaving is usually the unstated fear, not arriving." },
-        { "example": "balas email ini dengan satu kata: datang", "valueId": "V3", "why": "One step, bounded and reversible. The alternative is stated as an equally acceptable outcome." }
+        {
+          "example": "Selasa, pukul 19.00 sampai 21.00, di [alamat]. Gratis.",
+          "valueId": "V2",
+          "why": "Keputusan hadir dibuat setelah calon peserta mendapat gambaran yang cukup. Menungsa tidak meminta cerita pribadi sebagai syarat untuk bergabung dan tidak menjanjikan pengalaman yang tidak bisa dikendalikan sepenuhnya."
+        },
+        {
+          "example": "siapa pun boleh bicara, dan boleh juga tidak",
+          "valueId": "V2",
+          "why": "States the permission explicitly rather than implying it, which removes the specific fear rather than reassuring against it."
+        },
+        {
+          "example": "Minggu lalu ada dua orang yang tidak bicara sama sekali",
+          "valueId": "V4",
+          "why": "Describes the room with a verifiable detail instead of asserting that it is safe."
+        },
+        {
+          "example": "tidak ada yang menghubungi untuk menanyakan alasannya",
+          "valueId": "V2",
+          "why": "Names the exit cost and sets it at zero. Leaving is usually the unstated fear, not arriving."
+        },
+        {
+          "example": "balas email ini dengan satu kata: datang",
+          "valueId": "V3",
+          "why": "One step, bounded and reversible. The alternative is stated as an equally acceptable outcome."
+        }
       ]
     },
     "epistemicTier": "PROMISING / TENTATIVE",
@@ -61,23 +110,43 @@
     "scenario": "WhatsApp announcement of the same session to a group",
     "channelId": "CH3",
     "contextId": "C05",
-    "valueIds": ["V2", "V1"],
-    "brief": "The same job as the email, on the highest-exposure surface Menungsa uses. Everything that made the email work has to change, because here every response is visible to everyone he knows.",
+    "valueIds": [
+      "V2",
+      "V1"
+    ],
+    "brief": "Mengumumkan sesi di ruang yang respons anggotanya dapat terlihat oleh orang lain. Informasi boleh disampaikan secara publik, tetapi keputusan untuk bertanya atau bergabung tidak perlu diumumkan kepada grup.\n* **Fokus Utama:** R02 Mudah untuk Dimulai · Context Check “Pertimbangkan siapa yang bisa melihat”.\n* **Risiko Utama:** Membuat ketertarikan pada dukungan kesehatan mental menjadi informasi publik hanya karena mekanisme RSVP yang dipilih tim.\n**Contoh yang Perlu Dihindari**\nRuang MENdukung Selasa ini jam 19.00 WIB.\nYang tertarik ikut boleh react 👍 atau tulis HADIR di grup supaya kami tahu jumlah pesertanya.\n**Mengapa perlu dihindari:** Permintaan yang tampak sederhana itu membuat keputusan mencari dukungan terlihat oleh seluruh anggota grup.\n**Contoh Penerapan Menungsa**\n**Info Ruang MENdukung**\nSelasa, [tanggal]  \n19.00–21.00 WIB  \n[Lokasi/platform]  \n[Biaya jika ada]\nPesan ini tidak perlu dibalas di grup.\nKalau ingin melihat detail sesi, bertanya, atau mendaftar, gunakan [tautan privat / DM admin di kontak berikut].\nTim Menungsa tidak akan membagikan nama orang yang menghubungi atau mendaftar ke grup ini tanpa izin.\n**Mengapa ini lebih sesuai:** Informasi kegiatan tetap tersedia untuk semua orang, tetapi minat seseorang terhadap sesi tidak perlu menjadi informasi publik. Komitmen privasi dibatasi pada tindakan yang berada dalam kendali tim Menungsa.\n**Catatan editorial:** Jangan meminta komentar, emoji, polling publik, atau bentuk RSVP lain yang secara tidak perlu mengungkap siapa yang tertarik pada layanan atau dukungan tertentu.\n\n---",
     "weak": {
-      "copy": "📢 REMINDER!\n\nSupport group Menungsa Selasa 19.00. Yang mau ikut langsung komen HADIR di grup ini ya biar kami data! 🙌\n\nAyo yang belum pernah ikut, jangan malu-malu! 💪",
+      "copy": "Ruang MENdukung Selasa ini jam 19.00 WIB.\nYang tertarik ikut boleh react 👍 atau tulis HADIR di grup supaya kami tahu jumlah pesertanya.",
       "problems": [
-        { "example": "komen HADIR di grup ini", "why": "Requires a public declaration of interest in mental-health support in front of everyone in the group. This is the response-cost mechanism operating at its worst." },
-        { "example": "biar kami data", "why": "Creates a visible attendance record inside a social space, which is the community-as-surveillance mechanism documented on the Indonesian side." },
-        { "example": "jangan malu-malu", "why": "Names his reluctance as a personal failing rather than as a rational response to being watched." }
+        {
+          "example": "Ruang MENdukung Selasa ini jam 19.00 WIB.\nYang tertarik ikut boleh react 👍 atau tulis HADIR di grup supaya kami tahu jumlah pesertanya.",
+          "why": "Permintaan yang tampak sederhana itu membuat keputusan mencari dukungan terlihat oleh seluruh anggota grup."
+        }
       ]
     },
     "worked": {
-      "copy": "Info sesi kelompok: Selasa, 19.00–21.00, di [alamat]. Gratis. Tidak ada daftar hadir.\n\nPesan ini tidak perlu dibalas dan tidak perlu ditanggapi di grup.\n\nKalau ada yang mau tanya atau mau datang, japri saya langsung di [nomor]. Yang japri tidak akan disebut di grup ini.",
+      "copy": "**Info Ruang MENdukung**\nSelasa, [tanggal]  \n19.00–21.00 WIB  \n[Lokasi/platform]  \n[Biaya jika ada]\nPesan ini tidak perlu dibalas di grup.\nKalau ingin melihat detail sesi, bertanya, atau mendaftar, gunakan [tautan privat / DM admin di kontak berikut].\nTim Menungsa tidak akan membagikan nama orang yang menghubungi atau mendaftar ke grup ini tanpa izin.",
       "annotations": [
-        { "example": "Tidak ada daftar hadir.", "valueId": "V2", "why": "Answers the group-specific fear in the first line, before he has to work out whether attending will become known." },
-        { "example": "Pesan ini tidak perlu dibalas dan tidak perlu ditanggapi di grup.", "valueId": "V2", "why": "Explicitly lowers the call-to-action ceiling to availability. On this surface a reply is a public act, so asking for one is asking for a disclosure." },
-        { "example": "japri saya langsung di [nomor]", "valueId": "V2", "why": "Supplies a private route out of a public channel, moving the actual interaction to the lowest-exposure surface available." },
-        { "example": "Yang japri tidak akan disebut di grup ini.", "valueId": "V5", "why": "A privacy commitment narrow enough to actually keep. It promises what the organisation controls and nothing beyond that." }
+        {
+          "example": "Tidak ada daftar hadir.",
+          "valueId": "V2",
+          "why": "Informasi kegiatan tetap tersedia untuk semua orang, tetapi minat seseorang terhadap sesi tidak perlu menjadi informasi publik. Komitmen privasi dibatasi pada tindakan yang berada dalam kendali tim Menungsa."
+        },
+        {
+          "example": "Pesan ini tidak perlu dibalas dan tidak perlu ditanggapi di grup.",
+          "valueId": "V2",
+          "why": "Explicitly lowers the call-to-action ceiling to availability. On this surface a reply is a public act, so asking for one is asking for a disclosure."
+        },
+        {
+          "example": "japri saya langsung di [nomor]",
+          "valueId": "V2",
+          "why": "Supplies a private route out of a public channel, moving the actual interaction to the lowest-exposure surface available."
+        },
+        {
+          "example": "Yang japri tidak akan disebut di grup ini.",
+          "valueId": "V5",
+          "why": "A privacy commitment narrow enough to actually keep. It promises what the organisation controls and nothing beyond that."
+        }
       ]
     },
     "epistemicTier": "CROSS-REPORT INFERENCE",
@@ -88,25 +157,54 @@
     "scenario": "Direct message from someone asking how to start",
     "channelId": "CH4",
     "contextId": "C06",
-    "valueIds": ["V3", "V1", "V5"],
-    "brief": "He sent something vague to the account. The job is to make the first real step available without requiring him to explain himself first.",
+    "valueIds": [
+      "V3",
+      "V1",
+      "V5"
+    ],
+    "brief": "Seseorang menghubungi akun Menungsa dengan pertanyaan umum seperti “gue harus mulai dari mana?” atau “kalau mau cari bantuan gimana?”. Tujuannya membantu menemukan pintu masuk tanpa menjadikan cerita pribadi sebagai harga untuk mendapat informasi.\n* **Fokus Utama:** R02 Mudah untuk Dimulai · R03 Satu Langkah Nyata · R05 Jelas soal Batasan · C06 Akses Bantuan.\n* **Risiko Utama:** Meminta keterbukaan yang tidak diperlukan, bertindak seperti layanan klinis, atau memberikan informasi akses layanan yang belum diverifikasi.\n**Contoh yang Perlu Dihindari**\nHalo, terima kasih sudah menghubungi Menungsa. Boleh ceritakan dulu apa yang sedang kamu alami dan sudah berlangsung berapa lama? Nanti kami coba bantu menentukan kamu sebaiknya ke mana.\n**Mengapa perlu dihindari:** Pembaca diminta membuka informasi pribadi sebelum mendapat bantuan dasar. Kalimat itu juga memberi kesan Menungsa dapat melakukan penilaian klinis dan menentukan layanan yang tepat.\n**Contoh Penerapan Menungsa**\nHalo, aku [nama], yang pegang akun Menungsa hari ini.\nKamu nggak harus cerita detail kalau belum mau.\nKalau yang kamu cari sekarang adalah bantuan profesional, kita bisa mulai dari informasi praktisnya dulu. Kalau kamu nyaman, kirim kota atau kabupaten tempat kamu berada—nggak perlu alamat lengkap. Aku bisa bantu cek sumber resmi tentang layanan yang tersedia, cara daftar, jadwal, dan biaya yang tercantum.\nKalau kamu lebih nyaman mencari sendiri, aku juga bisa kasih langkah untuk mengeceknya.\nMenungsa bukan layanan klinis, jadi kami nggak bisa mendiagnosis atau menentukan terapi. Kalau situasinya sedang mendesak atau kamu merasa berisiko menyakiti diri, bilang sekarang supaya percakapannya bisa diarahkan ke langkah keselamatan yang lebih sesuai.\n**Mengapa ini lebih sesuai:** Menungsa menawarkan bantuan navigasi tanpa meminta cerita lengkap dan tanpa mengambil peran klinis. Informasi yang mudah berubah dicari dari sumber yang sesuai, bukan diasumsikan berlaku sama di semua fasilitas.\n**Catatan editorial:** Jangan membuat klaim umum seperti “pasti ditanggung JKN”, “antreannya biasanya lama”, atau “kamu berhak mendapat rujukan” tanpa memastikan aturan fasilitas, skema pembiayaan, dan situasinya. Jika ada risiko keselamatan, hentikan navigasi biasa dan beralih ke SC5.\n\n---",
     "weak": {
-      "copy": "Halo Kak! Terima kasih sudah menghubungi Menungsa 🙏\n\nJangan ragu untuk bercerita ya, kami siap mendengarkan. Kamu tidak sendirian! Ceritakan saja apa yang sedang kamu rasakan, biar kami bisa bantu 💪",
+      "copy": "Halo, terima kasih sudah menghubungi Menungsa. Boleh ceritakan dulu apa yang sedang kamu alami dan sudah berlangsung berapa lama? Nanti kami coba bantu menentukan kamu sebaiknya ke mana.",
       "problems": [
-        { "example": "Ceritakan saja apa yang sedang kamu rasakan", "why": "Makes disclosure the precondition for receiving anything useful, which reverses the correct order." },
-        { "example": "Terima kasih sudah menghubungi Menungsa", "why": "Institutional boilerplate from an unnamed account, in a channel where the messenger-credibility mechanism is most visible." },
-        { "example": "Kamu tidak sendirian!", "why": "Supplies reassurance where he asked for a route, and leaves him with nothing he can act on tonight." }
+        {
+          "example": "Halo, terima kasih sudah menghubungi Menungsa. Boleh ceritakan dulu apa yang sedang kamu alami dan sudah berlangsung berapa lama? Nanti kami coba bantu menentukan kamu sebaiknya ke mana.",
+          "why": "Pembaca diminta membuka informasi pribadi sebelum mendapat bantuan dasar. Kalimat itu juga memberi kesan Menungsa dapat melakukan penilaian klinis dan menentukan layanan yang tepat."
+        }
       ]
     },
     "worked": {
-      "copy": "Halo, aku Dimas, yang pegang akun ini hari ini.\n\nNggak harus cerita detail kalau belum mau. Kalau kamu mau tahu langkah praktisnya duluan, ini yang biasanya paling cepat.\n\nDatang ke puskesmas terdekat, bilang: saya mau konsultasi kesehatan jiwa. Nggak perlu jelasin alasannya kalau belum siap. Ditanggung JKN. Antreannya bisa lama, jadi bawa sesuatu buat dibaca.\n\nKalau nggak dirujuk padahal kamu ngerasa perlu, kamu boleh minta lagi. Itu hak kamu, bukan ngerepotin.\n\nMau aku bantu cariin puskesmas yang paling dekat dari kamu?",
+      "copy": "Halo, aku [nama], yang pegang akun Menungsa hari ini.\nKamu nggak harus cerita detail kalau belum mau.\nKalau yang kamu cari sekarang adalah bantuan profesional, kita bisa mulai dari informasi praktisnya dulu. Kalau kamu nyaman, kirim kota atau kabupaten tempat kamu berada—nggak perlu alamat lengkap. Aku bisa bantu cek sumber resmi tentang layanan yang tersedia, cara daftar, jadwal, dan biaya yang tercantum.\nKalau kamu lebih nyaman mencari sendiri, aku juga bisa kasih langkah untuk mengeceknya.\nMenungsa bukan layanan klinis, jadi kami nggak bisa mendiagnosis atau menentukan terapi. Kalau situasinya sedang mendesak atau kamu merasa berisiko menyakiti diri, bilang sekarang supaya percakapannya bisa diarahkan ke langkah keselamatan yang lebih sesuai.",
       "annotations": [
-        { "example": "aku Dimas, yang pegang akun ini hari ini", "valueId": "V1", "why": "A named person, which is what licenses the informal register. The same sentences from an unattributed account read as impersonation." },
-        { "example": "Nggak harus cerita detail kalau belum mau.", "valueId": "V2", "why": "Removes the disclosure requirement in the first substantive line, before he has decided how much to reveal." },
-        { "example": "bilang: saya mau konsultasi kesehatan jiwa", "valueId": "V3", "why": "The exact sentence to say at the desk. The step is not merely named, it is made performable." },
-        { "example": "Antreannya bisa lama, jadi bawa sesuatu buat dibaca.", "valueId": "V3", "why": "Names the friction honestly, so the queue does not read as evidence that the advice was wrong." },
-        { "example": "Itu hak kamu, bukan ngerepotin.", "valueId": "V3", "why": "Accounts for the documented finding that referrals are sometimes withheld, and pre-empts a refusal being read as personal failure." },
-        { "example": "Mau aku bantu cariin puskesmas yang paling dekat dari kamu?", "valueId": "V2", "why": "A bounded question with a yes or no answer, rather than an open introspective one that costs him something to answer." }
+        {
+          "example": "aku Dimas, yang pegang akun ini hari ini",
+          "valueId": "V1",
+          "why": "Menungsa menawarkan bantuan navigasi tanpa meminta cerita lengkap dan tanpa mengambil peran klinis. Informasi yang mudah berubah dicari dari sumber yang sesuai, bukan diasumsikan berlaku sama di semua fasilitas."
+        },
+        {
+          "example": "Nggak harus cerita detail kalau belum mau.",
+          "valueId": "V2",
+          "why": "Removes the disclosure requirement in the first substantive line, before he has decided how much to reveal."
+        },
+        {
+          "example": "bilang: saya mau konsultasi kesehatan jiwa",
+          "valueId": "V3",
+          "why": "The exact sentence to say at the desk. The step is not merely named, it is made performable."
+        },
+        {
+          "example": "Antreannya bisa lama, jadi bawa sesuatu buat dibaca.",
+          "valueId": "V3",
+          "why": "Names the friction honestly, so the queue does not read as evidence that the advice was wrong."
+        },
+        {
+          "example": "Itu hak kamu, bukan ngerepotin.",
+          "valueId": "V3",
+          "why": "Accounts for the documented finding that referrals are sometimes withheld, and pre-empts a refusal being read as personal failure."
+        },
+        {
+          "example": "Mau aku bantu cariin puskesmas yang paling dekat dari kamu?",
+          "valueId": "V2",
+          "why": "A bounded question with a yes or no answer, rather than an open introspective one that costs him something to answer."
+        }
       ]
     },
     "epistemicTier": "MODERATE",
@@ -117,25 +215,49 @@
     "scenario": "Direct message disclosing suicidal thoughts",
     "channelId": "CH4",
     "contextId": "C07",
-    "valueIds": ["V5", "V3", "V1"],
-    "brief": "The highest-risk cell in the whole matrix. Every default reverses here: certainty goes to maximum, hedging becomes the failure mode, and the organisation must be honest about what it is not.",
+    "valueIds": [
+      "V5",
+      "V3",
+      "V1"
+    ],
+    "brief": "Seseorang menyatakan sedang ingin menyakiti diri atau mengakhiri hidup, atau ada alasan kuat untuk menduga keselamatannya sedang terancam. Tujuannya bukan melakukan konseling lewat DM, tetapi memperpendek jalan menuju keselamatan dan bantuan langsung.\n* **Fokus Utama:** R03 Satu Langkah Nyata · R05 Jelas soal Batasan · C07 Krisis & Keselamatan Segera.\n* **Risiko Utama:** Menenangkan dengan slogan, meminta cerita panjang, menawarkan teknik coping sebagai pengganti bantuan, mencantumkan layanan yang sudah tidak berlaku, atau memberi kesan akun Menungsa memantau orang tersebut terus-menerus.\n**Contoh yang Perlu Dihindari**\nAku ikut khawatir dengarnya. Coba tarik napas dulu dan ceritakan pelan-pelan apa yang terjadi. Kamu sudah sejauh ini, jadi jangan menyerah sekarang. Kami ada di sini buat kamu.\n**Mengapa perlu dihindari:** Respons terdengar suportif, tetapi tidak menjawab risiko keselamatan. “Kami ada di sini” juga dapat dibaca sebagai janji ketersediaan yang belum tentu dipenuhi.\n**Contoh Penerapan Menungsa**\nKalau kamu merasa mungkin menyakiti diri atau mengakhiri hidup sekarang, jangan hadapi ini sendirian.\nHubungi satu orang yang bisa datang atau tetap bersama kamu sekarang. Kalau sulit menjelaskan, kamu bisa kirim:\n**“Aku lagi nggak aman sendirian. Tolong temani aku sekarang.”**\nPindah ke tempat bersama orang lain. Kalau ada benda atau situasi di sekitar yang bisa digunakan untuk menyakiti diri, minta orang yang menemanimu membantu menjauhkannya.\nSetelah itu, hubungi **[layanan darurat yang sudah diverifikasi]** atau pergi ke **IGD terdekat** dengan didampingi.\nMenungsa bukan layanan krisis dan DM ini tidak dipantau 24 jam. Kami tidak dapat menggantikan bantuan darurat.\n**Mengapa ini lebih sesuai:** Risiko disebut secara langsung dan respons berfokus pada tiga hal: tidak sendirian, membuat situasi lebih aman, dan menuju bantuan langsung. Menungsa juga menjelaskan batas kapasitasnya tanpa meninggalkan orang tanpa arah.\n**Catatan editorial:** Nomor telepon, jam operasional, kanal layanan, dan klaim seperti “gratis” atau “24 jam” tidak ditanam permanen di contoh. Simpan informasi layanan pada sumber terpisah yang dapat diperbarui. Jangan menulis “aku masih di sini” atau meminta orang terus membalas jika tim tidak dapat menjamin respons langsung. SOP percakapan terpisah diperlukan jika kelak tersedia *live crisis response* dengan staf terlatih dan jadwal pemantauan yang jelas.\n\n---\n**Prinsip lintas skenario:** Semakin besar konsekuensi jika pembaca salah memahami pesan, semakin konkret bahasa yang digunakan dan semakin sedikit asumsi yang boleh dibuat oleh penulis.",
     "weak": {
-      "copy": "Kamu berharga banget! 🙏 Badai pasti berlalu, percaya deh.\n\nCoba deh cerita pelan-pelan, siapa tahu lega. Kami selalu ada untukmu ❤️ Stay strong ya!",
+      "copy": "Aku ikut khawatir dengarnya. Coba tarik napas dulu dan ceritakan pelan-pelan apa yang terjadi. Kamu sudah sejauh ini, jadi jangan menyerah sekarang. Kami ada di sini buat kamu.",
       "problems": [
-        { "example": "Badai pasti berlalu", "why": "Metaphor at the moment that requires literal instruction, and unearned reassurance in place of a route." },
-        { "example": "Coba deh cerita pelan-pelan, siapa tahu lega.", "why": "Hedges an instruction at the highest-risk moment, which is the exact inversion of the certainty rule." },
-        { "example": "Kami selalu ada untukmu", "why": "Claims an availability the service cannot actually guarantee at three in the morning." },
-        { "example": "Stay strong ya!", "why": "Reintroduces a performance test at the moment the person is least able to pass it." }
+        {
+          "example": "Aku ikut khawatir dengarnya. Coba tarik napas dulu dan ceritakan pelan-pelan apa yang terjadi. Kamu sudah sejauh ini, jadi jangan menyerah sekarang. Kami ada di sini buat kamu.",
+          "why": "Respons terdengar suportif, tetapi tidak menjawab risiko keselamatan. “Kami ada di sini” juga dapat dibaca sebagai janji ketersediaan yang belum tentu dipenuhi."
+        }
       ]
     },
     "worked": {
-      "copy": "Kalau kamu lagi mikir buat mengakhiri hidup, ini yang bisa dilakukan sekarang.\n\nHubungi 119 lalu tekan 8. Gratis, 24 jam.\n\nKalau kamu nggak sanggup nelpon, minta orang terdekat yang nelpon. Boleh tunjukkan pesan ini ke dia.\n\nKalau ada alat yang bisa melukai di dekat kamu, pindahkan atau titipkan ke orang lain malam ini.\n\nAku Dimas. Aku masih di sini. Tapi aku bukan tenaga profesional, dan chat ini nggak bisa gantiin layanan darurat.",
+      "copy": "Kalau kamu merasa mungkin menyakiti diri atau mengakhiri hidup sekarang, jangan hadapi ini sendirian.\nHubungi satu orang yang bisa datang atau tetap bersama kamu sekarang. Kalau sulit menjelaskan, kamu bisa kirim:\n**“Aku lagi nggak aman sendirian. Tolong temani aku sekarang.”**\nPindah ke tempat bersama orang lain. Kalau ada benda atau situasi di sekitar yang bisa digunakan untuk menyakiti diri, minta orang yang menemanimu membantu menjauhkannya.\nSetelah itu, hubungi **[layanan darurat yang sudah diverifikasi]** atau pergi ke **IGD terdekat** dengan didampingi.\nMenungsa bukan layanan krisis dan DM ini tidak dipantau 24 jam. Kami tidak dapat menggantikan bantuan darurat.",
       "annotations": [
-        { "example": "ini yang bisa dilakukan sekarang", "valueId": "V5", "why": "Instruction rather than invitation. Certainty sits at maximum here and every hedge is a cost the person pays." },
-        { "example": "Hubungi 119 lalu tekan 8. Gratis, 24 jam.", "valueId": "V3", "why": "One step, stated flatly, with the two facts that decide whether he can act on it tonight." },
-        { "example": "minta orang terdekat yang nelpon", "valueId": "V3", "why": "Accounts for someone unable to act alone, which is the Indonesian relational-care finding applied at the point it matters most." },
-        { "example": "pindahkan atau titipkan ke orang lain malam ini", "valueId": "V3", "why": "A bounded, physical, tonight-sized action rather than an appeal to hold on." },
-        { "example": "aku bukan tenaga profesional, dan chat ini nggak bisa gantiin layanan darurat", "valueId": "V5", "why": "States the limit of what this channel is. Claiming more than the service can deliver is a documented failure mode, not a kindness." }
+        {
+          "example": "ini yang bisa dilakukan sekarang",
+          "valueId": "V5",
+          "why": "Risiko disebut secara langsung dan respons berfokus pada tiga hal: tidak sendirian, membuat situasi lebih aman, dan menuju bantuan langsung. Menungsa juga menjelaskan batas kapasitasnya tanpa meninggalkan orang tanpa arah."
+        },
+        {
+          "example": "Hubungi 119 lalu tekan 8. Gratis, 24 jam.",
+          "valueId": "V3",
+          "why": "One step, stated flatly, with the two facts that decide whether he can act on it tonight."
+        },
+        {
+          "example": "minta orang terdekat yang nelpon",
+          "valueId": "V3",
+          "why": "Accounts for someone unable to act alone, which is the Indonesian relational-care finding applied at the point it matters most."
+        },
+        {
+          "example": "pindahkan atau titipkan ke orang lain malam ini",
+          "valueId": "V3",
+          "why": "A bounded, physical, tonight-sized action rather than an appeal to hold on."
+        },
+        {
+          "example": "aku bukan tenaga profesional, dan chat ini nggak bisa gantiin layanan darurat",
+          "valueId": "V5",
+          "why": "States the limit of what this channel is. Claiming more than the service can deliver is a documented failure mode, not a kindness."
+        }
       ]
     },
     "epistemicTier": "OBSERVED PRACTICE ONLY",

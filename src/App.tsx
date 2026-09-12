@@ -25,9 +25,9 @@ const ResonanceView = React.lazy(() => import('./components/views/ResonanceView'
 const ResearchGapsView = React.lazy(() => import('./components/views/ResearchGapsView').then(m => ({ default: m.ResearchGapsView })));
 
 const ViewFallback: React.FC = () => (
-  <div className="min-h-[45vh] flex flex-col items-center justify-center space-y-3 py-16 animate-pulse" role="status" aria-label="Memuat panduan">
+  <div className="min-h-[45vh] flex flex-col items-center justify-center space-y-3 py-16 animate-pulse" role="status" aria-label="Mohon tunggu">
     <div className="w-8 h-8 rounded-full border-2 border-amber-500/30 border-t-amber-500 animate-spin" />
-    <span className="font-mono text-xs text-stone-500 dark:text-stone-400">Memuat panduan…</span>
+    <span className="font-mono text-xs text-stone-500 dark:text-stone-400">Mohon tunggu...</span>
   </div>
 );
 
@@ -212,7 +212,7 @@ export function App() {
               alt="Menungsa"
               className="w-6 h-6 rounded-[6px] border border-stone-800 object-cover shrink-0 select-none"
             />
-            <span>Panduan menulis Menungsa</span>
+            <span>Menungsa Writing Guideline</span>
           </div>
 
           <div className="flex items-center gap-4">
@@ -222,7 +222,7 @@ export function App() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-stone-400 hover:text-amber-400 transition"
             >
-              <span>Baca dasar riset</span>
+              <span>Lihat dasar di balik guide ini</span>
               <ArrowUpRight size={13} />
             </a>
           </div>

@@ -31,132 +31,132 @@ const REGISTERS: RegisterItem[] = [
     name: 'kamu',
     authorityLevel: 3,
     intimacyLevel: 3,
-    socialRelationship: 'Langsung dan cukup akrab. Sapaan utama yang dipilih Menungsa untuk panduan ini.',
+    socialRelationship: 'Langsung, personal, dan cukup netral untuk banyak konteks. Menjadi sapaan utama Menungsa ketika berbicara langsung kepada pembaca.',
     impression: 'Menyapa pembaca secara langsung. Kehangatannya bergantung pada kalimat dan konteks.',
-    risks: 'Dapat terasa mendikte jika dipadukan dengan kata kerja imperatif ("kamu harus", "kamu wajib").',
-    contexts: 'Panduan dan konten umum Menungsa; sesuaikan untuk layanan formal atau audiens tertentu.',
-    example: 'Ketika tubuhmu memberi sinyal lelah yang tak kunjung reda, dengarkan.'
+    risks: 'Bisa terasa menggurui jika terlalu sering dipasangkan dengan tuntutan seperti "kamu harus", "kamu wajib", atau kesimpulan tentang pengalaman pembaca.',
+    contexts: 'Konten edukasi, panduan praktis, caption, halaman website, email umum, dan komunikasi langsung yang tidak membutuhkan formalitas tinggi.',
+    example: 'Kalau belakangan ada yang terasa berbeda dari rutinitasmu, coba perhatikan perubahan yang paling mudah kamu kenali dulu.'
   },
   {
     id: 'Anda',
     name: 'Anda',
     authorityLevel: 5,
     intimacyLevel: 1,
-    socialRelationship: 'Formal dan menjaga jarak yang sopan.',
+    socialRelationship: 'Formal, sopan, dan menjaga jarak profesional.',
     impression: 'Cocok untuk konteks yang memerlukan sapaan formal. Kata ganti ini tidak menjamin kerahasiaan layanan.',
-    risks: 'Terasa kaku, birokratis, dan dingin jika digunakan dalam narasi empati atau obrolan santai.',
-    contexts: 'Formulir pendaftaran konseling resmi, syarat & ketentuan, pemberitahuan privasi, rujukan medis.',
-    example: 'Jadwal konsultasi Anda telah terkonfirmasi untuk hari Selasa pukul 14.00 WIB.'
+    risks: 'Bisa terasa kaku atau terlalu institusional dalam percakapan yang seharusnya personal dan setara.',
+    contexts: 'Dokumen formal, kebijakan privasi, persetujuan, korespondensi resmi, atau komunikasi dengan institusi dan profesional.',
+    example: 'Data yang Anda berikan hanya akan digunakan sesuai tujuan yang dijelaskan pada formulir ini.'
   },
   {
     id: 'kita',
     name: 'kita',
     authorityLevel: 2,
     intimacyLevel: 4,
-    socialRelationship: 'Melibatkan penulis dan pembaca dalam hal yang memang dialami atau dilakukan bersama.',
+    socialRelationship: 'Menempatkan penulis dan pembaca dalam tindakan, ruang, atau pengalaman yang memang dibagi bersama.',
     impression: 'Menunjukkan kebersamaan tanpa mengasumsikan pengalaman semua orang sama.',
-    risks: 'Terdengar sok tahu atau memaksakan asumsi jika pembaca sedang tidak mengalami beban tersebut.',
-    contexts: 'Kegiatan bersama atau refleksi yang benar-benar melibatkan penulis dan pembaca.',
-    example: 'Tubuh kita memang butuh jeda berkala setelah bekerja berhari-hari tanpa henti.'
+    risks: 'Mudah berubah menjadi asumsi palsu ketika penulis berbicara seolah semua orang mengalami hal yang sama.',
+    contexts: 'Kegiatan bersama, refleksi kolektif yang benar-benar relevan, atau penjelasan tentang sesuatu yang dilakukan Menungsa bersama peserta.',
+    example: 'Sebelum sesi dimulai, kita akan membaca aturan percakapan dan kerahasiaan bersama.'
   },
   {
     id: 'kami',
     name: 'kami',
     authorityLevel: 3,
     intimacyLevel: 2,
-    socialRelationship: 'Mewakili tim atau organisasi, tanpa memasukkan pembaca.',
+    socialRelationship: 'Mewakili Menungsa sebagai tim atau organisasi dan membedakan tindakan organisasi dari tindakan pembaca.',
     impression: 'Memperjelas bahwa Menungsa yang menyampaikan pesan.',
-    risks: 'Dapat terasa berjarak jika dipakai terus-menerus tanpa menyapa pembaca secara personal.',
-    contexts: 'Pernyataan kebijakan organisasi, transparansi program, metodologi riset, dan laporan kegiatan.',
-    example: 'Kami di Menungsa menyiapkan ruang ini agar kamu bisa beristirahat sejenak tanpa tuntutan.'
+    risks: 'Bisa terasa berjarak jika dipakai untuk seluruh tulisan, tetapi penting ketika Menungsa perlu mengambil tanggung jawab atas keputusan, batas, atau tindakannya sendiri.',
+    contexts: 'Kebijakan, transparansi program, laporan, pernyataan sikap, metode kerja, dan penjelasan tentang apa yang Menungsa lakukan.',
+    example: 'Kami tidak akan membagikan cerita peserta ke publik tanpa izin.'
   },
   {
     id: 'gue',
     name: 'gue / gua',
     authorityLevel: 1,
     intimacyLevel: 5,
-    socialRelationship: 'Bahasa percakapan yang lazim dalam sebagian lingkungan, terutama yang akrab dengan ragam Jakarta.',
+    socialRelationship: 'Ragam orang pertama yang santai dan sangat bergantung pada kebiasaan penutur. Umum dalam sebagian lingkungan urban, terutama ragam Jakarta dan sekitarnya.',
     impression: 'Dapat terasa akrab jika memang digunakan penutur sehari-hari.',
-    risks: 'Dapat terasa dipaksakan ketika tidak sesuai dengan kebiasaan penutur atau pembaca. Bukan pilihan utama akun organisasi Menungsa.',
-    contexts: 'Cerita pribadi atau percakapan oleh penutur yang memang terbiasa menggunakannya, termasuk konten publik.',
-    example: 'Waktu usaha bengkel gue tutup dua tahun lalu, rasanya bangun tidur aja berat banget.'
+    risks: 'Terasa dibuat-buat jika digunakan hanya untuk membuat Menungsa terdengar lebih muda, maskulin, atau “tongkrongan”. Jangan jadikan gue sebagai brand voice default.',
+    contexts: 'Kesaksian personal, dialog, video, atau percakapan ketika penutur memang menggunakan gue/gua secara alami.',
+    example: 'Waktu usaha gue tutup, beberapa minggu pertama gue masih bangun pagi seperti mau berangkat kerja.'
   },
   {
     id: 'lo',
     name: 'lo / lu',
     authorityLevel: 1,
     intimacyLevel: 5,
-    socialRelationship: 'Sapaan orang kedua akrab antarteman tongkrongan sebaya.',
+    socialRelationship: 'Sapaan orang kedua yang akrab dalam ragam percakapan tertentu.',
     impression: 'Santai, tanpa basa-basi formal.',
-    risks: 'Dapat terasa terlalu akrab bagi pembaca yang tidak biasa disapa demikian.',
-    contexts: 'Konten video kreator personal bernama jelas, dialog naskah teater/cerita fiksi.',
-    example: 'Kalau hari ini lo belum sanggup cerita, nggak apa-apa, duduk aja dulu.'
+    risks: 'Bisa terdengar invasif, sok dekat, atau terlalu regional jika hubungan dengan pembaca belum mendukung.',
+    contexts: 'Dialog autentik, percakapan antarteman, atau konten personal ketika penutur memang biasa menggunakan pasangan gue–lo atau gua–lu.',
+    example: 'Kalau lo belum mau cerita sekarang, nggak apa-apa. Kita bisa duduk dulu.'
   },
   {
     id: 'aku',
     name: 'aku',
     authorityLevel: 2,
     intimacyLevel: 4,
-    socialRelationship: 'Kata ganti orang pertama untuk cerita pribadi atau percakapan sehari-hari.',
+    socialRelationship: 'Orang pertama yang personal dan cukup intim, tetapi tetap lazim di banyak ragam bahasa Indonesia.',
     impression: 'Tingkat keakrabannya bergantung pada penutur, daerah, dan situasi.',
-    risks: 'Bisa terdengar terlalu melankolis atau romantis jika dipakai dalam instruksi navigasi layanan.',
-    contexts: 'Esai refleksi diri orang pertama, monolog video dokumenter, kisah pemulihan personal.',
-    example: 'Bulan ketiga setelah toko tutup, aku masih sering bangun jam lima pagi menyeduh kopi di teras.'
+    risks: 'Bisa tidak sesuai jika penutur sebenarnya tidak menggunakan aku atau situasinya sangat formal; masalahnya bukan karena kata ini dianggap terlalu melankolis.',
+    contexts: 'Kisah personal, esai, video orang pertama, percakapan pribadi, atau narasi reflektif.',
+    example: 'Bulan ketiga setelah toko tutup, aku masih bangun jam lima pagi seperti biasanya.'
   },
   {
     id: 'saya',
     name: 'saya',
     authorityLevel: 4,
     intimacyLevel: 1,
-    socialRelationship: 'Kata ganti orang pertama yang sopan dan lazim digunakan dalam beragam situasi.',
+    socialRelationship: 'Orang pertama yang sopan, fleksibel, dan dapat digunakan dalam konteks personal maupun profesional.',
     impression: 'Objektif, tenang, berwibawa, dan dapat diandalkan.',
-    risks: 'Kurang intim jika digunakan dalam obrolan lingkaran kecil antarteman sebaya.',
-    contexts: 'Wawancara, penjelasan profesional, cerita pribadi, atau percakapan yang memerlukan sapaan sopan.',
-    example: 'Dalam sesi ini, saya akan menjelaskan pilihan yang tersedia. Kamu bisa bertanya jika ada yang belum jelas.'
+    risks: 'Bisa terasa lebih formal daripada hubungan yang sedang dibangun, tetapi tidak otomatis dingin.',
+    contexts: 'Wawancara, komunikasi profesional, kesaksian personal, fasilitasi, atau percakapan dengan orang yang belum akrab.',
+    example: 'Saya akan menjelaskan alur sesi terlebih dahulu. Setelah itu, kamu bebas memilih mau bicara atau cukup mendengarkan.'
   },
   {
     id: 'laki-laki',
     name: 'laki-laki',
     authorityLevel: 3,
     intimacyLevel: 3,
-    socialRelationship: 'Sebutan umum untuk laki-laki, termasuk dalam pembahasan sosial dan demografi.',
+    socialRelationship: 'Sebutan yang relatif netral untuk membahas laki-laki sebagai kelompok, terutama dalam tulisan sosial, kesehatan, riset, atau demografi.',
     impression: 'Gunakan saat identitas gender relevan dengan isi pesan.',
-    risks: 'Menimbulkan kejenuhan identitas (gender fatigue) bila diulang di setiap kalimat.',
-    contexts: 'Analisis sosiokultural, statistik beban peran keluarga, dan dialog kesehatan umum.',
-    example: 'Sebagian laki-laki menghadapi tekanan untuk terus memenuhi kebutuhan keluarga, meski mereka sendiri sedang kesulitan.'
+    risks: 'Jika diulang terlalu sering, gender menjadi pusat identitas bahkan ketika tidak relevan dan semua perilaku seolah dijelaskan melalui gender.',
+    contexts: 'Analisis sosial, data, riset, kebijakan, atau pembahasan ketika gender memang penting bagi argumen.',
+    example: 'Sebagian laki-laki menghadapi tekanan untuk menjadi sumber penghasilan utama dalam keluarga, tetapi pengalaman ini tidak sama bagi semua orang.'
   },
   {
     id: 'pria',
     name: 'pria',
     authorityLevel: 4,
     intimacyLevel: 2,
-    socialRelationship: 'Sebutan untuk laki-laki yang lazim dalam tulisan formal.',
+    socialRelationship: 'Sebutan yang lebih formal dan sering muncul dalam tulisan institusional, media, atau informasi layanan.',
     impression: 'Dapat terasa lebih formal; pilih sesuai konteks dan konsistensi naskah.',
-    risks: 'Rentan disalahgunakan jika digabung dengan klise manosphere ("Pria Sejati", "Pria Bernilai Tinggi").',
-    contexts: 'Artikel, informasi layanan, atau pembahasan demografi saat gender relevan.',
-    example: 'Panduan ini ditujukan untuk pria dewasa yang ingin mengetahui pilihan dukungan.'
+    risks: 'Mudah terdengar normatif jika digabungkan dengan label seperti pria sejati, pria berkualitas, atau pria bernilai tinggi.',
+    contexts: 'Tulisan formal, demografi, judul program tertentu, atau materi layanan ketika ragam bahasanya memang menggunakan pria.',
+    example: 'Layanan ini tersedia untuk pria dewasa berusia [rentang usia] yang memenuhi kriteria program.'
   },
   {
     id: 'cowok',
     name: 'cowok',
     authorityLevel: 1,
     intimacyLevel: 4,
-    socialRelationship: 'Sebutan kasual santai bernuansa muda dan tongkrongan.',
+    socialRelationship: 'Sebutan kasual yang lebih ringan dan dekat dengan percakapan sehari-hari, terutama di kalangan usia muda.',
     impression: 'Ringan, santai, dan tidak kaku.',
-    risks: 'Dapat terdengar meremehkan (infantilizing) pria dewasa usia 40-an jika dipakai di layanan formal.',
-    contexts: 'Humor situasional di balik layar, konten visual olahraga santai, ruang pemuda.',
-    example: 'Beberapa cowok di komunitas ini rutin bertemu untuk mengerjakan hobi bersama.'
+    risks: 'Bisa terasa terlalu santai, kekanak-kanakan, atau tidak cocok untuk konteks formal maupun pembaca yang lebih tua. Jangan menjadikannya cara default agar konten laki-laki terdengar relatable.',
+    contexts: 'Humor ringan, percakapan personal, dialog, atau konten kasual ketika istilah tersebut memang terdengar alami.',
+    example: 'Kadang obrolan antar-cowok justru mulai dari hal yang kelihatannya nggak penting: kerjaan, motor, game, atau siapa yang telat datang.'
   },
   {
     id: 'bro',
     name: 'bro / bang / mas / pak',
     authorityLevel: 2,
     intimacyLevel: 4,
-    socialRelationship: 'Sapaan dengan penggunaan yang berbeda-beda menurut daerah, usia, dan hubungan.',
+    socialRelationship: 'Sapaan relasional yang maknanya bergantung pada usia, daerah, tingkat keakraban, dan posisi sosial. bro, bang, mas, dan pak tidak dapat dipertukarkan begitu saja.',
     impression: 'Pilih sapaan yang lazim bagi pembaca; “bro”, “bang”, “mas”, dan “pak” tidak saling menggantikan begitu saja.',
-    risks: 'Sapaan yang tidak sesuai konteks dapat terasa dipaksakan. Jangan menganggap “pak” memiliki keakraban yang sama dengan “bro”.',
-    contexts: 'Fasilitator individu dalam sesi komunitas tatap muka, balasan komentar personal, dan percakapan langsung antarsebaya.',
-    example: 'Bang, kalau ada waktu luang besok sore, kita ngobrol santai di warung belakang kantor ya.'
+    risks: 'Bisa terasa dibuat-buat, terlalu akrab, atau salah membaca usia dan relasi jika dipilih berdasarkan stereotip tentang cara laki-laki berbicara.',
+    contexts: 'Percakapan langsung, fasilitasi, komentar, atau interaksi personal ketika sapaan tersebut sudah digunakan oleh lawan bicara atau sesuai konteks setempat.',
+    example: 'Mas, kalau ada bagian yang belum jelas soal alur pendaftarannya, saya bisa jelaskan lagi.'
   }
 ];
 
@@ -176,68 +176,68 @@ const ETHICAL_ALTERNATIVES: EthicalAlternativeItem[] = [
   {
     id: 'certainty',
     mechanismId: 'M03',
-    shortLabel: 'Kepastian',
-    functionName: 'Kepastian & Kejelasan Arah Hidup',
-    psychologicalNeed: 'Kebutuhan memahami persoalan dan melihat pilihan langkah yang tersedia.',
-    whyCompelling: 'Meredakan disorientasi dan kebingungan akut; mengubah situasi sosial yang rumit menjadi aturan main yang tampak teratur dan sistematis.',
-    harmfulVersion: 'Penjelasan mutlak yang menyalahkan perempuan atau menganggap nasib laki-laki sudah ditentukan secara biologis.',
-    ethicalAlternative: 'Jelaskan persoalan dengan bukti yang tersedia. Sebutkan apa yang belum diketahui tanpa menciptakan kambing hitam.',
-    keyPrinciple: 'Beri penjelasan yang jelas dan akui keterbatasannya.'
+    shortLabel: 'Orientasi & Kejelasan',
+    functionName: 'Orientasi & Kejelasan Arah Hidup',
+    psychologicalNeed: 'Kebutuhan untuk memahami apa yang sedang terjadi, mengurangi kebingungan, dan melihat pilihan atau langkah yang masih tersedia.',
+    whyCompelling: 'Penjelasan yang sederhana dan terstruktur dapat membuat situasi yang rumit terasa lebih mudah dipahami dan memberi titik awal untuk bertindak.',
+    harmfulVersion: 'Memberikan satu penjelasan mutlak untuk masalah yang kompleks, mengklaim bahwa nasib laki-laki sudah ditentukan oleh biologi atau gender, atau menunjuk kelompok tertentu sebagai penyebab utama semua masalah.',
+    ethicalAlternative: 'Berikan penjelasan yang cukup jelas untuk membantu pembaca berorientasi, tetapi tetap bedakan apa yang diketahui, apa yang masih mungkin, dan apa yang belum diketahui. Jika persoalannya kompleks, jangan berpura-pura ada satu penyebab atau satu jawaban.',
+    keyPrinciple: 'Beri arah tanpa menjual kepastian palsu.'
   },
   {
     id: 'validation',
     mechanismId: 'M05',
     shortLabel: 'Pengakuan Beban',
     functionName: 'Pengakuan Beban & Rasa Didengar',
-    psychologicalNeed: 'Kebutuhan untuk merasa dipahami, didengar, dan terbebas dari rasa malu saat belum mampu memenuhi ekspektasi sosial atau standar maskulinitas.',
-    whyCompelling: 'Meringankan beban rasa gagal pribadi dengan menegaskan bahwa "bukan cuma kamu yang kesulitan; sistem dan realitas hidup saat ini memang berat."',
-    harmfulVersion: 'Memanfaatkan luka batin menjadi kebencian kolektif (grievance amplification), menyalahkan wanita, menyalahkan keluarga, atau mendendam pada gerakan kesetaraan.',
-    ethicalAlternative: 'Akui tekanan yang dihadapi pembaca tanpa membenarkan kebencian terhadap orang lain.',
-    keyPrinciple: 'Validasi rasa lelah dan kesulitan hidupnya, jangan pernah memvalidasi kebenciannya.'
+    psychologicalNeed: 'Kebutuhan untuk merasa bahwa kesulitan yang dialami benar-benar dilihat dan tidak langsung dianggap sebagai kelemahan, kegagalan, atau kekurangan pribadi.',
+    whyCompelling: 'Ketika pengalaman seseorang diakui dengan konkret, ia tidak perlu terus membuktikan bahwa bebannya nyata sebelum percakapan bisa dimulai.',
+    harmfulVersion: 'Mengubah pengalaman kecewa atau terluka menjadi narasi bahwa kelompok lain adalah penyebab bersama, lalu memperkuat kemarahan melalui permusuhan kolektif.',
+    ethicalAlternative: 'Akui beban, emosi, dan kondisi yang memang sedang dihadapi tanpa otomatis membenarkan kesimpulan tentang siapa yang harus disalahkan. Jika faktor sosial atau struktural relevan, jelaskan secara spesifik dan berdasarkan bukti.',
+    keyPrinciple: 'Akui pengalamannya tanpa mengubah luka menjadi musuh bersama.'
   },
   {
     id: 'status',
     mechanismId: 'M08',
     shortLabel: 'Keahlian & Martabat',
-    functionName: 'Keahlian Nyata, Martabat & Harga Diri',
-    psychologicalNeed: 'Kebutuhan akan rasa berharga (self-worth), rasa hormat sosial antarteman sebaya, kecakapan (competence), dan memiliki dampak nyata yang dirasakan.',
-    whyCompelling: 'Menggantikan rasa rendah diri dengan hierarki pencapaian fisik, finansial yang terukur, dan rasa bangga sebagai pria dewasa.',
-    harmfulVersion: 'Konsep dominasi agresif "Pria Nilai Tinggi (High-Value Man)", merendahkan pria lain yang berpenghasilan rendah, serta obsesi fisik superfisial (looksmaxxing).',
-    ethicalAlternative: 'Bantu pembaca mengembangkan keterampilan tanpa menjadikan kemampuan, penghasilan, atau pencapaian sebagai syarat untuk dihargai.',
-    keyPrinciple: 'Membangun keahlian dan rasa bernilai tanpa perlu membanding-bandingkan kasta sosial.'
+    functionName: 'Kompetensi, Penghargaan & Martabat',
+    psychologicalNeed: 'Kebutuhan untuk merasa mampu melakukan sesuatu dengan baik, melihat perkembangan diri, mendapatkan penghargaan yang wajar, dan tetap diperlakukan sebagai manusia yang bernilai.',
+    whyCompelling: 'Kemampuan yang berkembang dan hasil yang dapat dilihat memberi rasa kemajuan. Pengakuan dari orang lain juga dapat memperkuat rasa bahwa usaha seseorang memiliki arti.',
+    harmfulVersion: 'Mengubah harga diri menjadi hierarki—siapa yang paling kaya, kuat, menarik, dominan, atau “bernilai tinggi”—lalu memperlakukan orang yang berada di bawah standar tersebut sebagai kurang layak dihormati.',
+    ethicalAlternative: 'Dorong keterampilan, disiplin, kesehatan, atau pencapaian ketika itu memang penting bagi pembaca. Bedakan dengan jelas antara sesuatu yang dapat dikembangkan dan martabat dasar yang tidak perlu diperoleh melalui pencapaian.',
+    keyPrinciple: 'Kemampuan bisa dibangun; martabat tidak perlu dibuktikan.'
   },
   {
     id: 'agency',
     mechanismId: 'M02',
-    shortLabel: 'Kedaulatan Diri',
-    functionName: 'Kemampuan memilih dan bertindak',
-    psychologicalNeed: 'Kebutuhan untuk keluar dari rasa tak berdaya (helplessness) dan memegang kendali atas jalan hidup melalui tindakan nyata yang berbatas tegas.',
-    whyCompelling: 'Langkah yang jelas dapat membantu seseorang melihat pilihan yang masih tersedia. Ini bukan klaim tentang perubahan dopamin atau kepastian pulihnya motivasi.',
-    harmfulVersion: 'Disiplin brutal (toxic grindset), individualisme ekstrem, mengabaikan keterbatasan ekonomi riil, dan menuduh pria yang lelah/depresi sebagai orang "kurang disiplin".',
-    ethicalAlternative: 'Tawarkan langkah yang realistis sambil mengakui keterbatasan waktu, uang, dan tenaga.',
-    keyPrinciple: 'Bantu pembaca bertindak sesuai pilihan dan kemampuannya.'
+    shortLabel: 'Pilihan & Tindakan',
+    functionName: 'Pilihan & Kemampuan Bertindak',
+    psychologicalNeed: 'Kebutuhan untuk melihat bahwa masih ada sesuatu yang bisa dipilih, dicoba, dihentikan, atau diubah meskipun tidak semua keadaan berada dalam kendali.',
+    whyCompelling: 'Satu langkah yang konkret dapat membuat masalah yang besar terasa lebih mungkin untuk dihadapi dan membantu seseorang melihat pilihan yang masih tersedia.',
+    harmfulVersion: 'Menganggap semua hasil bergantung pada kemauan dan disiplin individu, mengabaikan keterbatasan ekonomi atau sosial, atau menjadikan kelelahan dan kesulitan sebagai bukti bahwa seseorang kurang berusaha.',
+    ethicalAlternative: 'Tawarkan langkah yang cukup kecil dan realistis berdasarkan waktu, tenaga, uang, akses, dan kondisi pembaca. Akui dengan jelas bagian yang memang tidak dapat dikendalikan oleh individu.',
+    keyPrinciple: 'Perluas pilihan yang nyata, bukan tuntutan untuk mengendalikan semuanya.'
   },
   {
     id: 'belonging',
     mechanismId: 'M04',
     shortLabel: 'Rasa Memiliki',
-    functionName: 'Rasa diterima dalam kelompok',
-    psychologicalNeed: 'Kebutuhan memiliki tempat untuk berinteraksi dan diterima tanpa harus membuktikan diri.',
-    whyCompelling: 'Menyediakan tempat berlindung dari kesepian sosial akut yang dialami banyak pria dewasa melalui humor, bahasa santai, dan solidaritas senasib.',
-    harmfulVersion: 'Kelompok berbasis permusuhan bersama (us vs them), ruang gema yang menguji kemaskulinan dengan menolak kelembutan, serta radikalisasi anggota rentan.',
-    ethicalAlternative: 'Membangun wadah pria yang berakar pada aktivitas bersama (olahraga rekreasional, hobi karya, saling bantu berdampingan), di mana kebersamaan tumbuh secara wajar.',
-    keyPrinciple: 'Persaudaraan yang tumbuh melalui aktivitas nyata bersama, bukan melalui kebencian bersama.'
+    functionName: 'Rasa Memiliki & Kebersamaan',
+    psychologicalNeed: 'Kebutuhan untuk memiliki hubungan dan tempat di mana seseorang dapat hadir tanpa terus-menerus membuktikan kemampuan, status, atau kesesuaian dirinya.',
+    whyCompelling: 'Kebersamaan memberi pengalaman bahwa seseorang dikenali, dibutuhkan, dan memiliki orang lain untuk berbagi waktu, kegiatan, atau percakapan.',
+    harmfulVersion: 'Membangun solidaritas melalui musuh bersama, memperkuat identitas “kita melawan mereka”, atau menjadikan kesetiaan pada kelompok sebagai syarat untuk diterima.',
+    ethicalAlternative: 'Bangun kebersamaan melalui percakapan, aktivitas, humor, saling membantu, dan pengalaman bersama tanpa mensyaratkan semua anggota memiliki pandangan, gaya hidup, atau bentuk maskulinitas yang sama.',
+    keyPrinciple: 'Bangun rasa memiliki dari apa yang dilakukan bersama, bukan dari siapa yang dibenci bersama.'
   },
   {
     id: 'purpose',
     mechanismId: 'M09',
-    shortLabel: 'Makna Hidup',
-    functionName: 'Makna dan tujuan hidup',
-    psychologicalNeed: 'Kebutuhan eksistensial untuk memiliki tujuan hidup yang lebih besar dari diri sendiri, melindungi orang terkasih, dan menjadi sosok yang berguna bagi sesama.',
-    whyCompelling: 'Menawarkan tujuan dan peran yang dirasa berarti. Daya tariknya dapat berbeda pada setiap orang.',
-    harmfulVersion: 'Glorifikasi kekerasan fisik, retorika perang suci, fantasi dominasi agresif, dan sindrom pahlawan yang angkuh serta manipulatif.',
-    ethicalAlternative: 'Dukung tujuan yang berarti bagi pembaca, termasuk merawat diri, hubungan, dan lingkungan.',
-    keyPrinciple: 'Beri ruang untuk berkontribusi tanpa menjadikannya syarat harga diri.'
+    shortLabel: 'Makna & Kontribusi',
+    functionName: 'Makna, Arah & Kontribusi',
+    psychologicalNeed: 'Kebutuhan untuk merasa bahwa waktu, hubungan, pekerjaan, minat, atau tindakan seseorang memiliki arti yang dianggap penting olehnya.',
+    whyCompelling: 'Memiliki sesuatu yang dianggap berarti dapat memberi arah pada keputusan sehari-hari dan membantu seseorang menentukan apa yang ingin ia jaga, bangun, atau kejar.',
+    harmfulVersion: 'Menentukan satu misi hidup yang dianggap wajib bagi semua laki-laki—menjadi penyedia, pelindung, pemenang, pemimpin, atau pejuang—dan menjadikannya ukuran nilai seseorang.',
+    ethicalAlternative: 'Beri ruang bagi pembaca untuk menentukan sendiri apa yang dianggap berarti: hubungan, keluarga, pekerjaan, belajar, kesehatan, karya, komunitas, kesenangan, atau bentuk kontribusi lain. Tujuan hidup tidak harus heroik atau sama bagi semua orang.',
+    keyPrinciple: 'Bantu orang menemukan apa yang berarti tanpa menentukan untuk apa hidup mereka seharusnya digunakan.'
   }
 ];
 
@@ -254,13 +254,13 @@ export const WordGuideView: React.FC = () => {
       <div className="space-y-3">
         <div className="kicker flex items-center gap-1.5 text-amber-500 font-mono text-xs font-bold uppercase tracking-wider">
           <Sparkles size={13} className="text-amber-500" />
-          <span>KAMUS &amp; PILIHAN KATA</span>
+          <span>PILIHAN KATA</span>
         </div>
         <h1 className="text-3xl md:text-4xl font-serif font-bold tracking-tight text-stone-100 leading-tight">
-          Panduan Pilihan Kata, Sapaan &amp; Kata Ganti
+          Pilihan Kata dan Sapaan
         </h1>
         <p className="text-sm md:text-base text-stone-400 max-w-[74ch] leading-relaxed font-sans">
-          Pilih sapaan sesuai hubungan dengan pembaca dan situasi pesan. Panduan ini membantu menimbang pilihan, bukan menentukan satu sapaan yang selalu tepat.
+          Gunakan panduan ini untuk memilih sapaan, kata ganti, dan istilah yang sesuai dengan hubungan, kanal, dan situasi pesan. Tidak ada satu pilihan yang selalu tepat sehingga pertimbangkan konteks dan bagaimana kata tersebut dapat diterima oleh pembaca.
         </p>
 
         {/* Tab Switcher */}
@@ -278,7 +278,7 @@ export const WordGuideView: React.FC = () => {
             }`}
           >
             <Users size={14} />
-            <span>1. Kata ganti</span>
+            <span>1. Sapaan & Kata Ganti</span>
           </button>
           <button
             role="tab"
@@ -293,7 +293,7 @@ export const WordGuideView: React.FC = () => {
             }`}
           >
             <ShieldCheck size={14} />
-            <span>2. Sebutan laki-laki</span>
+            <span>2. Sebutan Gender</span>
           </button>
           <button
             role="tab"
@@ -308,7 +308,7 @@ export const WordGuideView: React.FC = () => {
             }`}
           >
             <Sparkles size={14} />
-            <span>3. Kebutuhan dan pendekatan</span>
+            <span>3. Kebutuhan Pembaca & Alternatif Etis</span>
           </button>
         </div>
       </div>

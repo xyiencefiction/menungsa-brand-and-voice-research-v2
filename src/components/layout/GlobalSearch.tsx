@@ -97,8 +97,8 @@ export const GlobalSearch: React.FC<Props> = ({ isOpen, onClose, onNavigate }) =
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search concepts (e.g., agency, reactance, gue, bapak, humor, M01, X02, C06)..."
-            aria-label="Cari konsep atau kata kunci panduan"
+            placeholder="Cari"
+            aria-label="Cari"
             className="w-full bg-transparent text-stone-100 text-sm placeholder-stone-500 focus:outline-none"
           />
           {query && (
@@ -125,19 +125,7 @@ export const GlobalSearch: React.FC<Props> = ({ isOpen, onClose, onNavigate }) =
 
           {query.trim().length <= 1 && (
             <div className="py-6 px-4 text-xs text-stone-500 space-y-2">
-              <span className="font-mono uppercase tracking-wider block text-stone-400">Quick Concept Searches:</span>
-              <div className="flex flex-wrap gap-1.5">
-                {['Agency (M02)', 'Response Cost (M01)', 'Reactance (M06)', 'Bapak Trap', 'Status & Dignity (M08)', 'Gue vs Lo', 'Kita vs Kami', 'Directness (X01)', 'Moral Saturation (M18)', 'Suicide Crisis (C07)'].map((tag) => (
-                  <button
-                    key={tag}
-                    onClick={() => setQuery(tag.split(' ')[0])}
-                    aria-label={`Cari konsep ${tag}`}
-                    className="px-2.5 py-1 rounded bg-stone-800/80 hover:bg-stone-700 text-stone-300 font-mono text-[11px] transition cursor-pointer"
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
+              <span className="font-mono uppercase tracking-wider block text-stone-400">Cari</span>
             </div>
           )}
 
@@ -175,7 +163,6 @@ export const GlobalSearch: React.FC<Props> = ({ isOpen, onClose, onNavigate }) =
             <span><kbd className="px-1 bg-stone-800 rounded">↑↓</kbd> Navigate</span>
             <span><kbd className="px-1 bg-stone-800 rounded">↵</kbd> Select</span>
           </div>
-          <span>Menungsa Evidence Knowledge Base</span>
         </div>
       </div>
     </div>

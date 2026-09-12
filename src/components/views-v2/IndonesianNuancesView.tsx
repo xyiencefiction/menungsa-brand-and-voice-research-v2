@@ -35,13 +35,13 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     north: 77,
     south: 82,
     note: 'Komunitas banyak dibahas dalam sumber yang ditelaah, termasuk enam studi Indonesia. Kemunculan tema tidak membuktikan bahwa suatu pilihan kata atau format komunitas efektif.',
-    writerImplication: 'Gunakan bingkai kebersamaan dan wadah saling dukung, bukan menyuruh pria berjuang sendirian secara terisolasi.',
+    writerImplication: 'Gunakan kebersamaan sebagai salah satu cara membangun hubungan, tanpa menganggap kedekatan harus dimulai dari cerita pribadi. Buat orang bisa hadir dan ikut kegiatan tanpa harus membuktikan keterbukaan atau keakraban.',
     dos: {
-      example: 'Minggu pagi kita sepedaan santai keliling kanal, mampir sarapan bubur ayam di tikungan. Boleh gabung, boleh cuma ikut ngopi.',
+      example: 'Minggu pagi kita jalan santai di [lokasi]. Datang buat jalan bareng aja juga boleh—nggak ada sesi cerita wajib.',
       why: 'Mengajak berkumpul melalui aktivitas bersama tanpa beban tuntutan psikologis.'
     },
     donts: {
-      example: 'Kamu yang merasa kesepian dan terisolasi, datanglah ke sesi konseling kelompok terbuka ini untuk mencurahkan isi hatimu.',
+      example: 'Kalau kamu merasa kesepian, datang dan ceritakan apa yang selama ini kamu pendam ke kelompok.',
       why: 'Melabeli pria sebagai sosok kesepian yang menyedihkan dan menuntut keterbukaan di depan orang asing.'
     }
   },
@@ -53,13 +53,13 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     north: 67,
     south: 76,
     note: 'Kondisi ekonomi merupakan bagian penting dalam sumber yang ditelaah. Temuan ini tidak mengukur seberapa berat tekanan ekonomi setiap pembaca.',
-    writerImplication: 'Akui persoalan biaya hidup dan akses layanan jika relevan. Jangan menjadikan kemampuan bekerja atau menafkahi sebagai alasan seseorang pantas mendapat bantuan.',
+    writerImplication: 'Pertimbangkan biaya hidup, pendapatan, waktu kerja, dan tanggungan ketika menyarankan bantuan atau perubahan perilaku. Jangan menganggap keterbatasan uang sebagai kurangnya komitmen terhadap kesehatan mental.',
     dos: {
-      example: 'Mencukupi belanja dapur dan cicilan setiap akhir bulan memang menguras banyak tenaga dan pikiran. Wajar kalau badanmu butuh istirahat sejenak malam ini.',
+      example: 'Dengan penghasilan yang sama, kebutuhan makan, transportasi, cicilan, dan kiriman ke keluarga bisa saling berebut porsi. Sulit menyisihkan biaya untuk bantuan bukan otomatis soal kurang disiplin mengatur uang.',
       why: 'Menghormati perjuangan nafkah konkret tanpa mereduksinya menjadi istilah batin yang abstrak.'
     },
     donts: {
-      example: 'Singkirkan dulu urusan uangmu, fokuslah pada self-love dan ketenangan batinmu terlebih dahulu.',
+      example: 'Kesehatan mental harus jadi prioritas. Kalau memang serius, pasti ada cara menyisihkan uang untuk terapi.',
       why: 'Meremehkan kenyataan hidup dan terdengar elitis bagi pria yang menanggung beban ekonomi keluarga.'
     }
   },
@@ -71,13 +71,13 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     north: 25,
     south: 24,
     note: 'Tema tuntutan untuk terlihat tangguh muncul dengan frekuensi yang berdekatan dalam kelompok studi Global North dan Global South. Ini bukan ukuran kekuatan norma pada seluruh penduduk Indonesia.',
-    writerImplication: 'Akui kebutuhan beristirahat tanpa mengaitkan harga diri dengan ketangguhan atau produktivitas.',
+    writerImplication: 'Jangan melawan tuntutan “laki-laki harus kuat” dengan standar baru tentang seperti apa laki-laki yang benar-benar kuat. Pisahkan kebutuhan akan bantuan, istirahat, atau keterbukaan dari ukuran maskulinitas.',
     dos: {
-      example: 'Kamu boleh beristirahat meski pekerjaan belum semuanya selesai.',
+      example: 'Belum siap cerita bukan berarti kamu gagal menghadapi masalah. Kamu bisa mulai dari bagian yang terasa cukup aman untuk dibicarakan—atau cukup mendengarkan dulu.',
       why: 'Memberi ruang untuk beristirahat tanpa tuntutan membuktikan produktivitas.'
     },
     donts: {
-      example: 'Laki-laki kok takut mengeluh? Jangan sok kuat deh, ayo buang gengsimu dan menangislah sekarang!',
+      example: 'Laki-laki yang benar-benar kuat justru berani terbuka dan menangis.',
       why: 'Menggurui, mencela harga diri pria, dan menuntut kerapuhan secara agresif.'
     }
   },
@@ -89,13 +89,13 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     north: 5,
     south: 34,
     note: 'Agama dibahas dengan frekuensi berbeda dalam kelompok studi Global North dan Global South. Pengaruhnya terhadap pencarian bantuan dapat berbeda menurut keyakinan dan konteks.',
-    writerImplication: 'Gunakan kerangka keagamaan hanya jika sesuai dengan audiens. Jangan menghubungkan keluhan dengan kadar keimanan.',
+    writerImplication: 'Gunakan kerangka agama atau spiritualitas ketika memang relevan bagi penutur atau audiens. Jangan menjelaskan masalah kesehatan mental sebagai ukuran kualitas iman, dan jangan memosisikan dukungan spiritual serta layanan profesional sebagai dua pilihan yang harus saling menggantikan.',
     dos: {
-      example: 'Jika doa penting bagimu, mencari bantuan profesional dapat berjalan bersama kebiasaan itu.',
+      example: 'Kalau doa atau ibadah penting bagimu, itu bisa tetap menjadi bagian dari caramu menghadapi masa sulit. Mencari bantuan profesional juga bisa berjalan bersamaan.',
       why: 'Menghormati keyakinan pembaca tanpa membuat klaim tentang keimanan atau hasil pengobatan.'
     },
     donts: {
-      example: 'Masalah jiwamu itu bukan urusan medis, itu bukti kamu kurang beribadah dan jauh dari Tuhan.',
+      example: 'Kalau kamu masih cemas, mungkin kamu perlu memperbaiki ibadah dulu sebelum mencari bantuan lain.',
       why: 'Menghakimi keimanan seseorang dan memicu rasa bersalah religius yang melumpuhkan.'
     }
   },
@@ -105,13 +105,13 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     status: 'DIVERGES',
     statusLabel: 'Perbedaan Konteks',
     note: 'Dalam beberapa studi Indonesia, pasangan dan keluarga ikut mengatur akses perawatan. Keterlibatan mereka perlu mempertimbangkan persetujuan dan keamanan orang yang dibantu.',
-    writerImplication: 'Sediakan informasi yang juga dapat digunakan orang terdekat untuk membantu, dengan tetap menghormati pilihan pembaca.',
+    writerImplication: 'Keluarga dapat menjadi sumber dukungan sekaligus tekanan. Jangan otomatis melibatkan keluarga dalam keputusan kesehatan seseorang; beri pembaca pilihan tentang siapa yang ingin mereka libatkan.',
     dos: {
-      example: 'Kalau orang terdekatmu tampak kesulitan, kamu bisa bertanya, “Ada yang bisa kubantu hari ini?” Beri ruang jika ia belum ingin bercerita.',
+      example: 'Kalau kamu ingin ditemani saat mencari bantuan, pilih orang yang kamu percaya. Kamu juga boleh memilih mengurusnya sendiri.',
       why: 'Memberi panduan praktis dan suportif bagi orang terdekat tanpa melanggar privasi pria.'
     },
     donts: {
-      example: 'Laki-laki dewasa kok apa-apa harus diatur istrinya? Urus sendiri kesehatan mentalmu secara mandiri!',
+      example: 'Sebaiknya ceritakan dulu ke keluarga sebelum mencari bantuan profesional.',
       why: 'Mengabaikan kultur gotong royong keluarga Indonesia dan menghakimi kemitraan rumah tangga yang sehat.'
     }
   },
@@ -121,13 +121,13 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     status: 'DIVERGES',
     statusLabel: 'Perbedaan Konteks',
     note: 'Dalam sumber yang ditelaah, peran pencari nafkah terkait dengan aturan, agama, dan adat. Dampaknya pada setiap orang tidak sama; jangan mengubahnya menjadi tuntutan editorial.',
-    writerImplication: 'Akui tekanan ekonomi tanpa mengukur harga diri dari penghasilan atau kemampuan menafkahi.',
+    writerImplication: 'Akui bahwa tanggung jawab finansial dan peran sebagai pencari nafkah dapat terasa penting bagi sebagian laki-laki. Jangan menjadikan kemampuan memenuhi peran tersebut sebagai ukuran martabat atau nilai diri.',
     dos: {
-      example: 'Memikirkan kebutuhan keluarga bisa menguras tenaga. Kebutuhanmu sendiri juga layak diperhatikan.',
+      example: 'Tanggung jawab pada keluarga bisa terasa penting sekaligus berat. Besarnya penghasilan tidak menentukan seberapa layak seseorang dihargai.',
       why: 'Mengakui tanggung jawab tanpa menjadikan pengorbanan sebagai syarat harga diri.'
     },
     donts: {
-      example: 'Tinggalkan konsep usang kepala keluarga pencari nafkah, itu cuma jebakan patriarki yang merusakmu!',
+      example: 'Sebagai kepala keluarga, kamu harus tetap kuat karena semua orang bergantung padamu.',
       why: 'Menyerang peran etis dan hukum yang dipegang teguh pria Indonesia, memicu penolakan ideologis seketika.'
     }
   },
@@ -137,13 +137,13 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     status: 'DIVERGES',
     statusLabel: 'Perbedaan Konteks',
     note: 'Dalam konteks yang dibahas sumber, dukungan komunitas dapat hadir bersama pengawasan sosial. Istilah Jawa seperti rukun, tepa salira, dan isin perlu dijelaskan tanpa dianggap mewakili semua Indonesia.',
-    writerImplication: 'Jelaskan siapa yang dapat mengakses informasi peserta, bagaimana data digunakan, dan batas kerahasiaannya sesuai kebijakan layanan.',
+    writerImplication: 'Pertimbangkan bukan hanya apakah suatu ruang disebut “privat”, tetapi siapa yang dapat melihat, merekam, meneruskan, atau mengetahui partisipasi seseorang. Jangan membuat pencarian bantuan menjadi informasi publik tanpa alasan.',
     dos: {
-      example: 'Sebelum sesi dimulai, kami akan menjelaskan siapa yang dapat mengakses informasi yang kamu bagikan dan batas kerahasiaannya.',
+      example: 'Kalau ingin ikut, daftar lewat [jalur privat]. Nama orang yang mendaftar tidak akan dibagikan ke grup tanpa izin.',
       why: 'Contoh informasi privasi; gunakan hanya jika proses tersebut benar-benar tersedia.'
     },
     donts: {
-      example: 'Ayo berani bersuara di depan warga komplek! Jangan takut dicap aneh oleh tetangga sebelah!',
+      example: 'Yang mau ikut sesi minggu ini, tulis HADIR di grup supaya kami bisa mendata.',
       why: 'Memaksa pria menantang sanksi sosial lingkungan tempat tinggalnya secara gegabah.'
     }
   },
@@ -153,13 +153,13 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     status: 'DIVERGES',
     statusLabel: 'Perbedaan Konteks',
     note: 'Sebagian sumber Indonesia membahas penggunaan beberapa bentuk bantuan, termasuk dukungan keluarga, praktik keagamaan, dan layanan kesehatan. Temuan ini tidak menetapkan satu urutan bantuan untuk semua orang.',
-    writerImplication: 'Hormati kebiasaan pembaca sambil menjelaskan pilihan layanan dan cara mengaksesnya.',
+    writerImplication: 'Jangan menganggap layanan profesional selalu menjadi tempat pertama seseorang mencari dukungan. Keluarga, teman, tokoh agama, layanan kesehatan primer, atau sumber lain bisa menjadi pintu awal. Tambahkan pilihan profesional ketika dibutuhkan tanpa merendahkan jalur yang sebelumnya digunakan.',
     dos: {
-      example: 'Jika keluhan mengganggu keseharianmu, cari informasi layanan kesehatan yang tersedia di wilayahmu. Periksa jadwal, biaya, dan cara mendaftar.',
+      example: 'Kalau kamu lebih nyaman mulai dari orang yang sudah kamu percaya, itu bisa menjadi langkah awal. Kalau keluhan terus mengganggu keseharian, kamu juga bisa mencari informasi layanan kesehatan yang tersedia di wilayahmu.',
       why: 'Menjelaskan langkah mencari informasi tanpa menetapkan masa tunggu atau menjanjikan layanan tertentu.'
     },
     donts: {
-      example: 'Jamu dan obat tradisional itu tidak ilmiah dan tak berguna. Langsung pergi ke psikiater spesialis sekarang!',
+      example: 'Kalau memang serius ingin membaik, langsung cari psikiater. Ngobrol dengan keluarga atau tokoh agama cuma menunda bantuan.',
       why: 'Arogan, meremehkan kebiasaan turun-temurun, dan membuat biaya pencarian bantuan terasa sangat mahal.'
     }
   },
@@ -169,13 +169,13 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     status: 'DIVERGES',
     statusLabel: 'Perbedaan Konteks',
     note: 'Studi sebaya yang dibahas sumber membedakan teman untuk berkegiatan dan teman untuk berbagi masalah pribadi. Temuan ini tidak menggambarkan semua pertemanan laki-laki Indonesia.',
-    writerImplication: 'Tawarkan kegiatan bersama sebagai salah satu pilihan. Jangan mewajibkan peserta menceritakan pengalaman pribadi.',
+    writerImplication: 'Aktivitas bersama dapat menjadi bentuk hubungan yang bermakna tanpa harus berubah menjadi sesi keterbukaan emosional. Jangan menganggap kedekatan hanya sah ketika orang saling menceritakan masalah pribadi.',
     dos: {
-      example: 'Malam ini kita nobar bola bareng di pos ronda sambil ngopi. Kalau lagi penat kerjaan, cukup duduk santai bareng kawan-kawan tanpa harus ada sesi curhat formal.',
+      example: 'Datang buat main, makan, atau duduk bareng juga cukup. Nggak ada sesi cerita wajib.',
       why: 'Mengajak berkegiatan tanpa mewajibkan peserta mengungkap hal pribadi.'
     },
     donts: {
-      example: 'Mumpung lagi kumpul nongkrong, yuk saling buka luka masa lalu dan ceritakan trauma terbesarmu satu per satu!',
+      example: 'Supaya lebih dekat, nanti setiap orang akan cerita masalah pribadi secara bergiliran.',
       why: 'Merusak suasana nongkrong yang rileks dan menciptakan kecanggungan sosial yang fatal.'
     }
   },
@@ -185,13 +185,13 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     status: 'GAP',
     statusLabel: 'Belum Cukup Bukti',
     note: 'Dua studi yang dirangkum mengukur hal berbeda: sikap mencari bantuan dan penggunaan layanan primer. Keduanya tidak menetapkan maskulinitas sebagai hambatan utama di seluruh Indonesia.',
-    writerImplication: 'Jelaskan lokasi, jadwal, biaya, dan cara mendaftar yang sudah diverifikasi. Akui hambatan layanan tanpa menyalahkan pembaca.',
+    writerImplication: 'Sebelum menjelaskan pencarian bantuan sebagai persoalan malu, gengsi, atau maskulinitas, pertimbangkan juga biaya, jarak, jam layanan, transportasi, ketersediaan tenaga, prosedur rujukan, antrean, dan privasi.',
     dos: {
-      example: 'Untuk berkonsultasi di [nama fasilitas], periksa jadwal, biaya, persyaratan, dan cara mendaftar melalui [tautan resmi].',
+      example: 'Untuk layanan di [fasilitas], pendaftaran tersedia [waktu], biaya atau skema pembiayaannya [informasi terverifikasi], dan cara mendaftarnya [alur]. Kalau informasi ini berubah, cek kembali melalui [kontak resmi].',
       why: 'Template informasi layanan. Isi bagian dalam kurung siku setelah diverifikasi.'
     },
     donts: {
-      example: 'Satu-satunya yang menghalangimu berobat adalah egomu sendiri. Buang gengsimu sekarang juga!',
+      example: 'Kalau belum mencari bantuan, mungkin yang menghalangi kamu cuma gengsi.',
       why: 'Mengabaikan kenyataan antrean panjang, jam kerja kantor yang ketat, dan kesulitan birokrasi faskes.'
     }
   },
@@ -201,13 +201,13 @@ const INDONESIAN_CONTRASTS: ContrastItem[] = [
     status: 'GAP',
     statusLabel: 'Belum Diuji',
     note: 'Dalam korpus ini tidak ditemukan eksperimen acak yang menguji pilihan kata pada laki-laki dewasa Indonesia. Semua contoh di halaman ini adalah usulan penerapan.',
-    writerImplication: 'Periksa pemahaman pembaca dan catat umpan balik. Jangan mengklaim contoh ini telah terbukti efektif.',
+    writerImplication: 'Jangan menggunakan “laki-laki Indonesia” seolah pengalaman mereka seragam. Sebutkan wilayah, kelompok usia, kondisi sosial, atau populasi penelitian ketika relevan, dan jelaskan jika bukti hanya berasal dari kelompok tertentu.',
     dos: {
-      example: 'Sebagian orang merasa lebih lega setelah bertukar pikiran dengan kawan terpercaya, sebagian lainnya butuh waktu sendiri. Temukan tempo yang paling cocok untuk dirimu.',
+      example: 'Temuan ini berasal dari laki-laki usia 18–30 tahun di [wilayah/populasi] dan belum tentu menggambarkan pengalaman laki-laki di daerah atau kelompok lain.',
       why: 'Memberi pilihan tanpa menjanjikan respons yang sama pada semua pembaca.'
     },
     donts: {
-      example: 'Tips ampuh ini dijamin 100% melipatgandakan kepercayaan diri dan menghapus depresi seluruh pria Indonesia!',
+      example: 'Laki-laki Indonesia biasanya sulit bicara soal perasaan.',
       why: 'Klaim mutlak tanpa dasar bukti empiris yang merusak integritas dan kredibilitas brand.'
     }
   }
@@ -230,10 +230,10 @@ export const IndonesianNuancesView: React.FC = () => {
           <span>KOMPAS BUDAYA INDONESIA</span>
         </div>
         <h1 className="text-3xl md:text-4xl font-serif font-semibold tracking-tight text-stone-100 leading-tight">
-          Menulis untuk pembaca Indonesia
+          Menulis dalam Konteks Indonesia
         </h1>
         <p className="text-sm md:text-base text-stone-300 max-w-[74ch] leading-relaxed font-sans">
-          Pertimbangkan hubungan sosial, akses layanan, dan keragaman pembaca saat menulis. Panduan ini merangkum temuan yang tersedia beserta batas penerapannya di Indonesia.
+          Indonesia bukan satu konteks yang seragam. Hubungan keluarga, agama, kondisi ekonomi, bahasa, akses layanan, dan norma sosial dapat berbeda menurut daerah, usia, kelas sosial, dan lingkungan tempat seseorang hidup. Gunakan panduan ini untuk mempertimbangkan konteks tersebut tanpa menganggap satu pola berlaku bagi semua pembaca.
         </p>
       </div>
 
@@ -245,10 +245,10 @@ export const IndonesianNuancesView: React.FC = () => {
             <Eye size={20} />
           </div>
           <h3 className="font-serif text-lg font-semibold text-stone-100">
-            1. Ruang Publik vs Ruang Privat
+            1. Siapa yang Bisa Melihat?
           </h3>
           <p className="text-xs text-stone-300 leading-relaxed font-sans">
-            Di <strong>ruang publik</strong>, bahas emosi tanpa meminta pembaca membagikan pengalaman pribadi. Jika ada ajakan bercerita, jelaskan siapa yang bisa melihat responsnya dan tawarkan pilihan privat. Ruang tertutup pun tetap memerlukan persetujuan dan batas kerahasiaan yang jelas.
+            Sebelum meminta respons atau cerita pribadi, pertimbangkan siapa yang dapat melihatnya. Di ruang publik atau grup, beri informasi tanpa menuntut pengakuan pribadi. Jika percakapan membutuhkan keterbukaan lebih jauh, sediakan jalur yang lebih privat dan jelaskan batas privasinya.
           </p>
         </div>
 
@@ -258,10 +258,10 @@ export const IndonesianNuancesView: React.FC = () => {
             <ShieldCheck size={20} />
           </div>
           <h3 className="font-serif text-lg font-semibold text-stone-100">
-            2. Privasi dan Kekhawatiran Dinilai
+            2. Siapa yang Ikut Memengaruhi Keputusan?
           </h3>
           <p className="text-xs text-stone-300 leading-relaxed font-sans">
-            Jangan menyimpulkan kondisi kesehatan mental pembaca dari jauh. Istilah seperti depresi dapat dibahas sebagai informasi, tanpa menjadikannya penilaian terhadap harga diri seseorang.
+            Keluarga, teman, komunitas, dan keyakinan dapat menjadi sumber dukungan, tekanan, atau keduanya sekaligus. Jangan menganggap keterlibatan mereka selalu membantu atau selalu menghambat. Beri pembaca pilihan tentang siapa yang ingin mereka libatkan.
           </p>
         </div>
 
@@ -271,10 +271,10 @@ export const IndonesianNuancesView: React.FC = () => {
             <Scale size={20} />
           </div>
           <h3 className="font-serif text-lg font-semibold text-stone-100">
-            3. Aktivitas Fisik Bersama
+            3. Apa yang Benar-Benar Bisa Diakses?
           </h3>
           <p className="text-xs text-stone-300 leading-relaxed font-sans">
-            Kegiatan bersama dapat menjadi salah satu cara membuka percakapan. Beri peserta pilihan untuk bercerita atau tidak; jangan menganggap kegiatan fisik selalu membuat semua orang nyaman.
+            Jangan menganggap seseorang belum mencari bantuan hanya karena malu atau enggan terbuka. Biaya, jarak, jadwal kerja, transportasi, ketersediaan tenaga, prosedur layanan, dan kekhawatiran soal privasi juga dapat membatasi pilihan. Jika menyarankan layanan, berikan informasi akses yang sudah diverifikasi.
           </p>
         </div>
       </div>

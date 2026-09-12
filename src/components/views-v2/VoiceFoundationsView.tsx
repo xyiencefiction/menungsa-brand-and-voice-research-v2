@@ -11,12 +11,10 @@ import {
   Scale, 
   SlidersHorizontal,
   Eye,
-  AlertCircle,
-  Lock,
-  Globe
+  AlertCircle
 } from 'lucide-react';
 import { ValueSpectrum } from '../charts/ValueSpectrum';
-import { FramingMatrix } from '../charts/FramingMatrix';
+import { ContextCheck } from './ContextCheck';
 import { brandValues } from '../../data';
 
 interface Props {
@@ -36,174 +34,174 @@ interface ValuePillar {
 
 const VALUE_PILLARS: ValuePillar[] = [
   {
-    id: 'V1',
-    title: 'Kesetaraan, Bukan Penghakiman',
-    tagline: 'Equal Footing, Not Judgement',
-    voiceTrait: 'Sapa pembaca tanpa menilai apakah ia cukup kuat, berani, atau pantas dihargai.',
-    positionNote: 'Satu-satunya nilai mutlak tanpa kompromi. Menukarnya demi mengejar interaksi atau viralitas sesaat justru merusak rasa aman pembaca.',
-    boundaryCondition: 'Penilaian risiko medis darurat tetap membutuhkan terminologi yang presisi. Menggambarkan situasi sebagai hal yang berbahaya tidak sama dengan menghakimi pribadi pembaca.',
+    id: "V1",
+    title: "Teman Pembaca yang Baik",
+    tagline: "Teman Pembaca yang Baik",
+    voiceTrait: "Sapa dan temui pembaca di titik mereka berada (meet them where they are). Jangan menilai mereka dari kekuatan, keberanian, atau kepantasan untuk dihargai.",
+    positionNote: "Memberikan rasa aman dan mengurangi kemungkinan pembaca bereaksi secara defensif. Membuat audiens merasa menjadi bagian dari Menungsa, alih-alih merasa sebagai orang luar yang perlu 'diperbaiki' atau 'diubah'.",
+    boundaryCondition: "Prinsip ini tidak berarti menghindari penilaian terhadap risiko, perilaku, atau situasi. Dalam konteks keselamatan, kesehatan, atau kondisi darurat, gunakan bahasa yang akurat dan tegas untuk menjelaskan risiko. Yang dihindari adalah menghakimi pembaca, bukan menyamarkan atau mereduksi realita dan risiko.",
     dos: [
       {
-        example: 'Ini ruang untuk berbicara. Kamu tidak harus menceritakan apa pun jika belum siap.',
-        why: 'Menyapa pembaca dan menjelaskan suasana ruang tanpa membebaninya dengan syarat atau tuntutan.'
+        example: "Ini ruang buat cerita dan ngobrol bareng. Kamu tidak harus cerita apa-apa jika memang belum siap.",
+        why: "Menyapa pembaca dan menjelaskan suasana program tanpa membebaninya dengan syarat atau tuntutan yang mungkin sebelumnya sudah berat (i.e. bercerita)"
       },
       {
-        example: 'Minggu lalu ada tujuh orang yang hadir. Empat di antaranya hanya duduk mendengarkan.',
-        why: 'Menggambarkan fakta yang wajar dan bersahaja alih-alih melabeli jenis pria yang datang.'
+        example: "Minggu lalu, program kami dihadiri oleh tujuh orang. Empat di antaranya lebih banyak mendengarkan.",
+        why: "Menggambarkan fakta atau perilaku yang terlihat tanpa memberi label maupun penilaian terhadap orang yang melakukannya."
       }
     ],
     donts: [
       {
-        example: 'Laki-laki kuat adalah laki-laki yang berani bercerita.',
-        why: 'Menjadikan martabat dan harga diri bersyarat pada tindakan yang sedang diminta.'
+        example: "Laki-laki kuat adalah laki-laki yang berani bercerita.",
+        why: "Mengganti tuntutan “laki-laki harus kuat” dengan tuntutan baru untuk berani bercerita. Bercerita akhirnya menjadi ukuran apakah seseorang cukup “kuat”."
       },
       {
-        example: 'Kamu hebat banget sudah mau terbuka dan meruntuhkan egomu.',
-        why: 'Pujian ini disertai penilaian bahwa pembaca sebelumnya dikuasai ego. Akui keterbukaannya tanpa menilai dirinya.'
+        example: "Kamu hebat karena sudah mau terbuka dan meruntuhkan ego",
+        why: "Memuji keterbukaan sambil mengasumsikan bahwa sebelumnya pembaca dikuasai oleh ego; secara tidak langsung pembaca dapat merasa dihakimi."
       },
       {
-        example: 'Pria sejati tidak takut mengakui luka batinnya.',
-        why: 'Kalimat ini menjadikan keberanian bercerita sebagai syarat untuk disebut laki-laki sejati.'
+        example: "Pria sejati tidak takut mengakui traumanya",
+        why: "Menjadikan keberanian mengakui trauma sebagai ukuran apakah seseorang cukup “sejati” sebagai laki-laki.\n---"
       }
     ]
   },
   {
-    id: 'V2',
-    title: 'Rendah Hambatan untuk Memulai',
-    tagline: 'Easy to Begin / Low Response Cost',
-    voiceTrait: 'Jelaskan apa yang akan terjadi secara transparan sebelum mengajak siapa pun bergabung.',
-    positionNote: 'Rasa malu, kekhawatiran diketahui orang lain, dan ketidakjelasan proses dapat membuat langkah pertama terasa berat. Jelaskan pilihan yang tersedia.',
-    boundaryCondition: 'Pada kondisi krisis darurat (risiko menyakiti diri), gunakan instruksi yang tegas, lugas, dan terarah tanpa keraguan.',
+    id: "V2",
+    title: "Mudah untuk Dimulai",
+    tagline: "Mudah untuk Dimulai",
+    voiceTrait: "Jelaskan secara konkret dan ringkas. Jangan bertele-tele; menambah langkah, istilah, atau tuntutan yang tidak diperlukan..",
+    positionNote: "Kejelasan mengurangi beban untuk memahami, memutuskan, dan mengambil langkah pertama. Audiens lebih mudah merespons ketika proses, pilihan, dan apa yang akan mereka dapatkan terasa jelas dan sederhana.",
+    boundaryCondition: "Pada kondisi krisis atau darurat, gunakan instruksi yang singkat, tegas, dan terarah.",
     dos: [
       {
-        example: 'Selasa pukul 19.00 di ruang belakang. Gratis. Boleh datang tanpa bicara apa-apa, dan boleh pulang kapan saja.',
-        why: 'Contoh ini menyebut waktu, tempat, biaya, dan kebebasan untuk pulang. Tambahkan durasi jika sudah diketahui.'
+        example: "Ruang MENdukung pada Selasa ini pukul 19.00 WIB via Google Meet. Gratis, dan kamu bebas memilih mau bercerita, menguatkan, atau sekadar mendengarkan.",
+        why: "Menjelaskan hal penting–waktu, biaya (cost), tempat–sejak awal dan memberi pilihan yang jelas kepada audiens."
       },
       {
-        example: 'Tidak ada presensi, tidak ada sesi perkenalan wajib keliling lingkaran.',
-        why: 'Menghilangkan kekhawatiran disorot publik sejak kalimat pertama.'
+        example: "Belum siap cerita? Nggak apa-apa. Kamu bisa ikut dulu sebagai pendengar.",
+        why: "Membuat langkah pertama terasa lebih ringan tanpa menuntut keterlibatan tertentu."
       }
     ],
     donts: [
       {
-        example: 'Yuk tumpahkan semua beban hidup yang kamu pendam selama ini!',
-        why: 'Ajakan ini menuntut pembaca langsung menceritakan pengalaman yang pribadi.'
+        example: "Ceritakan semua yang selama ini kamu pendam",
+        why: "Langsung meminta pembaca membuka pengalaman pribadi tanpa memberi ruang untuk menentukan batasnya sendiri."
       },
       {
-        example: 'Ceritakan masalah terberatmu di sini sekarang juga.',
-        why: 'Kalimat ini mendesak pembaca menceritakan hal pribadi sebelum ia siap.'
+        example: "Sebelum ikut, isi formulir lengkap dan ceritakan masalah yang sedang kamu alami.",
+        why: "Menambah tuntutan sebelum audiens sempat merasa aman atau memahami apa yang akan mereka ikuti.\n---"
       }
     ]
   },
   {
-    id: 'V3',
-    title: 'Satu Langkah Nyata yang Masuk Akal',
-    tagline: 'One Actionable Step',
-    voiceTrait: 'Tawarkan satu langkah yang jelas dan realistis. Jelaskan biaya, waktu, serta pilihan untuk berhenti jika memang tersedia.',
-    positionNote: 'Bantu pembaca melihat satu hal yang bisa ia lakukan. Hindari daftar perubahan besar yang sulit dijalankan sekaligus.',
-    boundaryCondition: 'Langkah awal yang ringan adalah jembatan pembuka, bukan pengganti penanganan klinis jika masalah berlanjut.',
+    id: "V3",
+    title: "Satu Langkah Nyata",
+    tagline: "Satu Langkah Nyata",
+    voiceTrait: "Tawarkan satu tindakan yang konkret dan realistis. Jika ada banyak pilihan, bantu pembaca menentukan langkah yang paling masuk akal untuk dilakukan terlebih dahulu.",
+    positionNote: "Terlalu banyak saran sekaligus dapat membuat pembaca bingung atau tidak melakukan apa pun. Satu langkah yang jelas membantu mengubah pemahaman menjadi tindakan.",
+    boundaryCondition: "Tidak semua situasi cukup ditangani dengan satu langkah. Untuk masalah yang kompleks atau berkelanjutan, satu langkah berfungsi sebagai titik awal menuju dukungan atau penanganan berikutnya.",
     dos: [
       {
-        example: 'Langkah pertama biasanya ke puskesmas terdekat, bukan langsung ke psikiater. Katakan di loket: "Saya mau periksa ke dokter umum." Antrean bisa agak ramai, bawalah sesuatu untuk dibaca.',
-        why: 'Satu tindakan nyata, kalimat persis yang harus diucapkan di loket, dan hambatan antrean disebutkan jujur di awal.'
+        example: "Kalau belakangan kamu merasa kewalahan, coba pilih satu orang yang cukup kamu percaya dan bilang, ‘Gue pusing nih, ayok nongkrong?",
+        why: "Memberikan satu tindakan konkret yang bisa langsung dicoba, termasuk cara sederhana untuk memulainya."
       },
       {
-        example: 'Malam ini, coba rapikan satu sudut meja kerjamu.',
-        why: 'Ada satu tindakan dengan awal dan akhir yang jelas.'
+        example: "Sebelum tidur malam ini, coba catat satu hal yang paling menguras energimu hari ini.",
+        why: "Mengubah ajakan untuk lebih memahami diri menjadi satu tindakan kecil dengan awal dan akhir yang jelas."
       }
     ],
     donts: [
       {
-        example: 'Jangan ragu mencari bantuan profesional dan segera ubah pola hidupmu!',
-        why: 'Ajakan ini belum menjelaskan bantuan apa yang tersedia dan cara mengaksesnya.'
+        example: "Mulai olahraga rutin, tidur cukup, makan lebih sehat, kurangi media sosial, coba journaling, dan jangan ragu mencari bantuan profesional.",
+        why: "Memberikan terlalu banyak tindakan sekaligus tanpa membantu pembaca menentukan mana yang perlu dilakukan terlebih dahulu."
       },
       {
-        example: 'Ubah pola pikirmu sekarang dan tata ulang seluruh hidupmu dari nol!',
-        why: 'Tuntutan abstrak yang memicu rasa putus asa bagi orang yang energinya sudah terkuras.'
+        example: "Mulai sekarang, kamu perlu menata ulang hidup dan mengubah pola pikirmu.",
+        why: "Meminta perubahan besar tanpa memberi satu tindakan konkret yang dapat dilakukan.\n---"
       }
     ]
   },
   {
-    id: 'V4',
-    title: 'Mulai dari yang Tampak Nyata',
-    tagline: 'Start from What is Visible / Specific Before Emotional',
-    voiceTrait: 'Gunakan detail situasi konkret yang menghadirkan emosi secara alami; jangan jadikan pengakuan emosi sebagai tiket masuk.',
-    positionNote: 'Detail sehari-hari dapat membantu pembaca mengenali situasinya. Beri ruang baginya untuk menamai perasaannya sendiri.',
-    boundaryCondition: 'Situasi yang digambarkan tidak boleh terlalu sempit hingga mengecualikan pembaca. Pilih situasi yang jamak dialami pria sehari-hari.',
+    id: "V4",
+    title: "Mulai dari yang Terlihat",
+    tagline: "Mulai dari yang Terlihat",
+    voiceTrait: "Mulailah dari situasi, kebiasaan, atau perubahan yang bisa dikenali pembaca. Tunjukkan apa yang terjadi terlebih dahulu. Jangan langsung menyimpulkan apa yang mereka rasakan, pikirkan, atau alami.",
+    positionNote: "Seseorang sering lebih mudah mengenali apa yang berubah dalam kesehariannya sebelum bisa menjelaskan apa yang sedang ia rasakan. Mulai dari hal yang bisa ia lihat atau alami langsung, lalu beri ruang baginya untuk menghubungkan pola tersebut dan menamai perasaannya sendiri.",
+    boundaryCondition: "Situasi konkret tetap perlu beragam dan sesuai konteks. Jangan menganggap satu kebiasaan atau pengalaman mewakili semua laki-laki.",
     dos: [
       {
-        example: 'Jam tiga pagi, lampu kamar sudah mati, tapi kamu masih membuka aplikasi bank untuk mengecek saldo.',
-        why: 'Situasi nyata yang langsung ia kenali tanpa perlu mengakui kepada orang lain bahwa ia sedang cemas.'
+        example: "Sudah lewat jam tiga pagi. Lampu kamar mati, tapi kamu masih buka aplikasi bank dan mengecek saldo lagi.",
+        why: "Memulai dari situasi yang bisa dikenali tanpa langsung menyimpulkan apa yang sedang dirasakan atau dipikirkan pembaca."
       },
       {
-        example: 'Perubahan kecil dalam keseharian yang mungkin baru kamu sadari.',
-        why: 'Urutan bertahap: ia bisa membaca keseluruhan tulisan sebelum memutuskan apakah tulisan ini tentang dirinya.'
+        example: "Belakangan, chat makin sering menumpuk, jam makan sering kali terlewat, dan alarm pagi lebih sering kalah dengan \"ah mending tidur lagi\".",
+        why: "Menunjukkan perubahan dalam keseharian terlebih dahulu agar pembaca bisa mengenali polanya sebelum memberi nama pada pengalamannya sendiri."
       }
     ],
     donts: [
       {
-        example: '5 Tanda Kamu Sedang Mengalami Depresi Berat dan Putus Asa.',
-        why: 'Langsung mendiagnosis pembaca di posisi paling rentan, tepat pada slide pertama atau judul tulisan.'
+        example: "Kalau belakangan kamu jadi lebih sering menghindar dari orang lain dan rasanya nggak punya tenaga buat ngapa-ngapain, berarti kamu depresi.",
+        why: "Terlalu cepat menyimpulkan apa yang sedang dialami pembaca hanya dari beberapa perubahan yang kelihatan."
       },
       {
-        example: 'Kamu pasti merasa hampa, kesepian, dan gagal sebagai pria, kan?',
-        why: 'Kalimat ini menebak perasaan pembaca dan mendesaknya untuk membenarkan tebakan itu.'
+        example: "Kalau gini, kamu pasti merasa hampa, kesepian, dan gagal sebagai laki-laki, kan?",
+        why: "Menentukan perasaan dan pikiran pembaca sebelum memberi mereka ruang untuk mengenali dan menamainya sendiri.\n---"
       }
     ]
   },
   {
-    id: 'V5',
-    title: 'Jujur & Terbuka tentang Batasan',
-    tagline: 'Clear About the Limits / Calibrated Uncertainty',
-    voiceTrait: 'Sesuaikan klaim dengan bukti yang tersedia. Sampaikan informasi layanan yang sudah diverifikasi secara jelas.',
-    positionNote: 'Dalam 14 dokumen yang ditelaah, tidak ditemukan eksperimen acak yang menguji pilihan kata pada laki-laki dewasa Indonesia. Contoh di sini merupakan usulan penerapan, bukan kalimat yang terbukti efektif.',
-    boundaryCondition: 'Jelaskan ketidakpastian riset dengan singkat. Untuk bantuan darurat, berikan langkah yang jelas dan informasi layanan yang sudah diverifikasi.',
+    id: "V5",
+    title: "Jelas Soal Keterbatasan",
+    tagline: "Jelas Soal Keterbatasan",
+    voiceTrait: "Sampaikan informasi sesuai tingkat kepastian yang tersedia. Bedakan apa yang sudah diketahui, apa yang masih berupa kemungkinan, dan apa yang belum diketahui. Jangan mengklaim lebih dari bukti atau kapasitas yang Menungsa miliki.",
+    positionNote: "Dengan jujur dan terbuka menjelaskan apa yang sudah diketahui, apa yang belum diketahui, dan apa yang belum bisa dilakukan, audiens dapat memahami informasi yang diterima dengan lebih jelas dan akurat.",
+    boundaryCondition: "Tidak semua ketidakpastian perlu dijelaskan panjang lebar. Sesuaikan dengan pentingnya informasi dan risiko jika terjadi kesalahpahaman. Dalam situasi darurat, prioritaskan langkah yang jelas dan informasi layanan yang sudah diverifikasi.",
     dos: [
       {
-        example: 'Sebagian laki-laki merasa lebih enteng setelah bercerita. Sebagian lagi tidak. Dalam korpus yang ditelaah, pilihan kalimatnya belum diuji pada laki-laki dewasa Indonesia.',
-        why: 'Menyebutkan keterbatasan pengetahuan tanpa membuat janji hasil yang pasti.'
+        example: "Bercerita bisa membantu sebagian orang, tetapi pengalaman dan dampaknya bisa berbeda-beda.",
+        why: "Menyampaikan kemungkinan manfaat tanpa menjanjikan hasil yang pasti atau berlaku untuk semua orang."
       },
       {
-        example: 'Untuk dukungan psikologis, periksa akses layanan di Healing119.id. Jika ada bahaya segera, cari bantuan darurat atau minta orang yang kamu percaya menemanimu ke IGD terdekat.',
-        why: 'Memberikan langkah rujukan dan jalur darurat tanpa menjanjikan jam operasional yang belum diverifikasi.'
+        example: "Menungsa belum menyediakan layanan krisis 24 jam. Kalau kamu butuh bantuan segera, cari layanan darurat atau pergi ke fasilitas kesehatan terdekat bersama orang yang kamu percaya.",
+        why: "Menjelaskan dengan terbuka apa yang belum bisa Menungsa lakukan, sambil tetap memberi langkah yang jelas saat keselamatan menjadi prioritas."
       }
     ],
     donts: [
       {
-        example: 'Metode ini terbukti 100% ampuh mengatasi krisis mental seluruh pria Indonesia.',
-        why: 'Belum ada riset kalimat komparatif di Indonesia, sehingga klaim mutlak seperti ini tidak etis dan merusak integritas.'
+        example: "Bercerita terbukti membuat laki-laki merasa lebih baik.",
+        why: "Terdengar terlalu pasti, seolah hasilnya akan sama untuk semua orang."
       },
       {
-        example: 'Mungkin kamu bisa coba menghubungi layanan darurat, siapa tahu bisa sedikit membantu.',
-        why: 'Ragu-ragu pada momen krisis paling berbahaya; instruksi darurat harus disampaikan secara lugas dan pasti.'
+        example: "Kalau situasinya dirasa darurat, mungkin kamu bisa coba mencari bantuan profesional kalau merasa perlu.",
+        why: "Terlalu ragu untuk situasi yang justru membutuhkan arahan yang jelas.\n---"
       }
     ]
   },
   {
-    id: 'V6',
-    title: 'Tindakan Nyata, Bukan Tuntutan Moral',
-    tagline: 'Action, Not Demands / Lead by Practice',
-    voiceTrait: 'Jelaskan tindakan dan komitmen Menungsa secara konkret. Jika menyatakan sikap, sebutkan langkah yang menyertainya.',
-    positionNote: 'Menceramahi publik dengan tuntutan moral ("laki-laki harus...") memicu penolakan batin (reactance). Tunjukkan apa yang organisasi lakukan secara nyata, bukan apa yang pembaca harus ubah.',
-    boundaryCondition: 'Sikap organisasi tetap perlu jelas. Hubungkan sikap itu dengan tindakan yang dapat diperiksa.',
+    id: "V6",
+    title: "Tunjukkan Tindakan, Bukan Tuntutan",
+    tagline: "Tunjukkan Tindakan, Bukan Tuntutan",
+    voiceTrait: "Jelaskan secara konkret apa yang Menungsa lakukan, pilih, atau ubah. Saat menyatakan nilai atau sikap, tunjukkan bagaimana hal itu diterapkan dalam tindakan.",
+    positionNote: "Mengatakan apa yang “seharusnya” dilakukan orang lain (misalnya, “laki-laki harus...”) dapat terasa seperti tekanan terhadap kebebasan mereka untuk memilih, sehingga memicu sikap defensif atau penolakan. Menunjukkan apa yang Menungsa lakukan sendiri memberi contoh tanpa memaksa dan membuat sikap lebih nyata lewat praktiknya.",
+    boundaryCondition: "Ada situasi ketika Menungsa perlu menyampaikan batas atau sikap dengan tegas, terutama terkait keselamatan, kekerasan, diskriminasi, atau tindakan yang merugikan orang lain. Dalam situasi seperti ini, ketegasan tetap perlu diikuti dengan penjelasan tentang apa yang akan Menungsa lakukan atau batas apa yang akan Menungsa pegang.",
     dos: [
       {
-        example: 'Kami sedang menyusun informasi layanan kesehatan mental di beberapa wilayah. Daftar ini akan memuat fasilitas yang telah diverifikasi dan tanggal pemeriksaan terakhir.',
-        why: 'Pesan berfokus pada hambatan layanan dan tindakan organisasi untuk menanganinya.'
+        example: "Kami ingin Ruang MENdukung menjadi tempat yang aman untuk bercerita. Karena itu, sebelum sesi dimulai, setiap peserta menyepakati aturan mengobrol dan kerahasiaan bersama.",
+        why: "Menunjukkan bagaimana nilai “ruang aman” diterapkan lewat aturan dan kebiasaan yang jelas."
       },
       {
-        example: 'Kami menolak kerja sama iklan produk suplemen di kanal ini, meskipun itu berarti kami kehilangan pemasukan sponsor.',
-        why: 'Sikap organisasi disertai konsekuensi yang bersedia ditanggung. Gunakan hanya jika keputusan ini benar-benar dibuat.'
+        example: "Kami tidak akan membagikan cerita peserta ke publik tanpa izin. Kalau ada bagian yang ingin digunakan, kami akan meminta persetujuan terlebih dahulu.",
+        why: "Menunjukkan komitmen lewat tindakan yang jelas, bukan hanya lewat pernyataan."
       }
     ],
     donts: [
       {
-        example: 'Laki-laki Indonesia harus berhenti gengsi dan sadar kesehatan mental!',
-        why: 'Mengkambinghitamkan pembaca secara kolektif dengan kalimat perintah yang memicu resistensi batin.'
+        example: "Kalau kesehatan mental laki-laki mau membaik, laki-laki harus mulai terbuka dan berhenti gengsi.",
+        why: "Menuntut audiens untuk berubah tanpa menunjukkan apa yang Menungsa lakukan untuk membantu menciptakan perubahan tersebut."
       },
       {
-        example: 'Sudah saatnya kita semua peduli pada kesehatan jiwa!',
-        why: 'Ajakan ini belum menyebut siapa yang akan bertindak dan apa yang akan dilakukan.'
+        example: "Menungsa berkomitmen menciptakan ruang aman untuk semua laki-laki.",
+        why: "Menyatakan nilai yang baik, tetapi belum menunjukkan tindakan atau praktik yang membuat ruang tersebut lebih aman.\n---"
       }
     ]
   }
@@ -290,119 +288,8 @@ const PLAYBOOK_ITEMS: PlaybookItem[] = [
   }
 ];
 
-interface FramingInsight {
-  id: 'therapy' | 'skincare' | 'fitness' | 'parenting';
-  title: string;
-  category: string;
-  publicGaze: {
-    threatLevel: string;
-    threatColor: string;
-    culturalContext: string;
-    writingStrategy: string;
-    exampleDo: string;
-    exampleDont: string;
-  };
-  privateGaze: {
-    threatLevel: string;
-    threatColor: string;
-    culturalContext: string;
-    writingStrategy: string;
-    exampleDo: string;
-    exampleDont: string;
-  };
-}
-
-const FRAMING_INSIGHTS: Record<'therapy' | 'skincare' | 'fitness' | 'parenting', FramingInsight> = {
-  therapy: {
-    id: 'therapy',
-    title: 'Terapi Psikologis & Konseling',
-    category: 'Perilaku yang dianggap rentan',
-    publicGaze: {
-      threatLevel: 'Sangat sensitif terhadap sorotan sosial',
-      threatColor: 'text-rose-400 bg-rose-500/10 border-rose-500/30',
-      culturalContext: 'Di ruang publik, sebagian pria dapat merasa lebih berisiko dinilai ketika membicarakan masalah psikologis—misalnya dianggap "lemah", "tidak mampu mengurus diri", atau "kurang beriman". Karena itu, ajakan untuk membuka pengalaman pribadi secara terbuka dapat memicu resistensi.',
-      writingStrategy: 'Bingkai pesan melalui manfaat yang konkret, seperti mengelola stres kerja atau memulihkan fokus. Hindari meminta orang membagikan pengalaman pribadi di kolom komentar. Jika ingin mengajak mereka bercerita, arahkan ke kanal privat yang mudah diakses.',
-      exampleDo: 'Konsultasi privat untuk membantu mengelola beban pikiran dan kembali fokus, tanpa perlu membagikannya di ruang publik.',
-      exampleDont: 'Berani jujur? Ceritakan luka dan masalah mentalmu di kolom komentar.'
-    },
-    privateGaze: {
-      threatLevel: 'Relatif aman & privat',
-      threatColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
-      culturalContext: 'Percakapan privat dapat mengurangi sorotan sosial, tetapi belum tentu langsung terasa aman bagi setiap orang. Jelaskan batas privasi dengan jelas dan hormati pilihan orang untuk belum bercerita.',
-      writingStrategy: 'Gunakan bahasa yang tenang. Tanggapi cerita tanpa menilai keberanian, kekuatan, atau harga diri orang yang bercerita.',
-      exampleDo: 'Ini ruang privat. Kamu tidak harus langsung bercerita jika belum siap. Kita bisa mulai dari apa yang sedang paling mengganjal hari ini.',
-      exampleDont: 'Kalau kamu serius ingin pulih, kamu harus berani membongkar rahasiamu sekarang tanpa ragu.'
-    }
-  },
-  skincare: {
-    id: 'skincare',
-    title: 'Skincare & Perawatan Diri',
-    category: 'Perawatan Diri & Kebersihan',
-    publicGaze: {
-      threatLevel: 'Perlu kehati-hatian sosial',
-      threatColor: 'text-amber-400 bg-amber-500/10 border-amber-500/30',
-      culturalContext: 'Dalam sebagian konteks sosial, perawatan kulit masih sering dikaitkan dengan norma gender tertentu. Jangan berasumsi semua pembaca merasa canggung atau memiliki kekhawatiran yang sama.',
-      writingStrategy: 'Jelaskan fungsi produk dan cara penggunaannya secara konkret. Hindari janji hasil yang berlebihan atau belum jelas dasarnya.',
-      exampleDo: 'Sabun pembersih untuk mengangkat debu jalanan dan minyak setelah seharian di jalan, tanpa rasa perih atau licin.',
-      exampleDont: 'Biar tetap kelihatan segar dan makin menarik, cowok juga wajib punya skincare routine.'
-    },
-    privateGaze: {
-      threatLevel: 'Pilihan mandiri & privat',
-      threatColor: 'text-sky-400 bg-sky-500/10 border-sky-500/30',
-      culturalContext: 'Jelaskan kegunaan produk dan langkah pemakaian agar pembaca bisa menilai kesesuaiannya dengan kebutuhan sendiri.',
-      writingStrategy: 'Gunakan panduan langkah demi langkah yang ringkas. Jelaskan bahan aktif dan manfaatnya secara singkat, jelas, dan tidak bertele-tele.',
-      exampleDo: 'Dua langkah simpel sehabis mandi: bersihkan muka, lalu pakai pelembap tabir surya sebelum keluar rumah.',
-      exampleDont: 'Treatment 10 langkah kecantikan pria modern agar tampil paripurna sepanjang hari.'
-    }
-  },
-  parenting: {
-    id: 'parenting',
-    title: 'Pengasuhan Anak & Keterlibatan Domestik',
-    category: 'Pengasuhan & Keterlibatan Domestik',
-    publicGaze: {
-      threatLevel: 'Sorotan peran ganda',
-      threatColor: 'text-sky-400 bg-sky-500/10 border-sky-500/30',
-      culturalContext: 'Di banyak lingkungan urban, keterlibatan ayah dalam pengasuhan makin dihargai. Namun di lingkungan yang lebih tradisional, pria masih bisa dicap "suami takut istri" atau dianggap sekadar "membantu" jika tidak dibingkai secara bermartabat.',
-      writingStrategy: 'Gambarkan ayah sebagai orang tua yang ikut bertanggung jawab dalam pengasuhan sehari-hari.',
-      exampleDo: 'Hadir mendampingi anak belajar menyelesaikan masalah dan mengelola emosinya sejak dini.',
-      exampleDont: 'Suami idaman yang mau bantu-bantu pekerjaan istri dan tidak malu gendong anak di depan umum.'
-    },
-    privateGaze: {
-      threatLevel: 'Refleksi tanggung jawab',
-      threatColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
-      culturalContext: 'Dalam refleksi privat, ayah bisa membawa kecemasan seperti takut belum cukup memenuhi kebutuhan keluarga, rasa bersalah karena waktu kerja yang panjang, atau kebingungan membangun komunikasi dengan anak.',
-      writingStrategy: 'Akui bahwa pengasuhan bisa melelahkan. Berikan contoh percakapan sederhana yang membantu ayah hadir dan mendengarkan anak.',
-      exampleDo: 'Saat pulang kerja dalam keadaan lelah, sepuluh menit mendengarkan ceritanya tanpa memegang ponsel sudah sangat berarti bagi anakmu.',
-      exampleDont: 'Kalau kamu tidak punya waktu untuk anak, jangan mengaku sebagai ayah yang baik.'
-    }
-  },
-  fitness: {
-    id: 'fitness',
-    title: 'Gym & Latihan Beban Fisik',
-    category: 'Aktivitas yang Selaras dengan Norma Maskulin',
-    publicGaze: {
-      threatLevel: 'Diterima secara sosial',
-      threatColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
-      culturalContext: 'Topik latihan fisik umumnya mudah diterima secara sosial ketika ditujukan kepada pria. Namun jebakannya adalah retorika disiplin ekstrem, glorifikasi "alpha", dan ejekan terhadap tubuh atau kemampuan orang lain.',
-      writingStrategy: 'Jelaskan manfaat dan tujuan latihan secara realistis dan berbasis bukti. Hindari mempermalukan bentuk tubuh, kemampuan, atau jeda latihan seseorang.',
-      exampleDo: 'Membangun kekuatan otot dan daya tahan jantung agar tetap bugar mendampingi keluarga hingga usia lanjut.',
-      exampleDont: 'Hancurkan rasa malasmu, cowok lembek tidak punya masa depan di dunia yang keras ini!'
-    },
-    privateGaze: {
-      threatLevel: 'Pemulihan mandiri',
-      threatColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
-      culturalContext: 'Secara personal, pria bisa bergulat dengan rasa malu karena berat badan, cedera lama, atau kelelahan berkepanjangan akibat beban kerja dan latihan.',
-      writingStrategy: 'Akui kebutuhan untuk beristirahat dan pulih. Hindari membingkai jeda latihan sebagai kegagalan pribadi.',
-      exampleDo: 'Ketika sendi terasa nyeri atau badan demam, istirahat adalah keputusan yang cerdas, bukan kegagalan disiplin.',
-      exampleDont: 'Kalau serius ingin berkembang, jangan jadikan capek atau nyeri sebagai alasan untuk berhenti latihan.'
-    }
-  }
-};
-
 export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
   const [activeValueId, setActiveValueId] = useState<string>('V1');
-  const [selectedAction, setSelectedAction] = useState<'therapy' | 'skincare' | 'fitness' | 'parenting'>('therapy');
-  const [isPublicGaze, setIsPublicGaze] = useState<boolean>(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const categories = [
@@ -451,18 +338,18 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
         <div className="relative z-10 flex items-center justify-start">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-stone-950/70 backdrop-blur-md border border-stone-700/60 text-xs font-medium text-amber-300 shadow-xs">
             <Sparkles size={13} className="text-amber-400" />
-            <span className="tracking-wide">Panduan Praktis Penulis &amp; Kreator</span>
+            <span className="tracking-wide">Panduan Menulis di Menungsa</span>
           </div>
         </div>
 
         {/* Middle Stage: Editorial Headline & Actions */}
         <div className="relative z-10 my-4 sm:my-6 space-y-4 sm:space-y-5 max-w-2xl">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif font-medium tracking-tight text-stone-100 leading-[1.12]">
-            Cara Menungsa berbicara kepada pembaca
+            Cara Menungsa Berbicara dan Bertutur Kata
           </h1>
 
           <p className="text-sm sm:text-base md:text-lg leading-relaxed text-stone-200/90 font-sans max-w-xl text-balance">
-            Menungsa berbicara dengan nada <strong className="text-stone-100 font-semibold">tenang, jujur, membumi, dan tidak menggurui</strong>. Hadir sebagai pendamping yang menghormati kedaulatan dan martabat pembaca.
+            Menungsa berbicara dengan mengandalkan apa yang telah menjadi kekuatan pembaca, bukan memaksakan standar ideal baru. Kami mendampingi pria dewasa Indonesia mengenali perasaan, mencari dukungan yang masuk akal, dan menghadapi krisis—tanpa rasa bersalah, tuntutan kosong, atau ancaman harga diri.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -470,20 +357,20 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
               onClick={() => onNavigate('studio')}
               className="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-semibold text-xs sm:text-sm transition-all shadow-raised flex items-center gap-2 cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
             >
-              <span>Lihat contoh naskah</span>
+              <span>Contoh penulisan</span>
               <ArrowRight size={15} />
             </button>
             <button
               onClick={() => onNavigate('sandbox')}
               className="px-5 py-3 rounded-xl bg-stone-900/80 hover:bg-stone-800/90 text-stone-200 border border-stone-700/70 backdrop-blur-md font-medium text-xs sm:text-sm transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
             >
-              <span>Periksa draf</span>
+              <span>Cek tulisanmu</span>
             </button>
             <button
               onClick={() => onNavigate('lexicon')}
               className="hidden sm:inline-flex px-4 py-3 rounded-xl bg-stone-950/50 hover:bg-stone-900/70 text-stone-300 border border-stone-800/80 backdrop-blur-md text-xs sm:text-sm transition-all cursor-pointer"
             >
-              <span>Pilihan Kata</span>
+              <span>Pemilihan kata</span>
             </button>
           </div>
         </div>
@@ -496,7 +383,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
             Enam prinsip menulis Menungsa
           </h2>
           <p className="text-xs md:text-sm text-stone-400 mt-1 font-sans">
-            Prinsip ini menggabungkan temuan riset, pertimbangan editorial, dan nilai Menungsa. Contoh kalimatnya belum diuji pada pembaca Indonesia.
+            Prinsip ini menggabungkan temuan riset, pertimbangan editorial, dan nilai Menungsa. Contoh kalimatnya merupakan usulan penerapan untuk pembaca Indonesia.
           </p>
         </div>
 
@@ -518,29 +405,44 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
               {VALUE_PILLARS.map((val, idx) => {
                 const Icon = valueIcons[idx % valueIcons.length];
                 const isSelected = val.id === activeValueId;
+
                 return (
                   <button
                     key={val.id}
                     role="tab"
-                    id={`tab-value-${val.id}`}
+                    id={`tab-${val.id}`}
                     aria-selected={isSelected}
-                    aria-controls="panel-value-detail"
+                    aria-controls={`panel-${val.id}`}
                     onClick={() => setActiveValueId(val.id)}
-                    className={`p-3 sm:p-3.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-start gap-1.5 h-full ${
+                    className={`text-left p-3 sm:p-3.5 rounded-xl border transition-all duration-200 cursor-pointer flex flex-col justify-between group h-full ${
                       isSelected
-                        ? 'border-amber-500/70 bg-amber-500/10 text-stone-100 shadow-raised ring-1 ring-amber-500/40'
-                        : 'border-stone-800 bg-stone-900/40 text-stone-400 hover:border-stone-700 hover:text-stone-200'
+                        ? 'bg-amber-500/10 border-amber-500/80 shadow-[0_0_20px_rgba(245,158,11,0.15)] ring-1 ring-amber-500/30'
+                        : 'bg-stone-900/50 hover:bg-stone-900 border-stone-800/80 hover:border-stone-700/80'
                     }`}
                   >
-                    <div className="flex items-start gap-2 mb-0.5">
-                      <Icon size={16} className={`shrink-0 mt-0.5 ${isSelected ? 'text-amber-500' : 'text-stone-400'}`} />
-                      <div className="font-serif text-sm font-semibold text-stone-100 leading-snug">
-                        {val.title}
+                    <div className="flex items-center justify-between gap-2 w-full">
+                      <div className="flex items-center gap-2">
+                        <span className={`text-[11px] font-mono font-bold px-1.5 py-0.5 rounded ${
+                          isSelected ? 'bg-amber-500 text-stone-950' : 'bg-stone-800 text-stone-300 group-hover:text-stone-200'
+                        }`}>
+                          {val.id}
+                        </span>
+                        <span className={`text-xs font-serif font-semibold leading-snug line-clamp-1 ${
+                          isSelected ? 'text-amber-200' : 'text-stone-200 group-hover:text-stone-100'
+                        }`}>
+                          {val.title}
+                        </span>
                       </div>
+                      <Icon
+                        size={15}
+                        className={`shrink-0 ${
+                          isSelected ? 'text-amber-400' : 'text-stone-500 group-hover:text-stone-400'
+                        }`}
+                      />
                     </div>
-                    <div className="text-[11px] sm:text-[11.5px] text-stone-400 pl-6 leading-relaxed font-sans">
+                    <p className="text-[11px] text-stone-400 font-sans mt-2 line-clamp-2 leading-relaxed">
                       {val.voiceTrait}
-                    </div>
+                    </p>
                   </button>
                 );
               })}
@@ -548,67 +450,84 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Active Value Deep Dive Card */}
+        {/* Deep Dive Section of Selected Value Pillar */}
         {activeValue && (
           <div
             role="tabpanel"
-            id="panel-value-detail"
-            aria-labelledby={`tab-value-${activeValue.id}`}
-            className="rounded-[9px] border border-stone-800 bg-stone-900/60 p-6 md:p-8 space-y-6 shadow-raised"
+            id={`panel-${activeValue.id}`}
+            aria-labelledby={`tab-${activeValue.id}`}
+            className="rounded-2xl border border-stone-800 bg-stone-900/40 p-6 sm:p-8 space-y-6 shadow-xl animate-in fade-in duration-200"
           >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="space-y-3 md:col-span-1 border-b md:border-b-0 md:border-r border-stone-800 pb-4 md:pb-0 md:pr-6">
-                <span className="kicker block">
-                  Prinsip menulis
-                </span>
-                <h3 className="text-2xl font-serif font-semibold text-stone-100 leading-tight">{activeValue.title}</h3>
-                <p className="text-xs text-amber-500/90 font-sans italic">{activeValue.tagline}</p>
-                <p className="text-sm text-stone-300 leading-relaxed font-sans">
-                  {activeValue.voiceTrait}
-                </p>
-                <div className="pt-2">
-                  <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-stone-400 block mb-1">
-                    Mengapa ini penting
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-800/80 pb-4">
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                    {activeValue.id}
                   </span>
-                  <p className="text-xs text-stone-300 bg-stone-950/60 p-3 rounded-[6px] border border-stone-800/80 leading-relaxed font-sans">
+                  <h3 className="text-2xl font-serif font-semibold text-stone-100">
+                    {activeValue.title}
+                  </h3>
+                </div>
+                <p className="text-xs text-stone-400 font-mono mt-1">
+                  {activeValue.tagline}
+                </p>
+              </div>
+
+              <div className="text-xs font-sans text-stone-300 bg-stone-950/60 px-3.5 py-2 rounded-lg border border-stone-800 max-w-md">
+                <span className="font-semibold text-amber-400 font-mono text-[10.5px] uppercase block mb-0.5">
+                  Karakter Suara
+                </span>
+                {activeValue.voiceTrait}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              {/* Left Column: Alasan Nilai */}
+              <div className="lg:col-span-5 space-y-4">
+                <div>
+                  <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-stone-400 mb-2">
+                    Mengapa ini penting
+                  </h4>
+                  <p className="text-sm text-stone-300 leading-relaxed font-sans bg-stone-950/30 p-4 rounded-xl border border-stone-800/60">
                     {activeValue.positionNote}
                   </p>
                 </div>
+
+                <div className="text-xs text-stone-400 bg-stone-950/40 p-3.5 rounded-xl border border-stone-800/80 leading-relaxed font-sans">
+                  <strong className="text-stone-200">Kapan perlu disesuaikan:</strong> {activeValue.boundaryCondition}
+                </div>
               </div>
 
-              <div className="space-y-4 md:col-span-2">
+              {/* Right Column: DO and DON'T */}
+              <div className="lg:col-span-7 space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* DO */}
-                  <div className="rounded-[6px] border border-emerald-500/30 bg-emerald-950/25 p-4 space-y-3">
-                    <div className="flex items-center gap-2 text-emerald-500 dark:text-emerald-400 text-xs font-sans font-bold uppercase tracking-wider">
+                  <div className="rounded-xl border border-emerald-500/30 bg-emerald-950/20 p-4 space-y-3">
+                    <div className="flex items-center gap-2 text-emerald-400 text-xs font-sans font-bold uppercase tracking-wider">
                       <CheckCircle2 size={15} />
-                      <span>Do</span>
+                      <span>DO</span>
                     </div>
                     {activeValue.dos.map((d, i) => (
                       <div key={i} className="text-xs text-stone-200 border-t border-emerald-900/40 pt-2.5 space-y-1">
-                        <div className="font-serif italic text-emerald-800 dark:text-emerald-300 leading-snug">"{d.example}"</div>
+                        <div className="font-serif italic text-emerald-300 leading-snug">"{d.example}"</div>
                         <div className="text-xs text-stone-300 leading-relaxed font-sans">{d.why}</div>
                       </div>
                     ))}
                   </div>
 
                   {/* DON'T */}
-                  <div className="rounded-[6px] border border-amber-700/30 bg-amber-950/25 p-4 space-y-3">
-                    <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400 text-xs font-sans font-bold uppercase tracking-wider">
+                  <div className="rounded-xl border border-rose-500/30 bg-rose-950/20 p-4 space-y-3">
+                    <div className="flex items-center gap-2 text-rose-400 text-xs font-sans font-bold uppercase tracking-wider">
                       <XCircle size={15} />
                       <span>Don't</span>
                     </div>
                     {activeValue.donts.map((d, i) => (
-                      <div key={i} className="text-xs text-stone-200 border-t border-amber-900/40 pt-2.5 space-y-1">
-                        <div className="font-serif italic text-amber-800 dark:text-amber-300 leading-snug">"{d.example}"</div>
+                      <div key={i} className="text-xs text-stone-200 border-t border-rose-900/40 pt-2.5 space-y-1">
+                        <div className="font-serif italic text-rose-300 leading-snug">"{d.example}"</div>
                         <div className="text-xs text-stone-300 leading-relaxed font-sans">{d.why}</div>
                       </div>
                     ))}
                   </div>
-                </div>
-
-                <div className="text-xs text-stone-400 bg-stone-950/40 p-3.5 rounded-[6px] border border-stone-800/80 leading-relaxed font-sans">
-                  <strong className="text-stone-200">Kapan perlu disesuaikan</strong> {activeValue.boundaryCondition}
                 </div>
               </div>
             </div>
@@ -616,109 +535,8 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
         )}
       </section>
 
-      {/* 2x2 Framing Matrix & Behavioral Visibility Context */}
-      <section className="space-y-6">
-        <div>
-          <h2 className="text-xl md:text-2xl font-serif font-bold text-stone-100">
-            Mempertimbangkan norma gender dan ruang publik atau privat
-          </h2>
-          <p className="text-xs md:text-sm text-stone-400 mt-1 font-sans">
-            Model konseptual yang diadaptasi dari Brough dkk. serta White dan Dahl. Penerapannya pada contoh Indonesia adalah usulan editorial, bukan hasil uji pilihan kata di Indonesia.
-          </p>
-        </div>
-
-        {/* 2-Column Desktop Grid: Fitted Chart on Left, Dynamic Guidance on Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-          <div className="lg:col-span-7">
-            <FramingMatrix
-              selectedAction={selectedAction}
-              isPublic={isPublicGaze}
-              onSelectAction={(id) => setSelectedAction(id)}
-              onToggleVisibility={(isPub) => setIsPublicGaze(isPub)}
-            />
-          </div>
-
-          {/* Dynamic Contextual Copywriting Guidance Card (Right Column) */}
-          <div className="lg:col-span-5">
-            {(() => {
-              const insight = FRAMING_INSIGHTS[selectedAction];
-              const gazeInfo = isPublicGaze ? insight.publicGaze : insight.privateGaze;
-              return (
-                <div className="rounded-xl border border-stone-800 bg-stone-950/80 p-4 sm:p-5 space-y-4 shadow-xl">
-                  {/* Card Header */}
-                  <div className="space-y-2 border-b border-stone-800/80 pb-3">
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-[10px] font-mono font-bold uppercase text-amber-500 tracking-wider">
-                          PANDUAN PENULISAN
-                        </span>
-                        <span className="text-stone-500">·</span>
-                        <span className="text-[11px] text-stone-400 font-sans">{insight.category}</span>
-                      </div>
-                      <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono border ${gazeInfo.threatColor}`}>
-                        {gazeInfo.threatLevel}
-                      </span>
-                    </div>
-
-                    <div className="flex items-baseline justify-between gap-2">
-                      <h3 className="text-lg font-serif font-semibold text-stone-100 leading-snug">
-                        {insight.title}
-                      </h3>
-                      <div className="flex items-center gap-1 text-stone-400 text-[11px] font-sans shrink-0">
-                        {isPublicGaze ? <Globe size={12} className="text-rose-400" /> : <Lock size={12} className="text-amber-400" />}
-                        <span>{isPublicGaze ? 'Publik' : 'Privat'}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Context & Strategy */}
-                  <div className="space-y-2.5 text-xs font-sans">
-                    <div>
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-stone-400 block mb-0.5">
-                        Hal yang perlu dipertimbangkan
-                      </span>
-                      <p className="text-stone-300 leading-relaxed">
-                        {gazeInfo.culturalContext}
-                      </p>
-                    </div>
-                    <div className="pt-2 border-t border-stone-800/50">
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-semibold block mb-0.5">
-                        Saran penulisan
-                      </span>
-                      <p className="text-stone-200 leading-relaxed">
-                        {gazeInfo.writingStrategy}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Do & Don't Samples */}
-                  <div className="space-y-2 pt-1 border-t border-stone-800/50">
-                    <div className="rounded-lg bg-emerald-950/25 border border-emerald-500/25 p-2.5 text-xs space-y-1">
-                      <div className="flex items-center gap-1.5 font-bold text-emerald-400 text-[10.5px]">
-                        <CheckCircle2 size={13} />
-                        <span>DO</span>
-                      </div>
-                      <p className="font-serif italic text-emerald-200 leading-snug">
-                        "{gazeInfo.exampleDo}"
-                      </p>
-                    </div>
-
-                    <div className="rounded-lg bg-amber-950/25 border border-amber-700/25 p-2.5 text-xs space-y-1">
-                      <div className="flex items-center gap-1.5 font-bold text-amber-400 text-[10.5px]">
-                        <XCircle size={13} />
-                        <span>DON'T</span>
-                      </div>
-                      <p className="font-serif italic text-amber-200 leading-snug">
-                        "{gazeInfo.exampleDont}"
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })()}
-          </div>
-        </div>
-      </section>
+      {/* New Context Check Component replacing Framing Matrix */}
+      <ContextCheck />
 
       {/* The Golden Do's & Don'ts Playbook */}
       <section className="space-y-6">
@@ -741,7 +559,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
                 onClick={() => setSelectedCategory(c.id)}
                 className={`px-3 py-1 rounded-[6px] text-xs font-sans transition cursor-pointer ${
                   selectedCategory === c.id
-                    ? 'bg-amber-500 text-[#F1ECDF] font-semibold shadow-raised'
+                    ? 'bg-amber-500 text-stone-950 font-semibold shadow-raised'
                     : 'bg-stone-900 border border-stone-800 text-stone-400 hover:text-stone-200 hover:bg-stone-800'
                 }`}
               >
@@ -799,4 +617,3 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
     </div>
   );
 };
-

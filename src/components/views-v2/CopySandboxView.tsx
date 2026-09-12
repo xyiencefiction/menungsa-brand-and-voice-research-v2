@@ -44,23 +44,23 @@ cheatsheet
 const PRESETS = [
   {
     id: 'scolding',
-    label: '1. Contoh ajakan yang menghakimi',
-    text: 'Sebagai pria sejati, kamu wajib sadar bahwa memendam rasa sakit adalah dosa moral dan aib besar. Jangan jadi pengecut yang lari dari tanggung jawab, bertobatlah dan hadapi beban hidupmu sekarang juga!'
+    label: 'Menghakimi',
+    text: 'Kalau kamu benar-benar ingin membaik, kamu harus mulai berani cerita. Terus memilih diam hanya membuatmu semakin jauh dari perubahan, jadi jangan terus lari dari masalah.'
   },
   {
     id: 'cringe',
-    label: '2. Contoh tuntutan maskulinitas',
-    text: 'Bangkitlah wahai para pria alfa! Jangan biarkan dirimu menjadi cowok cemen yang mudah mengeluh. Taklukkan harimu dengan disiplin besi dan buktikan siapa pejantan tangguh sebenarnya di sini.'
+    label: 'Tuntutan Maskulinitas',
+    text: 'Laki-laki kuat bukan yang terus mengeluh, tapi yang tetap jalan meski keadaan berat. Ambil kendali, disiplinkan diri, dan buktikan bahwa masalah tidak lebih kuat dari kamu.'
   },
   {
     id: 'clinical',
-    label: '3. Contoh diagnosis dan desakan bercerita',
-    text: 'Kamu sedang mengalami burnout akut dan trauma masa kecil yang belum sembuh. Jangan pura-pura kuat, segera tumpahkan semuanya, buka lukamu di sini dan konsultasi sekarang sebelum terlambat!'
+    label: 'Diagnosis Berlebihan',
+    text: 'Kalau belakangan kamu susah tidur, sulit fokus, dan mulai menjauh dari orang lain, berarti kamu sedang mengalami burnout atau depresi. Ceritakan semuanya di sini supaya kami bisa tahu apa yang sebenarnya terjadi dan menentukan bantuan yang kamu butuhkan.'
   },
   {
     id: 'calibrated',
-    label: '4. Contoh ajakan yang memberi pilihan',
-    text: 'Langkah pertama tidak harus langsung besar. Duduk sejenak di meja kerja, rapikan catatan tugas, dan nikmati secangkir kopi hangat. Tubuh kita memang butuh jeda sejenak untuk memulihkan tenaga.'
+    label: 'Memberi Pilihan',
+    text: 'Kalau mau mulai dari hal kecil, coba catat satu perubahan yang paling mudah kamu kenali dari beberapa hari terakhir. Kamu nggak harus langsung tahu penyebabnya.'
   }
 ];
 
@@ -215,76 +215,76 @@ export const CopySandboxView: React.FC = () => {
     if (total === 0) {
       return {
         status: 'EMPTY',
-        title: 'Belum ada draf',
-        description: 'Tulis atau tempel draf di kotak naskah, atau pilih contoh untuk mencoba pemeriksaan.',
+        title: 'Coba tulis drafmu di sini dan cek hasilnya',
+        description: 'Tulis atau tempel draf di kotak naskah. Kamu juga bisa memilih salah satu contoh untuk mencoba fitur ini.',
         color: 'text-stone-400',
         bg: 'bg-stone-900/40 border-stone-800',
-        advice: 'Pilih contoh atau masukkan draf yang ingin diperiksa.'
+        advice: 'Belum punya draf? Mulai dari salah satu contoh yang telah disediakan.'
       };
     }
 
     if (moralCount > 0 && density >= 25) {
       return {
         status: 'HIGH_MORAL',
-        title: 'Ada istilah yang perlu diperiksa konteksnya',
-        description: `Terdeteksi ${moralCount} kata bernada sanksi moral/keharusan mutlak. Gaya ini memicu resistensi batin (reactance) seketika pada pembaca pria dewasa.`,
+        title: 'Periksa nada menghakimi',
+        description: 'Ada kata atau frasa yang dapat terdengar seperti kewajiban moral, penilaian, atau tuntutan terhadap pembaca. Maknanya tetap bergantung pada konteks.',
         color: 'text-rose-400',
         bg: 'bg-rose-950/20 border-rose-500/30',
-        advice: 'Periksa apakah kata yang ditandai benar-benar menghakimi atau memaksa. Kata “harus” dan “wajib” juga dapat muncul dalam penjelasan yang tepat.'
+        advice: 'Baca ulang bagian yang ditandai. Jika tidak benar-benar diperlukan, ubah tuntutan menjadi pilihan atau jelaskan alasan di balik arahan tersebut.'
       };
     }
 
     if (cringeCount > 0) {
       return {
         status: 'CRINGE_ALERT',
-        title: 'Ada istilah tentang standar maskulinitas',
-        description: `Terdeteksi ${cringeCount} istilah klise seperti kasta maskulinitas ("alfa", "pejantan", "pria sejati"). Pembaca merasa canggung dan menganggap naskah tidak tulus.`,
+        title: 'Periksa standar maskulinitas',
+        description: 'Ada istilah yang dapat menjadikan kekuatan, status, penampilan, atau pencapaian sebagai ukuran seperti apa laki-laki seharusnya.',
         color: 'text-amber-400',
         bg: 'bg-amber-950/20 border-amber-500/30',
-        advice: 'Periksa apakah kalimat menjadikan ketangguhan, penghasilan, atau pencapaian sebagai ukuran harga diri.'
+        advice: 'Pastikan nilai seseorang tidak ditentukan oleh ketangguhan, penghasilan, penampilan, dominasi, atau label seperti “pria sejati”.'
       };
     }
 
     if (clinicalCount > 0) {
       return {
         status: 'CLINICAL_ALERT',
-        title: 'Ada istilah kesehatan mental',
-        description: `Terdeteksi ${clinicalCount} diagnosis medis atau label psikologis ("depresi", "trauma", "burnout"). Ini berisiko memicu rasa malu sosial (public shame) dicap abnormal.`,
+        title: 'Periksa penggunaan istilah klinis',
+        description: 'Ada istilah kesehatan mental atau diagnosis yang membutuhkan konteks dan tingkat kepastian yang tepat.',
         color: 'text-purple-400',
         bg: 'bg-purple-950/20 border-purple-500/30',
-        advice: 'Pastikan istilah klinis digunakan dengan tepat dan dijelaskan bila perlu. Jangan menghapus istilah diagnosis dari materi edukasi hanya karena ditandai.'
+        advice: 'Pastikan istilah tidak digunakan untuk mendiagnosis pembaca. Jelaskan artinya jika membantu, dan bedakan tanda yang mungkin muncul dari diagnosis yang membutuhkan penilaian profesional.'
       };
     }
 
     if (imperativeCount > 0) {
       return {
         status: 'IMPERATIVE_ALERT',
-        title: 'Ada ajakan yang perlu diperiksa',
-        description: `Terdeteksi ${imperativeCount} pemaksaan pengakuan ("buka hatimu", "tumpahkan semuanya"). Pria cenderung menutup diri jika dipaksa terbuka di ruang umum.`,
+        title: 'Periksa desakan untuk membuka diri',
+        description: 'Ada ajakan yang dapat terdengar menekan pembaca untuk bercerita, mengakui sesuatu, atau membagikan pengalaman pribadi.',
         color: 'text-yellow-200 font-semibold',
         bg: 'bg-yellow-950/20 border-yellow-500/30',
-        advice: 'Periksa apakah ajakan memberi pilihan atau justru mendesak pembaca membagikan hal pribadi.'
+        advice: 'Beri pembaca pilihan tentang apakah, kapan, dan seberapa jauh mereka ingin berbagi. Hindari menjadikan keterbukaan sebagai syarat untuk mendapat dukungan.'
       };
     }
 
     if (recommendedCount > 0 || (moralCount === 0 && cringeCount === 0 && clinicalCount === 0 && imperativeCount === 0)) {
       return {
         status: 'CALIBRATED',
-        title: 'Ada kata yang tercatat sebagai contoh bahasa konkret',
-        description: 'Kecocokan kata belum menunjukkan apakah seluruh naskah sesuai panduan. Baca ulang konteks, klaim, dan ajakannya.',
+        title: 'Ada pola bahasa yang sesuai panduan',
+        description: 'Beberapa kata atau frasa cocok dengan contoh bahasa yang lebih konkret, proporsional, atau memberi pilihan. Ini belum berarti seluruh naskah sudah sesuai.',
         color: 'text-emerald-400',
         bg: 'bg-emerald-950/20 border-emerald-500/30',
-        advice: 'Lanjutkan dengan tinjauan manual sebelum menerbitkan.'
+        advice: 'Tetap periksa konteks, fakta, tingkat kepastian klaim, dan ajakan yang diberikan kepada pembaca.'
       };
     }
 
     return {
       status: 'NEUTRAL',
-      title: 'Tinjau naskah secara utuh',
-      description: 'Tidak banyak istilah yang ditandai. Hasil ini tidak memastikan ketepatan isi atau kesesuaian nada.',
+      title: 'Tidak ada pola utama yang terdeteksi',
+      description: 'Tidak banyak kata atau frasa dalam draf ini yang cocok dengan pola pemeriksaan. Hasil ini belum menilai ketepatan isi atau keseluruhan nada tulisan.',
       color: 'text-stone-300',
       bg: 'bg-stone-900/50 border-stone-800',
-      advice: 'Periksa konteks, fakta, dan pilihan yang diberikan kepada pembaca.'
+      advice: 'Baca ulang naskah secara utuh dan periksa konteks, fakta, asumsi tentang pembaca, serta pilihan yang diberikan.'
     };
   }, [analysis]);
 
@@ -324,13 +324,13 @@ export const CopySandboxView: React.FC = () => {
       <div className="space-y-3">
         <div className="kicker flex items-center gap-1.5">
           <Sliders size={12} className="text-amber-500" />
-          <span>Pemeriksaan kata dan frasa</span>
+          <span>Cek Draf Tulisan</span>
         </div>
         <h1 className="text-3xl md:text-4xl font-serif font-semibold tracking-tight text-stone-100 leading-tight">
-          Lab Uji Draf Naskah & Cheatsheet {cheatsheet.length.toLocaleString('id-ID')}+ Kosakata
+          Periksa Draf sebelum Dipublikasikan
         </h1>
         <p className="text-sm md:text-base text-stone-300 max-w-[74ch] leading-relaxed font-sans">
-          Uji draf naskah Anda secara langsung dengan sistem pendeteksi lebih dari {cheatsheet.length.toLocaleString('id-ID')}+ kata & frasa terkalibrasi. Temukan apakah tulisan Anda berpotensi memicu rasa bersalah (bumerang moral), klise maskulin canggung (cringe), intimidasi klinis, atau sudah selaras dengan gaya membumi Menungsa.
+          Tempel draf tulisan untuk melihat kata atau frasa yang mungkin perlu ditinjau kembali. Pemeriksaan akan menandai bahasa yang berpotensi menghakimi, terlalu memaksa, terlalu klinis, atau kurang sesuai dengan Voice Menungsa; lalu menunjukkan alternatif yang bisa dipertimbangkan.
         </p>
       </div>
 

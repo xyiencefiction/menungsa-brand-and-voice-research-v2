@@ -2,85 +2,85 @@
   {
     "id": "P1",
     "state": "Confused about what is happening to him",
-    "objective": "Reduce uncertainty and supply an accurate, usable model — not 'use masculine language'",
+    "objective": "Membantu pembaca mengenali apa yang berubah dan mendapat orientasi awal tanpa terburu-buru memberi nama atau diagnosis pada pengalamannya.",
     "appraisal": "This is intelligible and someone has a map.",
     "mechanismId": "M03",
     "mechanismName": "Uncertainty Reduction / Structure",
     "emotion": "Curiosity, calm, quiet relief from disorientation",
     "arousal": "LOW",
-    "linguistic": "Everyday description first, clinical term second and optional; one mechanism per piece; short declaratives.",
-    "failureMode": "Diagnosing the reader; stacking clinical jargon; false certainty."
+    "linguistic": "Mulai dari situasi, kebiasaan, atau perubahan yang bisa dikenali. Jelaskan satu hal pada satu waktu dengan bahasa sehari-hari. Gunakan istilah klinis hanya ketika membantu pemahaman dan jelaskan batas maknanya.",
+    "failureMode": "Menjadikan beberapa perubahan sebagai checklist diagnosis, menyimpulkan apa yang sedang dialami pembaca, atau memberikan penjelasan yang lebih pasti daripada bukti yang tersedia."
   },
   {
     "id": "P2",
     "state": "Knows something is wrong; responding would expose him",
-    "objective": "Lower the social and exposure cost of the first move",
+    "objective": "Mengurangi hal-hal yang harus dipertaruhkan pembaca sebelum ia tahu apakah ingin melanjutkan—terutama privasi, keterbukaan pribadi, dan komitmen untuk ikut.",
     "appraisal": "Nobody has to know, and I can stop anytime.",
     "mechanismId": "M01",
     "mechanismName": "Response Cost / Exposure Cost",
     "emotion": "Relief, safety, reduction of defensiveness",
     "arousal": "LOW",
-    "linguistic": "Explicit privacy statements; explicit permission to say nothing; reversible low-threshold action.",
-    "failureMode": "Vagueness disguised as low pressure; a privacy promise the service cannot keep."
+    "linguistic": "Jelaskan siapa yang dapat melihat respons, apa yang akan terjadi, apa yang tidak diwajibkan, dan bagaimana pembaca bisa bertanya atau bergabung secara privat. Berikan pilihan yang mudah dimulai dan, jika berlaku, mudah dibatalkan.",
+    "failureMode": "Menjanjikan privasi atau rasa aman secara mutlak, meminta keterbukaan sebelum memberikan informasi dasar, atau membuat ketertarikan pada bantuan terlihat publik tanpa alasan yang diperlukan."
   },
   {
     "id": "P3",
     "state": "Believes it is entirely his fault and he has failed",
-    "objective": "Describe the situation accurately without supplying a culprit",
+    "objective": "Membantu pembaca melihat bahwa kesulitan tidak selalu dapat dijelaskan sebagai kekurangan pribadi, tanpa mengganti self-blame dengan kambing hitam baru.",
     "appraisal": "That is my exact situation, and they didn't need an enemy to say it.",
     "mechanismId": "M05",
     "mechanismName": "Recognition / Validation",
     "emotion": "Feeling deeply seen; grief surfacing safely without shame",
     "arousal": "MODERATE",
-    "linguistic": "Concrete situational detail over emotion words; second person or unattributed third person; no CTA.",
-    "failureMode": "Grievance amplification; blaming women, feminism, or 'society' as the scapegoat."
+    "linguistic": "Gambarkan kondisi yang relevan—misalnya beban kerja, ekonomi, tanggung jawab keluarga, hubungan, atau akses dukungan—dan hubungkan dengan pengalaman individu secara proporsional. Pisahkan apa yang terjadi dari penilaian tentang nilai dirinya.",
+    "failureMode": "Mengatakan semua masalah adalah kesalahan individu, tetapi juga jatuh ke ekstrem sebaliknya: menyalahkan perempuan, keluarga, masyarakat, atau “sistem” sebagai satu penyebab untuk semua pengalaman."
   },
   {
     "id": "P4",
     "state": "Wants to act, but doesn't know how",
-    "objective": "Provide one available, performable, reversible step",
+    "objective": "Membantu pembaca menemukan satu langkah pertama yang cukup konkret dan realistis untuk dilakukan.",
     "appraisal": "That is small enough to do right now.",
     "mechanismId": "M02",
     "mechanismName": "Agency / Actionability",
     "emotion": "Motivation, calm self-efficacy, relief from paralysis",
     "arousal": "LOW",
-    "linguistic": "One step only; verifiable; cost, time, and friction stated honestly.",
-    "failureMode": "Recommending a step that is not actually available (e.g. 6-hour Puskesmas queues)."
+    "linguistic": "Utamakan satu tindakan pada satu waktu. Jelaskan cara memulainya dan, jika relevan, informasi praktis seperti waktu, biaya, lokasi, dokumen, atau hambatan akses yang sudah diverifikasi.",
+    "failureMode": "Memberikan terlalu banyak pilihan sekaligus, menyarankan langkah yang tidak realistis bagi kondisi pembaca, atau membuat tindakan kecil terdengar seolah pasti menyelesaikan masalah kompleks."
   },
   {
     "id": "P5",
     "state": "Surrounded by peers, but confides in none",
-    "objective": "Make the room and community legible before asking anyone to walk in",
+    "objective": "Menunjukkan bahwa hubungan dan kebersamaan tidak harus dimulai dari keterbukaan pribadi. Buat pembaca tahu bahwa ia dapat hadir atau terhubung tanpa langsung menceritakan masalahnya.",
     "appraisal": "I know exactly what happens if I walk in there.",
     "mechanismId": "M04",
     "mechanismName": "Belonging / Social Identity",
     "emotion": "Warmth, recognition, feeling expected without spotlight",
     "arousal": "LOW",
-    "linguistic": "Describe the physical room and logistics, not the feeling; state that sitting quietly is allowed.",
-    "failureMode": "Asserting fake 'brotherhood'; using 'kita' before a real relationship exists."
+    "linguistic": "Jelaskan bentuk interaksi secara konkret: apa yang dilakukan bersama, seberapa aktif peserta diharapkan terlibat, dan apakah berbicara bersifat pilihan. Gunakan kebersamaan tanpa menjadikannya tuntutan untuk merasa dekat.",
+    "failureMode": "Menganggap kedekatan selalu berarti curhat, menjanjikan “persaudaraan” sebelum rasa percaya terbentuk, atau membuat peserta merasa bahwa diam dan mendengarkan adalah bentuk partisipasi yang lebih rendah."
   },
   {
     "id": "P6",
     "state": "Social standing already under severe strain",
-    "objective": "Preserve adult dignity; do not re-anchor worth to provision",
+    "objective": "Menunjukkan sikap Menungsa melalui tindakan, pilihan, dan praktik yang konkret daripada memberi standar baru tentang bagaimana laki-laki seharusnya hidup.",
     "appraisal": "Engaging here does not cost me my manhood or standing.",
     "mechanismId": "M08",
     "mechanismName": "Status / Dignity / Respect",
     "emotion": "Dignity, calm, absence of shame",
     "arousal": "LOW",
-    "linguistic": "Assume competence; avoid achievement framing; avoid 'real men' or provider pressure.",
-    "failureMode": "Provider framing — annihilating for the men most at risk."
+    "linguistic": "Jelaskan apa yang Menungsa lakukan, ubah, sediakan, atau batasi. Jika menyatakan nilai, hubungkan dengan praktik yang bisa dilihat atau diperiksa.",
+    "failureMode": "Mengganti tuntutan lama dengan tuntutan baru seperti “laki-laki harus lebih terbuka”, menggunakan slogan tanpa tindakan yang mendukungnya, atau menjadikan pembaca sebagai pihak yang selalu perlu diperbaiki."
   },
   {
     "id": "P7",
     "state": "At acute risk / crisis",
-    "objective": "Instruct unambiguously; eliminate ambiguity",
+    "objective": "Memisahkan kebutuhan untuk berhenti atau mengurangi beban sementara dari penilaian tentang kemalasan, kekuatan, atau nilai diri seseorang.",
     "appraisal": "I know exactly what to do right now.",
     "mechanismId": "M03",
     "mechanismName": "Certainty / Gate 2 Action",
     "emotion": "Contained, calm, oriented",
     "arousal": "MODERATE",
-    "linguistic": "Plain, unhedged, no metaphor, no humor, explicit numbers and crisis steps.",
-    "failureMode": "Autonomy-preserving hedging; euphemism; anything requiring interpretive effort."
+    "linguistic": "Akui keterbatasan energi, waktu, dan kapasitas secara konkret. Jika menawarkan jeda, jadikan sebagai pilihan yang realistis tanpa membesar-besarkan manfaatnya atau mengaitkannya dengan kewajiban untuk kembali produktif secepat mungkin.",
+    "failureMode": "Membingkai istirahat sebagai hadiah setelah cukup produktif, mengubah jeda menjadi teknik optimasi performa semata, atau menganggap semua orang memiliki kondisi yang memungkinkan mereka untuk berhenti dengan mudah."
   }
 ]
