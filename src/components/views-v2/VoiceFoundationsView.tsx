@@ -289,14 +289,14 @@ const PLAYBOOK_ITEMS: PlaybookItem[] = [
 ];
 
 const VOICE_TRAITS = [
-  'akrab',
-  'empatik',
-  'mendukung',
-  'reflektif',
-  'tidak menghakimi',
-  'berorientasi pada kekuatan',
-  'hangat',
-  'male-friendly'
+  'Akrab',
+  'Empatik',
+  'Mendukung',
+  'Reflektif',
+  'Tidak Menghakimi',
+  'Berorientasi pada Kekuatan',
+  'Hangat',
+  'Male-Friendly'
 ];
 
 export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
@@ -365,7 +365,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
 
           {/* Unlimited Scrolling Voice Traits Ticker */}
           <div
-            className="w-full max-w-xl overflow-hidden py-1 my-1"
+            className="w-full max-w-xl overflow-hidden py-1.5 my-1 opacity-80 hover:opacity-100 transition-opacity duration-300"
             style={{
               maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
               WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
@@ -375,9 +375,9 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
               {[...VOICE_TRAITS, ...VOICE_TRAITS, ...VOICE_TRAITS, ...VOICE_TRAITS].map((trait, idx) => (
                 <span
                   key={idx}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-sans text-stone-200 bg-stone-900/80 border border-stone-700/60 shadow-xs backdrop-blur-xs whitespace-nowrap select-none"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-[13px] font-serif text-stone-200/90 bg-stone-900/50 border border-stone-700/40 shadow-xs backdrop-blur-xs whitespace-nowrap select-none tracking-wide"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400/80" />
                   <span>{trait}</span>
                 </span>
               ))}
@@ -480,14 +480,14 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
           >
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-800/80 pb-4">
               <div>
+                <span className="text-xs font-sans font-bold tracking-widest uppercase text-amber-400/90 block mb-1">
+                  VALUE {activeValue.id.replace('V', '').padStart(2, '0')}
+                </span>
                 <div className="flex items-center gap-2">
                   <h3 className="text-2xl font-serif font-semibold text-stone-100">
                     {activeValue.title}
                   </h3>
                 </div>
-                <p className="text-xs text-stone-400 font-mono mt-1">
-                  {activeValue.tagline}
-                </p>
               </div>
 
               <div className="text-xs font-sans text-stone-300 bg-stone-950/60 px-3.5 py-2 rounded-lg border border-stone-800 max-w-md">

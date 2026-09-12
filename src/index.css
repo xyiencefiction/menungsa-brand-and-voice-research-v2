@@ -707,7 +707,7 @@ input[type="range"]:disabled {
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 26s linear infinite;
+  animation: marquee 48s linear infinite;
   will-change: transform;
 }
 
