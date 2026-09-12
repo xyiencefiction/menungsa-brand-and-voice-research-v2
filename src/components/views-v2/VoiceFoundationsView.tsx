@@ -288,6 +288,17 @@ const PLAYBOOK_ITEMS: PlaybookItem[] = [
   }
 ];
 
+const VOICE_TRAITS = [
+  'akrab',
+  'empatik',
+  'mendukung',
+  'reflektif',
+  'tidak menghakimi',
+  'berorientasi pada kekuatan',
+  'hangat',
+  'male-friendly'
+];
+
 export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
   const [activeValueId, setActiveValueId] = useState<string>('V1');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -349,8 +360,29 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
           </h1>
 
           <p className="text-sm sm:text-base md:text-lg leading-relaxed text-stone-200/90 font-sans max-w-xl text-balance">
-            Menungsa berbicara dengan mengandalkan apa yang telah menjadi kekuatan pembaca, bukan memaksakan standar ideal baru. Kami mendampingi pria dewasa Indonesia mengenali perasaan, mencari dukungan yang masuk akal, dan menghadapi krisis—tanpa rasa bersalah, tuntutan kosong, atau ancaman harga diri.
+            Menungsa berbicara dengan mengandalkan apa yang telah menjadi kekuatan pembaca, tidak menggurui, serta hadir sebagai sosok yang merangkul dan mendukung.
           </p>
+
+          {/* Unlimited Scrolling Voice Traits Ticker */}
+          <div
+            className="w-full max-w-xl overflow-hidden py-1 my-1"
+            style={{
+              maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+            }}
+          >
+            <div className="animate-marquee gap-2.5 items-center">
+              {[...VOICE_TRAITS, ...VOICE_TRAITS, ...VOICE_TRAITS, ...VOICE_TRAITS].map((trait, idx) => (
+                <span
+                  key={idx}
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-sans text-stone-200 bg-stone-900/80 border border-stone-700/60 shadow-xs backdrop-blur-xs whitespace-nowrap select-none"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                  <span>{trait}</span>
+                </span>
+              ))}
+            </div>
+          </div>
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <button
@@ -414,35 +446,23 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
                     aria-selected={isSelected}
                     aria-controls={`panel-${val.id}`}
                     onClick={() => setActiveValueId(val.id)}
-                    className={`text-left p-3 sm:p-3.5 rounded-xl border transition-all duration-200 cursor-pointer flex flex-col justify-between group h-full ${
+                    className={`text-left p-4 sm:p-5 rounded-xl border transition-all duration-200 cursor-pointer flex items-center justify-between gap-3 group h-full ${
                       isSelected
                         ? 'bg-amber-500/10 border-amber-500/80 shadow-[0_0_20px_rgba(245,158,11,0.15)] ring-1 ring-amber-500/30'
                         : 'bg-stone-900/50 hover:bg-stone-900 border-stone-800/80 hover:border-stone-700/80'
                     }`}
                   >
-                    <div className="flex items-center justify-between gap-2 w-full">
-                      <div className="flex items-center gap-2">
-                        <span className={`text-[11px] font-mono font-bold px-1.5 py-0.5 rounded ${
-                          isSelected ? 'bg-amber-500 text-stone-950' : 'bg-stone-800 text-stone-300 group-hover:text-stone-200'
-                        }`}>
-                          {val.id}
-                        </span>
-                        <span className={`text-xs font-serif font-semibold leading-snug line-clamp-1 ${
-                          isSelected ? 'text-amber-200' : 'text-stone-200 group-hover:text-stone-100'
-                        }`}>
-                          {val.title}
-                        </span>
-                      </div>
-                      <Icon
-                        size={15}
-                        className={`shrink-0 ${
-                          isSelected ? 'text-amber-400' : 'text-stone-500 group-hover:text-stone-400'
-                        }`}
-                      />
-                    </div>
-                    <p className="text-[11px] text-stone-400 font-sans mt-2 line-clamp-2 leading-relaxed">
-                      {val.voiceTrait}
-                    </p>
+                    <span className={`text-base sm:text-lg font-serif font-semibold leading-snug ${
+                      isSelected ? 'text-amber-200' : 'text-stone-200 group-hover:text-stone-100'
+                    }`}>
+                      {val.title}
+                    </span>
+                    <Icon
+                      size={20}
+                      className={`shrink-0 transition-colors ${
+                        isSelected ? 'text-amber-400' : 'text-stone-500 group-hover:text-stone-400'
+                      }`}
+                    />
                   </button>
                 );
               })}
@@ -461,9 +481,6 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-800/80 pb-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">
-                    {activeValue.id}
-                  </span>
                   <h3 className="text-2xl font-serif font-semibold text-stone-100">
                     {activeValue.title}
                   </h3>

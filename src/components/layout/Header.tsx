@@ -34,7 +34,7 @@ export const Header: React.FC<Props> = ({
   }, []);
 
   const primaryTabs: { id: ViewType; label: string; icon: React.ComponentType<{ size: number; className?: string }> }[] = [
-    { id: 'foundations', label: 'Voice & Tone Menungsa', icon: Sparkles },
+    { id: 'foundations', label: 'Menungsa Voice', icon: Sparkles },
     { id: 'studio', label: 'Contoh Penulisan', icon: PenTool },
     { id: 'lexicon', label: 'Pemilihan Kata', icon: BookOpen },
     { id: 'sandbox', label: 'Cek Tulisan', icon: Sliders },

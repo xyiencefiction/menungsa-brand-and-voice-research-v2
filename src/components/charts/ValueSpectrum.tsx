@@ -71,18 +71,10 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect, c
   return (
     <div className={`rounded-xl border border-stone-800 bg-stone-950/90 overflow-hidden shadow-2xl ${className ?? ''}`}>
       {/* Sleek Compact Header */}
-      <header className="px-4 py-2.5 border-b border-stone-800 flex flex-wrap items-center justify-between gap-2 bg-stone-900/40">
-        <div className="flex items-center gap-2">
-          <h3 className="font-serif font-semibold text-stone-100 text-sm md:text-base">
-            Posisi Gaya Komunikasi Menungsa
-          </h3>
-          <span className="px-1.5 py-0.5 rounded font-mono text-[9.5px] uppercase tracking-wider bg-stone-800 text-stone-300 border border-stone-700">
-            Pita Spektrum Nilai
-          </span>
-        </div>
-        <p className="text-stone-400 text-[11px] font-sans">
-          Spektrum Berkelanjutan Antarkutub Nilai
-        </p>
+      <header className="px-4 py-2.5 border-b border-stone-800 flex items-center justify-between gap-2 bg-stone-900/40">
+        <h3 className="font-serif font-semibold text-stone-100 text-sm md:text-base">
+          Spektrum Voice Menungsa
+        </h3>
       </header>
 
       {/* SVG Canvas */}
@@ -302,11 +294,6 @@ export const ValueSpectrum: React.FC<Props> = ({ values, selectedId, onSelect, c
         </div>
       )}
 
-      {/* Footer */}
-      <footer className="px-4 py-1.5 border-t border-stone-800 text-stone-500 text-[10px] font-mono flex items-center justify-between">
-        <span>KOMITMEN SPEKTRUM EDITORIAL MENUNGSA</span>
-        <span className="text-stone-400 hidden sm:inline">KONTINUUM BERKELANJUTAN</span>
-      </footer>
     </div>
   );
 };
