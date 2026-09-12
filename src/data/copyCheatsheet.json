@@ -83400,6 +83400,102 @@
     "replacement": "Jelaskan jadwal dan kapasitas secara transparan tanpa urgensi manipulatif."
   },
   {
+    "term": "tag teman cowokmu yang kelihatannya butuh ke psikolog",
+    "category": "imperative",
+    "categoryLabel": "Ajakan dan desakan",
+    "severity": "critical",
+    "impact": "Mempermalukan atau menandai kondisi orang lain di linimasa publik terbuka.",
+    "replacement": "Sarankan menyimpan postingan atau meneruskan tautan secara personal/privat."
+  },
+  {
+    "term": "pernah merasa gagal sebagai laki-laki",
+    "category": "moral",
+    "categoryLabel": "Penilaian dan tuntutan",
+    "severity": "critical",
+    "impact": "Mendesak pengakuan kegagalan pribadi atau memperkuat standar maskulinitas yang membebani.",
+    "replacement": "Ajak refleksi mengenai topik umum yang aman dibahas bersama."
+  },
+  {
+    "term": "tulis pengalaman terpurukmu di bawah",
+    "category": "imperative",
+    "categoryLabel": "Ajakan dan desakan",
+    "severity": "critical",
+    "impact": "Menjadikan titik terendah atau luka emosional pembaca sebagai tontonan publik.",
+    "replacement": "Fokus pada informasi fungsional tanpa meminta pembongkaran kisah hidup."
+  },
+  {
+    "term": "buktikan kamu berani terbuka dan hadapi rasa takutmu",
+    "category": "cringe",
+    "categoryLabel": "Sebutan dan tuntutan maskulinitas",
+    "severity": "warning",
+    "impact": "Membingkai keterbukaan sebagai ajang uji nyali atau pembuktian kejantanan.",
+    "replacement": "Tawarkan ruang partisipasi yang leluasa dengan opsi anonimitas."
+  },
+  {
+    "term": "wajib mengisi seluruh riwayat masa lalumu",
+    "category": "imperative",
+    "categoryLabel": "Ajakan dan desakan",
+    "severity": "critical",
+    "impact": "Memaksa pembongkaran trauma (trauma-dumping) sebagai syarat mutlak bantuan.",
+    "replacement": "Jelaskan batas kerahasiaan dan biarkan pembaca bercerita sesuai kesiapan."
+  },
+  {
+    "term": "tumpahkan dan tangisi semuanya di sini biar plong",
+    "category": "imperative",
+    "categoryLabel": "Ajakan dan desakan",
+    "severity": "critical",
+    "impact": "Memaksakan katarsis emosional yang justru dapat memicu disosiasi atau ketidaknyamanan.",
+    "replacement": "Beri izin untuk melangkah perlahan dan berhenti kapan saja."
+  },
+  {
+    "term": "kenapa kamu tiba-tiba menghilang",
+    "category": "moral",
+    "categoryLabel": "Penilaian dan tuntutan",
+    "severity": "critical",
+    "impact": "Menghakimi keheningan atau jeda seseorang sebagai bentuk kesalahan.",
+    "replacement": "Kirimkan follow-up santai dan tegaskan tidak ada kewajiban membalas segera."
+  },
+  {
+    "term": "menutup diri dari bantuan tidak akan menyelesaikan masalahmu",
+    "category": "moral",
+    "categoryLabel": "Penilaian dan tuntutan",
+    "severity": "critical",
+    "impact": "Menuduh pembaca bersikap defensif atau keras kepala secara menghakimi.",
+    "replacement": "Tegaskan bahwa pintu bantuan tetap terbuka kapan pun mereka siap."
+  },
+  {
+    "term": "laki-laki sejati bukan yang tahan banting",
+    "category": "cringe",
+    "categoryLabel": "Sebutan dan tuntutan maskulinitas",
+    "severity": "warning",
+    "impact": "Menggunakan klise pria sejati untuk mendefinisikan ulang maskulinitas secara menggurui.",
+    "replacement": "Bingkai istirahat secara instrumental sebagai cara menjaga fungsi tubuh."
+  },
+  {
+    "term": "tunjukkan kejantananmu dengan berani jujur",
+    "category": "cringe",
+    "categoryLabel": "Sebutan dan tuntutan maskulinitas",
+    "severity": "warning",
+    "impact": "Menjadikan kesehatan mental sebagai standar uji maskulinitas baru (machismo inversi).",
+    "replacement": "Posisikan bantuan profesional setara dengan mencari perspektif kedua yang objektif."
+  },
+  {
+    "term": "zaman sekarang cowok jangan sok keras",
+    "category": "cringe",
+    "categoryLabel": "Sebutan dan tuntutan maskulinitas",
+    "severity": "warning",
+    "impact": "Meremehkan mekanisme bertahan hidup pembaca dengan nada merendahkan.",
+    "replacement": "Normalisasi beban situasi sebagai respons wajar yang dialami siapa pun."
+  },
+  {
+    "term": "buang gengsi dan ego toxic masculinity-mu",
+    "category": "moral",
+    "categoryLabel": "Penilaian dan tuntutan",
+    "severity": "critical",
+    "impact": "Menggurui pembaca dengan jargon moralis yang memicu penolakan defensif.",
+    "replacement": "Gunakan bahasa konkret sehari-hari yang memvalidasi realitas pembaca."
+  },
+  {
     "term": "ruang buat cerita dan ngobrol bareng",
     "category": "recommended",
     "categoryLabel": "Contoh bahasa konkret",
@@ -83669,6 +83765,94 @@
     "categoryLabel": "Contoh bahasa konkret",
     "severity": "positive",
     "impact": "Mendorong agensi dan orientasi tindakan yang realistis.",
+    "replacement": "Gaya penulisan Menungsa terkalibrasi."
+  },
+  {
+    "term": "simpan postingan ini jika kamu atau rekanmu butuh",
+    "category": "recommended",
+    "categoryLabel": "Contoh bahasa konkret",
+    "severity": "positive",
+    "impact": "Menyediakan opsi penyimpanan referensi yang diskrit tanpa sorotan sosial.",
+    "replacement": "Gaya penulisan Menungsa terkalibrasi."
+  },
+  {
+    "term": "apa hal yang paling sering membuat seseorang ragu untuk mengambil jeda",
+    "category": "recommended",
+    "categoryLabel": "Contoh bahasa konkret",
+    "severity": "positive",
+    "impact": "Mendorong diskusi berbasis topik objektif yang aman tanpa menuntut pengakuan kegagalan.",
+    "replacement": "Gaya penulisan Menungsa terkalibrasi."
+  },
+  {
+    "term": "opsi nama samaran dan kamera nonaktif demi kenyamanan",
+    "category": "recommended",
+    "categoryLabel": "Contoh bahasa konkret",
+    "severity": "positive",
+    "impact": "Menurunkan social cost dengan menjamin hak privasi dan keleluasaan peserta.",
+    "replacement": "Gaya penulisan Menungsa terkalibrasi."
+  },
+  {
+    "term": "pesan dan identitasmu di kanal ini bersifat rahasia",
+    "category": "recommended",
+    "categoryLabel": "Contoh bahasa konkret",
+    "severity": "positive",
+    "impact": "Menegaskan komitmen kerahasiaan secara transparan di ruang privat.",
+    "replacement": "Gaya penulisan Menungsa terkalibrasi."
+  },
+  {
+    "term": "tidak apa-apa kalau ada hal yang belum ingin kamu bahas",
+    "category": "recommended",
+    "categoryLabel": "Contoh bahasa konkret",
+    "severity": "positive",
+    "impact": "Memberikan izin eksplisit untuk menentukan batas pembicaraan sendiri.",
+    "replacement": "Gaya penulisan Menungsa terkalibrasi."
+  },
+  {
+    "term": "kita bisa berhenti kapan saja",
+    "category": "recommended",
+    "categoryLabel": "Contoh bahasa konkret",
+    "severity": "positive",
+    "impact": "Menghadirkan rasa aman bahwa sesi pembicaraan selalu dalam kendali pembaca.",
+    "replacement": "Gaya penulisan Menungsa terkalibrasi."
+  },
+  {
+    "term": "pesan ini sekadar menyapa berkala",
+    "category": "recommended",
+    "categoryLabel": "Contoh bahasa konkret",
+    "severity": "positive",
+    "impact": "Menjalin kontak pendampingan yang hangat tanpa menuntut balasan segera.",
+    "replacement": "Gaya penulisan Menungsa terkalibrasi."
+  },
+  {
+    "term": "mengambil jeda saat tubuh lelah adalah cara menjaga ritme kerja",
+    "category": "recommended",
+    "categoryLabel": "Contoh bahasa konkret",
+    "severity": "positive",
+    "impact": "Membingkai istirahat secara instrumental sebagai pemeliharaan kapasitas fisik dan mental.",
+    "replacement": "Gaya penulisan Menungsa terkalibrasi."
+  },
+  {
+    "term": "menjaga ritme kerja agar tetap berfungsi optimal",
+    "category": "recommended",
+    "categoryLabel": "Contoh bahasa konkret",
+    "severity": "positive",
+    "impact": "Penjelasan fungsional yang membumi tanpa bumbu heroisme maskulin.",
+    "replacement": "Gaya penulisan Menungsa terkalibrasi."
+  },
+  {
+    "term": "mendiskusikan masalah dengan pihak profesional memberi sudut pandang baru",
+    "category": "recommended",
+    "categoryLabel": "Contoh bahasa konkret",
+    "severity": "positive",
+    "impact": "Menempatkan bantuan profesional sebagai masukan objektif yang masuk akal.",
+    "replacement": "Gaya penulisan Menungsa terkalibrasi."
+  },
+  {
+    "term": "rasa kewalahan atau sedih adalah respons wajar",
+    "category": "recommended",
+    "categoryLabel": "Contoh bahasa konkret",
+    "severity": "positive",
+    "impact": "Menormalisasi respons manusiawi atas situasi berat tanpa label penyakit.",
     "replacement": "Gaya penulisan Menungsa terkalibrasi."
   }
 ]

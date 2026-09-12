@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { Eye, Lock, Globe, CheckCircle2, XCircle, ShieldAlert } from 'lucide-react';
 
+interface DoDontPair {
+  doText: string;
+  doWhy?: string;
+  dontText: string;
+  dontWhy?: string;
+}
+
 interface TabData {
   id: 'public' | 'private' | 'gender';
   label: string;
   title: string;
   description: string;
-  doText: string;
-  dontText: string;
+  pairs: DoDontPair[];
   note: string;
 }
 
@@ -18,8 +24,32 @@ const CONTEXT_TABS: TabData[] = [
     title: 'Ruang publik',
     description:
       'Berikan informasi dan pilihan tanpa meminta pengakuan pribadi. Jika percakapan membutuhkan keterbukaan lebih jauh, arahkan ke jalur yang lebih privat.',
-    doText: 'Kalau belakangan ada yang terasa berbeda, kamu bisa cek beberapa tandanya di slide berikut.',
-    dontText: 'Ceritakan masalah mentalmu di kolom komentar.',
+    pairs: [
+      {
+        doText: 'Kalau belakangan ada yang terasa berbeda, kamu bisa cek beberapa tandanya di slide berikut.',
+        doWhy: 'Memberi informasi dan opsi mandiri tanpa menuntut pembaca mengakui kerentanan diri di ruang terbuka.',
+        dontText: 'Ceritakan masalah mentalmu di kolom komentar.',
+        dontWhy: 'Mendesak pengakuan emosional berisiko tinggi di hadapan publik.',
+      },
+      {
+        doText: 'Simpan postingan ini jika kamu atau rekanmu butuh kontak layanan sewaktu-waktu.',
+        doWhy: 'Menyediakan retensi privat yang diskrit tanpa sorotan sosial.',
+        dontText: 'Tag teman cowokmu yang kelihatannya butuh ke psikolog atau lagi rapuh.',
+        dontWhy: 'Mempermalukan atau menandai kondisi orang lain di linimasa publik.',
+      },
+      {
+        doText: 'Menurutmu, apa hal yang paling sering membuat seseorang ragu untuk mengambil jeda saat lelah?',
+        doWhy: 'Mendorong refleksi berbasis topik umum yang aman dibahas bersama.',
+        dontText: 'Pernah merasa gagal sebagai laki-laki? Tulis pengalaman terpurukmu di bawah.',
+        dontWhy: 'Menjadikan kegagalan atau luka pribadi sebagai tontonan publik.',
+      },
+      {
+        doText: 'Sesi bincang santai ini menyediakan opsi nama samaran dan kamera nonaktif demi kenyamanan.',
+        doWhy: 'Menurunkan social cost dengan menjamin kendali privasi dan anonimitas peserta.',
+        dontText: 'Buktikan kamu berani terbuka dan hadapi rasa takutmu dengan ikut siaran langsung ini.',
+        dontWhy: 'Membingkai keterbukaan sebagai ajang uji nyali atau pembuktian keberanian.',
+      },
+    ],
     note: 'Di ruang publik, tindakan sederhana seperti memberi komentar dapat terasa lebih berisiko karena identitas dan respons seseorang dapat dilihat orang lain.',
   },
   {
@@ -28,8 +58,32 @@ const CONTEXT_TABS: TabData[] = [
     title: 'Ruang privat',
     description:
       'Privat tidak otomatis berarti aman. Jelaskan batas privasi dan beri orang kendali atas seberapa jauh mereka ingin bercerita.',
-    doText: 'Kalau kamu ingin cerita lebih jauh, kamu bisa mulai dari bagian yang terasa nyaman.',
-    dontText: 'Kalau serius ingin pulih, ceritakan semuanya sekarang.',
+    pairs: [
+      {
+        doText: 'Kalau kamu ingin cerita lebih jauh, kamu bisa mulai dari bagian yang terasa nyaman.',
+        doWhy: 'Memberikan agensi penuh kepada pembaca untuk menentukan batas ceritanya sendiri.',
+        dontText: 'Kalau serius ingin pulih, ceritakan semuanya sekarang.',
+        dontWhy: 'Menuntut keterbukaan total dengan prasyarat yang menekan psikologis.',
+      },
+      {
+        doText: 'Pesan dan identitasmu di kanal ini bersifat rahasia dan hanya diakses oleh konselor pendamping.',
+        doWhy: 'Menegaskan batas privasi secara transparan dan profesional sebelum sesi dimulai.',
+        dontText: 'Kamu wajib mengisi seluruh riwayat masa lalumu agar kami bisa memberikan solusi.',
+        dontWhy: 'Memaksa pembongkaran riwayat trauma sebagai syarat mutlak bantuan.',
+      },
+      {
+        doText: 'Tidak apa-apa kalau ada hal yang belum ingin kamu bahas hari ini. Kita bisa berhenti kapan saja.',
+        doWhy: 'Memberikan izin eksplisit untuk jeda dan keluar tanpa rasa bersalah.',
+        dontText: 'Jangan ditahan-tahan, tumpahkan dan tangisi semuanya di sini biar plong.',
+        dontWhy: 'Memaksakan katarsis emosional yang dapat memicu rasa tidak aman atau kewalahan.',
+      },
+      {
+        doText: 'Pesan ini sekadar menyapa berkala. Kamu tidak harus membalas sekarang kalau sedang butuh waktu.',
+        doWhy: 'Follow-up rendah tekanan yang menghormati ritme dan ruang pribadi seseorang.',
+        dontText: 'Kenapa kamu tiba-tiba menghilang? Menutup diri dari bantuan tidak akan menyelesaikan masalahmu.',
+        dontWhy: 'Menghakimi keheningan seseorang sebagai bentuk kesalahan atau pembangkangan.',
+      },
+    ],
     note: 'Ruang privat dapat mengurangi sorotan sosial, tetapi tetap tidak boleh dianggap sebagai izin untuk meminta keterbukaan penuh.',
   },
   {
@@ -38,8 +92,32 @@ const CONTEXT_TABS: TabData[] = [
     title: 'Cek norma gender',
     description:
       'Jika suatu tindakan masih berpotensi dianggap ‘tidak laki-laki’, jangan menjadikan maskulinitas sebagai medan pembuktian. Fokuskan pesan pada kegunaan, pilihan, dan situasinya.',
-    doText: 'Konsultasi bisa membantu kamu memahami apa yang belakangan berubah dan menentukan langkah berikutnya.',
-    dontText: 'Cowok juga boleh kok ke psikolog—nggak usah malu jadi laki-laki yang sensitif.',
+    pairs: [
+      {
+        doText: 'Konsultasi bisa membantu kamu memahami apa yang belakangan berubah dan menentukan langkah berikutnya.',
+        doWhy: 'Fokus pada kegunaan praktis dan kejelasan langkah tanpa membawa beban gender.',
+        dontText: 'Cowok juga boleh kok ke psikolog—nggak usah malu jadi laki-laki yang sensitif.',
+        dontWhy: 'Secara tidak sengaja menegaskan bahwa mencari bantuan adalah anomali bagi laki-laki.',
+      },
+      {
+        doText: 'Mengambil jeda saat tubuh lelah adalah cara menjaga ritme kerja agar tetap berfungsi optimal.',
+        doWhy: 'Membingkai istirahat secara instrumental sebagai pemeliharaan kapasitas harian.',
+        dontText: 'Laki-laki sejati bukan yang tahan banting, tapi yang berani mengakui dirinya rapuh.',
+        dontWhy: 'Menggunakan klise "laki-laki sejati" untuk mendefinisikan ulang maskulinitas secara menggurui.',
+      },
+      {
+        doText: 'Mendiskusikan masalah dengan pihak profesional memberi sudut pandang baru yang objektif.',
+        doWhy: 'Menempatkan konsultasi setara dengan mencari masukan objektif atau second opinion.',
+        dontText: 'Tunjukkan kejantananmu dengan berani jujur soal kesehatan mentalmu.',
+        dontWhy: 'Menjadikan kesehatan mental sebagai standar uji maskulinitas baru.',
+      },
+      {
+        doText: 'Rasa kewalahan atau sedih adalah respons wajar atas situasi berat yang sedang dihadapi siapa pun.',
+        doWhy: 'Menormalisasi beban secara situasional dan manusiawi tanpa menyudutkan pembaca.',
+        dontText: 'Zaman sekarang cowok jangan sok keras; buang gengsi dan ego toxic masculinity-mu.',
+        dontWhy: 'Menggurui dengan jargon moralis yang justru memicu penolakan defensif.',
+      },
+    ],
     note: 'Kalimat seperti ‘cowok juga boleh’ terlihat suportif, tetapi tetap dapat memperkuat anggapan bahwa tindakan tersebut pada dasarnya berada di luar norma laki-laki.',
   },
 ];
@@ -120,7 +198,7 @@ export const ContextCheck: React.FC = () => {
         <div className="rounded-xl border border-stone-800 bg-stone-900/30 p-4 space-y-2">
           <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-stone-300">
             <span className="flex items-center justify-center w-5 h-5 rounded-full bg-stone-800 text-stone-200 text-[10px]">2</span>
-            <span>Cek biaya sosialnya</span>
+            <span>Cek social cost</span>
           </div>
           <p className="text-xs sm:text-sm text-stone-300 leading-relaxed font-sans">
             “Apakah tindakan yang kita ajak masih berpotensi dinilai memalukan, lemah, atau ‘tidak laki-laki’ dalam konteks audiens ini?”
@@ -172,28 +250,52 @@ export const ContextCheck: React.FC = () => {
             <p className="text-xs sm:text-sm text-stone-300 leading-relaxed font-sans">{activeTab.description}</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-            {/* DO */}
-            <div className="rounded-lg bg-emerald-950/20 border border-emerald-500/30 p-3.5 space-y-1.5">
-              <div className="flex items-center gap-1.5 font-bold text-emerald-400 text-xs uppercase tracking-wider">
-                <CheckCircle2 size={14} />
-                <span>DO</span>
-              </div>
-              <p className="font-serif italic text-emerald-200 text-xs sm:text-sm leading-snug">
-                "{activeTab.doText}"
-              </p>
-            </div>
-
-            {/* DON'T */}
-            <div className="rounded-lg bg-rose-950/20 border border-rose-500/30 p-3.5 space-y-1.5">
-              <div className="flex items-center gap-1.5 font-bold text-rose-400 text-xs uppercase tracking-wider">
-                <XCircle size={14} />
-                <span>DON'T</span>
-              </div>
-              <p className="font-serif italic text-rose-200 text-xs sm:text-sm leading-snug">
-                "{activeTab.dontText}"
-              </p>
-            </div>
+          {/* Unified Comparison Table */}
+          <div className="overflow-hidden rounded-xl border border-stone-800 bg-stone-950/70 shadow-raised">
+            <table className="w-full text-left border-collapse table-fixed font-sans text-xs">
+              <thead>
+                <tr className="border-b border-stone-800 bg-stone-900/90">
+                  <th className="w-1/2 p-3 font-semibold uppercase tracking-wider text-emerald-400 border-r border-stone-800">
+                    <div className="flex items-center gap-1.5 font-mono text-[11px]">
+                      <CheckCircle2 size={14} className="shrink-0 text-emerald-400" />
+                      <span>DO (Sesuai Panduan)</span>
+                    </div>
+                  </th>
+                  <th className="w-1/2 p-3 font-semibold uppercase tracking-wider text-rose-400">
+                    <div className="flex items-center gap-1.5 font-mono text-[11px]">
+                      <XCircle size={14} className="shrink-0 text-rose-400" />
+                      <span>DON'T (Perlu Dihindari)</span>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-stone-800/70">
+                {activeTab.pairs.map((pair, idx) => (
+                  <tr key={idx} className="hover:bg-stone-900/20 transition-colors">
+                    <td className="w-1/2 p-3.5 align-top border-r border-stone-800/70 bg-emerald-950/10 space-y-1.5">
+                      <p className="font-serif italic text-emerald-200 text-xs sm:text-sm leading-snug">
+                        "{pair.doText}"
+                      </p>
+                      {pair.doWhy && (
+                        <p className="text-[11px] text-stone-400 leading-relaxed font-sans">
+                          {pair.doWhy}
+                        </p>
+                      )}
+                    </td>
+                    <td className="w-1/2 p-3.5 align-top bg-rose-950/10 space-y-1.5">
+                      <p className="font-serif italic text-rose-200 text-xs sm:text-sm leading-snug">
+                        "{pair.dontText}"
+                      </p>
+                      {pair.dontWhy && (
+                        <p className="text-[11px] text-stone-400 leading-relaxed font-sans">
+                          {pair.dontWhy}
+                        </p>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
           <p className="text-xs text-stone-400 bg-stone-950/50 p-3 rounded-lg border border-stone-800/80 leading-relaxed font-sans">

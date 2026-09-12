@@ -620,7 +620,7 @@ Buat tiga blok yang menjelaskan cara menggunakan prinsip ini.
 Copy:
 “Apakah respons pembaca akan terlihat oleh teman, keluarga, rekan kerja, pasangan, atau publik?”
 
-2. Cek biaya sosialnya
+2. Cek social cost
 
 Copy:
 “Apakah tindakan yang kita ajak masih berpotensi dinilai memalukan, lemah, atau ‘tidak laki-laki’ dalam konteks audiens ini?”
@@ -674,11 +674,15 @@ Ruang publik
 Penjelasan:
 “Berikan informasi dan pilihan tanpa meminta pengakuan pribadi. Jika percakapan membutuhkan keterbukaan lebih jauh, arahkan ke jalur yang lebih privat.”
 
-DO:
-“Kalau belakangan ada yang terasa berbeda, kamu bisa cek beberapa tandanya di slide berikut.”
-
-DON’T:
-“Ceritakan masalah mentalmu di kolom komentar.”
+Contoh DO & DON’T (Format Tabel Terpadu):
+- DO 1: “Kalau belakangan ada yang terasa berbeda, kamu bisa cek beberapa tandanya di slide berikut.”
+  DON'T 1: “Ceritakan masalah mentalmu di kolom komentar.”
+- DO 2: “Simpan postingan ini jika kamu atau rekanmu butuh kontak layanan sewaktu-waktu.”
+  DON'T 2: “Tag teman cowokmu yang kelihatannya butuh ke psikolog atau lagi rapuh.”
+- DO 3: “Menurutmu, apa hal yang paling sering membuat seseorang ragu untuk mengambil jeda saat lelah?”
+  DON'T 3: “Pernah merasa gagal sebagai laki-laki? Tulis pengalaman terpurukmu di bawah.”
+- DO 4: “Sesi bincang santai ini menyediakan opsi nama samaran dan kamera nonaktif demi kenyamanan.”
+  DON'T 4: “Buktikan kamu berani terbuka dan hadapi rasa takutmu dengan ikut siaran langsung ini.”
 
 Penjelasan tambahan opsional:
 “Di ruang publik, tindakan sederhana seperti memberi komentar dapat terasa lebih berisiko karena identitas dan respons seseorang dapat dilihat orang lain.”
@@ -693,11 +697,15 @@ Ruang privat
 Penjelasan:
 “Privat tidak otomatis berarti aman. Jelaskan batas privasi dan beri orang kendali atas seberapa jauh mereka ingin bercerita.”
 
-DO:
-“Kalau kamu ingin cerita lebih jauh, kamu bisa mulai dari bagian yang terasa nyaman.”
-
-DON’T:
-“Kalau serius ingin pulih, ceritakan semuanya sekarang.”
+Contoh DO & DON’T (Format Tabel Terpadu):
+- DO 1: “Kalau kamu ingin cerita lebih jauh, kamu bisa mulai dari bagian yang terasa nyaman.”
+  DON'T 1: “Kalau serius ingin pulih, ceritakan semuanya sekarang.”
+- DO 2: “Pesan dan identitasmu di kanal ini bersifat rahasia dan hanya diakses oleh konselor pendamping.”
+  DON'T 2: “Kamu wajib mengisi seluruh riwayat masa lalumu agar kami bisa memberikan solusi.”
+- DO 3: “Tidak apa-apa kalau ada hal yang belum ingin kamu bahas hari ini. Kita bisa berhenti kapan saja.”
+  DON'T 3: “Jangan ditahan-tahan, tumpahkan dan tangisi semuanya di sini biar plong.”
+- DO 4: “Pesan ini sekadar menyapa berkala. Kamu tidak harus membalas sekarang kalau sedang butuh waktu.”
+  DON'T 4: “Kenapa kamu tiba-tiba menghilang? Menutup diri dari bantuan tidak akan menyelesaikan masalahmu.”
 
 Penjelasan tambahan opsional:
 “Ruang privat dapat mengurangi sorotan sosial, tetapi tetap tidak boleh dianggap sebagai izin untuk meminta keterbukaan penuh.”
@@ -712,11 +720,15 @@ Cek norma gender
 Penjelasan:
 “Jika suatu tindakan masih berpotensi dianggap ‘tidak laki-laki’, jangan menjadikan maskulinitas sebagai medan pembuktian. Fokuskan pesan pada kegunaan, pilihan, dan situasinya.”
 
-DO:
-“Konsultasi bisa membantu kamu memahami apa yang belakangan berubah dan menentukan langkah berikutnya.”
-
-DON’T:
-“Cowok juga boleh kok ke psikolog—nggak usah malu jadi laki-laki yang sensitif.”
+Contoh DO & DON’T (Format Tabel Terpadu):
+- DO 1: “Konsultasi bisa membantu kamu memahami apa yang belakangan berubah dan menentukan langkah berikutnya.”
+  DON'T 1: “Cowok juga boleh kok ke psikolog—nggak usah malu jadi laki-laki yang sensitif.”
+- DO 2: “Mengambil jeda saat tubuh lelah adalah cara menjaga ritme kerja agar tetap berfungsi optimal.”
+  DON'T 2: “Laki-laki sejati bukan yang tahan banting, tapi yang berani mengakui dirinya rapuh.”
+- DO 3: “Mendiskusikan masalah dengan pihak profesional memberi sudut pandang baru yang objektif.”
+  DON'T 3: “Tunjukkan kejantananmu dengan berani jujur soal kesehatan mentalmu.”
+- DO 4: “Rasa kewalahan atau sedih adalah respons wajar atas situasi berat yang sedang dihadapi siapa pun.”
+  DON'T 4: “Zaman sekarang cowok jangan sok keras; buang gengsi dan ego toxic masculinity-mu.”
 
 Penjelasan tambahan opsional:
 “Kalimat seperti ‘cowok juga boleh’ terlihat suportif, tetapi tetap dapat memperkuat anggapan bahwa tindakan tersebut pada dasarnya berada di luar norma laki-laki.”
