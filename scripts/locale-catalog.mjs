@@ -60,14 +60,14 @@ function scan(dir) {
     else if (/\.tsx$/.test(f) || /(?:normalize|data\/index)\.ts$/.test(f)) walkSource(f);
   }
 }
-scan(path.join(root, 'src'));
-const protectedKeys = /^(?:id|.*_id|.*Ids|.*Id|.*_ids|source_citation|citation|url|doi|source_report|source_reports|primary_source|source_file|file|author|authors|term|example|illustrativeCopy|copy)$/;
+scan(path.join(root, 'src/components/views'));
+const protectedKeys = /^(?:id|.*_id|.*Ids|.*Id|.*_ids|source_citation|citation|url|doi|source_report|source_reports|primary_source|source_file|file|author|authors|term|example|illustrativeCopy|copy|rationale|why|dos|donts|channelRule|objective|linguistic|failureMode|brief)$/;
 function walkData(x, file, key = '') {
   if (typeof x === 'string') { if (!protectedKeys.test(key)) add(x, `src/data/${file}:${key}`); }
   else if (Array.isArray(x)) x.forEach(v => walkData(v, file, key));
   else if (x) for (const [k, v] of Object.entries(x)) walkData(v, file, k);
 }
-for (const f of fs.readdirSync(path.join(root, 'src/data')).filter(f => f.endsWith('.json'))) walkData(JSON.parse(fs.readFileSync(path.join(root, 'src/data', f), 'utf8')), f);
+for (const f of fs.readdirSync(path.join(root, 'src/data')).filter(f => f.endsWith('.json') && !['copyCheatsheet.json', 'toneExemplars.json'].includes(f))) walkData(JSON.parse(fs.readFileSync(path.join(root, 'src/data', f), 'utf8')), f);
 export const catalog = [...entries].map(([source, origins]) => ({ source, origins: [...origins] }));
 if (process.argv[1] === import.meta.filename) {
   if (process.argv.includes('--json')) console.log(JSON.stringify(catalog, null, 2));

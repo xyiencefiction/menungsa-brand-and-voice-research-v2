@@ -1,85 +1,110 @@
-import React from 'react';
-import { ChevronDown } from 'lucide-react';
+import React, { useState } from 'react';
+import {
+  ChevronDown,
+  Users,
+  MessageCircle,
+  Lightbulb,
+  Heart,
+  ShieldCheck,
+  Target,
+  RotateCcw
+} from 'lucide-react';
 import type { BrandValue } from '../../types';
 
-/**
- * The six voice values, each as a position on its own 1-5 spectrum.
- *
- * This was an SVG chart with a fixed 620x300 viewBox scaled by `w-full`, which
- * made every type size a function of the container width: 9.5px on a phone,
- * 19.9px at 1280 and 24.3px at 1536 — larger than the page's own headings. The
- * drawing here is a position on a rail, not a plot, so HTML holds it better:
- * type stays at the size it is declared, the rails align across rows without
- * arithmetic, each row is a real button with a native focus ring, and the whole
- * thing reflows on a phone instead of scrolling sideways.
- *
- * The ribbon gradient is copied verbatim from the SVG it replaces, including the
- * optical grating, so the artwork is unchanged.
- */
+interface ValueConfig {
+  number: string;
+  icon: React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>;
+  title: string;
+  dimension: string;
+  description: string;
+  left: string;
+  right: string;
+  defaultPosition: number;
+  positionNote: string;
+}
 
-const ID_POLES: Record<string, { title: string; left: string; right: string; dimension: string; positionNote: string }> = {
+const SPECTRUM_CONFIG: Record<string, ValueConfig> = {
   V1: {
-    title: 'Kesetaraan, Bukan Penghakiman',
+    number: '01',
+    icon: Users,
+    title: 'Teman Pembaca yang Baik',
+    dimension: 'BAGAIMANA PEMBACA DISAPA',
+    description: 'Nada sapaan dan cara kami membangun kedekatan dengan pembaca.',
     left: 'Menilai pembaca',
     right: 'Menyapa setara',
-    dimension: 'Bagaimana pembaca disapa',
+    defaultPosition: 5,
     positionNote: 'Satu-satunya nilai mutlak tanpa kompromi. Menukarnya demi interaksi sesaat merusak rasa aman pembaca.'
   },
   V2: {
-    title: 'Rendah Hambatan untuk Memulai',
+    number: '02',
+    icon: MessageCircle,
+    title: 'Mudah untuk Dimulai',
+    dimension: 'BIAYA MERESPONS KOMUNIKASI',
+    description: 'Seberapa ringan usaha yang dibutuhkan pembaca untuk mulai terlibat.',
     left: 'Berat untuk dimulai',
     right: 'Mudah untuk dimulai',
-    dimension: 'Biaya merespons komunikasi',
+    defaultPosition: 5,
     positionNote: 'Pria menghindari rasa malu dan sorotan publik. Turunkan biaya memulai sekecil mungkin.'
   },
   V3: {
-    title: 'Satu Langkah Nyata yang Masuk Akal',
+    number: '03',
+    icon: Lightbulb,
+    title: 'Satu Langkah Nyata',
+    dimension: 'BENTUK AJAKAN BERTINDAK',
+    description: 'Seberapa konkret dan praktis ajakan atau saran yang kami berikan.',
     left: 'Dorongan yang umum',
     right: 'Langkah yang nyata',
-    dimension: 'Bentuk ajakan bertindak',
+    defaultPosition: 4,
     positionNote: 'Tawarkan tindakan nyata yang terjangkau untuk memulihkan kedaulatan diri (agency).'
   },
   V4: {
-    title: 'Mulai dari yang Tampak Nyata',
+    number: '04',
+    icon: Heart,
+    title: 'Mulai dari yang Terlihat',
+    dimension: 'URUTAN PENYAMPAIAN EMOSI',
+    description: 'Urutan penyampaian antara label/emosi dan situasi yang mendasarinya.',
     left: 'Label/perasaan dulu',
     right: 'Situasi nyata dulu',
-    dimension: 'Urutan penyampaian emosi',
+    defaultPosition: 4,
     positionNote: 'Deskripsi situasi fisik memungkinkan emosi hadir secara alami tanpa merasa dihakimi.'
   },
   V5: {
-    title: 'Jujur & Terbuka tentang Batasan',
+    number: '05',
+    icon: ShieldCheck,
+    title: 'Jelas Soal Keterbatasan',
+    dimension: 'DERAJAT KEPASTIAN KLAIM',
+    description: 'Seberapa tegas kami menyampaikan batasan dan tingkat kepastian informasi.',
     left: 'Kepastian mutlak',
     right: 'Kepastian sesuai bukti',
-    dimension: 'Derajat kepastian klaim',
+    defaultPosition: 4,
     positionNote: 'Jujur terhadap ketidakpastian ilmiah; batasi klaim pada bukti yang dapat diverifikasi.'
   },
   V6: {
-    title: 'Tindakan Nyata, Bukan Tuntutan Moral',
+    number: '06',
+    icon: Target,
+    title: 'Tunjukkan Tindakan, Bukan Tuntutan',
+    dimension: 'ARAH TUNTUTAN PERUBAHAN',
+    description: 'Bagaimana kami mendorong perubahan pada pembaca.',
     left: 'Menuntut berubah',
     right: 'Tindakan & bukti nyata',
-    dimension: 'Arah tuntutan perubahan',
+    defaultPosition: 4,
     positionNote: 'Fokus pada pembenahan sistem dan kondisi lingkungan, bukan menuduh karakter pembaca.'
   }
 };
+
 interface Props {
   values: BrandValue[];
-  /** Reader-facing name per value, supplied by the view that owns them. Falls
-   *  back to the dataset's own `value` field. */
+  /** Reader-facing name per value, supplied by the view that owns them. */
   rowTitles?: Record<string, string>;
   selectedId?: string;
   onSelect: (id: string) => void;
-  /**
-   * Body of the open panel. Omit it and the rows stay a plain selector with no
-   * panel at all — which is what the legacy Values view needs, since it renders
-   * its own detail article below and would otherwise show two.
-   */
   renderDetail?: (id: string) => React.ReactNode;
   className?: string;
 }
 
 const SCALE = [1, 2, 3, 4, 5];
 
-/** Position 1-5 as a percentage along the rail. */
+/** Position 1-5 as a percentage along the rail (0% to 100%). */
 const pct = (position: number) => ((position - 1) / 4) * 100;
 
 export const ValueSpectrum: React.FC<Props> = ({
@@ -89,108 +114,252 @@ export const ValueSpectrum: React.FC<Props> = ({
   onSelect,
   renderDetail,
   className,
-}) => (
-  <div className={`rounded-xl border border-stone-800 bg-stone-950/90 overflow-hidden shadow-overlay ${className ?? ''}`}>
-    <header className="px-4 py-2.5 border-b border-stone-800 flex items-center justify-between gap-2 bg-stone-900/40">
-      <h3 className="font-serif font-semibold text-stone-100 text-sm md:text-base">
-        Spektrum Voice Menungsa
-      </h3>
-    </header>
+}) => {
+  // Interactive slider values state with Menungsa default calibrated positions
+  const [positions, setPositions] = useState<Record<string, number>>(() => {
+    const init: Record<string, number> = {};
+    values.forEach((v) => {
+      init[v.id] = SPECTRUM_CONFIG[v.id]?.defaultPosition ?? v.spectrum?.position ?? 4;
+    });
+    return init;
+  });
 
-    {/* One ruler for all six rails. Every rail occupies the same grid column, so
-        a single scale serves them all instead of repeating ticks per row. */}
-    <div className="vs-ruler px-4 pt-3 pb-1" aria-hidden="true">
-      <span />
-      <div className="vs-ruler-ticks">
-        {SCALE.map((v) => (
-          <span key={v} className="font-mono text-[10px] text-stone-500 tabular-nums">
-            {v}
+  const isModified = values.some((v) => {
+    const def = SPECTRUM_CONFIG[v.id]?.defaultPosition ?? v.spectrum?.position ?? 4;
+    return positions[v.id] !== def;
+  });
+
+  const handleReset = () => {
+    const resetVals: Record<string, number> = {};
+    values.forEach((v) => {
+      resetVals[v.id] = SPECTRUM_CONFIG[v.id]?.defaultPosition ?? v.spectrum?.position ?? 4;
+    });
+    setPositions(resetVals);
+  };
+
+  const handleSliderChange = (id: string, val: number) => {
+    setPositions((prev) => ({ ...prev, [id]: val }));
+  };
+
+  return (
+    <div
+      className={`rounded-3xl border border-stone-200 dark:border-stone-800 bg-[#FDFDFC] dark:bg-stone-950/80 p-5 sm:p-7 md:p-9 shadow-raised space-y-6 sm:space-y-8 ${
+        className ?? ''
+      }`}
+    >
+      {/* Header matching the official design mockup */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 border-b border-stone-200/80 dark:border-stone-800/80 pb-6">
+        <div className="space-y-1.5 max-w-xl">
+          <span className="text-[11px] font-sans font-bold tracking-[0.2em] text-stone-500 dark:text-stone-400 uppercase block">
+            MENUNGSA
           </span>
-        ))}
-      </div>
-      <span />
-    </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-stone-900 dark:text-stone-100 tracking-tight leading-tight">
+            Spektrum Voice Menungsa
+          </h2>
+          <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 font-sans leading-relaxed">
+            Atur posisi yang paling sesuai dengan voice Menungsa. Geser slider untuk setiap aspek.
+          </p>
+        </div>
 
-    <div className="divide-y divide-stone-800/70" role="group" aria-label="Enam prinsip menulis">
-      {values.map((v, i) => {
-        const pole = ID_POLES[v.id];
-        const isAccordion = Boolean(renderDetail);
-        const isOpen = selectedId === v.id;
-        const position = pct(v.spectrum.position);
-
-        return (
-          <div key={v.id} className={`vs-row px-4 py-3.5 ${isOpen ? 'bg-stone-900/40' : ''}`}>
-            <h4 className="m-0">
-              <button
-                type="button"
-                id={`vs-row-${v.id}`}
-                aria-expanded={isAccordion ? isOpen : undefined}
-                aria-controls={isAccordion ? `vs-panel-${v.id}` : undefined}
-                aria-pressed={isAccordion ? undefined : isOpen}
-                onClick={() => onSelect(v.id)}
-                className="w-full flex items-center gap-3 text-left cursor-pointer group"
-              >
-                <span className="font-mono text-[11px] tabular-nums text-stone-500 shrink-0">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <span
-                  className={`font-serif text-base sm:text-lg font-semibold leading-snug flex-1 ${
-                    isOpen ? 'text-amber-500 dark:text-amber-300' : 'text-stone-100 group-hover:text-amber-500 dark:group-hover:text-amber-300'
-                  }`}
-                >
-                  {rowTitles?.[v.id] ?? v.value}
-                </span>
-                {isAccordion && (
-                  <ChevronDown
-                    size={16}
-                    className={`shrink-0 text-stone-500 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
-                  />
-                )}
-              </button>
-            </h4>
-
-            <p className="kicker mt-1.5 mb-2">{pole?.dimension ?? v.spectrum.dimension}</p>
-
-            <div className="vs-track">
-              <span className="vs-pole text-stone-500 dark:text-stone-400">
-                {pole?.left ?? v.spectrum.leftPole}
-              </span>
-              <div
-                className="vs-rail"
-                style={{ '--p': `${position}%` } as React.CSSProperties}
-                role="img"
-                aria-label={`Posisi ${v.spectrum.position} dari 5`}
-              >
-                <span className="vs-fill" />
-                <span className="vs-needle" />
-                <span className="vs-pip" />
-              </div>
-              <span className="vs-pole vs-pole-end text-stone-300 font-medium">
-                {pole?.right ?? v.spectrum.rightPole}
-              </span>
+        {/* Panduan Info Card */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+          {isModified && (
+            <button
+              type="button"
+              onClick={handleReset}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-sans text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 hover:bg-amber-100 dark:hover:bg-amber-900/60 transition cursor-pointer"
+            >
+              <RotateCcw size={13} />
+              <span>Reset posisi</span>
+            </button>
+          )}
+          <div className="rounded-2xl border border-sky-200/80 dark:border-sky-900/70 bg-[#F0F5FA] dark:bg-sky-950/40 p-3.5 sm:p-4 max-w-sm flex items-start gap-3 shadow-2xs">
+            <div className="w-6 h-6 rounded-full bg-sky-600 dark:bg-sky-500 text-white flex items-center justify-center shrink-0 text-xs font-serif font-bold italic shadow-xs">
+              i
             </div>
-
-            {isOpen && renderDetail && (
-              <div
-                role="region"
-                id={`vs-panel-${v.id}`}
-                aria-labelledby={`vs-row-${v.id}`}
-                className="mt-4 rounded-xl border border-stone-800 bg-stone-950/60 p-4 sm:p-5 space-y-4 animate-fadeIn"
-              >
-                <div className="space-y-1.5">
-                  <h5 className="font-serif text-lg sm:text-xl font-semibold text-stone-100 leading-snug">
-                    {pole?.title ?? v.value}
-                  </h5>
-                  <p className="text-sm text-stone-300 leading-relaxed font-sans">
-                    {pole?.positionNote ?? v.spectrum.positionNote}
-                  </p>
-                </div>
-                {renderDetail?.(v.id)}
-              </div>
-            )}
+            <div className="space-y-0.5">
+              <h4 className="text-xs font-semibold text-stone-900 dark:text-stone-100">
+                Panduan
+              </h4>
+              <p className="text-[11.5px] sm:text-xs text-stone-600 dark:text-stone-300 leading-relaxed font-sans">
+                Skala 1–5. Semakin ke kanan, semakin sesuai dengan karakter voice yang diinginkan.
+              </p>
+            </div>
           </div>
-        );
-      })}
+        </div>
+      </div>
+
+      {/* 6 Value Cards List */}
+      <div className="space-y-4">
+        {values.map((v) => {
+          const cfg = SPECTRUM_CONFIG[v.id] ?? {
+            number: v.id.replace('V', '').padStart(2, '0'),
+            icon: Users,
+            title: rowTitles?.[v.id] ?? v.value,
+            dimension: v.spectrum.dimension,
+            description: v.voiceTrait,
+            left: v.spectrum.leftPole,
+            right: v.spectrum.rightPole,
+            defaultPosition: v.spectrum.position,
+            positionNote: v.spectrum.positionNote
+          };
+
+          const IconComponent = cfg.icon;
+          const isAccordion = Boolean(renderDetail);
+          const isOpen = selectedId === v.id;
+          const currentPos = positions[v.id] ?? cfg.defaultPosition;
+          const positionPercent = pct(currentPos);
+
+          return (
+            <div
+              key={v.id}
+              className={`rounded-2xl border transition-all duration-200 p-4 sm:p-6 shadow-2xs ${
+                isOpen
+                  ? 'border-amber-400/80 dark:border-amber-500/50 bg-[#FCFBF8] dark:bg-stone-900/90 shadow-raised'
+                  : 'border-stone-200/90 dark:border-stone-800/80 bg-white/90 dark:bg-stone-900/50 hover:border-stone-300 dark:hover:border-stone-700/80'
+              }`}
+            >
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+                {/* Left Block: Number Badge, Icon, Title, Dimension, Description */}
+                <div className="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
+                  {/* Number Badge */}
+                  <div className="w-8 h-8 rounded-full bg-[#FAECE7] dark:bg-amber-950/60 text-[#AF4D28] dark:text-amber-400 font-mono text-xs font-bold flex items-center justify-center shrink-0 border border-[#F4D3C9] dark:border-amber-900/50 mt-0.5">
+                    {cfg.number}
+                  </div>
+
+                  {/* Icon Circle */}
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-stone-100 dark:bg-stone-800/90 text-stone-700 dark:text-stone-200 flex items-center justify-center shrink-0 border border-stone-200/70 dark:border-stone-700/60 shadow-2xs">
+                    <IconComponent size={20} strokeWidth={1.9} />
+                  </div>
+
+                  {/* Title and descriptions */}
+                  <div className="space-y-1 min-w-0 flex-1">
+                    <h3
+                      onClick={() => onSelect(v.id)}
+                      className="font-serif font-bold text-base sm:text-lg lg:text-xl text-stone-900 dark:text-stone-100 leading-snug cursor-pointer hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
+                    >
+                      {rowTitles?.[v.id] ?? cfg.title}
+                    </h3>
+                    <p className="text-[10px] sm:text-[11px] font-sans font-bold uppercase tracking-wider text-[#AF4D28] dark:text-amber-500">
+                      {cfg.dimension}
+                    </p>
+                    <p className="text-xs sm:text-[13px] text-stone-600 dark:text-stone-400 font-sans leading-relaxed pt-0.5">
+                      {cfg.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right Block: Slider Rail, Value Badge, Chevron */}
+                <div className="flex items-center gap-3 sm:gap-5 shrink-0 w-full lg:w-auto pt-2 lg:pt-0 border-t lg:border-t-0 border-stone-100 dark:border-stone-800/60 justify-between lg:justify-end">
+                  {/* Spectrum Slider Rail */}
+                  <div className="w-full sm:w-[260px] md:w-[280px] xl:w-[320px] select-none">
+                    <div className="relative py-2 flex flex-col justify-center">
+                      {/* Range Rail Container */}
+                      <div className="relative h-2.5 sm:h-3 w-full rounded-full bg-stone-200/80 dark:bg-stone-800 overflow-hidden shadow-inner">
+                        {/* Gradient Fill clipped to current position */}
+                        <div
+                          className="absolute inset-0 rounded-full transition-[clip-path] duration-150 ease-out"
+                          style={{
+                            background:
+                              'linear-gradient(90deg, #AF4D28 0%, #CE7859 25%, #D9B44F 50%, #6A8E60 75%, #2E4034 100%)',
+                            clipPath: `inset(0 ${100 - positionPercent}% 0 0)`,
+                          }}
+                        />
+
+                        {/* Subtle tick markers inside the track */}
+                        {SCALE.map((tick) => (
+                          <div
+                            key={tick}
+                            className="absolute top-0 bottom-0 w-[1.5px] bg-white/50 dark:bg-stone-900/60 pointer-events-none -translate-x-1/2"
+                            style={{ left: `${pct(tick)}%` }}
+                          />
+                        ))}
+                      </div>
+
+                      {/* Interactive Knob / Thumb */}
+                      <div
+                        className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-white dark:bg-stone-100 border-2 border-stone-800 dark:border-stone-900 shadow-raised pointer-events-none transition-[left] duration-150 ease-out z-10"
+                        style={{ left: `${positionPercent}%` }}
+                      />
+
+                      {/* Native transparent range input for full accessibility and drag */}
+                      <input
+                        type="range"
+                        min="1"
+                        max="5"
+                        step="1"
+                        value={currentPos}
+                        aria-label={`Skala ${cfg.title}: ${currentPos} dari 5`}
+                        onChange={(e) => handleSliderChange(v.id, parseInt(e.target.value, 10))}
+                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20"
+                      />
+                    </div>
+
+                    {/* Numbers 1 - 5 directly below track */}
+                    <div className="relative w-full h-4 mt-0.5">
+                      {SCALE.map((tick) => (
+                        <span
+                          key={tick}
+                          className={`absolute -translate-x-1/2 font-mono text-[10px] sm:text-[11px] tabular-nums transition-colors ${
+                            currentPos === tick
+                              ? 'text-stone-900 dark:text-stone-100 font-bold'
+                              : 'text-stone-400 dark:text-stone-500'
+                          }`}
+                          style={{ left: `${pct(tick)}%` }}
+                        >
+                          {tick}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Poles Left and Right */}
+                    <div className="flex items-center justify-between gap-2 mt-1 text-[11px] sm:text-xs">
+                      <span className="text-stone-500 dark:text-stone-400 font-sans text-left">
+                        {cfg.left}
+                      </span>
+                      <span className="text-stone-800 dark:text-stone-200 font-medium font-sans text-right">
+                        {cfg.right}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Value Number Badge */}
+                  <div className="w-9 h-8 sm:w-10 sm:h-9 rounded-xl bg-[#E6F0EA] dark:bg-emerald-950/70 text-[#2E4034] dark:text-emerald-300 border border-[#C5DEC8] dark:border-emerald-800/60 font-mono font-bold text-sm sm:text-base flex items-center justify-center shrink-0 shadow-2xs">
+                    {currentPos}
+                  </div>
+
+                  {/* Accordion Chevron Toggle */}
+                  {isAccordion && (
+                    <button
+                      type="button"
+                      onClick={() => onSelect(v.id)}
+                      aria-expanded={isOpen}
+                      aria-label={`${isOpen ? 'Tutup' : 'Buka'} rincian ${cfg.title}`}
+                      className="p-1.5 sm:p-2 rounded-lg text-stone-400 hover:text-stone-800 dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-800/60 transition cursor-pointer shrink-0"
+                    >
+                      <ChevronDown
+                        size={18}
+                        className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* Accordion Content when Open */}
+              {isOpen && renderDetail && (
+                <div
+                  role="region"
+                  id={`vs-panel-${v.id}`}
+                  className="mt-5 pt-5 border-t border-stone-200 dark:border-stone-800/80 animate-fadeIn"
+                >
+                  {renderDetail(v.id)}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
-  </div>
-);
+  );
+};

@@ -401,24 +401,8 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 6 Core Pillars of Writing */}
+      {/* 6 Core Pillars of Writing — Spektrum Voice Menungsa */}
       <section className="space-y-6">
-        <div>
-          <h2 className="text-xl md:text-2xl font-serif font-bold text-stone-100">
-            Enam prinsip menulis Menungsa
-          </h2>
-          <p className="text-xs md:text-sm text-stone-400 mt-1 font-sans">
-            Prinsip ini menggabungkan temuan riset, pertimbangan editorial, dan nilai Menungsa. Contoh kalimatnya merupakan usulan penerapan untuk pembaca Indonesia.
-          </p>
-        </div>
-
-        {/* One selector, not two.
-            The six cards that used to sit beside this chart were a second
-            selector for the same six items, and carried a second set of names
-            for them, so six values arrived on screen under twelve labels. The
-            rows below now carry the reader-facing name; the principle name and
-            the position note open with the panel, where they read as a sequence
-            rather than a contradiction. */}
         <ValueSpectrum
           values={brandValues}
           rowTitles={VALUE_TITLES}
@@ -428,7 +412,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
             const val = VALUE_PILLARS.find((v) => v.id === id);
             if (!val) return null;
             return (
-              <div className="space-y-4 border-t border-stone-800/80 pt-4">
+              <div className="space-y-4">
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-3">
                   <span className="text-xs font-sans font-bold tracking-widest uppercase text-amber-500 dark:text-amber-400/90 block">
                     VALUE {val.id.replace('V', '').padStart(2, '0')}
