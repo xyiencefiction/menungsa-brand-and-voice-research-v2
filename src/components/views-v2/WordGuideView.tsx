@@ -10,7 +10,7 @@ import {
   X,
   HeartHandshake
 } from 'lucide-react';
-import { RegisterMap, LunarPips } from '../charts/RegisterMap';
+import { RegisterMap, LunarPips, MoonPhase } from '../charts/RegisterMap';
 import { languageRegisters } from '../../data';
 
 interface RegisterItem {
@@ -393,15 +393,32 @@ export const WordGuideView: React.FC = () => {
                     aria-selected={selectedRegisterId === reg.id}
                     aria-controls="panel-register-detail"
                     onClick={() => setSelectedRegisterId(reg.id)}
-                    className={`px-3 py-2 rounded-lg border text-center transition cursor-pointer flex flex-col items-center justify-center ${
+                    className={`px-3 py-2.5 rounded-lg border text-center transition cursor-pointer flex flex-col items-center justify-center gap-1.5 ${
                       selectedRegisterId === reg.id
                         ? 'border-emerald-700 bg-emerald-700 text-bone font-semibold shadow-raised dark:border-emerald-600 dark:bg-emerald-800'
                         : 'border-stone-800 bg-stone-900 text-stone-300 hover:border-emerald-700/60 hover:bg-stone-850'
                     }`}
+                    title={`Otoritas: ${reg.authorityLevel}/5 · Kedekatan: ${reg.intimacyLevel}/5`}
                   >
-                    <div className={`font-serif text-sm ${selectedRegisterId === reg.id ? 'text-bone font-bold' : 'text-stone-100 font-medium'}`}>{reg.name}</div>
-                    <div className={`text-[9.5px] font-mono ${selectedRegisterId === reg.id ? 'text-bone/80' : 'text-stone-500'}`}>
-                      {reg.authorityLevel}/5 · {reg.intimacyLevel}/5
+                    <div className={`font-serif text-sm leading-tight ${selectedRegisterId === reg.id ? 'text-bone font-bold' : 'text-stone-100 font-medium'}`}>
+                      {reg.name}
+                    </div>
+                    <div className="inline-flex items-center gap-2">
+                      <span className="inline-flex items-center gap-1" title={`Otoritas: ${reg.authorityLevel}/5`}>
+                        <MoonPhase
+                          level={reg.authorityLevel}
+                          size={12}
+                          className={selectedRegisterId === reg.id ? 'text-amber-200' : 'text-amber-400/90'}
+                        />
+                      </span>
+                      <span className="text-[9px] text-stone-500 opacity-40 select-none">·</span>
+                      <span className="inline-flex items-center gap-1" title={`Kedekatan: ${reg.intimacyLevel}/5`}>
+                        <MoonPhase
+                          level={reg.intimacyLevel}
+                          size={12}
+                          className={selectedRegisterId === reg.id ? 'text-emerald-200' : 'text-emerald-400/90'}
+                        />
+                      </span>
                     </div>
                   </button>
                 ))}

@@ -70,3 +70,4 @@ npm run test:i18n
 - **Deployment Platform:** Vercel (Production)
 - **Live Production URL:** [https://menungsa-brand-and-voice-research-v.vercel.app](https://menungsa-brand-and-voice-research-v.vercel.app)
 - **Deployment Check:** `npx vercel ls menungsa-brand-and-voice-research-v2`
+

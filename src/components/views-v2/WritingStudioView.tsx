@@ -426,12 +426,9 @@ export const WritingStudioView: React.FC = () => {
                           {channelLabel}
                         </span>
                         <span className="text-[11px] font-sans text-stone-400 font-medium">
-                          {ex.contextId}: {contextLabel}
+                          {contextLabel}
                         </span>
                       </div>
-                      <span className="text-[10px] font-mono text-stone-500 uppercase">
-                        ID: {ex.id}
-                      </span>
                     </div>
 
                     {/* Comparison Table */}
@@ -520,12 +517,9 @@ export const WritingStudioView: React.FC = () => {
                       {channelLabel}
                     </span>
                     <span className="text-[11px] font-sans text-stone-400 font-medium">
-                      {ex.contextId}: {contextLabel}
+                      {contextLabel}
                     </span>
                   </div>
-                  <span className="text-[10px] font-mono text-stone-500 uppercase">
-                    ID: {ex.id}
-                  </span>
                 </div>
 
                 {/* Comparison Table */}

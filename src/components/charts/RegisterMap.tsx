@@ -35,6 +35,68 @@ function shapePath(shape: string, cx: number, cy: number, r: number): string {
   }
 }
 
+export const MoonPhase: React.FC<{
+  level: number;
+  max?: number;
+  size?: number;
+  className?: string;
+}> = ({ level, max = 5, size = 14, className = '' }) => {
+  const clamped = Math.max(0, Math.min(max, Math.round((level / max) * 5)));
+
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      className={`shrink-0 inline-block align-middle ${className}`}
+      aria-hidden="true"
+    >
+      <circle
+        cx="8"
+        cy="8"
+        r="6"
+        fill="currentColor"
+        fillOpacity="0.12"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeOpacity="0.35"
+      />
+      {clamped === 1 && (
+        <path
+          d="M 8 2 A 6 6 0 0 1 8 14 A 4.2 6 0 0 0 8 2 Z"
+          fill="currentColor"
+        />
+      )}
+      {clamped === 2 && (
+        <path
+          d="M 8 2 A 6 6 0 0 1 8 14 A 2 6 0 0 0 8 2 Z"
+          fill="currentColor"
+        />
+      )}
+      {clamped === 3 && (
+        <path
+          d="M 8 2 A 6 6 0 0 1 8 14 L 8 2 Z"
+          fill="currentColor"
+        />
+      )}
+      {clamped === 4 && (
+        <path
+          d="M 8 2 A 6 6 0 0 1 8 14 A 3.5 6 0 0 1 8 2 Z"
+          fill="currentColor"
+        />
+      )}
+      {clamped >= 5 && (
+        <circle
+          cx="8"
+          cy="8"
+          r="6"
+          fill="currentColor"
+        />
+      )}
+    </svg>
+  );
+};
+
 export const LunarPips: React.FC<{
   level: number;
   max?: number;
@@ -52,6 +114,7 @@ export const LunarPips: React.FC<{
       title={`${label}: ${level}/${max}`}
       aria-label={`${label} ${level} dari ${max}`}
     >
+      <MoonPhase level={level} size={13} className="text-amber-400 shrink-0" />
       <span className="text-stone-400 text-[10.5px] font-mono">{label}</span>
       <span className="inline-flex items-center gap-1" aria-hidden="true">
         {Array.from({ length: max }, (_, i) => {

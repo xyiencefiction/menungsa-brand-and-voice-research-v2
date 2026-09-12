@@ -345,10 +345,7 @@ export const IndonesianNuancesView: React.FC = () => {
               <div className="space-y-3">
                 <div className="flex items-start justify-between gap-2 border-b border-stone-800 pb-3">
                   <div>
-                    <span className="text-[10px] font-sans font-bold uppercase text-amber-500 tracking-wider">
-                      {item.id}
-                    </span>
-                    <h4 className="text-lg font-serif font-semibold text-stone-100 mt-0.5">
+                    <h4 className="text-lg font-serif font-semibold text-stone-100">
                       {item.dimension}
                     </h4>
                   </div>

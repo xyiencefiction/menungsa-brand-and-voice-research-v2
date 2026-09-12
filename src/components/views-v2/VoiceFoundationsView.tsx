@@ -375,9 +375,8 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
               {[...VOICE_TRAITS, ...VOICE_TRAITS, ...VOICE_TRAITS, ...VOICE_TRAITS].map((trait, idx) => (
                 <span
                   key={idx}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-[13px] font-serif text-stone-200/90 bg-stone-900/50 border border-stone-700/40 shadow-xs backdrop-blur-xs whitespace-nowrap select-none tracking-wide"
+                  className="inline-flex items-center px-3.5 py-1 rounded-full text-xs sm:text-[13px] font-serif text-stone-200/90 bg-stone-900/50 border border-stone-700/40 shadow-xs backdrop-blur-xs whitespace-nowrap select-none tracking-wide"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400/80" />
                   <span>{trait}</span>
                 </span>
               ))}
@@ -617,7 +616,7 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-amber-500">
-                    {rule.id} · {rule.categoryLabel}
+                    {rule.categoryLabel}
                   </span>
                   <h3 className="text-base font-serif font-semibold text-stone-100 mt-0.5 leading-snug">
                     {rule.action}
