@@ -6,8 +6,7 @@ import {
   Lightbulb,
   Heart,
   ShieldCheck,
-  Target,
-  RotateCcw
+  Target
 } from 'lucide-react';
 import type { BrandValue } from '../../types';
 
@@ -124,19 +123,6 @@ export const ValueSpectrum: React.FC<Props> = ({
     return init;
   });
 
-  const isModified = values.some((v) => {
-    const def = SPECTRUM_CONFIG[v.id]?.defaultPosition ?? v.spectrum?.position ?? 4;
-    return positions[v.id] !== def;
-  });
-
-  const handleReset = () => {
-    const resetVals: Record<string, number> = {};
-    values.forEach((v) => {
-      resetVals[v.id] = SPECTRUM_CONFIG[v.id]?.defaultPosition ?? v.spectrum?.position ?? 4;
-    });
-    setPositions(resetVals);
-  };
-
   const handleSliderChange = (id: string, val: number) => {
     setPositions((prev) => ({ ...prev, [id]: val }));
   };
@@ -147,9 +133,9 @@ export const ValueSpectrum: React.FC<Props> = ({
         className ?? ''
       }`}
     >
-      {/* Header matching the official design mockup */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 border-b border-stone-200/80 dark:border-stone-800/80 pb-6">
-        <div className="space-y-1.5 max-w-xl">
+      {/* Header matching the updated clean design mockup (No Panduan card) */}
+      <div className="border-b border-stone-200/80 dark:border-stone-800/80 pb-6">
+        <div className="space-y-1.5 max-w-2xl">
           <span className="text-[11px] font-sans font-bold tracking-[0.2em] text-stone-500 dark:text-stone-400 uppercase block">
             MENUNGSA
           </span>
@@ -159,33 +145,6 @@ export const ValueSpectrum: React.FC<Props> = ({
           <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 font-sans leading-relaxed">
             Atur posisi yang paling sesuai dengan voice Menungsa. Geser slider untuk setiap aspek.
           </p>
-        </div>
-
-        {/* Panduan Info Card */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-          {isModified && (
-            <button
-              type="button"
-              onClick={handleReset}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-sans text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 hover:bg-amber-100 dark:hover:bg-amber-900/60 transition cursor-pointer"
-            >
-              <RotateCcw size={13} />
-              <span>Reset posisi</span>
-            </button>
-          )}
-          <div className="rounded-2xl border border-sky-200/80 dark:border-sky-900/70 bg-[#F0F5FA] dark:bg-sky-950/40 p-3.5 sm:p-4 max-w-sm flex items-start gap-3 shadow-2xs">
-            <div className="w-6 h-6 rounded-full bg-sky-600 dark:bg-sky-500 text-white flex items-center justify-center shrink-0 text-xs font-serif font-bold italic shadow-xs">
-              i
-            </div>
-            <div className="space-y-0.5">
-              <h4 className="text-xs font-semibold text-stone-900 dark:text-stone-100">
-                Panduan
-              </h4>
-              <p className="text-[11.5px] sm:text-xs text-stone-600 dark:text-stone-300 leading-relaxed font-sans">
-                Skala 1–5. Semakin ke kanan, semakin sesuai dengan karakter voice yang diinginkan.
-              </p>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -205,7 +164,6 @@ export const ValueSpectrum: React.FC<Props> = ({
           };
 
           const IconComponent = cfg.icon;
-          const isAccordion = Boolean(renderDetail);
           const isOpen = selectedId === v.id;
           const currentPos = positions[v.id] ?? cfg.defaultPosition;
           const positionPercent = pct(currentPos);
@@ -249,10 +207,10 @@ export const ValueSpectrum: React.FC<Props> = ({
                   </div>
                 </div>
 
-                {/* Right Block: Slider Rail, Value Badge, Chevron */}
-                <div className="flex items-center gap-3 sm:gap-5 shrink-0 w-full lg:w-auto pt-2 lg:pt-0 border-t lg:border-t-0 border-stone-100 dark:border-stone-800/60 justify-between lg:justify-end">
+                {/* Right Block: Slider Rail directly followed by Chevron */}
+                <div className="flex items-center gap-4 sm:gap-6 shrink-0 w-full lg:w-auto pt-2 lg:pt-0 border-t lg:border-t-0 border-stone-100 dark:border-stone-800/60 justify-between lg:justify-end">
                   {/* Spectrum Slider Rail */}
-                  <div className="w-full sm:w-[260px] md:w-[280px] xl:w-[320px] select-none">
+                  <div className="w-full sm:w-[300px] md:w-[360px] lg:w-[380px] xl:w-[440px] select-none">
                     <div className="relative py-2 flex flex-col justify-center">
                       {/* Range Rail Container */}
                       <div className="relative h-2.5 sm:h-3 w-full rounded-full bg-stone-200/80 dark:bg-stone-800 overflow-hidden shadow-inner">
@@ -323,26 +281,19 @@ export const ValueSpectrum: React.FC<Props> = ({
                     </div>
                   </div>
 
-                  {/* Value Number Badge */}
-                  <div className="w-9 h-8 sm:w-10 sm:h-9 rounded-xl bg-[#E6F0EA] dark:bg-emerald-950/70 text-[#2E4034] dark:text-emerald-300 border border-[#C5DEC8] dark:border-emerald-800/60 font-mono font-bold text-sm sm:text-base flex items-center justify-center shrink-0 shadow-2xs">
-                    {currentPos}
-                  </div>
-
                   {/* Accordion Chevron Toggle */}
-                  {isAccordion && (
-                    <button
-                      type="button"
-                      onClick={() => onSelect(v.id)}
-                      aria-expanded={isOpen}
-                      aria-label={`${isOpen ? 'Tutup' : 'Buka'} rincian ${cfg.title}`}
-                      className="p-1.5 sm:p-2 rounded-lg text-stone-400 hover:text-stone-800 dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-800/60 transition cursor-pointer shrink-0"
-                    >
-                      <ChevronDown
-                        size={18}
-                        className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
-                      />
-                    </button>
-                  )}
+                  <button
+                    type="button"
+                    onClick={() => onSelect(v.id)}
+                    aria-expanded={isOpen}
+                    aria-label={`${isOpen ? 'Tutup' : 'Buka'} rincian ${cfg.title}`}
+                    className="p-2 rounded-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-800/60 transition cursor-pointer shrink-0 ml-1"
+                  >
+                    <ChevronDown
+                      size={20}
+                      className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                    />
+                  </button>
                 </div>
               </div>
 
