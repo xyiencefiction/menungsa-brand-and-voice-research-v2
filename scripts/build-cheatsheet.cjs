@@ -60,13 +60,14 @@ function expandMorphology(root, category, categoryLabel, severity, impact, repla
   let nasalPrefix = 'meng';
   if (['b', 'f', 'v'].includes(firstLetter)) nasalPrefix = 'mem';
   else if (['c', 'd', 'j', 'z'].includes(firstLetter)) nasalPrefix = 'men';
-  else if (['g', 'h', 'k'].includes(firstLetter)) nasalPrefix = 'meng';
+  else if (['g', 'h'].includes(firstLetter)) nasalPrefix = 'meng';
+  else if (['k'].includes(firstLetter)) nasalPrefix = 'meng' + root.slice(1);
   else if (['l', 'm', 'n', 'r', 'w', 'y'].includes(firstLetter)) nasalPrefix = 'me';
   else if (['p'].includes(firstLetter)) nasalPrefix = 'mem' + root.slice(1);
   else if (['t'].includes(firstLetter)) nasalPrefix = 'men' + root.slice(1);
   else if (['s'].includes(firstLetter)) nasalPrefix = 'meny' + root.slice(1);
 
-  const meForm = ['p', 't', 's'].includes(firstLetter) ? nasalPrefix : `${nasalPrefix}${root}`;
+  const meForm = ['p', 't', 's', 'k'].includes(firstLetter) ? nasalPrefix : `${nasalPrefix}${root}`;
   if (patterns.includes('me')) {
     addTerm(meForm, category, categoryLabel, severity, impact, replacement);
     if (patterns.includes('kan')) addTerm(`${meForm}kan`, category, categoryLabel, severity, impact, replacement);
@@ -85,10 +86,10 @@ function addCollocations(rootWords, modifiers, category, categoryLabel, severity
 }
 
 // =========================================================================
-// 1. CATEGORY: MORALIZING & SCOLDING (PENGHAKIMAN MORAL & NADA MENGGURUI)
+// 1. CATEGORY: MORALIZING & SCOLDING (PENILAIAN & TUNTUTAN)
 // =========================================================================
 const moralCat = 'moral';
-const moralLabel = 'Penghakiman Moral & Menggurui';
+const moralLabel = 'Penilaian dan tuntutan';
 const moralSev = 'critical';
 const moralImp = 'Kata ini dapat dipakai untuk menekan atau menghakimi, tetapi maknanya bergantung pada kalimat.';
 const moralRep = 'Periksa konteks, termasuk negasi dan kutipan. Ubah tuntutan yang mempermalukan pembaca menjadi informasi atau pilihan yang jelas.';
@@ -187,10 +188,10 @@ moralPronominals.forEach(p => {
 });
 
 // =========================================================================
-// 2. CATEGORY: HYPER-MASCULINE & MANOSPHERE CRINGE (KLISE MASKULIN)
+// 2. CATEGORY: HYPER-MASCULINE & MANOSPHERE CRINGE (SEBUTAN & TUNTUTAN MASKULINITAS)
 // =========================================================================
 const cringeCat = 'cringe';
-const cringeLabel = 'Klise Maskulin & Jargon Manosphere';
+const cringeLabel = 'Sebutan dan tuntutan maskulinitas';
 const cringeSev = 'warning';
 const cringeImp = 'Istilah ini dapat terasa dipaksakan bila tidak sesuai dengan penutur dan pembaca.';
 const cringeRep = 'Pilih ungkapan yang memang digunakan penutur. Hindari label yang menilai harga diri laki-laki.';
@@ -282,10 +283,10 @@ cringePrefixes.forEach(pre => {
 });
 
 // =========================================================================
-// 3. CATEGORY: CLINICAL LABELS & PSYCHOBABBLE (JARGON KLINIS PREMATUR)
+// 3. CATEGORY: CLINICAL LABELS & PSYCHOBABBLE (ISTILAH KESEHATAN MENTAL)
 // =========================================================================
 const clinicalCat = 'clinical';
-const clinicalLabel = 'Jargon Klinis Prematur & Therapy-Speak';
+const clinicalLabel = 'Istilah kesehatan mental';
 const clinicalSev = 'warning';
 const clinicalImp = 'Istilah kesehatan mental perlu digunakan dengan konteks dan penjelasan yang tepat.';
 const clinicalRep = 'Pertahankan istilah jika relevan untuk edukasi. Ubah kalimat yang menyimpulkan diagnosis pembaca tanpa penilaian profesional.';
@@ -367,10 +368,10 @@ clinicalRoots.forEach(r => {
 });
 
 // =========================================================================
-// 4. CATEGORY: AGGRESSIVE IMPERATIVES & COERCIVE DISCLOSURE (PERINTAH AGRESIF)
+// 4. CATEGORY: AGGRESSIVE IMPERATIVES & COERCIVE DISCLOSURE (AJAKAN & DESAKAN)
 // =========================================================================
 const imperativeCat = 'imperative';
-const imperativeLabel = 'Perintah Agresif & Pemaksaan Curhat';
+const imperativeLabel = 'Ajakan dan desakan';
 const imperativeSev = 'critical';
 const imperativeImp = 'Periksa apakah ajakan memberi pilihan atau mendesak pembaca melampaui kesediaannya.';
 const imperativeRep = 'Beri ruang kendali mandiri (agency): "Boleh datang, boleh sekadar duduk mendengarkan."';
@@ -438,17 +439,17 @@ imperativeVerbsList.forEach(v => {
 });
 
 // =========================================================================
-// 5. CATEGORY: CALIBRATED GROUNDING VOCABULARY (KATA MEMBUMI & BERMARTABAT)
+// 5. CATEGORY: CALIBRATED GROUNDING VOCABULARY (CONTOH BAHASA KONKRET)
 // =========================================================================
 const recCat = 'recommended';
-const recLabel = 'Pilihan Kata Membumi & Bermartabat';
+const recLabel = 'Contoh bahasa konkret';
 const recSev = 'positive';
 const recImp = 'Pilihan kata yang berfokus pada situasi sehari-hari dan tindakan yang dapat dilakukan.';
 const recRep = 'Gaya penulisan Menungsa';
 
 const recRoots = [
   'istirahat', 'rehat', 'jeda', 'tidur', 'napas', 'santai', 'tenang', 'segar', 'hangat',
-  'dingin', 'pulih', 'sehat', 'bugar', 'kopi', 'teh', 'makan', 'sarapan', 'jalan', 'duduk',
+  'dingin', 'pulih', 'sehat', 'bugar', 'kopi', 'teh', 'makan', 'sarapan', 'duduk',
   'bersandar', 'merawat', 'menjaga', 'melindungi', 'damping', 'ayomi', 'sapa', 'kawan',
   'teman', 'saudara', 'keluarga', 'rumah', 'tangga', 'kerja', 'berkas', 'catatan', 'meja',
   'tugas', 'prioritas', 'jadwal', 'langkah', 'tahap', 'pelan', 'wajar', 'lapang', 'jernih',
@@ -533,6 +534,65 @@ recPrefixes.forEach(pre => {
     addTerm(`${pre} yang ${q}`, recCat, recLabel, recSev, recImp, recRep);
     addTerm(`${pre} ${q}`, recCat, recLabel, recSev, recImp, recRep);
   });
+});
+
+// =========================================================================
+// 6. CALIBRATED PHRASES FOR PLAYBOOK & SANDBOX PRESET TEMPLATES
+// =========================================================================
+const templateAdditions = [
+  // Preset 1: Menghakimi (moral)
+  { term: 'kalau kamu benar-benar ingin membaik', category: moralCat, categoryLabel: moralLabel, severity: moralSev, impact: 'Pengkondisian yang meragukan kesungguhan niat pembaca.', replacement: 'Bahasakan tujuan atau langkah tanpa meragukan niat pembaca.' },
+  { term: 'benar-benar ingin membaik', category: moralCat, categoryLabel: moralLabel, severity: moralSev, impact: 'Pernyataan yang menguji kesungguhan niat secara menghakimi.', replacement: 'Fokus pada apa yang ingin dicapai tanpa menguji niat.' },
+  { term: 'harus mulai berani cerita', category: moralCat, categoryLabel: moralLabel, severity: moralSev, impact: 'Menuntut keterbukaan sebagai ukuran keberanian atau kesungguhan.', replacement: 'Beri ruang untuk bercerita bila dan kapan pembaca merasa siap.' },
+  { term: 'harus mulai', category: moralCat, categoryLabel: moralLabel, severity: moralSev, impact: 'Kata kerja imperatif yang mendesak tindakan tanpa menimbang kesiapan.', replacement: 'Gunakan ajakan bertahap atau jelaskan pilihan yang ada.' },
+  { term: 'berani cerita', category: moralCat, categoryLabel: moralLabel, severity: moralSev, impact: 'Menjadikan keterbukaan sebagai tolak ukur keberanian pribadi.', replacement: 'Hindari mengaitkan keterbukaan dengan keberanian atau kekuatan moral.' },
+  { term: 'terus memilih diam', category: moralCat, categoryLabel: moralLabel, severity: moralSev, impact: 'Menghakimi keputusan diam sebagai kelemahan atau kesalahan.', replacement: 'Hormati jeda atau keheningan sebagai bagian wajar dari proses.' },
+  { term: 'memilih diam', category: moralCat, categoryLabel: moralLabel, severity: moralSev, impact: 'Memberi label negatif pada sikap tenang atau belum siap bicara.', replacement: 'Beri ruang tanpa menilai pilihan untuk belum bercerita.' },
+  { term: 'semakin jauh dari perubahan', category: moralCat, categoryLabel: moralLabel, severity: moralSev, impact: 'Menakut-nakuti pembaca dengan vonis kegagalan.', replacement: 'Jelaskan manfaat langkah kecil secara proporsional tanpa ancaman.' },
+  { term: 'jangan terus lari dari masalah', category: moralCat, categoryLabel: moralLabel, severity: moralSev, impact: 'Tuduhan menghindar yang memicu rasa bersalah dan sikap defensif.', replacement: 'Fokus pada bantuan konkret tanpa menuduh pembaca melarikan diri.' },
+  { term: 'lari dari masalah', category: moralCat, categoryLabel: moralLabel, severity: moralSev, impact: 'Tuduhan moral bahwa pembaca bersikap pengecut atau tidak bertanggung jawab.', replacement: 'Deskripsikan situasi beban yang dihadapi secara objektif.' },
+
+  // Preset 2: Tuntutan Maskulinitas (cringe)
+  { term: 'laki-laki kuat', category: cringeCat, categoryLabel: cringeLabel, severity: cringeSev, impact: 'Menetapkan standar maskulinitas tertentu sebagai ukuran nilai diri pria.', replacement: 'Hindari mengkotak-kotakkan pria berdasarkan definisi kekuatan atau ketangguhan.' },
+  { term: 'laki-laki kuat bukan yang terus mengeluh', category: cringeCat, categoryLabel: cringeLabel, severity: cringeSev, impact: 'Melarang keluhan dan menstigma ekspresi kelelahan emosional pria.', replacement: 'Wajarkan rasa lelah dan keluhan sebagai respons manusiawi.' },
+  { term: 'bukan yang terus mengeluh', category: cringeCat, categoryLabel: cringeLabel, severity: cringeSev, impact: 'Melarang keluhan dan menstigma ekspresi kelelahan emosional pria.', replacement: 'Wajarkan rasa lelah dan keluhan sebagai respons manusiawi.' },
+  { term: 'terus mengeluh', category: cringeCat, categoryLabel: cringeLabel, severity: cringeSev, impact: 'Menghakimi ekspresi rasa lelah atau kesulitan.', replacement: 'Dengarkan keluhan secara objektif tanpa memberi label cengeng.' },
+  { term: 'tetap jalan meski keadaan berat', category: cringeCat, categoryLabel: cringeLabel, severity: cringeSev, impact: 'Memaksakan ketahanan fisik/mental tanpa batas dan menolak jeda istirahat.', replacement: 'Ingatkan pentingnya istirahat dan jeda yang wajar saat keadaan berat.' },
+  { term: 'ambil kendali', category: cringeCat, categoryLabel: cringeLabel, severity: cringeSev, impact: 'Tuntutan dominasi dan kontrol mutlak yang sering membebani.', replacement: 'Ajak mengurai apa yang realistis dikerjakan satu per satu.' },
+  { term: 'disiplinkan diri', category: cringeCat, categoryLabel: cringeLabel, severity: cringeSev, impact: 'Menuntut kekerasan disiplin internal tanpa empati terhadap kondisi riil.', replacement: 'Bangun ritme perlahan yang berkelanjutan tanpa hukuman diri.' },
+  { term: 'tidak lebih kuat dari kamu', category: cringeCat, categoryLabel: cringeLabel, severity: cringeSev, impact: 'Slogan motivasi hiperbolis yang mengabaikan kompleksitas masalah nyata.', replacement: 'Akui beratnya tantangan secara jujur tanpa retorika klise.' },
+  { term: 'masalah tidak lebih kuat dari kamu', category: cringeCat, categoryLabel: cringeLabel, severity: cringeSev, impact: 'Penyederhanaan klise tentang masalah hidup yang dapat terdengar meremehkan beban.', replacement: 'Validasi beratnya situasi dan tawarkan langkah pendampingan yang realistis.' },
+  { term: 'masalah tidak lebih kuat', category: cringeCat, categoryLabel: cringeLabel, severity: cringeSev, impact: 'Penyederhanaan klise tentang masalah hidup yang dapat terdengar meremehkan beban.', replacement: 'Validasi beratnya situasi dan tawarkan langkah pendampingan yang realistis.' },
+
+  // Preset 3: Diagnosis Berlebihan (clinical & imperative)
+  { term: 'susah tidur', category: clinicalCat, categoryLabel: clinicalLabel, severity: clinicalSev, impact: 'Keluhan fisik yang sering langsung dilompati menjadi diagnosis klinis prematur.', replacement: 'Gambarkan pengamatan ritme istirahat tanpa langsung menyimpulkan gangguan mental.' },
+  { term: 'sulit fokus', category: clinicalCat, categoryLabel: clinicalLabel, severity: clinicalSev, impact: 'Keluhan atensi yang sering dijadikan dasar diagnosis mandiri tanpa pemeriksaan profesional.', replacement: 'Sebut sebagai dinamika beban kerja atau kelelahan tanpa vonis penyakit.' },
+  { term: 'menjauh dari orang lain', category: clinicalCat, categoryLabel: clinicalLabel, severity: clinicalSev, impact: 'Perilaku menarik diri yang sering dilabeli secara patologis.', replacement: 'Pahami sebagai kebutuhan jeda sosial tanpa menyematkan label klinis prematur.' },
+  { term: 'mulai menjauh dari orang lain', category: clinicalCat, categoryLabel: clinicalLabel, severity: clinicalSev, impact: 'Perilaku menarik diri yang sering dilabeli secara patologis.', replacement: 'Pahami sebagai kebutuhan jeda sosial tanpa menyematkan label klinis prematur.' },
+  { term: 'berarti kamu sedang mengalami burnout', category: clinicalCat, categoryLabel: clinicalLabel, severity: clinicalSev, impact: 'Menetapkan vonis diagnosis psikologis pembaca dari jauh tanpa asesmen profesional.', replacement: 'Gunakan pengamatan hati-hati dan sarankan konsultasi bila keluhan berlanjut.' },
+  { term: 'sedang mengalami burnout', category: clinicalCat, categoryLabel: clinicalLabel, severity: clinicalSev, impact: 'Menyimpulkan kondisi kelelahan sebagai diagnosis formal secara sepihak.', replacement: 'Bahasakan rasa lelah harian tanpa menetapkan label diagnosis definitif.' },
+  { term: 'mengalami burnout atau depresi', category: clinicalCat, categoryLabel: clinicalLabel, severity: clinicalSev, impact: 'Mendiagnosis pembaca secara serampangan dengan gangguan psikologis serius.', replacement: 'Bedakan tanda kelelahan dari diagnosis klinis yang butuh tenaga ahli.' },
+  { term: 'sedang mengalami depresi', category: clinicalCat, categoryLabel: clinicalLabel, severity: clinicalSev, impact: 'Menyimpulkan diagnosis depresi tanpa asesmen profesional.', replacement: 'Jelaskan pengamatan perilaku tanpa melompat ke diagnosis.' },
+  { term: 'ceritakan semuanya di sini', category: imperativeCat, categoryLabel: imperativeLabel, severity: imperativeSev, impact: 'Desakan membuka privasi secara total tanpa jaminan keamanan ruang.', replacement: 'Beri ruang otonomi: pembaca bebas memilih apa dan berapa banyak yang ingin dibagikan.' },
+  { term: 'supaya kami bisa tahu apa yang sebenarnya terjadi', category: imperativeCat, categoryLabel: imperativeLabel, severity: imperativeSev, impact: 'Menuntut pengakuan agar pembaca merasa berutang kejelasan kepada pihak lain.', replacement: 'Jelaskan tujuan pendampingan tanpa memaksa pengakuan rincian masalah pribadi.' },
+  { term: 'bisa tahu apa yang sebenarnya terjadi', category: imperativeCat, categoryLabel: imperativeLabel, severity: imperativeSev, impact: 'Menuntut pengakuan agar pembaca merasa berutang kejelasan kepada pihak lain.', replacement: 'Jelaskan tujuan pendampingan tanpa memaksa pengakuan rincian masalah pribadi.' },
+  { term: 'menentukan bantuan yang kamu butuhkan', category: imperativeCat, categoryLabel: imperativeLabel, severity: imperativeSev, impact: 'Mengambil alih agensi pembaca seolah pihak lain yang berhak menentukan kebutuhannya.', replacement: 'Ajak berdiskusi setara untuk bersama-sama menimbang pilihan bantuan.' },
+
+  // Preset 4: Memberi Pilihan (recommended)
+  { term: 'mulai dari hal kecil', category: recCat, categoryLabel: recLabel, severity: recSev, impact: 'Ajakan bertahap yang memberi ruang bernapas dan tidak membebani pembaca.', replacement: 'Gaya penulisan Menungsa terkalibrasi.' },
+  { term: 'coba catat', category: recCat, categoryLabel: recLabel, severity: recSev, impact: 'Ajakan observasional konkret yang berupa pilihan sukarela dan praktis.', replacement: 'Gaya penulisan Menungsa terkalibrasi.' },
+  { term: 'perubahan yang paling mudah kamu kenali', category: recCat, categoryLabel: recLabel, severity: recSev, impact: 'Berfokus pada fakta nyata dan pengamatan diri tanpa label diagnosis.', replacement: 'Gaya penulisan Menungsa terkalibrasi.' },
+  { term: 'mudah kamu kenali', category: recCat, categoryLabel: recLabel, severity: recSev, impact: 'Bahasa membumi yang menekankan pengamatan wajar.', replacement: 'Gaya penulisan Menungsa terkalibrasi.' },
+  { term: 'nggak harus', category: recCat, categoryLabel: recLabel, severity: recSev, impact: 'Menghilangkan beban tuntutan moral dan memberi ruang pilihan merdeka (agency).', replacement: 'Gaya penulisan Menungsa terkalibrasi.' },
+  { term: 'tidak harus', category: recCat, categoryLabel: recLabel, severity: recSev, impact: 'Menghilangkan beban tuntutan moral dan memberi ruang pilihan merdeka (agency).', replacement: 'Gaya penulisan Menungsa terkalibrasi.' },
+  { term: 'kamu nggak harus', category: recCat, categoryLabel: recLabel, severity: recSev, impact: 'Menegaskan bahwa pembaca bebas dari paksaan dan tuntutan performa.', replacement: 'Gaya penulisan Menungsa terkalibrasi.' },
+  { term: 'kamu tidak harus', category: recCat, categoryLabel: recLabel, severity: recSev, impact: 'Menegaskan bahwa pembaca bebas dari paksaan dan tuntutan performa.', replacement: 'Gaya penulisan Menungsa terkalibrasi.' },
+  { term: 'tahu penyebabnya', category: recCat, categoryLabel: recLabel, severity: recSev, impact: 'Membebaskan pembaca dari tekanan untuk segera memiliki jawaban definitif.', replacement: 'Gaya penulisan Menungsa terkalibrasi.' },
+  { term: 'langsung tahu penyebabnya', category: recCat, categoryLabel: recLabel, severity: recSev, impact: 'Membebaskan pembaca dari tekanan untuk segera memiliki jawaban definitif.', replacement: 'Gaya penulisan Menungsa terkalibrasi.' }
+];
+
+templateAdditions.forEach(item => {
+  addTerm(item.term, item.category, item.categoryLabel, item.severity, item.impact, item.replacement);
 });
 
 console.log("=========================================");

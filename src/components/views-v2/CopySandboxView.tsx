@@ -66,11 +66,11 @@ const PRESETS = [
 
 const CATEGORY_TABS = [
   { id: 'all', label: 'Semua Kosakata', count: cheatsheet.length, color: 'text-stone-200' },
-  { id: 'moral', label: '🔴 Penghakiman Moral', count: cheatsheet.filter(c => c.category === 'moral').length, color: 'text-rose-200 font-semibold' },
-  { id: 'cringe', label: '🟠 Klise Maskulin', count: cheatsheet.filter(c => c.category === 'cringe').length, color: 'text-amber-200 font-semibold' },
-  { id: 'clinical', label: '🟣 Jargon Klinis', count: cheatsheet.filter(c => c.category === 'clinical').length, color: 'text-purple-200 font-semibold' },
-  { id: 'imperative', label: '🟡 Perintah Agresif', count: cheatsheet.filter(c => c.category === 'imperative').length, color: 'text-yellow-200 font-semibold' },
-  { id: 'recommended', label: '🟢 Kata Membumi', count: cheatsheet.filter(c => c.category === 'recommended').length, color: 'text-emerald-200 font-semibold' },
+  { id: 'moral', label: '🔴 Penilaian & Tuntutan', count: cheatsheet.filter(c => c.category === 'moral').length, color: 'text-rose-200 font-semibold' },
+  { id: 'cringe', label: '🟠 Tuntutan Maskulinitas', count: cheatsheet.filter(c => c.category === 'cringe').length, color: 'text-amber-200 font-semibold' },
+  { id: 'clinical', label: '🟣 Istilah Kesehatan Mental', count: cheatsheet.filter(c => c.category === 'clinical').length, color: 'text-purple-200 font-semibold' },
+  { id: 'imperative', label: '🟡 Ajakan & Desakan', count: cheatsheet.filter(c => c.category === 'imperative').length, color: 'text-yellow-200 font-semibold' },
+  { id: 'recommended', label: '🟢 Contoh Bahasa Konkret', count: cheatsheet.filter(c => c.category === 'recommended').length, color: 'text-emerald-200 font-semibold' },
 ];
 
 export const CopySandboxView: React.FC = () => {
@@ -136,27 +136,69 @@ export const CopySandboxView: React.FC = () => {
 
     const lower = rawText.toLowerCase();
     const matches: { entry: CheatsheetEntry; matchText: string }[] = [];
+    const coveredIntervals: [number, number][] = [];
     const seenMatchTerms = new Set<string>();
 
-    // 1. First pass: detect multi-word phrases
+    const isOverlapping = (start: number, end: number) => {
+      return coveredIntervals.some(([s, e]) => Math.max(s, start) < Math.min(e, end));
+    };
+
+    // 1. First pass: detect multi-word phrases with word boundaries
     MULTI_WORD_ENTRIES.forEach((entry) => {
-      const phrase = entry.term;
-      const index = lower.indexOf(phrase);
-      if (index !== -1 && !seenMatchTerms.has(phrase)) {
-        seenMatchTerms.add(phrase);
-        matches.push({ entry, matchText: phrase });
+      const phrase = entry.term.toLowerCase();
+      let idx = 0;
+      while ((idx = lower.indexOf(phrase, idx)) !== -1) {
+        const end = idx + phrase.length;
+        const isStartWord = idx === 0 || /[^a-z0-9]/i.test(lower[idx - 1]);
+        const isEndWord = end === lower.length || /[^a-z0-9]/i.test(lower[end]);
+        if (isStartWord && isEndWord && !isOverlapping(idx, end) && !seenMatchTerms.has(phrase)) {
+          seenMatchTerms.add(phrase);
+          coveredIntervals.push([idx, end]);
+          matches.push({ entry, matchText: rawText.slice(idx, end) });
+        }
+        idx = end;
       }
     });
 
-    // 2. Second pass: detect single-word tokens
-    rawTokens.forEach((token) => {
+    // 2. Second pass: detect single-word tokens with negation check
+    let charPos = 0;
+    const negationWords = new Set(['tidak', 'nggak', 'tak', 'bukan', 'belum', 'jangan']);
+
+    rawTokens.forEach((token, tokenIdx) => {
+      const tokenStart = lower.indexOf(token.toLowerCase(), charPos);
+      const tokenEnd = tokenStart !== -1 ? tokenStart + token.length : -1;
+      if (tokenStart !== -1) {
+        charPos = tokenEnd;
+      }
+
       const clean = token.toLowerCase().replace(/[^a-z0-9-]/gi, '');
-      if (clean && SINGLE_WORD_MAP.has(clean)) {
+      if (!clean) return;
+
+      if (tokenStart !== -1 && isOverlapping(tokenStart, tokenEnd)) {
+        return; // already covered by a multi-word phrase
+      }
+
+      if (SINGLE_WORD_MAP.has(clean) && !seenMatchTerms.has(clean)) {
         const entry = SINGLE_WORD_MAP.get(clean)!;
-        if (!seenMatchTerms.has(clean)) {
-          seenMatchTerms.add(clean);
-          matches.push({ entry, matchText: token });
+
+        // Check negation for moral/imperative words (e.g. 'nggak harus', 'tidak wajib')
+        if (tokenIdx > 0) {
+          const prevClean = rawTokens[tokenIdx - 1].toLowerCase().replace(/[^a-z0-9-]/gi, '');
+          if (negationWords.has(prevClean) && (entry.category === 'moral' || entry.category === 'imperative')) {
+            return;
+          }
         }
+
+        // Avoid bare 'jalan' as recommended false positive
+        if (clean === 'jalan' && entry.category === 'recommended') {
+          return;
+        }
+
+        seenMatchTerms.add(clean);
+        if (tokenStart !== -1) {
+          coveredIntervals.push([tokenStart, tokenEnd]);
+        }
+        matches.push({ entry, matchText: token });
       }
     });
 
@@ -210,7 +252,7 @@ export const CopySandboxView: React.FC = () => {
 
   // Overall Tone Evaluation
   const evaluation = useMemo(() => {
-    const { moralCount, cringeCount, clinicalCount, imperativeCount, recommendedCount, density, total } = analysis;
+    const { moralCount, cringeCount, clinicalCount, imperativeCount, recommendedCount, total } = analysis;
 
     if (total === 0) {
       return {
@@ -223,7 +265,7 @@ export const CopySandboxView: React.FC = () => {
       };
     }
 
-    if (moralCount > 0 && density >= 25) {
+    if (moralCount > 0 && (moralCount >= cringeCount && moralCount >= clinicalCount && moralCount >= imperativeCount)) {
       return {
         status: 'HIGH_MORAL',
         title: 'Periksa nada menghakimi',
@@ -234,7 +276,7 @@ export const CopySandboxView: React.FC = () => {
       };
     }
 
-    if (cringeCount > 0) {
+    if (cringeCount > 0 && (cringeCount >= clinicalCount && cringeCount >= imperativeCount)) {
       return {
         status: 'CRINGE_ALERT',
         title: 'Periksa standar maskulinitas',
@@ -245,7 +287,7 @@ export const CopySandboxView: React.FC = () => {
       };
     }
 
-    if (clinicalCount > 0) {
+    if (clinicalCount > 0 && clinicalCount >= imperativeCount) {
       return {
         status: 'CLINICAL_ALERT',
         title: 'Periksa penggunaan istilah klinis',
@@ -429,7 +471,7 @@ export const CopySandboxView: React.FC = () => {
                     : 'bg-stone-900 border-stone-800 text-stone-500'
                 }`}
               >
-                Moral: {analysis.moralCount}
+                Penilaian: {analysis.moralCount}
               </button>
               <button
                 onClick={() => setFilterCategory(filterCategory === 'cringe' ? null : 'cringe')}
@@ -441,7 +483,7 @@ export const CopySandboxView: React.FC = () => {
                     : 'bg-stone-900 border-stone-800 text-stone-500'
                 }`}
               >
-                Klise: {analysis.cringeCount}
+                Maskulinitas: {analysis.cringeCount}
               </button>
               <button
                 onClick={() => setFilterCategory(filterCategory === 'clinical' ? null : 'clinical')}
@@ -465,7 +507,7 @@ export const CopySandboxView: React.FC = () => {
                     : 'bg-stone-900 border-stone-800 text-stone-500'
                 }`}
               >
-                Agresif: {analysis.imperativeCount}
+                Desakan: {analysis.imperativeCount}
               </button>
               <button
                 onClick={() => setFilterCategory(filterCategory === 'recommended' ? null : 'recommended')}
@@ -477,7 +519,7 @@ export const CopySandboxView: React.FC = () => {
                     : 'bg-stone-900 border-stone-800 text-stone-500'
                 }`}
               >
-                Membumi: {analysis.recommendedCount}
+                Konkret: {analysis.recommendedCount}
               </button>
               {filterCategory && (
                 <button

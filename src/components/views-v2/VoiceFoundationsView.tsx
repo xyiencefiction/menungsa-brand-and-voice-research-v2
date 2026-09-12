@@ -515,36 +515,57 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
                 </div>
               </div>
 
-              {/* Right Column: DO and DON'T */}
+              {/* Right Column: DO and DON'T Comparison Table */}
               <div className="lg:col-span-7 space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* DO */}
-                  <div className="rounded-xl border border-emerald-500/30 bg-emerald-950/20 p-4 space-y-3">
-                    <div className="flex items-center gap-2 text-emerald-400 text-xs font-sans font-bold uppercase tracking-wider">
-                      <CheckCircle2 size={15} />
-                      <span>DO</span>
-                    </div>
-                    {activeValue.dos.map((d, i) => (
-                      <div key={i} className="text-xs text-stone-200 border-t border-emerald-900/40 pt-2.5 space-y-1">
-                        <div className="font-serif italic text-emerald-300 leading-snug">"{d.example}"</div>
-                        <div className="text-xs text-stone-300 leading-relaxed font-sans">{d.why}</div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* DON'T */}
-                  <div className="rounded-xl border border-rose-500/30 bg-rose-950/20 p-4 space-y-3">
-                    <div className="flex items-center gap-2 text-rose-400 text-xs font-sans font-bold uppercase tracking-wider">
-                      <XCircle size={15} />
-                      <span>Don't</span>
-                    </div>
-                    {activeValue.donts.map((d, i) => (
-                      <div key={i} className="text-xs text-stone-200 border-t border-rose-900/40 pt-2.5 space-y-1">
-                        <div className="font-serif italic text-rose-300 leading-snug">"{d.example}"</div>
-                        <div className="text-xs text-stone-300 leading-relaxed font-sans">{d.why}</div>
-                      </div>
-                    ))}
-                  </div>
+                <div className="overflow-hidden rounded-xl border border-stone-800 bg-stone-950/70 shadow-raised">
+                  <table className="w-full text-left border-collapse table-fixed font-sans text-xs">
+                    <thead>
+                      <tr className="border-b border-stone-800 bg-stone-900/90">
+                        <th className="w-1/2 p-3 font-semibold uppercase tracking-wider text-emerald-400 border-r border-stone-800">
+                          <div className="flex items-center gap-1.5 font-mono text-[11px]">
+                            <CheckCircle2 size={14} className="shrink-0 text-emerald-400" />
+                            <span>DO (Sesuai Panduan)</span>
+                          </div>
+                        </th>
+                        <th className="w-1/2 p-3 font-semibold uppercase tracking-wider text-rose-400">
+                          <div className="flex items-center gap-1.5 font-mono text-[11px]">
+                            <XCircle size={14} className="shrink-0 text-rose-400" />
+                            <span>DON'T (Perlu Dihindari)</span>
+                          </div>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-stone-800/70">
+                      {Array.from({ length: Math.max(activeValue.dos.length, activeValue.donts.length) }).map((_, idx) => {
+                        const d = activeValue.dos[idx];
+                        const dt = activeValue.donts[idx];
+                        return (
+                          <tr key={idx} className="hover:bg-stone-900/20 transition-colors">
+                            <td className="w-1/2 p-3.5 align-top border-r border-stone-800/70 bg-emerald-950/10 space-y-1.5">
+                              {d ? (
+                                <>
+                                  <p className="font-serif italic text-emerald-300 leading-snug">"{d.example}"</p>
+                                  <p className="text-xs text-stone-300 leading-relaxed font-sans">{d.why}</p>
+                                </>
+                              ) : (
+                                <span className="text-stone-600 italic">-</span>
+                              )}
+                            </td>
+                            <td className="w-1/2 p-3.5 align-top bg-rose-950/10 space-y-1.5">
+                              {dt ? (
+                                <>
+                                  <p className="font-serif italic text-rose-300 leading-snug">"{dt.example}"</p>
+                                  <p className="text-xs text-stone-300 leading-relaxed font-sans">{dt.why}</p>
+                                </>
+                              ) : (
+                                <span className="text-stone-600 italic">-</span>
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -608,24 +629,37 @@ export const VoiceFoundationsView: React.FC<Props> = ({ onNavigate }) => {
                 {rule.rationale}
               </p>
 
-              <div className="space-y-2 pt-2 border-t border-stone-800/80">
-                <div className="rounded-[6px] bg-emerald-950/20 border border-emerald-500/20 p-3 text-xs text-emerald-200 space-y-1.5 font-sans">
-                  <div className="flex items-center gap-1.5 font-bold text-emerald-500 dark:text-emerald-400 text-[11px]">
-                    <CheckCircle2 size={13} />
-                    <span>DO</span>
-                  </div>
-                  <p className="font-serif italic text-emerald-800 dark:text-emerald-200">"{rule.doText}"</p>
-                  <p className="text-xs text-stone-300 leading-relaxed">{rule.doWhy}</p>
-                </div>
-
-                <div className="rounded-[6px] bg-amber-950/20 border border-amber-700/20 p-3 text-xs text-amber-200 space-y-1.5 font-sans">
-                  <div className="flex items-center gap-1.5 font-bold text-amber-600 dark:text-amber-400 text-[11px]">
-                    <XCircle size={13} />
-                    <span>DON'T</span>
-                  </div>
-                  <p className="font-serif italic text-amber-800 dark:text-amber-200">"{rule.dontText}"</p>
-                  <p className="text-xs text-stone-300 leading-relaxed">{rule.dontWhy}</p>
-                </div>
+              <div className="overflow-hidden rounded-lg border border-stone-800 bg-stone-950/60 mt-3 shadow-xs">
+                <table className="w-full text-left border-collapse table-fixed text-xs font-sans">
+                  <thead>
+                    <tr className="border-b border-stone-800 bg-stone-900/80">
+                      <th className="w-1/2 p-2.5 font-semibold text-emerald-400 border-r border-stone-800">
+                        <div className="flex items-center gap-1.5 font-mono text-[10.5px]">
+                          <CheckCircle2 size={13} className="shrink-0 text-emerald-400" />
+                          <span>DO</span>
+                        </div>
+                      </th>
+                      <th className="w-1/2 p-2.5 font-semibold text-rose-400">
+                        <div className="flex items-center gap-1.5 font-mono text-[10.5px]">
+                          <XCircle size={13} className="shrink-0 text-rose-400" />
+                          <span>DON'T</span>
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="w-1/2 p-3 align-top border-r border-stone-800/80 bg-emerald-950/10 space-y-1.5">
+                        <p className="font-serif italic text-emerald-300 leading-snug">"{rule.doText}"</p>
+                        <p className="text-[11.5px] text-stone-300 leading-relaxed">{rule.doWhy}</p>
+                      </td>
+                      <td className="w-1/2 p-3 align-top bg-rose-950/10 space-y-1.5">
+                        <p className="font-serif italic text-rose-300 leading-snug">"{rule.dontText}"</p>
+                        <p className="text-[11.5px] text-stone-300 leading-relaxed">{rule.dontWhy}</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           ))}

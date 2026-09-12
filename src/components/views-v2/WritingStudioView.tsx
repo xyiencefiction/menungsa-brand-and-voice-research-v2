@@ -434,51 +434,63 @@ export const WritingStudioView: React.FC = () => {
                       </span>
                     </div>
 
-                    {/* Calibrated / Worked */}
-                    <div className="rounded-[6px] border border-emerald-500/30 bg-emerald-950/20 p-4 space-y-2.5 relative group">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-1.5 text-emerald-500 dark:text-emerald-400 text-xs font-sans font-bold uppercase tracking-wider">
-                          <CheckCircle2 size={15} />
-                          <span>Contoh sesuai panduan</span>
-                        </div>
-                        <button
-                          onClick={() => handleCopy(workedCopy, ex.id)}
-                          className="btn-secondary px-2.5 py-1 text-xs gap-1.5 font-sans cursor-pointer shrink-0"
-                          title="Salin naskah"
-                          aria-label={isCopied ? "Teks naskah berhasil disalin ke clipboard" : "Salin naskah ke clipboard"}
-                        >
-                          <span className="sr-only" aria-live="polite">
-                            {isCopied ? "Teks berhasil disalin" : ""}
-                          </span>
-                          {isCopied ? (
-                            <>
-                              <Check size={13} className="text-emerald-500" />
-                              <span className="text-emerald-600 dark:text-emerald-400 font-medium">Teks disalin</span>
-                            </>
-                          ) : (
-                            <>
-                              <Copy size={13} />
-                              <span>Salin</span>
-                            </>
-                          )}
-                        </button>
-                      </div>
-
-                      <blockquote className="font-serif text-base leading-relaxed text-stone-100">
-                        "{workedCopy}"
-                      </blockquote>
-                    </div>
-
-                    {/* Weak / Common Anti-Pattern */}
-                    <div className="rounded-[6px] border border-amber-700/25 bg-amber-950/20 p-3.5 space-y-2">
-                      <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 text-xs font-sans font-bold uppercase tracking-wider">
-                        <AlertTriangle size={15} />
-                        <span>Contoh yang perlu ditinjau</span>
-                      </div>
-
-                      <blockquote className="font-serif text-xs md:text-sm leading-relaxed text-stone-300 italic">
-                        "{ex.weak.copy}"
-                      </blockquote>
+                    {/* Comparison Table */}
+                    <div className="overflow-hidden rounded-lg border border-stone-800 bg-stone-950/60 shadow-raised">
+                      <table className="w-full text-left border-collapse table-fixed font-sans text-xs">
+                        <thead>
+                          <tr className="border-b border-stone-800 bg-stone-900/90">
+                            <th className="w-1/2 p-3 font-semibold uppercase tracking-wider text-emerald-400 border-r border-stone-800">
+                              <div className="flex items-center justify-between gap-1">
+                                <div className="flex items-center gap-1.5 font-mono text-[11px]">
+                                  <CheckCircle2 size={14} className="shrink-0 text-emerald-400" />
+                                  <span>Contoh sesuai panduan</span>
+                                </div>
+                                <button
+                                  onClick={() => handleCopy(workedCopy, ex.id)}
+                                  className="btn-secondary px-2 py-0.5 text-[11px] gap-1 font-sans cursor-pointer shrink-0"
+                                  title="Salin naskah"
+                                  aria-label={isCopied ? "Teks naskah berhasil disalin ke clipboard" : "Salin naskah ke clipboard"}
+                                >
+                                  <span className="sr-only" aria-live="polite">
+                                    {isCopied ? "Teks berhasil disalin" : ""}
+                                  </span>
+                                  {isCopied ? (
+                                    <>
+                                      <Check size={11} className="text-emerald-500" />
+                                      <span className="text-emerald-400 font-medium">Disalin</span>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <Copy size={11} />
+                                      <span>Salin</span>
+                                    </>
+                                  )}
+                                </button>
+                              </div>
+                            </th>
+                            <th className="w-1/2 p-3 font-semibold uppercase tracking-wider text-rose-400">
+                              <div className="flex items-center gap-1.5 font-mono text-[11px]">
+                                <AlertTriangle size={14} className="shrink-0 text-rose-400" />
+                                <span>Contoh yang perlu ditinjau</span>
+                              </div>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="w-1/2 p-4 align-top border-r border-stone-800/80 bg-emerald-950/10">
+                              <blockquote className="font-serif text-sm md:text-base leading-relaxed text-stone-100">
+                                "{workedCopy}"
+                              </blockquote>
+                            </td>
+                            <td className="w-1/2 p-4 align-top bg-rose-950/10">
+                              <blockquote className="font-serif text-xs md:text-sm leading-relaxed text-stone-300 italic">
+                                "{ex.weak.copy}"
+                              </blockquote>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
 
@@ -516,54 +528,63 @@ export const WritingStudioView: React.FC = () => {
                   </span>
                 </div>
 
-                {/* Comparison Columns */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* Calibrated / Worked */}
-                  <div className="rounded-[6px] border border-emerald-500/30 bg-emerald-950/20 p-4 space-y-3 relative group">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-1.5 text-emerald-500 dark:text-emerald-400 text-xs font-sans font-bold uppercase tracking-wider">
-                        <CheckCircle2 size={15} />
-                        <span>Contoh sesuai panduan</span>
-                      </div>
-                      <button
-                        onClick={() => handleCopy(workedCopy, ex.id)}
-                        className="btn-secondary px-2.5 py-1 text-xs gap-1.5 font-sans cursor-pointer"
-                        title="Salin naskah"
-                        aria-label={isCopied ? "Teks naskah berhasil disalin ke clipboard" : "Salin naskah ke clipboard"}
-                      >
-                        <span className="sr-only" aria-live="polite">
-                          {isCopied ? "Teks berhasil disalin" : ""}
-                        </span>
-                        {isCopied ? (
-                          <>
-                            <Check size={13} className="text-emerald-500" />
-                            <span className="text-emerald-600 dark:text-emerald-400 font-medium">Teks disalin</span>
-                          </>
-                        ) : (
-                          <>
-                            <Copy size={13} />
-                            <span>Salin naskah</span>
-                          </>
-                        )}
-                      </button>
-                    </div>
-
-                    <blockquote className="font-serif text-base leading-relaxed text-stone-100 max-w-[74ch]">
-                      "{workedCopy}"
-                    </blockquote>
-                  </div>
-
-                  {/* Weak / Common Anti-Pattern */}
-                  <div className="rounded-[6px] border border-amber-700/25 bg-amber-950/20 p-4 space-y-3">
-                    <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 text-xs font-sans font-bold uppercase tracking-wider">
-                      <AlertTriangle size={15} />
-                      <span>Contoh yang perlu ditinjau</span>
-                    </div>
-
-                    <blockquote className="font-serif text-sm leading-relaxed text-stone-300 italic max-w-[74ch]">
-                      "{ex.weak.copy}"
-                    </blockquote>
-                  </div>
+                {/* Comparison Table */}
+                <div className="overflow-hidden rounded-lg border border-stone-800 bg-stone-950/60 shadow-raised">
+                  <table className="w-full text-left border-collapse table-fixed font-sans text-xs">
+                    <thead>
+                      <tr className="border-b border-stone-800 bg-stone-900/90">
+                        <th className="w-1/2 p-3 font-semibold uppercase tracking-wider text-emerald-400 border-r border-stone-800">
+                          <div className="flex items-center justify-between gap-1">
+                            <div className="flex items-center gap-1.5 font-mono text-[11px]">
+                              <CheckCircle2 size={14} className="shrink-0 text-emerald-400" />
+                              <span>Contoh sesuai panduan</span>
+                            </div>
+                            <button
+                              onClick={() => handleCopy(workedCopy, ex.id)}
+                              className="btn-secondary px-2.5 py-1 text-xs gap-1.5 font-sans cursor-pointer"
+                              title="Salin naskah"
+                              aria-label={isCopied ? "Teks naskah berhasil disalin ke clipboard" : "Salin naskah ke clipboard"}
+                            >
+                              <span className="sr-only" aria-live="polite">
+                                {isCopied ? "Teks berhasil disalin" : ""}
+                              </span>
+                              {isCopied ? (
+                                <>
+                                  <Check size={13} className="text-emerald-500" />
+                                  <span className="text-emerald-600 dark:text-emerald-400 font-medium">Teks disalin</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Copy size={13} />
+                                  <span>Salin naskah</span>
+                                </>
+                              )}
+                            </button>
+                          </div>
+                        </th>
+                        <th className="w-1/2 p-3 font-semibold uppercase tracking-wider text-rose-400">
+                          <div className="flex items-center gap-1.5 font-mono text-[11px]">
+                            <AlertTriangle size={14} className="shrink-0 text-rose-400" />
+                            <span>Contoh yang perlu ditinjau</span>
+                          </div>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="w-1/2 p-4 md:p-5 align-top border-r border-stone-800/80 bg-emerald-950/10">
+                          <blockquote className="font-serif text-base leading-relaxed text-stone-100 max-w-[74ch]">
+                            "{workedCopy}"
+                          </blockquote>
+                        </td>
+                        <td className="w-1/2 p-4 md:p-5 align-top bg-rose-950/10">
+                          <blockquote className="font-serif text-sm leading-relaxed text-stone-300 italic max-w-[74ch]">
+                            "{ex.weak.copy}"
+                          </blockquote>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
 
                 {/* Linguistic Rationale */}
